@@ -22,9 +22,9 @@
   <ion-list class="followers-list">
     <ion-list-header class="ion-padding-horizontal">
       <h5 class="ion-no-margin">Messages</h5>
-      <ion-label class="text-green" (click)="showRequests()">2 Requests</ion-label>
+      <ion-label *ngIf="requestCount > 0" class="text-green" (click)="showRequests()">{{requestCount}} Requests</ion-label>
     </ion-list-header>
-    <div *ngIf="newSearchPersonList.length < 1  ">
+    <div *ngIf="newSearchPersonList.length < 1">
 
     </div> 
      

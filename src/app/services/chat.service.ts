@@ -52,6 +52,22 @@ export class ChatService {
 
   }
 
+  requestsUserListCount(): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/getChatRequestCount',null,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('requestsUserListCount',null)));
+
+  }
+
+  requestsUserList(): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/getChatRequest',null,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('requestsUserList',null)));
+
+  }
+
+  //------------Accept chat request
+  acceptChatRequest(data:any): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/getChatRequest',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('acceptChatRequest',data)));
+
+  }
+
   filterItems(searchTerm) {
     return this.items.filter(item => {
       return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;

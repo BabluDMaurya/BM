@@ -3,6 +3,8 @@ import { ChatService } from 'src/app/services/chat.service';
 import { ModalController } from '@ionic/angular';
 import { RequestsModalComponent } from '../requests-modal/requests-modal.component';
 import { Config } from './../../config/config';
+import { CommonService } from 'src/app/services/common.service';
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
@@ -17,10 +19,23 @@ export class ChatPage implements OnInit {
   url : any = Config.profilePic;
   personList: any = null;
   token: any;
-  constructor(private dataService: ChatService,public modalController: ModalController) { }  
+  requestCount: any = 0;
+  constructor(
+    public commonService:CommonService,
+    private dataService: ChatService,
+    public modalController: ModalController) { }  
 
   ngOnInit() {
+    this.commonService.presentLoader();
     this.setFilteredItems();
+    //--------requests counter-----
+    this.dataService.requestsUserListCount().subscribe((data:any)=>{
+      if (data.count > 0){
+        this.commonService.dismissLoader();
+        this.requestCount = data.count;
+      }
+    });
+    //------------chat user list -------------
     this.dataService.chatUserList().subscribe(
       (data: any) => {
         this.items = data.chatlist;
@@ -55,7 +70,6 @@ export class ChatPage implements OnInit {
 
     this.dataService.searchQuery({ "searchQuery": searchFind }).subscribe(
         (search: any) => {
-
             this.newSearchPersonList = search.searchList;
             console.log(search.searchList);
         }
