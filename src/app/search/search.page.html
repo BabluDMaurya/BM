@@ -1,0 +1,112 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>Search</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+
+  <ion-segment class="top-segment" (ionChange)="tabChange($event)">
+    <ion-segment-button value="people" checked>People</ion-segment-button>
+    <ion-segment-button value="programs">Programs</ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="search">
+    <ion-list lines="none" class="item-list ion-no-padding" *ngSwitchCase="'people'">
+      <ion-toolbar class="searchbar">
+        <ion-searchbar type="text" (ionInput)="searchChanged($event)"></ion-searchbar>
+      </ion-toolbar>
+      <!--top 10 people-->
+      <div *ngIf="!newSearchPersonList">
+        <ion-item *ngFor="let item of searchPersonList " class="item-block"
+          [routerLink]="item.user_type==0 ? ['/tabs/user-profile-view/',item.id] : ['/tabs/consultant-profile-view/',item.id]">
+          <ion-avatar slot="start">
+            <img *ngIf="item?.bios?.profile_pic" src="{{url}}{{item?.bios?.profile_pic}}">
+            <img *ngIf="!item?.bios?.profile_pic" src="../../assets/images/user.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h3> {{item.user_name}}</h3>
+            <span *ngIf="item.user_type==1">{{item?.publicVideos?.total}} Videos, {{item?.upcomingProgram?.total}}
+              Upcoming Programs</span>
+          </ion-label>
+        </ion-item>
+        <ion-item-group *ngFor="let item of result">
+          <ion-item-divider sticky class="grey-header ion-padding-horizontal">
+            <ion-label> {{item.key}} </ion-label>
+          </ion-item-divider>
+          <ion-item-sliding *ngFor="let key of item.contacts">
+            <ion-item *ngIf="!key.advertisment" class="item-block"
+              [routerLink]="key.user_type==0 ? ['/tabs/user-profile-view/',key.id] : ['/tabs/consultant-profile-view/',key.id]">
+              <ion-avatar slot="start">
+                <img *ngIf="key?.bios?.profile_pic" src="{{url}}{{key?.bios?.profile_pic}}">
+                <img *ngIf="!key?.bios?.profile_pic" src="../../assets/images/user.jpg">
+              </ion-avatar>
+              <ion-label>
+                <h3> {{key.user_name}}</h3>
+                <span *ngIf="key.user_type==1">{{key?.publicVideos?.total}} Videos, {{key?.upcomingProgram?.total}}
+                  Upcoming Programs</span>
+              </ion-label>
+            </ion-item>
+            <ion-item class="item-block advertise-block" *ngIf="key.advertisment">
+              <ion-avatar slot="start" class="advertise-box">
+                <ion-label>A</ion-label>
+              </ion-avatar>
+
+              <ion-label>
+                <h3>Advertisement Title</h3>
+                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+              </ion-label>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-item-group>
+      </div>
+      <!--Other all people list-->
+      <div *ngIf="newSearchPersonList">
+        <ion-item *ngFor="let key of newSearchPersonList" class="item-block"
+          [routerLink]="key.user_type==0 ? ['/tabs/user-profile-view/',key.id] : ['/tabs/consultant-profile-view/',key.id]">
+          <ion-avatar slot="start">
+            <img *ngIf="key?.bios?.profile_pic" src="{{url}}{{key?.bios?.profile_pic}}">
+            <img *ngIf="!key?.bios?.profile_pic" src="../../assets/images/user.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h3>{{key.user_name}}</h3>
+            <span *ngIf="key.user_type==1">{{key?.publicVideos?.total}} Videos, {{key?.upcomingProgram?.total}} Upcoming
+              Programs</span>
+          </ion-label>
+        </ion-item>
+        <div *ngIf="newSearchPersonList < 1" class="no-data">
+          <img src="../../../assets/images/error.svg" width="40px" />
+          <p>No Data Found</p>
+        </div>
+      </div>
+    </ion-list>
+    <!--Search  people list-->
+    <div *ngIf="!searchPersonList">
+      <ion-list lines="none" class="item-list ion-no-padding" *ngSwitchCase="'people'">
+        <ion-item class="item-block" *ngFor="let card of [].constructor(15)">
+          <ion-avatar slot="start">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-avatar>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </h3>
+            <span>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </span>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+    <!--Progam tab-->
+    <div *ngSwitchCase="'programs'">
+      <app-programs></app-programs>
+    </div>
+  </div>
+</ion-content>

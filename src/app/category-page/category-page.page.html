@@ -1,0 +1,169 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>{{specialityName}}</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end">
+      <div class="icon-right-side">
+        <a [routerLink]="['/tabs/search']" class="set-icon">
+          <ion-icon ios="ios-search" md="md-search"></ion-icon>
+        </a>
+        <a [routerLink]="['/notification']" id="notificationcount" class="noti-bell">
+          <ion-icon ios="ios-notifications-outline" md="md-notifications-outline"></ion-icon>
+          <ion-badge slot="end" *ngIf="notificationCount > 0">{{ notificationCount }}</ion-badge>
+        </a>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-header>
+
+<ion-content class="main_content">
+  <ion-toolbar no-border-top class="profile_tabs">
+    <ion-segment class="ion-no-padding" (ionChange)="segmentChanged($event)" [(ngModel)]="segment">
+      <ion-segment-button value="0" checked>
+        <span>Peoples</span>
+      </ion-segment-button>
+      <ion-segment-button value="1">
+        <span>Videos</span>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <span>Posts</span>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <div *ngIf="segment==0" > 
+    <ion-list lines="none" class="item-list ion-no-padding">
+      <ion-item-group *ngFor="let item of result">
+        <ion-item-divider sticky class="grey-header ion-padding-horizontal">
+          <ion-label> {{item.key}} </ion-label>
+        </ion-item-divider>
+        <ion-item-sliding *ngFor="let key of item.contacts">
+          <ion-item *ngIf="!key.advertisment" class="item-block"
+            [routerLink]="key.user_type==0 ? ['/tabs/user-profile-view/',key.id] : ['/tabs/consultant-profile-view/',key.id]">
+            <ion-avatar slot="start">
+              <img *ngIf="key?.profile_pic" src="{{url}}{{key?.profile_pic}}">
+              <img *ngIf="!key?.profile_pic" src="../../assets/images/user.jpg">
+            </ion-avatar>
+            <ion-label>
+              <h3> {{key.user_name}}</h3>
+              <span *ngIf="key.user_type==1">{{key?.publicVideos?.total}} Videos, {{key?.upcomingProgram?.total}}
+                Upcoming Programs</span>
+            </ion-label>
+          </ion-item>
+          <ion-item class="item-block advertise-block" *ngIf="key.advertisment">
+            <ion-avatar slot="start" class="advertise-box">
+              <ion-label>A</ion-label>
+            </ion-avatar>
+
+            <ion-label>
+              <h3>Advertisement Title</h3>
+              <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+            </ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-item-group>
+    </ion-list>
+  </div>
+  <div *ngIf="segment==1" > 
+    <div *ngIf="videoList.length<1"> NO Videos Found</div>
+    <div *ngFor="let post of videoList">
+
+      <ion-card class="item-card"  >  <!-- //*ngIf="!post.is_delete &&  !post?.length" -->
+        <ion-card-header class="item-header">
+          <ion-avatar [routerLink]="['/tabs/consultant-profile-view/',post?.user_id]">
+            <img src="https://ionicinto.wdipl.com/public/profile_pic/thumb/{{post?.profile_pic}}"
+              *ngIf="post?.profile_pic">
+            <img src="https://intoactive.wdipl.com/images/user.jpg" *ngIf="!post?.profile_pic">
+          </ion-avatar>
+          <div class="header-right">
+            <ion-label [routerLink]="['/tabs/consultant-profile-view/',post?.user_id]">
+              <ion-card-title>{{post?.user_name}}</ion-card-title>
+              <ion-card-subtitle>{{post?.country_name?.name}}</ion-card-subtitle>
+            </ion-label>
+            <ion-text class="post-timedate">
+              <p class="post-date">{{post?.created_at}} </p>
+            </ion-text>
+          </div>
+        </ion-card-header>
+        <ion-card-content class="ion-no-padding item-content">
+          <!-- <ion-thumbnail *ngIf="post?.image_post">
+            <ion-slides [options]="imageSlider" class="post-slider" [pager]="true">
+              <ion-slide *ngFor="let imgpath of post?.image_post['0']?.thumb_path; let i =index;">
+                <img (click)="openViewer(post?.image_post['0']?.thumb_path[i])" src="{{url}}{{imgpath}}"
+                  alt="{{imgpath}}" />
+              </ion-slide>
+            </ion-slides>
+          </ion-thumbnail> -->
+          <ion-thumbnail *ngIf="post?.video_post" [routerLink]="['/videos',post.id,'']">
+            <img src="{{storagePath + post?.thumb_path}}" alt="Thumnail Path" />
+            <!-- <img (click)="openViewer(post['video_post']['0']['thumb_path'])" src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
+          </ion-thumbnail>
+          <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam" *ngIf="post?.video_post"></ion-icon>
+          <div class="post-content">
+            <ion-list class="item-post" lines="none">
+              <ion-item>
+                <div [routerLink]="['/comments',post?.id]"
+                  *ngIf="!post?.disable_comment && !post?.comment_disable ">
+                  <span class="d-flex">
+                    <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
+                    <span>{{post?.total_comments?.length}}</span>
+                  </span>
+                </div>
+                <div (click)="liked(post.id,post?.liked)" class="{{ post.liked ?'active':'inactive' }}">
+                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon>
+                  <span>{{post?.count}}</span>
+                </div>
+              </ion-item>
+              <!-- --------------- bookmark for only  othepost on own -------->
+             
+            </ion-list>
+            <!-- --------------- bookmark ends here------------ -->
+  
+            <!-- -------  Description for posts   -->
+<!--   
+            <div *ngIf="post?.post_type==1">
+              <p *ngIf="post?.image_post['0'].description && post?.image_post['0'].description.length < 30"><span
+                  class="username-text text-green">{{post?.post_user?.user_name}}</span>{{post?.image_post['0'].description.substr(0, 100)}}
+              </p>
+              <p
+                *ngIf="post?.image_post['0'].description && post?.image_post['0'].description.length > 29 && expanded !=  post.id">
+                <span
+                  class="username-text text-green">{{post?.post_user?.user_name}}</span>{{post?.image_post['0'].description.substr(0, 29)}}
+                <span (click)="expanded = post.id"
+                  class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
+              <p *ngIf="expanded ==  post.id "><span
+                  class="username-text text-green">{{post?.post_user?.user_name}}</span>{{post?.image_post['0'].description}}
+                <span (click)="expanded = 0" class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span>
+              </p>
+            </div> -->
+  
+            <div *ngIf="post?.post_type==2">
+              <p *ngIf="post?.title && post?.title.length < 30"><span
+                  class="username-text text-green">{{post?.user_name}}</span>{{post?.title.substr(0, 100)}}
+              </p>
+              <p *ngIf="post?.title && post?.title.length > 29 && expanded !=  post.id">
+                <span
+                  class="username-text text-green">{{post?.user_name}}</span>{{post?.title.substr(0, 29)}}
+                <span (click)="expanded = post.id"
+                  class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
+              <p *ngIf="expanded ==  post.id "><span
+                  class="username-text text-green">{{post?.user_name}}</span>{{post?.title}}
+                <span (click)="expanded = 0" class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span>
+              </p>
+            </div>
+  
+            <!-- ------- ends here -->
+  
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div> 
+  </div>
+  <div *ngIf="segment==2" > </div>
+
+</ion-content>

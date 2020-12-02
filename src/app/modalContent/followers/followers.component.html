@@ -1,0 +1,95 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="dismiss()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>Information</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <div *ngIf='!otherUser'>
+    <ion-list class="nofication-list">
+      <ion-list-header class="mb-10">
+        <ion-label>Bio</ion-label>
+      </ion-list-header>
+      <ion-item>{{profileData?.userData?.bios?.about_me}} <div (click)="goToEdit()" *ngIf="!profileData?.userData?.bios?.about_me">Add Bio +</div> </ion-item>
+    </ion-list>
+    <ion-list class="nofication-list">
+      <ion-list-header class="mb-10">
+        <ion-label>First Interests</ion-label>
+      </ion-list-header>
+      <ion-item>{{profileData?.speciality?.primaryName?.name }} <div (click)="goToEdit()" *ngIf="!profileData?.speciality?.primaryName?.name">Add Primary Interest +</div> </ion-item>
+    </ion-list>
+    <ion-list class="nofication-list">
+      <ion-list-header class="mb-10">
+        <ion-label>Second Interests</ion-label>
+        
+      </ion-list-header>
+      <ion-item>{{profileData?.speciality?.secondaryName}} <div (click)="goToEdit()" *ngIf="!profileData?.speciality?.secondaryName">Add Secondary Interest +</div> </ion-item>
+    </ion-list>
+    <ion-list class="nofication-list">
+      <ion-list-header class="mb-10">
+        <ion-label>Location</ion-label>
+      </ion-list-header>
+      <ion-item>{{profileData?.address?.city?.name}} {{profileData?.address?.state?.name }}, {{profileData?.address?.country?.name}} <div [routerLink]="" *ngIf="!profileData?.address?.country?.name && !profileData?.address?.state?.name ">Add Location +</div> </ion-item>
+    </ion-list>
+    <ion-list class="nofication-list">
+      <ion-list-header class="mb-10">
+        <ion-label>Language Spoken</ion-label>
+      </ion-list-header>
+      <ion-item>{{profileData?.lang?.lang}}<div (click)="goToEdit()" *ngIf="!profileData?.lang?.lang">Add Language +</div></ion-item>
+    </ion-list>
+
+    <ion-list class="nofication-list">
+      <ion-list-header class="mb-10">
+        <ion-label>Hometown</ion-label>
+      </ion-list-header>
+      <ion-item>{{profileData?.userData?.bios?.hometown}}<div (click)="goToEdit()" *ngIf="!profileData?.userData?.bios?.hometown">Add Language +</div></ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf='otherUser'>
+    <ion-list class="nofication-list">
+      <ion-list-header class="mb-10">
+        <ion-label>Bio</ion-label>
+      </ion-list-header>
+      <ion-item>{{profileData?.userData?.bios?.about_me}} <div (click)="goToEdit()" *ngIf="!profileData?.userData?.bios?.about_me">Not Mentioned.</div> </ion-item>
+    </ion-list>
+    <ion-list class="nofication-list">
+      <ion-list-header class="mb-10">
+        <ion-label>First Interests</ion-label>
+      </ion-list-header>
+      <ion-item>{{profileData?.speciality?.primaryName?.name }} <div (click)="goToEdit()" *ngIf="!profileData?.speciality?.primaryName?.name">Not Mentioned.</div> </ion-item>
+    </ion-list>
+    <ion-list class="nofication-list">
+      <ion-list-header class="mb-10">
+        <ion-label>Second Interests</ion-label>
+        
+      </ion-list-header>
+      <ion-item>{{profileData?.speciality?.secondaryName?.name}} <div (click)="goToEdit()" *ngIf="!profileData?.speciality?.secondaryName?.name">Not Mentioned.</div> </ion-item>
+    </ion-list>
+    <ion-list class="nofication-list">
+      <ion-list-header class="mb-10">
+        <ion-label>Location</ion-label>
+      </ion-list-header>
+      <ion-item>{{profileData?.address?.city?.name}} {{profileData?.address?.state?.name }}, {{profileData?.address?.country?.name}} <div [routerLink]="" *ngIf="!profileData?.address?.country?.name && !profileData?.address?.state?.name ">Not Mentioned.</div> </ion-item>
+    </ion-list>
+    <ion-list class="nofication-list">
+      <ion-list-header class="mb-10">
+        <ion-label>Language Spoken</ion-label>
+      </ion-list-header>
+      <ion-item>{{profileData?.lang?.lang}}<div (click)="goToEdit()" *ngIf="!profileData?.lang?.lang">Not Mentioned.</div></ion-item>
+    </ion-list>
+
+    <ion-list class="nofication-list">
+      <ion-list-header class="mb-10">
+        <ion-label>Hometown</ion-label>
+      </ion-list-header>
+      <ion-item>{{profileData.userData.bios.hometown}}<div (click)="goToEdit()" *ngIf="!profileData.userData.bios.hometown">Not Mentioned.</div></ion-item>
+    </ion-list>
+  </div>
+</ion-content>

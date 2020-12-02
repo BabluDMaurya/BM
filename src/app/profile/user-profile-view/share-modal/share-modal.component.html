@@ -1,0 +1,167 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item>
+      <ion-input placeholder="Either search people or select program people"></ion-input>
+    </ion-item>
+    <ion-item>      
+      <ion-buttons class="ion-no-margin" slot="end" (click)="closeModal()">
+        <ion-icon ios="ios-close" md="md-close"></ion-icon>
+      </ion-buttons>
+    </ion-item> 
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <p class="horizontal-scroll">
+    <ion-chip>
+      <ion-avatar>
+        <img src="../../../assets/images/demo1.jpg" />
+      </ion-avatar>
+      <ion-label>User 1</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-avatar>
+        <img src="../../../assets/images/demo1.jpg" />
+      </ion-avatar>
+      <ion-label>User 2</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-avatar>
+        <img src="../../../assets/images/demo1.jpg" />
+      </ion-avatar>
+      <ion-label>User 3</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-avatar>
+        <img src="../../../assets/images/demo1.jpg" />
+      </ion-avatar>
+      <ion-label>User 4</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-avatar>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjYzVkYmZmIiBkPSJNMCAwaDUxMnY1MTJIMHoiLz48cGF0aCBkPSJNMjU2IDMwNGM2MS42IDAgMTEyLTUwLjQgMTEyLTExMlMzMTcuNiA4MCAyNTYgODBzLTExMiA1MC40LTExMiAxMTIgNTAuNCAxMTIgMTEyIDExMnptMCA0MGMtNzQuMiAwLTIyNCAzNy44LTIyNCAxMTJ2NTZoNDQ4di01NmMwLTc0LjItMTQ5LjgtMTEyLTIyNC0xMTJ6IiBmaWxsPSIjODJhZWZmIi8+PC9zdmc+" />
+      </ion-avatar>
+      <ion-label>User 5</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-avatar>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjYzVkYmZmIiBkPSJNMCAwaDUxMnY1MTJIMHoiLz48cGF0aCBkPSJNMjU2IDMwNGM2MS42IDAgMTEyLTUwLjQgMTEyLTExMlMzMTcuNiA4MCAyNTYgODBzLTExMiA1MC40LTExMiAxMTIgNTAuNCAxMTIgMTEyIDExMnptMCA0MGMtNzQuMiAwLTIyNCAzNy44LTIyNCAxMTJ2NTZoNDQ4di01NmMwLTc0LjItMTQ5LjgtMTEyLTIyNC0xMTJ6IiBmaWxsPSIjODJhZWZmIi8+PC9zdmc+" />
+      </ion-avatar>
+      <ion-label>User 6</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-avatar>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjYzVkYmZmIiBkPSJNMCAwaDUxMnY1MTJIMHoiLz48cGF0aCBkPSJNMjU2IDMwNGM2MS42IDAgMTEyLTUwLjQgMTEyLTExMlMzMTcuNiA4MCAyNTYgODBzLTExMiA1MC40LTExMiAxMTIgNTAuNCAxMTIgMTEyIDExMnptMCA0MGMtNzQuMiAwLTIyNCAzNy44LTIyNCAxMTJ2NTZoNDQ4di01NmMwLTc0LjItMTQ5LjgtMTEyLTIyNC0xMTJ6IiBmaWxsPSIjODJhZWZmIi8+PC9zdmc+" />
+      </ion-avatar>
+      <ion-label>User 7</ion-label>
+    </ion-chip>
+  </p>
+  <ion-list class="user-list ion-no-padding" *ngIf="data">
+    <ion-item-group>
+      <ion-item-divider sticky>
+        <ion-list-header class="grey-header mb-0" sticky>A</ion-list-header>
+      </ion-item-divider>  
+      <ion-item-sliding>
+        <ion-item>   
+          <ion-avatar>
+            <img src="../../../assets/images/demo1.jpg">
+          </ion-avatar>     
+          <ion-label><h3 class="list-person">User 1</h3></ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-avatar>
+            <img src="../../../assets/images/demo1.jpg">
+          </ion-avatar>     
+          <ion-label><h3 class="list-person">User 2</h3></ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-avatar>
+            <img src="../../../assets/images/demo2.jpg">
+          </ion-avatar>     
+          <ion-label><h3 class="list-person">User 3</h3></ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-avatar>
+            <img src="../../../assets/images/demo2.jpg">
+          </ion-avatar>     
+          <ion-label><h3 class="list-person">User 4</h3></ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-avatar>
+            <img src="../../../assets/images/demo2.jpg">
+          </ion-avatar>     
+          <ion-label><h3 class="list-person">User 5</h3></ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-avatar>
+            <img src="../../../assets/images/demo2.jpg">
+          </ion-avatar>     
+          <ion-label><h3 class="list-person">User 6</h3></ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider sticky>
+        <ion-list-header class="grey-header mb-0" sticky>B</ion-list-header>
+      </ion-item-divider>  
+      <ion-item-sliding>
+        <ion-item>   
+          <ion-avatar>
+            <img src="../../../assets/images/demo1.jpg">
+          </ion-avatar>     
+          <ion-label>User 1</ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-avatar>
+            <img src="../../../assets/images/demo1.jpg">
+          </ion-avatar>     
+          <ion-label>User 2</ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-avatar>
+            <img src="../../../assets/images/demo2.jpg">
+          </ion-avatar>     
+          <ion-label>User 3</ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-avatar>
+            <img src="../../../assets/images/demo2.jpg">
+          </ion-avatar>     
+          <ion-label>User 4</ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-avatar>
+            <img src="../../../assets/images/demo2.jpg">
+          </ion-avatar>     
+          <ion-label>User 5</ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-avatar>
+            <img src="../../../assets/images/demo2.jpg">
+          </ion-avatar>     
+          <ion-label>User 6</ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-item-group>
+  </ion-list> 
+  <ion-list class="user-list ion-no-padding" *ngIf="!data">
+    <ion-list-header class="grey-header mb-0">A</ion-list-header>
+    <ion-item *ngFor="let users of [].constructor(20)">   
+      <ion-avatar>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>     
+      <ion-label><ion-skeleton-text animated></ion-skeleton-text></ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

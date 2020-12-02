@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "983355832895",
+    "firebase_url": "https://ionic-4-fcm-e9ad9.firebaseio.com",
+    "project_id": "ionic-4-fcm-e9ad9",
+    "storage_bucket": "ionic-4-fcm-e9ad9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983355832895:android:d85de061fb192f8b4d968a",
+        "android_client_info": {
+          "package_name": "com.bablu.ionicfcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983355832895-li8l99vs1bqm6j7niappuathmfkpmnf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz79BS1WlQKN1Fwgfd3BHX9ukic_cxfpk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983355832895-li8l99vs1bqm6j7niappuathmfkpmnf7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "983355832895-ac9nf4gb8anqc2br5vkevr4fmfapk7sh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bablu.ionicfcm"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

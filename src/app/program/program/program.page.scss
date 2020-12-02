@@ -1,0 +1,39 @@
+.item-card ion-avatar{border-radius: 0;--border-radius: 0;height: 75px;width: 100px;}
+ion-item{margin-bottom: 5px;border-radius: 4px;--border-radius: 4px;}
+.calendar-days ion-segment-button{min-width: 48px;border: none;color: rgba( 0,0,0 ,0.6);}
+.calendar-date ion-segment-button {min-width: 58px;border: none;color: rgba( 0,0,0 ,0.6);}
+.calendar-slider .swiper-slide{background: transparent;}
+.slideBack{left: 10px;}
+.slideNext{right: 10px;}
+ion-avatar{
+    ion-skeleton-text{border-radius: 4px;}
+}
+ion-label{
+    ion-skeleton-text{height: 15px;}
+}
+// ---------- css loader ------------
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 3px solid #27a69a;
+    border-color: #27a69a transparent #27a69a transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

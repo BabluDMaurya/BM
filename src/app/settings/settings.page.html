@@ -1,0 +1,81 @@
+<ion-header class="top-header ion-no-padding">
+    <ion-list class="top-heading three-block">
+        <ion-item slot="start">
+            <ion-buttons class="ion-no-margin" (click)="goBack()">
+            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+            </ion-buttons>
+        </ion-item>
+        <ion-item slot="center">
+            <ion-label>Settings</ion-label>
+        </ion-item>
+        <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+    </ion-list>
+</ion-header>
+<ion-content class="main_content">
+    <ion-list lines="none" class="ion-no-padding">
+        <ion-list-header class="green text-white">Options</ion-list-header>
+        <ion-item>
+            <ion-label [routerLink]="['/tabs/edit-profile']">Edit Profile</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label [routerLink]="['/change']">Change Password</ion-label>
+        </ion-item>
+        <ion-list-header class="green text-white" (click)="verifyUserInfoModal()">{{uv}}</ion-list-header>
+        <!-- <ion-item>
+            <ion-label class="text-green" (click)="verifyUserModal()" >{{uv}}</ion-label>
+        </ion-item> -->
+        <!-- <ion-list-header class="green text-white">Verify User</ion-list-header>
+    <div class="text-green"  (click)="verifyUserModal()" id="trulioo-embedid">User not Verify.click here to verify</div> -->
+        <ion-item>
+            <ion-label (click)="copy()">Copy Link to Profile</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>Comment Disable</ion-label>
+            <ion-toggle [disabled]='' [(ngModel)]="toggleValue" (ionChange)="activatePopup()" slot="end"></ion-toggle>
+        </ion-item>
+        <ion-list-header class="green text-white">Support</ion-list-header>
+        <ion-item>
+            <ion-label [routerLink]="['/contact-admin']">Contact Admin</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label [routerLink]="['/faq']">FAQ'S</ion-label>
+        </ion-item>
+        <ion-list-header class="green text-white">History</ion-list-header>
+        <ion-item>
+            <ion-label [routerLink]="['/payment-history']">Payment History</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label [routerLink]="['/program-history']">Program History</ion-label>
+        </ion-item>
+        <ion-list-header class="green text-white">Notification</ion-list-header>
+        <ion-item>
+            <ion-text [routerLink]="['/settings/notification-control']">Notification Control</ion-text>
+        </ion-item>
+        <ion-list-header class="green text-white">Account</ion-list-header>
+        <ion-item>
+            <ion-label [routerLink]="['/payoneer']">Payoneer</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label [routerLink]="['/paypal']">Paypal</ion-label>
+        </ion-item>
+        <!-- <ion-item>
+            <ion-label [routerLink]="['/date-test']">DateTest</ion-label>
+        </ion-item> -->
+        <ion-list-header class="green text-white">Setting</ion-list-header>
+        <ion-item>
+            <ion-label [routerLink]="['/term']">Terms</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label  >Login with Instagram</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label [routerLink]="['/privacy']">Privacy Policy</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label (click)="loginpopup()">Logout</ion-label>
+        </ion-item>
+        <ion-item class="mb-10 bt-1">
+            <ion-label (click)="delete()">Delete Account</ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

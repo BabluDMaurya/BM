@@ -1,0 +1,55 @@
+<ion-grid class="ion-no-padding">  
+  <ion-row class="main_content no_footer" >
+    <ion-col size="12" class="ion-no-padding pt-10">
+      <p class="ion-padding-horizontal mb-10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+      <video width="100%" height="200px" controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer">
+        <source src="../../assets/videos/SampleVideo.mp4" type="video/mp4" />
+      </video>
+      <ion-list-header class="grey-header">Select Thumbnail :</ion-list-header>
+      <ion-radio-group>
+        <ion-slides [options]="sliderOpts" class="profile-slider">
+          <ion-slide>
+            <img src="../../assets/images/demo1.jpg"/>
+            <ion-item>
+              <ion-radio slot="start"></ion-radio>
+            </ion-item>
+          </ion-slide>  
+          <ion-slide>
+            <img src="../../assets/images/demo2.jpg"/>
+            <ion-item>
+              <ion-radio slot="start"></ion-radio>
+            </ion-item>
+          </ion-slide>  
+          <ion-slide>
+            <img src="../../assets/images/demo3.jpg"/>
+            <ion-item>
+              <ion-radio slot="start"></ion-radio>
+            </ion-item>
+          </ion-slide>  
+          <ion-slide>
+            <ion-fab-button color="light" size="small">
+              <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+            </ion-fab-button>
+          </ion-slide>  
+        </ion-slides>
+      </ion-radio-group>
+      <ion-list lines="none" class="radio-list">
+        <ion-radio-group>
+          <ion-item>
+            <ion-label>Open</ion-label>
+            <ion-radio slot="start" value="open"></ion-radio>
+          </ion-item>
+          <ion-item (click)="selectUser()">
+            <ion-label>Exclusive</ion-label>
+            <ion-radio slot="start" value="exclusive"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Save</ion-label>
+            <ion-radio slot="start" value="save"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  
+</ion-grid>

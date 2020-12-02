@@ -1,0 +1,120 @@
+<ion-slides [options]="sliderOpts">
+  <ion-slide *ngFor="let img of images">
+    <img src="{{ img }}" tappable (click)="openPreview(img)">
+  </ion-slide>
+</ion-slides>
+<ion-grid>
+  <ion-row>
+    <ion-col size="12" class="nutrition-head">
+      <ion-text color="primary">
+        <h4>{{nutritionData.form.nutriTitle}}</h4>
+      </ion-text>
+      <p>{{nutritionData.form.nutriDescription}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="nutrition-flex">
+      <div class="nutrition-sub">
+        <ion-icon ios="ios-restaurant" md="md-restaurant"></ion-icon> {{nutritionData.form.nutriServeSize}}
+      </div>
+      <div class="nutrition-sub ion-text-right">
+        <ion-icon ios="ios-time" md="md-time"></ion-icon>
+        {{nutritionData.form.nutriPrepHrs}}:{{nutritionData.form.nutriPrepMin}} (hh:mm)
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-list lines="none" class="ingredient-list">
+  <ion-list-header class="grey-header">Ingredients</ion-list-header>
+  <ion-item *ngFor="let Ingredient of nutritionData.form.nutriIngredients">
+    <p>{{Ingredient.name}}</p>
+  </ion-item>
+  <ion-item *ngFor="let item of nutritionData.minerals let i=index;">
+    <!-- <ion-list class="ingredient-list full-width" *ngIf="item?.length > 0">
+      <ion-item *ngFor="let a of item">
+        <p *ngIf="a.food_name">{{a.food_name}}</p>
+      </ion-item>
+    </ion-list> -->
+    <p *ngIf="item.item_name">{{i+1}}. {{item?.item_name}}</p>
+    <p *ngIf="item.food_name">{{i+1}}. {{item?.food_name}}</p>
+  </ion-item>
+</ion-list>
+<ion-list lines="none" class="instructions-list">
+  <ion-list-header class="grey-header">Instructions</ion-list-header>
+  <ion-item *ngFor="let instruction of nutritionData.form.nutriInstruction">
+    <p>{{instruction.name}}</p>
+  </ion-item>
+</ion-list>
+<ion-list lines="none" class="instructions-list">
+  <ion-list-header class="grey-header">Beverages</ion-list-header>
+  <ion-item >
+    <p *ngIf="nutritionData.form.nutriBevrageType == 1">Cofee</p>
+    <p *ngIf="nutritionData.form.nutriBevrageType == 2">Milk</p>
+    <p *ngIf="nutritionData.form.nutriBevrageType == 3">Fruit Drink</p>    
+    <p *ngIf="nutritionData.form.nutriBevrageType == 4">Soda</p>
+  </ion-item>
+  <ion-item >
+    <p>{{nutritionData.form.bevragveQnty}}</p> <p *ngIf="nutritionData.form.bevragveQnty == 1">Bottle</p>
+    <p *ngIf="nutritionData.form.bevragveQnty == 2">Glass</p>
+    <p *ngIf="nutritionData.form.bevragveQnty == 3">Bowl</p>    
+    <p *ngIf="nutritionData.form.bevragveQnty == 4">Cup</p>
+  </ion-item> 
+  <ion-item >
+    <p>{{nutritionData.form.unitQnty}}</p> <p>Milliter</p>
+  </ion-item>
+  <ion-item >
+    <p *ngIf="nutritionData.form.bevragveinclude" >This beverage should consume with  this nutrition</p>
+     </ion-item>
+</ion-list>
+<ion-grid class="ion-no-padding">
+  <ion-row>
+    <ion-col size="12" class="position-relative ion-no-padding">
+      <ion-card *ngFor="let item of items">
+        <ion-card-header class="more-card-header" (click)="expandItem(item)" >
+          <ion-card-title>More Details</ion-card-title>
+          <ion-fab size="small" class="addmore">
+            <ion-icon ios="ios-add" md="md-add"></ion-icon>
+          </ion-fab>
+        </ion-card-header>
+        <ion-card-content>
+          <form [formGroup]="mineralForm" (ngSubmit)="toSave()">
+            <app-expandable expandHeight="300px" [expanded]="item.expanded">
+              <ion-list class="details-list" lines="none">
+                <ion-item>
+                  <ion-label>Total Calories</ion-label>
+                  <ion-input type="number"  class="ion-text-end"  formControlName="totalCal"
+                    value="{{totalMinerals.cal | number : '1.2-2'}}"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Total Carbohydrates</ion-label>
+                  <ion-input type="number" class="ion-text-end"  formControlName="totalCarbo"
+                    value="{{totalMinerals.carbo | number : '1.2-2'}}"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Total Proteins</ion-label>
+                  <ion-input type="number"  class="ion-text-end"  formControlName="totalProt"
+                    value="{{totalMinerals.prot | number : '1.2-2'}}"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Total Fats</ion-label>
+                  <ion-input type="number"  class="ion-text-end" formControlName="totalProt"
+                    value="{{totalMinerals.fat | number : '1.2-2'}}"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Total Sugar</ion-label>
+                  <ion-input type="number" class="ion-text-end"  formControlName="totalSug" value="{{totalMinerals.sug | number : '1.2-2'}}">
+                  </ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Total Cholestrol</ion-label>
+                  <ion-input type="number"  formControlName="totalChol"
+                    value="{{totalMinerals.chol | number : '1.2-2'}}" class="ion-text-end"></ion-input>
+                </ion-item>
+              </ion-list>
+            </app-expandable>
+          </form>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

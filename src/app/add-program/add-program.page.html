@@ -1,0 +1,493 @@
+<ion-content>
+  <ion-grid class="ion-no-padding" *ngIf="showProgram==1">
+    <ion-header class="top-header ion-no-padding">
+      <ion-list class="top-heading three-block">
+        <ion-item slot="start">
+          <ion-buttons class="ion-no-margin" (click)="goBack()">
+            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          </ion-buttons>
+        </ion-item>
+        <ion-item slot="center">
+          <ion-label>Add Program</ion-label>
+        </ion-item>
+        <ion-item class="icon-right-side ion-text-end" slot="end">
+          <ion-label (click)="nextStep(2)" class="text-green">Next</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-header>
+    <ion-row class="ion-padding-horizontal main_content">
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card class="upload-box ion-noleft-margin" (click)="openGallery()">
+          <div class="upload_icon">
+            <ion-icon ios="ios-image" md="md-image"></ion-icon>
+          </div>
+          <ion-card-title>Library</ion-card-title>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card class="upload-box ion-noright-margin" (click)="selectMedia()">
+
+          <div class="upload_icon">
+            <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
+          </div>
+          <ion-card-title>Camera</ion-card-title>
+
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" class="ion-no-padding" *ngIf="gallaryImgPath?.length>0">
+        <ion-button (click)="slidePrev()" class="slidebtns slideBack">
+          <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        </ion-button>
+        <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider>
+          <ion-slide (click)="showdetails()" *ngFor="let imgpath of gallaryImgPath; let i=index;">
+            <img src="{{imgpath}}" />
+            <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="removeImg(i)"></ion-icon>
+          </ion-slide>
+        </ion-slides>
+        <ion-button (click)="slideNext()" class="slidebtns slideNext">
+          <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-item-sliding *ngFor="let f of files">
+        <ion-item (click)="openFile(f)">
+          <ion-icon name="image" slot="start" *ngIf="f.name.endsWith('jpg')"></ion-icon>
+          <ion-icon name="videocam" slot="start" *ngIf="f.name.endsWith('MOV') || f.name.endsWith('mp4')"></ion-icon>
+          <ion-icon name="mic" slot="start" *ngIf="f.name.endsWith('wav')"></ion-icon>
+
+          <ion-label class="ion-text-wrap">
+            {{ f.name }}
+            <p>{{ f.fullPath }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+      <!-- 
+      <ion-col size="12" class="ion-no-padding">
+        <ion-button (click)="slidePrev(slides)" class="slidebtns slideBack">
+          <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        </ion-button>
+        <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider>
+          <ion-slide (click)="showdetails()">
+            <img src="../../assets/images/demo1.jpg" />
+          </ion-slide>
+          <ion-slide>
+            <img src="../../assets/images/demo2.jpg" />
+          </ion-slide>
+          <ion-slide>
+            <img src="../../assets/images/demo3.jpg" />
+          </ion-slide>
+        </ion-slides>
+        <ion-button (click)="slideNext(slides)" class="slidebtns slideNext">
+          <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+        </ion-button>
+      </ion-col> -->
+      <ion-col size="12" class="ion-no-padding">
+        <form class="nutrition-form" [formGroup]="programForm">
+          <ion-list>
+            <ion-item>
+              <ion-input placeholder="Title" class="form-control" formControlName="programTitle"
+                [ngClass]="{ 'is-invalid': submitted && f.programTitle.errors }"></ion-input>
+
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.programTitle">
+              <span class="error-message"
+                *ngIf="(submitted || programForm.get('programTitle').touched) && programForm.get('programTitle').hasError(validation.type)">{{ validation.message }}</span>
+            </ng-container>
+            <ion-item class="mb-10">
+              <ion-textarea placeholder="Description" class="form-control" formControlName="programDescription">
+              </ion-textarea>
+            </ion-item>
+            <ion-item class="mb-10">
+              <ion-row>
+                <ion-col size="6" class="ion-no-padding">
+                  <ion-list-header class="grey-header">
+                    <ion-label>Program Type</ion-label>
+                  </ion-list-header>
+                  <ion-radio-group class="full-width radio-list" formControlName="programType">
+                    <ion-item lines="none">
+                      <ion-label>Private - Oneway</ion-label>
+                      <ion-radio slot="start" value="1" formControlName="programType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Group - Oneway</ion-label>
+                      <ion-radio slot="start" value="2" formControlName="programType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Private - Twoway</ion-label>
+                      <ion-radio slot="start" value="3" formControlName="programType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Group - Twoway</ion-label>
+                      <ion-radio slot="start" value="4" formControlName="programType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Public</ion-label>
+                      <ion-radio slot="start" value="5" formControlName="programType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Video</ion-label>
+                      <ion-radio slot="start" value="6" formControlName="programType"></ion-radio>
+                    </ion-item>
+                    <!-- <ion-item lines="none">
+                      <ion-label>Nutrition</ion-label>
+                      <ion-radio slot="start" value="7" formControlName="programType" disabled="true"></ion-radio>
+                    </ion-item> -->
+                  </ion-radio-group>
+                  <ng-container *ngFor="let validation of validation_messages.programType">
+                    <span class="error-message"
+                      *ngIf="(submitted || programForm.get('programType').touched) && programForm.get('programType').hasError(validation.type)">{{ validation.message }}</span>
+                  </ng-container>
+                </ion-col>
+                <ion-col size="6" class="ion-no-padding">
+                  <ion-list-header class="grey-header">
+                    <ion-label></ion-label>
+                  </ion-list-header>
+                  <ion-item lines="none">
+                    <ion-text>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                      ut labore et dolore magna aliqua.
+                    </ion-text>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-item>
+            <ion-item class="mb-10">
+
+              <ion-radio-group lines="none" class="full-width radio-list" formControlName="participantsType">
+                <ion-list-header class="grey-header">
+                  <ion-label>Select Praticipants</ion-label>
+                </ion-list-header>
+                <ion-item lines="none" (click)="userModal()">
+                  <ion-label>Exclusive</ion-label>
+                  <ion-radio slot="start" value="1" formControlName="participantsType"
+                    [disabled]="f.programType.value==5 || !f.programType.value?true:false"></ion-radio>
+                </ion-item>
+                <ion-item lines="none" class="mb-10" (click)="clearExcl()">
+                  <ion-label>open (Let users request to join)</ion-label>
+                  <ion-radio slot="start" value="2" checked formControlName="participantsType"></ion-radio>
+                </ion-item>
+                <ng-container *ngFor="let validation of validation_messages.participantsType">
+                  <span class="error-message"
+                    *ngIf="(submitted || programForm.get('participantsType').touched) && programForm.get('participantsType').hasError(validation.type)">{{ validation.message }}</span>
+                </ng-container>
+              </ion-radio-group>
+
+            </ion-item>
+            <ion-item class="mb-10" *ngIf="modalData?.length>0">
+              <ion-list lines="none" class="users-list">
+                <ion-item  *ngFor="let user of modalData" >
+                  <img src="{{profileUrl}}{{user.bios.profile_pic}}"  *ngIf="user.bios.profile_pic" (click)="userList()"/>
+                  <img src="../../assets/images/user.png"  *ngIf="!user.bios.profile_pic" (click)="userList()"/>
+                   <!-- <ion-label class="view-all" (click)="userList()">+2</ion-label> -->
+                </ion-item>
+              </ion-list>
+            </ion-item>
+            <!-- <ion-item>
+              <ion-row>
+                <ion-col size="6" class="ion-no-padding">
+                  <ion-radio-group class="full-width radio-list">
+                    <ion-list-header class="grey-header">
+                      <ion-label>Program Payment</ion-label>
+                    </ion-list-header>
+                    <ion-item lines="none">
+                      <ion-label>Free</ion-label>
+                      <ion-radio slot="start" value="0" checked formControlName="paymentType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Daily</ion-label>
+                      <ion-radio slot="start" value="1" formControlName="paymentType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Every 2 day's</ion-label>
+                      <ion-radio slot="start" value="2" formControlName="paymentType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Every 3 day's</ion-label>
+                      <ion-radio slot="start" value="3" formControlName="paymentType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Every 5 day's</ion-label>
+                      <ion-radio slot="start" value="4" formControlName="paymentType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Every 7 day's</ion-label>
+                      <ion-radio slot="start" value="5" formControlName="paymentType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Every 14 day's</ion-label>
+                      <ion-radio slot="start" value="6" formControlName="paymentType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Every 30 day's</ion-label>
+                      <ion-radio slot="start" value="7" formControlName="paymentType"></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                  <ng-container *ngFor="let validation of validation_messages.paymentType">
+                    <span class="error-message"
+                      *ngIf="(submitted || programForm.get('paymentType').touched) && programForm.get('paymentType').hasError(validation.type)">{{ validation.message }}</span>
+                  </ng-container>
+                </ion-col>
+                <ion-col size="6" class="ion-no-padding">
+                  <ion-list-header class="grey-header">
+                    <ion-label></ion-label>
+                  </ion-list-header>
+                  <ion-item lines="none">
+                    <ion-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                      ut labore et dolore magna aliqua.</ion-text>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-item> -->
+          </ion-list>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-no-padding" *ngIf="showProgram==2">
+    <ion-header class="top-header ion-no-padding">
+      <ion-list class="top-heading three-block">
+        <ion-item slot="start">
+          <ion-buttons class="ion-no-margin" (click)="showProgram=1">
+            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          </ion-buttons>
+        </ion-item>
+        <ion-item slot="center">
+          <ion-label>Select Date</ion-label>
+        </ion-item>
+        <ion-item class="icon-right-side ion-text-end" slot="end">
+          <ion-label (click)="toMusic()" class="text-green">Next</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-header>
+    <ion-row class="ion-padding-horizontal main_content">
+      <ion-col size="12" class="ion-no-padding">
+        <!-- Move back one screen of the slides -->
+        <ion-list lines="none" class="calendar-header">
+          <ion-item class="ion-text-left">
+            <ion-button fill="clear" (click)="back()">
+              <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <ion-item>
+            <ion-title>{{ viewTitle }}</ion-title>
+          </ion-item>
+          <!-- Move forward one screen of the slides -->
+          <ion-item class="ion-text-right">
+            <ion-button fill="clear" (click)="next()">
+              <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+        <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+          scrollToHour="{{currentHrs}}" [lockSwipeToPrev]="lockSwipeToPrev" (onEventSelected)="onEventSelected($event)"
+          (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" startHour="0"
+          endHour="24" step="1" class="calendar-table"></calendar>
+          <ion-datetime #dateTime1 displayFormat="mm"></ion-datetime>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-no-padding" *ngIf="showProgram==3">
+    <ion-header class="top-header ion-no-padding">
+      <ion-list class="top-heading three-block">
+        <ion-item slot="start">
+          <ion-buttons class="ion-no-margin" (click)="showProgram=2">
+            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          </ion-buttons>
+        </ion-item>
+        <ion-item slot="center">
+          <ion-label>Select Music</ion-label>
+        </ion-item>
+        <ion-item class="icon-right-side ion-text-end" slot="end" (click)="selectVolume()">
+          <ion-label class="text-green" >Next</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-header>
+    <ion-row class="main_content">
+      <ion-col size="12" class="ion-no-padding">
+        <!-- <ion-segment class="top-segment" (ionChange)="musicList($event)">
+          <ion-segment-button value="music" checked>
+            <span>Music</span>
+          </ion-segment-button>
+          <ion-segment-button value="playlist">
+            <span>Playlist</span>
+          </ion-segment-button>
+        </ion-segment> -->
+        <div [ngSwitch]="musicTypes">
+          <div *ngSwitchCase="'music'">
+            <ion-toolbar class="searchbar">
+              <ion-searchbar type="text" (ionInput)="searchChanged($event)"></ion-searchbar>
+            </ion-toolbar>
+            <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="allMusic">
+              <ion-segment class="ion-no-padding" scrollable="true" (ionChange)="selectMusic($event)">
+                <ion-segment-button *ngFor="let item of genres; let i =index " (click)="allMusic=item?.musics" [checked]="i==0?'true':'false'" >
+                  <span>{{item?.name}}</span>
+                </ion-segment-button>
+                
+              </ion-segment>
+            </ion-toolbar>
+            <div [ngSwitch]="selectMusicList" *ngIf="allMusic">
+              <ion-list lines="none" class="ion-no-padding musiclist"  >
+                <!-- [ngClass]="musicSelect==1?'active':''" -->
+                <ion-item *ngFor="let music of allMusic"
+                  [ngClass]="musicId==music.id?'active':''"  (click)="musicSelect([music.id,music.filename,music.title,music.duration])">
+                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
+                  <ion-label>{{music.title}}</ion-label>
+                  <ion-text>{{music?.duration ? music?.duration : '00:00' }}</ion-text>
+                </ion-item>
+
+              </ion-list> 
+            </div>
+            <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="!allMusic">
+              <ion-segment class="ion-no-padding" scrollable="true" (ionChange)="selectMusic($event)">
+                <ion-segment-button value="hiphop" checked>
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="classical">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="edm">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="folk">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="rock">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="jazz">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="indianfolk">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="blues">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="beats">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="trap">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="alternativehiphop">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+              </ion-segment>
+            </ion-toolbar>
+            <div [ngSwitch]="selectMusicList" *ngIf="!allMusic">
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'hiphop'">
+                <ion-item (click)="musicSelect=1" [ngClass]="musicSelect==1?'active':''">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-item>
+                <ion-item (click)="musicSelect=2" [ngClass]="musicSelect==2?'active':''">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-item>
+                <ion-item (click)="musicSelect=3" [ngClass]="musicSelect==3?'active':''">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-item>
+                <ion-item (click)="musicSelect=4" [ngClass]="musicSelect==4?'active':''">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'classical'">
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'edm'">
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'folk'">
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'rock'">
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'jazz'">
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+            </div>
+          </div>
+          <!-- <div *ngSwitchCase="'playlist'">
+            <ion-toolbar class="searchbar">
+              <ion-searchbar></ion-searchbar>
+            </ion-toolbar>
+            <ion-toolbar no-border-top class="profile_tabs subprofile_tabs">
+              
+            </ion-toolbar>
+            <div [ngSwitch]="selectMusicList">
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'hiphop'">
+                <ion-item (click)="musicSelect=1" [ngClass]="musicSelect==1?'active':''">
+                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
+                  <ion-label>Norman connect</ion-label>
+                  <ion-text>03:11</ion-text>
+                </ion-item>
+                <ion-item (click)="musicSelect=2" [ngClass]="musicSelect==2?'active':''">
+                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
+                  <ion-label>Norman connect</ion-label>
+                  <ion-text>03:11</ion-text>
+                </ion-item>
+                <ion-item (click)="musicSelect=3" [ngClass]="musicSelect==3?'active':''">
+                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
+                  <ion-label>Norman connect</ion-label>
+                  <ion-text>03:11</ion-text>
+                </ion-item>
+                <ion-item (click)="musicSelect=4" [ngClass]="musicSelect==4?'active':''">
+                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
+                  <ion-label>Norman connect</ion-label>
+                  <ion-text>03:11</ion-text>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'classical'">
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'edm'">
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'folk'">
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'rock'">
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'jazz'">
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+            </div>
+            <ion-footer class="sticky-footer">
+              <ion-list class="musiclist">
+                <ion-item>
+                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
+                  <ion-label>Norman connect</ion-label>
+                  <ion-text>03:11</ion-text>
+                </ion-item>
+              </ion-list>
+            </ion-footer>
+          </div> -->
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer class="sticky-footer musiclist green" *ngIf="showProgram==3">  
+  <app-audio-player-program [selectedAudio]=[audioFile,musicChanged,audioFilename,audioFileDuration]>
+  </app-audio-player-program>
+</ion-footer>

@@ -1,0 +1,40 @@
+<audio #player src="{{selectedAudio[0]}}"></audio>
+
+<ion-toolbar padding class="green audio-list ion-no-padding">
+  <div>
+    <ion-fab-button *ngIf="!isPlaying" (click)="play(musicSelect)" size="small" fill="clear" color="light" class="newmusiclist-playBtn">
+      <ng-container *ngIf="isLoading; else loaded">
+        <ion-spinner name="crescent" class="music-spinner"></ion-spinner>
+      </ng-container>
+      <ng-template #loaded>
+        <ion-icon [name]="'play'">  </ion-icon>
+      </ng-template>
+    </ion-fab-button>
+    <ion-fab-button *ngIf="isPlaying" (click)="pause(musicSelect)" size="small" fill="clear" color="light" class="newmusiclist-playBtn">
+      <ng-container *ngIf="isLoading; else loaded">
+        <ion-spinner name="crescent" class="music-spinner"></ion-spinner>
+      </ng-container>
+      <ng-template #loaded>
+        <ion-icon [name]="'pause'">
+        </ion-icon>
+      </ng-template>
+    </ion-fab-button>
+    <div>
+      <div class="musicbar">
+        <ion-range  [value]="currentTime" (ionChange)="seek($event)" (click)="onDrag()"
+           class="newmusiclist-range" color="light"></ion-range>
+       </div>
+      <div class="music-name">
+        <ion-label color="light" slot="end">{{ musicSelect?.title }}</ion-label> 
+      </div>
+      <div class="music-timer-fav">
+        <ion-label color="light" slot="end">{{ duration }}</ion-label>
+        <div></div>
+       </div>
+     
+      <ion-label class="ion-text-center">{{selectedAudio[2]}}</ion-label>
+    
+    </div>
+  </div>
+  <!-- <ion-label color="light" slot="start">{{ currentTime }}</ion-label> -->
+</ion-toolbar>
