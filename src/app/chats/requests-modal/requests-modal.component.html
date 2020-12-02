@@ -13,7 +13,7 @@
 </ion-header>
 <ion-content class="main_content">
   <ion-list class="followers-list" *ngFor="let userdata of requestList">    
-    <ion-item lines="none" (click)="navigate(userdata.senderID)" detail="false" *ngFor="let user of userdata.sendarbio" (click)="closeModal()">
+    <ion-item lines="none" (click)="navigate(userdata.id)" detail="false" *ngFor="let user of userdata.sendarbio" (click)="closeModal()">
       <ion-avatar slot="start">
         <img *ngIf="user?.profile_pic" src="{{url}}{{user?.profile_pic}}"> 
         <img *ngIf="!user?.profile_pic" src="../../assets/images/user.jpg"> 

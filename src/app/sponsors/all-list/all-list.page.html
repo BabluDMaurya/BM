@@ -84,7 +84,7 @@
             <app-expandable expandHeight="300px" class="timeline-block" [expanded]="program.expanded">
               <div class="contentList">
                 <ion-label *ngFor="let progdata of programData; let j = index;">                  
-                    <p *ngIf="progdata.id == program.program_id" class="list-name d-block"><span>Program Name : </span>{{progdata?.title}}</p>
+                    <p [routerLink]="['/program-details',progdata.id]" *ngIf="progdata.id == program.program_id" class="list-name d-block"><span>Program Name : </span>{{progdata?.title}}</p>
                 </ion-label>
                 <p class="list-name d-block"><span>Ad Content : </span>{{program?.ad_text}}</p>
                 <p class="list-name d-block"><span>Note : </span>{{program?.ad_description}}</p>

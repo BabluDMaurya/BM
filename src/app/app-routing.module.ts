@@ -240,6 +240,11 @@ const routes: Routes = [
     path: 'sponcer-chat',
     loadChildren: () => import('./sponcer-chat/sponcer-chat.module').then( m => m.SponcerChatPageModule)
   },
+  {
+    path: 'access/:chatuserId',
+    loadChildren: () => import('./chats/access/access.module').then( m => m.AccessPageModule)
+  },
+
 
 
 ];

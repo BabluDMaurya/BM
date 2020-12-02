@@ -1,0 +1,51 @@
+<ion-header class="top-header ion-no-padding" translucent>
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons slot="start" class="ion-no-margin" [routerLink]="['/tabs/chats']">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+      <ion-avatar slot="start">
+        <img
+          src="">
+      </ion-avatar>
+      <ion-label>
+        <h3 class="list-person">prateek92</h3>
+        <!-- <span class="list-name">{{typing}}</span> -->
+      </ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end">
+      <ion-button slot="end" (click)="presentPopover()"><ion-icon ios="ios-more" md="md-more"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content"> 
+
+
+  <ion-grid>
+    <ion-text color="medium" text-center>
+      <p>You joined the chat as {{ currentUser }}</p>
+    </ion-text>
+    <ion-row *ngFor="let message of messages">
+ 
+      <ion-col size="9" *ngIf="message.user !== userData?.id && message.sendTo ==userData?.id" class="message other-message">
+        <span>{{ message.msg }}</span>
+        <div class="time" text-right><br>{{ message.createdAt | date:'shortTime' }}
+          <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+        </div>
+      </ion-col>
+ 
+      <ion-col offset="3" size="9" *ngIf="message.user ===  userData?.id && message.sendTo ==chatUserId" class="message my-message">
+        <span>{{ message.msg }}</span>
+        <div class="time" text-right><br>{{ message.createdAt | date:'shortTime' }}
+        <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+        </div>
+      </ion-col>
+ 
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="sticky-footer chatsButtons d-flex" *ngIf="messageButtons">
+    <ion-button class="ion-no-margin full-height" color="light" (click)="decline()">Decline</ion-button>
+    <ion-button class="ion-no-margin full-height green" (click)="allow()">Allow</ion-button>
+</ion-footer> 

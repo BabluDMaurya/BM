@@ -8,6 +8,7 @@ import { ChatService } from 'src/app/services/chat.service';
 // import { Socket } from 'ngx-socket-io';
 import { ToastController } from '@ionic/angular';
 import { ParamMap, ActivatedRoute } from '@angular/router';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-chat-room',
@@ -38,6 +39,7 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     private actRoute: ActivatedRoute,
     private toastCtrl: ToastController,
     private dataService: ChatService,
+    public commonService:CommonService,
     ) {    }
 
   getStart(){
@@ -116,11 +118,28 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   }
   //---------allow---------
   allow(){
+    this.commonService.presentLoader();
     if(this.chatUserId != null && this.chatUserId != ''){
       //------------Accept Request -------------
-    this.dataService.acceptChatRequest({ 'senderId': this.chatUserId}).subscribe(
+    this.dataService.acceptChatRequest({ 'id': this.chatUserId}).subscribe(
       (data: any) => {
-          console.log("DATA:" + JSON.stringify(data));
+        this.commonService.dismissLoader();
+        this.messageButtons = false;
+          console.log("acceptRequest:" + JSON.stringify(data.acceptRequest));
+      });
+    }
+  }
+  decline(){
+    this.commonService.presentLoader();
+    if(this.chatUserId != null && this.chatUserId != ''){
+      //------------Reject Request -------------
+    this.dataService.rejectChatRequest({ 'id': this.chatUserId}).subscribe(
+      (data: any) => {
+        this.commonService.dismissLoader();
+        this.messageButtons = false;
+          console.log("acceptRequest:" + JSON.stringify(data.rejectRequest));
+          this.navCtrl.back();
+          // this.navCtrl.
       });
     }
   }
