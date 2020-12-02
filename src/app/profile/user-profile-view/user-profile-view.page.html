@@ -1,0 +1,116 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">    
+    <ion-item>      
+      <ion-buttons class="ion-no-margin"  (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item> 
+    <ion-item slot="center">
+      <ion-label *ngIf="!profileData?.userData?.bios?.display_name">{{profileData?.userData?.user_name}}</ion-label>
+      <ion-label *ngIf="profileData?.userData?.bios?.display_name">{{profileData?.userData?.bios?.display_name}}</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end">
+      <a (click)="userFollowers()" class="follow-people" slot="end">
+        <ion-icon ios="md-people" md="md-people"></ion-icon>
+      </a>
+    </ion-item>
+  </ion-list>
+</ion-header> 
+<ion-content class="main_content">
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size="12" class="ion-no-padding">
+        <div class="sec-banner "> 
+          <div class="top-banner"> 
+            <img  src="https://ionicinto.wdipl.com/public/thumb/profile_background_image/{{profileData?.userData?.bios?.profile_background_image}}"
+             *ngIf="profileData?.userData?.bios?.profile_background_image">
+            <img src="./../../../assets/images/bgimage.png" *ngIf="!profileData?.userData?.bios?.profile_pic">
+          </div>
+        </div>
+        <div class="profile-content">
+          <img class="user-img" src="https://ionicinto.wdipl.com/public/profile_pic/thumb/{{profileData?.userData?.bios?.profile_pic}}" *ngIf="profileData?.userData?.bios?.profile_pic">
+          <img class="user-img" src="https://intoactive.wdipl.com/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
+          <ion-text>
+            <h6 class="ion-no-margin" *ngIf="profileData?.userData?.user_name">{{profileData?.userData?.user_name}}</h6>
+            <a><ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon> darshan_rajgor_</a>
+          </ion-text>
+          <ion-fab horizontal="end" vertical="center" slot="fixed">
+            <ion-fab-button class="share-btn" color="primary" size="small" (click)="openModal()">
+              <ion-icon ios="ios-share" md="md-share"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="ion-no-padding">
+        <ion-list lines="none" class="top-list">
+          <ion-item (click)="followUp(followStatus)" id="followStatus">
+            <img [src]="followStatus == 'UNFOLLOW' ? '../../assets/images/unfollow.svg':'../../assets/images/follow.svg'" />
+            <ion-label>{{followStatus}}</ion-label>
+          </ion-item>
+          <ion-item (click)="messagePopup()">
+            <img src="../../assets/images/comment.svg" />
+            <ion-label>Chat</ion-label>
+          </ion-item>
+          <ion-item (click)="reportPopup()">
+            <img src="../../assets/images/alert.svg" />
+            <ion-label>Report</ion-label>
+          </ion-item>
+          <ion-item (click)="blockUser(block)">
+            <img src="../../assets/images/blocks.svg" />
+            <ion-label>{{ block ?'Unblock':'Block' }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-card>
+          <ion-card-header>
+            <div class="user-icon">
+              <img src="../../assets/images/user.svg" />
+            </div>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-text *ngIf="profileData?.userData?.bios?.about_me">{{profileData?.userData?.bios?.about_me}}</ion-text>
+            <ion-text *ngIf="!profileData?.userData?.bios?.about_me">Bio Not Mentioned</ion-text>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header>
+            <div class="user-icon">
+              <img src="../../assets/images/like.svg" />
+            </div>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-text *ngIf="profileData?.speciality?.primaryName?.name">{{profileData?.speciality?.primaryName?.name}}</ion-text>
+            <ion-text *ngIf="!profileData?.speciality?.primaryName?.name">Primary Interest Not Mentioned</ion-text>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header>
+            <div class="user-icon">
+              <img src="../../assets/images/global.svg" />
+            </div>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-text *ngIf="profileData?.lang?.lang">{{profileData?.lang?.lang}}</ion-text>
+            <ion-text *ngIf="!profileData?.lang?.lang">Languages Not Mentioned</ion-text>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header>
+            <div class="user-icon">
+              <img src="../../assets/images/placeholder.svg" />
+              </div>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-text *ngIf="profileData?.address?.country?.name">{{profileData?.address?.city?.name}}{{profileData?.address?.state?.name }},{{profileData?.address?.country?.name}}</ion-text>
+            <ion-text *ngIf="!profileData?.address?.country?.name">Location Not Mentioned</ion-text>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

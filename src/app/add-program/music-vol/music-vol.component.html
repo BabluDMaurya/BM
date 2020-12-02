@@ -1,0 +1,21 @@
+<ion-list lines="none" class="ion-no-padding radio-list">
+  <ion-radio-group>
+    <ion-list-header class="grey-header">Music Volume</ion-list-header>
+    <ion-item>
+      <ion-radio (ionSelect)="volumeSelected(50)" slot="start" value="50" checked></ion-radio>
+      <div class="ml-30">
+        <ion-label>Music & Audio</ion-label>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-radio (ionSelect)="volumeSelected(100)" slot="start" value="100" ></ion-radio>
+      <div class="ml-30">
+        <ion-label>Music Only</ion-label>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+      </div>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
+<ion-button expand="full" class="green ion-no-margin" (click)="fSubmit()" >Proceed</ion-button>
+

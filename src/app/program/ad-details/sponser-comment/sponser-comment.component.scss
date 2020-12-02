@@ -1,0 +1,21 @@
+.comment-list{padding: 0;}
+.comment-list ion-item{padding: 0;}
+ion-avatar{margin-right: 10px;}
+h2{font-weight: 500;color: #000;font-size: 0.90rem;}
+
+// css for skeleton
+.comment-item ion-label ion-skeleton-text{height: 28px;margin-top: 0;}
+
+// css for footer
+.sticky-footer .send-img{width: 26px;}
+.comment {width: 100%; border: none;}
+ion-list{margin-bottom: 56px;}
+ion-list>ion-list{margin-bottom: 0;}
+.sticky-footer{max-height: 100px;min-height: 56px;height: auto;
+    form{height: 100%;
+        ion-item{height: 100%;display: flex;
+            ion-textarea{position: relative;height: 100%;margin: 0;--padding-top: 14px;}
+            .send-img{width: 26px;margin-left: 10px;}
+        }
+    }
+}

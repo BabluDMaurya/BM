@@ -1,0 +1,68 @@
+.live-bt {
+    font-size: 10px;
+    background: #27a69a;
+    color: #fff;
+    padding: 3px 0;
+    margin-right: 10px;
+    letter-spacing: 0.5px;
+    position: relative;
+    border-radius: 10px;
+    display: flex;
+    width: 60px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.cat-card {
+    position: relative;
+    height: 260px;
+    margin: 0;
+    text-align: center;
+}
+.cat-card .card-content-md {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;    
+    color: #fff;
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 50%, rgba(0,0,0,0.65) 100%);
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 50%,rgba(0,0,0,0.65) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 50%,rgba(0,0,0,0.65) 100%);
+}
+.cat-card .card-content-md ion-avatar {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #fff;
+}
+.catBG {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.catBG img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-card {
+    position: relative;
+    height: 100px;
+    margin: 0;
+    text-align: center;
+}
+.special-slide{
+    position: relative;
+}
+.special-slide:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.65) 100%);
+}

@@ -1,0 +1,36 @@
+
+<div id="circularMenu" class="circular-menu" [ngClass]="is_act?'active':''" *ngIf="userType==1"> 
+  <a class="floating-btn" (click)="is_act=!is_act" *ngIf="is_act">
+    <ion-icon ios="ios-add" md="md-add"></ion-icon>
+  </a> 
+  <div class="items-wrapper" > 
+    <a (click)="is_act=!is_act"  [routerLink]="['/nutrition']" class="menu-item"><ion-icon ios="ios-restaurant" md="md-restaurant"></ion-icon> <p>Nutrition</p></a>
+    <a (click)="is_act=!is_act"  class="menu-item"><ion-icon ios="logo-youtube" md="logo-youtube"></ion-icon> <p>Live</p></a>
+    <a (click)="is_act=!is_act"  [routerLink]="['/music']" class="menu-item"><ion-icon ios="ios-musical-notes" md="md-musical-notes"></ion-icon> <p>Music</p></a>
+    <a (click)="is_act=!is_act"  [routerLink]="['/add-video']" class="menu-item"><ion-icon ios="ios-videocam" md="md-videocam"></ion-icon> <p>Video</p></a>
+    <a (click)="is_act=!is_act" [routerLink]="['/add-post']" class="menu-item"> <ion-icon ios="ios-image" md="md-image"></ion-icon> <p>Post</p></a>
+    <a (click)="is_act=!is_act"  class="menu-item"><ion-icon  [routerLink]="['/add-program']"  ios="ios-calendar" md="md-calendar"></ion-icon> <p>Program</p></a>
+  </div>
+</div>
+  <ion-tabs class="footer">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home"><!-- tab="main" -->
+        <ion-icon ios="ios-home" md="md-home" tab="home"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="program"><!-- tab="program" -->
+        <ion-icon ios="ios-calendar" md="md-calendar"  tab="program" ></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button (click)="is_act=!is_act" *ngIf="userType==1">
+        <a class="floating-btn"><ion-icon ios="ios-add" md="md-add"></ion-icon></a>
+      </ion-tab-button>
+      <ion-tab-button tab="chats">
+        <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
+      </ion-tab-button>
+          <ion-tab-button tab="consultant-profile" *ngIf="userType==1">
+        <ion-icon ios="ios-person" md="md-person"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="user-profile" *ngIf="userType==0">
+        <ion-icon ios="ios-person" md="md-person"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>

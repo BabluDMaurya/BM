@@ -1,0 +1,149 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">    
+    <ion-item slot="center">
+      <ion-label *ngIf="profileData?.userData?.bios?.display_name">{{profileData?.userData?.bios?.display_name}}</ion-label>
+      <ion-label [routerLink]="['/tabs/edit-profile']" *ngIf="!profileData?.userData?.bios?.display_name">Add Display Name +</ion-label>
+    </ion-item>
+    <ion-item class="ion-text-end" slot="end">
+      <div class="icon-right-side">
+        <a [routerLink]="['/tabs/search']" class="set-icon">
+          <ion-icon ios="ios-search" md="md-search"></ion-icon>
+        </a> 
+        <a [routerLink]="['/notification']" id="notificationcount" class="noti-bell">
+          <ion-icon ios="ios-notifications-outline" md="md-notifications-outline"></ion-icon>
+          <span class=""></span>
+        </a>
+        <a [routerLink]="['/tabs/bookmark']" >
+          <ion-icon ios="ios-bookmark" md="md-bookmark"></ion-icon>
+        </a>
+        <a [routerLink]="['/people/tabFollowers']" class="foll-people">
+          <ion-icon ios="md-people" md="md-people"></ion-icon>
+        </a>
+        <a [routerLink]="['/settings']" class="set-icon">
+          <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+        </a>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-header> 
+<ion-content class="main_content">  
+  <ion-refresher class="page-refresher" slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>   
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size="12" class="ion-no-padding">
+        
+        <div class="sec-banner">
+          <div class="top-banner"> <img  src="https://ionicinto.wdipl.com/public/profile_background_image/thumb/{{profileData?.userData?.bios?.profile_background_image}}" *ngIf="profileData?.userData?.bios?.profile_background_image">
+            <img  src="./../../../assets/images/editcoverpic.png" *ngIf="!profileData?.userData?.bios?.profile_pic">  
+          </div>
+      </div>
+        <div class="profile-content">
+          <img class="user-img" src="https://ionicinto.wdipl.com/public/profile_pic/thumb/{{profileData?.userData?.bios?.profile_pic}}" *ngIf="profileData?.userData?.bios?.profile_pic">
+              <img class="user-img" src="./../../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">    
+          <ion-text>
+            <h6 class="ion-no-margin user-name" *ngIf="profileData?.userData?.user_name">{{profileData?.userData?.user_name}}</h6>
+            <a><ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon> darshan_rajgor_</a>
+          </ion-text>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-segment lines="none" class="top-segment" [(ngModel)]="userProfile">
+          <ion-segment-button value="aboutInfo">Information</ion-segment-button>
+          <ion-segment-button value="upcomingProgram">Upcoming Program</ion-segment-button>
+        </ion-segment>
+        <div [ngSwitch]="userProfile">
+          <div *ngSwitchCase="'aboutInfo'">
+            <ion-card>
+              <ion-card-header>
+                <div class="user-icon">
+                  <img src="../../assets/images/user.svg" />
+                </div>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-text *ngIf="profileData?.userData?.bios?.about_me">{{profileData?.userData?.bios?.about_me}}</ion-text>
+                <a [routerLink]="['/tabs/edit-profile']" *ngIf="!profileData?.userData?.bios?.about_me">Click here to add something interesting about yourself</a> 
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-header>
+                <div class="user-icon">
+                  <img src="../../assets/images/like.svg" />
+                </div>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-text *ngIf="profileData?.speciality?.primaryName?.name">{{profileData?.speciality?.primaryName?.name}}</ion-text>
+                <a [routerLink]="['/tabs/edit-profile']" *ngIf="!profileData?.speciality?.primaryName?.name">Select catagory in which you interested</a> 
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-header>
+                <div class="user-icon">
+                  <img src="../../assets/images/global.svg" />
+                </div>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-text *ngIf="profileData?.lang?.lang">{{profileData?.lang?.lang}}</ion-text>
+                <a [routerLink]="['/tabs/edit-profile']" *ngIf="!profileData?.speciality?.primaryName?.name">Add languages you know</a> 
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-header>
+                <div class="user-icon">
+                  <img src="../../assets/images/placeholder.svg" />
+                  </div>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-text *ngIf="profileData?.address?.country?.name">{{profileData?.address?.city?.name}}{{profileData?.address?.state?.name }},{{profileData?.address?.country?.name}}</ion-text>
+                <a [routerLink]="['/tabs/edit-profile']" *ngIf="!profileData?.address?.country?.name">Add Location</a> 
+             
+              </ion-card-content>
+            </ion-card>
+          </div>
+          <ion-list *ngSwitchCase="'upcomingProgram'" lines="none">
+
+            <ion-item class="upcoming-block" *ngFor="let item of upcomingProgram; "> 
+             
+                <ion-avatar slot="start">
+                  <img  src="https://intoactive.wdipl.com/images/user.jpg" *ngIf="!item?.program_user?.bios?.profile_pic"  >
+
+                  <img  src="{{profile_url}}{{item?.program_user?.bios?.profile_pic}}" *ngIf="item?.program_user?.bios?.profile_pic">
+                </ion-avatar>
+           
+              <ion-label>
+                <div>
+                  <h3>{{item?.title}}</h3>
+                  <p>{{item?.type_id}}</p>
+                  <p>By: <span>{{item?.program_user?.user_name}}</span></p>
+                  <span class="list-name d-block" *ngIf="item?.cd>0">Countdown: <b>{{ item?.hh |number  }}:  {{ item?.mm |number }}:  {{ item?.ss |number }} </b> </span>
+                  <span class="list-name d-block" *ngIf="item?.cd==0"> <b> L I V E</b></span>
+                </div>
+                <div class="action-links">
+                  <ion-toolbar>
+                    <ion-buttons slot="end">
+                      <ion-button (click)="settingsPopover()">
+                        <ion-icon ios="ios-more" md="md-more"></ion-icon>
+                      </ion-button>
+                    </ion-buttons>
+                  </ion-toolbar>
+                  <a (click)="nutritionModal(item)">
+                    <ion-icon ios="md-restaurant" md="md-restaurant"></ion-icon>
+                  </a>
+                </div>
+              </ion-label>
+            </ion-item>
+           
+          </ion-list>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

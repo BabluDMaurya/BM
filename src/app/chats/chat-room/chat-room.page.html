@@ -1,0 +1,106 @@
+<ion-header class="top-header ion-no-padding" translucent>
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons slot="start" class="ion-no-margin" [routerLink]="['/tabs/chats']">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+      <ion-avatar slot="start">
+        <img
+          src="">
+      </ion-avatar>
+      <ion-label>
+        <h3 class="list-person">prateek92</h3>
+        <!-- <span class="list-name">{{typing}}</span> -->
+      </ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end">
+      <ion-button slot="end" (click)="presentPopover()"><ion-icon ios="ios-more" md="md-more"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content"> 
+  <!-- <ion-list class="chats-list" lines="none">
+    <ion-item>
+      <ion-label class="chat-duration"><span>Today</span></ion-label>
+    </ion-item>
+    <ion-item class="chat-box chat-right">
+      <div class="ion-text-end">
+      
+      </div>
+    </ion-item>
+    <ion-item class="chat-box chat-left">
+      <div class="ion-text-start">
+        <ion-label>Hi</ion-label>
+        <span class="chat-time">1.34 PM</span>
+      </div>
+    </ion-item>
+    <ion-item class="chat-box chat-right">
+      <div class="ion-text-end">
+        <ion-label>How are you</ion-label>
+        <span class="chat-time">1.34 PM <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon></span>
+      </div>
+    </ion-item>
+    <ion-item class="chat-box chat-left">
+      <div class="ion-text-start">
+        <ion-label></ion-label>
+        <span class="chat-time">1.36 PM</span>
+      </div>
+    </ion-item>
+    <ion-item class="chat-box chat-right">
+      <div class="ion-text-end">
+        <ion-label>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled </ion-label>
+        <span class="chat-time">1.37 PM <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon></span>
+      </div>
+    </ion-item>
+  </ion-list>  -->
+  <!-- <ion-list class="chats-list" lines="none">
+    <ion-item class="chat-box" *ngFor="let message of chats" [ngClass]="message.styleClass">
+      <div class="ion-text-start">
+        <ion-label>{{message.msgStr}}</ion-label>
+        <span class="chat-time">1.34 PM</span>
+      </div>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-grid>
+    <ion-text color="medium" text-center>
+      <p>You joined the chat as {{ currentUser }}</p>
+    </ion-text>
+    <ion-row *ngFor="let message of messages">
+ 
+      <ion-col size="9" *ngIf="message.user !== userData?.id && message.sendTo ==userData?.id" class="message other-message">
+        <span>{{ message.msg }}</span>
+        <div class="time" text-right><br>{{ message.createdAt | date:'shortTime' }}
+          <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+        </div>
+      </ion-col>
+ 
+      <ion-col offset="3" size="9" *ngIf="message.user ===  userData?.id && message.sendTo ==chatUserId" class="message my-message">
+        <span>{{ message.msg }}</span>
+        <div class="time" text-right><br>{{ message.createdAt | date:'shortTime' }}
+        <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+        </div>
+      </ion-col>
+ 
+    </ion-row>
+  </ion-grid>
+</ion-content>
+ <!-- <ion-textarea [(ngModel)]="message"></ion-textarea>   -->
+<!-- <ion-fab horizontal="start" vertical="bottom" slot="fixed" *ngIf="messageBox">
+  <ion-fab-button size="small" clear icon-only (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" [emojiPickerDirection]="'top'" (emojiPickerSelect)="handleSelection($event)">
+    <ion-icon name="md-happy"></ion-icon>
+  </ion-fab-button>
+</ion-fab> --> 
+<ion-footer class="sticky-footer">
+  <ion-item lines="none">   
+    <ion-input type="text" [(ngModel)]="message"  placeholder="Type message"></ion-input>
+    <ion-button expand="block" fill="clear" color="primary" [disabled]="message === ''" class="msg-btn"
+    (click)="sendMessage()">
+    <ion-icon name="ios-send" slot="icon-only"></ion-icon>
+  </ion-button>    <!-- <ion-icon name="md-send" (click)="send(chat_input)" item-right></ion-icon> -->
+  </ion-item>
+</ion-footer>
+<!-- <ion-footer class="sticky-footer chatsButtons d-flex" *ngIf="messageButtons">
+    <ion-button class="ion-no-margin full-height" color="light" [routerLink]="['/tabs/chats']">Decline</ion-button>
+    <ion-button class="ion-no-margin full-height green" (click)="allow()">Allow</ion-button>
+</ion-footer>  -->

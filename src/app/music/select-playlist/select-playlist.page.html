@@ -1,0 +1,26 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>{{playListData?.playlist_name}}</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content"> 
+  
+  <app-audio-player [songList]="songList" ></app-audio-player>
+  <!-- <ion-list lines="none" class="musiclist"> 
+    <ion-item  *ngFor="let item of artistData?.musics" (click)="musicSelect=item?.id" [ngClass]="musicSelect==item?.id?'active':''">
+      <ion-icon class="play" ios="ios-play" md="md-play" slot="start"></ion-icon>
+      <ion-icon class="pause" ios="ios-pause" md="md-pause" slot="start"></ion-icon>
+      <h3 class="list-head">{{item?.title}}</h3>
+      <ion-text slot="end">{{item?.duration}}</ion-text>
+    </ion-item> 
+  </ion-list> -->
+ 
+</ion-content>

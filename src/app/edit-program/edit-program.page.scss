@@ -1,0 +1,34 @@
+.note{color: #000;}
+.users-list{display: flex;width: 100%;}
+.users-list ion-item{--min-height: auto;display: flex;width: auto;}
+.users-list ion-item img{width: 42px;height: 42px;object-fit: cover;border-radius: 50%;margin-left: -10px;}
+.users-list ion-item img:first-child{margin-left: 0;}
+.view-all{width:42px;height:42px;max-width: 42px;text-align:center;background:#f1f0f0;border-radius:50%;display:flex;justify-content:center;align-items:center;margin: 0;margin-left: -10px;}
+
+.calendar-header{display: flex;justify-content: space-between;align-items: center;}
+.calendar-header ion-item{--padding-start: 0;--inner-padding-end: 0;}
+.calendar-header ion-item:nth-child(2){display: contents;}
+.table > tbody > tr > td.calendar-hour-column{width: 55px;}
+
+ion-range{position: absolute;width: 100%;top: -30px;z-index: 99;}
+.audio-list{padding: 0 15px !important;}
+.audio-list ion-item{--background: transparent;color: #FFF !important;width: auto !important;}
+.audio-list ion-item ion-label{margin: 0;margin-right: 20px;overflow: inherit;}
+.audio-list ion-item ion-fab-button{width: 25px;height: 25px;--ion-color-base: transparent !important;--box-shadow: none;}
+.audio-list ion-item ion-fab-button ion-icon{color: #FFF;}
+
+// ios css
+.ios.main_content{padding-top: 0;}
+
+// ion-skeleton-text css
+.musiclist ion-item ion-skeleton-text{height: 30px;}
+ion-segment-button{position: relative;}
+ion-segment-button ion-skeleton-text{position: absolute;height: 100%;margin: 0;width: 95%;}
+.video-skeleton{height: 200px;}
+p ion-skeleton-text, .radio-list ion-item ion-skeleton-text{margin: 0;height: 20px;}
+.swiper-slide{background: #fbfbfb;}
+ion-slides{height: 190px;}
+.top-header{position: fixed;}
+.slides-container {
+    height: 78% !important;
+}

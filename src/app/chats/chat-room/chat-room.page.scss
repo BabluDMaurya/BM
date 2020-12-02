@@ -1,0 +1,59 @@
+.main_content{background: url(../../../assets/images/chat-bg.png) repeat; --background: transparent;background-size: cover;}
+.icon-right-side ion-button{--padding-start:0;--padding-end:0;--background:transparent;--background-focused:transparent;--background-hover:transparent;--box-shadow:none}
+.top-heading ion-item ion-avatar{margin-left: 8px;margin-right: 8px;}
+
+// css for footer
+.sticky-footer .send-img{width: 26px;}
+
+.chats-list{--background:transparent;background: transparent;}
+.chats-list ion-item{--background:transparent;background: transparent;margin-bottom: 5px;}
+.chats-list ion-item>div{width: 100%;}
+.chat-box ion-label{margin:0;padding:5px 8px;border-radius:4px;font-size:.75rem;color: #000;white-space: normal;display: inline-block;line-height: 1.5;}
+.chat-box span{color: #909090;font-size: 0.70rem;display: flex;align-items: center;}
+.chat-left ion-label{background:#e3e6e6;margin-right: 55px;}
+.chat-left span{justify-content: flex-start;}
+.chat-right ion-label{background:#32ab9f;color: #FFF;margin-left: 55px;}
+.chat-right span{justify-content: flex-end;}
+.chat-duration{position: relative;text-align: center;}
+.chat-duration::after{content: '';width: 100%;height: 1px;background: #ccc;display: block;position: relative;top: -8px;}
+.chat-duration span{background: #f9f9f9;position: relative;z-index: 9;padding: 2px 10px;border-radius: 4px;}
+
+.ios{
+    .chats-list{padding-top: 8px;padding-bottom: 8px;}
+    .chat-box span{font-size: 0.65rem;}
+    .chat-box span ion-icon{font-size: 1rem;}
+}
+.message {
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  white-space: pre-wrap;
+}
+ 
+.my-message {
+  background: var(--ion-color-tertiary);
+  color: #fff;
+}
+ 
+.other-message {
+  background: var(--ion-color-secondary);
+  color: #fff;
+}
+ 
+.time {
+  color: #dfdfdf;
+  float: right;
+  font-size: small;
+}
+ 
+.message-input {
+  margin-top: 0px;
+  border: 1px solid var(--ion-color-medium);
+  border-radius: 10px;
+  background: #fff;
+}
+ 
+.msg-btn {
+  --padding-start: 0.5em;
+  --padding-end: 0.5em;
+}

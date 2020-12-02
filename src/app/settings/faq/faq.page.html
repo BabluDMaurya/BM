@@ -1,0 +1,26 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>FAQ's</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <ion-card class="faq-card item-card" *ngFor="let item of items">          
+    <ion-card-header class="faq-header" (click)="expandItem(item)">
+      <ion-card-title>{{ item.title}}</ion-card-title>          
+      <ion-icon ios="ios-add" md="md-add"></ion-icon>
+    </ion-card-header>
+    <ion-card-content>
+      <app-expandable [expanded]="item.expanded">
+        <p class="mt-15">{{ item.description}}</p>
+      </app-expandable>
+    </ion-card-content>
+  </ion-card> 
+</ion-content>

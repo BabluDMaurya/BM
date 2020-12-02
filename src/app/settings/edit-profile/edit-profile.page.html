@@ -1,0 +1,242 @@
+<ion-content>
+  <form class="detail-form edit-pro-form" [formGroup]="validations_form" *ngIf="dataa2">
+    <ion-header class="top-header">
+      <ion-list class="top-heading three-block">
+        <ion-item slot="start">
+          <ion-buttons class="ion-no-margin" (click)="goBack()">
+            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          </ion-buttons>
+        </ion-item>
+        <ion-item slot="start">
+          <ion-label id="display_name" *ngIf="defaultInputText">{{ displayName }}</ion-label>
+          <ion-label id="display_name" *ngIf="!defaultInputText">Add Name</ion-label>
+          <div *ngIf="defaultInputBox">
+            <ion-input type="text" placeholder="Enter Name" (change)="detailsUpdate($event)" name="display_name"  value="{{displayName}}"></ion-input>
+            <ng-container *ngFor="let validation of validation_messages.display_name">
+              <span class="error-message"
+                *ngIf="(validations_form.get('display_name').touched) && validations_form.get('display_name').hasError(validation.type)">
+                {{ validation.message }}
+              </span>
+            </ng-container>
+          </div>
+        </ion-item>
+        <ion-item *ngIf="defaultInputBox">
+          <ion-buttons class="ion-no-margin" (click)="HideInputBox();" slot="end">
+            <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" class="text-green"></ion-icon>
+          </ion-buttons>
+        </ion-item>
+        <ion-item *ngIf="defaultInputText">
+          <ion-buttons class="ion-no-margin" (click)="showInputBox();" slot="end">
+            <ion-icon ios="md-create" md="md-create" class="text-green"></ion-icon>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </ion-header>
+    <ion-grid class="main_content ion-no-padding">
+      <ion-row>
+        <ion-col size="12" class="ion-no-padding">
+          <div class="sec-banner">
+            <div class="top-banner">
+              <img  src="{{backgroundPicture}}" />
+              <ion-fab-button size="small" class="green"><ion-icon (click)="backImage($event)"  name='profile_background_image' ios="ios-create" md="md-create"></ion-icon></ion-fab-button>
+            </div>
+            <div class="profile-heading">
+              <div class="img-profile">
+                <img class="user-img" src="{{profilePicture}}" />    
+                <ion-fab-button size="small" class="green"><ion-icon (click)="selectImage($event)" name='profile_pic' ios="md-create" md="md-create"></ion-icon></ion-fab-button>
+              </div>
+            </div>
+            <div class="user-name">
+              <ion-text>
+                <h6>{{userName}}</h6>
+              </ion-text>
+            </div>
+          </div>
+        </ion-col> 
+        <ion-col size="12" class="ion-no-padding">
+          <ion-list lines="none" class="pb-0">
+            <ion-list-header class="green text-white">Info </ion-list-header>
+            <ion-item>
+              <ion-label>Sex</ion-label>
+              <ion-select placeholder="gender" name='gender' (ionChange)="detailsUpdate($event)">
+                  <ion-select-option value="1" [selected]="sex == '1' ? true : false ">Male</ion-select-option>
+                  <ion-select-option value="2" [selected]='sex == 2 ? true : false '>Female</ion-select-option>
+              </ion-select>
+              <ng-container *ngFor="let validation of validation_messages.gender">
+                <span class="error-message" *ngIf="(validations_form.get('gender').touched) && validations_form.get('gender').hasError(validation.type)">{{ validation.message }}</span>
+              </ng-container>
+            </ion-item>
+            <ion-item>
+              <ion-label>Birth Range</ion-label>
+              <ion-select name='birth_year' (ionChange)="detailsUpdate($event)" placeholder="birthYear" okText="Okay" cancelText="Dismiss">
+                <ion-select-option value="1" [selected]="birthYear == '1' ? true:false ">less than 15</ion-select-option>
+                <ion-select-option value="2" [selected]="birthYear == '2' ? true:false ">15-25</ion-select-option>
+                <ion-select-option value="3" [selected]="birthYear == '3' ? true:false ">25-35</ion-select-option>
+                <ion-select-option value="4" [selected]="birthYear == '4' ? true:false ">35-45</ion-select-option>
+                <ion-select-option value="5" [selected]="birthYear == '5' ? true:false ">45-55</ion-select-option>
+                <ion-select-option value="6" [selected]="birthYear == '6' ? true:false ">more than 55</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-list-header class="green text-white"> Bio </ion-list-header>
+            <ion-item>
+              <ion-textarea name="about_me"  (change)="detailsUpdate($event)" value={{aboutMe}}></ion-textarea>
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.about_me">
+              <span class="error-message" *ngIf="(validations_form.get('about_me').touched) && validations_form.get('about_me').hasError(validation.type)">{{ validation.message }}</span>
+            </ng-container>
+          </ion-list>
+          <ion-list lines="none" class="ion-no-padding" *ngIf='consultant'>
+            <ion-list-header class="green text-white">More about me</ion-list-header>
+            <ion-item>
+              <ion-textarea name="more_about_me"  (change)="additionaldetailUpdate($event)" value="{{moreAboutMe}}"></ion-textarea>
+            </ion-item>
+            <ion-list-header class="green text-white"> Tagline</ion-list-header>
+            <ion-item>
+              <ion-textarea name="tag_line" formControlName="tag_line" (change)="additionaldetailUpdate($event)" value="{{tagline}}"></ion-textarea>
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.tag_line">
+              <span class="error-message" *ngIf="(validations_form.get('tag_line').touched) && validations_form.get('tag_line').hasError(validation.type)">{{ validation.message }}</span>
+            </ng-container>
+          </ion-list>
+          <ion-list lines="none" class="ion-no-padding">
+            <ion-list-header class="green text-white"> Interests </ion-list-header>
+            <ion-item>
+              <ion-label>Main</ion-label>
+              <ion-select name='specialities_id' (ionChange)="detailsUpdate($event)">
+                <ion-select-option *ngFor='let main of interest' [value]="main.id" [selected]="interesrDB == main.id ? true: false">{{main.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Secondary</ion-label>
+              <ion-select name="secondary_specialities_ids" (ionChange)="detailsUpdate($event)" multiple="true" okText="Okay" cancelText="Dismiss">
+                <ion-select-option *ngFor='let value of interest' [disabled]='value.id == this.interestDisable ? true: false' [value]="value.id" [selected]="secondary == value.id ? true: false">{{value.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-list-header class="green text-white"> Additional</ion-list-header>
+            <ion-item *ngIf='consultant'>
+              <ion-label> Class Type</ion-label>
+              <ion-select multiple='true' name="class_names_id" (ionChange)="additionaldetailUpdate($event)" placeholder="Class Type">
+                <ion-select-option *ngFor='let value of classTypeDB'
+                  [selected]="setClassCheked(value.id) ? true : false" [value]="value.id">{{value.name}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Spoken Languages</ion-label>
+              <ion-select multiple='true' placeholder="Language"
+                (ionChange)="detailsUpdate($event)" name="languages_id">
+                <ion-select-option *ngFor='let langIds of langData' [value]="langIds.id"
+                  [selected]="setLangCheked(langIds.id) ? true: false">{{langIds.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-list-header class="green text-white">Location </ion-list-header>
+            <ion-item>
+              <ion-label>Country</ion-label>
+              <ion-select placeholder="country" name="country_id" (ionChange)="detailsUpdate($event)">
+                <ion-select-option *ngFor='let countries of countryData' value="{{countries.id}}" [selected]="countries.id == countryId ? true : false">{{countries.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>State</ion-label>
+              <ion-select name="state_id" placeholder="State" (ionChange)="detailsUpdate($event)">
+                <ion-select-option *ngFor='let states of stateData' value="{{states.id}}" [selected]="setStateCheked(states.id)? true : false">{{states.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>City</ion-label>
+              <ion-select name="city_id" placeholder="City" (ionChange)="detailsUpdate($event)">
+                <ion-select-option *ngFor='let citys of cityData' value="{{citys.id}}" [selected]="citys.id == cityId ? true : false">{{citys.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Hometown</ion-label>              
+            </ion-item>
+            <ion-input name="hometown" (change)="detailsUpdate($event)"  value="{{hometown}}"  class="ion-margin-horizontal"></ion-input>
+            <ng-container *ngFor="let validation of validation_messages.hometown">
+              <span class="error-message" *ngIf="(validations_form.get('hometown').touched) && validations_form.get('hometown').hasError(validation.type)">{{ validation.message }}</span>
+            </ng-container>
+          </ion-list>
+        </ion-col>  
+      </ion-row>
+    </ion-grid>
+  </form>
+  <form class="detail-form edit-pro-form" *ngIf="!dataa2">
+    <ion-header class="top-header">
+    <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+    <ion-buttons class="ion-no-margin">
+    <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+    </ion-buttons>
+    </ion-item>
+    <ion-item slot="start">
+    <ion-label>Display Name + </ion-label>
+    </ion-item>
+    <ion-item>
+    <ion-buttons class="ion-no-margin" slot="end">
+    <ion-icon ios="md-create" md="md-create" class="text-green"></ion-icon>
+    </ion-buttons>
+    </ion-item>
+    </ion-list>
+    </ion-header>
+    <ion-grid class="main_content ion-no-padding">
+    <ion-row>
+    <ion-col size="12" class="ion-no-padding">
+    <div class="sec-banner">
+    <div class="top-banner">
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </div>
+    <div class="profile-heading">
+    <div class="img-profile">
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </div>
+    </div>
+    </div>
+    </ion-col>
+    <ion-col size="12" class="ion-no-padding">
+    <ion-list lines="none" class="pb-0">
+    <ion-list-header class="green text-white">Info </ion-list-header>
+    <ion-item>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-item>
+    <ion-item>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-item>
+    <ion-list-header class="green text-white"> Bio </ion-list-header>
+    <ion-item>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-item>
+    <ion-list-header class="green text-white">More about me</ion-list-header>
+    <ion-item>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-item>
+    <ion-list-header class="green text-white">Tagline</ion-list-header>
+    <ion-item>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-item>
+    <ion-list-header class="green text-white"> Interests </ion-list-header>
+    <ion-item>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-item>
+    <ion-item>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-item>
+    <ion-list-header class="green text-white"> Additional</ion-list-header>
+    <ion-item>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-item>
+    <ion-list-header class="green text-white">Location </ion-list-header>
+    <ion-item>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-item>
+    <ion-item>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-item>
+    <ion-item>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-item>
+    </ion-list>
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+    </form>
+</ion-content>

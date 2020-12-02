@@ -1,0 +1,40 @@
+<ion-header class="top-header ion-no-padding green search-header">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="closeModal()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center search-item">
+      <ion-input placeholder="Search Food" type="text" color="light" [ngModel]="searchFood" (ngModelChange)="checkFoodName($event)"></ion-input>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end" (click)="toPreview()">
+      <ion-buttons (click)="scanFood()" slot="end">
+        <ion-icon ios="ios-barcode" md="md-barcode"></ion-icon>
+      </ion-buttons >
+    </ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <div *ngIf="foodList;else emptyDiv">
+    <ion-list class="checkbox-horizontal" *ngFor = "let food of foodList['0']['common']">
+      <ion-item>
+        <ion-avatar><img src="{{food['photo']['thumb']}}"/></ion-avatar>
+          <ion-label>{{food['food_name']}}</ion-label>          
+          <ion-checkbox slot="end" name="fl[]" class="fl get_name_close" value="{{food['food_name']}}" id="{{food['food_name']}}" (click)="getNutriDetails($event)" checked="{{food['selected']}}"></ion-checkbox>
+       </ion-item>
+      </ion-list>
+      <div *ngIf="foodList['0']['common'] < 1">
+        <div class="no-data">NO DATA FOUND</div>
+      </div> 
+  </div>  
+  <ng-template #emptyDiv >
+    <p style="padding:100px">use the above search box 
+    or press the bar code 
+    scanner to fetch foods items
+     for your list</p>
+  </ng-template>
+</ion-content>
+<ion-footer class="sticky-footer">
+  <ion-button expand="full" (click)="closeModal()" class="ion-no-margin green full-height">Done</ion-button>
+</ion-footer>
