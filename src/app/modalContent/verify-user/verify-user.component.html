@@ -8,11 +8,12 @@
 </ion-header>
 <ion-content fullscreen class="ion-padding">
   <form class="" [formGroup]="userIdentityVerifyForm" (ngSubmit)="onSubmit()">
-    <!-- <ion-label>Country Code</ion-label> -->
-    <ion-select interface="popover" formControlName="countrycode"  placeholder="Select Country Code" (ionChange)="onSelectChangeOption()" okText="Okay" cancelText="Dismiss">
+    <ion-item>
+    <ion-label>Country Code</ion-label>
+    <ion-select formControlName="countrycode"  placeholder="Select Country Code" (ionChange)="onSelectChangeOption()" okText="Okay" cancelText="Dismiss">
       <ion-select-option [selected]="true" value="AU">Austrailia</ion-select-option>
       <ion-select-option value="US">United States</ion-select-option>      
-    </ion-select>
+    </ion-select></ion-item>
 
     <ion-list  *ngIf="showSubOptionOfAU">
   <ion-list-header class="green text-white">Passport</ion-list-header>

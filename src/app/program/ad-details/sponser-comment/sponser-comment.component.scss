@@ -13,14 +13,14 @@ ion-content{--background: transparent;background-image: url(../../../../assets/i
     ion-list{background: transparent;margin-top: 15px;
         ion-item{--background: transparent;
             div{width: 75%;margin-bottom:10px;
-                h2{margin: 0;font-size: 12px;margin-top: 3px;color: #777;}
-                p{padding: 10px;border-radius: 6px 6px 6px 0;background: #3b403f;color:#FFF;display: inline-block;line-height: 1.6;}
+                h2{margin: 0;font-size: 11px;margin-top: 3px;color: #777;}
+                p{padding: 10px;border-radius: 6px 6px 6px 0;background: #ebebeb;color:#000;display: inline-block;line-height: 1.6;}
             }
         }
         ion-item.ion-text-start{}
         ion-item.ion-text-end{
             div{margin-left: auto;
-                p{border-radius: 6px 6px 0 6px;background: #27a69a;}
+                p{border-radius: 6px 6px 0 6px;background: #27a69a;color: #FFF;}
             }
         }
     }

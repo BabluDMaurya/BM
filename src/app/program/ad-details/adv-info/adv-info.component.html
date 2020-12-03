@@ -12,23 +12,23 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content">
-  <ion-row>
-  <ion-col class="notify-body">
-    <ion-text>
-      <p class="notify_text"><span>Note For Consultant </span>{{adDetail?.ad_description}}</p>
-      <p class="notify_text"><span>Amount  </span>{{adDetail?.amount}}</p>
-      <p class="notify_text"><span>AD Link </span>{{adDetail?.ad_link}}</p>
-      <p class="notify_text"><span>AD text Content </span>{{adDetail?.ad_text}}</p>
-      <p class="notify_text"><span>AD Type</span>{{adDetail?.media_type}}</p>
-    </ion-text>
-  </ion-col>
-  </ion-row> 
   <ion-row *ngIf="adDetail?.media_type_id == 3">
-    <video width="100%" height="240" controls>
+    <video width="100%" height="100%" controls>
       <source src="{{adManagerLink}}{{adDetail?.path}}" type="video/mp4">
       Your phone does not support the video tag.
     </video>
   </ion-row>
+  <ion-row>    
+  <ion-col>
+    <div class="contentList">
+      <p class="list-name d-block"><span>Note For Consultant : </span>{{adDetail?.ad_description}}</p>
+      <p class="list-name d-block"><span>Amount : </span>{{adDetail?.amount}}</p>
+      <p class="list-name d-block"><span>AD Link : </span>{{adDetail?.ad_link}}</p>
+      <p class="list-name d-block"><span>AD text Content : </span>{{adDetail?.ad_text}}</p>
+      <p class="list-name d-block"><span>AD Type :</span>{{adDetail?.media_type}}</p>
+    </div>
+  </ion-col>
+  </ion-row> 
   <ion-row *ngIf="adDetail?.media_type_id == 2 && adDetail?.path">
     <img src="{{adManagerLink}}{{adDetail?.path}}" >
   </ion-row>

@@ -59,57 +59,58 @@
     <ion-segment-button value="list" checked>List</ion-segment-button>
     <ion-segment-button value="chat"><div class="chatBadge"><span>Chat</span> <ion-badge class="ml-1" *ngIf="sponcerCount > 0">{{ sponcerCount }}</ion-badge></div></ion-segment-button>
   </ion-segment>
-  <div *ngIf="showList">
-    <ion-card *ngFor="let program of programList; let i = index;" class="ion-no-margin">
-      <ion-item lines="none">
-        <!-- <ion-avatar slot="start" (click)="showSponsersContent(program)" class="">
-          <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
-          <img src="../../../assets/images/loading.jpg" *ngIf="!program?.image_path">
-        </ion-avatar> -->
-        <ion-label  (click)="showSponsersContent(program)">
-          <h3 class="list-person">Ad Compony Name: {{program?.company_name}}</h3>
-          <span class="list-name d-block">Ad Compony Link : {{program?.ad_link}}</span>
-          <span class="list-name">$ {{program?.amount}}</span> 
-        </ion-label>
-        <div class="action-links" slot="end"> 
-          <ion-icon ios="ios-repeat" md="md-repeat" (click)="expand(i)" >
-          </ion-icon>
-        </div> 
-      </ion-item>
-      <app-expandable expandHeight="300px" class="timeline-block" [expanded]="program.expanded">
-        <div class="contentList">
-          <ion-label class="list-name d-block" *ngFor="let progdata of programData; let j = index;">                  
-              <p *ngIf="progdata.id == program.program_id" class=" mb-10"><span>Program Name : </span>{{progdata?.title}}</p>
-          </ion-label>
-          <p class="list-name d-block"><span>Ad Content : </span>{{program?.ad_text}}</p>
-          <p class="list-name d-block"><span>Note : </span>{{program?.ad_description}}</p>
-          <p class="list-name d-block"><span>Ad type : </span>{{program?.media_type}}</p>
-          <p class="list-name d-block"><span>Offered at : </span>{{program?.created_at | date:'medium'}}</p>
-        </div>
-      </app-expandable>  
-    </ion-card>
-  </div>   
-  <div *ngIf="showChat">
-    <ion-list lines="none" class="item-list ion-no-padding" >
-      <ion-list-header *ngIf = "sponcersChatEmpty">
-        No Recode Found
-      </ion-list-header>       
-      <ion-list-header *ngIf ="sponcersChat">
-        Recent Conversations
-      </ion-list-header>
-      <ion-card *ngFor="let sponcer of sponcers" (click)="unread(sponcer)" class="ion-no-margin">      
-        <ion-item class="item-card">
-          <!-- <ion-item  (click)="unread(1)"> -->
-          <!-- <ion-avatar slot="start">
-            <img src="./../../../assets/images/user.jpg">
-          </ion-avatar> -->
-          <ion-label>
-            <h3 class="list-person">{{sponcer.company_name}}</h3>        
-            <span class="list-name">{{sponcer.ad_description}}</span>
-          </ion-label>
-          <ion-badge color="secondary" slot="end">{{sponcer.chat_count}}</ion-badge>
-        </ion-item>
-      </ion-card>
-    </ion-list>
-  </div>
+    <div *ngIf="showList">
+        <ion-card *ngFor="let program of programList; let i = index;" class="ion-no-margin">
+          <ion-item lines="none">
+            <!-- <ion-avatar slot="start" (click)="showSponsersContent(program)">
+              <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
+              <img src="../../../assets/images/loading.jpg" *ngIf="!program?.image_path">
+            </ion-avatar> -->
+            <ion-label  (click)="showSponsersContent(program)">
+              <h3 class="list-person">Ad Compony Name: {{program?.company_name}}</h3>
+              <span class="list-name d-block">Ad Compony Link : {{program?.ad_link}}</span>
+              <span class="list-name">$ {{program?.amount}}</span> 
+            </ion-label>
+            <div class="action-links" slot="end">
+              <ion-icon ios="ios-repeat" md="md-repeat" (click)="expand(i)">
+              </ion-icon>
+            </div> 
+          </ion-item>
+            <app-expandable expandHeight="300px" class="timeline-block" [expanded]="program.expanded">
+              <div class="contentList">
+                <ion-label class="list-name d-block" *ngFor="let progdata of programData; let j = index;">                  
+                    <p class="mb-10" [routerLink]="['/program-details',progdata.id]" *ngIf="progdata.id == program.program_id"><span>Program Name : </span>{{progdata?.title}}</p>
+                </ion-label>
+                <p class="list-name d-block"><span>Ad Content : </span>{{program?.ad_text}}</p>
+                <p class="list-name d-block"><span>Note : </span>{{program?.ad_description}}</p>
+                <p class="list-name d-block"><span>Ad type : </span>{{program?.media_type}}</p>
+                <p class="list-name d-block"><span>Offered at : </span>{{program?.created_at | date:'medium'}}</p>
+              </div>
+          </app-expandable>  
+        </ion-card>
+    </div>
+   
+    <div *ngIf="showChat">
+      <ion-list lines="none" class="item-list ion-no-padding" >
+        <ion-list-header *ngIf = "sponcersChatEmpty">
+          No Recode Found
+        </ion-list-header>       
+        <ion-list-header *ngIf ="sponcersChat">
+          Recent Conversations
+        </ion-list-header>  
+        <ion-card *ngFor="let sponcer of sponcers" (click)="unread(sponcer)" class="ion-no-margin">      
+          <ion-item class="item-card">    
+            <!-- <ion-item  (click)="unread(1)"> -->
+            <!-- <ion-avatar slot="start">
+              <img src="./../../../assets/images/user.jpg">
+            </ion-avatar> -->
+            <ion-label>
+              <h3 class="list-person">{{sponcer.company_name}}</h3>        
+              <span class="list-name">{{sponcer.ad_description}}</span>
+            </ion-label>
+            <ion-badge color="secondary" slot="end">{{sponcer.chat_count}}</ion-badge>
+          </ion-item>
+          </ion-card>
+          </ion-list>
+    </div>
 </ion-content>

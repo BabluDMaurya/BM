@@ -31,9 +31,9 @@ export class ChatPage implements OnInit {
     //--------requests counter-----
     this.dataService.requestsUserListCount().subscribe((data:any)=>{
       if (data.count > 0){
-        this.commonService.dismissLoader();
         this.requestCount = data.count;
       }
+      this.commonService.dismissLoader();
     });
     //------------chat user list -------------
     this.dataService.chatUserList().subscribe(

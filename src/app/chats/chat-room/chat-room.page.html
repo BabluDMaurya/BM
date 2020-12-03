@@ -102,6 +102,6 @@
   <!-- </ion-item>
 </ion-footer> -->
 <ion-footer class="sticky-footer chatsButtons d-flex" *ngIf="messageButtons">
-    <ion-button class="ion-no-margin full-height" color="light" [routerLink]="['/tabs/chats']">Decline</ion-button>
+    <ion-button class="ion-no-margin full-height" color="light" (click)="decline()">Decline</ion-button>
     <ion-button class="ion-no-margin full-height green" (click)="allow()">Allow</ion-button>
 </ion-footer> 

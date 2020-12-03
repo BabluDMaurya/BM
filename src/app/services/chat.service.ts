@@ -64,7 +64,12 @@ export class ChatService {
 
   //------------Accept chat request
   acceptChatRequest(data:any): Observable<any>{
-    return this.http.post<any>(Config.ApiUrl+'api/auth/getChatRequest',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('acceptChatRequest',data)));
+    return this.http.post<any>(Config.ApiUrl+'api/auth/acceptRequest',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('acceptChatRequest',data)));
+
+  }
+  //------------Reject chat request
+  rejectChatRequest(data:any): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/rejectRequest',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('rejectChatRequest',data)));
 
   }
 
