@@ -29,8 +29,8 @@ export class RequestsModalComponent implements OnInit {
     this.commonService.dismissModal();
   }
   
-  navigate(id : any){
+  navigate(id : any,senderId:any){
     this.closeModal();
-    this.router.navigate(['/access/'+id]);
+    this.router.navigate(['/access/'+id+'/'+senderId]);
   }
 }

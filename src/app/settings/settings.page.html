@@ -20,7 +20,7 @@
         <ion-item>
             <ion-label [routerLink]="['/change']">Change Password</ion-label>
         </ion-item>
-        <ion-list-header class="green text-white" (click)="verifyUserInfoModal()">{{uv}}</ion-list-header>
+        <ion-list-header *ngIf="loginUserData.user_type != 0" class="green text-white" (click)="verifyUserInfoModal()">{{uv}}</ion-list-header>
         <!-- <ion-item>
             <ion-label class="text-green" (click)="verifyUserModal()" >{{uv}}</ion-label>
         </ion-item> -->

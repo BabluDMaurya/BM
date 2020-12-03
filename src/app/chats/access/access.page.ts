@@ -4,6 +4,7 @@ import { ChatService } from 'src/app/services/chat.service';
 import { ToastController } from '@ionic/angular';
 import { ParamMap, ActivatedRoute } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-access',
@@ -11,41 +12,52 @@ import { CommonService } from 'src/app/services/common.service';
   styleUrls: ['./access.page.scss','../../app.component.scss',],
 })
 export class AccessPage implements OnInit {
-  chatUserId: any;
+  requestId: any;
   userData:any;
   messageButtons = true;
+  senderId : any;
   constructor(public navCtrl: NavController,
     private actRoute: ActivatedRoute,
     private dataService: ChatService,
-    public commonService:CommonService,) { }
+    public commonService:CommonService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
-      this.chatUserId = params.get('chatuserId');
+      this.requestId = params.get('id');
+      this.senderId = params.get('senderId');
 
-      // console.log("this.chatUserId:"+this.chatUserId);
+
+
+      console.log("this.this.senderId:"+this.senderId);
     });
   }
   //---------allow---------
   allow(){
     this.commonService.presentLoader();
-    if(this.chatUserId != null && this.chatUserId != ''){
+    if(this.requestId != null && this.requestId != ''){
       //------------Accept Request -------------
-    this.dataService.acceptChatRequest({ 'id': this.chatUserId}).subscribe(
+    this.dataService.acceptChatRequest({ 'id': this.requestId,'senderId' : this.senderId}).subscribe(
       (data: any) => {
-        this.commonService.dismissLoader();
-        this.messageButtons = false;
-        // this.navCtrl.back();
-          console.log("acceptRequest:" + JSON.stringify(data.acceptRequest));
+          this.commonService.dismissLoader();
+          this.messageButtons = false;
+          // this.navCtrl.back();
+          // console.log("acceptRequest:" + JSON.stringify(data.acceptRequest));
+          // console.log("Room:" + JSON.stringify(data.room));
+          // console.log("status:" + JSON.stringify(data.status));
+          if(data.status){
+            this.router.navigateByUrl('/chat-room/'+data.room);
+          }
       });
     }
   }
   decline(){
     this.commonService.presentLoader();
-    if(this.chatUserId != null && this.chatUserId != ''){
+    if(this.requestId != null && this.requestId != ''){
       //------------Reject Request -------------
-    this.dataService.rejectChatRequest({ 'id': this.chatUserId}).subscribe(
+    this.dataService.rejectChatRequest({ 'id': this.requestId}).subscribe(
       (data: any) => {
         this.commonService.dismissLoader();
         this.messageButtons = false;

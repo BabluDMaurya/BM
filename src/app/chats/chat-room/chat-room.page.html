@@ -85,23 +85,19 @@
     </ion-row>
   </ion-grid>
 </ion-content>
- <!-- <ion-textarea [(ngModel)]="message"></ion-textarea>   -->
-<!-- <ion-fab horizontal="start" vertical="bottom" slot="fixed" *ngIf="messageBox">
+ <ion-textarea [(ngModel)]="message"></ion-textarea>  
+<ion-fab horizontal="start" vertical="bottom" slot="fixed" *ngIf="messageBox">
   <ion-fab-button size="small" clear icon-only (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" [emojiPickerDirection]="'top'" (emojiPickerSelect)="handleSelection($event)">
     <ion-icon name="md-happy"></ion-icon>
   </ion-fab-button>
-</ion-fab> --> 
-<!-- <ion-footer class="sticky-footer">
+</ion-fab> 
+<ion-footer class="sticky-footer">
   <ion-item lines="none">   
     <ion-input type="text" [(ngModel)]="message"  placeholder="Type message"></ion-input>
     <ion-button expand="block" fill="clear" color="primary" [disabled]="message === ''" class="msg-btn"
     (click)="sendMessage()">
     <ion-icon name="ios-send" slot="icon-only"></ion-icon>
-  </ion-button>     -->
-  <!-- <ion-icon name="md-send" (click)="send(chat_input)" item-right></ion-icon> -->
-  <!-- </ion-item>
-</ion-footer> -->
-<ion-footer class="sticky-footer chatsButtons d-flex" *ngIf="messageButtons">
-    <ion-button class="ion-no-margin full-height" color="light" (click)="decline()">Decline</ion-button>
-    <ion-button class="ion-no-margin full-height green" (click)="allow()">Allow</ion-button>
+  </ion-button>    
+  <ion-icon name="md-send" (click)="send(chat_input)" item-right></ion-icon>
+  </ion-item>
 </ion-footer> 

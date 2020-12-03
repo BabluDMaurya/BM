@@ -102,15 +102,15 @@ export class VerifyUserComponent implements OnInit {
   };
 
   onSubmit() {
-    this.submitted = true;
+    // this.submitted = true;
     if (this.userIdentityVerifyForm.invalid) {
       console.log(this.userIdentityVerifyForm);
       return;
     }
     this.commonService.presentLoader();
     this.settingsService.userIndentityVerify(this.userIdentityVerifyForm.value).subscribe((data: any) => {
-      console.log(data);
-      console.log(data.Record.RecordStatus);
+      // console.log(data);
+      // console.log(data.Record.RecordStatus);
       this.commonService.dismissLoader();
       if(data.Record.RecordStatus ==='match'){
         
@@ -122,6 +122,8 @@ export class VerifyUserComponent implements OnInit {
       }else{        
         this.commonService.presentToast('Record Not Match');        
       }       
+    }, (err) => {
+      this.commonService.dismissLoader();
     });    
   }
 
