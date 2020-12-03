@@ -1,11 +1,10 @@
 <ion-header class="top-header ion-no-padding">
   <ion-list class="top-heading three-block">
     <ion-item slot="start">
-      <ion-buttons class="ion-no-margin live-bt"> Live
-      </ion-buttons>
+      <ion-button class="ion-no-margin btnLive">Live</ion-button>
     </ion-item>
     <ion-item slot="center">
-      <ion-label>INTOACTIV</ion-label>
+      <ion-label>INTOACTIVE</ion-label>
     </ion-item>
     <ion-item class="icon-right-side ion-text-end" slot="end">
       <div class="icon-right-side">
@@ -33,11 +32,8 @@
       <ion-row class="row">
         <ion-col size="3" *ngFor="let special of  specialities">
           <ion-card class="category-card"> 
-              <div class="catBG"> <img src="{{url}}public/{{special?.specialities_image}}"
-                *ngIf="special?.specialities_image"></div>
-                <ion-card-content> 
-              {{special?.name}}
-            </ion-card-content>
+              <img src="{{url}}public/{{special?.specialities_image}}" *ngIf="special?.specialities_image">
+              <h4>{{special?.name}}</h4>
           </ion-card>
         </ion-col>
       </ion-row>

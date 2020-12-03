@@ -9,8 +9,25 @@ h2{font-weight: 500;color: #000;font-size: 0.90rem;}
 // css for footer
 .sticky-footer .send-img{width: 26px;}
 .comment {width: 100%; border: none;}
-ion-list{margin-bottom: 56px;}
+ion-content{--background: transparent;background-image: url(../../../../assets/images/chat-bg.png);background-size: contain;
+    ion-list{background: transparent;margin-top: 15px;
+        ion-item{--background: transparent;
+            div{width: 75%;margin-bottom:10px;
+                h2{margin: 0;font-size: 11px;margin-top: 3px;color: #777;}
+                p{padding: 10px;border-radius: 6px 6px 6px 0;background: #ebebeb;color:#000;display: inline-block;line-height: 1.6;}
+            }
+        }
+        ion-item.ion-text-start{}
+        ion-item.ion-text-end{
+            div{margin-left: auto;
+                p{border-radius: 6px 6px 0 6px;background: #27a69a;color: #FFF;}
+            }
+        }
+    }
+}
 ion-list>ion-list{margin-bottom: 0;}
+
+
 .sticky-footer{max-height: 100px;min-height: 56px;height: auto;
     form{height: 100%;
         ion-item{height: 100%;display: flex;

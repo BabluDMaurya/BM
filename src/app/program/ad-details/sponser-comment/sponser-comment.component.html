@@ -12,8 +12,8 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content"> 
-  <ion-list *ngIf="comment">
-    <ion-list lines="none" class="comment-list" *ngFor="let data of comment" >
+  <div *ngIf="comment">
+    <ion-list lines="none" class="comment-list" >
       <!-- <ion-item class="comment-item">
       
         <ion-avatar slot="start" class="ion-no-margin" >
@@ -26,23 +26,22 @@
           
         </ion-label>
       </ion-item> -->
-      <ion-item [ngClass]="data.sent_from == 0 ? 'comment-item ion-text-start' : 'comment-item ion-text-end'">      
+      <ion-item *ngFor="let data of comment" [ngClass]="data.sent_from == 0 ? 'comment-item ion-text-start' : 'comment-item ion-text-end'">      
         <!-- <ion-avatar slot="start" class="ion-no-margin" >
           <img src="../../assets/images/user.jpg">
         </ion-avatar> -->
-        <ion-label class="comment-label">
+        <div>
+          <p>{{data.message}}</p>  
           <h2 *ngIf="data.sent_from == 1">{{data.user_name}}</h2>
           <h2 *ngIf="data.sent_from == 0">{{data.company_name}}</h2>
-          <p>{{data.message}}</p>          
-        </ion-label>
+        </div>
       </ion-item>
     </ion-list>
-  </ion-list> 
+  </div> 
 </ion-content>
 <ion-footer class="sticky-footer">
   <form class="commentForm" [formGroup]="commentForm" (ngSubmit)="onClickSubmit()">
-  <ion-item lines="none">
-  
+  <ion-item lines="none">  
     <textarea placeholder="Enter Comment" #commentfield formControlName="comment" name="comment"   auto-grow="true" class="comment"></textarea>
     <img (click)="onClickSubmit()" src="../assets/images/send.svg" class="send-img">
   </ion-item>
