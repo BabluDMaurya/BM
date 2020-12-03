@@ -12,7 +12,7 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content">
-  <ion-card class="faq-card item-card" *ngFor="let item of items">          
+  <ion-card class="faq-card item-card" *ngFor="let item of items" [ngClass]="status ? 'active' : 'test'">          
     <ion-card-header class="faq-header" (click)="expandItem(item)">
       <ion-card-title>{{ item.title}}</ion-card-title>          
       <ion-icon ios="ios-add" md="md-add"></ion-icon>
