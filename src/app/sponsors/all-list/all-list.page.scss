@@ -1,3 +1,9 @@
-.contentList{
-    margin-left: 15%;
+ion-card{border-radius: 0;box-shadow: none;border-bottom: 4px solid #f7f7f7;
+    ion-item{border-bottom: 1px solid #f7f7f7;}
 }
+.action-links{
+    ion-icon{color: #27a69a;}
+}
+.chatBadge{display: flex;align-items: center;}
+.mb-10{margin-bottom: 10px !important;}
+.contentList p{color: #999;}
