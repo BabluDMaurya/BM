@@ -169,7 +169,7 @@
 //.custom-alert .alert-button-group button:last-child{margin-inline-end: auto;}
 //.no-alert-button .alert-button-group{padding: 0;}
 .no-alert-button .alert-head {padding-top: 20px;}
-.custom-alert .alert-message{text-align: center;font-size: 0.875rem;}
+.custom-alert .alert-message{text-align: center;font-size: 0.875rem;line-height: 1.4;}
 // .custom-alert .alert-button-group button{background: #26a69a;color: #FFF;margin: 0 auto;min-width: 55px;text-align: center;padding: 6px;}
 .custom-alert .alert-button-group button>span{justify-content: center;}
 
@@ -188,5 +188,9 @@ ion-radio{--color-checked: #26a69a;}
 
 .custom-popover ion-list{margin-bottom: 0;}
 
-.calendar-table .dayview-container{height: 73vh !important;margin-bottom: 58px;}
-
+.calendar-table .dayview-container{height: calc(100vh - 155px) !important}
+ion-calendar-modal{
+  ion-header{
+    ion-toolbar{--ion-color-base: #2bbbad!important;}
+  }
+}

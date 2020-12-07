@@ -21,6 +21,10 @@ ion-slides{background: transparent;padding: 0 5px;}
 .users-list ion-label{width: 100px;}
 .view-all{width:36px;height:36px;max-width: 36px;text-align:center;background:#f1f0f0;border-radius:50%;display:flex;justify-content:center;align-items:center;margin: 0;margin-left: -10px;}
 
+.durationItem{
+    ion-input{position: relative;top: 2px;text-align: right;}
+}
+
 .program-card{width: 100%;}
 ion-item ion-list{width: 100%;}
 .item-list > ion-item{--inner-padding-end: 0;}
@@ -38,3 +42,10 @@ ion-item ion-list{width: 100%;}
 }
 }
 }
+ion-list{padding-top: 0 !important;padding-bottom: 0 !important;
+    ion-item{font-size: 0.875rem;--padding-end: 16px;padding-inline-end: 0;--inner-padding-end: 0;--min-height: 44px;--border-color: whitesmoke;}
+    .descriptionItem{
+        ion-item{padding: 0;}
+    }
+}
+.repeatedHeading{font-weight: 400;font-size: 15px;margin-bottom: 0;}

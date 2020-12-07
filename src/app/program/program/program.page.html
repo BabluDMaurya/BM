@@ -37,20 +37,29 @@
 <!------------- E N D   S K E L E T O N ----------------->
   <ion-segment class="top-segment" (ionChange)="tabs($event)">
     <ion-segment-button value="hosting" *ngIf="userData?.user_type" checked>
-      <span>Hosting <ion-badge class="circle-badge green">{{programList?.length || 0}}</ion-badge></span>
+      <div class="chatBadge">
+        <span>Hosting</span> 
+        <ion-badge class="ml-1">{{programList?.length || 0}}</ion-badge>
+      </div> 
     </ion-segment-button>
     <ion-segment-button value="attending">
-      <span>Attending <ion-badge class="circle-badge green">{{accProgramList?.length || 0}}</ion-badge></span>
+      <div class="chatBadge">
+        <span>Attending</span> 
+        <ion-badge class="ml-1">{{accProgramList?.length || 0}}</ion-badge>
+      </div>       
     </ion-segment-button>
     <ion-segment-button value="requested">
-      <span>Requested <ion-badge class="circle-badge green">{{reqProgramList?.length || 0}}</ion-badge></span>
+      <div class="chatBadge">
+        <span>Requested</span> 
+        <ion-badge class="ml-1">{{reqProgramList?.length || 0}}</ion-badge>
+      </div>     
     </ion-segment-button>
   </ion-segment>
   <div [ngSwitch]="programTabs">
     <ion-list lines="none" *ngSwitchCase="'hosting'" class="ion-no-padding">
       <div *ngIf="programList &&  !showAll">
         <ion-card *ngFor="let program of programList" class="ion-no-margin">
-          <ion-item class="item-card">
+          <ion-item>
             <ion-avatar slot="start" [routerLink]="['/program-details',program.id]">
               <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
               <img src="../../../assets/images/loading.jpg" *ngIf="!program?.image_path">
@@ -76,7 +85,7 @@
               <ion-item *ngFor="let item of cloneProg">
                 <ion-label>
                   <h3 class="list-person">{{item?.converted | date:'medium'}} <span class="ion-float-right d-flex">
-                      <ion-icon class="text-green" ios="ios-time" md="md-time"></ion-icon> {{item?.program_duration}}
+                      <ion-icon class="text-green mr-1" ios="ios-time" md="md-time"></ion-icon> {{item?.program_duration}}
                       Min.
                     </span> </h3>
                   <p>{{item?.title}} - {{item?.description}}</p>

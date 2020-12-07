@@ -86,6 +86,7 @@ export class UserModalComponent implements OnInit {
         }else{
           msg = 'In group program 2 way only 4 users can select. Other will  not consider';
           this.commonService.presentAlert('Alert',msg,['Ok']);
+          // this.commonService.presentAlert('Alert',msg,['Ok'],'custom-alert');
         }
 
       }else{
