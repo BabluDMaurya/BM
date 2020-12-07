@@ -113,7 +113,7 @@ export class MusicVolumeModalComponent implements OnInit {
             }else{
               this.errorMessage = 'Some thing wrong';
             }
-          this.commonService.presentAlert("Error", this.errorMessage,["Ok"]);
+          this.commonService.presentAlert("Error", this.errorMessage,["Ok"],'');
         });
   
         this.videoFileUpload.onProgress((data) => {

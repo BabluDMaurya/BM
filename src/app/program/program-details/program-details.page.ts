@@ -174,7 +174,7 @@ export class ProgramDetailsPage implements OnInit {
       }
     ];
     
-    this.commonService.presentAlert(title,msg,btn)
+    this.commonService.presentAlert(title,msg,btn,'')
   }
   ngOnDestroy() {
 

@@ -64,7 +64,7 @@ export class AdDetailsComponent implements OnInit {
 
 
 
-    this.commonService.presentAlert('Accept Request', 'Are you sure?', btn)
+    this.commonService.presentAlert('Accept Request', 'Are you sure?', btn,'')
   }
 
   sendRequest(event) {

@@ -74,7 +74,7 @@ export class UserModalComponent implements OnInit {
            checkArray.push(new FormControl(e.target.value));
         }else{
           msg = 'In private program only 1 user can select.Other will  not consider';
-          this.commonService.presentAlert('Alert',msg,['Ok']);
+          this.commonService.presentAlert('Alert',msg,['Ok'],'remove_header');
         }
 
       }else if(pt==4)
@@ -85,7 +85,7 @@ export class UserModalComponent implements OnInit {
           checkArray.push(new FormControl(e.target.value));
         }else{
           msg = 'In group program 2 way only 4 users can select. Other will  not consider';
-          this.commonService.presentAlert('Alert',msg,['Ok']);
+          this.commonService.presentAlert('Alert',msg,['Ok'],'');
         }
 
       }else{

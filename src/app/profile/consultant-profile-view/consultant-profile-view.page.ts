@@ -247,7 +247,7 @@ export class ConsultantProfileViewPage implements OnInit {
         this.sendReport();
       }
     }]
-    this.commonService.presentAlert('Report A User', 'Are you sure.?', btns)
+    this.commonService.presentAlert('Report A User', 'Are you sure.?', btns,'')
   }
 
   blockUser(event) {

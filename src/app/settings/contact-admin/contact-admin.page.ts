@@ -74,12 +74,12 @@ validation_messages = {
         this.commonService.presentAlert('Success','Message delivered successfully.',null, 'custom-alert no-alert-button');
       }else{
         this.commonService.dismissLoader();
-        this.commonService.presentAlert('Failed',data.status,null);
+        this.commonService.presentAlert('Failed',data.status,null,'');
       }
     },
     err=>{ console.log(err);
       this.commonService.dismissLoader();
-      this.commonService.presentAlert('Failed',err.message,null);  
+      this.commonService.presentAlert('Failed',err.message,null,'');  
     }  );
 
   }

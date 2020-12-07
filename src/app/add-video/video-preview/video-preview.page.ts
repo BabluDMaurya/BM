@@ -88,7 +88,7 @@ export class VideoPreviewPage implements OnInit {
         localStorage.removeItem('videoData');
         this.router.navigateByUrl('tabs/consultant-profile');
       }else{
-        return this.commonService.presentAlert("Error", "Some thing wrong",['Ok']);
+        return this.commonService.presentAlert("Error", "Some thing wrong",['Ok'],'');
       }
     });
   }

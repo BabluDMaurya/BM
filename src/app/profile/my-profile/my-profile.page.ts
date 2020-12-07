@@ -285,7 +285,7 @@ export class MyProfilePage implements OnInit {
                 }
               }
             ]
-        this.commonService.presentAlert('Are you sure to Exit the  App?','',buttons );
+        this.commonService.presentAlert('Are you sure to Exit the  App?','',buttons,'');
       }else{
         if(this.commonService.modal){
           this.commonService.dismissModal();

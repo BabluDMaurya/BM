@@ -122,7 +122,7 @@ export class AddVideoPage implements OnInit {
   submitForm() {
     this.isSubmitted = true;          
       if(this.selectedVideo == null){
-        this.commonService.presentAlert("Video","Please select video then post !",['Close']);          
+        this.commonService.presentAlert("Video","Please select video then post !",['Close'],'');          
         return false;
       }else{                      
         this.getGenres();
@@ -223,13 +223,13 @@ export class AddVideoPage implements OnInit {
       var retrievedFile = await this.file.getFile(dirUrl, filename, {});           
     } catch(err) {
       this.dismissLoader();
-      this.commonService.presentAlert("Error","Something went wrong.",['Ok']);
+      this.commonService.presentAlert("Error","Something went wrong.",['Ok'],'');
     }
     retrievedFile.file( data => {
         this.dismissLoader();
-        if (data.size > MAX_FILE_SIZE){ return this.commonService.presentAlert("Error", "You cannot upload more than 100 mb.",['Ok']);}
+        if (data.size > MAX_FILE_SIZE){ return this.commonService.presentAlert("Error", "You cannot upload more than 100 mb.",['Ok'],'');}
         // if (data.type !== ALLOWED_MIME_TYPE) { return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"]);}
-        if(ALLOWED_MIME_TYPE.indexOf(data.type) == -1){return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"]);}
+        if(ALLOWED_MIME_TYPE.indexOf(data.type) == -1){return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"],'');}
         this.selectedVideo = retrievedFile.nativeURL;
         localStorage.setItem('selectedVideo',JSON.stringify(this.selectedVideo));
         this.videoFileSelected = !this.videoFileSelected; 

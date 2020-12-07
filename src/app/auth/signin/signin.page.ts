@@ -155,7 +155,7 @@ export class SigninPage implements OnInit, OnDestroy {
         }];
         let msg = 'Email is not verified please verify email first';
         let title = 'Login Failed'
-        this.commonService.presentAlert(title, msg, btns);
+        this.commonService.presentAlert(title, msg, btns,'');
         this.commonService.dismissLoader();
       } else {
         this.commonService.dismissLoader();
@@ -186,7 +186,7 @@ export class SigninPage implements OnInit, OnDestroy {
               }
             }
           ] 
-        this.commonService.presentAlert(header,'',buttons);
+        this.commonService.presentAlert(header,'',buttons,'');
       }
     });
   }
