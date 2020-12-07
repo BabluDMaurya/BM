@@ -57,9 +57,10 @@
         </ion-segment>
 
       </ion-col>
-      <ion-col size="12" class="ion-no-padding" *ngIf="videoList.length==0">
-        <ion-slide class="no_imagedata">No post added yet!!!</ion-slide>
-      </ion-col>
+      <div *ngIf="videoList.length==0" class="no-data">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No post added yet!!!</p>
+      </div>
     </div>
 
   </form>

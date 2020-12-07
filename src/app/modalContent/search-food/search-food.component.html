@@ -25,7 +25,10 @@
        </ion-item>
       </ion-list>
       <div *ngIf="foodList['0']['common'] < 1">
-        <div class="no-data">NO DATA FOUND</div>
+        <div class="no-data">
+          <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+          <p>No Data Data</p>
+        </div>
       </div> 
   </div>  
   <ng-template #emptyDiv >

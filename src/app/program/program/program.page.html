@@ -133,7 +133,10 @@
           </app-expandable>
         </ion-card>
       </div>
-      <div *ngIf="programList?.length < 1 && allProgramList?.length<1" class="no-data">No Hosting Program</div>
+      <div *ngIf="programList?.length < 1 && allProgramList?.length<1" class="no-data">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No Hosting Program</p>
+      </div>
     </ion-list>
     <!------------ A T T E N D I N G   P R O G R A M  -->
     <ion-list lines="none" *ngSwitchCase="'attending'">
@@ -154,7 +157,10 @@
           <ion-icon ios="ios-repeat" md="md-repeat" (click)="expandItem(item,2)"></ion-icon>
         </div>
       </ion-item>
-      <div *ngIf="accProgramList?.length < 1" class="no-data">No Attending Program</div>
+      <div *ngIf="accProgramList?.length < 1" class="no-data">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No Attending Program</p>
+      </div>
     </ion-list>
     <app-expandable expandHeight="300px" class="timeline-block" [expanded]="item?.expanded">
       <div class="lds-dual-ring" *ngIf="!cloneProg"></div>
@@ -193,7 +199,10 @@
           </ion-icon>
         </div>
       </ion-item>
-      <div *ngIf="reqProgramList?.length < 1" class="no-data">No Requested Program</div>
+      <div *ngIf="reqProgramList?.length < 1" class="no-data">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No Requested Program</p>
+      </div>
     </ion-list>
     <app-expandable expandHeight="300px" class="timeline-block" [expanded]="item?.expanded">
       <div class="lds-dual-ring" *ngIf="!cloneProg"></div>

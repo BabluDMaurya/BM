@@ -7,9 +7,10 @@
   </ion-refresher-content>
 </ion-refresher>
 <div  *ngIf="gotData">
-  <ion-col *ngIf="!myPosts?.length > 0" size="12" class="ion-no-padding">
-    <ion-slide class="no_imagedata">No post added yet!!!</ion-slide>
-  </ion-col>
+  <div *ngIf="!myPosts?.length > 0" class="no-data" style="height: calc(100vh - 211px);">
+    <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+    <p>No post added yet!!!</p>
+  </div>
   <ion-card class="item-card"  *ngFor="let post of myPosts">
     <span  >    
     <ion-card-header class="item-header" >

@@ -121,9 +121,10 @@
             <img src="{{url}}{{preview}}" (click)="openViewer(preview)" *ngIf="previewImage.length>0" />
           </ion-slide>
         </ion-slides>
-        <ion-col size="12" class="ion-no-padding" *ngIf="previewImage.length==0">
-          <ion-slide class="no_imagedata">No post added yet!!!</ion-slide>
-        </ion-col>
+        <div class="no-data" *ngIf="previewImage.length==0">
+          <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+          <p>No post added yet.</p>
+        </div>
       </ion-col>
     </ion-row>
     <!-- <ion-row class="counter-box" *ngIf="tabs">

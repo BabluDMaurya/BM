@@ -139,13 +139,7 @@ ion-text{font-size:0.8125rem}
 .change-pass-form .resetpass-btn{
     margin-top: 40px;
 }
-.change-toggle-password {
-    position: absolute;
-    right: 0px !important;
-    top:   24%;
-    bottom: 0;
-    font-size: 16px;z-index: 9;
-}
+.change-toggle-password {position: absolute;right: 0px;bottom: 6px;font-size: 16px;z-index: 9;}
 .post-view {
     position: relative;
 }
@@ -485,7 +479,9 @@ ion-select{color: #222;}
 .search-item{width: 80%;margin-left: 25px;}
 .four-item ion-list ion-item{width:25%;}
 .swiper-slide{background: #fbfbfb;}
-.grey-header{background: #e4e4e4;min-height: 34px;color: rgba(0, 0, 0, 0.87);margin-bottom: 15px;}
+.grey-header{background: #f7f7f7;min-height: 40px;color: rgba(0, 0, 0, 0.87);margin-bottom: 15px;
+    ion-label{font-size: 0.75rem;color: #000;text-transform: uppercase;}
+}
 .ingredient-list ion-item, .instructions-list ion-item{--min-height:auto}
 .ingredient-list ion-item p, .instructions-list ion-item p{width: 100%;border-bottom: 1px solid whitesmoke;padding-bottom: 5px;margin-bottom: 5px;}
 .ingredient-list ion-item:last-child p, .instructions-list ion-item:last-child p{border-bottom: none;padding-bottom: 0;margin-bottom: 0;}
@@ -697,7 +693,8 @@ ion-avatar ion-skeleton-text{border-radius: 50%;}
 .full-height{height: 100%;}
 .full-width{width: 100%;}
 .mb-10{margin-bottom: 10px;}
-.mb-0{margin-bottom: 0px;}
+.mb-0{margin-bottom: 0px !important;}
+.mt-0{margin-top: 0px;}
 .text-white{color: #FFF;}
 .mt-15{margin-top: 15px;}
 .mt-20{margin-top: 20px;}
@@ -816,7 +813,10 @@ ion-checkbox{--background-checked: #2bbbad;--border-color-checked: #2bbbad;}
 .timeline-list ion-item::before{content: '';width: 8px;height: 8px;background:#27a69a;display: block;position: absolute;top: 15px;left: 11px;z-index: 999;border-radius: 50%;border: 1px solid #e6e6e6;}
 .timeline-list ion-item p{white-space: initial;}
 
-.faq-header{display: flex;justify-content: space-between;align-items: baseline;padding-bottom: 0;}
+.faq-card{
+    ion-card-content{padding-bottom: 0;}
+}
+.faq-header{display: flex;justify-content: space-between;align-items: baseline;}
 .faq-header ion-card-title{font-size: .85rem;font-weight: 500;line-height: 1.5;}
 .faq-header ion-icon{width: 14px;height: 14px;min-width: 14px;margin-left: 10px;color: #26a69a;}
 
@@ -860,7 +860,7 @@ ion-item-divider{--padding-start: 0;}
 
 // Css for notification Control
 .toggle-list ion-list-header{margin-bottom: 0;}
-.toggle-list ion-label{font-size: .875rem;}
+.toggle-list {ion-item {ion-label{font-size: 0.8125rem;}}}
 
 .chatsButtons ion-button{width: 50%;--border-radius: 0;border-radius: 0;}
 
@@ -930,3 +930,4 @@ ion-badge{width:18px;height:18px;background:#27a69a;border-radius:50%;font-weigh
 .ml-1,.mx-1{margin-left:.25rem!important}
 .chatBadge{display: flex;align-items: center;}
 .mb-10{margin-bottom: 10px !important;}
+.item-has-focus .label-stacked{color:#000 !important}

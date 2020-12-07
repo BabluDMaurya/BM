@@ -134,9 +134,10 @@
       </ion-card>
     </div>
     <div *ngSwitchCase="'video'" lines="none"> 
-      <ion-col *ngIf="!myPosts || myPosts.length === 0" size="12" class="ion-no-padding">
-        <ion-slide class="no_imagedata">No post added yet. !!!</ion-slide>
-      </ion-col>           
+      <div class="no-data" *ngIf="!myPosts || myPosts.length === 0">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No post added yet.</p>
+      </div>          
       <ion-card class="video-card" *ngFor="let post of myPosts">
         <ion-card-header class="card-head upcoming-block" [routerLink]="['/videos',post.posts_id,'exclusive']">
           <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}" *ngIf="profileData?.userData?.bios?.profile_pic">
@@ -189,13 +190,13 @@
       <ion-infinite-scroll threshold="100px" (ionInfinite)="loadVideoData($event)">
         <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
         </ion-infinite-scroll-content>
-      </ion-infinite-scroll>
-      
+      </ion-infinite-scroll>      
     </div>
     <ion-list lines="none" *ngSwitchCase="'program'">
-      <ion-col *ngIf="noData" size="12" class="ion-no-padding">
-        <ion-slide class="no_imagedata">No upcoming program yet. !!!</ion-slide>
-      </ion-col>
+      <div class="no-data" *ngIf="!upcomingList || upcomingList.length === 0">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No upcoming program added yet.</p>
+      </div> 
       <ion-item class="upcoming-block"  *ngFor="let upcoming of upcomingList">
         <ion-avatar slot="start">
           <img

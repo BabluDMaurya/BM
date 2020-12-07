@@ -60,6 +60,10 @@
     <ion-segment-button value="chat"><div class="chatBadge"><span>Chat</span> <ion-badge class="ml-1" *ngIf="sponcerCount > 0">{{ sponcerCount }}</ion-badge></div></ion-segment-button>
   </ion-segment>
     <div *ngIf="showList">
+      <div class="no-data" *ngIf = "programList">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No Recode Found</p>
+      </div>
         <ion-card *ngFor="let program of programList; let i = index;" class="ion-no-margin">
           <ion-item lines="none">
             <!-- <ion-avatar slot="start" (click)="showSponsersContent(program)">
@@ -92,9 +96,10 @@
    
     <div *ngIf="showChat">
       <ion-list lines="none" class="item-list ion-no-padding" >
-        <ion-list-header *ngIf = "sponcersChatEmpty">
-          No Recode Found
-        </ion-list-header>       
+        <div class="no-data" *ngIf = "sponcersChatEmpty">
+          <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+          <p>No Recode Found</p>
+        </div>       
         <ion-list-header *ngIf ="sponcersChat">
           Recent Conversations
         </ion-list-header>  

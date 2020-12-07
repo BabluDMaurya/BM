@@ -11,3 +11,6 @@ ion-card{border-radius: 0;box-shadow: none;border-bottom: 4px solid #f7f7f7;
         p{color: #27a69a;}
     }
 }
+.no-data{
+    height: calc(100vh - 100px)
+}

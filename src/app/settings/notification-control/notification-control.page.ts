@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { SettingsService } from '../../services/settings.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class NotificationControlPage implements OnInit {
   
   data : any;
   constructor(
-    public settingService: SettingsService,    
+    public settingService: SettingsService,public navCtrl: NavController    
   ) { }
 
   ngOnInit() {
@@ -37,7 +38,9 @@ export class NotificationControlPage implements OnInit {
         console.error('error msg!',err);
       });
   }
-
+  goBack() {
+    this.navCtrl.back();
+  }
   followingNotiCont(){
     this.following = this.apiResponce('following',this.following);
   }

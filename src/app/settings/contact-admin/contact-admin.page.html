@@ -12,13 +12,12 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content">
-  <ion-grid>
     <ion-row>
-      <ion-col size="12">
+      <ion-col size="12" class="ion-padding">
         <form class="login-form sec-login" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
           <ion-item class="ion-no-padding">
-            <!-- <ion-label></ion-label> -->
-            <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select Ouery Type" formControlName="query" required>
+            <ion-label position="stacked">Select Ouery Type</ion-label>
+            <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" formControlName="query" required>
               <ion-select-option value="Feedback">Feedback</ion-select-option>
               <ion-select-option value="Suggestion">Suggestion</ion-select-option>
               <ion-select-option value="Complain">Complain</ion-select-option>
@@ -30,7 +29,8 @@
             </ng-container>
           </div>
           <ion-item class="ion-no-padding">
-            <ion-input placeholder="Subject" type="text" formControlName="subject"></ion-input>            
+            <ion-label position="stacked">Enter Subject</ion-label>
+            <ion-input type="text" formControlName="subject"></ion-input>            
           </ion-item>   
           <div class="validation-errors">
             <ng-container *ngFor="let validation of validation_messages.subject">
@@ -38,7 +38,8 @@
             </ng-container>
           </div>      
           <ion-item class="ion-no-padding">
-            <ion-textarea clearOnEdit="true" placeholder="Message" formControlName="message"></ion-textarea>
+            <ion-label position="stacked">Enter Message</ion-label>
+            <ion-textarea clearOnEdit="true" formControlName="message"></ion-textarea>
           </ion-item>
           <div class="validation-errors">
             <ng-container *ngFor="let validation of validation_messages.message">
@@ -50,6 +51,5 @@
         </form>
       </ion-col>
     </ion-row>
-  </ion-grid>
 
 </ion-content>

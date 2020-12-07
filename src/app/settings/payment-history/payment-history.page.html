@@ -12,14 +12,14 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content">
-  <ion-list lines="none"> 
-    <ion-item *ngFor="let peoplelist of [].constructor(15)" class="item-card" [routerLink]="['/payment-review']" detail="false">
+  <ion-card *ngFor="let peoplelist of [].constructor(15)" class="ion-no-margin">
+    <ion-item lines="none" [routerLink]="['/payment-review']" detail="false">
       <ion-label>
         <h3 class="list-person">Pooja96</h3>
-        <span class="list-name">Riding with Pooja96</span>
+        <span class="list-name d-block">Riding with Pooja96</span>
         <span class="list-name">13 May 2019 at 6:00 PM</span>
       </ion-label>
       <span class="list-name text-green" slot="end">$0</span>
     </ion-item>
-  </ion-list>  
+  </ion-card>
 </ion-content>
