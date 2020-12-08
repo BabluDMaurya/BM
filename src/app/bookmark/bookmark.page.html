@@ -20,7 +20,7 @@
   <div [ngSwitch]="bookmarkBlock" *ngIf="!data">
     <div *ngSwitchCase="'images'"> 
       <div *ngIf="!bookmarkImg?.length > 0" class="no-data">
-        <img src="../../../assets/images/error.svg" width="40px" />
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
         <p>No post added yet!!!</p>
       </div>
       <ion-card class="item-card" *ngFor="let post of bookmarkImg">
@@ -73,8 +73,11 @@
         </ion-card-content>
       </ion-card>
     </div>
-    <div *ngSwitchCase="'video'" lines="none">   
-             
+    <div *ngSwitchCase="'video'">
+      <div *ngIf="!bookmarkVideo?.length > 0" class="no-data">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No video added yet!!!</p>
+      </div>
       <ion-card class="item-card" *ngFor="let post of bookmarkVideo">
         <ion-card-header class="item-header">
           <ion-avatar>
@@ -123,11 +126,10 @@
             </div>
         </ion-card-content>
       </ion-card>
-       
     </div>
-    <ion-list lines="none" *ngSwitchCase="'program'">
-      <div *ngIf="!bookmarkProg?.length > 0" class="no-data ">
-        <img src="../../../assets/images/error.svg" width="40px" />
+    <div *ngSwitchCase="'program'">
+      <div *ngIf="!bookmarkProg?.length > 0" class="no-data">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
         <p>No program added yet!!!</p>
       </div>
       <ion-item class="item-card" *ngFor="let prog of bookmarkProg">
@@ -148,9 +150,8 @@
           </div>
           <ion-icon (click)="nutritionModal(prog?.programs)" ios="md-restaurant" md="md-restaurant" *ngIf="prog?.programs?.nutrition_id"></ion-icon>
         </div>
-      </ion-item>
-      
-    </ion-list>
+      </ion-item>      
+    </div>
   </div>
   <div [ngSwitch]="bookmarkBlock"  *ngIf="data">
     <div *ngSwitchCase="'images'"> 

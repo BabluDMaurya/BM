@@ -1,2 +1,28 @@
 ion-input{color: #222 !important;}
-.btn-add{position: absolute;top: 24px;right: 0;}
+.btn-add{position: absolute;right: 0;}
+.ingredientsBlock{
+    ion-list{
+        ion-button{bottom: 10px;}
+    }
+    ion-button{top: 78px;}
+}
+
+.instructionsBlock{
+    ion-list{
+        ion-button{bottom: 10px;}
+    }
+    ion-button{top: 38px;}
+}
+ion-segment.top-segment{height: 40px;
+    ion-segment-button{min-height: 40px;
+        ion-label{margin: 0;color: #000;font-size: 0.75rem;}
+    }
+}
+ion-slides{height: 275px;
+    ion-slide{
+        div{height: 100%;display:flex;
+            img{object-fit: contain;}
+            ion-icon{position: absolute;right: 8px;top: 8px;width: 24px;height: 24px;}
+        }
+    }
+}

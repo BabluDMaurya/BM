@@ -18,7 +18,7 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content no_footer">
-  <ion-grid class="ion-padding-horizontal" *ngIf="!showPreview">
+  <div class="ion-padding-horizontal" *ngIf="!showPreview">
     <form [formGroup]="nutritionForm" (ngSubmit)="toPreview()" class="nutrition-form">
       <ion-row class="ion-no-padding">
         <ion-col size="6" class="ion-no-padding">
@@ -37,27 +37,27 @@
             <ion-card-title>Camera</ion-card-title>
           </ion-card>
         </ion-col>
-        <ion-col size="12" class="ion-no-padding" *ngIf="gallaryImgPath?.length>0">
-          <ion-button (click)="slidePrev(slides)" class="slidebtns slideBack">
+        <ion-col size="12" class="ion-no-padding"><!-- *ngIf="gallaryImgPath?.length>0" -->
+          <!-- <ion-button (click)="slidePrev(slides)" class="slidebtns slideBack">
             <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
-          </ion-button>
+          </ion-button> -->
           <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider>
             <ion-slide (click)="showdetails()" *ngFor="let imgpath of gallaryImgPath; let i=index;">
               <img src="{{imgpath}}" />
               <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="removeImg(i)"></ion-icon>
             </ion-slide>
-          </ion-slides>
-          <ion-button (click)="slideNext(slides)" class="slidebtns slideNext">
+          </ion-slides>      
+          <!-- <ion-button (click)="slideNext(slides)" class="slidebtns slideNext">
             <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
-          </ion-button>
+          </ion-button> -->
         </ion-col>
       </ion-row>
       <ion-row class="ion-no-padding">
         <ion-col size="12" class="ion-no-padding">
           <ion-list>
             <ion-item>
-              <ion-input placeholder="Enter Title" class="form-control" type="text"  color="light"
-                 formControlName="nutriTitle"  [ngClass]="{ 'is-invalid': submitted && f.nutriTitle.errors }">
+              <ion-label position="stacked">Enter Title</ion-label>
+              <ion-input class="form-control" type="text" formControlName="nutriTitle" [ngClass]="{ 'is-invalid': submitted && f.nutriTitle.errors }">
               </ion-input>
             </ion-item>
             <ng-container *ngFor="let validation of validation_messages.nutriTitle">
@@ -67,8 +67,8 @@
               </span>
             </ng-container>
             <ion-item>
-              <ion-textarea placeholder="Enter Description" class="form-control" type="text"  color="light"
-                 formControlName="nutriDescription"
+              <ion-label position="stacked">Enter Description</ion-label>
+              <ion-textarea class="form-control" type="text" formControlName="nutriDescription"
                  [ngClass]="{ 'is-invalid': submitted && f.nutriDescription.errors }"></ion-textarea>
             </ion-item>
             <ng-container *ngFor="let validation of validation_messages.nutriDescription">
@@ -127,7 +127,7 @@
 
         </ion-col>
       </ion-row>
-      <ion-row class="ion-no-padding ion-margin-end">
+      <ion-row class="ion-no-padding ion-margin-end mt-20">
         <ion-col size="12" class="ion-no-padding">
           <ion-segment class="top-segment mb-10">
             <ion-segment-button value="create-food" (click)="foodTab=true" checked>
@@ -138,7 +138,7 @@
             </ion-segment-button>
           </ion-segment>
           <div [ngSwitch]="foodTab">
-            <div class="nutrition-form" *ngSwitchCase=true>
+            <div class="nutrition-form ingredientsBlock mt-20" *ngSwitchCase=true>
               <ion-list-header class="ion-no-padding min-height-auto">Ingredients</ion-list-header>
               <ion-list class="ion-no-padding mb-10" *ngFor="let item of tig.controls; let i = index">
                 <ion-item [formGroup]="item">
@@ -180,7 +180,7 @@
       </ion-row>
       <ion-row class="ion-no-padding">
         <ion-col size="12" class="ion-no-padding nutrition-form">
-          <div class="nutrition-form">
+          <div class="nutrition-form instructionsBlock mt-20">
             <ion-list-header class="ion-no-padding min-height-auto">Instructions</ion-list-header>
             <ion-list class="ion-no-padding mb-10" *ngFor="let item of t.controls; let i = index">
               <ion-item [formGroup]="item">
@@ -200,14 +200,14 @@
             <input type="button" value="+" (click)="addInstruction()">
           </ion-item> -->
         </ion-col>
-        <ion-col size="12" class="ion-no-padding">
+        <ion-col size="12" class="ion-no-padding mt-20">
           <ion-segment class="top-segment">
             <ion-segment-button class="segment-button-checked" style="max-width: 100%;" checked>
               <ion-label>Add Beverages</ion-label>
             </ion-segment-button>
           </ion-segment>
           <ion-item>
-            <ion-label color="light"  >Select Beverage</ion-label>
+            <ion-label>Select Beverage</ion-label>
             <ion-select placeholder="Beverage Type"  formControlName="nutriBevrageType">
               <ion-select-option value="1">Coffee</ion-select-option>
               <ion-select-option value="2">Milk</ion-select-option>
@@ -255,7 +255,7 @@
         </ion-col>
       </ion-row>
     </form>
-  </ion-grid>
+  </div>
   <ion-grid class="ion-no-padding" *ngIf="showPreview">
     <app-nutrition-preview></app-nutrition-preview>
   </ion-grid>

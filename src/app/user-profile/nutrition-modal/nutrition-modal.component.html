@@ -133,7 +133,10 @@
                   </ion-row>
                 </ion-grid>
               </div>
-              <div *ngIf="item.empty" class="no-data"> No BreakFast </div>
+              <div *ngIf="item.empty" class="no-data">
+                <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                <p>No BreakFast</p> 
+              </div>
             </div>
           </div>
           <div *ngSwitchCase="'brunch'" lines="none">
@@ -218,8 +221,12 @@
                   </ion-row>
                 </ion-grid>
               </div>
-              <div *ngIf="item.empty" class="no-data"> No Brunch </div>
-            </div>          </div>
+              <div *ngIf="item.empty" class="no-data"> 
+                <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                <p>No Brunch</p>
+              </div>
+            </div>          
+          </div>
           <div *ngSwitchCase="'lunch'">
             <div *ngFor="let item of nutritionItem | filter:'Lunch':'type'" >
               <div *ngIf="item.type=='Lunch'">
@@ -302,7 +309,10 @@
                   </ion-row>
                 </ion-grid>
               </div>
-              <div *ngIf="item.empty" class="no-data"> No Lunch </div>
+              <div *ngIf="item.empty" class="no-data">
+                <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                <p>No Lunch</p>
+              </div>
             </div>
           </div>
           <div *ngSwitchCase="'snacks'">
@@ -387,7 +397,10 @@
                   </ion-row>
                 </ion-grid>
               </div>
-              <div *ngIf="item.empty" class="no-data"> No Snacks </div>
+              <div *ngIf="item.empty" class="no-data">
+                <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                <p>No Snacks</p>
+              </div>
             </div>
          
           </div>
@@ -473,7 +486,10 @@
                   </ion-row>
                 </ion-grid>
               </div>
-              <div *ngIf="item.empty" class="no-data"> No Dinner </div>
+              <div *ngIf="item.empty" class="no-data">
+                <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                <p>No Dinner</p>
+              </div>
              </div>
           
           </div>

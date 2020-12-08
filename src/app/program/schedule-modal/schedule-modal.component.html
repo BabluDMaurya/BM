@@ -42,7 +42,10 @@
               </ion-slides>
             </ion-card-content>
           </ion-card>  
-      <div class="no-data" *ngIf="!progItem?.nutrition_id">NO  Nutrition Found</div>
+          <div class="no-data" *ngIf="!progItem?.nutrition_id">
+            <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+            <p>No Nutrition Found</p>
+          </div>
       </div>
     </ion-list>
     <ion-list lines="none" class="item-list ion-no-padding" *ngSwitchCase="'programs'">

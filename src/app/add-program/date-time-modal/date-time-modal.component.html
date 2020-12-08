@@ -9,7 +9,6 @@
       <ion-label>{{programData?.programTitle}}</ion-label>
     </ion-item>
     <ion-item class="icon-right-side ion-text-end" slot="end">
-
     </ion-item>
   </ion-list>
 </ion-header>
@@ -24,25 +23,25 @@
               {{('0'+i).slice(-2)}}</ion-select-option>
           </ion-select> Minutes</ion-text>
       </ion-item> -->
-      <ion-item *ngIf="programData?.programType!=6">
+      <ion-item *ngIf="programData?.programType!=6" class="durationItem">
         <ion-label>Type Duration (in Minutes)</ion-label>
         <ion-input placeholder="Minutes" name="duration" type="number" [(ngModel)]="duration"></ion-input>
       </ion-item>
     </ion-list>
+    <h6 class="repeatedHeading">Repeated</h6>
     <ion-radio-group value="calendar" class="radio-group">
-      <ion-label>Repeated</ion-label>
       <ion-item>
         <ion-label>Daily</ion-label>
-        <ion-radio slot="start" color="tertiary" value="clone" (click)="multiple()"
+        <ion-radio slot="start" value="clone" (click)="multiple()"
           checked="{{repetative==1? true: false}}"></ion-radio>
       </ion-item>
       <ion-item>
         <ion-label>Weekly</ion-label>
-        <ion-radio slot="start" color="tertiary" value="weekly" (click)="basic()"
+        <ion-radio slot="start" value="weekly" (click)="basic()"
           checked="{{repetative==2 ? true: false}}"></ion-radio>
       </ion-item>
     </ion-radio-group>
-    <div style="margin-top: 15px;" *ngIf="programData?.programType==6">
+    <div *ngIf="programData?.programType==6">
       <label> Select Video </label>
       <ion-col size="12" class="ion-no-padding">
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
@@ -58,13 +57,22 @@
         </ion-segment>
 
       </ion-col>
-      <ion-col size="12" class="ion-no-padding" *ngIf="videoList.length==0">
-        <ion-slide class="no_imagedata">No post added yet!!!</ion-slide>
-      </ion-col>
+      <div *ngIf="videoList.length==0" class="no-data">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No post added yet!!!</p>
+      </div>
     </div>
 
   </form>
-  <div style="margin-top: 15px;" *ngIf="repetatedDateCopy.length>0">
+  <div *ngIf="repetatedDateCopy.length>0">
+    <div class="ion-padding-horizontal">
+    <ion-list>            
+        <ion-item class="ion-no-padding ion-margin-vertical">
+          <ion-label>Add Bonus Video, Nutrition</ion-label>
+          <ion-datetime value="" display-timezone="utc"  (ionChange)="addExtraDay($event)"></ion-datetime>
+        </ion-item>
+      </ion-list> 
+    </div>
     <ion-list *ngFor="let date of repetatedDateCopy let i = index">
       <ion-list-header class="ion-padding-horizontal green text-white">
         {{date.date | date :'medium'}}
@@ -97,13 +105,12 @@
           <img src="../../assets/images/demo2.jpg" />
         </div>
         <ng-template #no_videos>No videos Selected</ng-template>
-      </ion-item>
-      <ion-item>
+      </ion-item>      
+      <ion-item class="descriptionItem">
         <ion-textarea placeholder="Enter Description" (ionChange)="detailsUpdate($event ,item?.id)"
-          value="{{item?.description}}"></ion-textarea>
+            value="{{item?.description}}"></ion-textarea>
       </ion-item>
-    </ion-list> 
-    <ion-datetime value="" display-timezone="utc"   placeholder="Add Bonus Video, Nutrition" (ionChange)="addExtraDay($event)"></ion-datetime>
+    </ion-list>    
   </div>
 
 </ion-content>

@@ -6,7 +6,7 @@
 .view-all{width:42px;height:42px;max-width: 42px;text-align:center;background:#f1f0f0;border-radius:50%;display:flex;justify-content:center;align-items:center;margin: 0;margin-left: -10px;}
 
 .calendar-header{display: flex;justify-content: space-between;align-items: center;}
-.calendar-header ion-item{--padding-start: 0;--inner-padding-end: 0;}
+.calendar-header ion-item{--padding-start: 0;--inner-padding-end: 0;text-align: center;}
 .calendar-header ion-item:nth-child(2){display: contents;}
 .table > tbody > tr > td.calendar-hour-column{width: 55px;}
 

@@ -17,7 +17,7 @@
     <ion-segment-button value="following">({{followings?.length}}) Followings</ion-segment-button>
   </ion-segment>
   <div [ngSwitch]="people_tabs">
-    <ion-list lines="none" *ngSwitchCase="'followers'"> 
+    <ion-list lines="none" *ngSwitchCase="'followers'" class="ion-no-padding"> 
       <div *ngIf='followers?.length > 0'>
       <ion-toolbar class="searchbar">
         <ion-searchbar [(ngModel)]="followerSearchTerm"></ion-searchbar>
@@ -37,12 +37,12 @@
       </ion-item>
     </div>
     <div class="no-data" *ngIf='followers?.length == 0'>
-      <img src="../../../assets/images/error.svg" width="40px" />
+      <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
       <p>No Data Found</p>
     </div>
     </ion-list>
     
-    <ion-list lines="none" *ngSwitchCase="'following'">
+    <ion-list lines="none" *ngSwitchCase="'following'" class="ion-no-padding">
       <div *ngIf='followings?.length > 0'>
       <ion-toolbar class="searchbar">
         <ion-searchbar [(ngModel)]="followingSearchTerm"></ion-searchbar>
@@ -62,7 +62,7 @@
      </ion-item>
     </div>
     <div class="no-data" *ngIf='followings?.length == 0'>
-      <img src="../../../assets/images/error.svg" width="40px" />
+      <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
       <p>No Data Found</p>
     </div>
     </ion-list> 

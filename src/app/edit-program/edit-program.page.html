@@ -26,12 +26,10 @@
       </ion-col>
       <ion-col size="6" class="ion-no-padding">
         <ion-card class="upload-box ion-noright-margin" (click)="selectMedia()">
-
           <div class="upload_icon">
             <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
           </div>
           <ion-card-title>Camera</ion-card-title>
-
         </ion-card>
       </ion-col>
       <ion-col size="12" class="ion-no-padding" *ngIf="gallaryImgPath?.length>0">
@@ -85,7 +83,6 @@
             <ion-item>
               <ion-input placeholder="Title" class="form-control" formControlName="programTitle"
                 [ngClass]="{ 'is-invalid': submitted && f.programTitle.errors }"></ion-input>
-
             </ion-item>
             <ng-container *ngFor="let validation of validation_messages.programTitle">
               <span class="error-message"
@@ -95,29 +92,21 @@
               <ion-textarea placeholder="Description" class="form-control" formControlName="programDescription">
               </ion-textarea>
             </ion-item>
-            <ion-item class="mb-10">
+            <ion-item lines="none" class="mb-10">
               <ion-row>
-                <ion-col size="6" class="ion-no-padding">
+                <ion-col size="12" class="ion-no-padding">
                   <ion-list-header class="grey-header">
                     <ion-label>Program Type</ion-label>
                   </ion-list-header>
-                  <div>{{programList?.type_id}}</div>
-                </ion-col>
-                <ion-col size="6" class="ion-no-padding">
-                  <ion-list-header class="grey-header">
-                    <ion-label></ion-label>
-                  </ion-list-header>
-                  <ion-item lines="none">
-                    <ion-text>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                      ut labore et dolore magna aliqua.
-                    </ion-text>
-                  </ion-item>
+                  <h6 class="programHeading">{{programList?.type_id}}</h6>
+                  <ion-text>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua.
+                  </ion-text>
                 </ion-col>
               </ion-row>
             </ion-item>
             <ion-item class="mb-10">
-
               <ion-radio-group lines="none" class="full-width radio-list" formControlName="participantsType">
                 <ion-list-header class="grey-header">
                   <ion-label>Select Praticipants</ion-label>

@@ -38,9 +38,10 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-col *ngIf="!postData?.length > 0" size="12" class="ion-no-padding">
-      <ion-slide class="no_imagedata">No post added yet!!!</ion-slide>
-    </ion-col>
+    <div *ngIf="!postData?.length > 0" class="no-data" style="height: calc(100vh - 230px);">
+      <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+      <p>No post added yet!!!</p>
+    </div>
     <div *ngFor="let post of postData; let i= index;"> 
       <ion-card class="item-card" *ngIf="   !post?.length">
         <ion-card-header class="item-header">

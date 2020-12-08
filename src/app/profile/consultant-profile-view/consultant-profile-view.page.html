@@ -101,7 +101,10 @@
             </ion-fab-button>
           </ion-slide>
         </ion-slides>
-          <ion-slide class="no_imagedata" *ngIf="previewImage.length==0">No post added yet!!!</ion-slide>
+        <div *ngIf="previewImage.length==0" class="no-data">
+          <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+          <p>No post added yet!!!</p>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -130,9 +133,10 @@
               <div [ngSwitch]="consultantProfile">
                 <ion-list class="ion-no-padding" *ngSwitchCase="'aboutInfo'">
                   <div [ngSwitch]="videotabs"> 
-                    <ion-col *ngIf="!myPosts || myPosts.length === 0" size="12" class="ion-no-padding">
-                      <ion-slide class="no_imagedata">No post added yet. !!!</ion-slide>
-                    </ion-col>                   
+                    <div class="no-data" *ngIf="!myPosts || myPosts.length === 0">
+                      <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                      <p>No post added yet.</p>
+                    </div>                  
                     <div *ngFor="let post of myPosts">
                         <ion-card class="item-card" *ngIf="!post.is_delete">                        
                           <ion-card-header class="item-header" [routerLink]="['/videos',post.posts_id,'']">

@@ -30,4 +30,7 @@
   </ion-item>
 </ion-list>
 <!---------------E n d s  S K E L E T O N ------------>
-<div class="no-data" *ngIf="noData">No upcoming program for next 24 Hrs</div>
+<div class="no-data" *ngIf="noData" style="height: calc(100vh - 175px)">
+  <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+  <p>No upcoming program for next 24 Hrs.</p>
+</div>

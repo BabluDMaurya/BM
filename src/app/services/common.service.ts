@@ -20,7 +20,7 @@ export class CommonService {
   private userData:any;
   private userToken:any;
   public footerTabHooks = new Subject<boolean>();
-  cssClass : any ;
+  cssClass: any;
   constructor(private alertController: AlertController,
     public toastController:ToastController,
     public loadingController:LoadingController,
@@ -103,6 +103,22 @@ export class CommonService {
       });
        alert.present();
     }
+
+    // async presentAlert(title,msg,btns:any[],myCustomClass) {
+
+    //   if(myCustomClass != null && myCustomClass != ''){
+    //     this.cssClass = myCustomClass;
+    //   }else{
+    //     this.cssClass = 'custom-alert';
+    //   }
+    //   let alert =await this.alertController.create({
+    //     cssClass:this.cssClass, 
+    //     header: title,
+    //     message: msg,
+    //     buttons: btns,        
+    //   });
+    //    alert.present();
+    // }
 
     async redirectUrlWithIdConfirm(title,msg,redirrectUrl,id) {
       let alert = await this.alertController.create({
