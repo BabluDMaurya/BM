@@ -49,6 +49,45 @@ export class CommonService {
     isLoading = false;
     modaldata:any;
 
+
+    // presentPrompt() {
+    //   let alert = this.alertCtrl.create({
+    //     title: 'Login',
+    //     inputs: [
+    //       {
+    //         name: 'username',
+    //         placeholder: 'Username'
+    //       },
+    //       {
+    //         name: 'password',
+    //         placeholder: 'Password',
+    //         type: 'password'
+    //       }
+    //     ],
+    //     buttons: [
+    //       {
+    //         text: 'Cancel',
+    //         role: 'cancel',
+    //         handler: data => {
+    //           console.log('Cancel clicked');
+    //         }
+    //       },
+    //       {
+    //         text: 'Login',
+    //         handler: data => {
+    //           if (User.isValid(data.username, data.password)) {
+    //             // logged in!
+    //           } else {
+    //             // invalid login
+    //             return false;
+    //           }
+    //         }
+    //       }
+    //     ]
+    //   });
+    //   alert.present();
+    // }
+
     async presentAlert(title,msg,btns:any[],myCustomClass) {
 
       if(myCustomClass != null && myCustomClass != ''){

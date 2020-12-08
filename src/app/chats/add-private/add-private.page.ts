@@ -64,6 +64,7 @@ export class AddPrivatePage implements OnInit {
   ionViewWillEnter() {
 
   }
+  
   onCheckboxChange(e) {
 
     const checkArray = this.peopleForm.get('peopleSelect')
