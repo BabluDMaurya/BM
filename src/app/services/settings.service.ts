@@ -110,6 +110,9 @@ export class SettingsService {
   userIndentityVerify(formData){
     return this.http.post<any>(Config.ApiUrl + 'api/auth/userIndentityVerify', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('userindentityverify', formData)));
   }
+  trilloRecordUpdate(){
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/trilloRecordUpdate', null, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('trilloRecordUpdate', null)));
+    }
   getCountryCodeApi(){
     return this.http.post<any>(Config.ApiUrl + 'api/auth/truliooCountryCode', null, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getCountryCodeApi', )));
   }

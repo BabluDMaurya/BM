@@ -32,12 +32,15 @@ export class ProgramDetailsPage implements OnInit {
   }
   tmp: any;
   adData:any;
+  loginUserData:any;
   countDown: Observable<number>;
   hh: Observable<number>;
   mm: Observable<number>;
   ss: Observable<number>;
   tick = 1000;
   ngOnInit() {
+    this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+    console.log("this.loginUserData:"+JSON.stringify(this.loginUserData));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.programId = params.get('programId');
     });
@@ -174,7 +177,11 @@ export class ProgramDetailsPage implements OnInit {
       }
     ];
     
-    this.commonService.presentAlert(title,msg,btn,'')
+    if(this.loginUserData.trilloMach != 1){
+
+    }else{
+      this.commonService.presentAlert(title,msg,btn,'')
+    }
   }
   ngOnDestroy() {
 

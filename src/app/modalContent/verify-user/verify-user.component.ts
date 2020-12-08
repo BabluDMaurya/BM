@@ -113,7 +113,9 @@ export class VerifyUserComponent implements OnInit {
       // console.log(data.Record.RecordStatus);
       this.commonService.dismissLoader();
       if(data.Record.RecordStatus ==='match'){
-        
+        this.settingsService.trilloRecordUpdate().subscribe((data:any)=>{
+          
+        });
         this.commonService.dismissModal();
         this.commonService.presentToast('Record Match');
       }else if(data.Record.RecordStatus ==='undefined'){ 
