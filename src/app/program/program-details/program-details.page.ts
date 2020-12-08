@@ -11,6 +11,7 @@ import { ProgramService } from './../../services/program.service'
 import { Config } from './../../config/config'
 import { Observable, timer } from 'rxjs';
 import { take, map } from 'rxjs/operators';
+import{VerifyUserInfoComponent} from "../../modalContent/verify-user-info/verify-user-info.component";
 @Component({
   selector: 'app-program-details',
   templateUrl: './program-details.page.html',
@@ -33,6 +34,7 @@ export class ProgramDetailsPage implements OnInit {
   tmp: any;
   adData:any;
   loginUserData:any;
+  trilloverify : any = true;
   countDown: Observable<number>;
   hh: Observable<number>;
   mm: Observable<number>;
@@ -40,6 +42,11 @@ export class ProgramDetailsPage implements OnInit {
   tick = 1000;
   ngOnInit() {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+    if(this.loginUserData.trilloMach != 1){
+      this.trilloverify = false;      
+    }else{
+      this.trilloverify = true;
+    }
     console.log("this.loginUserData:"+JSON.stringify(this.loginUserData));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.programId = params.get('programId');
@@ -176,12 +183,10 @@ export class ProgramDetailsPage implements OnInit {
         }
       }
     ];
-    
-    if(this.loginUserData.trilloMach != 1){
-
-    }else{
-      this.commonService.presentAlert(title,msg,btn,'')
-    }
+      this.commonService.presentAlert(title,msg,btn,'');
+  }
+  verifyUserInfoModal() {    
+    this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
   }
   ngOnDestroy() {
 
@@ -190,6 +195,8 @@ export class ProgramDetailsPage implements OnInit {
   {
     if(this.programDetail.type_id == 'video')
     {
+
+      // console.log('programId:'+this.programDetail.id);
       this.programService.advertiseRequest({'programId':this.programDetail.id}).subscribe(data=>{
         this.adData = data.status;
       } );
