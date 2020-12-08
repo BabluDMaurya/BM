@@ -92,6 +92,13 @@ export class AddPrivatePage implements OnInit {
   }
   chatRequest() {
     this.formData = this.peopleForm.value;
+    if(this.formData.peopleSelect.length >1){
+        console.log('Group Chat');
+    }else{
+      console.log('private Chat');
+    }
+    //if(this.formData.peopleSelect)
+    console.log("this.formData:"+JSON.stringify(this.formData));
     // this.router.navigate(ChatRoomPage,{
     //   item:this.formData
     //   });

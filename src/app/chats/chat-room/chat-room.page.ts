@@ -33,6 +33,10 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   currentUser = '';
   chatUserId: any;
   userData:any;
+  senderId :any;
+  receiverId :any;
+  room : any ;
+  userId :any;
   constructor(public popoverController: PopoverController,
     public navCtrl: NavController,
     private socket: Socket,
@@ -46,21 +50,16 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     if (this.myUserId == null) {
       this.myUserId = Date.now().toString();
     }
-
     this.socket.connect();
-
-    let name = `user-${new Date().getTime()}`;
-    this.currentUser = name;
-
-    this.socket.emit('set-name', name);
-
+    this.currentUser = this.room;
+    this.socket.emit('set-name', this.room);
     this.socket.fromEvent('users-changed').subscribe(data => {
-      let user = data['user'];
-      if (data['event'] === 'left') {
-        this.showToast('User left: ' + user);
-      } else {
-        this.showToast('User joined: ' + user);
-      }
+      // let user = data['user'];
+      // if (data['event'] === 'left') {
+      //   this.showToast('User left: ' + user);
+      // } else {
+      //   this.showToast('User joined: ' + user);
+      // }
     });
 
     this.socket.fromEvent('message').subscribe(message => {
@@ -82,18 +81,21 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
-      this.chatUserId = params.get('chatuserId');
-
-      console.log("this.chatUserId:"+this.chatUserId);
+      this.senderId = params.get('sender');
+      this.receiverId = params.get('receiver');
+      if(this.userData.id == this.senderId){
+        this.userId = this.receiverId; 
+      }else{
+        this.userId = this.senderId;
+      }
     });
-    
+    this.room = 'room-'+this.senderId+this.receiverId;
+
     this.getStart();
 
-    this.socket.emit("addUser", this.userData.id , this.chatUserId );
-
-    let roomId = this.userData.id < this.chatUserId ? this.userData.id  +this.chatUserId : this.chatUserId+ this.userData.id ;
-     this.socket.emit("newUser", [this.userData.id , this.chatUserId, roomId]);
+    this.socket.emit("addUser", this.senderId , this.receiverId);
     
+    this.socket.emit("newUser", [this.senderId , this.receiverId, this.room]);
   }
   ngAfterViewInit() {
 

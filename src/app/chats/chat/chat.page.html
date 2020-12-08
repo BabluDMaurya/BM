@@ -43,7 +43,7 @@
         </ion-item>
       </div>
     <ion-list lines="none" detail="false" *ngFor="let groups of items">
-    <ion-item lines="none" (click)="chatRoom(groups.receiverID)" detail="false" *ngFor="let item of groups.bio">
+    <ion-item lines="none" (click)="chatRoom(groups.receiverID,groups.senderID)" detail="false" *ngFor="let item of groups.bio">
       <ion-avatar slot="start">
         <img *ngIf="item?.profile_pic" src="{{url}}{{item?.profile_pic}}"> 
         <img *ngIf="!item?.profile_pic" src="../../assets/images/user.jpg">  

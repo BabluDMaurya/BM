@@ -69,7 +69,7 @@ import { ParticipantsComponent } from './program/participants/participants.compo
 import { EquipmentsComponent } from './program/equipments/equipments.component'
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media/ngx';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-const config: SocketIoConfig = { url: 'https://ionicinto.wdipl.com:9902/', options: {} };
+const config: SocketIoConfig = { url: 'http://ionicinto.wdipl.com:9902/', options: {} };
 //import { FilterPipe } from './config/filter.pipe';
 import { PipeModule } from './nutrition-list/pipe.module';
 import { MusicDropdownComponent } from './music/music-dropdown/music-dropdown.component';

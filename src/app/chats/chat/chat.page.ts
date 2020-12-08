@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { RequestsModalComponent } from '../requests-modal/requests-modal.component';
 import { Config } from './../../config/config';
 import { CommonService } from 'src/app/services/common.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -22,6 +23,7 @@ export class ChatPage implements OnInit {
   requestCount: any = 0;
   constructor(
     public commonService:CommonService,
+    private router:Router,
     private dataService: ChatService,
     public modalController: ModalController) { }  
 
@@ -38,15 +40,15 @@ export class ChatPage implements OnInit {
     //------------chat user list -------------
     this.dataService.chatUserList().subscribe(
       (data: any) => {
-        this.items = data.chatlist;
-          console.log("DATA:" + JSON.stringify(data.chatlist));
+        this.items = data.chatlist;          
+          this.commonService.dismissLoader();
       });
   }
   ionViewDidLoad(){
     
   }
-  chatRoom(receiverID:any){
-    console.log("receiverID:"+receiverID);
+  chatRoom(receiverID:any,senderID:any){
+    this.router.navigate(['/chat-room/'+receiverID+'/'+senderID]);
   }
   setFilteredItems() {
     this.items = this.dataService.filterItems(this.searchTerm);

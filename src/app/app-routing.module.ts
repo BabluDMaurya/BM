@@ -209,7 +209,7 @@ const routes: Routes = [
     loadChildren: () => import('./chats/add-group/add-group.module').then( m => m.AddGroupPageModule)
   },
   {
-    path: 'chat-room/:chatuserId',
+    path: 'chat-room/:sender/:receiver',
     loadChildren: () => import('./chats/chat-room/chat-room.module').then( m => m.ChatRoomPageModule)
   },
   {
