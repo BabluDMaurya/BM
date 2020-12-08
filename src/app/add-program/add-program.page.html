@@ -319,10 +319,7 @@
             </ion-toolbar>
             <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="allMusic">
               <ion-segment class="ion-no-padding" scrollable="true" (ionChange)="selectMusic($event)">
-                <ion-segment-button *ngFor="let item of genres; let i =index " (click)="allMusic=item?.musics" [checked]="i==0?'true':'false'" >
-                  <span>{{item?.name}}</span>
-                </ion-segment-button>
-                
+                <ion-segment-button *ngFor="let item of genres; let i =index " (click)="allMusic=item?.musics" [checked]="i==0?'true':'false'" >{{item?.name}}</ion-segment-button>                
               </ion-segment>
             </ion-toolbar>
             <div [ngSwitch]="selectMusicList" *ngIf="allMusic">
@@ -487,7 +484,9 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-<ion-footer class="sticky-footer musiclist green" *ngIf="showProgram==3">  
-  <app-audio-player-program [selectedAudio]=[audioFile,musicChanged,audioFilename,audioFileDuration]>
-  </app-audio-player-program>
-</ion-footer>
+<!-- <ion-footer class="sticky-footer musiclist green" *ngIf="showProgram==3">   -->
+  <div class="musiclist" *ngIf="showProgram==3">
+    <app-audio-player-program [selectedAudio]=[audioFile,musicChanged,audioFilename,audioFileDuration]>
+    </app-audio-player-program>
+  </div>
+<!-- </ion-footer> -->

@@ -6,6 +6,7 @@ import {Storage} from '@ionic/storage';
 import { Config } from "../../config/config";
 import {Router} from '@angular/router';
 import { PostService } from '../../services/post.service';
+import { NavController } from '@ionic/angular';
 const baseUrl = Config.ApiUrl;
 @Component({
   selector: 'app-music-volume-modal',
@@ -27,7 +28,7 @@ export class MusicVolumeModalComponent implements OnInit {
   complete: boolean = false;
   data: any; 
   uploadedVideo: string; 
-  isUploading: boolean = false;
+  isUploading: boolean = true;
   uploadPercent: number = 0;
   error : any;
   errorMessage : any;
@@ -49,7 +50,8 @@ export class MusicVolumeModalComponent implements OnInit {
     private ngZone:NgZone,
     private transfer: FileTransfer, 
     public storage:Storage,
-    private postService:PostService
+    private postService:PostService,
+    private navCtrl:NavController
     ) { }
     volumeSelected(volume){
       this.selectedVolume = volume;
@@ -129,6 +131,10 @@ export class MusicVolumeModalComponent implements OnInit {
     }
   ngOnInit() {
     
+  }
+
+  goBack() {
+    this.navCtrl.back();
   }
 
 }

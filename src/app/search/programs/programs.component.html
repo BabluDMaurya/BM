@@ -3,10 +3,11 @@
     <ion-toolbar class="searchbar">
       <ion-searchbar type="text" (ionInput)="searchChanged($event)"></ion-searchbar>
     </ion-toolbar>
-    <ion-text>Categories</ion-text>
   </ion-col>
 </ion-row>
-
+<div class="categoryHeading">
+  <h6>Categories</h6>
+</div>
 <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="!searchProgram">
   <ion-segment scrollable="true" class="ion-no-padding" (ionChange)="categoryChanged($event)">
     <ion-segment-button *ngFor="let item of speciality" value="{{item?.id}}"
@@ -206,8 +207,7 @@
       </ion-card-content>
       <!-- ADVERTISE HTML ends -->
     </ion-card>
-  </ion-list>
-  
+  </ion-list>  
   <!-- S K E L E T O N -->
   
 

@@ -15,3 +15,6 @@ ion-item.item-card{margin-bottom: 5px;border-radius: 4px;--border-radius: 4px;}
 padding-top: var(--ion-padding, 4px);
 padding-bottom: var(--ion-padding, 27px);
 }
+.newPostCard{
+    ion-card-content{padding-top: 12px;}
+}

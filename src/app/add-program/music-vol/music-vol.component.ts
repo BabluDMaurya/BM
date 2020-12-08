@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from '@ionic/angular';
+import { NavController, NavParams } from '@ionic/angular';
 import {CommonService} from '../../services/common.service';
 import {ProgramService } from '../../services/program.service';
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ export class MusicVolComponent implements OnInit {
   constructor(private navParams:NavParams,
     private commonService:CommonService,
     private programService:ProgramService,
-    private router: Router,) {
+    private router: Router,private navCtrl:NavController) {
       
      }
 
@@ -23,6 +23,11 @@ export class MusicVolComponent implements OnInit {
     this.musicId = this.navParams.data.musicId;
     this.progId = this.navParams.data.programId
   }
+
+  goBack() {
+    this.navCtrl.back();
+  }
+
   volumeSelected(ev)
   {
     this.mVol =ev;

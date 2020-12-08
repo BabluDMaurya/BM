@@ -273,10 +273,7 @@
             </ion-toolbar>
             <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="allMusic">
               <ion-segment class="ion-no-padding" scrollable="true" (ionChange)="selectMusic($event)">
-                <ion-segment-button *ngFor="let item of genres; let i =index " (click)="allMusic=item?.musics" [checked]="i==0?'true':'false'" >
-                  <span>{{item?.name}}</span>
-                </ion-segment-button>
-                
+                <ion-segment-button *ngFor="let item of genres; let i =index " (click)="allMusic=item?.musics" [checked]="i==0?'true':'false'" >{{item?.name}}</ion-segment-button>                
               </ion-segment>
             </ion-toolbar>
             <div [ngSwitch]="selectMusicList" *ngIf="allMusic">

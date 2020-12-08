@@ -85,17 +85,12 @@
             <ion-toolbar class="searchbar">
               <ion-searchbar type="text" (ionInput)="searchChanged($event)"></ion-searchbar>
             </ion-toolbar>
-            <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="datagenres">
-              
+            <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="datagenres">              
               <ion-segment class="ion-no-padding" *ngIf="searchMusicData">               
-                <ion-segment-button>
-                  <span>Search Result</span>
-                </ion-segment-button>              
+                <ion-segment-button>Search Result</ion-segment-button>              
               </ion-segment>
               <ion-segment *ngIf="!searchMusicData" class="ion-no-padding" scrollable="true" (ionChange)="selectMusic($event)" >               
-                <ion-segment-button  value="{{genres.id}}" *ngFor="let genres of datagenres; let i = index;" [checked]="i==0 ? true : false">
-                  <span>{{genres.name}}</span>
-                </ion-segment-button>              
+                <ion-segment-button  value="{{genres.id}}" *ngFor="let genres of datagenres; let i = index;" [checked]="i==0 ? true : false">{{genres.name}}</ion-segment-button>              
               </ion-segment>
             </ion-toolbar>
             

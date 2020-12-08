@@ -9,20 +9,26 @@ ion-fab-button+div>div{display: flex;}
 ion-fab-button+div>div +ion-label{color: #FFF;margin-left: 50px;}
 .music-spinner{--color: #26a69a;}
 
-
-.music-name {  
-    padding-left: 50px;
-    margin-top: 0 !important
-}
 .music-timer-fav {
     position: absolute;
-    right: 0;
-    top: 0;
-    background: #26a69a;
+    right: 10px;
+    top: 28px;
 }
 .music-timer-fav ion-icon {
     margin: 0 5px;
 }
 .musicbar {
     padding-right: 50px;
+}
+.musicWrapper{background: #26a69a;
+    ion-toolbar{--padding-start: 0;--padding-end: 0;
+        .audio-listInner{display: block;background: #26a69a;height: 56px;margin-top: 10px;
+            .musicbar{
+                ion-range{position: absolute;width: 90%;top: 2px;}
+            }
+            .music-name{margin-top: 20px;margin-left: 10px;padding-left: 50px;
+                ion-label{color: #FFF;}
+            }            
+        }
+    }
 }

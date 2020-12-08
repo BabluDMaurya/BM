@@ -47,13 +47,13 @@
 </ion-list>
 <ion-list lines="none" class="instructions-list">
   <ion-list-header class="grey-header">Beverages</ion-list-header>
-  <ion-item >
+  <ion-item>
     <p *ngIf="nutritionData.form.nutriBevrageType == 1">Cofee</p>
     <p *ngIf="nutritionData.form.nutriBevrageType == 2">Milk</p>
     <p *ngIf="nutritionData.form.nutriBevrageType == 3">Fruit Drink</p>    
     <p *ngIf="nutritionData.form.nutriBevrageType == 4">Soda</p>
   </ion-item>
-  <ion-item >
+  <ion-item class="beveragesList">
     <p>{{nutritionData.form.bevragveQnty}}</p> <p *ngIf="nutritionData.form.bevragveQnty == 1">Bottle</p>
     <p *ngIf="nutritionData.form.bevragveQnty == 2">Glass</p>
     <p *ngIf="nutritionData.form.bevragveQnty == 3">Bowl</p>    
