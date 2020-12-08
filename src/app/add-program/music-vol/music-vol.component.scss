@@ -1,3 +1,12 @@
 .ml-30{margin-left: 30px;}
 ion-radio{position: absolute;top:5px}
-ion-item{margin-top: 25px; margin-bottom: 5px;--padding-top: 5px;--padding-bottom: 5px;}
+ion-list.radio-list{margin-top: 50px;
+    ion-radio-group{
+        ion-list-header{display: none}
+        ion-item{--min-height: 46px;
+            ion-label{color: #333;margin-bottom: 5px;font-weight: 500;}
+        }
+    }
+}
+ion-list.radio-list+div+ion-button,ion-list.radio-list+ion-button{height: 56px;}
+.uploading{display: flex;align-items: center;justify-content: center;}

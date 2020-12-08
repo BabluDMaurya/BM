@@ -12,19 +12,11 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content">
-  <ion-toolbar no-border-top class="profile_tabs" >
-    <ion-segment  class="ion-no-padding" (ionChange)="segmentChanged($event)" >
-      <ion-segment-button value="intoactive" checked>
-        <span>IntoActiv Videos</span>
-      </ion-segment-button>
-      <ion-segment-button value="video">
-        <span>Received Videos</span>
-      </ion-segment-button>
-      <ion-segment-button value="program">
-        <span>Upcoming videos</span>
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
+  <ion-segment  class="top-segment" (ionChange)="segmentChanged($event)" >
+    <ion-segment-button value="intoactive" checked>IntoActiv Videos</ion-segment-button>
+    <ion-segment-button value="video">Received Videos</ion-segment-button>
+    <ion-segment-button value="program">Upcoming videos</ion-segment-button>
+  </ion-segment>
   <div [ngSwitch]="consultantVideos">
     <div *ngSwitchCase="'intoactive'"> 
       <ion-card class="video-card">

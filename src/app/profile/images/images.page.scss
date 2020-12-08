@@ -10,7 +10,6 @@ ion-list-header ion-button{margin: 0;border-radius: 4px;}
 .item-post{display: flex;justify-content: space-between;align-items: center;padding: 0;}
 .item-post ion-item{--padding-start: 0;--inner-padding-end: 0;--min-height: auto;}
 .item-post ion-item>div{display: flex;justify-content: flex-start;align-items: center;margin-right: 15px;font-size: 1.45rem;}
-.item-post ion-item:last-child>div{margin-right: 0}
 .item-post ion-item ion-icon{color: #999;font-size: 1.45rem;}
 .item-post ion-item span{font-size: 1.15rem;margin-left: 3px;}
 .username-text{margin-right: 3px;}

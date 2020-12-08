@@ -12,7 +12,10 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content" >
-  <ion-list-header class="grey-header" *ngIf="postData?.post_user?.id">See more from {{postData?.post_user?.user_name}}<a [routerLink]="['/tabs/images' , postData?.post_user?.id ]" size="small">View All</a></ion-list-header>
+  <ion-list-header class="grey-header" *ngIf="postData?.post_user?.id">See more from {{postData?.post_user?.user_name}}
+    <!-- <a [routerLink]="['/tabs/images' , postData?.post_user?.id ]" size="small">View All</a> -->
+    <ion-button [routerLink]="['/tabs/images' , postData?.post_user?.id]" size="small" class="green">View All</ion-button>
+  </ion-list-header>
   <ion-card class="item-card" *ngIf="!skeleton">
     <ion-card-header class="item-header">
       <ion-avatar>

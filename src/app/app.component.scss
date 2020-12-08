@@ -486,7 +486,6 @@ ion-select{color: #222;}
 .ingredient-list ion-item p, .instructions-list ion-item p{width: 100%;border-bottom: 1px solid whitesmoke;padding-bottom: 5px;margin-bottom: 5px;}
 .ingredient-list ion-item:last-child p, .instructions-list ion-item:last-child p{border-bottom: none;padding-bottom: 0;margin-bottom: 0;}
 .nutrition-head h4{font-size: 1.15rem;font-weight: 400;color: #000;margin-top:0}
-.nutrition-head p{color: #333;}
 .nutrition-sub{font-size: 0.85rem;display: flex;align-items: center;margin-right: 20px;}
 .nutrition-sub:last-child{margin-right: 0;}
 .nutrition-sub ion-icon{font-size: 1rem;margin-right: 3px;color: #26a69a;}
@@ -494,7 +493,7 @@ ion-select{color: #222;}
 .more-card-header{@extend %flex-space;height: 38px;padding: 0 10px;background: #26a69a;}
 .more-card-header ion-card-title{font-size: .85rem;color: #FFF;}
 .more-card-header+ion-card-content{padding: 0;}
-.addmore{position: absolute;top: 4px;right: 5px;color: #FFF;font-size: 1.5rem;z-index: 99;width: 38px;height: 38px;display: flex;justify-content: center;align-items: center;cursor: pointer;}
+.addmore{position: absolute;top: 0;right: 0;color: #FFF;font-size: 1.5rem;z-index: 99;width: 38px;height: 38px;display: flex;justify-content: center;align-items: center;cursor: pointer;}
 .details-list ion-item{padding-top: 5px;--min-height: auto;font-size: 0.85rem;}
 .details-list ion-item ion-label{margin: 0;}
 .position-relative{position: relative;}
@@ -524,9 +523,9 @@ ion-select{color: #222;}
 .profile_tabs ion-segment-button ion-icon{margin:0 auto}
 
 // Inner tabs
-.subprofile_tabs{--border-width: 0;height: 42px;--min-height: 42px;--color: #000;--background: rgba(39, 166, 154, 0.14);}
-.subprofile_tabs ion-segment ion-segment-button,.subprofile_tabs ion-segment-button{min-height: 40px;text-transform: capitalize;letter-spacing: 0;}// border-radius: 30px;margin: 0 5px;
-.subprofile_tabs ion-segment-button.segment-button-checked{background: #27a69a;color: #FFF;}
+.subprofile_tabs{--border-width: 0;height: 42px;--min-height: 42px;--color: #000;--background: #f7f7f7;}
+.subprofile_tabs ion-segment ion-segment-button,.subprofile_tabs ion-segment-button{min-height: 40px;text-transform: uppercase;letter-spacing: 0;font-weight: 400;font-size: 0.75rem}// border-radius: 30px;margin: 0 5px;
+// .subprofile_tabs ion-segment-button.segment-button-checked{background: #27a69a;color: #FFF;}
 .subprofile_tabs ion-segment-button span{font-size: 0.75rem;text-transform:uppercase;font-weight: 400;}
 .subprofile_tabs ion-segment-button.segment-button-checked span{color:#FFF}
 .subprofile_tabs ion-segment-button ion-label{font-weight: 400;font-size: 0.75rem;}
@@ -574,7 +573,7 @@ ion-select{color: #222;}
 .item-post ion-item{--padding-start: 0;--inner-padding-end: 0;--min-height: auto;}
 .item-post ion-item>div{display: flex;justify-content: flex-start;align-items: center;margin-right: 15px;font-size: 1.45rem;}
 .item-post ion-item>div:last-child{margin-right: 0}
-.item-post ion-item ion-icon{color: rgb(82, 78, 78);font-size: 1.45rem;}
+.item-post ion-item ion-icon{color: #999;font-size: 1.45rem;}
 .item-post ion-item span{font-size: 1.15rem;margin-left: 3px;}
 .username-text{margin-right: 3px;}
 
@@ -902,7 +901,7 @@ height: 110px;
 }
 .newmusiclist-playBtn{
     position: absolute;
-    left: 0;
+    left: 0;top: 10px;z-index: 9;
 }
 .newmusiclist-range
 {
