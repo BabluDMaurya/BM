@@ -1,18 +1,8 @@
-.galleryRadio{position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%}
-    .thumb-list {
-        ion-item{
-            ion-label{
-        position: absolute;
-        bottom: 0;
-        margin: 0;
-        background: rgba(38, 166, 154, 0.50);
-        width: 100%;
-        color: #FFF;
-        padding: 5px;
-        text-align: center;
-    }
+.galleryRadio{position: absolute;top: 0;width: 100%;height: 100%}
+ion-checkbox{margin-top: 10px;margin-left: 10px;--border-radius: 50%;--size: 22px;--background: transparent;--checkmark-color: transparent;}
+img{height: 150px;object-fit: contain;}
+.thumb-list {
+    ion-item{
+        ion-label{position: absolute;bottom: 0;margin: 0;background: #f7f7f7;width: 100%;color: #9e9e9e;padding: 5px;text-align: center;}
     }
 }

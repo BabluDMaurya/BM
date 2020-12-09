@@ -42,17 +42,19 @@
       </ion-item>
     </ion-radio-group>
     <div *ngIf="programData?.programType==6">
-      <label> Select Video </label>
+      <h6 class="repeatedHeading mb-10">Select Video</h6>
       <ion-col size="12" class="ion-no-padding">
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
           <ion-segment-button *ngFor="let preview of videoList">
-            <div class="thumb-checkbox">
-              <ion-checkbox [(ngModel)]="preview.sele" name="preview.id" value="preview.id" slot="start">
-              </ion-checkbox>
+            <div class="checkboxThumb">
+              <div class="thumb-checkbox">
+                <ion-checkbox [(ngModel)]="preview.sele" name="preview.id" value="preview.id" slot="start">
+                </ion-checkbox>
+              </div>
+              <img *ngIf="preview?.thumb_path" src="{{storagePath}}{{preview?.thumb_path}}" alt="path" />
+              <img *ngIf="!preview?.thumb_path" src="../../../assets/images/video.png" />
+              <ion-label>{{preview.title}}</ion-label>
             </div>
-            <img *ngIf="preview?.thumb_path" src="{{storagePath}}{{preview?.thumb_path}}" alt="path" />
-            <img *ngIf="!preview?.thumb_path" src="../../../assets/images/video.png" />
-            <ion-label>{{preview.title}}</ion-label>
           </ion-segment-button>
         </ion-segment>
 
