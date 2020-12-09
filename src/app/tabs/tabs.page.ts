@@ -22,20 +22,20 @@ export class TabsPage implements OnInit {
 
   ionViewWillEnter() {
     this.userData =JSON.parse(localStorage.getItem('userData'));
-    console.log('ion enter')
+    // console.log('ion enter')
      this.userType =this.userData.user_type;
      this.commonService.footerTabHooks.next(true);
   }
 
 
 ionViewDidEnter	(){
-  console.log('iionViewDidEnter')
+//  console.log('iionViewDidEnter')
 }
 ionViewWillLeave(){
   this.commonService.footerTabHooks.next(false);
 }
 ionViewDidLeave(){
-  console.log('ionViewWillLeave');
+  // console.log('ionViewWillLeave');
   this.commonService.footerTabHooks.next(false);
 }
 }

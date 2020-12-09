@@ -50,43 +50,44 @@ export class CommonService {
     modaldata:any;
 
 
-    // presentPrompt() {
-    //   let alert = this.alertCtrl.create({
-    //     title: 'Login',
-    //     inputs: [
-    //       {
-    //         name: 'username',
-    //         placeholder: 'Username'
-    //       },
-    //       {
-    //         name: 'password',
-    //         placeholder: 'Password',
-    //         type: 'password'
-    //       }
-    //     ],
-    //     buttons: [
-    //       {
-    //         text: 'Cancel',
-    //         role: 'cancel',
-    //         handler: data => {
-    //           console.log('Cancel clicked');
-    //         }
-    //       },
-    //       {
-    //         text: 'Login',
-    //         handler: data => {
-    //           if (User.isValid(data.username, data.password)) {
-    //             // logged in!
-    //           } else {
-    //             // invalid login
-    //             return false;
-    //           }
-    //         }
-    //       }
-    //     ]
-    //   });
-    //   alert.present();
-    // }
+    async presentPromptRedirect(title,msg,sendData,Url) {
+      let alert = await this.alertController.create({
+        cssClass:this.cssClass, 
+        header: title,
+        message:msg,
+        backdropDismiss : false,
+        inputs: [
+          {
+            name: 'Name',
+            placeholder: 'Enter here ...',
+            type:'text',
+          }
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: data => {
+              // console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Login',
+            handler: data => {
+              if(Url != '' && Url != null){
+                let name = data.groupName;
+              this.router.navigate([Url, name]).then( (e) => {
+                if (e) { 
+                } else { 
+                }
+              });
+            }
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
 
     async presentAlert(title,msg,btns:any[],myCustomClass) {
 
@@ -104,26 +105,11 @@ export class CommonService {
        alert.present();
     }
 
-    // async presentAlert(title,msg,btns:any[],myCustomClass) {
-
-    //   if(myCustomClass != null && myCustomClass != ''){
-    //     this.cssClass = myCustomClass;
-    //   }else{
-    //     this.cssClass = 'custom-alert';
-    //   }
-    //   let alert =await this.alertController.create({
-    //     cssClass:this.cssClass, 
-    //     header: title,
-    //     message: msg,
-    //     buttons: btns,        
-    //   });
-    //    alert.present();
-    // }
-
     async redirectUrlWithIdConfirm(title,msg,redirrectUrl,id) {
       let alert = await this.alertController.create({
         header: title,
-        message: msg,        
+        message: msg,
+        backdropDismiss : true,        
         buttons: [          
           {
             text: 'Ok',
@@ -159,7 +145,8 @@ export class CommonService {
       }).then(a => {
         a.present().then(() => {        
           if (!this.isLoading) {
-            a.dismiss().then(() => console.log('abort presenting'));
+            a.dismiss();
+            // a.dismiss().then(() => console.log('abort presenting loader'));
           }
         });
       });
@@ -167,7 +154,8 @@ export class CommonService {
   
     async dismissLoader() {
       this.isLoading = false;
-      return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+      return await this.loadingController.dismiss();
+      // return await this.loadingController.dismiss().then(() => console.log('dismissed loder'));
     }
 
     loggingout(){
@@ -235,7 +223,7 @@ export class CommonService {
 
     async presentItemPicker(columnOptions=[],buttons=[], numColumns=1,numOptions=5)
     {
-      console.log(columnOptions);
+      // console.log(columnOptions);
       const picker = await this.pickerController.create({
         columns:columnOptions, 
         buttons: buttons 
@@ -253,7 +241,7 @@ export class CommonService {
           options: this.getColumnOptions(i, numOptions, columnOptions)
         });
       }
-      console.log(columns);
+      // console.log(columns);
       return columns;
     }
   

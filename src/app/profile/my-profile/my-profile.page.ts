@@ -168,9 +168,6 @@ export class MyProfilePage implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.peopleView.getMyPost('2', this.loginUserData.id, 1).subscribe((data: any) => {
       this.myPosts = data.posts.data;
-
-      console.log(this.myPosts);
-
       this.myPosts.forEach((element, i) => {
         this.myPosts[i].count = element.post_likes.length;
         element.post_likes.filter((f) => {

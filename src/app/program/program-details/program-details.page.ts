@@ -178,11 +178,9 @@ export class ProgramDetailsPage implements OnInit {
         }
       }
     ];
-    console.log("this.loginUserData.trilloMach : "+this.loginUserData.trilloMach);
-      if(this.loginUserData.trilloMach != 1){
-        
+    
+      if(this.loginUserData.trilloMatch != 1){
         this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
-        // this.commonService.presentAlert(title,msg,btn,''); 
       }else{
         this.commonService.presentAlert(title,msg,btn,''); 
       }

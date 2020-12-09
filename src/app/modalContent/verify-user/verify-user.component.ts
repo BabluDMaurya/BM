@@ -116,7 +116,7 @@ export class VerifyUserComponent implements OnInit {
       if(data.Record.RecordStatus ==='match'){
         this.settingsService.trilloRecordUpdate().subscribe((data:any)=>{
           let loginUserData = JSON.parse(localStorage.getItem('userData'));
-          loginUserData.trilloMach = 1;
+          loginUserData.trilloMatch = 1;
           localStorage.setItem('userData',JSON.stringify(loginUserData));
         });
         this.commonService.dismissModal();

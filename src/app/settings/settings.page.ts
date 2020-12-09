@@ -195,6 +195,10 @@ this.clipboard.paste().then(
     this.navCtrl.back();
   }
   verifyUserInfoModal() {    
-    this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
+    if(this.loginUserData.trilloMatch != 1){
+      this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', ''); 
+    }else{
+
+    }    
   }
 }
