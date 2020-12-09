@@ -10,11 +10,17 @@
 .top-list ion-item ion-label{font-size: 0.75rem;margin: 0;padding-top: 20px;}
 .top-list img{width: 18px;position: absolute;top: 0;left: 50%;transform: translateX(-50%);}
 .sec-notification{margin: 10px 0;}
-.subprofile_tabs{--border-width: 0;}
-.subprofile_tabs ion-segment-button{border-radius: 30px;margin: 0 5px;background: rgba(58, 174, 163, 0.11);min-height: 38px;color: #000;text-transform: capitalize;letter-spacing: 0;}
-.subprofile_tabs ion-segment-button.segment-button-checked{background: #27a69a;--indicator-color-checked: #27a69a;color: #FFF;}
-.subprofile_tabs ion-segment-button.segment-button-checked span{color:#FFF}
-.subprofile_tabs ion-label{margin: 0;}
+.subprofile_tabs{--border-width: 0;
+    ion-segment-button{border-radius: 30px;margin: 0 5px;background: rgba(58, 174, 163, 0.11);min-height: 38px;color: #000;text-transform: capitalize;letter-spacing: 0;}
+    ion-segment-button.segment-button-checked{background: #27a69a;--indicator-color-checked: #27a69a;color: #FFF;}
+    ion-segment-button.segment-button-checked span{color:#FFF}
+    ion-label{margin: 0;}
+}
+ion-item-divider{
+    ion-segment.profile_tabs{
+        ion-segment-button{background: #27a69a;--indicator-color-checked: #27a69a;color: #FFF;--border-width: 0;}
+    }
+}
 
 .share-btn{bottom:40px;position:absolute;right:0;--background:#27a69a;--background-activated:#27a69a;--background-focused:#27a69a;--background-hover:#27a69a;--ion-color-shade:#27a69a!important;--ion-color-tint:#27a69a!important;--ion-color-base:rgba(0, 0, 0, 0.35)!important}
 .profile_tabs ion-segment span{text-transform: capitalize;font-weight: 400;font-size: 0.625rem;}

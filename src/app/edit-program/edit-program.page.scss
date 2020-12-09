@@ -34,3 +34,8 @@ ion-slides{height: 190px;}
 }
 
 .programHeading{font-size: 14px;text-transform: capitalize;margin-bottom: 5px;}
+.nutrition-form{
+    ion-item{
+        ion-textarea{padding-bottom: 10px;--padding-bottom: 15px;}
+    }
+}

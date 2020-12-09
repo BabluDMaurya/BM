@@ -14,19 +14,19 @@ ion-label{
 // ---------- css loader ------------
 .lds-dual-ring {
     display: inline-block;
-    width: 80px;
-    height: 80px;
+    width: 100%;
   }
   .lds-dual-ring:after {
     content: " ";
     display: block;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     margin: 8px;
     border-radius: 50%;
     border: 3px solid #27a69a;
-    border-color: #27a69a transparent #27a69a transparent;
+    border-color:#27a69a #f7f7f7 #27a69a #f7f7f7;
     animation: lds-dual-ring 1.2s linear infinite;
+    margin: 10px auto;
   }
   @keyframes lds-dual-ring {
     0% {
@@ -53,4 +53,10 @@ ion-label{
         border-bottom: none;--background: transparent;box-shadow: none;
       }
     }
+  }
+
+  ion-header{
+    ion-item.item-datetime{margin: 0;
+      ion-datetime{padding: 0;}
+    }    
   }
