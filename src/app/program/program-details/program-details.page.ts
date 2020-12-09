@@ -41,13 +41,6 @@ export class ProgramDetailsPage implements OnInit {
   ss: Observable<number>;
   tick = 1000;
   ngOnInit() {
-    this.loginUserData = JSON.parse(localStorage.getItem('userData'));
-    if(this.loginUserData.trilloMach != 1){
-      this.trilloverify = false;      
-    }else{
-      this.trilloverify = true;
-    }
-    console.log("this.loginUserData:"+JSON.stringify(this.loginUserData));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.programId = params.get('programId');
     });
@@ -164,6 +157,8 @@ export class ProgramDetailsPage implements OnInit {
 
   applyAdvertise()
   {
+    this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+    
     let title ="Advertise Rule";
     let msg ="1.Your Video will send for verification. </br> "
             +"2.Once approved Video Program will be locked";
@@ -183,11 +178,16 @@ export class ProgramDetailsPage implements OnInit {
         }
       }
     ];
-      this.commonService.presentAlert(title,msg,btn,'');
+    console.log("this.loginUserData.trilloMach : "+this.loginUserData.trilloMach);
+      if(this.loginUserData.trilloMach != 1){
+        
+        this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
+        // this.commonService.presentAlert(title,msg,btn,''); 
+      }else{
+        this.commonService.presentAlert(title,msg,btn,''); 
+      }
   }
-  verifyUserInfoModal() {    
-    this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
-  }
+  
   ngOnDestroy() {
 
   }
@@ -195,7 +195,6 @@ export class ProgramDetailsPage implements OnInit {
   {
     if(this.programDetail.type_id == 'video')
     {
-
       // console.log('programId:'+this.programDetail.id);
       this.programService.advertiseRequest({'programId':this.programDetail.id}).subscribe(data=>{
         this.adData = data.status;
