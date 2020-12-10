@@ -105,7 +105,7 @@ export class SigninPage implements OnInit, OnDestroy {
         localStorage.setItem('userData', JSON.stringify(data.userData));
         localStorage.setItem('userToken', data.userToken);
         this.commonService.setUserData(data.userToken, data.userToken);
-        console.log('userToken' + data.userToken);
+        
 
         this.commonService.dismissLoader();
         // send device token to server
