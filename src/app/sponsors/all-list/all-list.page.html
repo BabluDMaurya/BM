@@ -60,7 +60,7 @@
     <ion-segment-button value="chat"><div class="chatBadge"><span>Chat</span> <ion-badge class="ml-1" *ngIf="sponcerCount > 0">{{ sponcerCount }}</ion-badge></div></ion-segment-button>
   </ion-segment>
     <div *ngIf="showList">
-        <ion-card *ngFor="let program of programList; let i = index;" class="ion-no-margin">
+        <ion-card *ngFor="let program of programList; let i = index;" class="ion-no-margin" [ngClass]="customClass == i ? 'active':'deactive'">
           <ion-item lines="none">
             <!-- <ion-avatar slot="start" (click)="showSponsersContent(program)">
               <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
@@ -72,7 +72,7 @@
               <span class="list-name">$ {{program?.amount}}</span> 
             </ion-label>
             <div class="action-links" slot="end">
-              <ion-icon ios="ios-repeat" md="md-repeat" (click)="expand(i)" [ngClass]="customClass == i ? 'active':'deactive'">
+              <ion-icon ios="ios-repeat" md="md-repeat" (click)="expand(i)" >
               </ion-icon> 
             </div> 
           </ion-item>
