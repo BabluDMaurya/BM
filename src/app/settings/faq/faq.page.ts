@@ -10,7 +10,7 @@ import { CommonService } from 'src/app/services/common.service';
 export class FaqPage implements OnInit {
   public items: any = [];
   status: boolean = false;
-
+  classVariable: any = 0;
   constructor(public navCtrl: NavController,public commonService : CommonService) { 
     this.items = [
       { expanded: true, title:'Lorem Ipsum is simply dummy text ? ', description: 'This is content, without any paragraph or header tags, within an ion-card-content element.'},
@@ -26,6 +26,9 @@ export class FaqPage implements OnInit {
   goBack(){
     this.navCtrl.back();
   }
+  changeClass (index:any) {
+    this.classVariable = index;
+ }
   expandItem(item): void {
     if (item.expanded) {
       item.expanded = false;
