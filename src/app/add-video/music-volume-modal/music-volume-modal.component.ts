@@ -28,7 +28,7 @@ export class MusicVolumeModalComponent implements OnInit {
   complete: boolean = false;
   data: any; 
   uploadedVideo: string; 
-  isUploading: boolean = true;
+  isUploading: boolean = false;
   uploadPercent: number = 0;
   error : any;
   errorMessage : any;

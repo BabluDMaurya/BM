@@ -88,6 +88,8 @@ export class MyProfilePage implements OnInit {
   }
   ngOnInit() {
 
+    //this.commonService.redirectUrlWithIdConfirm('test', 'testsss', '', 'custom-alert');
+
     this.previewImage = [];
     this.notification.geUnreadNotification().subscribe(
       (data: any) => {

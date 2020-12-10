@@ -25,7 +25,7 @@
     </ion-item>
   </ion-radio-group>
 </ion-list>
-<div class="ion-text-center">
+<div *ngIf="isUploading" class="ion-text-center">
   <div class="uploading"><ion-spinner name="bubbles" style="margin-right: 10px;"></ion-spinner> Uploading - 10% Complete</div>          
 </div>
 <ion-button expand="full" class="green ion-no-margin" (click)="fSubmit()" >Proceed</ion-button>
