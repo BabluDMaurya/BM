@@ -13,6 +13,7 @@ import { ProgramService } from './../../services/program.service';
 })
 
 export class ProgramPage implements OnInit {
+  classVariable :any = 0;
   myDate: any = new Date().toISOString();
   url: any = Config.ApiUrl;
   data: any;
@@ -162,8 +163,8 @@ export class ProgramPage implements OnInit {
     this.commonService.presentModal(ScheduleModalComponent, 'fullModal', { 'programDetail': event });
   }
   cloneProg: any;
-  expandItem(item, type): void {
- 
+  expandItem(item, type, index): void {
+    
     let id;
     if (item.parent_program) {
       id = item.parent_program;
@@ -172,6 +173,7 @@ export class ProgramPage implements OnInit {
     } 
     if (item.expanded) {
       item.expanded = false;
+      this.classVariable = -index;
     } else { 
       this.programService.getProgramById({ 'parentId': id }).subscribe(data => {
         this.cloneProg = data.cloneList.filter(el => {
@@ -183,8 +185,10 @@ export class ProgramPage implements OnInit {
         this.programList.map(listItem => {
           if (item == listItem) {
             listItem.expanded = !listItem.expanded;
+            this.classVariable = index;
           } else {
             listItem.expanded = false;
+            this.classVariable = -index;
           }
           return listItem;
         });
@@ -192,8 +196,10 @@ export class ProgramPage implements OnInit {
         this.accProgramList.map(listItem => {
           if (item == listItem) {
             listItem.expanded = !listItem.expanded;
+            this.classVariable = index;
           } else {
             listItem.expanded = false;
+            this.classVariable = -index;
           }
           return listItem;
         });
@@ -201,8 +207,10 @@ export class ProgramPage implements OnInit {
         this.reqProgramList.map(listItem => {
           if (item == listItem) {
             listItem.expanded = !listItem.expanded;
+            this.classVariable = index;
           } else {
             listItem.expanded = false;
+            this.classVariable = -index;
           }
           return listItem;
         });
@@ -210,8 +218,10 @@ export class ProgramPage implements OnInit {
         this.allProgramList.map(listItem => {
           if (item == listItem) {
             listItem.expanded = !listItem.expanded;
+            this.classVariable = index;
           } else {
             listItem.expanded = false;
+            this.classVariable = -index;
           }
           return listItem;
         });
