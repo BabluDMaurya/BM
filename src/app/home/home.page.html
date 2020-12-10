@@ -32,9 +32,9 @@
       <ion-row class="row">
         <ion-col size="3" *ngFor="let special of  specialities">
           <ion-card class="category-card"> 
-              <img src="{{url}}public/{{special?.specialities_image}}" *ngIf="special?.specialities_image">
-              <h4>{{special?.name}}</h4>
+              <img src="{{url}}public/{{special?.specialities_image}}" *ngIf="special?.specialities_image">              
           </ion-card>
+          <h4>{{special?.name}}</h4>
         </ion-col>
       </ion-row>
     </ion-grid>

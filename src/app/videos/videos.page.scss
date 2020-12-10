@@ -20,3 +20,8 @@ h6{font-size: 1rem;line-height: 1.35;}
 .ios.info-block{margin-bottom: 0;}
 .ios .video-list ion-item ion-avatar{margin-top: 0;margin-bottom: 0;}
 .play-videoBtn{position: absolute;left: 50%; top: 50%; transform: translate(-50%, -50%);  font-size: 3.5rem;color:#FFF !important}
+ion-card{margin: 0;border-radius: 0;
+    ion-card-content{
+        ion-thumbnail{height: 270px;}
+    }
+}
