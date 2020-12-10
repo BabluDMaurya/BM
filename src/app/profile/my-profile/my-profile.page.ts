@@ -87,7 +87,6 @@ export class MyProfilePage implements OnInit {
     };
   }
   ngOnInit() {
-
     this.previewImage = [];
     this.notification.geUnreadNotification().subscribe(
       (data: any) => {

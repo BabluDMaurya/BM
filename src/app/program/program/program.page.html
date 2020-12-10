@@ -72,7 +72,7 @@
             <div class="action-links" slot="end">
               <ion-icon ios="ios-more" md="md-more" (click)="hostingDropdown(program?.id)"></ion-icon>
               <ion-icon ios="ios-restaurant" md="md-restaurant" (click)="showSchedule(program)"></ion-icon>
-              <ion-icon ios="ios-repeat" md="md-repeat" (click)="expandItem(program,1,i)"
+              <ion-icon ios="ios-arrow-down" md="ios-arrow-down" (click)="expandItem(program,1,i)"
                 *ngIf="program?.repeate_status!=2" [ngClass]="classVariable == i ? 'active':'deactive'">
               </ion-icon>
             </div>
@@ -110,7 +110,7 @@
             <div class="action-links" slot="end">
               <ion-icon ios="ios-more" md="md-more" (click)="hostingDropdown(program?.id)"></ion-icon>
               <ion-icon ios="ios-restaurant" md="md-restaurant" (click)="showSchedule(program)"></ion-icon>
-              <ion-icon ios="ios-repeat" md="md-repeat" (click)="expandItem(program,4,j)"
+              <ion-icon ios="ios-arrow-down" md="ios-arrow-down" (click)="expandItem(program,4,j)"
                 *ngIf="program?.repeate_status!=2" [ngClass]="classVariable == j ? 'active':'deactive'">
               </ion-icon>
             </div>
@@ -153,7 +153,7 @@
         </ion-label>
         <div class="action-links" slot="end">
           <ion-icon ios="ios-restaurant" md="md-restaurant" (click)="showSchedule(item)"></ion-icon>
-          <ion-icon ios="ios-repeat" md="md-repeat" (click)="expandItem(item,2,k)" [ngClass]="classVariable == k ? 'active':'deactive'"></ion-icon>
+          <ion-icon ios="ios-arrow-down" md="ios-arrow-down" (click)="expandItem(item,2,k)" [ngClass]="classVariable == k ? 'active':'deactive'"></ion-icon>
         </div>
       </ion-item>
       <div *ngIf="accProgramList?.length < 1" class="no-data">
@@ -194,7 +194,7 @@
         <div class="action-links" slot="end">
           <ion-icon ios="ios-more" md="md-more" (click)="requestDropdown(item.id)"></ion-icon>
           <ion-icon ios="ios-restaurant" md="md-restaurant" (click)="showSchedule(item)"></ion-icon>
-          <ion-icon ios="ios-repeat" md="md-repeat" (click)="expandItem(item,3,l)" *ngIf="item?.repeate_status!=2" [ngClass]="classVariable == l ? 'active':'deactive'">
+          <ion-icon ios="ios-arrow-down" md="ios-arrow-down" (click)="expandItem(item,3,l)" *ngIf="item?.repeate_status!=2" [ngClass]="classVariable == l ? 'active':'deactive'">
           </ion-icon>
         </div>
       </ion-item>

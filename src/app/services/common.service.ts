@@ -109,7 +109,8 @@ export class CommonService {
       let alert = await this.alertController.create({
         header: title,
         message: msg,
-        backdropDismiss : true,        
+        backdropDismiss : false,
+        cssClass: 'custom-alert' ,       
         buttons: [          
           {
             text: 'Ok',

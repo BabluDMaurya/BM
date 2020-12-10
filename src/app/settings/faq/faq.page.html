@@ -15,7 +15,7 @@
   <ion-card class="faq-card ion-no-margin" *ngFor="let item of items; let i = index;" (click)="changeClass(i)" [ngClass]="classVariable == i ? 'active':'deactive'">          
     <ion-card-header class="faq-header" (click)="expandItem(item)">
       <ion-card-title>{{ item.title}}</ion-card-title>          
-      <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      <ion-icon ios="ios-arrow-down" md="ios-arrow-down"></ion-icon>
     </ion-card-header>
     <ion-card-content>
       <app-expandable [expanded]="item.expanded">

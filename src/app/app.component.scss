@@ -34,7 +34,7 @@ ion-text{font-size:0.8125rem}
 .top-banner img+ion-fab-button{position: absolute;right: 0;bottom: 0;}
 .top-banner img+ion-fab-button ion-icon{font-size:1.25rem}
 .user-name{color:#333;font-weight:700;margin-top:5px;padding-bottom:6px;font-size:14px;margin-left:20px}
-.user-name h6{margin-bottom:0;font-weight:500}
+.user-name h6{margin-bottom:0;font-weight:500;margin-bottom: 5px;}
 .user-name p{font-style:italic;font-weight:500}
 .news-post-user-name{padding-left:10px}
 .news-post-user-name a{color:#262626;font-weight:500;overflow:hidden;text-overflow:ellipsis}
@@ -751,7 +751,7 @@ ion-button{--border-width: 1px;}
 .bottom-text{color:#fff;font-size:0.9375rem;margin-top:30px}
 .bottom-text a{color:#2bbbad}
 
-.back-icon{position: absolute;left: 0;font-size: 3rem;color: #FFF;}
+.back-icon{position: absolute;left: 5px;font-size: 3rem;color: #FFF;}
 // .item-select ion-label{color: #d1d1d1;}
 .ion-select{color: #FFF;}
 .login-form ion-radio-group{width: 100%;display: flex;align-items: center;color: #FFF;}
@@ -817,7 +817,12 @@ ion-checkbox{--background-checked: #2bbbad;--border-color-checked: #2bbbad;}
 }
 .faq-header{display: flex;justify-content: space-between;align-items: baseline;}
 .faq-header ion-card-title{font-size: .85rem;font-weight: 500;line-height: 1.5;}
-.faq-header ion-icon{width: 14px;height: 14px;min-width: 14px;margin-left: 10px;color: #26a69a;}
+.faq-header ion-icon{width: 14px;height: 14px;min-width: 14px;margin-left: 10px;color: #26a69a;transition: all 0.2s;}
+.faq-card.active{
+    .faq-header{
+        ion-icon{transform: rotate(180deg);}
+    }
+}
 
 .img-side {
     text-align: left;

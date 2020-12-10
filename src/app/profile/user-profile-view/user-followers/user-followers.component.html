@@ -16,8 +16,7 @@
       <ion-searchbar [(ngModel)]="followerSearchTerm"></ion-searchbar>
     </ion-toolbar>
   <div [ngSwitch]="people_tabs">
-    <ion-list lines="none" *ngSwitchCase="'followers'"> 
-      
+    <ion-list lines="none" *ngSwitchCase="'followers'">       
       <ion-item *ngFor="let peoplelist of followerFilteredUsers" class="item-card">
           <ion-avatar slot="start" *ngIf="peoplelist.following_user.bios.profile_pic" [routerLink]="peoplelist.following_user.user_type==0 ? ['/tabs/user-profile-view/',peoplelist.following_uid] : ['/tabs/consultant-profile-view/',peoplelist.following_uid]">
             <img src="https://ionicinto.wdipl.com/public/profile_pic/thumb/{{peoplelist.following_user.bios.profile_pic}}">

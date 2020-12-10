@@ -160,8 +160,8 @@ export class ProgramDetailsPage implements OnInit {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
     
     let title ="Advertise Rule";
-    let msg ="1.Your Video will send for verification. </br> "
-            +"2.Once approved Video Program will be locked";
+    let msg ="<p>1. Your Video will send for verification.</p>"
+            +"<p class='mb-0'>2. Once approved Video Program will be locked</p>";
     let btn=  [
       {
           text: 'Cancel',
@@ -182,7 +182,7 @@ export class ProgramDetailsPage implements OnInit {
       if(this.loginUserData.trilloMatch != 1){
         this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
       }else{
-        this.commonService.presentAlert(title,msg,btn,''); 
+        this.commonService.presentAlert(title,msg,btn,'custom-alert advertiseAlert'); 
       }
   }
   
