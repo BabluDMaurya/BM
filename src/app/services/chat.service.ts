@@ -34,14 +34,11 @@ export class ChatService {
        
        this.headers = new HttpHeaders({"Authorization": "Bearer " + this.token });
     }
-    console.log(this.headers);
     return  this.options = { headers: this.headers };
   } 
   searchPeople(data:any): Observable<any> {
-    console.log('service');
     return this.http.post<any>(Config.ApiUrl+'api/auth/searchPeople', data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('searchPeople', data)));
-
-  }
+}
   searchQuery(data:any): Observable<any>{
     return this.http.post<any>(Config.ApiUrl+'api/auth/searchRequest',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('selectAll',data)));
 

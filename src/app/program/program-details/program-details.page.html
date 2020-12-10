@@ -109,6 +109,6 @@
   </ion-row>  
 </ion-content>
 <ion-footer class="sticky-footer" *ngIf="programDetail?.type_id == 'video' && !programDetail?.ended && !programDetail?.live ">
-  <ion-button expand="full" *ngIf=" !adData && (hh | async)>23" (click)="applyAdvertise()"  class="green ion-text-uppercase ion-no-margin full-height"> Apply For Advertise sponser</ion-button>
+  <ion-button expand="full" *ngIf=" !adData && (hh | async)>23" (click)="applyAdvertise()" class="green ion-text-uppercase ion-no-margin full-height"> Apply For Advertise sponser</ion-button>
   <ion-button expand="full" *ngIf="adData?.id && adData?.video_approve_status== 1" (click)="showSponsersList()"   class="green ion-text-uppercase ion-no-margin full-height" >See Ad Sponser Options  </ion-button>
 </ion-footer>

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {CommonService} from './../../services/common.service';
 import { SettingsService } from '../../services/settings.service';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { stringify } from 'querystring';
 @Component({
   selector: 'app-verify-user',
   templateUrl: './verify-user.component.html',
@@ -13,8 +12,12 @@ export class VerifyUserComponent implements OnInit {
   submitted = false;
   showSubOptionOfAU:boolean = false; //default
   showSubOptionOfUS:boolean = false; //default
-
-  constructor(public commonService: CommonService, public formBuilder: FormBuilder,private settingsService: SettingsService) { this.createForm();}
+  @Output() itemFromComponent = new EventEmitter();
+  constructor(
+     public commonService: CommonService,
+     public formBuilder: FormBuilder,
+     private settingsService: SettingsService
+     ) { this.createForm();}
 
   ngOnInit() {
     //     this.settingsService.getCountryCodeApi().subscribe((data: any) => {
@@ -109,12 +112,12 @@ export class VerifyUserComponent implements OnInit {
     }
     this.commonService.presentLoader();
     this.settingsService.userIndentityVerify(this.userIdentityVerifyForm.value).subscribe((data: any) => {
-      // console.log(data);
-      // console.log(data.Record.RecordStatus);
       this.commonService.dismissLoader();
       if(data.Record.RecordStatus ==='match'){
         this.settingsService.trilloRecordUpdate().subscribe((data:any)=>{
-          
+          let loginUserData = JSON.parse(localStorage.getItem('userData'));
+          loginUserData.trilloMatch = 1;
+          localStorage.setItem('userData',JSON.stringify(loginUserData));
         });
         this.commonService.dismissModal();
         this.commonService.presentToast('Record Match');

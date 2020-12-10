@@ -1,0 +1,113 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "com-sarriaroman-photoviewer": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-android-support-gradle-release": {
+      "ANDROID_SUPPORT_VERSION": "27.+",
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-camera": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-crop": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-fcm-with-dependecy-updated": {
+      "FCM_VERSION": "19.0.0",
+      "GRADLE_TOOLS_VERSION": "3.5.3",
+      "GOOGLE_SERVICES_VERSION": "4.3.3",
+      "SUPPORT_LIBRARY_VERSION": "28.0.0",
+      "ANDROID_DEFAULT_NOTIFICATION_ICON": "@mipmap/ic_launcher",
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-filepath": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-iosrtc": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-preview-any-file": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-streaming-media": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-clipboard": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-request-location-accuracy": {
+      "PLAY_SERVICES_LOCATION_VERSION": "16.+",
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-telerik-imagepicker": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
+    }
+  }
+}

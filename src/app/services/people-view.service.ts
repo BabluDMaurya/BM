@@ -23,7 +23,6 @@ export class PeopleViewService {
        
        this.headers = new HttpHeaders({"Authorization": "Bearer " + this.token });
     }
-    console.log(this.headers);
     return  this.options = { headers: this.headers };
   }
 

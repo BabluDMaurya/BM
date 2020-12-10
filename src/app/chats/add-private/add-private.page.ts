@@ -30,9 +30,9 @@ export class AddPrivatePage implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     // this.formData = this.navParams.data.formData;
     // this.source = this.navParams.data.source;
-    console.log(this.formData);
+    // console.log(this.formData);
     this.peopleService.getFollowers('').subscribe((peoples: any) => {
-      console.log(peoples);
+      // console.log(peoples);
       let data;
       data = peoples.result.sort((a, b) => a.following_user.user_name > b.following_user.user_name ? 1 : -1);
       data.sort((a, b) => a.following_user.user_name.localeCompare(b.following_user.user_name));
@@ -51,7 +51,7 @@ export class AddPrivatePage implements OnInit {
         return groups;
       }, {});
       this.peopleList = Object.keys(grouped).map(key => ({ key, contacts: grouped[key] }));
-      console.log(this.peopleList);
+      // console.log(this.peopleList);
     });
     this.createForm();
   }
@@ -94,15 +94,16 @@ export class AddPrivatePage implements OnInit {
   chatRequest() {
     this.formData = this.peopleForm.value;
     if(this.formData.peopleSelect.length >1){
-        console.log('Group Chat');
-    }else{
-      console.log('private Chat');
+      let title :any = 'Group Chat';
+      let msg : any = 'Enter your Group Name Bellow';
+      let Url : any = '/chat-room/29/46';
+      this.commonService.presentPromptRedirect(title,msg,this.formData,Url);
+      
+    }else{      
+      console.log('private Chat :'+this.formData.peopleSelect.length);
     }
-    //if(this.formData.peopleSelect)
     console.log("this.formData:"+JSON.stringify(this.formData));
-    // this.router.navigate(ChatRoomPage,{
-    //   item:this.formData
-    //   });
+    
   } 
 
   searchPersonList: any;
