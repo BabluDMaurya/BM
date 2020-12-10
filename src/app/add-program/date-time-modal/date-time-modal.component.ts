@@ -47,6 +47,7 @@ export class DateTimeModalComponent implements OnInit {
   storagePath: any = Config.storagePath;
   repetatedDateCopy: any= []; 
   abDateSelect:any;
+  selectedDateTime : any;
   constructor(
     public commonService: CommonService,
     public modalCtrl: ModalController,
@@ -61,6 +62,9 @@ export class DateTimeModalComponent implements OnInit {
     hourspan.setMinutes(hourspan.getMinutes() + 59);
     this.programData = this.navParams.data.programData;
     this.programList = this.navParams.data.programList; 
+
+    this.selectedDateTime = this.convert(new Date(this.calendarData))+' '+this.calendarData.getHours()+':'+this.minutes;
+    
     // ------------ S O R T I N G ---------------
     this.programList.forEach(el => {
       let startTime = new Date(el.startTime);
@@ -93,10 +97,18 @@ export class DateTimeModalComponent implements OnInit {
     // })
   }
   //------------------ 
+  convert(str) {
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [day,mnth,date.getFullYear()].join("-");
+  }
   ngOnInit() { }
   //------------------ 
   ionViewWillEnter() {
     let userData = JSON.parse(localStorage.getItem('userData'));
+    
+    
     if (this.programData.programType == '6') {
       this.commonService.loadVideoType({ 'userId': userData.id, 'postType': 2, 'videoType': 3 }).subscribe(data => {
         this.videoList = data.posts.data;
@@ -149,6 +161,7 @@ export class DateTimeModalComponent implements OnInit {
       var endDate = new Date(date.dateObj);
       var dateMove = new Date(this.calendarData);
       var currentDate = new Date(this.calendarData); 
+      // console.log("'date':new Date(currentDate)"+new Date(currentDate));
       while (currentDate.getTime() <= endDate.getTime()) {
         this.repetatedDateCopy.push({'date':new Date(currentDate) ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
         this.repetatedDate.push(new Date(currentDate));
