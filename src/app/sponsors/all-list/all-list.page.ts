@@ -21,6 +21,7 @@ export class AllListPage implements OnInit {
   sponcersChatEmpty:boolean = false;
   sponcersChat:boolean = false;
   sponcerCount: any;
+  customClass : any =0;
   constructor(
     private notification: NotificationService,
     private programService : ProgramService,
@@ -84,6 +85,7 @@ export class AllListPage implements OnInit {
 
   expand(index)
   {
+    this.customClass = index;
     this.programList.forEach((el, i)=>{
       if(index == i)
       {

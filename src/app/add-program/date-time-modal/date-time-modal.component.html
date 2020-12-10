@@ -23,6 +23,10 @@
               {{('0'+i).slice(-2)}}</ion-select-option>
           </ion-select> Minutes</ion-text>
       </ion-item> -->
+      <ion-item>
+        <ion-label>Selected Date Time : </ion-label>
+        <ion-text class="inline-flex">{{selectedDateTime}}</ion-text>
+      </ion-item>
       <ion-item *ngIf="programData?.programType!=6" class="durationItem">
         <ion-label>Type Duration (in Minutes)</ion-label>
         <ion-input placeholder="Minutes" name="duration" type="number" [(ngModel)]="duration"></ion-input>
