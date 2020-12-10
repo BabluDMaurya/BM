@@ -119,8 +119,7 @@
             <img src="{{url}}{{preview}}" (click)="openViewer(preview)" *ngIf="previewImage.length>0" />
           </ion-slide>
         </ion-slides>
-        <div class="no-data" *ngIf="previewImage.length==0">
-          <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <div class="no-data photoNodata" *ngIf="previewImage.length==0">
           <p>No post added yet.</p>
         </div>
       </ion-col>
@@ -410,7 +409,7 @@
                 </ion-list>
 
                 <!-- --------------  U P C O M I N G    P R O G R A M  ------------------>
-                <ion-list *ngSwitchCase="'upcoming'" lines="none">
+                <ion-list *ngSwitchCase="'upcoming'" lines="none" class="ion-no-padding">
                   <app-upcoming-tab></app-upcoming-tab>
                 </ion-list>
               </div>
