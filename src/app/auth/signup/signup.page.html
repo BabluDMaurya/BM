@@ -100,21 +100,20 @@
           </span>
          <span class="error-message"> {{ captchaErr }}</span>
         </ng-container>
-        <ion-item class="ion-no-padding terms mt-20 terms-list" lines="none">
-          <ion-item style="--padding-start: 0;margin: 0;" lines="none">
-            <ion-checkbox formControlName='policy' checked="false"></ion-checkbox> 
-          </ion-item>
-          <div>
-            <ion-text class="text-white" for="test6">By signing up, you agree to our <a class="text-green" (click)="termsModal()">Terms &amp;Conditions</a> &amp; <a class="text-green" (click)="privacyModal()">Privacy Policy</a></ion-text>
-          </div>
-        </ion-item> 
+        <div class="termsBox">
+          <ion-checkbox formControlName='policy' checked="false"></ion-checkbox> 
+          <ion-text class="text-white" for="test6">By signing up, you agree to our <a class="text-green" (click)="termsModal()">Terms &amp;Conditions</a> &amp; <a class="text-green" (click)="privacyModal()">Privacy Policy</a></ion-text>
+        </div>
+        <!-- <ion-item class="ion-no-padding terms mt-20 terms-list" lines="none">          
+          
+        </ion-item>  -->
         <ng-container *ngFor="let validation of validation_messages.policy">
           <span class="error-message"
             *ngIf="(submitted || registerForm.get('policy').touched) && registerForm.get('policy').hasError(validation.type)">
             {{ validation.message }}
           </span>
         </ng-container>
-        <ion-button expand="block" (click)="onClickSubmit()" class="green ion-text-uppercase">SignUp</ion-button>
+        <ion-button expand="block" (click)="onClickSubmit()" class="green ion-text-uppercase mt-20">SignUp</ion-button>
         <div class="or-text">
           <ion-text>OR</ion-text>
         </div>

@@ -1,14 +1,12 @@
-.terms-list{    padding: 0;
-    --background: transparent;
-    background: transparent;
-    display: flex;
-    align-items: baseline;}
-    .terms-list ion-item{
-        --padding-start: 0;
-        --padding-end: 0;
-        --min-height: auto;
-    }
-    .terms-list ion-item:first-child{width: 30px;}
+.login-form{
     ion-radio-group{
         ion-item{margin-bottom: 0;}
     }
+    ion-item{
+        ion-label{font-size: 0.875rem;}
+    }
+    .termsBox{display: flex;margin-bottom:10px;margin-top:10px;
+        ion-checkbox{margin-right: 10px;}
+        ion-text{text-align: left;line-height: 1.5;}
+    }
+}

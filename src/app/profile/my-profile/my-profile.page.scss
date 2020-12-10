@@ -18,3 +18,10 @@ padding-bottom: var(--ion-padding, 27px);
 .newPostCard{
     ion-card-content{padding-top: 12px;}
 }
+
+ion-item-divider{
+    ion-segment.profile_tabs.subprofile_tabs{
+       .segment-button-checked{background: #27a69a;--indicator-color-checked: #27a69a;color: #FFF;--border-width: 0;}
+    }
+}
+.photoNodata{height: 70px;background: #f7f7f7;}

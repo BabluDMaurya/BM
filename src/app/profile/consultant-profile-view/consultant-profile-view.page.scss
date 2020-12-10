@@ -16,11 +16,7 @@
     ion-segment-button.segment-button-checked span{color:#FFF}
     ion-label{margin: 0;}
 }
-ion-item-divider{
-    ion-segment.profile_tabs{
-        ion-segment-button{background: #27a69a;--indicator-color-checked: #27a69a;color: #FFF;--border-width: 0;}
-    }
-}
+
 
 .share-btn{bottom:40px;position:absolute;right:0;--background:#27a69a;--background-activated:#27a69a;--background-focused:#27a69a;--background-hover:#27a69a;--ion-color-shade:#27a69a!important;--ion-color-tint:#27a69a!important;--ion-color-base:rgba(0, 0, 0, 0.35)!important}
 .profile_tabs ion-segment span{text-transform: capitalize;font-weight: 400;font-size: 0.625rem;}

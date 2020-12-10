@@ -1,22 +1,22 @@
-<ion-item class="item-card" *ngFor="let upcoming of upcomingList" >
-  <ion-avatar slot="start">
-    <img
-      src="{{profile_url}}{{upcoming?.program_user?.bios?.profile_pic}}" *ngIf="upcoming?.program_user?.bios?.profile_pic">
+<ion-card class="ion-no-margin upcomingCard" *ngFor="let upcoming of upcomingList">
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img src="{{profile_url}}{{upcoming?.program_user?.bios?.profile_pic}}" *ngIf="upcoming?.program_user?.bios?.profile_pic">
       <img  src="https://intoactive.wdipl.com/images/user.jpg" *ngIf="!upcoming?.program_user?.bios?.profile_pic"  >
-
-  </ion-avatar>
-  <ion-label      [routerLink]="userData?.id ==upcoming?.user_id ? ['/program-details/',upcoming.id] : ['/program-view/',upcoming.id]">
-    <h3 class="list-person">{{upcoming?.title}}</h3>
-    <span class="list-name d-block">{{upcoming?.type_id}}</span>
-    <span class="list-name d-block">By:{{upcoming?.program_user?.user_name}} {{upcoming?.convertedTime | date:'medium'}}</span>
-    <span class="list-name d-block" *ngIf="upcoming?.cd>0">Countdown: <b>{{ upcoming?.hh |number  }}:  {{ upcoming?.mm  }}:  {{ upcoming?.ss |number }} </b> </span>
-    <span class="list-name d-block" *ngIf="upcoming?.cd==0"> <b> L I V E</b></span>
-    <!-- <countdown [config]="{leftTime: 30}"></countdown> -->
-  </ion-label>
-  <div class="action-links" slot="end" *ngIf="upcoming?.nutrition_id">
-    <ion-icon (click)="nutritionModal(upcoming)" ios="md-restaurant" md="md-restaurant"></ion-icon>
-  </div>
-</ion-item>
+    </ion-avatar>
+    <ion-label [routerLink]="userData?.id ==upcoming?.user_id ? ['/program-details/',upcoming.id] : ['/program-view/',upcoming.id]">
+      <h3 class="list-person">{{upcoming?.title}}</h3>
+      <span class="list-name d-block">{{upcoming?.type_id}}</span>
+      <span class="list-name d-block">By:{{upcoming?.program_user?.user_name}} {{upcoming?.convertedTime | date:'medium'}}</span>
+      <span class="list-name d-block" *ngIf="upcoming?.cd>0">Countdown: <b>{{ upcoming?.hh |number  }}:  {{ upcoming?.mm  }}:  {{ upcoming?.ss |number }} </b> </span>
+      <span class="list-name d-block" *ngIf="upcoming?.cd==0"> <b> L I V E</b></span>
+      <!-- <countdown [config]="{leftTime: 30}"></countdown> -->
+    </ion-label>
+    <div class="action-links" slot="end" *ngIf="upcoming?.nutrition_id">
+      <ion-icon (click)="nutritionModal(upcoming)" ios="md-restaurant" md="md-restaurant"></ion-icon>
+    </div>
+  </ion-item>
+</ion-card>
 <!--------------- S K E L E T O N ------------>
 <ion-list lines="none" *ngIf="!upcomingList">      
   <ion-item *ngFor="let skeleton of [].constructor(20)" class="item-card">
