@@ -9,5 +9,6 @@
         --min-height: auto;
     }
     .terms-list ion-item:first-child{width: 30px;}
-
-    .error-box{}
+    ion-radio-group{
+        ion-item{margin-bottom: 0;}
+    }
