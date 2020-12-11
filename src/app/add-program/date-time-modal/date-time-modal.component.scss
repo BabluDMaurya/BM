@@ -24,8 +24,10 @@ ion-slides{background: transparent;padding: 0 5px;}
 .users-list ion-label{width: 100px;}
 .view-all{width:36px;height:36px;max-width: 36px;text-align:center;background:#f1f0f0;border-radius:50%;display:flex;justify-content:center;align-items:center;margin: 0;margin-left: -10px;}
 
-.durationItem{
-    ion-input{position: relative;top: 2px;text-align: right;}
+ion-list{
+    .durationItem{--padding-end: 0;
+        ion-input{position: relative;top: 2px;text-align: right;}
+    }
 }
 
 .program-card{width: 100%;}

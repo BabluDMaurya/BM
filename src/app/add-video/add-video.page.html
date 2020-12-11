@@ -223,10 +223,14 @@
         </div>        
       </ion-col>           
     </ion-row>    
-    <ion-footer class="musiclist green   sticky-footer sticky-footer-bablu">
+    <!-- <ion-footer class="musiclist green   sticky-footer sticky-footer-bablu">
       <app-audio-player [selectedAudio]=[audioFile,musicChanged,audioFilename,audioFileDuration]>
       </app-audio-player>    
-    </ion-footer>
+    </ion-footer> -->
+    <div class="musiclistFooter">
+      <app-audio-player [selectedAudio]=[audioFile,musicChanged,audioFilename,audioFileDuration]>
+      </app-audio-player>    
+    </div>
   </ion-grid>   
    
  </ion-content>

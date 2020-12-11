@@ -222,12 +222,13 @@ export class CommonService {
       }
     }
 
-    async presentItemPicker(columnOptions=[],buttons=[], numColumns=1,numOptions=5)
+    async presentItemPicker(columnOptions=[],buttons=[], numColumns=1,numOptions=5,)
     {
       // console.log(columnOptions);
       const picker = await this.pickerController.create({
         columns:columnOptions, 
-        buttons: buttons 
+        buttons: buttons,
+        cssClass: 'timeSelect',     
       });
   
       await picker.present();

@@ -14,7 +14,7 @@
 <ion-content class="main_content">
     <ion-row>
       <ion-col size="12" class="ion-padding">
-        <form class="login-form sec-login" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <form class="login-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
           <ion-item class="ion-no-padding">
             <ion-label position="stacked">Select Ouery Type</ion-label>
             <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" formControlName="query" required>

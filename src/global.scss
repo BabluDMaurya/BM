@@ -197,3 +197,36 @@ ion-calendar-modal{
 
 .advertiseAlert .alert-message{text-align: left;}
 .mb-0{margin-bottom: 0;}
+.timeSelect .picker-wrapper .picker-toolbar{position: absolute;height: auto;display: contents;}
+.timeSelect .picker-wrapper .picker-toolbar .picker-toolbar-button button {color: #222;}
+.timeSelect .picker-wrapper .picker-toolbar .picker-toolbar-button:first-child{position: absolute;left: 0;}
+.timeSelect .picker-wrapper .picker-toolbar .picker-toolbar-button:first-child button{text-transform: capitalize;font-size: 17px;font-weight: 500;}
+.timeSelect .picker-wrapper .picker-toolbar .picker-toolbar-button:nth-child(2){position: absolute;bottom: 0;background: #f7f7f7;width: 50%;text-align: center;height: 56px;line-height: 56px;}
+.timeSelect .picker-wrapper .picker-toolbar .picker-toolbar-button:nth-child(3){position: absolute;bottom: 0;background: #26a69a;width: 50%;text-align: center;height: 56px;line-height: 56px;color: #FFF;right: 0;}
+.timeSelect .picker-wrapper .picker-toolbar .picker-toolbar-button:nth-child(3) button{color: #FFF;}
+.timeSelect .picker-wrapper .picker-columns{margin-top: 60px;height: 120px;}
+.timeSelect .picker-wrapper .picker-columns button.picker-opt-selected{color: #27a69a;}
+.timeSelect .picker-wrapper .picker-columns .picker-opts, .timeSelect .picker-wrapper .picker-columns .picker-prefix, .timeSelect .picker-wrapper .picker-columns .picker-suffix{top: 22px;}
+
+ion-modal{
+  ion-calendar-modal{
+    ion-header{
+      ion-toolbar.ion-color-primary{--ion-color-base: #2bbbad !important;
+        ion-title{text-align: center;}
+      }
+      ion-calendar-week{
+        ion-toolbar.primary{--background: #2bbbad!important;}
+      }
+    }
+    ion-content{
+      .month-box{
+        .days{
+          .days-btn.today{
+            p{color: #2bbbad !important;}            
+          }
+          button.days-btn.on-selected{background-color: #2bbbad !important;}
+        }
+      }
+    }
+  }
+}
