@@ -36,3 +36,9 @@ ion-list>ion-list{margin-bottom: 0;}
         }
     }
 }
+
+.commentForm{
+    ion-item{
+        textarea{padding: 0;height: 18px;}
+    }
+}

@@ -18,17 +18,28 @@
       Your phone does not support the video tag.
     </video>
   </ion-row>
-  <ion-row>    
-  <ion-col>
-    <div class="contentList">
-      <p class="list-name d-block"><span>Note For Consultant : </span>{{adDetail?.ad_description}}</p>
-      <p class="list-name d-block"><span>Amount : </span>{{adDetail?.amount}}</p>
-      <p class="list-name d-block"><span>AD Link : </span>{{adDetail?.ad_link}}</p>
-      <p class="list-name d-block"><span>AD text Content : </span>{{adDetail?.ad_text}}</p>
-      <p class="list-name d-block"><span>AD Type :</span>{{adDetail?.media_type}}</p>
+  <div class="contentList">
+    <div class="mb-15">
+      <h3 class="list-person">Note For Consultant: </h3>
+      <span class="list-name d-block">{{adDetail?.ad_description}}</span>
     </div>
-  </ion-col>
-  </ion-row> 
+    <div class="mb-15">
+      <h3 class="list-person">Amount: </h3>
+      <span class="list-name d-block">{{adDetail?.amount}}</span>
+    </div>
+    <div class="mb-15">
+      <h3 class="list-person">AD Link: </h3>
+      <span class="list-name d-block">{{adDetail?.ad_link}}</span>
+    </div>
+    <div class="mb-15">
+      <h3 class="list-person">AD text Content: </h3>
+      <span class="list-name d-block">{{adDetail?.ad_text}}</span>
+    </div>
+    <div>
+      <h3 class="list-person">AD Type: </h3>
+      <span class="list-name d-block">{{adDetail?.media_type}}</span>
+    </div>
+  </div>
   <ion-row *ngIf="adDetail?.media_type_id == 2 && adDetail?.path">
     <img src="{{adManagerLink}}{{adDetail?.path}}" >
   </ion-row>

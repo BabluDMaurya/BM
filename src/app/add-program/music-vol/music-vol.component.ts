@@ -12,6 +12,7 @@ export class MusicVolComponent implements OnInit {
   mVol=50;
   musicId:any;
   progId:any;
+  isUploading : boolean = false;
   constructor(private navParams:NavParams,
     private commonService:CommonService,
     private programService:ProgramService,
@@ -34,21 +35,25 @@ export class MusicVolComponent implements OnInit {
   }
 
  fSubmit() {
+  
   if(!this.mVol)
   {
     this.commonService.presentToast('select volume');
     return false;
+  }else{
+    this.isUploading = true;
   }
     this.commonService.presentLoader();
     this.programService.updateProgramMusic({ "musicId": this.musicId, "programId": this.progId, 'musicVol': this.mVol}).subscribe(
       (data) => {
+        this.isUploading = false;
      this.commonService.dismissModal();
         this.commonService.dismissLoader();
         //  this.navCtrl.navigateForward('/add-program/program-details/' ,this.programDetail.id)
         this.router.navigate(["tabs/program"])
       },
       err=>{
-        
+        this.isUploading = false;
      this.commonService.dismissModal();
      this.commonService.dismissLoader();
       });

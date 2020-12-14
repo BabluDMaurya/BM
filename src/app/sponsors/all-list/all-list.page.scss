@@ -6,6 +6,13 @@ ion-card{border-radius: 0;box-shadow: none;border-bottom: 4px solid #f7f7f7;
         }
     }
 }
+ion-card.active{
+    ion-item{
+        .action-links{
+            ion-icon{transform: rotate(180deg);}
+        }
+    }
+}
 
 .contentList p{color: #999;}
 .contentList{background: #f7f7f7;

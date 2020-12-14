@@ -56,8 +56,9 @@ export class AddEquipmentsComponent implements OnInit {
       this.commonService.presentLoader();
       this.nutritionService.getNutritionByUser('').subscribe((data) => {
         this.commonService.dismissLoader();
+        console.log("nutritionList:"+JSON.stringify(this.nutritionList));
         this.nutritionList = data.nutritionList.filter(el => { 
-          console.  log(this.programId);
+          console.log('BNL:'+JSON.stringify(this.programId));
           if (this.programId) {
             if ((this.programId).includes(el.id )) {
               el.sele = true;
