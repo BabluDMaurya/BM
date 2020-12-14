@@ -20,7 +20,7 @@ ion-fab-button+div>div +ion-label{color: #FFF;margin-left: 50px;}
 .musicbar {
     padding-right: 50px;
 }
-.musicWrapper{background: #26a69a;
+.musicWrapper{
     ion-toolbar{--padding-start: 0;--padding-end: 0;
         .audio-listInner{display: block;background: #26a69a;height: 56px;margin-top: 10px;
             .musicbar{

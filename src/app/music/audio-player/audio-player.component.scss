@@ -21,9 +21,8 @@ ion-fab-button+div>div +ion-label{color: #FFF;margin-left: 35px;}
 }
 .music-timer-fav {
     position: absolute;
-    right: 0;
-    top: 0;
-    background: #26a69a;
+    right: 10px;
+    top: 32px;display: flex;
 }
 .music-timer-fav ion-icon {
     margin: 0 5px;
@@ -31,3 +30,18 @@ ion-fab-button+div>div +ion-label{color: #FFF;margin-left: 35px;}
 .musicbar {
     padding-right: 50px;
 }
+
+.musiclistFooter{position: fixed;bottom: 0;width: 100%}
+.musicWrapper{
+    ion-toolbar{--padding-start: 0;--padding-end: 0;
+        .audio-listInner{display: block;background: #26a69a;height: 56px;margin-top: 10px;
+            .musicbar{
+                ion-range{position: absolute;width: 90%;top: 2px;}
+            }
+            .music-name{margin-top: 20px;margin-left: 10px;padding-left: 50px;
+                ion-label{color: #FFF;}
+            }            
+        }
+    }
+}
+.no-data{height: calc(100vh - 250px) !important;}

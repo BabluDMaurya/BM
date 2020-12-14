@@ -72,7 +72,7 @@ export class AddProgramPage implements OnInit {
     private platform: Platform,
     private pickerController: PickerController,
     private musicService: MusicService,
-    private camera: Camera,) {
+    private camera: Camera,public modalController: ModalController) {
 
     let d = new Date();
     this.currentHrs = d.getHours();
@@ -317,6 +317,10 @@ export class AddProgramPage implements OnInit {
     ];
     const buttons = [
       {
+        text: 'Select Minute',
+        cssClass: 'timeHeading'
+      },
+      {
         text: 'Cancel',
         role: 'cancel'
       },
@@ -337,6 +341,15 @@ export class AddProgramPage implements OnInit {
       this.commonService.presentToast('Sorry, this is past time');
     }
   }
+
+
+  // async onTimeSelected(ev) {
+  //   const modal = await this.modalController.create({
+  //     component: UserModalComponent,
+  //     cssClass: 'my-custom-class'
+  //   });
+  //   return modal.present();
+  // }
 
   async getModal(){ 
     const modal = await this.modalCtrl.create({
