@@ -38,12 +38,7 @@
     </ion-item>
   </ion-list>
 </ion-header>
-<ion-content class="main_content">
-  <ion-refresher class="page-refresher" slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
-      refreshingText="Refreshing...">
-    </ion-refresher-content>
-  </ion-refresher>
+<ion-content class="main_content">  
   <ion-grid class="ion-no-padding" *ngIf="gotData">
     <ion-row *ngIf="tabs">
       <ion-col class="ion-no-padding">
@@ -124,23 +119,6 @@
         </div>
       </ion-col>
     </ion-row>
-    <!-- <ion-row class="counter-box" *ngIf="tabs">
-      <ion-col size="12">
-        <p>Program Name</p>
-      </ion-col>
-      <ion-col size="3">
-        <ion-text><span>0</span> Steps</ion-text>
-      </ion-col>
-      <ion-col size="3">
-        <ion-text><span>4</span> Hours</ion-text>
-      </ion-col>
-      <ion-col size="3">
-        <ion-text><span>38</span> Minutes</ion-text>
-      </ion-col>
-      <ion-col size="3">
-        <ion-text><span>11</span> Seconds</ion-text>
-      </ion-col>
-    </ion-row> -->
     <ion-row>
       <ion-col class="ion-no-padding">
         <ion-list class="ion-no-padding">
@@ -180,7 +158,8 @@
               <div [ngSwitch]="consultantProfile">
                 <!-- -------------- V I D E O    V I E W  ------------------>
                 <ion-list class="ion-no-padding" lines="none" *ngSwitchCase="'aboutInfo'">
-                  <div [ngSwitch]="videotabs" *ngFor="let post of myPosts">
+                  
+                  <div [ngSwitch]="videotabs" *ngFor="let post of myPosts" >
                     <!-- {{post.is_delete}} -->
                     <div *ngSwitchCase="'videotabs1'">
                       <!-- <ion-card class="item-card" *ngIf="!post.is_delete && post['video_post']['0']['video_type'] == 1"> -->
@@ -553,4 +532,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-refresher class="page-refresher homeRefresher" slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="crescent"></ion-refresher-content>
+  </ion-refresher>
 </ion-content>
