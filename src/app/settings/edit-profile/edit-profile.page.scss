@@ -12,3 +12,8 @@ ion-grid{
 .hometown-item ion-label+ion-textarea{margin-top: 25px;--padding-start: 0;}
 .error-message{display: inline-block;}
 .bioTextarea{margin-bottom: 14px;--padding-bottom: 14px;}
+// hitesh css strt
+.three-block ion-item:first-child, .three-block ion-item:last-child {min-width: unset;}
+.add-disp-name { padding-right: 5px;font-size: 14px !important;}
+.top-header .item-has-focus{--highlight-background: none !important;}
+// hitesh css end
