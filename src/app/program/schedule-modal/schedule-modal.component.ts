@@ -54,6 +54,7 @@ export class ScheduleModalComponent implements OnInit {
         el.nutrition_array = [];
         if (el.nutrition_id) {
           el.nutrition_array = el.nutrition_id.split(',');
+          console.log("el.nutrition_array:"+el.nutrition_array);
         }
         return el;
       })
