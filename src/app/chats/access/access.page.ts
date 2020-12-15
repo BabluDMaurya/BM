@@ -48,7 +48,7 @@ export class AccessPage implements OnInit {
           // console.log("Room:" + JSON.stringify(data.room));
           // console.log("status:" + JSON.stringify(data.status));
           if(data.status){
-            this.router.navigateByUrl('/chat-room/'+this.requestId+'/'+this.senderId);
+            this.router.navigateByUrl('/chat-room/'+this.senderId+'/'+data.room);
            
           }
       });

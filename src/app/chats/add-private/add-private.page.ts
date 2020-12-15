@@ -5,7 +5,8 @@ import { PeopleViewService } from './../../services/people-view.service';
 import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Config } from './../../config/config';
 import { SearchService } from './../../services/search.service';
-import { ChatRoomPage } from '../chat-room/chat-room.page';
+import { ChatService } from 'src/app/services/chat.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-private',
@@ -25,7 +26,9 @@ export class AddPrivatePage implements OnInit {
     public navCtrl: NavController,
     private peopleService: PeopleViewService,
     private fb: FormBuilder,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private chatService: ChatService,
+    private router:Router,
   ) {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     // this.formData = this.navParams.data.formData;
@@ -98,12 +101,18 @@ export class AddPrivatePage implements OnInit {
       let msg : any = 'Enter your Group Name Bellow';
       let Url : any = '/chat-room/29/46';
       this.commonService.presentPromptRedirect(title,msg,this.formData,Url);
-      
-    }else{      
-      console.log('private Chat :'+this.formData.peopleSelect.length);
+    }else{    
+      this.commonService.presentLoader();      
+      this.chatService.sendChatRequest(this.formData).subscribe(
+        (data: any) => {
+          if(data.status == 'success'){
+            this.router.navigate(['/chat-room/'+data.reciverID+'/'+data.room]);
+          }else{
+              console.log('Somthing wrong');
+          }
+            this.commonService.dismissLoader();
+        });
     }
-    console.log("this.formData:"+JSON.stringify(this.formData));
-    
   } 
 
   searchPersonList: any;

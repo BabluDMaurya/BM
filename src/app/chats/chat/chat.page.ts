@@ -47,8 +47,9 @@ export class ChatPage implements OnInit {
   ionViewDidLoad(){
     
   }
-  chatRoom(receiverID:any,senderID:any){
-    this.router.navigate(['/chat-room/'+receiverID+'/'+senderID]);
+  chatRoom(receiverID:any,room:any){
+    console.log("room:"+room);
+    this.router.navigate(['/chat-room/'+receiverID+'/'+room]);
   }
   setFilteredItems() {
     this.items = this.dataService.filterItems(this.searchTerm);

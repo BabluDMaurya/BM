@@ -1,16 +1,15 @@
-<ion-header class="top-header ion-no-padding" translucent>
+<!-- <ion-header class="top-header ion-no-padding" translucent>
   <ion-list class="top-heading three-block">
     <ion-item slot="start">
       <ion-buttons slot="start" class="ion-no-margin" [routerLink]="['/tabs/chats']">
         <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
       </ion-buttons>
       <ion-avatar slot="start">
-        <img
-          src="">
+        <img *ngIf="!profile_pic" src="../../assets/images/user.jpg">
+        <img *ngIf="profile_pic" src="{{profilePicUrl}}{{profile_pic}}">
       </ion-avatar>
       <ion-label>
-        <h3 class="list-person">prateek92</h3>
-        <!-- <span class="list-name">{{typing}}</span> -->
+        <h3 class="list-person">{{user_name}}</h3>
       </ion-label>
     </ion-item>
     <ion-item class="icon-right-side ion-text-end" slot="end">
@@ -24,7 +23,6 @@
       <p>You joined the chat as {{ currentUser }}</p>
     </ion-text>
     <ion-row *ngFor="let message of messages">
- 
       <ion-col size="9" *ngIf="message.user !== userData?.id && message.sendTo ==userData?.id" class="message other-message">
         <span>{{ message.msg }}</span>
         <div class="time ion-text-right" ><br>{{ message.createdAt | date:'shortTime' }}
@@ -32,7 +30,7 @@
         </div>
       </ion-col>
  
-      <ion-col offset="3" size="9" *ngIf="message.user ===  userData?.id && message.sendTo ==chatUserId" class="message my-message">
+      <ion-col offset="3" size="9" *ngIf="message.user ===  userData?.id && message.sendTo ==userId" class="message my-message">
         <span>{{ message.msg }}</span>
         <div class="time ion-text-right"><br>{{ message.createdAt | date:'shortTime' }}
         <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
@@ -42,19 +40,61 @@
     </ion-row>
   </ion-grid>
 </ion-content>
- <!-- <ion-textarea [(ngModel)]="message"></ion-textarea>   -->
-<!-- <ion-fab horizontal="start" vertical="bottom" slot="fixed" *ngIf="messageBox">
-  <ion-fab-button size="small" clear icon-only (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" [emojiPickerDirection]="'top'" (emojiPickerSelect)="handleSelection($event)">
-    <ion-icon name="md-happy"></ion-icon>
-  </ion-fab-button>
-</ion-fab>  -->
+ 
 <ion-footer class="sticky-footer">
   <ion-item lines="none">   
     <ion-input type="text" [(ngModel)]="message"  placeholder="Type message"></ion-input>
     <ion-button expand="block" fill="clear" color="primary" [disabled]="message === ''" class="msg-btn"
     (click)="sendMessage()">
-    <!-- <ion-icon name="ios-send" slot="icon-only"></ion-icon> -->
+    
   </ion-button>    
   <ion-icon name="md-send" (click)="sendMessage(chat_input)"  class="ion-text-right"></ion-icon>
   </ion-item>
-</ion-footer> 
+</ion-footer>  -->
+
+<ion-header class="top-header ion-no-padding" translucent>
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons slot="start" class="ion-no-margin" [routerLink]="['/tabs/chats']">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+      <ion-avatar slot="start">
+        <img *ngIf="!profile_pic" src="../../assets/images/user.jpg">
+        <img *ngIf="profile_pic" src="{{profilePicUrl}}{{profile_pic}}">
+      </ion-avatar>
+      <ion-label>
+        <h3 class="list-person">{{user_name}}</h3>
+        <span class="list-name">is online</span>
+      </ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end">
+      <ion-button slot="end" (click)="presentPopover()"><ion-icon ios="ios-more" md="md-more"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content"> 
+  <ion-list class="chats-list" lines="none" *ngFor="let message of messages">
+    <!-- <ion-item>
+      <ion-label class="chat-duration"><span>Today</span></ion-label>
+    </ion-item> -->
+    <ion-item class="chat-box chat-right" *ngIf="message.user ===  userData?.id && message.sendTo ==userId">
+      <div class="ion-text-end">
+        <ion-label>{{ message.msg }}</ion-label>
+        <span class="chat-time">{{ message.createdAt | date:'shortTime' }} <ion-icon ios="ios-done-all" md="md-done-all" class="text-green"></ion-icon></span>
+      </div>
+    </ion-item>
+    <ion-item class="chat-box chat-left" *ngIf="message.user !== userData?.id && message.sendTo ==userData?.id">
+      <div class="ion-text-start">
+        <ion-label>{{ message.msg }}</ion-label>
+        <span class="chat-time">{{ message.createdAt | date:'shortTime' }}</span>
+      </div>
+    </ion-item>    
+  </ion-list>
+</ion-content>
+
+<ion-footer class="sticky-footer">
+  <ion-item lines="none">   
+    <ion-textarea [(ngModel)]="message" placeholder="Type here.."></ion-textarea>
+    <img src="../../assets/images/send.svg" class="send-img"  (click)="sendMessage()">
+  </ion-item>
+</ion-footer>

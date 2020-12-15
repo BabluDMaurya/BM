@@ -24,11 +24,11 @@
       <h5 class="ion-no-margin">Messages</h5>
       <ion-label *ngIf="requestCount > 0" class="text-green" (click)="showRequests()">{{requestCount}} Requests</ion-label>
     </ion-list-header>
-    <div *ngIf="newSearchPersonList.length < 1">
+    <!-- <div *ngIf="newSearchPersonList.length < 1">
 
     </div> 
      
-      <div *ngIf="newSearchPersonList.length> 0 " >
+      <div *ngIf="newSearchPersonList.length > 0 " >
         <ion-item lines="none" [routerLink]="['/chat-room', followers?.id]" detail="false"
           *ngFor="let followers of newSearchPersonList">
           <ion-avatar slot="start">
@@ -41,9 +41,9 @@
           </ion-label>
           <img slot="end" class="w26" src="../../../assets/images/follower-user.svg" />
         </ion-item>
-      </div>
+      </div> -->
     <ion-list lines="none" detail="false" *ngFor="let groups of items">
-    <ion-item lines="none" (click)="chatRoom(groups.receiverID,groups.senderID)" detail="false" *ngFor="let item of groups.bio">
+    <ion-item lines="none" (click)="chatRoom(groups.receiverID,groups.chatroom.room)" detail="false" *ngFor="let item of groups.bio || groups.sendarbio">
       <ion-avatar slot="start">
         <img *ngIf="item?.profile_pic" src="{{url}}{{item?.profile_pic}}"> 
         <img *ngIf="!item?.profile_pic" src="../../assets/images/user.jpg">  
@@ -54,7 +54,6 @@
       </ion-label>
       <!-- <img slot="end" class="w26" src="../../../assets/images/follower-group.svg" /> -->
       <img slot="end" class="w26" src="../../../assets/images/follower-user.svg" />
-     
     </ion-item>
     </ion-list>
   </ion-list>

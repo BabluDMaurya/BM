@@ -9,6 +9,8 @@ import { Socket } from 'ngx-socket-io';
 import { ToastController } from '@ionic/angular';
 import { ParamMap, ActivatedRoute } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
+import { query } from 'express';
+import { Config } from './../../config/config';
 
 @Component({
   selector: 'app-chat-room',
@@ -33,10 +35,14 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   currentUser = '';
   chatUserId: any;
   userData:any;
-  senderId :any;
+  
   receiverId :any;
   room : any ;
-  userId :any;
+ 
+  user_name : any;
+  display_name :any;
+  profile_pic : any;
+  profilePicUrl : any = Config.profilePic;
   constructor(public popoverController: PopoverController,
     public navCtrl: NavController,
     private socket: Socket,
@@ -53,16 +59,16 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     this.socket.connect();
     this.currentUser = this.room;
     this.socket.emit('set-name', this.room);
-    this.socket.fromEvent('users-changed').subscribe(data => {
-      // let user = data['user'];
-      // if (data['event'] === 'left') {
-      //   this.showToast('User left: ' + user);
-      // } else {
-      //   this.showToast('User joined: ' + user);
-      // }
-    });
-
+    // this.socket.fromEvent('users-changed').subscribe(data => {
+    //   let user = data['user'];
+    //   if (data['event'] === 'left') {
+    //     this.showToast('User left: ' + user.room);
+    //   } else {
+    //     this.showToast('User joined: ' + user.room);
+    //   }
+    // });
     this.socket.fromEvent('message').subscribe(message => {
+      // console.log("message:"+JSON.stringify(message));
       this.messages.push(message);
     });
   }
@@ -81,21 +87,24 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
-      this.senderId = params.get('sender');
+      this.room = params.get('room');
       this.receiverId = params.get('receiver');
-      if(this.userData.id == this.senderId){
-        this.userId = this.receiverId; 
-      }else{
-        this.userId = this.senderId;
-      }
     });
-    this.room = 'room-'+this.senderId+this.receiverId;
-
+    
     this.getStart();
 
-    this.socket.emit("addUser", this.senderId , this.receiverId);
+    this.socket.emit("addUser", this.receiverId, this.userData.id);
     
-    this.socket.emit("newUser", [this.senderId , this.receiverId, this.room]);
+    this.socket.emit("newUser", [this.receiverId,this.userData.id, this.room]);
+
+    this.socket.fromEvent('userName').subscribe(data => {
+      this.user_name = data[0].user_name;
+    });
+
+    this.socket.fromEvent('userBio').subscribe(data => {
+      this.display_name = data[0].display_name;
+      this.profile_pic = data[0].profile_pic;      
+    });
   }
   ngAfterViewInit() {
 
@@ -103,7 +112,6 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   sendMessage() {
     this.socket.emit('send-message', { text: this.message });
     this.message = '';
-    console.log(this.messages);
   }
 
   ionViewWillLeave() {
