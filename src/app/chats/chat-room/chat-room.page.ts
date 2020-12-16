@@ -59,14 +59,14 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     this.socket.connect();
     this.currentUser = this.room;
     this.socket.emit('set-name', this.room);
-    // this.socket.fromEvent('users-changed').subscribe(data => {
-    //   let user = data['user'];
-    //   if (data['event'] === 'left') {
-    //     this.showToast('User left: ' + user.room);
-    //   } else {
-    //     this.showToast('User joined: ' + user.room);
-    //   }
-    // });
+    this.socket.fromEvent('users-changed').subscribe(data => {
+      let user = data['user'];
+      if (data['event'] === 'left') {
+        this.showToast('User left: ' + user.room);
+      } else {
+        this.showToast('User joined: ' + user.room);
+      }
+    });
     this.socket.fromEvent('message').subscribe(message => {
       // console.log("message:"+JSON.stringify(message));
       this.messages.push(message);
