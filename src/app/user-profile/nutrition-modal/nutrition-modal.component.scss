@@ -3,3 +3,15 @@
 .bg{background: #fbfbfb;}
 p.note{color: #000;font-weight: 600;font-style: italic;}
 .pb-0{padding-bottom: 0;}
+
+// hitesh css strt
+.nutrition-no-data{height: calc(100vh - 320px);}
+.instructions-list ion-item p, .ingredient-list ion-item p {
+    padding-left: 15px;
+    font-size: .85rem;
+    padding-bottom: 0;
+    margin-bottom: 0px !important;
+    text-transform: capitalize;
+    padding-top: 5px;
+}
+// hitesh css ends

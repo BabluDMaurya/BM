@@ -32,7 +32,10 @@
               <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
               <ion-label>{{item?.title}}</ion-label>
             </div>
-            <div *ngIf="item.empty"> No BreakFast</div>
+            <div *ngIf="item.empty" class="no-data nutrition-no-data">
+              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+              <p>No BreakFast</p>
+            </div>
           </ion-slide>
         </ion-slides>
       </ion-card-content>
@@ -47,7 +50,10 @@
               <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
               <ion-label>{{item?.title}}</ion-label>
             </div>
-            <div *ngIf="item.empty"> No Brunch</div>
+            <div *ngIf="item.empty" class="no-data nutrition-no-data">
+              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+              <p>No Brunch</p>
+            </div>
           </ion-slide>
         </ion-slides>
       </ion-card-content>
@@ -62,7 +68,10 @@
               <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
               <ion-label>{{item?.title}}</ion-label>
             </div>
-            <div *ngIf="item.empty"> No Lunch</div>
+            <div *ngIf="item.empty" class="no-data nutrition-no-data">
+              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+              <p>No Lunch</p>
+            </div>
           </ion-slide>
 
         </ion-slides>
@@ -78,7 +87,10 @@
               <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
               <ion-label>{{item?.title}}</ion-label>
             </div>
-            <div *ngIf="item.empty"> No Snacks</div>
+            <div *ngIf="item.empty" class="no-data nutrition-no-data">
+              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+              <p>No Snacks</p>
+            </div>
           </ion-slide>
 
 
@@ -96,7 +108,10 @@
               <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
               <ion-label>{{item?.title}}</ion-label>
             </div>
-            <div *ngIf="item.empty"> No Dinner</div>
+            <div *ngIf="item.empty" class="no-data nutrition-no-data">
+              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+              <p>No Dinner</p>
+            </div>
           </ion-slide>
 
         </ion-slides>
