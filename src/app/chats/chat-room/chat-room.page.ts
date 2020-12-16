@@ -32,17 +32,18 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   chat_input: string;
   message = '';
   messages = [];
+  storeMessage = '';
+  storeMessages ; any;
   currentUser = '';
   chatUserId: any;
   userData:any;
-  
   receiverId :any;
   room : any ;
- 
   user_name : any;
   display_name :any;
   profile_pic : any;
   profilePicUrl : any = Config.profilePic;
+  UserOnLineStatus : any;
   constructor(public popoverController: PopoverController,
     public navCtrl: NavController,
     private socket: Socket,
@@ -59,17 +60,24 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     this.socket.connect();
     this.currentUser = this.room;
     this.socket.emit('set-name', this.room);
-    // this.socket.fromEvent('users-changed').subscribe(data => {
-    //   let user = data['user'];
-    //   if (data['event'] === 'left') {
-    //     this.showToast('User left: ' + user.room);
-    //   } else {
-    //     this.showToast('User joined: ' + user.room);
-    //   }
-    // });
+    this.socket.fromEvent('users-changed').subscribe(data => {
+      let user = data['user'];
+      if (data['event'] === 'left') {
+        this.showToast('User left: ' + this.room);
+        this.UserOnLineStatus = 'is OffLine';
+      } else {
+        this.showToast('User joined: ' + this.room);
+        this.UserOnLineStatus = 'is OnLine';
+      }
+    });
+    this.socket.fromEvent('blockStatusOfUser').subscribe(blockStatusOfUser => {
+      console.log("blockStatusOfUser:"+JSON.stringify(blockStatusOfUser));
+    });
     this.socket.fromEvent('message').subscribe(message => {
-      // console.log("message:"+JSON.stringify(message));
       this.messages.push(message);
+    });
+    this.socket.fromEvent('UserOnLineStatus').subscribe(UserOnLineStatus => {
+          this.UserOnLineStatus = UserOnLineStatus;
     });
   }
   async presentPopover(ev: any) {
@@ -93,9 +101,16 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     
     this.getStart();
 
-    this.socket.emit("addUser", this.receiverId, this.userData.id);
+    this.socket.emit("addUser", this.userData.id,this.receiverId);
     
-    this.socket.emit("newUser", [this.receiverId,this.userData.id, this.room]);
+    this.socket.emit("newUser", [this.userData.id,this.receiverId, this.room]);
+
+    this.socket.emit("storemassagerequest",this.userData.id,this.receiverId);
+
+    this.socket.fromEvent('stormessage').subscribe(storMessage => {      
+      this.storeMessages = storMessage;
+      console.log("storeMessages:"+ JSON.stringify(this.storeMessages));
+    });
 
     this.socket.fromEvent('userName').subscribe(data => {
       this.user_name = data[0].user_name;
@@ -110,14 +125,14 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
 
   }
   sendMessage() {
-    this.socket.emit('send-message', { text: this.message });
+    if(this.message != '' && this.message != null){
+      this.socket.emit('send-message', { text: this.message });
+    }
     this.message = '';
   }
-
   ionViewWillLeave() {
     this.socket.disconnect();
   }
-
   async showToast(msg) {
     let toast = await this.toastCtrl.create({
       message: msg,
@@ -125,6 +140,5 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
       duration: 2000
     });
     toast.present();
-  }
-  
+  }  
 }

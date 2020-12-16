@@ -28,10 +28,6 @@ export class AccessPage implements OnInit {
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.requestId = params.get('id');
       this.senderId = params.get('senderId');
-
-
-
-      console.log("this.this.senderId:"+this.senderId);
     });
   }
   //---------allow---------

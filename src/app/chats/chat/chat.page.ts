@@ -16,7 +16,7 @@ export class ChatPage implements OnInit {
   public items: any;
   newSearchPersonList: any = [];
   searchPersonList: any[];
-
+  userData : any;
   url : any = Config.profilePic;
   personList: any = null;
   token: any;
@@ -29,6 +29,7 @@ export class ChatPage implements OnInit {
 
   ngOnInit() {
     this.commonService.presentLoader();
+    this.userData = JSON.parse(localStorage.getItem('userData'));
     this.setFilteredItems();
     //--------requests counter-----
     this.dataService.requestsUserListCount().subscribe((data:any)=>{
@@ -40,7 +41,7 @@ export class ChatPage implements OnInit {
     //------------chat user list -------------
     this.dataService.chatUserList().subscribe(
       (data: any) => {
-        this.items = data.chatlist;          
+        this.items = data.chatlist; 
           this.commonService.dismissLoader();
       });
   }
@@ -48,7 +49,6 @@ export class ChatPage implements OnInit {
     
   }
   chatRoom(receiverID:any,room:any){
-    console.log("room:"+room);
     this.router.navigate(['/chat-room/'+receiverID+'/'+room]);
   }
   setFilteredItems() {
@@ -64,7 +64,6 @@ export class ChatPage implements OnInit {
     if (!searchFind) {
       setTimeout(function(){
         this.newSearchPersonList = [];
-        console.log('test')
         console.log(this.newSearchPersonList );
       },2000);
     
