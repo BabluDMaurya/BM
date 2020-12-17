@@ -1,15 +1,13 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { PopoverController, NavController } from '@ionic/angular';
+import { PopoverController, NavController,AlertController} from '@ionic/angular';
 import { DropdownComponent } from './../dropdown/dropdown.component';
 import { IonContent } from '@ionic/angular';
 import { Action } from '../../clientmodel/action';
 import { User } from '../../clientmodel/user';
-import { ChatService } from 'src/app/services/chat.service';
 import { Socket } from 'ngx-socket-io';
 import { ToastController } from '@ionic/angular';
 import { ParamMap, ActivatedRoute } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
-import { query } from 'express';
 import { Config } from './../../config/config';
 
 @Component({
@@ -44,12 +42,16 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   profile_pic : any;
   profilePicUrl : any = Config.profilePic;
   UserOnLineStatus : any;
-  constructor(public popoverController: PopoverController,
+  blockstatus : any = 0;
+  bSOUser : any = 'unblock';
+  bidOUser : any;
+  constructor(
+    public popoverController: PopoverController,
+    public alertController: AlertController,
     public navCtrl: NavController,
     private socket: Socket,
     private actRoute: ActivatedRoute,
     private toastCtrl: ToastController,
-    private dataService: ChatService,
     public commonService:CommonService,
     ) {    }
 
@@ -61,37 +63,81 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     this.currentUser = this.room;
     this.socket.emit('set-name', this.room);
     this.socket.fromEvent('users-changed').subscribe(data => {
-      let user = data['user'];
       if (data['event'] === 'left') {
-        this.showToast('User left: ' + this.room);
+        // this.showToast('User left: ' + this.room);
         this.UserOnLineStatus = 'is OffLine';
       } else {
-        this.showToast('User joined: ' + this.room);
+        // this.showToast('User joined: ' + this.room);
         this.UserOnLineStatus = 'is OnLine';
       }
     });
     this.socket.fromEvent('blockStatusOfUser').subscribe(blockStatusOfUser => {
-      console.log("blockStatusOfUser:"+JSON.stringify(blockStatusOfUser));
+      console.log("blockStatusOfUser:"+JSON.stringify(blockStatusOfUser['status']));
+      this.bSOUser = blockStatusOfUser['status'];
+      this.bidOUser = blockStatusOfUser['blockID'];          
+    });
+    this.socket.fromEvent('blockStatusOfSelf').subscribe(blockStatusOfSelf => {
+      console.log("blockStatusOfSelf:"+JSON.stringify(blockStatusOfSelf['status']));
+      if(blockStatusOfSelf['status'] ==='block'){        
+        this.blockstatus = 1;
+      }else{
+        this.blockstatus = 0;
+      }     
     });
     this.socket.fromEvent('message').subscribe(message => {
       this.messages.push(message);
     });
     this.socket.fromEvent('UserOnLineStatus').subscribe(UserOnLineStatus => {
-          this.UserOnLineStatus = UserOnLineStatus;
+      this.UserOnLineStatus = UserOnLineStatus;
     });
+  }
+  async blockStatusOfUser(id : any) {
+    const alert = await this.alertController.create({
+      // cssClass: 'my-custom-class',
+      // header: 'Confirm!',
+      message: 'You have to <strong>Unblock</strong> First.',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            // console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            //--------unblock User through socket-------//
+            this.socket.emit("blockevent",'0',id);
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: DropdownComponent,
       event: ev,
+      componentProps: {
+        userDataid:this.userData.id,
+        receiverId: this.receiverId,
+        bidOUser : this.bidOUser,
+        bSOUser:this.bSOUser
+      },
       translucent: true
     });
+    popover.onDidDismiss()
+      .then((data) => {
+        this.bSOUser = data['data'];
+        this.socket.emit('userBlockStatus',this.userData.id,this.receiverId);
+    });
     return await popover.present();
+   
   }
   handleSelection(event) {
     this.messages += event.char;
   }
-
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
@@ -109,7 +155,6 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
 
     this.socket.fromEvent('stormessage').subscribe(storMessage => {      
       this.storeMessages = storMessage;
-      console.log("storeMessages:"+ JSON.stringify(this.storeMessages));
     });
 
     this.socket.fromEvent('userName').subscribe(data => {
@@ -124,9 +169,14 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   ngAfterViewInit() {
 
   }
+
   sendMessage() {
     if(this.message != '' && this.message != null){
-      this.socket.emit('send-message', { text: this.message });
+      if(this.bSOUser == 'unblock'){
+        this.socket.emit('send-message', { text: this.message, blockstatus : this.blockstatus });
+      }else{
+        this.blockStatusOfUser(this.bidOUser);
+      }      
     }
     this.message = '';
   }

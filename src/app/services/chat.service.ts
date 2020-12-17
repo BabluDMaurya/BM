@@ -74,6 +74,11 @@ export class ChatService {
     return this.http.post<any>(Config.ApiUrl+'api/auth/sendChatRequest',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('chatRequestSend',data)));
 
   }
+  //------------block user for chat-
+  blockChatUser(data:any): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/blockChatUser',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('blockChatUser',data)));
+
+  }
 
   filterItems(searchTerm) {
     return this.items.filter(item => {
