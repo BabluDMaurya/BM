@@ -233,3 +233,11 @@ ion-modal{
 ion-refresher.homeRefresher{position: fixed;top: 100px;z-index: 999;
   ion-refresher-content{width: 44px;height: 44px;margin: auto;background: #27a69a;border-radius: 50%;display: flex;justify-content: center;align-items: center;}
 }
+// hitesh css strt
+ion-modal ion-calendar-modal ion-content .month-box .days .days-btn.today.on-selected p {
+  color: #fff !important;
+}
+.calendar-event{    
+  height: 36px !important;
+}
+// hitesh css end
