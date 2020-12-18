@@ -54,6 +54,7 @@
       </ion-label>
       <!-- <img slot="end" class="w26" src="../../../assets/images/follower-group.svg" /> -->
       <img slot="end" class="w26" src="../../../assets/images/follower-user.svg" />
+      <ion-badge *ngIf="groups.unreadmessage.count > 0 " color="secondary" slot="end">{{groups.unreadmessage.count}}</ion-badge>
     </ion-item>
     </ion-list>
   </ion-list>

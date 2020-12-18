@@ -79,6 +79,11 @@ export class ChatService {
     return this.http.post<any>(Config.ApiUrl+'api/auth/blockChatUser',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('blockChatUser',data)));
 
   }
+  //------------delete user form chatlist-
+  deleteChatUser(data:any): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/deleteChatUser',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('deleteChatUser',data)));
+
+  }
 
   filterItems(searchTerm) {
     return this.items.filter(item => {

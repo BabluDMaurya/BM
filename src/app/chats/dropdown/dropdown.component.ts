@@ -24,8 +24,8 @@ export class DropdownComponent implements OnInit {
       this.popoverController.dismiss(data);
         }
   ngOnInit() {
-    this.receiverId;
-    this.userDataid;
+    
+    
   }
   block(){
     if(this.bSOUser=='unblock'){
@@ -47,6 +47,12 @@ export class DropdownComponent implements OnInit {
 
   }
   delete(){
-    // this.router.navigate(['/tabs/chats']);
+    this.dataService.deleteChatUser({'sender_id':this.userDataid,'reciver_id':this.receiverId}).subscribe(
+      (data: any) => {
+        this.DismissClick('refresh');
+        if(data == 1){
+          this.router.navigate(['/tabs/chats']);
+        }
+      });
   }
 }

@@ -21,6 +21,7 @@ export class ChatPage implements OnInit {
   personList: any = null;
   token: any;
   requestCount: any = 0;
+  callApiv : any;  
   constructor(
     public commonService:CommonService,
     private router:Router,
@@ -31,24 +32,40 @@ export class ChatPage implements OnInit {
     this.commonService.presentLoader();
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.setFilteredItems();
+    console.log("ngOnInit");
+  }
+  ionViewWillEnter() {
+    console.log("ionViewWillEnter");
+    this.callApi();
+    this.callApiv = setInterval(() => {
+      this.callApi(); 
+    }, 5000);
+  }
+  // ngOnDestroy() {
+  //   console.log("ngOnDestroy");
+  //   if (this.callApiv) {
+  //     clearInterval(this.callApiv);
+  //   }
+  // }
+  callApi(){
     //--------requests counter-----
     this.dataService.requestsUserListCount().subscribe((data:any)=>{
-      if (data.count > 0){
-        this.requestCount = data.count;
-      }
-      this.commonService.dismissLoader();
+      if (data.count > 0){this.requestCount = data.count;}
     });
     //------------chat user list -------------
-    this.dataService.chatUserList().subscribe(
-      (data: any) => {
-        this.items = data.chatlist; 
-          this.commonService.dismissLoader();
-      });
-  }
-  ionViewDidLoad(){
-    
+    this.dataService.chatUserList().subscribe((data: any) => {
+        this.items = data.chatlist;
+        let totalChatCount : number = 0;
+        this.items.forEach(element => {
+          totalChatCount = (+totalChatCount + +element.unreadmessage.count);
+        });
+      });       
+      this.commonService.dismissLoader();
   }
   chatRoom(receiverID:any,room:any){
+    if (this.callApiv) {
+      clearInterval(this.callApiv);
+    }
     this.router.navigate(['/chat-room/'+receiverID+'/'+room]);
   }
   setFilteredItems() {

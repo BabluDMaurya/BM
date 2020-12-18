@@ -45,6 +45,7 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   blockstatus : any = 0;
   bSOUser : any = 'unblock';
   bidOUser : any;
+  chatDates : string;
   constructor(
     public popoverController: PopoverController,
     public alertController: AlertController,
@@ -83,6 +84,12 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
       }else{
         this.blockstatus = 0;
       }     
+    });
+    this.socket.fromEvent('storchatdate').subscribe(data => {
+      console.log("storchatdate : "+JSON.stringify(data));
+      // let today = new Date();
+      // console.log("Today :"+new Date());
+      // this.chatDates  = '17/12/2020';      
     });
     this.socket.fromEvent('message').subscribe(message => {
       this.messages.push(message);
