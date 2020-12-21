@@ -5,46 +5,38 @@
         <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
       </ion-buttons>
       <ion-avatar slot="start">
-        <img
-          src="">
+        <img *ngIf="!profile_pic" src="../../assets/images/user.jpg">
+        <img *ngIf="profile_pic" src="{{profilePicUrl}}{{profile_pic}}">
       </ion-avatar>
       <ion-label>
-        <h3 class="list-person">prateek92</h3>
-        <!-- <span class="list-name">{{typing}}</span> -->
+        <h3 class="list-person">{{user_name}}</h3>
+        <span class="list-name"> {{UserOnLineStatus}}</span>
       </ion-label>
     </ion-item>
-    <ion-item class="icon-right-side ion-text-end" slot="end">
+    <!-- <ion-item class="icon-right-side ion-text-end" slot="end">
       <ion-button slot="end" (click)="presentPopover()"><ion-icon ios="ios-more" md="md-more"></ion-icon></ion-button>
-    </ion-item>
+    </ion-item> -->
   </ion-list>
 </ion-header>
 <ion-content class="main_content"> 
-
-
-  <ion-grid>
-    <ion-text color="medium" text-center>
-      <p>You joined the chat as {{ currentUser }}</p>
-    </ion-text>
-    <ion-row *ngFor="let message of messages">
- 
-      <ion-col size="9" *ngIf="message.user !== userData?.id && message.sendTo ==userData?.id" class="message other-message">
-        <span>{{ message.msg }}</span>
-        <div class="time" text-right><br>{{ message.createdAt | date:'shortTime' }}
-          <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
-        </div>
-      </ion-col>
- 
-      <ion-col offset="3" size="9" *ngIf="message.user ===  userData?.id && message.sendTo ==chatUserId" class="message my-message">
-        <span>{{ message.msg }}</span>
-        <div class="time" text-right><br>{{ message.createdAt | date:'shortTime' }}
-        <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
-        </div>
-      </ion-col>
- 
-    </ion-row>
-  </ion-grid>
+  <ion-list class="chats-list" lines="none" *ngFor="let storeMessage of storeMessages">
+    <!-- <ion-item>
+      <ion-label class="chat-duration"><span>{{(storeMessage.created_at | date:'dd/MM/y') == chatDates? : }}</span></ion-label>
+    </ion-item> -->
+    <ion-item class="chat-box chat-right" *ngIf="storeMessage.sender_id ===  userData?.id &&  storeMessage.receiver_id == receiverId">
+      <div class="ion-text-end">
+        <ion-label>{{ storeMessage.message }}{{storeMessage.read_mess}}</ion-label>
+        <span class="chat-time">{{ storeMessage.created_at | date:'shortTime' }} <ion-icon ios="ios-done-all" md="md-done-all" [ngClass]="{ 'text-green': storeMessage.read_mess == 1 }"></ion-icon></span>
+      </div>
+    </ion-item>
+    <ion-item class="chat-box chat-left" *ngIf="storeMessage.sender_id !== userData?.id && storeMessage.receiver_id == userData?.id">
+      <div class="ion-text-start">
+        <ion-label>{{ storeMessage.message }}</ion-label>
+        <span class="chat-time">{{ storeMessage.created_at | date:'shortTime' }}</span>
+      </div>
+    </ion-item>    
+  </ion-list>
 </ion-content>
-
 <ion-footer class="sticky-footer chatsButtons d-flex" *ngIf="messageButtons">
     <ion-button class="ion-no-margin full-height" color="light" (click)="decline()">Decline</ion-button>
     <ion-button class="ion-no-margin full-height green" (click)="allow()">Allow</ion-button>

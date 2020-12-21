@@ -47,18 +47,12 @@ export class ChatPage implements OnInit {
   //     clearInterval(this.callApiv);
   //   }
   // }
-  callApi(){
-    //--------requests counter-----
-    this.dataService.requestsUserListCount().subscribe((data:any)=>{
-      if (data.count > 0){this.requestCount = data.count;}
-    });
+  callApi(){    
     //------------chat user list -------------
     this.dataService.chatUserList().subscribe((data: any) => {
-        this.items = data.chatlist;
-        let totalChatCount : number = 0;
-        this.items.forEach(element => {
-          totalChatCount = (+totalChatCount + +element.unreadmessage.count);
-        });
+        this.items = data.chatlist;  
+        this.requestCount = data.requestcount; 
+        localStorage.setItem('totalchat',this.requestCount);     
       });       
       this.commonService.dismissLoader();
   }
@@ -67,6 +61,11 @@ export class ChatPage implements OnInit {
       clearInterval(this.callApiv);
     }
     this.router.navigate(['/chat-room/'+receiverID+'/'+room]);
+  }
+  ionViewWillLeave() {
+    if (this.callApiv) {
+      clearInterval(this.callApiv);
+    }
   }
   setFilteredItems() {
     this.items = this.dataService.filterItems(this.searchTerm);

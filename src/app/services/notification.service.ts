@@ -37,12 +37,9 @@ export class NotificationService {
     getNotificationOfPeople(){
       return this.http.get<any>(Config.ApiUrl+'api/auth/viewNotificationOfPeople',this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getNotificationOfPeople')));
     }
-    geUnreadNotification(){
-      return this.http.get<any>(Config.ApiUrl+'api/auth/viewUnreadNotification',this.getApiHeaders(null,true)).pipe(catchError(this.handleError('geUnreadNotification')));
+    getUnreadCountMyProfile(){
+      return this.http.get<any>(Config.ApiUrl+'api/auth/getUnreadCountMyProfile',this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getUnreadCountMyProfile')));
     } 
-    geUnreadSponcerChat(){
-      return this.http.get<any>(Config.ApiUrl+'api/auth/sponcerNewChatCount',this.getApiHeaders(null,true)).pipe(catchError(this.handleError('geUnreadSponcerChat')));
-    }   
     setNotification(data:any) : Observable<any>{
       return this.http.post<any>(Config.ApiUrl+'api/auth/setReadNotification',data,this.getApiHeaders(null, true)).pipe(catchError(this.handleError('setNotification',data)));
     }
