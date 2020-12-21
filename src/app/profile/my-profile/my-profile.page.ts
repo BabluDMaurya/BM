@@ -88,23 +88,13 @@ export class MyProfilePage implements OnInit {
   }
   ngOnInit() {
     this.previewImage = [];
-    this.notification.geUnreadNotification().subscribe(
-      (data: any) => {
-        this.notificationCount = data.status.length;
-      });
-      this.notification.geUnreadSponcerChat().subscribe(
-        (data: any) => {
-          this.sponcerCount = data.count.sponcer_chat_count;
-        });
     this.commonService.footerTabHooks.subscribe(data => {
-
       if (data) {
       this.notificationCount = null;
         this.postData();
       }
     });
     this.commonService.footerTabHooks.subscribe(data => {
-
       if (data) {
       this.myPosts = null;
         this.videoPostData();
@@ -132,7 +122,7 @@ export class MyProfilePage implements OnInit {
   }
   postData() {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
-    this.notification.geUnreadNotification().subscribe((data: any) => {
+    this.notification.getUnreadCountMyProfile().subscribe((data: any) => {
       this.notificationCount = data.status.length;
 
 
@@ -330,10 +320,8 @@ export class MyProfilePage implements OnInit {
   showmodal() {
     this.commonService.presentModal(UserDetailsComponent, 'bottomModal', '');
   }
-  notification1() { 
-     
+  notification1() {      
     this.commonService.presentModal(FollowersComponent, 'fullModal', { 'profileData': this.profileData, 'otherUser': false });  
-  
   }
   notification2() {
     this.commonService.presentModal(FollowingComponent, 'bottomModal', '');
@@ -359,6 +347,11 @@ export class MyProfilePage implements OnInit {
     this.subscribe.unsubscribe();
     this.consultantProfile = "aboutInfo";
     this.tabs = true;
+  }
+  ionViewDidLeave() {
+    this.subscribe.unsubscribe();
+    this.consultantProfile = "aboutInfo";
+    this.tabs = true;    
   }
   async showOptions(ev: any, commentStatus) {
     const popover = await this.popoverController.create({

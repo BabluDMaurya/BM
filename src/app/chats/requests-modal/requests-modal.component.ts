@@ -23,6 +23,7 @@ export class RequestsModalComponent implements OnInit {
     this.dataService.requestsUserList().subscribe((data:any)=>{
       this.commonService.dismissLoader();
         this.requestList = data.requestslist;
+        console.log("this.requestList:"+JSON.stringify(this.requestList));
     });
   }
   closeModal() {

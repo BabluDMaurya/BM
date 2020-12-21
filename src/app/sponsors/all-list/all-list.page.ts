@@ -58,10 +58,10 @@ export class AllListPage implements OnInit {
     })
 
     //------chat list---------//
-    this.notification.geUnreadSponcerChat().subscribe(
-      (data: any) => {
-        this.sponcerCount = data.count.sponcer_chat_count;
-      });
+    // this.notification.geUnreadSponcerChat().subscribe(
+    //   (data: any) => {
+    //     this.sponcerCount = data.count.sponcer_chat_count;
+    //   });
     this.notification.getSponcerChatDetails().subscribe(
       (data: any) => {
         this.commonService.dismissLoader();

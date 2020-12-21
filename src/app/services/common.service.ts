@@ -9,6 +9,8 @@ import { Observable, Subject } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { Config } from "../config/config";
 import { HttpErrorHandlerService, HandleError } from "./http-error-handler.service";
+import { NotificationService } from '../services/notification.service';
+import { ChatService } from 'src/app/services/chat.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +23,9 @@ export class CommonService {
   private userToken:any;
   public footerTabHooks = new Subject<boolean>();
   cssClass: any;
-  constructor(private alertController: AlertController,
+  constructor(
+    private notification: NotificationService,
+    private alertController: AlertController,
     public toastController:ToastController,
     public loadingController:LoadingController,
     public storage:Storage,
@@ -32,6 +36,7 @@ export class CommonService {
     private pickerController:PickerController,
     private navCtrl:NavController,
     private http: HttpClient,
+    private dataService: ChatService,
     httpErrorHandler: HttpErrorHandlerService,
    ) {
 
@@ -48,8 +53,15 @@ export class CommonService {
   }
     isLoading = false;
     modaldata:any;
-
-
+    
+    async getUnreadCountMyProfile(){
+      this.notification.getUnreadCountMyProfile().subscribe(
+      (data: any) => {
+        localStorage.setItem('notification',data.status.length);
+        localStorage.setItem('totalchat',data.unreadchatcount);
+        localStorage.setItem('sponcerchat',data.sponcerCount.sponcer_chat_count);
+      });
+    }
     async presentPromptRedirect(title,msg,sendData,Url) {
       let alert = await this.alertController.create({
         cssClass:this.cssClass, 
@@ -165,6 +177,9 @@ export class CommonService {
            this.storage.clear(); 
            localStorage.removeItem('userToken') ;
            localStorage.removeItem('userData') ;
+           localStorage.removeItem('sponcerchat') ;
+           localStorage.removeItem('totalchat') ;
+           localStorage.removeItem('notification') ;
            localStorage.clear          
            
            this.dismissLoader(); 
@@ -174,7 +189,10 @@ export class CommonService {
         }, err => {
           this.storage.clear(); 
           localStorage.removeItem('userToken') ;
-          localStorage.removeItem('userData') ;          
+          localStorage.removeItem('userData') ;   
+          localStorage.removeItem('sponcerchat') ;
+          localStorage.removeItem('totalchat') ;
+          localStorage.removeItem('notification') ;       
         })
       );
     }
