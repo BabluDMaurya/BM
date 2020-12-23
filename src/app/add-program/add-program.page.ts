@@ -162,7 +162,7 @@ export class AddProgramPage implements OnInit {
       { type: 'required', message: 'payment typee is required.' },
     ],
     participantsType: [
-      { type: 'required', message: 'Select particvipant types.' },
+      { type: 'required', message: 'Select participant types.' },
     ]
 
   };

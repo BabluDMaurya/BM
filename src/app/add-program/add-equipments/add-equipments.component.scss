@@ -22,3 +22,18 @@ ion-slides{background: transparent;padding: 0 5px;}
 .nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked{opacity:1;--background-checked:transparent;--border-color-checked:transparent;--size:0;--checkmark-color:transparent}
 .nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked:after{content:'';width:20px;height:20px;background:#26a69a;display:block;border-radius:50%;position:absolute;top:5px;left:5px}
 .checkboxThumb::after{content: '';width: 16px;height: 16px;border: 2px solid #7d7d7d;display: block;border-radius: 50%;position: absolute;top: 5px;left: 5px;}
+
+// hitesh css strt
+.nutrition-no-data img {
+    width: 60px;
+    height: 60px !important;
+    margin: 15px;
+}
+.nutrition-no-data p {
+    color: #000 !important;
+    font-size: 0.75rem;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    font-weight: 700;
+}
+// hitesh css ends

@@ -34,7 +34,10 @@
               <img src="{{url}}{{nutri?.img_array[0]}}" *ngIf="nutri?.image_path && !nutri.empty" />
               <img src="../../assets/images/nutrition2.png" *ngIf="!nutri.empty && !nutri?.image_path" />
               <ion-label *ngIf="!nutri.empty">{{nutri?.title}}</ion-label>
-              <div *ngIf="nutri.empty" class="no-data"> No Snacks </div>
+              <div *ngIf="nutri.empty" class="no-data nutrition-no-data"> 
+                <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+                <p>No Breakfast </p>                
+              </div>
             </div>
           </ion-segment-button>
         </ion-segment>
@@ -53,7 +56,10 @@
               <img src="{{url}}{{nutri?.img_array[0]}}" *ngIf="nutri?.image_path && !nutri.empty" />
               <img src="../../assets/images/nutrition2.png" *ngIf="!nutri.empty && !nutri?.image_path" />
               <ion-label *ngIf="!nutri.empty">{{nutri?.title}}</ion-label>
-              <div *ngIf="nutri.empty" class="no-data"> No Brunch </div>
+              <div *ngIf="nutri.empty" class="no-data nutrition-no-data"> 
+                <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+                <p>No Brunch </p>
+              </div>
             </div>
           </ion-segment-button>
 
@@ -75,7 +81,10 @@
             <img src="{{url}}{{nutri?.img_array[0]}}" *ngIf="nutri?.image_path && !nutri.empty" />
             <img src="../../assets/images/nutrition2.png" *ngIf="!nutri.empty && !nutri?.image_path" />
             <ion-label *ngIf="!nutri.empty">{{nutri?.title}}</ion-label>
-            <div *ngIf="nutri.empty" class="no-data"> No Snacks </div>
+            <div *ngIf="nutri.empty" class="no-data nutrition-no-data">
+              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+              <p>No Lunch </p> 
+            </div>
             </div>
           </ion-segment-button>
 
@@ -96,7 +105,10 @@
               <img src="{{url}}{{nutri?.img_array[0]}}" *ngIf="nutri?.image_path && !nutri.empty" />
               <img src="../../assets/images/nutrition2.png" *ngIf="!nutri.empty && !nutri?.image_path" />
               <ion-label *ngIf="!nutri.empty">{{nutri?.title}}</ion-label>
-              <div *ngIf="nutri.empty" class="no-data"> No Snacks </div>
+              <div *ngIf="nutri.empty" class="no-data nutrition-no-data"> 
+                <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+                <p>No Snacks </p>
+              </div>
             </div>
           </ion-segment-button>
         </ion-segment>
@@ -114,7 +126,10 @@
               <img src="{{url}}{{nutri?.img_array[0]}}" *ngIf="nutri?.image_path && !nutri.empty" />
               <img src="../../assets/images/nutrition2.png" *ngIf="!nutri.empty && !nutri?.image_path" />
               <ion-label *ngIf="!nutri.empty">{{nutri?.title}}</ion-label>
-              <div *ngIf="nutri.empty" class="no-data"> No Snacks </div>
+              <div *ngIf="nutri.empty" class="no-data nutrition-no-data"> 
+                <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+                <p>No Dinner</p> 
+              </div>
             </div>
           </ion-segment-button>
         </ion-segment>

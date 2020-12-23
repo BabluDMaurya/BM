@@ -39,5 +39,9 @@
       <ion-badge *ngIf="groups.unreadmessage.count > 0 " color="secondary" slot="end">{{groups.unreadmessage.count}}</ion-badge>
     </ion-item>
     </ion-list>
+    <div *ngIf="items.length < 1" class="no-data nutrition-no-data"> 
+      <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+      <p>No Data Found</p> 
+    </div>
   </ion-list>
 </ion-content>
