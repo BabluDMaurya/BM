@@ -38,6 +38,7 @@ export class SearchPage implements OnInit {
   result: any;
   url : any = Config.profilePic;
   i = 0;
+  term = ''; 
   constructor(public alertCtrl: AlertController,
       public router: Router,
       public navCtrl: NavController,

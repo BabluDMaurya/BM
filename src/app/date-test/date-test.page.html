@@ -1,35 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>DateTest</ion-title>
+    <ion-title>Ionic Search</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-item>Date Test</ion-item>  
-  
-  <a [routerLink]="['/broadcaster']" class="foll-people">
-   Go to Bradocaster
-  </a>
-  <a [routerLink]="['/starting-slide']" class="foll-people">
-    Go to Starting
-   </a>
-   <a [routerLink]="['/musicplayer']" class="foll-people">
-    Music Player
-   </a>
-  <ion-item >Date Test</ion-item>
-  <ion-list *ngIf="dateLoad ">  Db Date: {{dateLoad.db_date}}</ion-list>
+<ion-content class="ion-padding">
 
+  <!-- Search Bar -->
+  <ion-searchbar placeholder="Filter Schedules" [(ngModel)]="term" animated="true"></ion-searchbar>
 
-  <ion-item>
-    <ion-label>Music</ion-label>
-    <ion-select  >
-      <ion-select-option>Alice in Chains</ion-select-option>
-      <ion-select-option>Green Day</ion-select-option>
-      <ion-select-option  >Nirvana</ion-select-option>
-      <ion-select-option>Pearl Jam</ion-select-option>
-      <ion-select-option [selected]="sel ? 'true' :  'false'">Smashing Pumpkins</ion-select-option>
-      <ion-select-option>Soundgarden</ion-select-option>
-      <ion-select-option>Stone Temple Pilots</ion-select-option>
-    </ion-select>
-  </ion-item>
+  <!-- List Items -->
+  <ion-list>
+    <ion-item *ngFor="let item of filterData | filter:term">
+      <ion-label>{{item.firstName}} {{item.lastName}}</ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

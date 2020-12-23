@@ -70,7 +70,7 @@ export class CommonService {
         backdropDismiss : false,
         inputs: [
           {
-            name: 'Name',
+            name: 'groupName',
             placeholder: 'Enter here ...',
             type:'text',
           }
@@ -84,15 +84,25 @@ export class CommonService {
             }
           },
           {
-            text: 'Login',
+            text: 'request',
             handler: data => {
-              if(Url != '' && Url != null){
-                let name = data.groupName;
-              this.router.navigate([Url, name]).then( (e) => {
-                if (e) { 
-                } else { 
+              if(Url != '' && Url != null && sendData != null && sendData != ''){                
+                if(data.groupName != '' && data.groupName != null){
+                  sendData.groupName = data.groupName;
+                  console.log("sendData:"+JSON.stringify(sendData));
+                  this.dataService.sendChatRequest(sendData).subscribe(
+                    (data: any) => {
+                      if(data.status == 'success'){
+                        this.router.navigate(['/chat-room/'+data.admin_id +'/'+data.room+'/'+data.type]);
+                      }else{
+                          console.log('Somthing wrong');
+                           return false;
+                      }
+                    });
+                }else{
+                  console.log("please enter group name");
+                  return false;
                 }
-              });
             }
             }
           }

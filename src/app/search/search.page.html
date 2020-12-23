@@ -19,11 +19,11 @@
   <div [ngSwitch]="search">
     <ion-list lines="none" class="item-list ion-no-padding" *ngSwitchCase="'people'">
       <ion-toolbar class="searchbar">
-        <ion-searchbar type="text" (ionInput)="searchChanged($event)"></ion-searchbar>
+        <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
       </ion-toolbar>
       <!--top 10 people-->
       <div *ngIf="!newSearchPersonList">
-        <ion-item *ngFor="let item of searchPersonList " class="item-block"
+        <ion-item *ngFor="let item of searchPersonList | filter:term" class="item-block"
           [routerLink]="item.user_type==0 ? ['/tabs/user-profile-view/',item.id] : ['/tabs/consultant-profile-view/',item.id]">
           <ion-avatar slot="start">
             <img *ngIf="item?.bios?.profile_pic" src="{{url}}{{item?.bios?.profile_pic}}">
@@ -35,11 +35,11 @@
               Upcoming Programs</span>
           </ion-label>
         </ion-item>
-        <ion-item-group *ngFor="let item of result">
+        <ion-item-group *ngFor="let item of result | filter:term">
           <ion-item-divider sticky class="grey-header ion-padding-horizontal">
             <ion-label> {{item.key}} </ion-label>
           </ion-item-divider>
-          <ion-item-sliding *ngFor="let key of item.contacts">
+          <ion-item-sliding *ngFor="let key of item.contacts | filter:term">
             <ion-item *ngIf="!key.advertisment" class="item-block"
               [routerLink]="key.user_type==0 ? ['/tabs/user-profile-view/',key.id] : ['/tabs/consultant-profile-view/',key.id]">
               <ion-avatar slot="start">

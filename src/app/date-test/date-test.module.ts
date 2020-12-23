@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { DateTestPageRoutingModule } from './date-test-routing.module';
 
 import { DateTestPage } from './date-test.page';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DateTestPageRoutingModule
+    DateTestPageRoutingModule,
+    Ng2SearchPipeModule,
   ],
   declarations: [DateTestPage]
 })

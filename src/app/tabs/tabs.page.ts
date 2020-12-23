@@ -25,9 +25,9 @@ export class TabsPage implements OnInit {
     this.userData =JSON.parse(localStorage.getItem('userData'));
     this.totalchat =JSON.parse(localStorage.getItem('totalchat'));
     this.unreadMessage();
-    this.unreadMess = setInterval(() => {
-      this.unreadMessage(); 
-    }, 15000);
+    // this.unreadMess = setInterval(() => {
+    //   this.unreadMessage(); 
+    // }, 15000);
     // console.log('ion enter')
      this.userType =this.userData.user_type;
      this.commonService.footerTabHooks.next(true);
@@ -37,14 +37,15 @@ ionViewDidEnter	(){
 }
 ionViewWillLeave(){
   this.commonService.footerTabHooks.next(false);
-  if (this.unreadMess) {
-    clearInterval(this.unreadMess);
-  }
+  // if (this.unreadMess) {
+  //   clearInterval(this.unreadMess);
+  // }
 }
 ionViewDidLeave(){
   // console.log('ionViewWillLeave');
   this.commonService.footerTabHooks.next(false);
-}unreadMessage(){
+}
+unreadMessage(){
   this.commonService.getUnreadCountMyProfile();
 }
 }

@@ -209,7 +209,7 @@ const routes: Routes = [
     loadChildren: () => import('./chats/add-group/add-group.module').then( m => m.AddGroupPageModule)
   },
   {
-    path: 'chat-room/:receiver/:room',
+    path: 'chat-room/:receiver/:room/:type?',
     loadChildren: () => import('./chats/chat-room/chat-room.module').then( m => m.ChatRoomPageModule)
   },
   {
@@ -243,10 +243,7 @@ const routes: Routes = [
   {
     path: 'access/:id/:senderId',
     loadChildren: () => import('./chats/access/access.module').then( m => m.AccessPageModule)
-  },
-
-
-
+  },  
 ];
 
 @NgModule({

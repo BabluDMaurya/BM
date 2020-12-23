@@ -17,32 +17,14 @@
 </ion-header>
 <ion-content class="main_content">
   <ion-toolbar class="searchbar">
-    <ion-searchbar type="text" (ionInput)="searchChanged($event)"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
   </ion-toolbar>
   <ion-list class="followers-list">
     <ion-list-header class="ion-padding-horizontal">
       <h5 class="ion-no-margin">Messages</h5>
       <ion-label *ngIf="requestCount > 0" class="text-green" (click)="showRequests()">{{requestCount}} Requests</ion-label>
-    </ion-list-header>
-    <!-- <div *ngIf="newSearchPersonList.length < 1">
-
-    </div> 
-     
-      <div *ngIf="newSearchPersonList.length > 0 " >
-        <ion-item lines="none" [routerLink]="['/chat-room', followers?.id]" detail="false"
-          *ngFor="let followers of newSearchPersonList">
-          <ion-avatar slot="start">
-            <img *ngIf="followers?.bios?.profile_pic" src="{{url}}{{followers?.bios?.profile_pic}}">
-            <img *ngIf="!followers?.bios?.profile_pic" src="../../assets/images/user.jpg">
-          </ion-avatar>
-          <ion-label>
-            <h3 class="list-person">{{ followers.user_name }}</h3>
-            <span class="list-name" *ngIf="followers?.bios?.display_name">{{followers?.bios?.display_name}}</span>
-          </ion-label>
-          <img slot="end" class="w26" src="../../../assets/images/follower-user.svg" />
-        </ion-item>
-      </div> -->
-    <ion-list lines="none" detail="false" *ngFor="let groups of items">
+    </ion-list-header>    
+    <ion-list lines="none" detail="false" *ngFor="let groups of items | filter:term">
     <ion-item lines="none" (click)="chatRoom(userData.id == groups.receiverID ? groups.senderID: groups.receiverID,groups.chatroom.room)" detail="false" *ngFor="let item of groups.bio || groups.sendarbio">
       <ion-avatar slot="start">
         <img *ngIf="item?.profile_pic" src="{{url}}{{item?.profile_pic}}"> 

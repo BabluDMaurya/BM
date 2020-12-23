@@ -14,12 +14,6 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content no_footer">
-  <!-- <p class="horizontal-scroll">
-    <ion-chip *ngFor="let user of peopleForm.value.peopleSelect; let i =index">
-      <ion-label>{{user.user_name}}</ion-label>
-      <ion-icon ios="ios-close" md="md-close" (click)="removeChip(i)"></ion-icon>
-    </ion-chip>
-  </p> -->
   <form [formGroup]="peopleForm">
     <div *ngIf="peopleList && !newSearchPersonList">
       <ion-list class="user-list ion-no-padding" *ngFor="let people of peopleList">

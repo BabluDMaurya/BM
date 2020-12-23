@@ -20,6 +20,7 @@ export class AddPrivatePage implements OnInit {
   peopleList: any;
   peopleForm: any;
   userData:any;
+  groupName : any;
   profileUrl: any = Config.profilePic;
   constructor(public commonService: CommonService,
     // private navParams: NavParams,
@@ -61,15 +62,13 @@ export class AddPrivatePage implements OnInit {
 
   createForm() {
     this.peopleForm = new FormGroup({
-      peopleSelect: this.fb.array([])
+      peopleSelect: this.fb.array([])      
     });
   }
   ionViewWillEnter() {
 
-  }
-  
+  }  
   onCheckboxChange(e) {
-
     const checkArray = this.peopleForm.get('peopleSelect')
     if (!e.target.checked) {
       // console.log('sss');
@@ -97,12 +96,15 @@ export class AddPrivatePage implements OnInit {
   chatRequest() {
     this.formData = this.peopleForm.value;
     if(this.formData.peopleSelect.length >1){
+      this.formData.groupName = '';
+      this.formData.type = 2;
       let title :any = 'Group Chat';
       let msg : any = 'Enter your Group Name Bellow';
       let Url : any = '/chat-room/29/46';
       this.commonService.presentPromptRedirect(title,msg,this.formData,Url);
     }else{    
-      this.commonService.presentLoader();      
+      this.commonService.presentLoader();  
+      this.formData.type = 1;
       this.chatService.sendChatRequest(this.formData).subscribe(
         (data: any) => {
           if(data.status == 'success'){
