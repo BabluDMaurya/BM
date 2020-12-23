@@ -46,6 +46,7 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   bSOUser : any = 'unblock';
   bidOUser : any;
   chatDates : string;
+  chatType : any;
   constructor(
     public popoverController: PopoverController,
     public alertController: AlertController,
@@ -56,7 +57,7 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     public commonService:CommonService,
     ) {    }
 
-  getStart(){
+    getStartprivate(){
     if (this.myUserId == null) {
       this.myUserId = Date.now().toString();
     }
@@ -150,9 +151,13 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.room = params.get('room');
       this.receiverId = params.get('receiver');
+      this.chatType = params.get('type');
     });
-    
-    this.getStart();
+    if(this.chatType == 2){
+
+    }else{
+      //-----private chat---
+    this.getStartprivate();
 
     this.socket.emit("addUser", this.userData.id,this.receiverId);
     
@@ -172,13 +177,15 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
       this.display_name = data[0].display_name;
       this.profile_pic = data[0].profile_pic;      
     });
+    }
+    
   }
   ngAfterViewInit() {
 
   }
 
   sendMessage() {
-    if(this.message != '' && this.message != null){
+    if(this.message != '' && this.message != null && this.chatType == 1){
       if(this.bSOUser == 'unblock'){
         this.socket.emit('send-message', { text: this.message, blockstatus : this.blockstatus });
       }else{

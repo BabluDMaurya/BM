@@ -103,7 +103,7 @@ export class AccessPage implements OnInit {
           this.commonService.dismissLoader();
           this.messageButtons = false;
           if(data.status){
-            this.router.navigateByUrl('/chat-room/'+this.senderId+'/'+data.room);
+            this.router.navigateByUrl('/chat-room/'+this.senderId+'/'+data.room+'/1');
            
           }
       });

@@ -61,7 +61,7 @@ export class ChatPage implements OnInit {
     // if (this.callApiv) {
     //   clearInterval(this.callApiv);
     // }
-    this.router.navigate(['/chat-room/'+receiverID+'/'+room]);
+    this.router.navigate(['/chat-room/'+receiverID+'/'+room+'/1']);
   }
   ionViewWillLeave() {
     // if (this.callApiv) {

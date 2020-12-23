@@ -62,7 +62,7 @@ export class CommonService {
         localStorage.setItem('sponcerchat',data.sponcerCount.sponcer_chat_count);
       });
     }
-    async presentPromptRedirect(title,msg,sendData,Url) {
+    async presentPromptRedirect(title,msg,sendData) {
       let alert = await this.alertController.create({
         cssClass:this.cssClass, 
         header: title,
@@ -86,7 +86,7 @@ export class CommonService {
           {
             text: 'request',
             handler: data => {
-              if(Url != '' && Url != null && sendData != null && sendData != ''){                
+              if(sendData != null && sendData != ''){                
                 if(data.groupName != '' && data.groupName != null){
                   sendData.groupName = data.groupName;
                   console.log("sendData:"+JSON.stringify(sendData));

@@ -101,14 +101,14 @@ export class AddPrivatePage implements OnInit {
       let title :any = 'Group Chat';
       let msg : any = 'Enter your Group Name Bellow';
       let Url : any = '/chat-room/29/46';
-      this.commonService.presentPromptRedirect(title,msg,this.formData,Url);
+      this.commonService.presentPromptRedirect(title,msg,this.formData);
     }else{    
       this.commonService.presentLoader();  
       this.formData.type = 1;
       this.chatService.sendChatRequest(this.formData).subscribe(
         (data: any) => {
           if(data.status == 'success'){
-            this.router.navigate(['/chat-room/'+data.reciverID+'/'+data.room]);
+            this.router.navigate(['/chat-room/'+data.reciverID+'/'+data.room+'/1']);
           }else{
               console.log('Somthing wrong');
           }
@@ -116,7 +116,6 @@ export class AddPrivatePage implements OnInit {
         });
     }
   } 
-
   searchPersonList: any;
   newSearchPersonList: any;
 
