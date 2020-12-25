@@ -30,6 +30,15 @@ export class AccessPage implements OnInit {
   display_name :any;
   profile_pic : any;
   profilePicUrl : any = Config.profilePic;
+  chatType : any;
+  groupName : any = '';
+  adminId : any = '';
+  groupMember : any = '';
+  acceptMember : any = '';
+  groupImage : any = '';
+  groupId : any = '';
+  groupMessage = '';
+  groupMessages = [];
   constructor(public navCtrl: NavController,
     private actRoute: ActivatedRoute,
     private dataService: ChatService,
@@ -38,40 +47,95 @@ export class AccessPage implements OnInit {
     private socket: Socket,
     ) { }
     getStart(){
-      if (this.myUserId == null) {
-        this.myUserId = Date.now().toString();
-      }
       this.socket.connect();
-      this.currentUser = this.room;
-      this.socket.emit('set-name', this.room);
-      this.socket.fromEvent('users-changed').subscribe(data => {
-        if (data['event'] === 'left') {
-          // this.showToast('User left: ' + this.room);
-          this.UserOnLineStatus = 'is OffLine';
-        } else {
-          // this.showToast('User joined: ' + this.room);
-          this.UserOnLineStatus = 'is OnLine';
-        }
-      });
+    this.currentUser = this.room;
+    this.socket.emit('set-name', this.room,this.chatType);
+    this.socket.fromEvent('users-changed').subscribe(data => {
+      if (data['event'] === 'left') {
+        // this.showToast('User left: ' + this.room);
+        // this.UserOnLineStatus = 'is OffLine';
+      } else {
+        // this.showToast('User joined: ' + this.room);
+        // this.UserOnLineStatus = 'is OnLine';
+      }
+    });
+      // if (this.myUserId == null) {
+      //   this.myUserId = Date.now().toString();
+      // }
+      // this.socket.connect();
+      // this.currentUser = this.room;
+      // this.socket.emit('set-name', this.room);
+      // this.socket.fromEvent('users-changed').subscribe(data => {
+      //   if (data['event'] === 'left') {
+      //     // this.showToast('User left: ' + this.room);
+      //     this.UserOnLineStatus = 'is OffLine';
+      //   } else {
+      //     // this.showToast('User joined: ' + this.room);
+      //     this.UserOnLineStatus = 'is OnLine';
+      //   }
+      // });
     
-      this.socket.fromEvent('storchatdate').subscribe(data => {
-        console.log("storchatdate : "+JSON.stringify(data));
-      });
-      this.socket.fromEvent('message').subscribe(message => {
-        this.messages.push(message);
-      });
-      this.socket.fromEvent('UserOnLineStatus').subscribe(UserOnLineStatus => {
-        this.UserOnLineStatus = UserOnLineStatus;
-      });
+      // this.socket.fromEvent('storchatdate').subscribe(data => {
+      //   console.log("storchatdate : "+JSON.stringify(data));
+      // });
+      // this.socket.fromEvent('message').subscribe(message => {
+      //   this.messages.push(message);
+      // });
+      // this.socket.fromEvent('UserOnLineStatus').subscribe(UserOnLineStatus => {
+      //   this.UserOnLineStatus = UserOnLineStatus;
+      // });
     }
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.requestId = params.get('id');
-      this.senderId = params.get('senderId');
+      this.senderId = params.get('senderId');//in group chat this is room
+      this.chatType = params.get('type');
     });
 
+
     this.getStart();
+
+    if(this.chatType == 2){
+      //-----group chat--- 
+      this.groupChat();
+    }else{
+      //-----private chat---  
+      this.privateChat();
+    } 
+
+    // this.getStart();
+
+    // this.socket.emit("addUser", this.userData.id,this.senderId);
+    
+    // this.socket.emit("newUser", [this.userData.id,this.senderId, this.room]);
+
+    // this.socket.emit("storemassagerequest",this.userData.id,this.senderId);
+
+    // this.socket.fromEvent('stormessage').subscribe(storMessage => {      
+    //   this.storeMessages = storMessage;
+    // });
+
+    // this.socket.fromEvent('userName').subscribe(data => {
+    //   this.user_name = data[0].user_name;
+    // });
+
+    // this.socket.fromEvent('userBio').subscribe(data => {
+    //   this.display_name = data[0].display_name;
+    //   this.profile_pic = data[0].profile_pic;      
+    // });
+
+  }
+  privateChat(){
+    this.socket.fromEvent('storchatdate').subscribe(data => {
+      console.log("storchatdate : "+JSON.stringify(data));
+    });
+    this.socket.fromEvent('message').subscribe(message => {
+      this.messages.push(message);
+    });
+    this.socket.fromEvent('UserOnLineStatus').subscribe(UserOnLineStatus => {
+      this.UserOnLineStatus = UserOnLineStatus;
+    });
 
     this.socket.emit("addUser", this.userData.id,this.senderId);
     
@@ -91,20 +155,37 @@ export class AccessPage implements OnInit {
       this.display_name = data[0].display_name;
       this.profile_pic = data[0].profile_pic;      
     });
+  }
+  groupChat(){
+    this.room = this.senderId;
+    
+    this.socket.emit("newGroup", this.userData.id,this.requestId, this.room);
 
+    this.socket.fromEvent('groupChatRequestData').subscribe(groupChatRequestData => {
+      this.groupName = groupChatRequestData[0].group_name;
+      this.adminId = groupChatRequestData[0].admin_id;
+      this.groupMember = groupChatRequestData[0].group_member;
+      this.acceptMember = groupChatRequestData[0].accept_member;
+      this.groupImage = groupChatRequestData[0].group_image;
+      this.groupId = groupChatRequestData[0].id;
+    });
+    this.socket.fromEvent('groupmessage').subscribe(message => {
+      this.groupMessages.push(message);
+    });
   }
   //---------allow---------
   allow(){
     this.commonService.presentLoader();
     if(this.requestId != null && this.requestId != ''){
       //------------Accept Request -------------
-    this.dataService.acceptChatRequest({ 'id': this.requestId,'senderId' : this.senderId}).subscribe(
+    this.dataService.acceptChatRequest({ 'id': this.requestId,'senderId' : this.senderId,'type':this.chatType}).subscribe(
       (data: any) => {
           this.commonService.dismissLoader();
           this.messageButtons = false;
-          if(data.status){
-            this.router.navigateByUrl('/chat-room/'+this.senderId+'/'+data.room+'/1');
-           
+          if(data.status && this.chatType == 1){
+            this.router.navigateByUrl('/chat-room/'+this.senderId+'/'+data.room+'/'+this.chatType);
+          }else{
+            this.router.navigateByUrl('/chat-room/'+this.requestId+'/'+data.room+'/'+this.chatType);
           }
       });
     }

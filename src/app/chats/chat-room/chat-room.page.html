@@ -9,7 +9,8 @@
         <img *ngIf="profile_pic" src="{{profilePicUrl}}{{profile_pic}}">
       </ion-avatar>
       <ion-label>
-        <h3 class="list-person">{{user_name}}</h3>
+        <h3 class="list-person" *ngIf="groupName != '' && groupName != null">{{groupName}}</h3>
+        <h3 class="list-person" *ngIf="user_name != '' && user_name != null">{{user_name}}</h3>
         <span class="list-name"> {{UserOnLineStatus}}</span>
       </ion-label>
     </ion-item>
@@ -53,10 +54,34 @@
       </div>
     </ion-item>    
   </ion-list>
+  <!--Group Chat Message-->
+  <ion-list class="chats-list" lines="none" *ngFor="let groupMessage of groupMessages">
+    <!-- <ion-item>
+      <ion-label class="chat-duration"><span>Today</span></ion-label>
+    </ion-item> -->
+    <ion-item class="chat-box chat-right" *ngIf="groupMessage.user ===  userData?.id">
+      <div class="ion-text-end">
+        <ion-label>{{ groupMessage.msg }}</ion-label>
+        <span class="chat-time">{{ groupMessage.createdAt | date:'shortTime' }} <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon></span>
+      </div>
+    </ion-item>
+    <ion-item class="chat-box chat-left" *ngIf="groupMessage.user !== userData?.id">
+      <div class="ion-text-start">
+        <ion-label>{{ groupMessage.msg }}</ion-label>
+        <span class="chat-time">{{ groupMessage.createdAt | date:'shortTime' }}</span>
+      </div>
+    </ion-item>    
+  </ion-list>
 </ion-content>
-<ion-footer class="sticky-footer">
+<ion-footer class="sticky-footer" *ngIf="chatType == 1">
   <ion-item lines="none">   
     <ion-textarea [(ngModel)]="message" placeholder="Type here.."></ion-textarea>
+    <img src="../../assets/images/send.svg" class="send-img"  (click)="sendMessage()">
+  </ion-item>
+</ion-footer>
+<ion-footer class="sticky-footer" *ngIf="chatType == 2">
+  <ion-item lines="none">   
+    <ion-textarea [(ngModel)]="groupMessage" placeholder="Type here.."></ion-textarea>
     <img src="../../assets/images/send.svg" class="send-img"  (click)="sendMessage()">
   </ion-item>
 </ion-footer>

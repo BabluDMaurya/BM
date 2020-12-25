@@ -86,28 +86,32 @@ export class CommonService {
           {
             text: 'request',
             handler: data => {
+              this.presentLoader();
               if(sendData != null && sendData != ''){                
                 if(data.groupName != '' && data.groupName != null){
                   sendData.groupName = data.groupName;
-                  console.log("sendData:"+JSON.stringify(sendData));
                   this.dataService.sendChatRequest(sendData).subscribe(
                     (data: any) => {
+                      this.dismissLoader();
                       if(data.status == 'success'){
-                        this.router.navigate(['/chat-room/'+data.admin_id +'/'+data.room+'/'+data.type]);
+                        this.router.navigate(['/chat-room/'+data.requestID +'/'+data.room+'/'+data.type]);
                       }else{
                           console.log('Somthing wrong');
                            return false;
                       }
                     });
                 }else{
+                  this.dismissLoader();
                   console.log("please enter group name");
                   return false;
                 }
-            }
+              }else{
+                this.dismissLoader();
+              }
             }
           }
         ]
-      });
+      });      
       alert.present();
     }
 

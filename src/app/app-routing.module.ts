@@ -209,7 +209,7 @@ const routes: Routes = [
     loadChildren: () => import('./chats/add-group/add-group.module').then( m => m.AddGroupPageModule)
   },
   {
-    path: 'chat-room/:receiver/:room/:type?',
+    path: 'chat-room/:receiver/:room/:type',
     loadChildren: () => import('./chats/chat-room/chat-room.module').then( m => m.ChatRoomPageModule)
   },
   {
@@ -241,7 +241,7 @@ const routes: Routes = [
     loadChildren: () => import('./sponcer-chat/sponcer-chat.module').then( m => m.SponcerChatPageModule)
   },
   {
-    path: 'access/:id/:senderId',
+    path: 'access/:id/:senderId/:type',
     loadChildren: () => import('./chats/access/access.module').then( m => m.AccessPageModule)
   },  
 ];

@@ -23,15 +23,14 @@ export class RequestsModalComponent implements OnInit {
     this.dataService.requestsUserList().subscribe((data:any)=>{
       this.commonService.dismissLoader();
         this.requestList = data.requestslist;
-        console.log("this.requestList:"+JSON.stringify(this.requestList));
     });
   }
   closeModal() {
     this.commonService.dismissModal();
   }
   
-  navigate(id : any,senderId:any){
+  navigate(id : any,senderId:any,type:any){
     this.closeModal();
-    this.router.navigate(['/access/'+id+'/'+senderId]);
+    this.router.navigate(['/access/'+id+'/'+senderId+'/'+type]);
   }
 }

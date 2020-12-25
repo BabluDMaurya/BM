@@ -20,20 +20,24 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   messageBox = false;
   messageButtons = true;
   toggled: boolean = false;
-  user: User;
+  // user: User;
   action: Action;
   // messages: Message[] = [];
   messageContent: string;
   ioConnection: any;
-  public myUserId: string;
-  chats = [];
-  chat_input: string;
+  // public myUserId: string;
+  // chats = [];
+  // chat_input: string;
   message = '';
   messages = [];
+
+  groupMessage = '';
+  groupMessages = [];
+
   storeMessage = '';
   storeMessages ; any;
   currentUser = '';
-  chatUserId: any;
+  // chatUserId: any;
   userData:any;
   receiverId :any;
   room : any ;
@@ -47,6 +51,12 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   bidOUser : any;
   chatDates : string;
   chatType : any;
+  groupName : any = '';
+  adminId : any = '';
+  groupMember : any = '';
+  acceptMember : any = '';
+  groupImage : any = '';
+  groupId : any = '';
   constructor(
     public popoverController: PopoverController,
     public alertController: AlertController,
@@ -56,30 +66,65 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     private toastCtrl: ToastController,
     public commonService:CommonService,
     ) {    }
+  ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('userData'));
+    this.actRoute.paramMap.subscribe((params: ParamMap) => {
+      this.room = params.get('room');
+      //--reciver is ( in private chat is sender id and in group chat request id)-----
+      this.receiverId = params.get('receiver');
+      this.chatType = params.get('type');
+    });
 
-    getStartprivate(){
-    if (this.myUserId == null) {
-      this.myUserId = Date.now().toString();
-    }
+    this.getStart();
+
+    if(this.chatType == 2){
+      //-----group chat--- 
+      this.groupChat();
+    }else{
+      //-----private chat---  
+      this.privateChat();
+    }    
+  }
+  getStart(){   
     this.socket.connect();
     this.currentUser = this.room;
-    this.socket.emit('set-name', this.room);
+    this.socket.emit('set-name', this.room,this.chatType);
     this.socket.fromEvent('users-changed').subscribe(data => {
       if (data['event'] === 'left') {
-        // this.showToast('User left: ' + this.room);
-        this.UserOnLineStatus = 'is OffLine';
+        this.showToast('User left: ' + this.room);
+        // this.UserOnLineStatus = 'is OffLine';
       } else {
-        // this.showToast('User joined: ' + this.room);
-        this.UserOnLineStatus = 'is OnLine';
+        this.showToast('User joined: ' + this.room);
+        // this.UserOnLineStatus = 'is OnLine';
       }
+    });    
+  }
+  groupChat(){
+
+    this.socket.emit("newGroup", this.userData.id,this.receiverId, this.room);
+
+    this.socket.fromEvent('groupChatRequestData').subscribe(groupChatRequestData => {
+      this.groupName = groupChatRequestData[0].group_name;
+      this.adminId = groupChatRequestData[0].admin_id;
+      this.groupMember = groupChatRequestData[0].group_member;
+      this.acceptMember = groupChatRequestData[0].accept_member;
+      this.groupImage = groupChatRequestData[0].group_image;
+      this.groupId = groupChatRequestData[0].id;
     });
+    this.socket.fromEvent('groupmessage').subscribe(message => {
+      this.groupMessages.push(message);
+    });
+  }
+  privateChat(){
+    this.socket.fromEvent('message').subscribe(message => {
+      this.messages.push(message);
+    });
+
     this.socket.fromEvent('blockStatusOfUser').subscribe(blockStatusOfUser => {
-      console.log("blockStatusOfUser:"+JSON.stringify(blockStatusOfUser['status']));
       this.bSOUser = blockStatusOfUser['status'];
       this.bidOUser = blockStatusOfUser['blockID'];          
     });
     this.socket.fromEvent('blockStatusOfSelf').subscribe(blockStatusOfSelf => {
-      console.log("blockStatusOfSelf:"+JSON.stringify(blockStatusOfSelf['status']));
       if(blockStatusOfSelf['status'] ==='block'){        
         this.blockstatus = 1;
       }else{
@@ -87,16 +132,30 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
       }     
     });
     this.socket.fromEvent('storchatdate').subscribe(data => {
-      console.log("storchatdate : "+JSON.stringify(data));
-      // let today = new Date();
-      // console.log("Today :"+new Date());
-      // this.chatDates  = '17/12/2020';      
+      // console.log("storchatdate : "+JSON.stringify(data));
     });
-    this.socket.fromEvent('message').subscribe(message => {
-      this.messages.push(message);
-    });
+
     this.socket.fromEvent('UserOnLineStatus').subscribe(UserOnLineStatus => {
       this.UserOnLineStatus = UserOnLineStatus;
+    });
+
+    this.socket.emit("addUser", this.userData.id,this.receiverId);
+    this.socket.emit("newUser", [this.userData.id,this.receiverId, this.room]);
+    
+
+    this.socket.emit("storemassagerequest",this.userData.id,this.receiverId);
+
+    this.socket.fromEvent('stormessage').subscribe(storMessage => {      
+      this.storeMessages = storMessage;
+    });
+
+    this.socket.fromEvent('userName').subscribe(data => {
+      this.user_name = data[0].user_name;
+    });
+
+    this.socket.fromEvent('userBio').subscribe(data => {
+      this.display_name = data[0].display_name;
+      this.profile_pic = data[0].profile_pic;      
     });
   }
   async blockStatusOfUser(id : any) {
@@ -143,56 +202,23 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     return await popover.present();
    
   }
-  handleSelection(event) {
-    this.messages += event.char;
-  }
-  ngOnInit() {
-    this.userData = JSON.parse(localStorage.getItem('userData'));
-    this.actRoute.paramMap.subscribe((params: ParamMap) => {
-      this.room = params.get('room');
-      this.receiverId = params.get('receiver');
-      this.chatType = params.get('type');
-    });
-    if(this.chatType == 2){
-
-    }else{
-      //-----private chat---
-    this.getStartprivate();
-
-    this.socket.emit("addUser", this.userData.id,this.receiverId);
-    
-    this.socket.emit("newUser", [this.userData.id,this.receiverId, this.room]);
-
-    this.socket.emit("storemassagerequest",this.userData.id,this.receiverId);
-
-    this.socket.fromEvent('stormessage').subscribe(storMessage => {      
-      this.storeMessages = storMessage;
-    });
-
-    this.socket.fromEvent('userName').subscribe(data => {
-      this.user_name = data[0].user_name;
-    });
-
-    this.socket.fromEvent('userBio').subscribe(data => {
-      this.display_name = data[0].display_name;
-      this.profile_pic = data[0].profile_pic;      
-    });
-    }
-    
-  }
   ngAfterViewInit() {
 
   }
-
   sendMessage() {
     if(this.message != '' && this.message != null && this.chatType == 1){
       if(this.bSOUser == 'unblock'){
         this.socket.emit('send-message', { text: this.message, blockstatus : this.blockstatus });
       }else{
         this.blockStatusOfUser(this.bidOUser);
-      }      
+      }   
+      this.message = '';   
+    }else if(this.groupMessage != '' && this.groupMessage != null && this.chatType == 2){
+        console.log('group chat message');
+        this.socket.emit('send-group-message', { text: this.groupMessage});
+        this.groupMessage = '';
     }
-    this.message = '';
+    
   }
   ionViewWillLeave() {
     this.socket.disconnect();
@@ -204,5 +230,8 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
       duration: 2000
     });
     toast.present();
-  }  
+  }
+  handleSelection(event) {
+    this.messages += event.char;
+  }
 }

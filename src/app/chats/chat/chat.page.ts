@@ -36,7 +36,6 @@ export class ChatPage implements OnInit {
     console.log("ngOnInit");
   }
   ionViewWillEnter() {
-    console.log("ionViewWillEnter");
     this.callApi();
     // this.callApiv = setInterval(() => {
     //   this.callApi(); 
@@ -51,17 +50,17 @@ export class ChatPage implements OnInit {
   callApi(){    
     //------------chat user list -------------
     this.dataService.chatUserList().subscribe((data: any) => {
-        this.items = data.chatlist;  
+        this.items = data.chatlist;
         this.requestCount = data.requestcount; 
         localStorage.setItem('totalchat',this.requestCount);     
       });       
       this.commonService.dismissLoader();
   }
-  chatRoom(receiverID:any,room:any){
+  chatRoom(receiverID:any,room:any,type:any){
     // if (this.callApiv) {
     //   clearInterval(this.callApiv);
     // }
-    this.router.navigate(['/chat-room/'+receiverID+'/'+room+'/1']);
+    this.router.navigate(['/chat-room/'+receiverID+'/'+room+'/'+type]);
   }
   ionViewWillLeave() {
     // if (this.callApiv) {
@@ -101,5 +100,11 @@ export class ChatPage implements OnInit {
     });
     return await modal.present();
   }
-
+  doRefresh(event) {
+    this.ngOnInit();
+    this.ionViewWillEnter();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
+  }
 }

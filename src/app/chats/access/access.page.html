@@ -9,7 +9,8 @@
         <img *ngIf="profile_pic" src="{{profilePicUrl}}{{profile_pic}}">
       </ion-avatar>
       <ion-label>
-        <h3 class="list-person">{{user_name}}</h3>
+        <h3 class="list-person" *ngIf="groupName != '' && groupName != null">{{groupName}}</h3>
+        <h3 class="list-person" *ngIf="user_name != '' && user_name != null">{{user_name}}</h3>
         <span class="list-name"> {{UserOnLineStatus}}</span>
       </ion-label>
     </ion-item>
