@@ -78,7 +78,7 @@
           <ion-avatar [routerLink]="['/tabs/consultant-profile-view/',post?.user_id]">
             <img src="https://ionicinto.wdipl.com/public/profile_pic/thumb/{{post?.profile_pic}}"
               *ngIf="post?.profile_pic">
-            <img src="https://intoactive.wdipl.com/images/user.jpg" *ngIf="!post?.profile_pic">
+            <img src="../../assets/images/user.jpg" *ngIf="!post?.profile_pic">
           </ion-avatar>
           <div class="header-right">
             <ion-label [routerLink]="['/tabs/consultant-profile-view/',post?.user_id]">

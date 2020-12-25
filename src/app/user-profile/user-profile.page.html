@@ -116,7 +116,7 @@
             <ion-item class="upcoming-block" *ngFor="let item of upcomingProgram; "> 
              
                 <ion-avatar slot="start">
-                  <img  src="https://intoactive.wdipl.com/images/user.jpg" *ngIf="!item?.program_user?.bios?.profile_pic"  >
+                  <img  src="../../assets/images/user.jpg" *ngIf="!item?.program_user?.bios?.profile_pic"  >
 
                   <img  src="{{profile_url}}{{item?.program_user?.bios?.profile_pic}}" *ngIf="item?.program_user?.bios?.profile_pic">
                 </ion-avatar>

@@ -49,7 +49,7 @@
       <ion-list lines="none" class="users-list d-block" *ngIf="userList?.length>0">
         <ion-item class="d-flex">
             <span *ngFor="let user  of userList">
-              <img src="https://intoactive.wdipl.com/images/user.jpg" *ngIf="!user?.bios?.profile_pic" />
+              <img src="../../assets/images/user.jpg" *ngIf="!user?.bios?.profile_pic" />
               <img src="{{profileUrl}}{{ user?.bios?.profile_pic }}" *ngIf="user?.bios?.profile_pic" />
             </span>
             <ion-label class="view-all" (click)="showParticipants()">+i</ion-label>

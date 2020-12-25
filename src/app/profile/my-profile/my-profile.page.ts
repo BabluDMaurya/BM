@@ -125,7 +125,6 @@ export class MyProfilePage implements OnInit {
     this.notification.getUnreadCountMyProfile().subscribe((data: any) => {
       this.notificationCount = data.status.length;
 
-
       if(data.status.length > 0){
       this.notificationCount.forEach((element, i) => {
         this.notificationCount[i].count = element.post_likes.length;
@@ -141,9 +140,11 @@ export class MyProfilePage implements OnInit {
         });
       });
     }
+    if(data.posts != '' && data.posts != null){
       this.last_page = data.posts.last_page;
       this.currentPage = data.posts.current_page;
-      this.gotData = true;
+    }
+    this.gotData = true;
     });
   }
   doRefresh(event) {

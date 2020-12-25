@@ -2,7 +2,7 @@
   <ion-item lines="none">
     <ion-avatar slot="start">
       <img src="{{profile_url}}{{upcoming?.program_user?.bios?.profile_pic}}" *ngIf="upcoming?.program_user?.bios?.profile_pic">
-      <img  src="https://intoactive.wdipl.com/images/user.jpg" *ngIf="!upcoming?.program_user?.bios?.profile_pic"  >
+      <img  src="../../assets/images/user.jpg" *ngIf="!upcoming?.program_user?.bios?.profile_pic"  >
     </ion-avatar>
     <ion-label [routerLink]="userData?.id ==upcoming?.user_id ? ['/program-details/',upcoming.id] : ['/program-view/',upcoming.id]">
       <h3 class="list-person">{{upcoming?.title}}</h3>
