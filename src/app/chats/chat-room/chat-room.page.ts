@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild,AfterViewInit} from '@angular/core';
 import { PopoverController, NavController,AlertController} from '@ionic/angular';
 import { DropdownComponent } from './../dropdown/dropdown.component';
 import { IonContent } from '@ionic/angular';
 import { Action } from '../../clientmodel/action';
-import { User } from '../../clientmodel/user';
 import { Socket } from 'ngx-socket-io';
 import { ToastController } from '@ionic/angular';
 import { ParamMap, ActivatedRoute } from '@angular/router';
@@ -15,29 +14,19 @@ import { Config } from './../../config/config';
   templateUrl: './chat-room.page.html',
   styleUrls: ['../../app.component.scss', './chat-room.page.scss'],
 })
-export class ChatRoomPage implements OnInit, AfterViewInit {
-  @ViewChild(IonContent, { static: false }) content: IonContent;
+export class ChatRoomPage implements OnInit ,AfterViewInit{
+  @ViewChild(IonContent, { read: IonContent,  static: false }) contentArea: IonContent;
   messageBox = false;
   messageButtons = true;
   toggled: boolean = false;
-  // user: User;
   action: Action;
-  // messages: Message[] = [];
   messageContent: string;
   ioConnection: any;
-  // public myUserId: string;
-  // chats = [];
-  // chat_input: string;
   message = '';
   messages = [];
-
-  groupMessage = '';
-  groupMessages = [];
-
   storeMessage = '';
-  storeMessages ; any;
+  storeMessages : any;  
   currentUser = '';
-  // chatUserId: any;
   userData:any;
   receiverId :any;
   room : any ;
@@ -57,6 +46,10 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   acceptMember : any = '';
   groupImage : any = '';
   groupId : any = '';
+  groupMessage = '';
+  groupMessages = [];
+  groupstoreMessage = '';
+  messageDateString : string ;
   constructor(
     public popoverController: PopoverController,
     public alertController: AlertController,
@@ -65,7 +58,8 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     private actRoute: ActivatedRoute,
     private toastCtrl: ToastController,
     public commonService:CommonService,
-    ) {    }
+    ) {  
+      }
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
@@ -83,25 +77,49 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     }else{
       //-----private chat---  
       this.privateChat();
-    }    
+    }
+    // console.log('ngInit');   
   }
+  ngAfterViewInit() {
+    // console.log('ngAfterViewInit');
+    // this.contentArea.scrollToBottom(300);
+  }
+  
+  ionViewDidEnter() {
+    // this.commonService.dismissLoader();
+    // console.log('ionViewDidEnter');
+  }
+ 
   getStart(){   
     this.socket.connect();
     this.currentUser = this.room;
     this.socket.emit('set-name', this.room,this.chatType);
     this.socket.fromEvent('users-changed').subscribe(data => {
       if (data['event'] === 'left') {
-        this.showToast('User left: ' + this.room);
-        // this.UserOnLineStatus = 'is OffLine';
+        // this.showToast('User left: ' + this.room);
+        this.UserOnLineStatus = 'is OffLine';
       } else {
-        this.showToast('User joined: ' + this.room);
-        // this.UserOnLineStatus = 'is OnLine';
+        // this.showToast('User joined: ' + this.room);
+        this.UserOnLineStatus = 'is OnLine';
       }
     });    
   }
+  
   groupChat(){
+    this.commonService.presentLoader();
 
     this.socket.emit("newGroup", this.userData.id,this.receiverId, this.room);
+
+    this.socket.emit('stormessagerequest',this.userData.id,this.receiverId);
+
+    this.socket.fromEvent('receiveDate').subscribe(receiveDate =>{
+      console.log('receiveDate:'+JSON.stringify(receiveDate));
+    });
+
+    this.socket.fromEvent('stormessage').subscribe(stormessage => {
+      this.storeMessages = stormessage; 
+      this.commonService.dismissLoader();   
+    });
 
     this.socket.fromEvent('groupChatRequestData').subscribe(groupChatRequestData => {
       this.groupName = groupChatRequestData[0].group_name;
@@ -113,11 +131,14 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     });
     this.socket.fromEvent('groupmessage').subscribe(message => {
       this.groupMessages.push(message);
+      this.contentArea.scrollToBottom();
     });
   }
   privateChat(){
+    this.commonService.presentLoader();
     this.socket.fromEvent('message').subscribe(message => {
       this.messages.push(message);
+      this.contentArea.scrollToBottom();
     });
 
     this.socket.fromEvent('blockStatusOfUser').subscribe(blockStatusOfUser => {
@@ -147,6 +168,7 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
 
     this.socket.fromEvent('stormessage').subscribe(storMessage => {      
       this.storeMessages = storMessage;
+      this.commonService.dismissLoader();
     });
 
     this.socket.fromEvent('userName').subscribe(data => {
@@ -182,7 +204,7 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
     });
     await alert.present();
   }
-  async presentPopover(ev: any) {
+  async groupPresentPopover(ev: any){
     const popover = await this.popoverController.create({
       component: DropdownComponent,
       event: ev,
@@ -200,11 +222,26 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
         this.socket.emit('userBlockStatus',this.userData.id,this.receiverId);
     });
     return await popover.present();
-   
   }
-  ngAfterViewInit() {
-
-  }
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: DropdownComponent,
+      event: ev,
+      componentProps: {
+        userDataid:this.userData.id,
+        receiverId: this.receiverId,
+        bidOUser : this.bidOUser,
+        bSOUser:this.bSOUser
+      },
+      translucent: true
+    });
+    popover.onDidDismiss()
+      .then((data) => {
+        this.bSOUser = data['data'];
+        this.socket.emit('userBlockStatus',this.userData.id,this.receiverId);
+    });
+    return await popover.present();   
+  }  
   sendMessage() {
     if(this.message != '' && this.message != null && this.chatType == 1){
       if(this.bSOUser == 'unblock'){
@@ -214,11 +251,9 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
       }   
       this.message = '';   
     }else if(this.groupMessage != '' && this.groupMessage != null && this.chatType == 2){
-        console.log('group chat message');
         this.socket.emit('send-group-message', { text: this.groupMessage});
         this.groupMessage = '';
     }
-    
   }
   ionViewWillLeave() {
     this.socket.disconnect();
@@ -233,5 +268,45 @@ export class ChatRoomPage implements OnInit, AfterViewInit {
   }
   handleSelection(event) {
     this.messages += event.char;
+  }
+
+  isDifferentDay(messageIndex: number): boolean {
+    if (messageIndex === 0) return true;
+    const d1 = new Date(this.storeMessages[messageIndex - 1].created_at);
+    const d2 = new Date(this.storeMessages[messageIndex].created_at);
+    return (
+      d1.getFullYear() !== d2.getFullYear() ||
+      d1.getMonth() !== d2.getMonth() ||
+      d1.getDate() !== d2.getDate()
+    );
+  }
+  getMessageDate(messageIndex: number): string {
+    let dateToday = new Date().toDateString();
+    let longDateYesterday = new Date();
+    longDateYesterday.setDate(new Date().getDate() - 1);
+    let dateYesterday = longDateYesterday.toDateString();
+    let today = dateToday.slice(0, dateToday.length - 5);
+    let yesterday = dateYesterday.slice(0, dateToday.length - 5);
+
+    const wholeDate = new Date(
+      this.storeMessages[messageIndex].created_at
+    ).toDateString();
+
+    this.messageDateString = wholeDate.slice(0, wholeDate.length - 5);
+
+    if (
+      new Date(this.storeMessages[messageIndex].created_at).getFullYear() ===
+      new Date().getFullYear()
+    ) {
+      if (this.messageDateString === today) {
+        return "Today";
+      } else if (this.messageDateString === yesterday) {
+        return "Yesterday";
+      } else {
+        return this.messageDateString;
+      }
+    } else {
+      return wholeDate;
+    }
   }
 }

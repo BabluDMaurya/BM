@@ -36,7 +36,8 @@
         <span class="list-name">{{ item.user_name}}</span>
       </ion-label>
       <img slot="end" class="w26" src="../../../assets/images/follower-user.svg" />
-      <ion-badge *ngIf="groups.unreadmessage.count > 0 " color="secondary" slot="end">{{groups.unreadmessage.count}}</ion-badge>
+      <ion-badge *ngIf="groups.receiverID == userData.id  && groups.unreadmessagereceiver.count > 0 " color="secondary" slot="end">{{groups.unreadmessagereceiver.count}}</ion-badge>
+      <ion-badge *ngIf="groups.receiverID != userData.id  && groups.unreadmessagesender.count > 0 " color="secondary" slot="end">{{groups.unreadmessagesender.count}}</ion-badge>
     </ion-item> 
   </div>   
   <div *ngIf="groups.type == 2">

@@ -36,6 +36,7 @@ export class ChatPage implements OnInit {
     console.log("ngOnInit");
   }
   ionViewWillEnter() {
+    this.commonService.presentLoader();
     this.callApi();
     // this.callApiv = setInterval(() => {
     //   this.callApi(); 

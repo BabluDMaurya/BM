@@ -194,13 +194,13 @@ export class SigninPage implements OnInit, OnDestroy {
   ionViewWillLeave() {
     this.subscribe.unsubscribe();
   }
-  ngAfterContentInit() {
-    let token = localStorage.getItem("userToken");
+  // ngAfterContentInit() {
+  //   let token = localStorage.getItem("userToken");
 
-    if (token) {
-      this.router.navigateByUrl('tabs/consultant-profile');
-    }
-  }
+  //   if (token) {
+  //     this.router.navigateByUrl('tabs/consultant-profile');
+  //   }
+  // }
   ngOnDestroy() {
     // this.backButtonSubscription.unsubscribe();  
   }
