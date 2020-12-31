@@ -78,6 +78,16 @@ export class ChatService {
     return this.http.post<any>(Config.ApiUrl+'api/auth/deleteChatUser',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('deleteChatUser',data)));
 
   }
+  //------------clear chat private-
+  clearChatUser(data:any): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/clearChatUser',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('clearChatUser',data)));
+
+  }
+  //------------delete chat group-
+  deleteGroup(data:any): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/deleteGroup',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('deleteGroup',data)));
+
+  }
 
   filterItems(searchTerm) {
     return this.items.filter(item => {

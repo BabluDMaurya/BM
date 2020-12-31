@@ -14,11 +14,8 @@
         <span class="list-name"> {{UserOnLineStatus}}</span>
       </ion-label>
     </ion-item>
-    <ion-item class="icon-right-side ion-text-end" slot="end" *ngIf="chatType == 1">
+    <ion-item class="icon-right-side ion-text-end" slot="end">
       <ion-button slot="end" (click)="presentPopover()"><ion-icon ios="ios-more" md="md-more"></ion-icon></ion-button>
-    </ion-item>
-    <ion-item class="icon-right-side ion-text-end" slot="end" *ngIf="chatType == 2">
-      <ion-button slot="end" (click)="groupPresentPopover()"><ion-icon ios="ios-more" md="md-more"></ion-icon></ion-button>
     </ion-item>
   </ion-list>
 </ion-header>

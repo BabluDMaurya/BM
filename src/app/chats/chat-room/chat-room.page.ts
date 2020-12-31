@@ -50,6 +50,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
   groupMessages = [];
   groupstoreMessage = '';
   messageDateString : string ;
+  lastChatId : any = 0;
   constructor(
     public popoverController: PopoverController,
     public alertController: AlertController,
@@ -103,17 +104,18 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
         this.UserOnLineStatus = 'is OnLine';
       }
     });    
+    this.commonService.dismissLoader();
   }
   
   groupChat(){
-    this.commonService.presentLoader();
+    // this.commonService.presentLoader();
 
     this.socket.emit("newGroup", this.userData.id,this.receiverId, this.room);
 
     this.socket.emit('stormessagerequest',this.userData.id,this.receiverId);
 
     this.socket.fromEvent('receiveDate').subscribe(receiveDate =>{
-      console.log('receiveDate:'+JSON.stringify(receiveDate));
+      // console.log('receiveDate:'+JSON.stringify(receiveDate));
     });
 
     this.socket.fromEvent('stormessage').subscribe(stormessage => {
@@ -135,12 +137,14 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
     });
   }
   privateChat(){
-    this.commonService.presentLoader();
+    // this.commonService.presentLoader();
     this.socket.fromEvent('message').subscribe(message => {
       this.messages.push(message);
       this.contentArea.scrollToBottom();
     });
-
+    this.socket.fromEvent('lastChatId').subscribe(lastchatId => {
+      this.lastChatId = lastchatId;
+    });
     this.socket.fromEvent('blockStatusOfUser').subscribe(blockStatusOfUser => {
       this.bSOUser = blockStatusOfUser['status'];
       this.bidOUser = blockStatusOfUser['blockID'];          
@@ -203,27 +207,9 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
       ]
     });
     await alert.present();
-  }
-  async groupPresentPopover(ev: any){
-    const popover = await this.popoverController.create({
-      component: DropdownComponent,
-      event: ev,
-      componentProps: {
-        userDataid:this.userData.id,
-        receiverId: this.receiverId,
-        bidOUser : this.bidOUser,
-        bSOUser:this.bSOUser
-      },
-      translucent: true
-    });
-    popover.onDidDismiss()
-      .then((data) => {
-        this.bSOUser = data['data'];
-        this.socket.emit('userBlockStatus',this.userData.id,this.receiverId);
-    });
-    return await popover.present();
-  }
+  }  
   async presentPopover(ev: any) {
+    console.log("this.lastChatId:"+this.lastChatId);
     const popover = await this.popoverController.create({
       component: DropdownComponent,
       event: ev,
@@ -231,17 +217,33 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
         userDataid:this.userData.id,
         receiverId: this.receiverId,
         bidOUser : this.bidOUser,
-        bSOUser:this.bSOUser
+        bSOUser:this.bSOUser,
+        type:this.chatType,
+        lastchatid:this.lastChatId,
+        room : this.room,
       },
       translucent: true
     });
     popover.onDidDismiss()
       .then((data) => {
-        this.bSOUser = data['data'];
-        this.socket.emit('userBlockStatus',this.userData.id,this.receiverId);
+        if(data.data == 'refresh'){
+          this.doRefresh();
+        }else{
+          this.bSOUser = data['data'];
+          this.socket.emit('userBlockStatus',this.userData.id,this.receiverId);
+        }
     });
     return await popover.present();   
   }  
+  doRefresh() {
+    if(this.chatType == 2){
+      this.groupChat();
+      // console.log('groupchat doRefresh');
+    }else{-  
+      this.privateChat();
+      // console.log('privateChat doRefresh');
+    }
+  }
   sendMessage() {
     if(this.message != '' && this.message != null && this.chatType == 1){
       if(this.bSOUser == 'unblock'){
@@ -269,7 +271,6 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
   handleSelection(event) {
     this.messages += event.char;
   }
-
   isDifferentDay(messageIndex: number): boolean {
     if (messageIndex === 0) return true;
     const d1 = new Date(this.storeMessages[messageIndex - 1].created_at);
@@ -287,13 +288,10 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
     let dateYesterday = longDateYesterday.toDateString();
     let today = dateToday.slice(0, dateToday.length - 5);
     let yesterday = dateYesterday.slice(0, dateToday.length - 5);
-
     const wholeDate = new Date(
       this.storeMessages[messageIndex].created_at
     ).toDateString();
-
     this.messageDateString = wholeDate.slice(0, wholeDate.length - 5);
-
     if (
       new Date(this.storeMessages[messageIndex].created_at).getFullYear() ===
       new Date().getFullYear()

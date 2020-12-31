@@ -50,40 +50,15 @@ export class AccessPage implements OnInit {
       this.socket.connect();
     this.currentUser = this.room;
     this.socket.emit('set-name', this.room,this.chatType);
-    this.socket.fromEvent('users-changed').subscribe(data => {
-      if (data['event'] === 'left') {
+    // this.socket.fromEvent('users-changed').subscribe(data => {
+      // if (data['event'] === 'left') {
         // this.showToast('User left: ' + this.room);
         // this.UserOnLineStatus = 'is OffLine';
-      } else {
+      // } else {
         // this.showToast('User joined: ' + this.room);
         // this.UserOnLineStatus = 'is OnLine';
-      }
-    });
-      // if (this.myUserId == null) {
-      //   this.myUserId = Date.now().toString();
       // }
-      // this.socket.connect();
-      // this.currentUser = this.room;
-      // this.socket.emit('set-name', this.room);
-      // this.socket.fromEvent('users-changed').subscribe(data => {
-      //   if (data['event'] === 'left') {
-      //     // this.showToast('User left: ' + this.room);
-      //     this.UserOnLineStatus = 'is OffLine';
-      //   } else {
-      //     // this.showToast('User joined: ' + this.room);
-      //     this.UserOnLineStatus = 'is OnLine';
-      //   }
-      // });
-    
-      // this.socket.fromEvent('storchatdate').subscribe(data => {
-      //   console.log("storchatdate : "+JSON.stringify(data));
-      // });
-      // this.socket.fromEvent('message').subscribe(message => {
-      //   this.messages.push(message);
-      // });
-      // this.socket.fromEvent('UserOnLineStatus').subscribe(UserOnLineStatus => {
-      //   this.UserOnLineStatus = UserOnLineStatus;
-      // });
+    // });      
     }
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
@@ -103,32 +78,10 @@ export class AccessPage implements OnInit {
       //-----private chat---  
       this.privateChat();
     } 
-
-    // this.getStart();
-
-    // this.socket.emit("addUser", this.userData.id,this.senderId);
-    
-    // this.socket.emit("newUser", [this.userData.id,this.senderId, this.room]);
-
-    // this.socket.emit("storemassagerequest",this.userData.id,this.senderId);
-
-    // this.socket.fromEvent('stormessage').subscribe(storMessage => {      
-    //   this.storeMessages = storMessage;
-    // });
-
-    // this.socket.fromEvent('userName').subscribe(data => {
-    //   this.user_name = data[0].user_name;
-    // });
-
-    // this.socket.fromEvent('userBio').subscribe(data => {
-    //   this.display_name = data[0].display_name;
-    //   this.profile_pic = data[0].profile_pic;      
-    // });
-
   }
   privateChat(){
     this.socket.fromEvent('storchatdate').subscribe(data => {
-      console.log("storchatdate : "+JSON.stringify(data));
+      // console.log("storchatdate : "+JSON.stringify(data));
     });
     this.socket.fromEvent('message').subscribe(message => {
       this.messages.push(message);
@@ -183,8 +136,10 @@ export class AccessPage implements OnInit {
           this.commonService.dismissLoader();
           this.messageButtons = false;
           if(data.status && this.chatType == 1){
+            this.socket.disconnect();
             this.router.navigateByUrl('/chat-room/'+this.senderId+'/'+data.room+'/'+this.chatType);
           }else{
+            this.socket.disconnect();
             this.router.navigateByUrl('/chat-room/'+this.requestId+'/'+data.room+'/'+this.chatType);
           }
       });
@@ -194,11 +149,11 @@ export class AccessPage implements OnInit {
     this.commonService.presentLoader();
     if(this.requestId != null && this.requestId != ''){
       //------------Reject Request -------------
-    this.dataService.rejectChatRequest({ 'id': this.requestId}).subscribe(
+    this.dataService.rejectChatRequest({ 'id': this.requestId,'type':this.chatType}).subscribe(
       (data: any) => {
         this.commonService.dismissLoader();
-        this.messageButtons = false;
-          console.log("acceptRequest:" + JSON.stringify(data.rejectRequest));
+        this.socket.disconnect();
+        this.messageButtons = false;          
           this.navCtrl.back();
       });
     }

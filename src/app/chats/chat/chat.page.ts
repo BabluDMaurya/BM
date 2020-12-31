@@ -33,7 +33,6 @@ export class ChatPage implements OnInit {
     this.commonService.presentLoader();
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.setFilteredItems();
-    console.log("ngOnInit");
   }
   ionViewWillEnter() {
     this.commonService.presentLoader();
