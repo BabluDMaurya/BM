@@ -40,7 +40,7 @@ export class MusicVolumeModalComponent implements OnInit {
   selectedVolume = 50;
   videoData : any;
   uploadedVideoThumb : any;  
-  
+  buttonDisable : boolean = false;
   videoFileUpload: FileTransferObject;  
   
   constructor( 
@@ -57,17 +57,6 @@ export class MusicVolumeModalComponent implements OnInit {
       this.selectedVolume = volume;
     }
     uploadVideo(){
-     
-
-      // this.commonService.dismissModal();
-
-      //     this.postService.getVideoPostById({'videoId':73}).subscribe((data:any)=>{ 
-      //       localStorage.setItem('videoPath',data.postData.video_path);
-      //       localStorage.setItem('videoThumb',data.postData.thumb_path);
-      //       this.commonService.redirectUrlWithIdConfirm("Success", "Video Uploaded Successfully.",this.returnUrl,73);                
-      //     }); 
-
-
       var options: FileUploadOptions = {
         fileName: this.fname,
         fileKey: "video",
@@ -83,30 +72,25 @@ export class MusicVolumeModalComponent implements OnInit {
           musicVolume : this.selectedVolume,
         }
       }
-
       this.videoFileUpload = this.transfer.create();
-
       this.isUploading = true;      
-      
+      this.buttonDisable = true;
       this.videoFileUpload.upload(this.selectedVideo, this.furl, options)
         .then((data)=> {
           this.isUploading = false;
           this.uploadPercent = 0;    
-          return JSON.parse(data.response);
-          
+          return JSON.parse(data.response);          
         }).then((data) => {
-          this.uploadedVideo = JSON.stringify(data.postId); 
-          
+          this.uploadedVideo = JSON.stringify(data.postId);           
           this.commonService.dismissModal();
-
           this.postService.getVideoPostById({'videoId':this.uploadedVideo}).subscribe((data:any)=>{ 
             localStorage.setItem('videoPath',data.postData.video_path);
             localStorage.setItem('videoThumb',data.postData.thumb_path);
             this.commonService.redirectUrlWithIdConfirm("Success", "Video Uploaded Successfully.",this.returnUrl,this.uploadedVideo);                
-          }); 
-                 
+          });                  
         }).catch((err)=> {          
           this.isUploading = false;
+          this.buttonDisable = false;
           this.uploadPercent = 0;
           this.commonService.dismissModal();
           this.error = JSON.stringify[err];

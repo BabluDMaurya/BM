@@ -33,7 +33,7 @@ export class AddVideoPage implements OnInit {
   datagenres: any;  
   data: any;
   selectedAudioFile : string;  
-  audioFile : string = 'into_20180418_173147_audio.mp3';
+  audioFile : string = 'public/storage/audio/into_20180418_173147_audio.mp3';
   audioFilename : string;
   audioFileDuration : string;
   curr_playing_file: MediaObject; 
@@ -62,7 +62,13 @@ export class AddVideoPage implements OnInit {
   activeMusicFileName : string; 
   searchMusicData : boolean = false;  
   musicChanged = 0;
-
+  playList: any;
+  playListData : any;
+  customClass : any =0;
+  song : any;
+  songList = [];
+  // public list: any = [];
+  
   constructor(
     public commonService: CommonService,
     public musicService :MusicService,
@@ -82,6 +88,9 @@ export class AddVideoPage implements OnInit {
     private cd: ChangeDetectorRef,
     private mediaCapture: MediaCapture,
     ) { 
+      // this.list = [
+      //   { expanded: false },
+      // ]; 
       this.platform.ready().then(() => {
         if (this.platform.is('ios')) {
           this.storageDirectory = this.file.dataDirectory;
@@ -104,7 +113,9 @@ export class AddVideoPage implements OnInit {
           Validators.maxLength(1000)
         ]))        
       });                  
-      // this.prepareAudioFile();
+      // // this.prepareAudioFile();
+      // this.playListeSelect(8);
+      // this.getGenres();
     }
     'validation_messages' = {
       title: [
@@ -214,6 +225,7 @@ export class AddVideoPage implements OnInit {
       },
       (err) => {
         console.log(err);
+        this.commonService.presentAlert("Plugin Error","Cordova not available",['Close'],'');
       }
       );
   }
@@ -259,8 +271,25 @@ export class AddVideoPage implements OnInit {
       this.selectMusicList = '1';
       this.activeMusic = 1;      
       this.activetab = 1;
-  }
 
+      this.musicService.getPlaylist().subscribe((data: any) => {
+        this.playList = data.status;
+        console.log("this.playList: " + JSON.stringify(this.playList));
+      });
+  }
+  playListeSelect(playListId : any,eltration : any){ 
+    this.songList = [];  
+    this.customClass = eltration;
+    this.musicService.getPlaylistById({ "playlistId": playListId }).subscribe((data: any) => {
+      this.playListData = data.status;
+      data.status.playlist_songs.forEach(el => {
+        this.songList.push(el.songs_details);        
+      });     
+      // console.log("this.songList:"+JSON.stringify(this.songList));
+    },err =>{
+      this.commonService.presentToast("Something went Wrong.");
+    });
+  }
   selectMusic(ev: any) {
     this.selectMusicList=ev.detail.value;   
   }
@@ -269,7 +298,7 @@ export class AddVideoPage implements OnInit {
     this.activeMusic = ev[0];
     this.activetab = ev[1];
     this.musicId = ev[2];
-    this.selectedAudioFile = ev[3]+'.mp3'; // audio file 
+    this.selectedAudioFile = ev[3]; // audio file 
     this.audioFilename = ev[4];// audio Name
     this.audioFileDuration = ev[5];// audio duration  
           
@@ -299,7 +328,7 @@ export class AddVideoPage implements OnInit {
   prepareAudioFile() {    
     this.platform.ready().then(() => {
     this.musicChanged = 1; 
-    this.audioFile = baseUrl+"public/audio/"+this.selectedAudioFile;     
+    this.audioFile = baseUrl+"public/storage/audio/"+this.selectedAudioFile;     
     });
   }
  

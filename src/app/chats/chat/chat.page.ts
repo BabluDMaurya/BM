@@ -37,16 +37,16 @@ export class ChatPage implements OnInit {
   ionViewWillEnter() {
     this.commonService.presentLoader();
     this.callApi();
-    // this.callApiv = setInterval(() => {
-    //   this.callApi(); 
-    // }, 5000);
+    this.callApiv = setInterval(() => {
+      this.callApi(); 
+    }, 5000);
   }
-  // ngOnDestroy() {
-  //   console.log("ngOnDestroy");
-  //   if (this.callApiv) {
-  //     clearInterval(this.callApiv);
-  //   }
-  // }
+  ngOnDestroy() {
+    console.log("ngOnDestroy");
+    if (this.callApiv) {
+      clearInterval(this.callApiv);
+    }
+  }
   callApi(){    
     //------------chat user list -------------
     this.dataService.chatUserList().subscribe((data: any) => {
@@ -57,15 +57,15 @@ export class ChatPage implements OnInit {
       this.commonService.dismissLoader();
   }
   chatRoom(receiverID:any,room:any,type:any){
-    // if (this.callApiv) {
-    //   clearInterval(this.callApiv);
-    // }
+    if (this.callApiv) {
+      clearInterval(this.callApiv);
+    }
     this.router.navigate(['/chat-room/'+receiverID+'/'+room+'/'+type]);
   }
   ionViewWillLeave() {
-    // if (this.callApiv) {
-    //   clearInterval(this.callApiv);
-    // }
+    if (this.callApiv) {
+      clearInterval(this.callApiv);
+    }
   }
   setFilteredItems() {
     this.items = this.dataService.filterItems(this.searchTerm);

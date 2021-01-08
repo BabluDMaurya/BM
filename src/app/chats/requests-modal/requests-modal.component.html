@@ -1,7 +1,7 @@
 <ion-header class="top-header ion-no-padding">
   <ion-list class="top-heading three-block">
     <ion-item slot="start">
-      <ion-buttons class="ion-no-margin" (click)="closeModal()">
+      <ion-buttons class="ion-no-margin" (click)="close()">
         <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
       </ion-buttons>
     </ion-item>
@@ -14,7 +14,7 @@
 <ion-content class="main_content">
   <ion-list class="followers-list" *ngFor="let userdata of requestList">    
     <div *ngIf="userdata.type == 1">
-    <ion-item lines="none" (click)="navigate(userdata.id,userdata.senderID,userdata.type)" detail="false" *ngFor="let user of userdata.sendarbio" (click)="closeModal()">
+    <ion-item lines="none" (click)="navigate(userdata.id,userdata.senderID,userdata.type)" detail="false" *ngFor="let user of userdata.sendarbio" (click)="close()">
       <ion-avatar slot="start">
         <img *ngIf="user?.profile_pic" src="{{url}}{{user?.profile_pic}}"> 
         <img *ngIf="!user?.profile_pic" src="../../assets/images/user.jpg"> 
@@ -27,7 +27,7 @@
     </ion-item>
     </div>
     <div *ngIf="userdata.type == 2">
-      <ion-item lines="none" (click)="navigate(userdata.id,userdata.chatroom.room,userdata.type)" detail="false" *ngFor="let user of userdata.bio" (click)="closeModal()">
+      <ion-item lines="none" (click)="navigate(userdata.id,userdata.chatroom.room,userdata.type)" detail="false" *ngFor="let user of userdata.bio" (click)="close()">
         <ion-avatar slot="start">
           <img *ngIf="user?.profile_pic" src="{{url}}{{user?.profile_pic}}"> 
           <img *ngIf="!user?.profile_pic" src="../../assets/images/user.jpg"> 

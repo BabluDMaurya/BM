@@ -70,7 +70,7 @@ export class AppComponent implements OnInit
         // console.log('Bomrah:'+token);
     });
     this.fcm.onNotification().subscribe(data => {
-        console.log(data);
+        console.log("fcm.onNotification : " + data);
       if (data.wasTapped) {
         console.log('Received in background');
         this.router.navigate([data.landing_page, data.price]);

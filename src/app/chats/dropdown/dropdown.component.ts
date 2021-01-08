@@ -10,7 +10,7 @@ import { PopoverController} from '@ionic/angular';
 })
 export class DropdownComponent implements OnInit {
   @Input() receiverId: any; // in group chat this is group id
-  @Input() userDataid: any; // in group chat this is admin id and user id
+  @Input() userDataid: any; // in group chat this is user id
   @Input() bidOUser: any;
   @Input() bSOUser : any;
   @Input() type : any;
@@ -18,6 +18,7 @@ export class DropdownComponent implements OnInit {
   @Input() room : any;
   status:any = 0;
   returnStatus:any;
+  adminId : any;
   constructor(    
     private dataService: ChatService,
     private router:Router,
@@ -26,7 +27,15 @@ export class DropdownComponent implements OnInit {
   DismissClick(data:any) {
     this.popoverController.dismiss(data);
   }
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("userDataid:"+this.userDataid);
+    console.log("bidOUser:"+this.bidOUser);
+    console.log("receiverId:"+this.receiverId);
+    this.dataService.chatGroup({'id':this.receiverId}).subscribe(
+      (data: any) => {
+        this.adminId = data.admin_id;
+      });
+  }
   block(){
     if(this.bSOUser=='unblock'){
         this.returnStatus = 'block';
@@ -63,6 +72,15 @@ export class DropdownComponent implements OnInit {
       (data: any) => {
         this.DismissClick('refresh');
         if(data.deleted){
+          this.router.navigate(['/tabs/chats']);
+        }
+      });
+  }
+  exitgroup(){
+    this.dataService.exitGroup({'id':this.receiverId}).subscribe(
+      (data: any) => {
+        this.DismissClick('refresh');
+        if(data.exit){
           this.router.navigate(['/tabs/chats']);
         }
       });

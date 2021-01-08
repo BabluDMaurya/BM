@@ -28,4 +28,4 @@
 <div *ngIf="isUploading" class="ion-text-center">
   <div class="uploading"><ion-spinner name="bubbles"></ion-spinner> Uploading - {{ uploadPercent }}% Complete</div>          
 </div>
-<ion-button expand="full" class="green ion-no-margin" (click)="uploadVideo()" >Proceed</ion-button>
+<ion-button expand="full" class="green ion-no-margin" (click)="uploadVideo()" disabled="{{buttonDisable}}">Proceed</ion-button>

@@ -50,6 +50,7 @@ export class PeoplePage implements OnInit {
       dataPromise.then(data => {
         this.storageData = JSON.parse(data)
         this.userId = this.storageData.id; 
+        console.log("this.userId:" + this.userId);
       });
   
       // this.tokenStorage.GetPayLoad().then(result => {

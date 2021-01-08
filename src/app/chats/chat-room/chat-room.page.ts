@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild,AfterViewInit} from '@angular/core';
 import { PopoverController, NavController,AlertController} from '@ionic/angular';
 import { DropdownComponent } from './../dropdown/dropdown.component';
-import { IonContent } from '@ionic/angular';
+import { IonContent,IonTextarea } from '@ionic/angular';
 import { Action } from '../../clientmodel/action';
 import { Socket } from 'ngx-socket-io';
 import { ToastController } from '@ionic/angular';
@@ -16,11 +16,12 @@ import { Config } from './../../config/config';
 })
 export class ChatRoomPage implements OnInit ,AfterViewInit{
   @ViewChild(IonContent, { read: IonContent,  static: false }) contentArea: IonContent;
+  @ViewChild(IonTextarea, { read: IonTextarea,  static: false }) sendmessage: IonTextarea;
   messageBox = false;
   messageButtons = true;
   toggled: boolean = false;
   action: Action;
-  messageContent: string;
+  messageContent: string; 
   ioConnection: any;
   message = '';
   messages = [];
@@ -82,8 +83,9 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
     // console.log('ngInit');   
   }
   ngAfterViewInit() {
-    // console.log('ngAfterViewInit');
-    // this.contentArea.scrollToBottom(300);
+    setTimeout(() => {
+          this.sendmessage.setFocus();
+    }, 400);
   }
   
   ionViewDidEnter() {
@@ -120,6 +122,9 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
 
     this.socket.fromEvent('stormessage').subscribe(stormessage => {
       this.storeMessages = stormessage; 
+      setTimeout(() => {
+        this.contentArea.scrollToBottom();
+      }, 400);
       this.commonService.dismissLoader();   
     });
 
@@ -172,6 +177,9 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
 
     this.socket.fromEvent('stormessage').subscribe(storMessage => {      
       this.storeMessages = storMessage;
+      setTimeout(() => {
+        this.contentArea.scrollToBottom();
+      }, 400);      
       this.commonService.dismissLoader();
     });
 
@@ -256,6 +264,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
         this.socket.emit('send-group-message', { text: this.groupMessage});
         this.groupMessage = '';
     }
+    this.sendmessage.setFocus();
   }
   ionViewWillLeave() {
     this.socket.disconnect();

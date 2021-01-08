@@ -86,3 +86,7 @@
 }
 
 .main_content{max-height: calc(100vh - 115px);}
+.message-label{
+    white-space: pre-wrap !important;
+    text-align: left;
+}

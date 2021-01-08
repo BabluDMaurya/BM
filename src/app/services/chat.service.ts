@@ -88,7 +88,21 @@ export class ChatService {
     return this.http.post<any>(Config.ApiUrl+'api/auth/deleteGroup',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('deleteGroup',data)));
 
   }
+  //------------exit from chat group-
+  exitGroup(data:any): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/exitGroup',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('exitGroup',data)));
 
+  }
+  //------------delete all request -
+  allRequestDecline(data):Observable<{}>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/declienAll',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('allRequestDecline',data)));
+  }
+  //------------get the chat Group detail by id-
+  chatGroup(data:any): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/chatGroup',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('chatGroup',data)));
+
+  }
+  
   filterItems(searchTerm) {
     return this.items.filter(item => {
       return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;

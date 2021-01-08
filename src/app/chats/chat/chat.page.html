@@ -33,12 +33,13 @@
         <img *ngIf="!item?.profile_pic" src="../../assets/images/user.jpg">  
       </ion-avatar>
       <ion-label>
-        <span class="list-name">{{ item.user_name}}</span>
-      </ion-label>
+        <h3 class="list-person">{{ item.user_name}}</h3>
+        <span class="list-name" *ngIf="groups.recentchat">{{groups.recentchat.message}}</span>
+        </ion-label>
       <img slot="end" class="w26" src="../../../assets/images/follower-user.svg" />
       <ion-badge *ngIf="groups.receiverID == userData.id  && groups.unreadmessagereceiver.count > 0 " color="secondary" slot="end">{{groups.unreadmessagereceiver.count}}</ion-badge>
       <ion-badge *ngIf="groups.receiverID != userData.id  && groups.unreadmessagesender.count > 0 " color="secondary" slot="end">{{groups.unreadmessagesender.count}}</ion-badge>
-    </ion-item> 
+    </ion-item>
   </div>   
   <div *ngIf="groups.type == 2">
     <ion-item lines="none" *ngFor="let item of groups.bio" (click)="chatRoom(groups.id,groups.chatroom.room,groups.type)" detail="false">
@@ -47,7 +48,8 @@
         <img *ngIf="!item?.profile_pic" src="../../assets/images/user.jpg">  
       </ion-avatar>
       <ion-label>
-        <span class="list-person">{{ item.user_name}}</span>
+        <h3 class="list-person">{{ item.user_name}}</h3>
+        <span class="list-name" *ngIf="groups.recentchat">{{groups.recentchat.message}}</span>
       </ion-label>
       <img slot="end" class="w26" src="../../../assets/images/follower-group.svg" />
     </ion-item>

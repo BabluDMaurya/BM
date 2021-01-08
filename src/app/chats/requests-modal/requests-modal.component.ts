@@ -12,6 +12,7 @@ import { Config } from './../../config/config';
 export class RequestsModalComponent implements OnInit {
   url : any = Config.profilePic;
   requestList : any ;
+  allrequest = [];
   constructor(
     public commonService:CommonService,
     private router:Router,
@@ -25,12 +26,25 @@ export class RequestsModalComponent implements OnInit {
         this.requestList = data.requestslist;
     });
   }
-  closeModal() {
+  close(){
     this.commonService.dismissModal();
+  }
+  closeModal() {
+    if(this.requestList && this.requestList != ''){ 
+      this.requestList.forEach(element => {
+        this.allrequest.push({'chatType':element.type,'id':element.id});
+      });
+      this.dataService.allRequestDecline({'allrequest':this.allrequest}).subscribe((data:any)=>{
+        if(data.declienall){
+          this.close();
+        }
+      });
+      this.allrequest = [];
+    }
   }
   
   navigate(id : any,senderId:any,type:any){
-    this.closeModal();
+    this.close();
     this.router.navigate(['/access/'+id+'/'+senderId+'/'+type]);
   }
 }
