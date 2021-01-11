@@ -235,6 +235,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
     popover.onDidDismiss()
       .then((data) => {
         if(data.data == 'refresh'){
+          this.socket.disconnect();
           this.doRefresh();
         }else{
           this.bSOUser = data['data'];
