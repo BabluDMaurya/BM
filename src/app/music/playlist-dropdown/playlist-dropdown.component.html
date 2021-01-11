@@ -1,4 +1,4 @@
-<ion-list-header><h6>Add to Playlist</h6></ion-list-header>
+<ion-list-header class="new-playlist-pop-header"><h6 class="alert-title">Add to Playlist</h6></ion-list-header>
 <ion-content>
   <ion-list lines="none" class="ion-no-padding">   
     <ion-item *ngFor="let item of playList" (click)="addToList(item)"> 
@@ -6,7 +6,7 @@
     </ion-item>
   </ion-list>
 </ion-content>
-<ion-footer class="sticky-footer">
-  <ion-label  class="text-green  " (click)="dismissClick()">Cancel |</ion-label>
+<ion-footer class="sticky-footer new-playlist-pop-footer">
+  <ion-label  class="text-green  " (click)="dismissClick()">Cancel</ion-label>
   <ion-label  class="text-green " (click)="newPlaylist()"> New Playlist</ion-label>
 </ion-footer>
