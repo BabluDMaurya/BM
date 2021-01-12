@@ -51,7 +51,7 @@ export class AddVideoPage implements OnInit {
   isUploading: boolean = false;
   uploadPercent: number = 0;
   videoFileUpload: FileTransferObject; 
-  showMusic: number = 1;
+  showMusic: number = 2;
   musicTypes:string='music';
   selectMusicList:string='hiphop';
   title : string;
@@ -115,7 +115,7 @@ export class AddVideoPage implements OnInit {
       });                  
       // // this.prepareAudioFile();
       // this.playListeSelect(8);
-      // this.getGenres();
+      this.getGenres();
     }
     'validation_messages' = {
       title: [
@@ -204,7 +204,6 @@ export class AddVideoPage implements OnInit {
         (err: CaptureError) => console.error(err)
         );
   }
-
   selectVideo() {    
     const options: CameraOptions = {
       mediaType: this.camera.MediaType.VIDEO,
