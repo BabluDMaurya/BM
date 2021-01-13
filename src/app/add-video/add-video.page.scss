@@ -30,3 +30,37 @@ ion-radio{position: absolute;top:5px}
 .musiclistFooter{position: fixed;bottom: 0;width: 100%}
 .deactive{display:none;}
 .active{display: block;}
+
+// hitesh css strt
+
+.subprofile_tabs ion-segment-button.segment-button-checked{
+    color: #fff !important;
+}
+.musicPlayList-item {
+	font-size: 0.85rem;
+	--padding-start: 10px;
+}
+.musicPlayList-item ion-icon {
+	margin-right: 5px;
+	color: #222;
+	font-size: 1rem;
+}
+.musicPlayList-item .list-name {
+	margin: 0;
+}
+.musicPlayList-item .list-name .list-head {
+	font-weight: 400;
+	font-size: 0.875rem;
+	margin: 0;
+	color: #222;
+}
+.musicPlayList-item .list-name ion-text {
+	display: block;
+	font-size: 0.70rem;
+	color: #000;
+	margin-top: 3px;
+}
+.musicWrapper ion-toolbar .range-knob-handle .range-knob{
+    
+}
+// hitesh css ends

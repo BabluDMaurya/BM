@@ -11,7 +11,9 @@
 }
 .video-preview-ion-list ion-item {
     border: none;outline: none;
+	--border-color: transparent;
 }
 .video-preview-ion-list ion-item ion-label{
-    border: none;outline: none;
+    border: none;outline: none;    
+	--border-color: transparent;
 }

@@ -220,7 +220,7 @@
               </ion-item>
               <!-- <app-expandable expandHeight="300px" class="timeline-block" [expanded]="list.expanded"> -->
               <div [ngClass]="customClass == i ? 'active':'deactive'">
-                <ion-item class="item-label item md in-list" *ngFor="let song of songList;" (click)="musicSelect([(j+1),2,song.id,song.filename,song.title,song.duration])">
+                <ion-item class="item-label item md in-list musicPlayList-item" *ngFor="let song of songList;" (click)="musicSelect([(j+1),2,song.id,song.filename,song.title,song.duration])">
                   <ion-icon ios="ios-play" md="md-play"></ion-icon>
                   <ion-label class="list-name d-block"> 
                     <h3 class="list-head">{{song.title}}</h3>
