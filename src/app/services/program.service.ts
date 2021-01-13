@@ -139,4 +139,8 @@ export class ProgramService {
   getSponserList(formData){
     return this.http.post<any>(Config.ApiUrl+'api/auth/getSponserList', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getSponserList', formData)));
   }
+
+  openTokSessionCreate(data){
+    return this.http.post<any>(Config.ApiUrl+'api/auth/openTokSessionCreate', data ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('openTokSessionCreate', data)));
+  }
 }

@@ -58,6 +58,9 @@
     },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.bablu.ionicfcm"
+    },
+    "cordova-plugin-opentok": {
+      "PACKAGE_NAME": "com.bablu.ionicfcm"
     }
   },
   "dependent_plugins": {

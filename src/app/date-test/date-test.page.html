@@ -1,19 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Ionic Search</ion-title>
+    <ion-title>Ionic Opentok</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
   <!-- Search Bar -->
-  <ion-searchbar placeholder="Filter Schedules" [(ngModel)]="term" animated="true"></ion-searchbar>
+  <!-- <ion-searchbar placeholder="Filter Schedules" [(ngModel)]="term" animated="true"></ion-searchbar> -->
 
   <!-- List Items -->
-  <ion-list>
+  <!-- <ion-list>
     <ion-item *ngFor="let item of filterData | filter:term">
       <ion-label>{{item.firstName}} {{item.lastName}}</ion-label>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
+  <div style="text-align:center">
+    <button (click)="startCall()">Start OpenTok Call</button>
+  </div>
 
+  <div id="subscriber"></div>
+  <div id="publisher"></div> 
+  <div style="text-align:center">
+    <button (click)="disconnect()">Close OpenTok</button>
+  </div>
 </ion-content>

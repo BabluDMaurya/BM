@@ -136,5 +136,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-opentok": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-opentok"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

@@ -1,0 +1,77 @@
+{
+  "_from": "cordova-plugin-opentok",
+  "_id": "cordova-plugin-opentok@3.4.3",
+  "_inBundle": false,
+  "_integrity": "sha512-TDEb5QEhXtY3AmEsefVth63FcHSDACmrz39e1p/Fd6r/tKnL1UNZfz9RSVKZG7Hc6GbCGqBo95+nokkMHMNUpg==",
+  "_location": "/cordova-plugin-opentok",
+  "_phantomChildren": {
+    "block-stream": "0.0.9",
+    "fstream": "1.0.12",
+    "inherits": "2.0.4"
+  },
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-opentok",
+    "name": "cordova-plugin-opentok",
+    "escapedName": "cordova-plugin-opentok",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-opentok/-/cordova-plugin-opentok-3.4.3.tgz",
+  "_shasum": "ad83f24ab475c77d97279bd439de2f0512486168",
+  "_spec": "cordova-plugin-opentok",
+  "_where": "/home/bablu/CompanyProject/wdipl/ionic/BM",
+  "author": {
+    "name": "Manik Sachdeva"
+  },
+  "bugs": {
+    "url": "https://github.com/opentok/cordova-plugin-opentok/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-opentok",
+    "platforms": [
+      "android",
+      "ios",
+      "browser"
+    ]
+  },
+  "dependencies": {
+    "@opentok/client": "2.15.5",
+    "exec": "^0.2.0",
+    "tar": "^2.0.0"
+  },
+  "deprecated": false,
+  "description": "Add live video streaming to your Cordova Application",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.3.3",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "~0.6.1"
+  },
+  "homepage": "https://github.com/opentok/cordova-plugin-opentok#readme",
+  "keywords": [
+    "opentok",
+    "tokbox",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-browser"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-opentok",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opentok/cordova-plugin-opentok.git"
+  },
+  "version": "3.4.3"
+}
