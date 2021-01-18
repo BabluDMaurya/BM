@@ -134,7 +134,7 @@ const routes: Routes = [
   },
   // {
   //   path: 'broadcaster/:broadcastId',
-  //   loadChildren: () => import('./app/broadcaster/broadcaster/broadcaster.module').then( m => m.BroadcasterPageModule)
+  //   loadChildren: () => import('./broadcaster/broadcaster/broadcaster.module').then( m => m.BroadcasterPageModule)
   // },
   // {
   //   path: 'broadcaster',
@@ -243,7 +243,11 @@ const routes: Routes = [
   {
     path: 'access/:id/:senderId/:type',
     loadChildren: () => import('./chats/access/access.module').then( m => m.AccessPageModule)
-  },  
+  },   {
+    path: 'broadcast',
+    loadChildren: () => import('./broadcast/broadcast.module').then( m => m.BroadcastPageModule)
+  },
+ 
 ];
 
 @NgModule({

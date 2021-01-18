@@ -79,8 +79,17 @@ export class DateTestPage implements OnInit {
         console.log(`There was an error connecting to the session ${error}`);
       }
     });
+    this.publisher.on("streamDestroyed", function (event) {
+      event.preventDefault();
+      console.log("The publisher stopped streaming. Reason: "
+        + event.reason);
+    });
   }
-  disconnect(){
+  unPublish(){
+    console.log(`publisher close`);
+    this.session.unpublish(this.publisher);
+  }
+  closeSession(){
     console.log(`session close`);
     this.session.disconnect();
   }

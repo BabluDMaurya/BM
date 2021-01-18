@@ -1,0 +1,56 @@
+<ion-content class="broadcast-content">
+  <ion-header class="ion-no-padding">
+    <ion-list class="top-heading three-block">
+      <ion-item slot="start">
+        <ion-avatar slot="start">
+          <img src="../../assets/images/station1.jpg">
+        </ion-avatar>
+        <ion-label>
+          <h2 class="list-person">Pooja</h2>
+          <span class="list-name d-flex"><ion-icon ios="ios-eye" md="md-eye" class="text-green"></ion-icon> 102</span>
+        </ion-label>
+      </ion-item>
+      <ion-item class="icon-right-side ion-text-end" slot="end">
+        <ion-fab-button size="small" slot="end" *ngIf="publisherHangup" (click)="publishPresentAlertConfirm()">
+          <ion-icon ios="ios-close" md="md-close"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button size="small" slot="end" *ngIf="subscriberHangup" (click)="publishPresentAlertConfirm()">
+          <ion-icon ios="ios-close" md="md-close"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button size="small" *ngIf="!chatTrue">
+          <ion-icon ios="ios-chatbubbles" md="md-chatbubbles" (click)="chatCall()"></ion-icon>
+        </ion-fab-button>
+        <ion-item>
+          <ion-fab-button size="small" (click)="cameraSwitch()">
+            <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
+          </ion-fab-button>
+        </ion-item>
+      </ion-item>
+    </ion-list>
+  </ion-header>
+  <ion-grid class="ion-no-padding">
+        <div id="subscriber" class="subscriberScreen"></div>
+        <div id="publisher" class="publisherScreen"></div> 
+  </ion-grid>
+  <ion-grid class="ion-no-padding" *ngIf="chatTrue" class="chat-box">
+    <ion-fab-button size="small" *ngIf="chatTrue">
+      <ion-icon ios="ios-chatbubbles" md="md-chatbubbles" (click)="chatCloseCall()"></ion-icon>
+    </ion-fab-button>
+    <ion-row>
+      <ion-col size="10" class="chat-box-left">
+        <ion-list id="history">
+          
+        </ion-list>
+      </ion-col>
+    </ion-row>    
+  </ion-grid> 
+  <ion-footer *ngIf="chatTrue">
+    <ion-item lines="none" class="send-box">
+      <ion-input [(ngModel)]="groupMessage" id="sendmessage" placeholder="Enter Text" ></ion-input>
+      <ion-fab-button size="small">
+        <ion-icon ios="ios-send" md="md-send" (click)="chatMessage()"></ion-icon>
+      </ion-fab-button>
+    </ion-item>
+  </ion-footer> 
+</ion-content>
+
