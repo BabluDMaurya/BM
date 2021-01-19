@@ -33,18 +33,16 @@
         <div id="publisher" class="publisherScreen"></div> 
   </ion-grid>
   <ion-grid class="ion-no-padding" *ngIf="chatTrue" class="chat-box">
-    <ion-fab-button size="small" *ngIf="chatTrue">
-      <ion-icon ios="ios-chatbubbles" md="md-chatbubbles" (click)="chatCloseCall()"></ion-icon>
-    </ion-fab-button>
     <ion-row>
+      <ion-fab-button size="small" *ngIf="chatTrue">
+        <ion-icon ios="ios-close" md="md-close" (click)="chatCloseCall()"></ion-icon>
+      </ion-fab-button>
       <ion-col size="10" class="chat-box-left">
-        <ion-list id="history">
-          
-        </ion-list>
+        <ion-list id="history"></ion-list>
       </ion-col>
     </ion-row>    
   </ion-grid> 
-  <ion-footer *ngIf="chatTrue">
+  <ion-footer *ngIf="chatTrue" >
     <ion-item lines="none" class="send-box">
       <ion-input [(ngModel)]="groupMessage" id="sendmessage" placeholder="Enter Text" ></ion-input>
       <ion-fab-button size="small">
