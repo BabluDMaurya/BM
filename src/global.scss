@@ -241,3 +241,14 @@ ion-modal ion-calendar-modal ion-content .month-box .days .days-btn.today.on-sel
   height: 36px !important;
 }
 // hitesh css end
+
+.publisherScreen>div{height: calc(100vh - 66px) !important;}
+.chatList ion-item{--background: transparent;--border-color:transparent}
+.chatList ion-item ion-label *{color: #FFF;}
+.subscriberScreen div.OT_root {
+  width: 80px !important;
+  height: 80px !important;
+  min-width: 80px;
+  margin: 0 2px;
+  border-radius: 4px;
+}

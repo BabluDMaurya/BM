@@ -74,9 +74,9 @@
     </ion-col>
   </ion-row>
   <!-- <ion-button *ngIf="programDetail?.type_id == 'video'" [routerLink]="['/video-program-view',programDetail?.video_program,programDetail?.id]">Go Live Video</ion-button> -->
-  <ion-button *ngIf="programDetail?.live" [routerLink]="['/broadcaster',broadcastId]">Go Live</ion-button>
+  <!-- <ion-button *ngIf="programDetail?.live" [routerLink]="['/broadcaster',broadcastId]">Go Live</ion-button> -->
   <ion-label *ngIf="programDetail?.ended" >This Program has been Ended </ion-label>
-  <!-- <ion-button [routerLink]="['/broadcaster',broadcastId]">Tmp Live</ion-button> -->
+  <ion-button (click)="broadcast()">Tmp Live</ion-button>
   <ion-row>
     <ion-col size="12" class="ion-no-padding">
       <ion-list lines="none" class="top-list three-block">

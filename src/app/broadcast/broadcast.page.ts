@@ -1,9 +1,12 @@
-import { Component, OnInit,  NgZone,ViewChild } from '@angular/core';
-import { AlertController, NavController,IonInput,IonTextarea } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AlertController, NavController,IonInput,IonTextarea, Platform, IonRouterOutlet} from '@ionic/angular';
 import { ProgramService } from '../services/program.service';
-
+import { ActivatedRoute, Router } from '@angular/router';
 declare var OT:any;
 var publisherOBJ:any;
+var subscriberOBJ:any;
+var sessionOBJ : any;
+var userName :any; 
 @Component({
   selector: 'app-broadcast',
   templateUrl: './broadcast.page.html',
@@ -21,106 +24,76 @@ export class BroadcastPage implements OnInit {
   volume : boolean = true;
   audioVolume = 100;
   cameraPosition = 'front';
-  // videoDeviceId : any;
-  // audioDeviceId : any;
+  chatbody = 'off';
 
   publisherProperties : any;
   publisherHangup : boolean = false;
   publisherMice : boolean = false;
-  publisherCamera : boolean= false;
   publisherVolume : boolean = false;
   publisherTargetElement : string = 'publisher';
-  // publisherChat : boolean = false;
+  publisherButton = false;
 
   subscriber: any;
   subscribers : any;
   subscriberProperties : any;
   subscriberHangup : boolean = false;
   subscriberMice : boolean = false;
-  subscriberCamera : boolean = false;
   subscriberVolume : boolean = false;
   subscriberTargetElement : string = 'subscriber';
-  subStream : any;
-  // subscriberChat : boolean = false;
+  subscriberButton = false;
 
+  subStream : any;
   connectionId : any;
   chatTrue : boolean = false;
   groupMessage = '';
-  // messages = [{text:'hello',classtext:'mine'},{text:'hello',classtext:'theirs'}];
-  // messages = [];
+  data : any ;
+
   constructor(
     public alertController: AlertController,
-    private zone: NgZone,
     public navCtrl: NavController,
-    public programService : ProgramService
+    public programService : ProgramService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private platform: Platform,
+    private routerOutlet: IonRouterOutlet,
     ) {
       this.loginData = JSON.parse(localStorage.getItem('userData'));
+      var loginId = this.loginData.id;
+      userName = this.loginData.user_name;
         this.opentokApiConfig();
         this.publisherConfig();
         this.subscriberConfig();
         this.icons();
      }
   opentokApiConfig(){
-  //       this.programService.openTokSessionCreate({'time': 10}).subscribe( (data: any) => {
-  //   this.sessionId = data.opentok_session_id;
-  //   this.token = data.opentok_token;
-  //   this.apiKey = data.opentok_api_key;
+        // this.programService.openTokSessionCreate({'time': 10}).subscribe( (data: any) => {
+        //   this.sessionId = data.opentok_session_id;
+        //   this.token = data.opentok_token;
+        //   this.apiKey = data.opentok_api_key;
+          
+        //   console.log('sessionId:'+this.sessionId);
+        //   console.log('token:'+this.token);
+        //   console.log('apiKey:'+this.apiKey);
+        // });
     
-  //   // console.log('Data:'+JSON.stringify(data));
-  //   console.log('sessionId:'+this.sessionId);
-  //   console.log('token:'+this.token);
-  //   console.log('apiKey:'+this.apiKey);
-  // });
-    
-  this.sessionId = '1_MX40NzA4MDA1NH5-MTYxMDk1NzYxMTkxNX54cVpNZVdIc0N0ak5GZzVEYkZhQWx5VHF-fg';
-  this.token = 'T1==cGFydG5lcl9pZD00NzA4MDA1NCZzaWc9YzEzMjQ3M2MyZmIxNTFmNDUzMmZiZjdiYWExMjczMWFiYjI0YjJiMzpzZXNzaW9uX2lkPTFfTVg0ME56QTRNREExTkg1LU1UWXhNRGsxTnpZeE1Ua3hOWDU0Y1ZwTlpWZEljME4wYWs1R1p6VkVZa1poUVd4NVZIRi1mZyZjcmVhdGVfdGltZT0xNjEwOTU3NjExJnJvbGU9cHVibGlzaGVyJm5vbmNlPTE2MTA5NTc2MTEuOTQ2ODMyMjQ4MjE3OCZpbml0aWFsX2xheW91dF9jbGFzc19saXN0PQ==';
+  this.sessionId = '2_MX40NzA4MDA1NH5-MTYxMTIyMjYwNjQxNH4wWG91cTJkWkRhNDF6VVQrOXdxeW82TDN-fg';
+  this.token = 'T1==cGFydG5lcl9pZD00NzA4MDA1NCZzaWc9MWJhZWI3Y2FlNDBiYjNmMzQ2NzQzZjQ3N2IyMDY0Y2NhY2JlYzQ5YzpzZXNzaW9uX2lkPTJfTVg0ME56QTRNREExTkg1LU1UWXhNVEl5TWpZd05qUXhOSDR3V0c5MWNUSmtXa1JoTkRGNlZWUXJPWGR4ZVc4MlRETi1mZyZjcmVhdGVfdGltZT0xNjExMjIyNjA2JnJvbGU9cHVibGlzaGVyJm5vbmNlPTE2MTEyMjI2MDYuNDM5MjM3MjE1NTE4MSZpbml0aWFsX2xheW91dF9jbGFzc19saXN0PQ==';
   this.apiKey = '47080054';
-  }
-  // videoDevice(){
-  //   //---Setting the camera used by the publisher---//
-  //   var videoInputDevices;
-  //   var videoDeviceId;
-  //   OT.getDevices(function(error, devices) {
-  //     videoInputDevices = devices.filter(function(element) {
-  //       return element.kind == "videoInput";
-  //     });
-  //     for (let i = 0; i < videoInputDevices.length; i++) {
-  //       videoDeviceId = videoInputDevices[i].deviceId;
-  //     }
-  //     // console.log("audio input device: ", videoDeviceId);
-  //     return videoDeviceId;
-  //   });
-  // }
-  // audioDevice(){      
-  //   //---Setting the microphone used by the publisher---//
-  //     var audioInputDevices;
-  //     var audioDeviceId;
-  //     OT.getDevices(function(error, devices) {
-  //     audioInputDevices = devices.filter(function(element) {
-  //       return element.kind == "audioInput";
-  //     });      
-  //     for (let i = 0; i < audioInputDevices.length; i++) {
-  //       audioDeviceId = audioInputDevices[i].deviceId;      
-  //     }
-  //     console.log("audio input device: ", audioDeviceId);
-  //     return audioDeviceId;      
-  //   });
-  // }
+  }  
   publisherConfig(){
     this.publisherProperties = {
-      // audioSource: this.audioDevice(),
-      // videoSource: this.videoDevice(),
-      audioVolume : this.audioVolume,
+      publishAudio : true,// mice mute / unmute
+      publishVideo : true,// video show/hide
+      cameraPosition: this.cameraPosition,
+      audioVolume : this.audioVolume,// audio volume set 0 to 100
       resolution: '1280x720',
       insertMode: 'append',
-      // cameraName : this.cameraPosition,
-      cameraPosition: this.cameraPosition,
-      width: 400,
-      height: 300,
+      width: 400,//screen width
+      height: 575,//screen height
       name : this.loginData.user_name,
       usePreviousDeviceSelection : true,
       style: { 
-        nameDisplayMode: "on",
+        // nameDisplayMode: "on",
         buttonDisplayMode: 'on'
       }
     };
@@ -128,11 +101,13 @@ export class BroadcastPage implements OnInit {
   subscriberConfig(){
   this.subscriberProperties = {
     insertMode: 'append',
-    cameraPosition: this.cameraPosition,
-    testNetwork: true,
-    width: 90,
-    height: 90,
-    audioVolume : this.audioVolume,
+    subscribeToAudio : true,// mice mute / unmute
+    subscribeToVideo : true,// video show/hide
+    cameraPosition: 'front',//camera front/back
+    testNetwork: true,//network strength
+    width: 90,//screen width
+    height: 90,//screen height
+    audioVolume : this.audioVolume,// audio volume set 0 to 100
     name : this.loginData.user_name,
     style: { 
       nameDisplayMode: "off",
@@ -142,62 +117,27 @@ export class BroadcastPage implements OnInit {
   }
   icons(){
     if(this.loginData.id == 93){
+      this.publisherButton = true;
       this.publisherHangup = true;
       this.publisherMice = true;
-      this.publisherCamera = true;
       this.publisherVolume = true;
     }else{
+      this.subscriberButton = true;
       this.subscriberHangup = true;
       this.subscriberMice = true;
-      this.subscriberCamera = true;
       this.subscriberVolume = true;
     }   
   } 
-  cameraSwitch(){
-    // this.session.unpublish(this.publisher);
+  cameraSwitchByPublisher(){
+    publisherOBJ.cycleVideo(); //toggle the camera    
+  }
+  cameraSwitchBySubscriber(){
+    subscriberOBJ.cycleVideo();
+  }
 
-    if(this.cameraPosition == 'front'){
-      this.cameraPosition = 'back';
-      publisherOBJ.cameraPosition = this.cameraPosition;
-      // publisherOBJ.setCameraPosition('back');
-    }else{
-      this.cameraPosition = 'front';
-      publisherOBJ.cameraPosition = this.cameraPosition;
-      // publisherOBJ.setCameraPosition('front');
-    }
-  //   let videoInputDevices;
-  //     let videoDeviceId;
-  //   OT.getDevices(function(error, devices) {
-  //     videoInputDevices = devices.filter(function(element) {
-  //      return element.kind == "videoInput";
-  //    });
-  //    for (let i = 0; i < videoInputDevices.length; i++) {
-  //      videoDeviceId = videoInputDevices[i].deviceId;
-  //    }
-  //   //  console.log("videoDeviceId : " + videoDeviceId);
-  //    publisherOBJ.setVideoSource(videoDeviceId)
-  //   .then(() => console.log('video source set'))
-  //   .catch((error) => console.error(error.name));
-  //  });
-    console.log(this.cameraPosition + ' camera.');
-
-  }
-  subMute(){
-    this.volume = false;
-    // Set a value between 0 (silent) and 100 (full volume):
-    this.audioVolume = 0;
-    // Replace stream and replacementElementId with your own values:
-    this.subscriber = this.session.subscribe(this.subStream,this.subscriberTargetElement,this.subscriberConfig());
-  }
-  subUnMute(){
-    this.volume = true;
-    // Set a value between 0 (silent) and 100 (full volume):
-    this.audioVolume = 100;
-    // Replace stream and replacementElementId with your own values:
-    this.subscriber = this.session.subscribe(this.subStream,this.subscriberTargetElement,this.subscriberConfig());
-  }
-  ngOnInit() {
+  ngOnInit() {  
     this.session = OT.initSession(this.apiKey, this.sessionId);
+    sessionOBJ = this.session;
     //----Initializing a Publisher view---//
     this.publisher = OT.initPublisher(this.publisherTargetElement,this.publisherProperties,function (error) {
       if (error) {
@@ -206,35 +146,21 @@ export class BroadcastPage implements OnInit {
         console.log('publisher added.');
       }
     }); 
-    publisherOBJ = this.publisher;
-     
-    //---Detecting when a client has granted access to the camera and microphone--//
-    this.publisher.on({
-      accessAllowed: function (event) {
-        console.log("accessAllowed : " + JSON.stringify(event));
-        // The user has granted access to the camera and mic.
-      },
-      accessDenied: function accessDeniedHandler(event) {
-        // The user has denied access to the camera and mic.
-      },
-      accessDialogOpened: function (event) {
-        // The Allow/Deny dialog box is opened.
-      },
-      accessDialogClosed: function (event) {
-        // The Allow/Deny dialog box is closed.
-      }
-    });
+    publisherOBJ = this.publisher;     
+   
     this.session.on({
       streamCreated: (event: any) => {
+        // this.subStream = event.stream;
         this.subscriber = this.session.subscribe(event.stream, this.subscriberTargetElement,this.subscriberProperties,function (error) {
           if (error) {
             console.log(error);
           } else {
-            this.subStream = event.stream;
+            
             console.log('Subscriber added.');
           }
       });
-        OT.updateViews();
+      subscriberOBJ = this.subscriber;
+        OT.updateViews();  // this function is valid for mobile
       },
       streamDestroyed: (event: any) => { 
         if (event.reason === 'networkDisconnected') {
@@ -252,14 +178,13 @@ export class BroadcastPage implements OnInit {
             }
         }else{
           console.log(`Stream ${event.stream.name} ended because ${event.reason}`);
-          OT.updateViews();   
+          OT.updateViews();   // this function is valid for mobile
         } 
       },
       sessionConnected: (event: any) => {
         this.session.publish(this.publisher);
       },      
     });
-
     this.session.connect(this.token, (error: any) => {
       if (error) {
         console.log(`There was an error connecting to the session ${error}`);
@@ -267,49 +192,61 @@ export class BroadcastPage implements OnInit {
         this.connectionId = this.session.connection.connectionId; 
         console.group("this.connectionId : "+ this.session.connection.connectionId);
       }
-    });
-    
-    this.publisher.on("streamDestroyed", function (event) {
-      console.log("The publisher stopped streaming. Reason: "
-        + event.reason);
-        this.publisher.destroy();
-    });
-
+    });    
     this.session.on('signal:msg', function signalCallback(event) {
       var scrollIntoViewOptions :{block: "end", inline: "nearest"}
       var node = document.createElement('ion-item');
         node.className = event.from.connectionId == event.target.connection.connectionId ? 'mine item-background-color-chat' : 'theirs item-background-color-chat';
-        var html = "<ion-avatar slot='start'>";
-        html += " <img src='../../assets/images/station2.jpg'>";
-        html += "</ion-avatar>";
-        html += "<ion-label>";
-        html += " <h2 class='list-person'>Pooja</h2>";
-        html += " <p>"+event.data+"</p>";
-        html += "<ion-label>";
-        node.innerHTML = html;
+        node.innerHTML = event.data;
         document.querySelector('#history').appendChild(node);
         node.scrollIntoView(scrollIntoViewOptions);
-      });
+    });
+
+    this.publisher.on("streamDestroyed", function (event) {
+      console.log("The publisher stopped streaming. Reason: "
+        + event.reason); 
+        // this.session = '';
+        this.session.unpublish(this.publisher);
+        this.publisher.destroy();
+        this.session.disconnect();
+        // this.session.unpublish(this.publisher);
+    });
   }
   chatCall(){
     this.chatTrue = true;
+    this.chatbody = 'on';
+    setTimeout(() => {
+      this.sendmessage.setFocus();
+    }, 400);
   }
   chatCloseCall(){
     this.chatTrue = false;
+    this.chatbody = 'off';
   }
   chatMessage(){   
-    this.session.signal({
-      type: 'msg',
-      data: this.groupMessage,
-    }, function signalCallback(error) {
-      if (error) {
-        console.error('Error sending signal:', error.name, error.message);
-      } else {
-        // this.groupMessage = '';
-      }
-    });
-    this.groupMessage = '';
-  }  
+    if(this.groupMessage != '' && this.groupMessage != null){
+      var html = "<ion-avatar slot='start'>";
+        html += " <img src='../../assets/images/station2.jpg'>";
+        html += "</ion-avatar>";
+        html += "<ion-label>";
+        html += " <h2 class='list-person'>"+userName+"</h2>";
+        html += " <p>"+this.groupMessage+"</p>";
+        html += "<ion-label>";
+
+      this.session.signal({
+        type: 'msg',
+        data: html,
+      }, function signalCallback(error) {
+        if (error) {
+          console.error('Error sending signal:', error.name, error.message);
+        } else {
+          // this.groupMessage = '';
+        }
+      });
+      this.groupMessage = '';
+    }
+    this.sendmessage.setFocus();  
+}
   async publishPresentAlertConfirm() {
     const alert = await this.alertController.create({
       header: 'End Live Broadcast!',
@@ -326,7 +263,8 @@ export class BroadcastPage implements OnInit {
         }, {
           text: 'Agree',
           handler: () => {
-            this.session.unpublish(this.publisher);
+            this.session.unpublish(this.publisher);            
+            sessionOBJ.disconnect();
             this.navCtrl.back();
           }
         }
@@ -351,7 +289,8 @@ export class BroadcastPage implements OnInit {
         }, {
           text: 'Agree',
           handler: () => {
-            this.session.unsubscribe(this.subscriber);
+            this.session.unsubscribe(this.subscriber);            
+            sessionOBJ.disconnect();
             this.navCtrl.back();
           }
         }
@@ -362,6 +301,6 @@ export class BroadcastPage implements OnInit {
   }
   ngOnDestroy(){
     console.log('ngOnDestroy session.disconnect');
-    this.session.disconnect();
+    sessionOBJ.disconnect();
   }
 }
