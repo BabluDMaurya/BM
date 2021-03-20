@@ -1,0 +1,36 @@
+<ion-card class="ion-no-margin upcomingCard" *ngFor="let upcoming of upcomingList">
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img src="{{profile_url}}{{upcoming?.program_user?.bios?.profile_pic}}" *ngIf="upcoming?.program_user?.bios?.profile_pic">
+      <img  src="../../assets/images/user.jpg" *ngIf="!upcoming?.program_user?.bios?.profile_pic"  >
+    </ion-avatar>
+    <ion-label [routerLink]="userData?.id ==upcoming?.user_id ? ['/program-details/',upcoming.id] : ['/program-view/',upcoming.id]">
+      <h3 class="list-person">{{upcoming?.title}}</h3>
+      <span class="list-name d-block">{{upcoming?.type_id}}</span>
+      <span class="list-name d-block">By:{{upcoming?.program_user?.user_name}} {{upcoming?.convertedTime | date:'medium'}}</span>
+      <span class="list-name d-block" *ngIf="upcoming?.cd>0">Countdown: <b>{{ upcoming?.hh |number  }}:  {{ upcoming?.mm  }}:  {{ upcoming?.ss |number }} </b> </span>
+      <span class="list-name d-block" *ngIf="upcoming?.cd==0"> <b> L I V E</b></span>
+      <!-- <countdown [config]="{leftTime: 30}"></countdown> -->
+    </ion-label>
+    <div class="action-links" slot="end" *ngIf="upcoming?.nutrition_id">
+      <ion-icon (click)="nutritionModal(upcoming)" ios="md-restaurant" md="md-restaurant"></ion-icon>
+    </div>
+  </ion-item>
+</ion-card>
+<!--------------- S K E L E T O N ------------>
+<ion-list lines="none" *ngIf="!upcomingList">      
+  <ion-item *ngFor="let skeleton of [].constructor(20)" class="item-card">
+    <ion-avatar slot="start">
+      <ion-skeleton-text></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <h3 class="list-person"><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h3>
+      <span class="list-name"><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></span>
+    </ion-label>
+  </ion-item>
+</ion-list>
+<!---------------E n d s  S K E L E T O N ------------>
+<div class="no-data" *ngIf="noData" style="height: calc(100vh - 175px)">
+  <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+  <p>No upcoming program for next 24 Hrs.</p>
+</div>

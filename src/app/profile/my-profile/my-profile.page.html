@@ -1,0 +1,538 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <h6 class="ion-no-margin" *ngIf="profileData?.userData?.bios?.display_name">
+        {{profileData?.userData?.bios?.display_name}}</h6>
+      <a class="ion-no-margin" *ngIf="!profileData?.userData?.bios?.display_name"
+        [routerLink]="['/tabs/edit-profile']">Add display name +</a>
+    </ion-item>
+    <ion-item class="ion-text-end" slot="end">
+      <div class="icon-right-side">
+        <a [routerLink]="['/all-list']" class="set-icon"> 
+          <ion-icon ios="ios-cash" md="md-cash"></ion-icon>
+          <ion-badge slot="end" *ngIf="sponcerCount > 0">{{ sponcerCount }}</ion-badge> 
+        </a>
+        <!-- <a [routerLink]="['/sponcer-chat']" class="set-icon">
+          <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
+          <ion-badge slot="end" *ngIf="sponcerCount > 0">{{ sponcerCount }}</ion-badge>          
+        </a> -->
+        <a [routerLink]="['/tabs/search']" class="set-icon">
+          <ion-icon ios="ios-search" md="md-search"></ion-icon>
+        </a>
+        <a [routerLink]="['/notification']" id="notificationcount" class="noti-bell">
+          <ion-icon ios="ios-notifications-outline" md="md-notifications-outline"></ion-icon>
+          <ion-badge slot="end" *ngIf="notificationCount > 0">{{ notificationCount }}</ion-badge>
+        </a>
+
+        <a [routerLink]="['/tabs/bookmark']">
+          <!-- <a (click)="showbookmark()"> -->
+          <ion-icon ios="ios-bookmark" md="md-bookmark"></ion-icon>
+        </a>
+        <a [routerLink]="['/people']" class="foll-people">
+          <ion-icon ios="md-people" md="md-people"></ion-icon>
+        </a>
+        <a [routerLink]="['/settings']" class="set-icon">
+          <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+        </a>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">  
+  <ion-grid class="ion-no-padding" *ngIf="gotData">
+    <ion-row *ngIf="tabs">
+      <ion-col class="ion-no-padding">
+        <div class="sec-banner">
+          <div class="top-banner"> <img
+              src="{{backgroundPicUrl}}{{profileData?.userData?.bios?.profile_background_image}}"
+              *ngIf="profileData?.userData?.bios?.profile_background_image">
+            <img src="./../../../assets/images/editcoverpic.png" *ngIf="!profileData?.userData?.bios?.profile_pic">
+          </div>
+          <div class="profile-heading">
+            <div class="img-profile">
+              <img class="user-img" src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
+                *ngIf="profileData?.userData?.bios?.profile_pic">
+              <img class="user-img" src="../../assets/images/user.jpg"
+                *ngIf="!profileData?.userData?.bios?.profile_pic">
+            </div>
+            <div class="tagline">
+              <a>
+                <!-- (click)="infomodal()" -->
+                <!-- <ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon> rushabh_parekh -->
+              </a>
+            </div>
+          </div>
+          <div class="user-name">
+            <ion-text>
+              <h6>{{profileData?.userData?.user_name}}</h6>
+              <p>{{profileData?.userData?.additional?.tag_line}}</p>
+            </ion-text>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="tabs">
+      <ion-col size="12" class="ion-no-padding">
+        <ion-list lines="none" class="top-list">
+          <ion-item (click)="notification1()">
+            <div class="top-icon">
+              <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+            </div>
+            <ion-label>Info</ion-label>
+          </ion-item>
+          <!--  -->
+          <ion-item detail="false" [routerLink]="['/nutrition-list']">
+            <div class="top-icon">
+              <ion-icon ios="ios-nutrition" md="md-nutrition"></ion-icon>
+            </div>
+            <ion-label>Nutrition</ion-label>
+          </ion-item>
+          <!-- [routerLink]="['/consultant-videos']" -->
+          <ion-item detail="false" [routerLink]="['/consultant-videos']">
+            <div class="top-icon">
+              <ion-icon ios="ios-videocam" md="md-videocam"></ion-icon>
+            </div>
+            <ion-label>Videos</ion-label>
+          </ion-item>
+          <ion-item>
+            <div class="top-icon">
+              <ion-icon ios="ios-flame" md="md-flame" (click)="presentToast()"></ion-icon>
+            </div>
+            <ion-label>Activity</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="tabs" class="mb-10">
+      <ion-col size="12" class="photo-heading ion-padding-horizontal">
+        <ion-text>Photo's</ion-text>
+        <ion-button size="small" [routerLink]="['/tabs/all-images',profileData?.userData?.id , profileData?.userData?.user_name]" *ngIf="previewImage.length>0">See More</ion-button>
+      </ion-col>
+      <ion-col size="12" class="ion-no-padding">
+        <ion-slides [options]="sliderOpts" class="profile-slider">
+          <ion-slide *ngFor="let preview of previewImage">
+            <img src="{{url}}{{preview}}" (click)="openViewer(preview)" *ngIf="previewImage.length>0" />
+          </ion-slide>
+        </ion-slides>
+        <div class="no-data photoNodata" *ngIf="previewImage.length==0">
+          <p>No post added yet.</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-list class="ion-no-padding">
+          <ion-item-group>
+            <ion-item-divider lines="none" sticky>
+              <ion-toolbar lines="none" no-border-top class="profile_tabs three-tabs">
+                <ion-segment class="ion-no-padding" [(ngModel)]="consultantProfile">
+                  <ion-segment-button value="aboutInfo" (click)="videoTabsScroll()">
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                    <span>Videos</span>
+                  </ion-segment-button>
+                  <ion-segment-button value="post" (click)="otherTabsScroll()">
+                    <ion-icon ios="ios-copy" md="md-copy"></ion-icon>
+                    <span>Post</span>
+                  </ion-segment-button>
+                  <ion-segment-button value="upcoming" (click)="otherTabsScroll()">
+                    <ion-icon ios="md-calendar" md="md-calendar"></ion-icon>
+                    <span>upcoming</span>
+                  </ion-segment-button>
+                </ion-segment>
+              </ion-toolbar>
+            </ion-item-divider>
+            <ion-item-divider lines="none" sticky *ngIf="tabs">
+              <ion-segment [(ngModel)]="videotabs" class="profile_tabs subprofile_tabs">
+                <ion-segment-button value="videotabs1">
+                  <ion-label>Open</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="videotabs2">
+                  <ion-label>Exclusive</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="videotabs3">
+                  <ion-label>Saved</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </ion-item-divider>
+            <ion-item-sliding>
+              <div [ngSwitch]="consultantProfile">
+                <!-- -------------- V I D E O    V I E W  ------------------>
+                <ion-list class="ion-no-padding" lines="none" *ngSwitchCase="'aboutInfo'">
+                  
+                  <div [ngSwitch]="videotabs" *ngFor="let post of myPosts" >
+                    <!-- {{post.is_delete}} -->
+                    <div *ngSwitchCase="'videotabs1'">
+                      <!-- <ion-card class="item-card" *ngIf="!post.is_delete && post['video_post']['0']['video_type'] == 1"> -->
+                      <ion-card class="item-card" *ngIf="post['video_post']['0']['video_type'] == 1">
+                        <ion-card-header class="item-header" [routerLink]="['/videos',post.id,'']">
+                          <ion-avatar>
+                            <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
+                              *ngIf="profileData?.userData?.bios?.profile_pic">
+                            <img src="{{url}}images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
+                          </ion-avatar>
+                          <div class="header-right">
+                            <ion-label>
+                              <ion-card-title>{{loginUserData.user_name}}</ion-card-title>
+                              <ion-card-subtitle>{{loginUserData.location}}</ion-card-subtitle>
+                            </ion-label>
+                            <ion-text class="post-timedate">
+                              <p class="post-date">{{post?.created_at}}</p>
+                            </ion-text>
+                          </div>
+                        </ion-card-header>
+                        <ion-card-content class="ion-no-padding item-content">
+                          <ion-thumbnail [routerLink]="['/videos',post.id,'']"
+                            *ngIf="post['video_post']['0']['thumb_path']">
+                            <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" />
+                            <!-- <img (click)="openViewer(post['video_post']['0']['thumb_path'])" src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
+                          </ion-thumbnail>
+                          <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+
+                          <div class="post-content">
+                            <ion-list class="item-post" lines="none">
+                              <ion-item>
+                                <div [routerLink]="['/comments',post.id]" *ngIf=" !post?.disable_comment">
+                                  <span *ngIf="loginUserData?.comment_disable == 0">
+                                    <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
+                                    <span>{{post.total_comments.length}}</span>
+                                  </span>
+                                </div>
+                                <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
+                                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon>
+                                  <span>{{post?.count}}</span>
+                                </div>
+                              </ion-item>
+                              <ion-item>
+                                <div (click)="showOptions(post?.id ,post?.disable_comment )">
+                                  <ion-icon ios="ios-more" md="md-more"></ion-icon>
+                                </div>
+                              </ion-item>
+                            </ion-list>
+                            <!-- -------  Description post with  post type = 2 -->
+                            <div *ngIf="post?.post_type==2">
+                              <p class="mb-10"
+                                *ngIf="post['video_post']['0'].description && post['video_post']['0'].description.length < 30">
+                                <span
+                                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description.substr(0, 100)}}
+                              </p>
+                              <p class="mb-10"
+                                *ngIf="post['video_post']['0'].description && post['video_post']['0'].description.length > 29 && expanded !=  post.id">
+                                <span
+                                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description.substr(0, 29)}}
+                                <span (click)="expanded = post.id"
+                                  class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
+                              <p class="mb-10" *ngIf="expanded ==  post.id "><span
+                                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description}}
+                                <span (click)="expanded = 0"
+                                  class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
+                            </div>
+                            <!-- ------- ends here   post type = 2 -->
+                          </div>
+                        </ion-card-content>
+                      </ion-card>
+                    </div>
+                    <div *ngSwitchCase="'videotabs2'">
+                      <ion-card class="item-card" *ngIf="!post.is_delete && post['video_post']['0']['video_type'] == 2">
+                        <ion-card-header class="item-header" [routerLink]="['/videos',post.id,'']">
+                          <ion-avatar>
+                            <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
+                              *ngIf="profileData?.userData?.bios?.profile_pic">
+                            <img src="{{url}}images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
+                          </ion-avatar>
+                          <div class="header-right">
+                            <ion-label>
+                              <ion-card-title>{{loginUserData.user_name}}</ion-card-title>
+                              <ion-card-subtitle>{{loginUserData.location}}</ion-card-subtitle>
+                            </ion-label>
+                            <ion-text class="post-timedate">
+                              <p class="post-date">{{post?.created_at}}</p>
+                            </ion-text>
+                          </div>
+                        </ion-card-header>
+                        <ion-card-content class="ion-no-padding item-content">
+                          <ion-thumbnail [routerLink]="['/videos',post.id,'']"
+                            *ngIf="post['video_post']['0']['thumb_path']">
+                            <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" />
+                            <!-- <img (click)="openViewer(post['video_post']['0']['thumb_path'])" src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
+                          </ion-thumbnail>
+                          <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+
+                          <div class="post-content">
+                            <ion-list class="item-post" lines="none">
+                              <ion-item>
+                                <div [routerLink]="['/comments',consultID]"
+                                  *ngIf="postData?.post_user?.comment_disable == 0">
+                                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
+                                  <span>{{postData?.total_comments.length}}</span>
+                                </div>
+                                <div (click)="liked(postData?.id,postData.liked)"
+                                  class="{{ postData?.liked ?'active':'inactive' }}">
+                                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon>
+                                  <span>{{postData?.count}}</span>
+                                </div>
+                              </ion-item>
+                              <ion-item>
+                                <div (click)="showOptions(post?.id ,post?.disable_comment )">
+                                  <ion-icon ios="ios-more" md="md-more"></ion-icon>
+                                </div>
+                              </ion-item>
+                            </ion-list>
+                            <!-- -------  Description post with  post type = 2 -->
+                            <div *ngIf="post?.post_type==2">
+                              <p class="mb-10"
+                                *ngIf="post['video_post']['0'].description && post['video_post']['0'].description.length < 30">
+                                <span
+                                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description.substr(0, 100)}}
+                              </p>
+                              <p class="mb-10"
+                                *ngIf="post['video_post']['0'].description && post['video_post']['0'].description.length > 29 && expanded !=  post.id">
+                                <span
+                                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description.substr(0, 29)}}
+                                <span (click)="expanded = post.id"
+                                  class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
+                              <p class="mb-10" *ngIf="expanded ==  post.id "><span
+                                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description}}
+                                <span (click)="expanded = 0"
+                                  class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
+                            </div>
+                            <!-- ------- ends here   post type = 2 -->
+                          </div>
+                        </ion-card-content>
+                      </ion-card>
+                    </div>
+                    <div *ngSwitchCase="'videotabs3'">
+                      <ion-card class="item-card" *ngIf="!post.is_delete && post['video_post']['0']['video_type'] == 3">
+                        <!-- <ion-col *ngIf="post['video_post']['0']['video_type'] != 3" size="12" class="ion-no-padding">
+                          <ion-slide class="no_imagedata">No post added yet 3!!!</ion-slide>
+                        </ion-col> -->
+                        <ion-card-header class="item-header" [routerLink]="['/videos',post.id,'']">
+                          <ion-avatar>
+                            <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
+                              *ngIf="profileData?.userData?.bios?.profile_pic">
+                            <img src="{{url}}images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
+                          </ion-avatar>
+                          <div class="header-right">
+                            <ion-label>
+                              <ion-card-title>{{loginUserData.user_name}}</ion-card-title>
+                              <ion-card-subtitle>{{loginUserData.location}}</ion-card-subtitle>
+                            </ion-label>
+                            <ion-text class="post-timedate">
+                              <p class="post-date">{{post?.created_at}}</p>
+                            </ion-text>
+                          </div>
+                        </ion-card-header>
+                        <ion-card-content class="ion-no-padding item-content">
+                          <ion-thumbnail [routerLink]="['/videos',post.id,'']"
+                            *ngIf="post['video_post']['0']['thumb_path']">
+                            <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" />
+                            <!-- <img (click)="openViewer(post['video_post']['0']['thumb_path'])" src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
+                          </ion-thumbnail>
+                          <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+                          <div class="post-content">
+                            <ion-list class="item-post" lines="none">
+                              <ion-item>
+                                <div [routerLink]="['/comments',post.id]" *ngIf=" !post?.disable_comment">
+                                  <span *ngIf="loginUserData?.comment_disable == 0">
+                                    <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
+                                    <span>{{post.total_comments.length}}</span>
+                                  </span>
+                                </div>
+                                <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
+                                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon>
+                                  <span>{{post?.count}}</span>
+                                </div>
+                              </ion-item>
+                              <ion-item>
+                                <div (click)="showOptions(post?.id ,post?.disable_comment )">
+                                  <ion-icon ios="ios-more" md="md-more"></ion-icon>
+                                </div>
+                              </ion-item>
+                            </ion-list>
+                            <!-- -------  Description post with  post type = 2 -->
+                            <div *ngIf="post?.post_type==2">
+                              <p class="mb-10"
+                                *ngIf="post['video_post']['0'].description && post['video_post']['0'].description.length < 30">
+                                <span
+                                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description.substr(0, 100)}}
+                              </p>
+                              <p class="mb-10"
+                                *ngIf="post['video_post']['0'].description && post['video_post']['0'].description.length > 29 && expanded !=  post.id">
+                                <span
+                                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description.substr(0, 29)}}
+                                <span (click)="expanded = post.id"
+                                  class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
+                              <p class="mb-10" *ngIf="expanded ==  post.id "><span
+                                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description}}
+                                <span (click)="expanded = 0"
+                                  class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
+                            </div>
+                            <!-- ------- ends here   post type = 2 -->
+                          </div>
+                        </ion-card-content>
+                      </ion-card>
+                    </div>
+                  </div>
+                  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadVideoData($event)">
+                    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+                    </ion-infinite-scroll-content>
+                  </ion-infinite-scroll>
+                </ion-list>
+                <!-- --------------  P O S T    V I E W  ------------------>
+                <ion-list *ngSwitchCase="'post'" class="ion-no-padding">
+                  <ion-card class="ion-no-margin item-card newPostCard">
+                    <ion-card-content class="ion-padding-vertical">
+                      <span [routerLink]="['/add-post']" class="ion-padding-vertical">Add New Post</span>
+                    </ion-card-content>
+                  </ion-card>
+                  <app-post-tab [userData]="profileData"></app-post-tab>
+                </ion-list>
+
+                <!-- --------------  U P C O M I N G    P R O G R A M  ------------------>
+                <ion-list *ngSwitchCase="'upcoming'" lines="none" class="ion-no-padding">
+                  <app-upcoming-tab></app-upcoming-tab>
+                </ion-list>
+              </div>
+            </ion-item-sliding>
+          </ion-item-group>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-------------- S K E L E T O N ----------------->
+  <ion-grid class="ion-no-padding" *ngIf="!gotData">
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <div class="sec-banner">
+          <div class="top-banner">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </div>
+          <div class="user-name">
+            <ion-text>
+              <h6>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </h6>
+              <p>
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </p>
+            </ion-text>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="ion-no-padding mb-10">
+        <ion-list lines="none" class="top-list">
+          <ion-item>
+            <div class="top-icon">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </div>
+            <ion-label>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <div class="top-icon">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </div>
+            <ion-label>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <div class="top-icon">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </div>
+            <ion-label>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <div class="top-icon">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </div>
+            <ion-label>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="ion-no-padding mb-10">
+        <ion-slides [options]="sliderOpts" class="profile-slider">
+          <ion-slide>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-slide>
+          <ion-slide>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-slide>
+          <ion-slide>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-slide>
+          <ion-slide>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-list class="ion-no-padding">
+          <ion-item-group>
+            <ion-item-divider lines="none">
+              <ion-segment [(ngModel)]="videotabs" class="profile_tabs subprofile_tabs">
+                <ion-segment-button value="videotabs1">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="videotabs2">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="videotabs3">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+              </ion-segment>
+            </ion-item-divider>
+            <ion-item-sliding>
+              <ion-list class="ion-no-padding" lines="none">
+                <ion-card class="item-card" *ngFor="let skeleton of [].constructor(5)">
+                  <ion-card-header class="item-header">
+                    <ion-avatar>
+                      <ion-skeleton-text animated></ion-skeleton-text>
+                    </ion-avatar>
+                    <div class="header-right">
+                      <ion-label>
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                      </ion-label>
+                    </div>
+                  </ion-card-header>
+                  <ion-card-content class="ion-no-padding item-content">
+                    <ion-thumbnail>
+                      <ion-skeleton-text animated></ion-skeleton-text>
+                    </ion-thumbnail>
+                    <div class="post-content">
+                      <ion-list class="item-post" lines="none">
+                        <ion-item>
+                          <div>
+                            <ion-skeleton-text animated></ion-skeleton-text>
+                          </div>
+                          <div>
+                            <ion-skeleton-text animated></ion-skeleton-text>
+                          </div>
+                        </ion-item>
+                      </ion-list>
+                      <ion-skeleton-text animated></ion-skeleton-text>
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+              </ion-list>
+            </ion-item-sliding>
+          </ion-item-group>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-refresher class="page-refresher homeRefresher" slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="crescent"></ion-refresher-content>
+  </ion-refresher>
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block video-preview-ion-list">
+    <!-- <ion-item slot="start"></ion-item> -->
+    <ion-item slot="center">
+      <ion-label>Preview</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end">
+      <ion-label class="text-green" (click)="videoFormSubmit()">Upload</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-header>
+<ion-content>
+  <ion-grid class="ion-no-padding">  
+    <ion-row class="main_content no_footer" >
+      <ion-col size="12" class="ion-no-padding pt-10">
+        <p class="ion-padding-horizontal mb-10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        <video width="100%" height="200px" controls disablePictureInPicture controlsList="nodownload" preload="metadata" autoplay="autoplay"  class="videoPlayer">
+          <source src="{{filepath + videoDataPath}}" type="video/mp4" />
+        </video>
+        <form class="nutrition-form" [formGroup]="VideoDetailsForm">
+        <!-- <ion-form class="nutrition-form" [formGroup]="videoFormCompelet"> -->
+        <ion-list-header class="grey-header">Select Thumbnail :</ion-list-header>
+        <ion-radio-group formControlName="videoThumb">
+          <ion-slides [options]="sliderOpts"  class="inner-slider thumbnail-slider ion-padding-horizontal">
+            <ion-slide *ngFor="let thumb of videoThumbArray; let i = index;">
+              <img src="{{filepath + thumb}}" alt="Thumbnail Image"/>
+              <ion-item>
+                <ion-radio value="{{thumb}}" slot="start" [checked]="i==0 ? true : false"></ion-radio>
+              </ion-item>
+            </ion-slide> 
+            <ion-slide>
+              <ion-fab-button color="light" size="small">
+                <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+              </ion-fab-button>
+            </ion-slide>               
+          </ion-slides>
+        </ion-radio-group>
+        <ion-list lines="none" class="radio-list">
+          <ion-radio-group formControlName="videoType">
+            <ion-item>
+              <ion-label>Open</ion-label>
+              <ion-radio slot="start" value="1" [checked]="true"></ion-radio>
+            </ion-item>
+            <ion-item (click)="userModal()">
+              <ion-label>Exclusive</ion-label>
+              <ion-radio  slot="start" value="2" ></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Save</ion-label>
+              <ion-radio slot="start" value="3" ></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </form>
+      </ion-col>
+    </ion-row>    
+  </ion-grid>  
+</ion-content>

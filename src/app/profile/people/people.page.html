@@ -1,0 +1,71 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>People</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content no_footer">
+  <ion-segment class="top-segment" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="followers" checked>({{followers?.length}}) Followers</ion-segment-button>
+    <ion-segment-button value="following">({{followings?.length}}) Followings</ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="people_tabs">
+    <ion-list lines="none" *ngSwitchCase="'followers'" class="ion-no-padding"> 
+      <div *ngIf='followers?.length > 0'>
+      <ion-toolbar class="searchbar">
+        <ion-searchbar [(ngModel)]="followerSearchTerm"></ion-searchbar>
+      </ion-toolbar>
+      <ion-item *ngFor="let peoplelist of followerFilteredUsers" class="item-card">
+          <ion-avatar slot="start" *ngIf="peoplelist.following_user.bios.profile_pic" [routerLink]="peoplelist.following_user.user_type==0?['/tabs/user-profile-view/',peoplelist.following_uid] : ['/tabs/consultant-profile-view/',peoplelist.following_uid]">
+            <img src="https://ionicinto.wdipl.com/public/profile_pic/thumb/{{peoplelist.following_user.bios.profile_pic}}">
+          </ion-avatar>
+          <ion-avatar slot="start" *ngIf="!peoplelist.following_user.bios.profile_pic" [routerLink]="peoplelist.following_user.user_type==0?['/tabs/user-profile-view/',peoplelist.following_uid] : ['/tabs/consultant-profile-view/',peoplelist.following_uid]">
+            <img src="../../assets/images/user.jpg">
+          </ion-avatar>
+          <ion-label [routerLink]="peoplelist.following_user.user_type==0?['/tabs/user-profile-view/',peoplelist.following_uid] : ['/tabs/consultant-profile-view/',peoplelist.following_uid]">
+            <h3 class="list-person">{{peoplelist.following_user.user_name}}</h3>
+            <span class="list-name">following you</span>
+          </ion-label>
+          <ion-button size="small" slot="end" fill="outline" id="{{peoplelist.following_uid}}" (click)="followUpPeople(peoplelist.following_uid, peoplelist?.following_user?.follow ? 'true' : 'false')" color="{{peoplelist?.following_user?.color}}" [ngClass]='peoplelist?.following_user?.class'>{{peoplelist?.following_user?.follow == true? 'FOLLOWING': 'FOLLOW BACK'}}</ion-button>
+      </ion-item>
+    </div>
+    <div class="no-data" *ngIf='followers?.length == 0'>
+      <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+      <p>No Data Found</p>
+    </div>
+    </ion-list>
+    
+    <ion-list lines="none" *ngSwitchCase="'following'" class="ion-no-padding">
+      <div *ngIf='followings?.length > 0'>
+      <ion-toolbar class="searchbar">
+        <ion-searchbar [(ngModel)]="followingSearchTerm"></ion-searchbar>
+      </ion-toolbar>
+      <ion-item *ngFor="let followinglist of followingFilteredUsers" class="item-card">
+        <ion-avatar slot="start" *ngIf="followinglist.follower_user.bios.profile_pic" [routerLink]="followinglist.follower_user.user_type==0?['/tabs/user-profile-view/',followinglist.followers_uid] : ['/tabs/consultant-profile-view/',followinglist.followers_uid]">
+          <img src="https://ionicinto.wdipl.com/public/profile_pic/thumb/{{followinglist.follower_user.bios.profile_pic}}">
+        </ion-avatar>
+        <ion-avatar slot="start" *ngIf="!followinglist.follower_user.bios.profile_pic" [routerLink]="followinglist.follower_user.user_type==0?['/tabs/user-profile-view/',followinglist.followers_uid] : ['/tabs/consultant-profile-view/',followinglist.followers_uid]">
+          <img src="../../assets/images/user.jpg">
+        </ion-avatar>        
+        <ion-label [routerLink]="followinglist.follower_user.user_type==0?['/tabs/user-profile-view/',followinglist.followers_uid] : ['/tabs/consultant-profile-view/',followinglist.followers_uid]">
+          <h3 class="list-person">{{followinglist.follower_user.user_name}} </h3>
+          <p>Following</p>
+        </ion-label>
+        <ion-button size="small" slot="end" fill="outline" (click)="unFollowPeople(followinglist?.follower_user?.btnName,followinglist.followers_uid, followinglist?.follower_user?.follow ? 'true' : 'false')"  id="{{followinglist.followers_uid}}" color="{{followinglist?.follower_user?.color}}" [ngClass]="followinglist?.follower_user?.class">{{followinglist?.follower_user?.btnName}}</ion-button>
+     </ion-item>
+    </div>
+    <div class="no-data" *ngIf='followings?.length == 0'>
+      <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+      <p>No Data Found</p>
+    </div>
+    </ion-list> 
+
+  </div>
+</ion-content>

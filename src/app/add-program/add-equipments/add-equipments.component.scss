@@ -1,0 +1,39 @@
+ion-card{border-radius: 0;
+    ion-card-header{margin-bottom: 0;}
+    ion-card-content{
+        ion-segment{margin: 10px 0;
+            ion-segment-button{width: 32%;max-width: 130px;background: #eaeaea;padding: 0;margin: 0 5px;--padding-start: 0;--padding-end: 0;border-radius: 4px;overflow: hidden;
+                
+            }
+            ion-segment-button:first-child{margin-left: 15px;}
+        }
+    }
+}
+.grey-header{padding: 10px;}
+.inner-slider ion-slide{height: auto;flex-direction: column;background: transparent;}
+.nutriimages-list ion-label{font-size: 0.75rem;margin: 0;text-transform: capitalize;letter-spacing: 0;color: #444;}
+.video-card{box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09);}
+ion-slides{background: transparent;padding: 0 5px;}
+.nutriimages-list ion-segment-button{width: 33.3%; max-width: 130px;border: none;padding: 0 3px;    --padding-start: 0;--padding-end: 0;}
+.nutriimages-list ion-segment-button img{height: 85px;margin-bottom: 5px;object-fit: cover;}
+.nutriimages-list .segment-button-checked{background: transparent;--color-checked: transparent;}
+.nutriimages-list .thumb-checkbox{position: absolute;width: 100%;height: 100%;left: 0;}
+.nutriimages-list .thumb-checkbox ion-checkbox{opacity:0;width:100%;height:85px;padding:0 0}
+.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked{opacity:1;--background-checked:transparent;--border-color-checked:transparent;--size:0;--checkmark-color:transparent}
+.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked:after{content:'';width:20px;height:20px;background:#26a69a;display:block;border-radius:50%;position:absolute;top:5px;left:5px}
+.checkboxThumb::after{content: '';width: 16px;height: 16px;border: 2px solid #7d7d7d;display: block;border-radius: 50%;position: absolute;top: 5px;left: 5px;}
+
+// hitesh css strt
+.nutrition-no-data img {
+    width: 60px;
+    height: 60px !important;
+    margin: 15px;
+}
+.nutrition-no-data p {
+    color: #000 !important;
+    font-size: 0.75rem;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    font-weight: 700;
+}
+// hitesh css ends

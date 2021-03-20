@@ -1,0 +1,27 @@
+h6{font-size: 1rem;line-height: 1.35;}
+.top-list{padding: 0;}
+.top-list ion-item{--min-height:50px;background: #FFF;color: #666666;}
+.top-list ion-item ion-label{margin-left: 5px;padding-top: 0;}
+.top-icon{width: 34px;height: 34px;border-radius: 50%;display: flex;justify-content: center;align-items: center;position: relative;top: -10px;left: 50%;transform: translateX(-50%);}
+.top-icon ion-icon {color: #888888;;font-size: 1.25rem;}
+.top-list ion-item ion-label{position: absolute;bottom:6px;left: 50%;transform: translateX(-50%);margin-left: 0;}
+
+.info-block{border-bottom: 1px solid #dedede;transition: all .5s ease-in-out;height: 0;}
+.info-block.active{height: auto;}
+.info-block p{color: #5a5a5a;margin-bottom: 5px;}
+.info-block p:last-child{margin-bottom: 0;}
+.video-list ion-item ion-avatar{border-radius: 0;--border-radius: 0;width: 100px;height: 65px;}
+.video-list ion-item h3{white-space: normal;font-weight: 400;}
+.video-list ion-item p{color: #5a5a5a;}
+
+.active .top-icon ion-icon{color: #27a69a;}
+
+// css for ios
+.ios.info-block{margin-bottom: 0;}
+.ios .video-list ion-item ion-avatar{margin-top: 0;margin-bottom: 0;}
+.play-videoBtn{position: absolute;left: 50%; top: 50%; transform: translate(-50%, -50%);  font-size: 3.5rem;color:#FFF !important}
+ion-card{margin: 0;border-radius: 0;
+    ion-card-content{
+        ion-thumbnail{height: 270px;}
+    }
+}
