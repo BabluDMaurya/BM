@@ -1,0 +1,108 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>Notification</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content"> 
+  <ion-segment class="top-segment"  [(ngModel)]="notification_tabs">
+    <ion-segment-button value="people" checked>People</ion-segment-button>
+    <ion-segment-button value="media">Media</ion-segment-button>
+    <ion-segment-button value="program">Program</ion-segment-button>
+    <ion-segment-button value="payments">Payments</ion-segment-button>
+  </ion-segment> 
+  <ion-refresher class="page-refresher" slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>  
+  <div [ngSwitch]="notification_tabs">    
+    <div lines="none" *ngSwitchCase="'people'">
+      <div class="no-data" *ngIf="!peopleNotification.length > 0 && data">
+          <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+          <p>No Data Data</p>
+      </div>
+      <ion-card *ngFor="let peoplenoti of peopleNotification" class="ion-no-margin">
+        <ion-item lines="none">
+          <ion-avatar slot="start">              
+            <img  *ngIf = "peoplenoti?.user?.bios?.profile_pic" src="{{url}}{{peoplenoti?.user?.bios?.profile_pic}}">
+            <img  *ngIf = "!peoplenoti?.user?.bios?.profile_pic" src="../../assets/images/user.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h3 class="list-person">{{peoplenoti?.user?.user_name}}</h3>
+            <span class="list-name">{{peoplenoti?.description}} </span>
+          </ion-label>
+          <span class="notifi-right">{{peoplenoti?.created_at}}</span>
+        </ion-item> 
+      </ion-card>       
+    </div> 
+    <div lines="none" *ngSwitchCase="'media'">
+      <div class="no-data" *ngIf="!mediaNotification.length > 0">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No Data Found</p>
+      </div>
+      <ion-card *ngFor="let medianoti of mediaNotification" class="ion-no-margin">
+        <ion-item lines="none">
+          <ion-avatar slot="start">              
+            <img  *ngIf = "medianoti?.user?.bios?.profile_pic" src="{{url}}{{medianoti?.user?.bios?.profile_pic}}">
+            <img  *ngIf = "!medianoti?.user?.bios?.profile_pic" src="../../assets/images/user.jpg">
+          </ion-avatar>
+          <ion-label>
+              <h3 class="list-person">{{medianoti?.user?.user_name}} <span class="list-name">{{medianoti?.type}}</span></h3>
+              <span class="list-name">{{medianoti?.description}} </span>
+          </ion-label>
+          <span class="notifi-right">{{medianoti?.created_at}}</span>
+        </ion-item>
+      </ion-card>        
+    </div>
+    <div lines="none" *ngSwitchCase="'program'">      
+      <div class="no-data" *ngIf="!programNotification.length > 0">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No Data Found</p>
+      </div>
+      <ion-card *ngFor="let programnoti of programNotification" class="ion-no-margin">
+        <ion-item lines="none">
+          <ion-avatar slot="start">              
+            <img  *ngIf = "programnoti?.user?.bios?.profile_pic" src="{{url}}{{programnoti?.user?.bios?.profile_pic}}">
+            <img  *ngIf = "!programnoti?.user?.bios?.profile_pic" src="../../assets/images/user.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h3 class="list-person">{{programnoti?.user?.user_name}} <span class="list-name">{{programnoti?.type}}</span></h3>
+            <span class="list-name">{{programnoti?.description}} </span>
+        </ion-label>
+          <ion-label class="ion-text-end" slot="end">
+            <span class="list-name text-green d-block" slot="end">Ended</span>
+            <span class="notifi-right">{{programnoti?.created_at}}</span>
+          </ion-label>
+        </ion-item>
+      </ion-card>
+    </div> 
+    <div *ngSwitchCase="'payments'" class="no-data">
+      <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+      <p>You don't have any notifications right now.</p>
+    </div>
+  </div>
+  <ion-list lines="none" *ngIf="!data">  
+    <ion-card *ngFor="let skeleton of [].constructor(20)" class="ion-no-margin">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3 class="list-person"><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h3>
+          <span class="list-name"><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></span>
+        </ion-label>
+      </ion-item>
+    </ion-card>    
+  </ion-list>
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Identity Verification</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen class="ion-padding">
+  <p>To earn money with IntoActive your identity must be verifed</p>
+  <p>If you do not wish to earn you do not need to complete this step</p>
+  <p>Intoactive does not store any of your information during or after the verification process</p>
+  <p>Intoactive Partners with third party provider to perform the verification process</p>
+  <p>By proceeding, you agree to Intoactive's <a>Terms of use</a> and acknowledge that I have read the Privacy</p>
+  
+</ion-content>
+<ion-footer translucent>
+  <ion-toolbar>
+    <ion-title>Select next for continue</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="text-green" (click)="verifyUserModal()">Next-></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

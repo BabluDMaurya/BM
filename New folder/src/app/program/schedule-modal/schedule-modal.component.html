@@ -1,0 +1,64 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="closeModal()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>Schedule</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content no_footer">
+  <ion-segment class="top-segment" (ionChange)="scheduleChanged($event)">
+    <ion-segment-button value="nutrition" checked>
+      <span>Nutrition & Video</span>
+    </ion-segment-button>
+    <ion-segment-button value="programs">
+      <span>Programs</span>
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="scheduleTabs">
+    <ion-list lines="none" class="item-list ion-no-padding" *ngSwitchCase="'nutrition'">
+     
+      <div *ngFor="let progItem of allProgram">
+        <ion-list-header class="ion-padding-horizontal green text-white">{{progItem?.convertedTime| date:'medium'}}<ion-icon
+            ios="ios-add" md="md-add" (click)="addEquipments2(2,progItem)"></ion-icon>
+        </ion-list-header> 
+          <ion-card class="video-card"  *ngIf="progItem?.nutrition_id || progItem?.video_program">
+            <ion-card-content class="ion-no-padding">
+              <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
+                <ion-slide *ngIf="progItem?.video_program">
+                   <img src="../../../assets/images/video.png" style="width:auto !important" />
+                  <ion-label>Video</ion-label>
+                </ion-slide>  
+                <ion-slide *ngFor="let item of nutritionList | inArray:'id':progItem?.nutrition_array "  (click)="nutritionModal(progItem)" >
+                  <img src="{{url}}{{item?.image_path}}" *ngIf="item?.image_path" />
+                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:70% !important; height: auto;"/>
+                  <ion-label>{{item?.title}}</ion-label>
+                </ion-slide>  
+              </ion-slides>
+            </ion-card-content>
+          </ion-card>  
+          <div class="no-data" *ngIf="!progItem?.nutrition_id">
+            <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+            <p>No Nutrition Found</p>
+          </div>
+      </div>
+    </ion-list>
+    <ion-list lines="none" class="item-list ion-no-padding" *ngSwitchCase="'programs'">
+     
+      <div *ngFor="let progItem of allProgram">
+        
+        <ion-list-header class="ion-padding-horizontal green text-white">{{progItem?.convertedTime | date:'medium'}}<ion-icon
+            ios="ios-create" md="md-create" (click)="closeModal()"  [routerLink]="['/edit-program',progItem?.id]"></ion-icon>
+        </ion-list-header>
+        <ion-item class="ion-padding-horizontal">
+          <p>{{progItem?.description}}</p>
+        </ion-item>
+      </div>
+    </ion-list>
+  </div>
+</ion-content>
