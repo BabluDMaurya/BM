@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /node_modules
 /platforms
 /www
@@ -11,30 +10,10 @@
 /_MACOSX
 /.vscode
 /typings
+/New Folder
 BMbackup2dec.zip
 .env
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
-=======
-/node_modules
-/platforms
-/www
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-/backup
-/e2e
-/_MACOSX
-/.vscode
-/typings
-BMbackup2dec.zip
-.env
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
->>>>>>> 48f2601416ea0fc464c708fbb2c4afacb332e0b7
-yarn-error.log
