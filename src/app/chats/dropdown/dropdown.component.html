@@ -1,0 +1,17 @@
+<ion-list class="dropdown-list" lines="none" *ngIf="type == 1">
+  <ion-item>
+    <ion-label (click)="block()">{{bSOUser == 'block' ? 'Unblock' : 'Block User'}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label (click)="clear()">Clear Chat</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label (click)="delete()">Delete From List</ion-label>
+  </ion-item>
+</ion-list>
+<ion-list class="dropdown-list" lines="none" *ngIf="type == 2">
+  <ion-item>
+    <ion-label *ngIf="adminId == userDataid" (click)="deletegroup()">Delete Group</ion-label>
+    <ion-label *ngIf="adminId != userDataid" (click)="exitgroup()">Exit Group</ion-label>
+  </ion-item>
+</ion-list>

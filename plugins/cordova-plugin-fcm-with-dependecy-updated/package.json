@@ -1,0 +1,68 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-fcm-with-dependecy-updated@4.6.3",
+      "C:\\Users\\Wdipl140\\intoactive-bablu\\ionic"
+    ]
+  ],
+  "_from": "cordova-plugin-fcm-with-dependecy-updated@4.6.3",
+  "_id": "cordova-plugin-fcm-with-dependecy-updated@4.6.3",
+  "_inBundle": false,
+  "_integrity": "sha512-o94r9uHh5tMDMbv0fiwlNDpe4Ex0Bo6N5PA1aqjPSY/tTGqo7j1Kd85N9cJSMGqgHzjCycZeaNLwdFX9Ee/HXQ==",
+  "_location": "/cordova-plugin-fcm-with-dependecy-updated",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-fcm-with-dependecy-updated@4.6.3",
+    "name": "cordova-plugin-fcm-with-dependecy-updated",
+    "escapedName": "cordova-plugin-fcm-with-dependecy-updated",
+    "rawSpec": "4.6.3",
+    "saveSpec": null,
+    "fetchSpec": "4.6.3"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-fcm-with-dependecy-updated/-/cordova-plugin-fcm-with-dependecy-updated-4.6.3.tgz",
+  "_spec": "4.6.3",
+  "_where": "C:\\Users\\Wdipl140\\intoactive-bablu\\ionic",
+  "author": {
+    "name": "André Augusto Tissot"
+  },
+  "bugs": {
+    "url": "https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated/issues"
+  },
+  "cordova_name": "Cordova FCM Push Plugin",
+  "description": "Google Firebase Cloud Messaging Cordova Push Plugin fork with dependecy updated",
+  "engines": [],
+  "englishdoc": "",
+  "homepage": "https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated#readme",
+  "issue": "",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "notifications",
+    "push",
+    "firebase",
+    "fcm",
+    "ios",
+    "android",
+    "cordova"
+  ],
+  "license": "MIT",
+  "main": "www/FCMPlugin.js",
+  "name": "cordova-plugin-fcm-with-dependecy-updated",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "repo": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated.git"
+  },
+  "typings": "src/FCMPlugin.d.ts",
+  "version": "4.6.3"
+}

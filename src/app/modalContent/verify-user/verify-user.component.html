@@ -1,0 +1,109 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>User Identity Verification</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen class="ion-padding">
+  <form class="" [formGroup]="userIdentityVerifyForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+    <ion-label>Country Code</ion-label>
+    <ion-select formControlName="countrycode"  placeholder="Select Country Code" (ionChange)="onSelectChangeOption()" okText="Okay" cancelText="Dismiss">
+      <ion-select-option [selected]="true" value="AU">Austrailia (AU)</ion-select-option>
+      <ion-select-option value="US">United States (US)</ion-select-option>      
+    </ion-select></ion-item>
+
+    <ion-list  *ngIf="showSubOptionOfAU">
+  <ion-list-header class="green text-white">Passport</ion-list-header>
+  <!-- <ion-item>    
+    <ion-input placeholder="CountryCode" formControlName="countrycode"></ion-input>
+  </ion-item> -->
+  <ion-item>    
+    <ion-input placeholder="Number" formControlName="passportnumber"></ion-input>
+  </ion-item>
+  <ion-list-header class="green text-white">PersonInfo</ion-list-header>
+  <ion-item>    
+    <ion-input placeholder="First Name *" formControlName="firstname"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Middle Name" formControlName="middelname"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Last Name *" formControlName="lastname"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Date Of Birth" formControlName="dateofbirth"></ion-input>
+  </ion-item>
+  <ion-list-header class="green text-white">Location</ion-list-header>
+  <ion-item>    
+    <ion-input placeholder="Building Number" formControlName="buildingnumber"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Postal Code *" formControlName="Postalcode"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="State Province Code" formControlName="stateprovincecode"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Street Name" formControlName="streetname"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Street Type" formControlName="streettype"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Suburb" formControlName="suburb"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Unit Number" formControlName="unitnumber"></ion-input>
+  </ion-item>  
+  <ion-button [disabled]="submitted" expand="" (click)="onSubmit()" class="green ion-text-uppercase">Verify</ion-button>
+</ion-list>
+<ion-list  *ngIf="showSubOptionOfUS">
+  <ion-list-header class="green text-white">Passport</ion-list-header>
+  <!-- <ion-item>    
+    <ion-input placeholder="CountryCode" formControlName="countrycode"></ion-input>
+  </ion-item> -->
+  <ion-item>    
+    <ion-input placeholder="Number" formControlName="passportnumber"></ion-input>
+  </ion-item>
+  <ion-list-header class="green text-white">PersonInfo</ion-list-header>
+  <ion-item>    
+    <ion-input placeholder="First Name *" formControlName="firstname"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Middle Name" formControlName="middelname"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Last Name *" formControlName="lastname"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Date Of Birth" formControlName="dateofbirth"></ion-input>
+  </ion-item>
+  <ion-list-header class="green text-white">Location</ion-list-header>
+  <ion-item>    
+    <ion-input placeholder="Building Number" formControlName="buildingnumber"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Postal Code *" formControlName="Postalcode"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="State Province Code" formControlName="stateprovincecode"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Street Name" formControlName="streetname"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Street Type" formControlName="streettype"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Suburb" formControlName="suburb"></ion-input>
+  </ion-item>
+  <ion-item>    
+    <ion-input placeholder="Unit Number" formControlName="unitnumber"></ion-input>
+  </ion-item>  
+  <ion-button  expand="" (click)="onSubmit()" class="green ion-text-uppercase">Verify</ion-button>
+</ion-list>  
+</form>
+</ion-content>

@@ -1,0 +1,66 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" [routerLink]="['/tabs/consultant-profile']">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>Chats</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end">
+      <ion-buttons class="ion-no-margin" slot="end" [routerLink]="['/add-private']">
+        <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <ion-toolbar class="searchbar">
+    <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+  </ion-toolbar>
+  <ion-list class="followers-list">
+    <ion-list-header class="ion-padding-horizontal">
+      <h5 class="ion-no-margin">Messages</h5>
+      <ion-label *ngIf="requestCount > 0" class="text-green" (click)="showRequests()">{{requestCount}} Requests</ion-label>
+    </ion-list-header>    
+    <ion-list lines="none" detail="false" *ngFor="let groups of items | filter:term">
+    <div *ngIf="groups.type == 1">
+      <ion-item  lines="none" (click)="chatRoom(userData.id == groups.receiverID ? groups.senderID: groups.receiverID,groups.chatroom.room,groups.type)" 
+    detail="false" *ngFor="let item of groups.bio || groups.sendarbio">
+      <ion-avatar slot="start">
+        <img *ngIf="item?.profile_pic" src="{{url}}{{item?.profile_pic}}"> 
+        <img *ngIf="!item?.profile_pic" src="../../assets/images/user.jpg">  
+      </ion-avatar>
+      <ion-label>
+        <h3 class="list-person">{{ item.user_name}}</h3>
+        <span class="list-name" *ngIf="groups.recentchat">{{groups.recentchat.message}}</span>
+        </ion-label>
+      <img slot="end" class="w26" src="../../../assets/images/follower-user.svg" />
+      <ion-badge *ngIf="groups.receiverID == userData.id  && groups.unreadmessagereceiver.count > 0 " color="secondary" slot="end">{{groups.unreadmessagereceiver.count}}</ion-badge>
+      <ion-badge *ngIf="groups.receiverID != userData.id  && groups.unreadmessagesender.count > 0 " color="secondary" slot="end">{{groups.unreadmessagesender.count}}</ion-badge>
+    </ion-item>
+  </div>   
+  <div *ngIf="groups.type == 2">
+    <ion-item lines="none" *ngFor="let item of groups.bio" (click)="chatRoom(groups.id,groups.chatroom.room,groups.type)" detail="false">
+      <ion-avatar slot="start">
+        <img *ngIf="item?.profile_pic" src="{{url}}{{item?.profile_pic}}"> 
+        <img *ngIf="!item?.profile_pic" src="../../assets/images/user.jpg">  
+      </ion-avatar>
+      <ion-label>
+        <h3 class="list-person">{{ item.user_name}}</h3>
+        <span class="list-name" *ngIf="groups.recentchat">{{groups.recentchat.message}}</span>
+      </ion-label>
+      <img slot="end" class="w26" src="../../../assets/images/follower-group.svg" />
+    </ion-item>
+  </div>
+    </ion-list>   
+    <div *ngIf="items.length < 1" class="no-data nutrition-no-data"> 
+      <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+      <p>Add User To Start Chat</p> 
+    </div>
+  </ion-list>
+  <ion-refresher class="page-refresher homeRefresher" slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="crescent"></ion-refresher-content>
+  </ion-refresher>
+</ion-content>

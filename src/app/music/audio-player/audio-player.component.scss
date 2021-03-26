@@ -1,0 +1,47 @@
+  
+.list-head{font-weight: 400;font-size: 0.875rem;margin: 0;}
+.list-head span{display: block;font-size: 0.70rem;color: #000;margin-top: 3px;}
+.text-white{color: #FFF;}
+.sticky-footer.musiclist{position: absolute;bottom: 50px;}
+.ios.sticky-footer.musiclist{bottom: 48px;}
+.audio-list{padding: 0;--padding-top: 0;--padding-bottom: 0;}
+.audio-list>div{display: flex;}
+.audio-list>*{display: inline-block;}
+ion-range{--knob-size: 18px;--height: 2px;}
+ion-range ion-label{margin-right: 50px;}
+ion-fab-button{min-width: 40px;}
+ion-fab-button+div{width: 100%;}
+ion-fab-button+div>div{display: flex;margin-top: 12px;}
+ion-fab-button+div>div +ion-label{color: #FFF;margin-left: 35px;}
+.music-spinner{--color: #26a69a;}
+
+.music-name {  
+    padding-left: 50px;
+    margin-top: 0 !important
+}
+.music-timer-fav {
+    position: absolute;
+    right: 10px;
+    top: 32px;display: flex;
+}
+.music-timer-fav ion-icon {
+    margin: 0 5px;
+}
+.musicbar {
+    padding-right: 50px;
+}
+
+.musiclistFooter{position: fixed;bottom: 0;width: 100%}
+.musicWrapper{
+    ion-toolbar{--padding-start: 0;--padding-end: 0;
+        .audio-listInner{display: block;background: #26a69a;height: 56px;margin-top: 10px;
+            .musicbar{
+                ion-range{position: absolute;width: 90%;top: 2px;}
+            }
+            .music-name{margin-top: 20px;margin-left: 10px;padding-left: 50px;
+                ion-label{color: #FFF;}
+            }            
+        }
+    }
+}
+.no-data{height: calc(100vh - 250px) !important;}
