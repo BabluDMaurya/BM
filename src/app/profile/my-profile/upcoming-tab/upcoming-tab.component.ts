@@ -18,6 +18,8 @@ export class UpcomingTabComponent implements OnInit {
   profile_url = Config.profilePic;
   noData:any;
   userData:any;
+  programimg_array : any;
+  url = Config.imgUrl;
   constructor(private commonService: CommonService,
     private actRoute: ActivatedRoute,
     private programService: ProgramService) {
@@ -25,16 +27,16 @@ export class UpcomingTabComponent implements OnInit {
         if (params.get('userData')) {
           this.consultID = params.get('userData');
         }
-        console.log(this.consultID);
+        // console.log(this.consultID);
       });
 
       this.userData = JSON.parse(localStorage.getItem('userData'));
-      console.log(this.userData);
+      // console.log(this.userData);
   }
 
 
   ngOnInit() {
-  console.log('ngonit');
+  // console.log('ngonit');
     if (this.consultID) {
       
       this.getConsultProg(this.consultID);
@@ -55,6 +57,8 @@ export class UpcomingTabComponent implements OnInit {
         this.noData=true;
       }
       this.upcomingList = this.getCounter(data.programList);
+      this.programimg_array =this.upcomingList[0].image_path.split(',');
+      
     });
     
   }

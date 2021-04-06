@@ -56,16 +56,12 @@ export class HomePage implements OnInit {
         this.gotData = true;
         postData.filter((el, i) => {
           if (i % 5 == 0) {
-            this.postData.push(topPeople.splice(0, 4));
+            this.postData.push(topPeople.splice(0, 2));
           }
           this.postData.push(el)
         });
-        console.log(this.postData);
       });
-
     });
-
-    console.log('ngon2');
   }
 
   // ------------ laod data event ----------
@@ -73,6 +69,7 @@ export class HomePage implements OnInit {
    *laod data event according userid
    */
   loadData(event) {
+    console.log('load data');
     setTimeout(() => {
       if (this.currentPage > 0) {
         this.homeService.getHomeContent({ 'page': (this.currentPage + 1) }).subscribe((data: any) => {
@@ -80,6 +77,17 @@ export class HomePage implements OnInit {
           this.postData = this.postData.concat(this.like_bookmark(data.postData.data));
           this.last_page = data.postData.last_page;
           this.currentPage = data.postData.current_page;
+
+          // this.searchService.getTopConsultant().subscribe((data: any) => {
+          //   let topPeople = data.topuser;
+          //   this.postData.filter((el, i) => {
+          //     if (i % 5 == 0) {
+          //       this.postData.push(topPeople.splice(0, 2));
+          //     }
+          //     this.postData.push(el)
+          //   });
+          // });
+          
         });
       }
       if (this.last_page <= (this.currentPage + 1)) {

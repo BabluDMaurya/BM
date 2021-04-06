@@ -1,9 +1,9 @@
 <ion-header class="top-header ion-no-padding">
   <ion-list class="top-heading three-block video-preview-ion-list">
     <!-- <ion-item slot="start"></ion-item> -->
-    <ion-item slot="center">
+    <!-- <ion-item slot="center">
       <ion-label>Preview</ion-label>
-    </ion-item>
+    </ion-item> -->
     <ion-item class="icon-right-side ion-text-end" slot="end">
       <ion-label class="text-green" (click)="videoFormSubmit()">Upload</ion-label>
     </ion-item>
@@ -38,15 +38,15 @@
         <ion-list lines="none" class="radio-list">
           <ion-radio-group formControlName="videoType">
             <ion-item>
-              <ion-label>Open</ion-label>
+              <ion-label>Share With Everyone</ion-label>
               <ion-radio slot="start" value="1" [checked]="true"></ion-radio>
             </ion-item>
             <ion-item (click)="userModal()">
-              <ion-label>Exclusive</ion-label>
+              <ion-label>Share With Selected Followers</ion-label>
               <ion-radio  slot="start" value="2" ></ion-radio>
             </ion-item>
             <ion-item>
-              <ion-label>Save</ion-label>
+              <ion-label>Save As Draft</ion-label>
               <ion-radio slot="start" value="3" ></ion-radio>
             </ion-item>
           </ion-radio-group>

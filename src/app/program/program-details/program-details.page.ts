@@ -162,6 +162,7 @@ export class ProgramDetailsPage implements OnInit {
     this.commonService.presentLoader();
     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
       this.programDetail = data.programData;
+      
       //1 = private , 2 = closed , 3 = public
       this.programType = data.programData.type_id;
       if(this.programType == 'private oneway' || this.programType == 'private twoway'){

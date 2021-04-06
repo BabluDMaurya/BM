@@ -86,7 +86,8 @@ export class MusicVolumeModalComponent implements OnInit {
           this.postService.getVideoPostById({'videoId':this.uploadedVideo}).subscribe((data:any)=>{ 
             localStorage.setItem('videoPath',data.postData.video_path);
             localStorage.setItem('videoThumb',data.postData.thumb_path);
-            this.commonService.redirectUrlWithIdConfirm("Success", "Video Uploaded Successfully.",this.returnUrl,this.uploadedVideo);                
+            this.router.navigate([this.returnUrl,this.uploadedVideo]);
+            // this.commonService.redirectUrlWithIdConfirm("Success", "Video Uploaded Successfully.",this.returnUrl,this.uploadedVideo);                
           });                  
         }).catch((err)=> {          
           this.isUploading = false;

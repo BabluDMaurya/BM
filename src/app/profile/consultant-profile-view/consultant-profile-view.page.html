@@ -19,6 +19,9 @@
         <a (click)="userFollowers()" class="follow-people">
           <ion-icon ios="md-people" md="md-people"></ion-icon>
         </a>
+        <a [routerLink]="['/settings']" class="set-icon">
+          <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+        </a>
       </div>
     </ion-item>
   </ion-list>

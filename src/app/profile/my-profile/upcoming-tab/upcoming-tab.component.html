@@ -1,14 +1,15 @@
 <ion-card class="ion-no-margin upcomingCard" *ngFor="let upcoming of upcomingList">
   <ion-item lines="none">
     <ion-avatar slot="start">
-      <img src="{{profile_url}}{{upcoming?.program_user?.bios?.profile_pic}}" *ngIf="upcoming?.program_user?.bios?.profile_pic">
-      <img  src="../../assets/images/user.jpg" *ngIf="!upcoming?.program_user?.bios?.profile_pic"  >
+      <img src="{{url}}{{programimg_array[0]}}" *ngIf="upcomingList[0]?.image_path">
+      <!-- <img src="{{profile_url}}{{upcoming?.program_user?.bios?.profile_pic}}" *ngIf="upcoming?.program_user?.bios?.profile_pic"> -->
+      <img  src="../../assets/images/user.jpg" *ngIf="!upcomingList[0]?.image_path">
     </ion-avatar>
     <ion-label [routerLink]="userData?.id ==upcoming?.user_id ? ['/program-details/',upcoming.id] : ['/program-view/',upcoming.id]">
       <h3 class="list-person">{{upcoming?.title}}</h3>
       <span class="list-name d-block">{{upcoming?.type_id}}</span>
       <span class="list-name d-block">By:{{upcoming?.program_user?.user_name}} {{upcoming?.convertedTime | date:'medium'}}</span>
-      <span class="list-name d-block" *ngIf="upcoming?.cd>0">Countdown: <b>{{ upcoming?.hh |number  }}:  {{ upcoming?.mm  }}:  {{ upcoming?.ss |number }} </b> </span>
+      <span class="list-name d-block" *ngIf="upcoming?.cd>0">Countdown: <b>{{ upcoming?.hh |number  }} Hour:  {{ upcoming?.mm  }} Minute:  {{ upcoming?.ss |number }} Second </b> </span>
       <span class="list-name d-block" *ngIf="upcoming?.cd==0"> <b> L I V E</b></span>
       <!-- <countdown [config]="{leftTime: 30}"></countdown> -->
     </ion-label>

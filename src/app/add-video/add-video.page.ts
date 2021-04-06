@@ -67,6 +67,7 @@ export class AddVideoPage implements OnInit {
   customClass : any =0;
   song : any;
   songList = [];
+  visibility : boolean = false;
   // public list: any = [];
   
   constructor(
@@ -196,6 +197,7 @@ export class AddVideoPage implements OnInit {
           var dirpath = data[0].fullPath.substr(0, data[0].fullPath.lastIndexOf('/') + 1);
           dirpath = dirpath.includes("file://") ? dirpath : "file://" + dirpath;  
           this.selectedVideoFile(dirpath,filename);
+          this.visibility = true;
         },
         (err: CaptureError) => console.error(err)
         );
@@ -216,10 +218,12 @@ export class AddVideoPage implements OnInit {
           var dirpath = videoUrl.substr(0, videoUrl.lastIndexOf('/') + 1);
           dirpath = dirpath.includes("file://") ? dirpath : "file://" + dirpath;
           this.selectedVideoFile(dirpath,filename);
+          this.visibility = true;
         }
       },
       (err) => {
         console.log(err);
+        this.visibility = false;
         this.commonService.presentAlert("Plugin Error","Cordova not available",['Close'],'');
       }
       );

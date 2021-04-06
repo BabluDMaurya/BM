@@ -11,7 +11,7 @@
           <ion-label>Add Video</ion-label>
         </ion-item>
         <ion-item class="icon-right-side ion-text-end" slot="end">
-          <ion-label (click)="submitForm()" class="text-green">Post</ion-label>
+          <ion-label (click)="submitForm()" class="text-green" *ngIf="visibility">Next</ion-label>
           <!-- <ion-fab-button class="btn-next" size="small" slot="end"><ion-icon ios="ios-send" md="md-send"></ion-icon></ion-fab-button>           -->
         </ion-item>
       </ion-list>
@@ -46,7 +46,7 @@
         <ion-item>
           <img (click)="selectVideo()" src="../../assets/images/photo.svg" />
         </ion-item>
-        <ion-item>          
+        <ion-item >          
           <img (click)="captureVideo()" src="../../assets/images/film.svg" />
         </ion-item>        
       </ion-list>
