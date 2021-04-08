@@ -4,7 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { RequestsModalComponent } from '../requests-modal/requests-modal.component';
 import { Config } from './../../config/config';
 import { CommonService } from 'src/app/services/common.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap,Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -23,13 +23,21 @@ export class ChatPage implements OnInit {
   requestCount: any = 0;
   callApiv : any; 
   term = ''; 
+  consultantId : any;
   constructor(
     public commonService:CommonService,
     private router:Router,
     private dataService: ChatService,
+    private actRoute: ActivatedRoute,
     public modalController: ModalController) { }  
 
-  ngOnInit() {
+  ngOnInit() {   
+    this.actRoute.paramMap.subscribe((params: ParamMap) => {
+      this.consultantId = params.get('consultantId');
+      if(this.consultantId > 0){
+        this.checkChatUser();
+      }
+    });
     this.commonService.presentLoader();
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.setFilteredItems();
@@ -41,11 +49,19 @@ export class ChatPage implements OnInit {
       this.callApi(); 
     }, 5000);
   }
-  ngOnDestroy() {
-    console.log("ngOnDestroy");
+  ngOnDestroy() {    
     if (this.callApiv) {
       clearInterval(this.callApiv);
     }
+  }
+  checkChatUser(){
+    this.dataService.checkChatUser({'id':this.consultantId}).subscribe((data: any) => {      
+      if(data.length > 0){
+        this.chatRoom(data[0].receiverID,data[0].chatroom.room,data[0].type);
+      }else{
+        console.log('NO RECORD fOUND');
+      }
+    });
   }
   callApi(){    
     //------------chat user list -------------
@@ -82,7 +98,6 @@ export class ChatPage implements OnInit {
         this.newSearchPersonList = [];
         console.log(this.newSearchPersonList );
       },2000);
-    
         return;
     }
 

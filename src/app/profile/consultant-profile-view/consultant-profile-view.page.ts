@@ -228,12 +228,13 @@ export class ConsultantProfileViewPage implements OnInit {
   }
 
   async chatPopup(ev: any) {
-    const popover = await this.popoverController.create({
-      component: ChatPopupComponent,
-      event: ev,
-      cssClass: 'chat_popup',
-    });
-    return await popover.present();
+    this.router.navigate(["/chat-consultant/"+ this.consultID]);
+    // const popover = await this.popoverController.create({
+    //   component: ChatPopupComponent,
+    //   event: ev,
+    //   cssClass: 'chat_popup',
+    // });
+    // return await popover.present();
   }
 
   reportPopup(ev: any) {

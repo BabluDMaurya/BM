@@ -48,6 +48,10 @@ export class ChatService {
     return this.http.post<any>(Config.ApiUrl+'api/auth/chatUserList',null,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('chatUserList',null)));
 
   }
+  checkChatUser(data:any): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/checkChatUser',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('checkChatUser',data)));
+
+  }
   requestsUserList(): Observable<any>{
     return this.http.post<any>(Config.ApiUrl+'api/auth/getChatRequest',null,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('requestsUserList',null)));
 

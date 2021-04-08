@@ -42,7 +42,6 @@ export class UserProfileViewPage implements OnInit {
     this.actRoute.paramMap.subscribe((params:ParamMap)=>{
       this.consultID=params.get('userData');
     });
-
     this.peopleView.getUserData({'userId':this.consultID}).subscribe((data:any)=>{
       console.log(data);
       this.profileData = data
@@ -91,13 +90,14 @@ export class UserProfileViewPage implements OnInit {
   }
 
   async messagePopup(ev: any) {
-    const popover = await this.popoverController.create({
-      component: MessagePopupComponent,
-      event: ev,
-      componentProps: { page: 'Login' },
-      cssClass: 'popover_class',
-    });
-    return await popover.present();
+    this.router.navigate(["/chat-consultant/"+ this.consultID]);
+    // const popover = await this.popoverController.create({
+    //   component: MessagePopupComponent,
+    //   event: ev,
+    //   componentProps: { page: 'Login' },
+    //   cssClass: 'popover_class',
+    // });
+    // return await popover.present();
   }
 
   async reportPopup(ev: any) {

@@ -16,6 +16,7 @@ import { NavigationExtras } from '@angular/router';
 export class HomePage implements OnInit {
 
   postData: any = [];
+  loadPostData :any = [];
   gotData: boolean = false;
   url = Config.imgUrl;
   storagePath = Config.storagePath;
@@ -25,6 +26,7 @@ export class HomePage implements OnInit {
   loginUserData: any;
   topTenPeople: any;
   specialities: any;
+  remainingTopConsultent : any;
   sliderOpts = {
     zoom: true,
     slidesPerView: 4,
@@ -60,6 +62,7 @@ export class HomePage implements OnInit {
           }
           this.postData.push(el)
         });
+        this.remainingTopConsultent = topPeople;
       });
     });
   }
@@ -68,26 +71,28 @@ export class HomePage implements OnInit {
   /**
    *laod data event according userid
    */
-  loadData(event) {
-    console.log('load data');
+  loadData(event) {   
     setTimeout(() => {
       if (this.currentPage > 0) {
         this.homeService.getHomeContent({ 'page': (this.currentPage + 1) }).subscribe((data: any) => {
           event.target.complete();
-          this.postData = this.postData.concat(this.like_bookmark(data.postData.data));
+          if(this.remainingTopConsultent.length > 1){
+            this.loadPostData = [];
+          let postData = this.like_bookmark(data.postData.data);
+          postData.filter((el, i) => {
+            if (i % 5 == 0) {
+              this.loadPostData.push(this.remainingTopConsultent.splice(0, 2));
+            }
+            this.loadPostData.push(el)
+          });
+          this.postData = this.postData.concat(this.loadPostData);
+          }else{
+            this.postData = this.postData.concat(this.like_bookmark(data.postData.data));
+          }
+          this.remainingTopConsultent = this.remainingTopConsultent;
+
           this.last_page = data.postData.last_page;
           this.currentPage = data.postData.current_page;
-
-          // this.searchService.getTopConsultant().subscribe((data: any) => {
-          //   let topPeople = data.topuser;
-          //   this.postData.filter((el, i) => {
-          //     if (i % 5 == 0) {
-          //       this.postData.push(topPeople.splice(0, 2));
-          //     }
-          //     this.postData.push(el)
-          //   });
-          // });
-          
         });
       }
       if (this.last_page <= (this.currentPage + 1)) {
@@ -171,7 +176,6 @@ export class HomePage implements OnInit {
       componentProps: { 'postId': ev, 'commentStatus': commentStatus }
     });
     popover.onDidDismiss().then((data) => {
-      console.log(commentStatus);
       if (data.data.click == 1) {
         this.postData.forEach((f, i) => {
           if (f.id == ev) {

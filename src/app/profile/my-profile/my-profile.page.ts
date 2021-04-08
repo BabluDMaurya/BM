@@ -116,9 +116,7 @@ export class MyProfilePage implements OnInit {
     }, (err) => { 
     });
 
-    this.loginUserData = JSON.parse(localStorage.getItem('userData'));
-    console.log("Bablu:" + JSON.stringify(this.loginUserData));
-    console.log("Bablu:" + JSON.stringify(this.loginUserData.email));
+    this.loginUserData = JSON.parse(localStorage.getItem('userData'));    
     this.videoPostData();
   }
   postData() {

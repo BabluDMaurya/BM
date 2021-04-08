@@ -201,6 +201,10 @@ const routes: Routes = [
     loadChildren: () => import('./chats/chat/chat.module').then( m => m.ChatPageModule)
   },
   {
+    path: 'chat-consultant/:consultantId',
+    loadChildren: () => import('./chats/chat/chat.module').then( m => m.ChatPageModule)
+  },
+  {
     path: 'add-private',
     loadChildren: () => import('./chats/add-private/add-private.module').then( m => m.AddPrivatePageModule)
   },
