@@ -35,6 +35,8 @@ export class VideosPage implements OnInit {
   postUserId : number;
   type : any;
   bookmark:any=false;
+  noData : boolean = false;
+  noImgData : boolean = false;
   constructor(
     public commonService: CommonService,
     private actRoute: ActivatedRoute,
@@ -52,6 +54,7 @@ export class VideosPage implements OnInit {
      }
   
   ngOnInit() {
+      this.noImgData = true;
       this.postService.getPostById({'postId':this.postID}).subscribe((data)=>{
       this.postData = data.postData;
       
@@ -67,18 +70,23 @@ export class VideosPage implements OnInit {
       this.videoDataPath =  this.storagePath + data.postData.video_post[0].video_path; 
       this.videoThumbPath =  this.storagePath + data.postData.video_post[0].thumb_path; 
       this.videoType = data.postData.video_post[0].video_type;
+      // console.log("this.videoType: " + this.videoType);
+      this.noImgData = false;
       if(this.type != 'exclusive'){
+        this.commonService.presentLoader();
         this.peopleView.upNextPost('2', this.postUserId, this.videoType,this.postID).subscribe((data) => {
             this.upNext = data.postData;
+            this.commonService.dismissLoader();
+            if(this.upNext.length < 1){
+              this.noData = true;
+            }
         }); 
       } 
-
       this.postData.post_bookmarks.filter((f) => {
         if (f.user_id == this.loginUserData.id) {
           this.bookmark = true;
         }
-      });
-     
+      });     
       console.log(this.postData);
     });
   }

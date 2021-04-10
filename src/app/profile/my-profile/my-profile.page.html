@@ -232,9 +232,13 @@
                           </div>
                         </ion-card-content>
                       </ion-card>
+                        <div class="no-data" *ngIf="post['video_post']['0']['video_type'] != 1 && post?.length < 1" style="height: calc(100vh - 175px)">
+                          <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                          <p>Open Video Not Found.</p>
+                        </div>
                     </div>
                     <div *ngSwitchCase="'videotabs2'">
-                      <ion-card class="item-card" *ngIf="!post.is_delete && post['video_post']['0']['video_type'] == 2">
+                      <ion-card class="item-card" *ngIf="post['video_post']['0']['video_type'] == 2">
                         <ion-card-header class="item-header" [routerLink]="['/videos',post.id,'']">
                           <ion-avatar>
                             <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
@@ -301,9 +305,13 @@
                           </div>
                         </ion-card-content>
                       </ion-card>
+                      <div class="no-data" *ngIf="post['video_post']['0']['video_type'] != 2 && post?.length < 1" style="height: calc(100vh - 175px)">
+                        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                        <p>Exclusive Video Not Found.</p>
+                      </div>
                     </div>
                     <div *ngSwitchCase="'videotabs3'">
-                      <ion-card class="item-card" *ngIf="!post.is_delete && post['video_post']['0']['video_type'] == 3">
+                      <ion-card class="item-card" *ngIf="post['video_post']['0']['video_type'] == 3">
                         <!-- <ion-col *ngIf="post['video_post']['0']['video_type'] != 3" size="12" class="ion-no-padding">
                           <ion-slide class="no_imagedata">No post added yet 3!!!</ion-slide>
                         </ion-col> -->
@@ -372,6 +380,10 @@
                           </div>
                         </ion-card-content>
                       </ion-card>
+                      <div class="no-data" *ngIf="post['video_post']['0']['video_type'] != 3 && post?.length < 1" style="height: calc(100vh - 175px)">
+                        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                        <p>Save Video  Not Found.</p>
+                      </div>
                     </div>
                   </div>
                   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadVideoData($event)">

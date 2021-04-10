@@ -15,7 +15,8 @@
   <ion-card class="ion-no-margin">
     <ion-card-content class="ion-no-padding item-content">
   <ion-thumbnail>
-    <img  (click)="playVideo()" width="100%" height="210px" src="{{videoThumbPath}}">
+    <img *ngIf="noImgData" width="100%" height="210px" src="../../../assets/images/loading.jpg">
+    <img *ngIf="!noImgData" (click)="playVideo()" width="100%" height="210px" src="{{videoThumbPath}}">
   </ion-thumbnail>
   <ion-icon (click)="playVideo()" ios="ios-play" md="md-play" class="play-videoBtn"></ion-icon>
 </ion-card-content>
@@ -54,9 +55,8 @@
   </ion-list>
   <ion-list *ngIf="type != 'exclusive'" lines="none" class="video-list">
     <ion-list-header>Up Next</ion-list-header>
-    <div *ngIf="videoType == 1">
-      <div *ngFor="let post of upNext">  
-        <div *ngIf="!post.is_delete">
+    <div *ngIf="videoType == 1">      
+      <div *ngFor="let post of upNext">         
         <div *ngFor = "let nextpost of post.open_video_post">           
         <ion-item  [routerLink]="['/videos',post.id,'']">
           <ion-avatar slot="start">
@@ -68,13 +68,12 @@
             <p class="text-gray">{{nextpost.created_at}} . {{nextpost.views > 0 ? nextpost.views : 0}} views</p>
           </ion-label>
         </ion-item>
-        </div>
+        
       </div>
       </div>
     </div>    
     <div *ngIf="videoType == 2">
       <div *ngFor="let post of upNext"> 
-        <div *ngIf="!post.is_delete">
         <div *ngFor = "let nextpost of post.exclusive_video_post">          
         <ion-item [routerLink]="['/videos',post.id,'']">
           <ion-avatar slot="start">
@@ -89,10 +88,8 @@
         </div>
       </div>
       </div>
-      </div>
       <div *ngIf="videoType == 3">
-        <div *ngFor="let post of upNext">  
-          <div *ngIf="!post.is_delete">
+        <div *ngFor="let post of upNext"> 
           <div *ngFor = "let nextpost of post.save_video_post">            
           <ion-item  [routerLink]="['/videos',post.id,'']">
             <ion-avatar slot="start">
@@ -107,7 +104,11 @@
           </div>
         </div>
         </div>
+        <div *ngIf="noData" class="no-data">
+          <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+          <p>No Data Found</p>
         </div>
+
   </ion-list>
 </ion-content>
 

@@ -141,7 +141,7 @@
                       <p>No post added yet.</p>
                     </div>                  
                     <div *ngFor="let post of myPosts">
-                        <ion-card class="item-card" *ngIf="!post.is_delete">                        
+                        <ion-card class="item-card">                        
                           <ion-card-header class="item-header" [routerLink]="['/videos',post.posts_id,'']">
                             <ion-avatar>
                               <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}" *ngIf="profileData?.userData?.bios?.profile_pic">

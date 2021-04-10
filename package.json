@@ -59,7 +59,7 @@
     "bootstrap": "^4.5.2",
     "com-sarriaroman-photoviewer": "^1.2.5",
     "cordova": "^9.0.0",
-    "cordova-android": "8.1.0",
+    "cordova-android": "^8.1.0",
     "cordova-browser": "^6.0.0",
     "cordova-clipboard": "^1.3.0",
     "cordova-ios": "^5.1.1",
