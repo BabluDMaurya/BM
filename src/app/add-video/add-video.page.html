@@ -21,13 +21,13 @@
         <form class="nutrition-form" [formGroup]="videoForm">
           <ion-list>
             <ion-item class="mb-10">
-              <ion-input formControlName="title" type="text" placeholder="Title" class="form-control"></ion-input>
+              <ion-input formControlName="title" type="text" placeholder="* Title" class="form-control"></ion-input>
             </ion-item>
             <ng-container *ngFor="let validation of validation_messages.title">
               <span class="error-message" *ngIf="(isSubmitted || videoForm.get('title').touched) && videoForm.get('title').hasError(validation.type)">{{ validation.message }}</span>
             </ng-container>
             <ion-item class="mb-10">
-              <ion-textarea  auto-grow="true" formControlName="description" placeholder="Description" class="form-control"></ion-textarea>
+              <ion-textarea  auto-grow="true" formControlName="description" placeholder="* Description" class="form-control"></ion-textarea>
             </ion-item>           
             <ng-container *ngFor="let validation of validation_messages.description">
               <span class="error-message" *ngIf="(isSubmitted || videoForm.get('description').touched) && videoForm.get('description').hasError(validation.type)">{{ validation.message }}</span>

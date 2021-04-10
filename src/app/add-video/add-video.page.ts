@@ -190,7 +190,7 @@ export class AddVideoPage implements OnInit {
     this.mediaCapture.captureVideo(options)
       .then(
         async (data: MediaFile[]) => {  
-          console.log("DAta: "+data[0].type);
+          // console.log("DAta: "+data[0].type);
           this.showLoader();
           this.uploadedVideo = null; 
           var filename = data[0].name;
@@ -273,7 +273,7 @@ export class AddVideoPage implements OnInit {
 
       this.musicService.getPlaylist().subscribe((data: any) => {
         this.playList = data.status;
-        console.log("this.playList: " + JSON.stringify(this.playList));
+        // console.log("this.playList: " + JSON.stringify(this.playList));
       });
   }
   playListeSelect(playListId : any,eltration : any){ 
