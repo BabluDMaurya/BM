@@ -77,6 +77,7 @@ import { PlaylistDropdownComponent } from './music/playlist-dropdown/playlist-dr
 import {VerifyUserComponent} from 'src/app/modalContent/verify-user/verify-user.component';
 import{VerifyUserInfoComponent} from "src/app/modalContent/verify-user-info/verify-user-info.component";
 // import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 
 @NgModule({
   declarations: [AppComponent, UserDetailsComponent, FollowersComponent, FollowingComponent, SearchFoodComponent,
@@ -149,6 +150,7 @@ import{VerifyUserInfoComponent} from "src/app/modalContent/verify-user-info/veri
     FilePath,
     LocalNotifications,
     BarcodeScanner,
+    Deeplinks,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
     // {

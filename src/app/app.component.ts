@@ -1,6 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit,ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
-import { Platform,AlertController } from '@ionic/angular';
+import { Platform,AlertController,NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {LoadingController} from '@ionic/angular';
@@ -8,15 +8,19 @@ import { AuthService } from './services/auth.service';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit
- {
+
+{
+  
   loaderToShow: any;
   currentScreenOrientation:string;  
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -28,12 +32,11 @@ export class AppComponent implements OnInit
     private authService: AuthService,
     private androidPermissions: AndroidPermissions,
      private fcm: FCM,
+     
     
   ){
     this.initializeApp();
     this.backButtonEvent();
-
-
 
   }    
   backButtonEvent() {

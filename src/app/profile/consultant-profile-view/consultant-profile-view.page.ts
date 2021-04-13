@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { PopoverController, NavController, ModalController } from '@ionic/angular';
+import { Platform,PopoverController, NavController, ModalController } from '@ionic/angular';
 import { CommonService } from '../../services/common.service';
 import { ChatPopupComponent } from '../consultant-profile-view/chat-popup/chat-popup.component';
 import { InfoModalComponent } from '../consultant-profile-view/info-modal/info-modal.component';
@@ -13,6 +13,8 @@ import { PeopleViewService } from "../../services/people-view.service";
 import { Config } from './../../config/config';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 //import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { PrivacyPage } from '../../settings/privacy/privacy.page';
 
 @Component({
   selector: 'app-consultant-profile-view',
@@ -21,6 +23,7 @@ import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 })
 export class ConsultantProfileViewPage implements OnInit {
+  @ViewChild(NavController,{static:false}) navChild: NavController;
   tabs = true;
   followStatus: any;
   previewImage: any = [];
@@ -62,7 +65,21 @@ export class ConsultantProfileViewPage implements OnInit {
     private actRoute: ActivatedRoute,
     private peopleView: PeopleViewService,
     private clipboard: Clipboard,
-  ) { }
+    public deeplink: Deeplinks,
+    private platform: Platform,
+  ) {
+
+    platform.ready().then(() => {
+      // THIS BELOW CODE WILL CHECK FOR DEEPLINKS FROM OTHER APPS OR BROWSER 
+      this.deeplink.routeWithNavController(this.navChild, {
+          '/privacy': PrivacyPage,
+      }).subscribe((match) => {
+          console.log('Successfully routed', match);
+      }, (nomatch) => {
+          console.warn('Unmatched Route', nomatch);
+      });
+  });
+   }
 
   consultID: any;
   ionViewWillEnter() {
