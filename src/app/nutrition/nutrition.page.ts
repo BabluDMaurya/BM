@@ -26,7 +26,7 @@ export class NutritionPage implements OnInit , OnDestroy {
   submitted: boolean = false;
   selectedImage = [];
   images: any;
-
+  nextVisible: boolean = false;
   constructor(
     public settingService: SettingsService,
     public commonService: CommonService,
@@ -66,7 +66,8 @@ export class NutritionPage implements OnInit , OnDestroy {
       nutriServeSize: new FormControl('', Validators.compose([
         Validators.required,
       ])),
-      nutriPrepHrs: new FormControl('00'),
+      // nutriPrepHrs: new FormControl('00'),
+      nutriPrepHrs: new FormControl(''),
       nutriPrepMin: new FormControl('', Validators.compose([
         Validators.required,
       ])),
@@ -231,6 +232,7 @@ export class NutritionPage implements OnInit , OnDestroy {
       // If it's base64 (DATA_URL):
       this.gallaryImgPath.push('data:image/jpeg;base64,' + imageData);
       console.log('viraj', imageData);
+      this.nextVisible = true;
     }, (err) => {
       // Handle error
       alert(err); 
@@ -250,6 +252,7 @@ export class NutritionPage implements OnInit , OnDestroy {
       // If it's base64 (DATA_URL):
       this.gallaryImgPath.push('data:image/jpeg;base64,' + imageData);
       console.log('viraj', imageData);
+      this.nextVisible = true;
     }, (err) => {
       // Handle error
       alert(err);

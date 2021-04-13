@@ -6,7 +6,7 @@
       </ion-buttons>
     </ion-item>
     <ion-item slot="center search-item" style="width: calc(100vh - 160px)">
-      <ion-input placeholder="Search Food" type="text" color="light" [ngModel]="searchFood" (ngModelChange)="checkFoodName($event)"></ion-input>
+      <ion-input placeholder="Search Food" type="text" id="search_food_name" color="light" [ngModel]="searchFood" (ngModelChange)="checkFoodName($event)"></ion-input>
     </ion-item>
     <ion-item class="icon-right-side ion-text-end" slot="end" (click)="toPreview()">
       <ion-buttons (click)="scanFood()" slot="end">

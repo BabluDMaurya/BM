@@ -12,7 +12,8 @@
       <ion-label>{{showPreview?"Preview":"Add Nutrition"}}</ion-label>
     </ion-item>
     <ion-item class="icon-right-side ion-text-end" slot="end">
-      <ion-label *ngIf="!showPreview" (click)="toPreview()" class="text-green">Next</ion-label>
+      <!-- //*ngIf="nextVisible"  -->
+      <ion-button *ngIf="nextVisible" (click)="toPreview()"  class="text-green">Next</ion-button>
       <ion-label *ngIf="showPreview" class="text-green" (click)="confirm()">Confirm</ion-label>
     </ion-item>
   </ion-list>
@@ -79,7 +80,7 @@
             </ng-container>
             <ion-item>
               <ion-label>Meal Type</ion-label>
-              <ion-select placeholder="Select Meal Type" formControlName="nutriMealType">
+              <ion-select placeholder="Select" formControlName="nutriMealType">
                 <ion-select-option value="1">Breakfast</ion-select-option>
                 <ion-select-option value="2">Brunch</ion-select-option>
                 <ion-select-option value="3">Lunch</ion-select-option>
@@ -95,7 +96,7 @@
             </ng-container>
             <ion-item>
               <ion-label>Serving size</ion-label>
-              <ion-input placeholder="Enter Serving size" type="number" class="ion-text-right"  color="light"
+              <ion-input placeholder="Enter" type="number" class="ion-text-right"  color="light"
                  formControlName="nutriServeSize"  [ngClass]="{ 'is-invalid': submitted && f.nutriServeSize.errors }">
               </ion-input>
             </ion-item>
@@ -208,7 +209,7 @@
           </ion-segment>
           <ion-item>
             <ion-label>Select Beverage</ion-label>
-            <ion-select placeholder="Beverage Type"  formControlName="nutriBevrageType">
+            <ion-select placeholder="Type"  formControlName="nutriBevrageType">
               <ion-select-option value="1">Coffee</ion-select-option>
               <ion-select-option value="2">Milk</ion-select-option>
               <ion-select-option value="3">Fruit drink</ion-select-option>
@@ -248,10 +249,10 @@
               </ion-select>
             </ion-item>
           </ion-list>
-          <ion-item lines="none">
+          <!-- <ion-item lines="none">
             <ion-label>Included in this meal</ion-label>
             <ion-toggle slot="start" formControlName="bevragveinclude" checked="false" ></ion-toggle>
-          </ion-item>
+          </ion-item> -->
         </ion-col>
       </ion-row>
     </form>

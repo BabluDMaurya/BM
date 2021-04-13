@@ -1,8 +1,8 @@
 <ion-header class="top-header three-block ion-no-padding">
   <ion-list class="top-heading">
     <ion-item>
-      <ion-buttons class="ion-no-margin" *ngIf="!showPreview">
-        <ion-icon ios="ios-arrow-back" md="md-arrow-back" (click) = "goBack()"></ion-icon>
+      <ion-buttons class="ion-no-margin" *ngIf="!showPreview" [routerLink]="['/tabs/consultant-profile']">
+        <ion-icon ios="ios-arrow-back"  md="md-arrow-back" ></ion-icon>
       </ion-buttons>
     </ion-item>
     <ion-item>
