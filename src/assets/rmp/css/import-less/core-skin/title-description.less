@@ -1,0 +1,49 @@
+/* Content title and description */
+.rmp-title,
+.rmp-description {
+  position: absolute;
+  left: 8px;
+  opacity: 1;
+  visibility: visible;
+  text-align: center;
+  padding: 0 8px;
+  max-width: 248px;
+  cursor: default;
+  .text-ellipsis();
+  .transition(~"opacity, visibility");
+}
+
+.rmp-title {
+  top: 8px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.rmp-extrasmall .rmp-title {
+  font-size: 12px;
+}
+
+.rmp-description {
+  top: 52px;
+  height: 28px;
+  line-height: 28px;
+  font-size: 12px;
+}
+
+.rmp-extrasmall .rmp-description {
+  font-size: 10px;
+}
+
+.rmp-small .rmp-title,
+.rmp-small .rmp-description {
+  max-width: 152px;
+}
+
+.rmp-extrasmall .rmp-title,
+.rmp-extrasmall .rmp-description {
+  max-width: 102px;
+}
+
+.rmp-360-ui .rmp-description {
+  display: none;
+}

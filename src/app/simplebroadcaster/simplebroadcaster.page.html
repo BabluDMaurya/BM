@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>simplebroadcaster</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+      <h2 id="title">Record Stream demo - local recording</h2>
+
+      <form id="start-call">
+          <legend id="my-number"></legend>
+      </form>
+      <form id="select-device">
+          <div class="col-2">
+              <div class="center">
+                  <select id='select-camera' name="camera" class="custom-select" placeholder="No camera"></select>
+                  <legend id="my-camera">Camera</legend>
+              </div>
+          </div>
+          <div class="col-2">
+              <div class="center">
+                  <select id='select-mic' name="camera" class="custom-select" placeholder="No microphone" ></select>
+                  <legend id="my-mic">Microphone</legend>
+              </div>
+          </div>
+      </form>
+      <div id="call" >
+          <p id="error-device"></p>
+          <button type="button" id="hangup">Hangup</button>
+          <div id="remote-container"></div>
+          <div id="local-container"></div>
+          <div id="local-container">
+              <video id="recordedVideo" loop controls></video>
+          </div>
+          <div id ="record-fct">
+              <button type="button" id="startRecording">Start Recording</button>
+              <button type="button" id="startRecordingVP9">Start Recording VP9</button>
+              <button type="button" id="stopRecording">Stop Recording</button>
+              <button type="button" id="pauseRecording">Pause Recording</button>
+              <button type="button" id="resumeRecording">Resume Recording</button>
+              <button type="button" id="play">Play</button>
+              <button type="button" id="download">Download</button>
+          </div>
+      </div>
+
+  </div>
+</ion-content>

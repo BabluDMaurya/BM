@@ -1,0 +1,247 @@
+<ion-content> 
+  <ion-grid class="ion-no-padding" *ngIf="showMusic==1">
+    <ion-header class="top-header ion-no-padding">
+      <ion-list class="top-heading three-block">
+        <ion-item slot="start">
+          <ion-buttons class="ion-no-margin" [routerLink]="['/tabs/consultant-profile']">
+            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          </ion-buttons>
+        </ion-item>
+        <ion-item slot="center">
+          <ion-label>Add Video</ion-label>
+        </ion-item>
+        <ion-item class="icon-right-side ion-text-end" slot="end">
+          <ion-label (click)="submitForm()" class="text-green" *ngIf="visibility">Next</ion-label>
+          <!-- <ion-fab-button class="btn-next" size="small" slot="end"><ion-icon ios="ios-send" md="md-send"></ion-icon></ion-fab-button>           -->
+        </ion-item>
+      </ion-list>
+    </ion-header> 
+    <ion-row class="ion-padding-horizontal main_content">
+      <ion-col size="12" class="ion-no-padding">
+        <form class="nutrition-form" [formGroup]="videoForm">
+          <ion-list>
+            <ion-item class="mb-10">
+              <ion-input formControlName="title" type="text" placeholder="* Title" class="form-control"></ion-input>
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.title">
+              <span class="error-message" *ngIf="(isSubmitted || videoForm.get('title').touched) && videoForm.get('title').hasError(validation.type)">{{ validation.message }}</span>
+            </ng-container>
+            <ion-item class="mb-10">
+              <ion-textarea  auto-grow="true" formControlName="description" placeholder="* Description" class="form-control"></ion-textarea>
+            </ion-item>           
+            <ng-container *ngFor="let validation of validation_messages.description">
+              <span class="error-message" *ngIf="(isSubmitted || videoForm.get('description').touched) && videoForm.get('description').hasError(validation.type)">{{ validation.message }}</span>
+            </ng-container>            
+          </ion-list>
+        </form>    
+        <div *ngIf="videoFileSelected" class="position-relative">
+          <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="removefilepreview()" color="danger" class="btn-close"></ion-icon>
+          <img (click)="filepreview()" class="mb-10" width="100%" height="250px" src="../../assets/images/demo3.jpg">
+        </div>
+        {{videoPath}}
+      </ion-col>
+    </ion-row>
+    <ion-footer class="sticky-footer icon-footer sticky-footer-bablu">
+      <ion-list class="ion-no-margin">
+        <ion-item>
+          <img (click)="selectVideo()" src="../../assets/images/photo.svg" />
+        </ion-item>
+        <ion-item >          
+          <img (click)="captureVideo()" src="../../assets/images/film.svg" />
+        </ion-item>        
+      </ion-list>
+    </ion-footer>      
+  </ion-grid>
+  <ion-grid class="ion-no-padding" *ngIf="showMusic==2">
+    <ion-header class="top-header ion-no-padding">
+      <ion-list class="top-heading three-block">
+        <ion-item slot="start">
+          <ion-buttons class="ion-no-margin" (click)="showMusic=1">
+            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          </ion-buttons>
+        </ion-item>
+        <ion-item slot="center">
+          <ion-label>Select Music</ion-label>
+        </ion-item>
+        <ion-item class="icon-right-side ion-text-end" slot="end">
+          <ion-label (click)="musicVolume()" class="text-green">Next</ion-label>
+          <!-- (click)="musicVolume()" -->
+          <!-- <ion-fab-button class="btn-next" size="small" slot="end"><ion-icon ios="ios-send" md="md-send"></ion-icon></ion-fab-button>           -->
+        </ion-item>
+      </ion-list>
+    </ion-header>
+    <ion-row class="main_content">
+      <ion-col size="12" class="ion-no-padding">
+        <ion-segment class="top-segment" (ionChange)="musicList($event)" >
+          <ion-segment-button value="music" checked>
+            <span>Music</span>
+          </ion-segment-button>
+          <ion-segment-button value="playlist">
+            <span>Playlist</span>
+          </ion-segment-button>
+        </ion-segment>
+        <div [ngSwitch]="musicTypes">
+          <div *ngSwitchCase="'music'">
+            <ion-toolbar class="searchbar">
+              <ion-searchbar type="text" (ionInput)="searchChanged($event)"></ion-searchbar>
+            </ion-toolbar>
+            <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="datagenres">              
+              <ion-segment class="ion-no-padding" *ngIf="searchMusicData">               
+                <ion-segment-button>Search Result</ion-segment-button>              
+              </ion-segment>
+              <ion-segment *ngIf="!searchMusicData" class="ion-no-padding" scrollable="true" (ionChange)="selectMusic($event)" >               
+                <ion-segment-button  value="{{genres.id}}" *ngFor="let genres of datagenres; let i = index;" [checked]="i==0 ? true : false">{{genres.name}}</ion-segment-button>              
+              </ion-segment>
+            </ion-toolbar>
+            
+            <div [ngSwitch]="selectMusicList" *ngIf="datagenres">
+              <div *ngIf="!searchMusicData">
+              <div *ngFor="let musicArray of datagenres; let m = index;">                 
+                <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="musicArray.id">                    
+                  <div *ngIf="!musicArray.musics.length == 0">
+                  <ion-item (click)="musicSelect([j+1,musicArray.id,music.id,music.filename,music.title,music.duration])" [ngClass]="(j+1)==activeMusic ? musicArray.id == activetab ? 'active' : '' : '' " *ngFor="let music of musicArray.musics; let j = index;">
+                        <ion-icon ios="ios-play" md="md-play"></ion-icon>
+                        <ion-label>{{music.title}}</ion-label>
+                        <ion-text>{{music.duration}}</ion-text>                                        
+                  </ion-item>                            
+                  </div>
+                  <div *ngIf="musicArray.musics.length == 0">
+                    <ion-item class="no-data">
+                      <ion-label>No Music Data</ion-label>
+                    </ion-item>                           
+                  </div>
+                </ion-list>              
+              </div>
+            </div>
+            <div *ngIf="searchMusicData">                 
+              <ion-list lines="none" class="ion-no-padding musiclist">
+                <div *ngIf="!datagenres.length == 0">
+                  <ion-item [ngClass]= "(j+1)==activeMusic ? 'active' : '' " (click)="musicSelect([(j+1),1,music.id,music.filename,music.title,music.duration])" *ngFor="let music of datagenres; let j = index;">
+                    <ion-icon ios="ios-play" md="md-play"></ion-icon>
+                        <ion-label>{{music.title}}</ion-label>
+                        <ion-text>{{music.duration}}</ion-text>
+                  </ion-item>                               
+                </div>            
+              </ion-list>              
+            </div>
+          </div>
+
+            <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="!datagenres">              
+              <ion-segment class="ion-no-padding" scrollable="true" (ionChange)="selectMusic($event)" >
+                <ion-segment-button value="hiphop" checked>
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="classical">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="edm">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="folk">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="rock">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="jazz">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="indianfolk">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="blues">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="beats">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="trap">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+                <ion-segment-button value="alternativehiphop">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-segment-button>
+              </ion-segment>
+            </ion-toolbar>
+            <div [ngSwitch]="selectMusicList" *ngIf="!datagenres">
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'hiphop'"> 
+                <ion-item (click)="musicSelect=1" [ngClass]="musicSelect==1?'active':''">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-item>
+                <ion-item (click)="musicSelect=2" [ngClass]="musicSelect==2?'active':''">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-item>
+                <ion-item (click)="musicSelect=3" [ngClass]="musicSelect==3?'active':''">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-item>
+                <ion-item (click)="musicSelect=4" [ngClass]="musicSelect==4?'active':''">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-item>          
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'classical'"> 
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'edm'"> 
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'folk'"> 
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'rock'"> 
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'jazz'"> 
+                <ion-item class="no-data">
+                  <ion-label>No Music Data</ion-label>
+                </ion-item>
+              </ion-list>
+            </div>
+          </div>
+          <div *ngSwitchCase="'playlist'">
+            <ion-list *ngFor="let list of playList; let i = index; ">
+              <ion-item>
+                <ion-label (click)="playListeSelect(list?.id,i)">
+                  <h3 class="list-person">{{list?.playlist_name}}</h3>
+                  <span class="list-name">{{list?.playlist_songs?.length}} Songs</span>
+                </ion-label>
+                <!-- <ion-icon slot="end" ios="ios-more" md="md-more" ></ion-icon> -->
+                <div class="action-links" slot="end">
+                  <ion-icon *ngIf = "customClass != i" ios="ios-arrow-down" md="ios-arrow-down"></ion-icon> 
+                  <ion-icon *ngIf = "customClass == i"ios="ios-arrow-up" md="ios-arrow-up"></ion-icon>
+                </div> 
+              </ion-item>
+              <!-- <app-expandable expandHeight="300px" class="timeline-block" [expanded]="list.expanded"> -->
+              <div [ngClass]="customClass == i ? 'active':'deactive'">
+                <ion-item class="item-label item md in-list musicPlayList-item" *ngFor="let song of songList;" (click)="musicSelect([(j+1),2,song.id,song.filename,song.title,song.duration])">
+                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
+                  <ion-label class="list-name d-block"> 
+                    <h3 class="list-head">{{song.title}}</h3>
+                    <ion-text slot="end">{{song.duration}}</ion-text>  
+                  </ion-label>
+                </ion-item>
+              </div>
+            <!-- </app-expandable> -->            
+            </ion-list>
+          </div>         
+        </div>        
+      </ion-col>           
+    </ion-row>    
+    <!-- <ion-footer class="musiclist green   sticky-footer sticky-footer-bablu">
+      <app-audio-player [selectedAudio]=[audioFile,musicChanged,audioFilename,audioFileDuration]>
+      </app-audio-player>    
+    </ion-footer> -->
+    <div class="musiclistFooter">
+      <app-audio-player [selectedAudio]=[audioFile,musicChanged,audioFilename,audioFileDuration]>
+      </app-audio-player>    
+    </div>
+  </ion-grid>   
+   
+ </ion-content>

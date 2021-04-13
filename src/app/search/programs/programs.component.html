@@ -1,0 +1,274 @@
+<ion-row>
+  <ion-col size="12">
+    <ion-toolbar class="searchbar">
+      <!-- <ion-searchbar type="text" (ionInput)="searchChanged($event)"></ion-searchbar> -->
+      <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+    </ion-toolbar>
+  </ion-col>
+</ion-row>
+<div class="categoryHeading">
+  <h6>Categories</h6>
+</div>
+<ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="!searchProgram">
+  <ion-segment scrollable="true" class="ion-no-padding" (ionChange)="categoryChanged($event)">
+    <ion-segment-button *ngFor="let item of speciality | filter:term" value="{{item?.id}}"
+      [checked]="categories.id==item?.id ? true :false">
+      <span>{{item?.name}}</span>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+
+<div *ngIf="!searchProgram">
+  <ion-list lines="none" class="item-list ion-no-padding" *ngIf="programList?.length > 0; else noData">
+    <ion-card *ngFor="let program of programList" [class]="!program?.ad ? 'item-card ': 'video-card advertise-block'">
+      <ion-card-header class="item-header" *ngIf="!program?.ad">
+        <ion-avatar>
+          <img src="{{url}}{{program?.program_user?.bios?.profile_pic}}"
+            *ngIf="program?.program_user?.bios?.profile_pic">
+          <img src="../../assets/images/user.jpg" *ngIf="!program?.program_user?.bios?.profile_pic">
+        </ion-avatar>
+        <div class="header-right">
+          <ion-label
+            [routerLink]="program?.program_user?.user_type==0 ? ['/tabs/user-profile-view/',program?.program_user?.id] : ['/tabs/consultant-profile-view/',program?.program_user?.id]">
+            <ion-card-title>{{program?.program_user?.user_name}}</ion-card-title>
+            <ion-card-subtitle>{{program?.program_user?.location}}</ion-card-subtitle>
+          </ion-label>
+          <div (click)="addBookmark(program?.id, program?.bookmark , 5)" class="{{ bookmark1 ?'inactive':'active' }}">
+            <ion-icon class="active-icon" ios="ios-bookmark" md="md-bookmark"></ion-icon>
+          </div>
+        </div>
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding item-content" *ngIf="!program?.ad">
+        <ion-thumbnail  [routerLink]="program?.program_user?.id==userData?.id ? ['/program-details/',program?.id] : ['/program-view/',program?.id]" >
+          <img src="../../assets/images/demo3.jpg">
+        </ion-thumbnail>
+        <div class="post-content">
+          <span class="username-text text-green">{{program?.title}}</span>
+          <p class="mb-10" *ngIf="program?.description && program?.description.length < 30">
+            {{program?.description.substr(0, 100)}} </p>
+          <p class="mb-10" *ngIf="program?.description && program?.description.length > 29 && expanded !=  program.id">
+            {{program?.description.substr(0, 29)}}
+            <span (click)="expanded =program.id"
+              class="text-green">{{expanded==  program.id?'View less':'View more'}}</span></p>
+          <p class="mb-10" *ngIf="expanded ==  program.id ">{{program?.description}}
+            <span (click)="expanded = 0" class="text-green">{{expanded==  program.id ?'View less':'View more'}}</span>
+          </p>
+
+        </div>
+      </ion-card-content>
+
+      <!-- ADVERTISE HTML start -->
+      <ion-card-header class="card-head upcoming-block" *ngIf="program?.ad">
+        <img src="../../assets/images/demo3.jpg">
+        <ion-label class="full-width">
+          <a href="">
+            <ion-card-title>Advertisement Title</ion-card-title>
+            <ion-card-subtitle>Advertisement Location</ion-card-subtitle>
+          </a>
+        </ion-label>
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding" *ngIf="program?.ad">
+        <img src="../../assets/images/demo3.jpg">
+      </ion-card-content>
+      <!-- ADVERTISE HTML ends -->
+    </ion-card>
+  </ion-list>
+
+  <!-- S K E L E T O N -->
+  <ion-list lines="none" class="item-list ion-no-padding" *ngIf="!programList">
+    <ion-card class="video-card">
+      <ion-card-header class="card-head upcoming-block">
+        <ion-skeleton-text animated class="card-thumb"></ion-skeleton-text>
+        <ion-label>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-label>
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <div class="video-content">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="video-card">
+      <ion-card-header class="card-head upcoming-block">
+        <ion-skeleton-text animated class="card-thumb"></ion-skeleton-text>
+        <ion-label>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-label>
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <div class="video-content">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="video-card">
+      <ion-card-header class="card-head upcoming-block">
+        <ion-skeleton-text animated class="card-thumb"></ion-skeleton-text>
+        <ion-label>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-label>
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <div class="video-content">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
+  
+  <!-- S K E L E T O N   E N D S-->
+</div>
+<!-- S K E L E T O N -->
+<ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="!speciality ">
+  <ion-segment scrollable="true" class="ion-no-padding">
+    <ion-segment-button checked>
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-segment-button>
+    <ion-segment-button>
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-segment-button>
+    <ion-segment-button>
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-segment-button>
+    <ion-segment-button>
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-segment-button>
+
+  </ion-segment>
+</ion-toolbar>
+
+<!-- S K E L E T O N   E N D S-->
+
+<!-- search  Div -->
+<div *ngIf="searchProgram">
+  <ion-list lines="none" class="item-list ion-no-padding">
+    <ion-card *ngFor="let program of searchProgram" [class]="!program?.ad ? 'item-card ': 'video-card advertise-block'">
+      <ion-card-header class="item-header" *ngIf="!program?.ad">
+        <ion-avatar>
+          <img src="{{url}}{{program?.program_user?.bios?.profile_pic}}"
+            *ngIf="program?.program_user?.bios?.profile_pic">
+          <img src="../../assets/images/user.jpg" *ngIf="!program?.program_user?.bios?.profile_pic">
+        </ion-avatar>
+        <div class="header-right">
+          <ion-label
+            [routerLink]="program?.program_user?.user_type==0 ? ['/tabs/user-profile-view/',program?.program_user?.id] : ['/tabs/consultant-profile-view/',program?.program_user?.id]">
+            <ion-card-title>{{program?.program_user?.user_name}}</ion-card-title>
+            <ion-card-subtitle>{{program?.program_user?.location}}</ion-card-subtitle>
+          </ion-label>
+          <div (click)="bookmark1=!bookmark1" class="{{ bookmark1 ?'inactive':'active' }}">
+            <ion-icon class="active-icon" ios="ios-bookmark" md="md-bookmark"></ion-icon>
+          </div>
+        </div>
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding item-content" *ngIf="!program?.ad">
+        <ion-thumbnail>
+          <img src="../../assets/images/demo3.jpg">
+        </ion-thumbnail>
+        <div class="post-content">
+          <span class="username-text text-green">{{program?.title}}</span>
+          <p class="mb-10" *ngIf="program?.description && program?.description.length < 30">
+            {{program?.description.substr(0, 100)}} </p>
+          <p class="mb-10" *ngIf="program?.description && program?.description.length > 29 && expanded !=  program.id">
+            {{program?.description.substr(0, 29)}}
+            <span (click)="expanded =program.id"
+              class="text-green">{{expanded==  program.id?'View less':'View more'}}</span></p>
+          <p class="mb-10" *ngIf="expanded ==  program.id ">{{program?.description}}
+            <span (click)="expanded = 0" class="text-green">{{expanded==  program.id ?'View less':'View more'}}</span>
+          </p>
+
+        </div>
+      </ion-card-content>
+
+      <!-- ADVERTISE HTML start -->
+      <ion-card-header class="card-head upcoming-block" *ngIf="program?.ad">
+        <img src="../../assets/images/demo3.jpg">
+        <ion-label class="full-width">
+          <a href="">
+            <ion-card-title>Advertisement Title</ion-card-title>
+            <ion-card-subtitle>Advertisement Location</ion-card-subtitle>
+          </a>
+        </ion-label>
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding" *ngIf="program?.ad">
+        <img src="../../assets/images/demo3.jpg">
+      </ion-card-content>
+      <!-- ADVERTISE HTML ends -->
+    </ion-card>
+  </ion-list>  
+  <!-- S K E L E T O N -->
+  
+
+  <ion-list lines="none" class="item-list ion-no-padding" *ngIf="searchSkeleton">
+    <ion-card class="video-card">
+      <ion-card-header class="card-head upcoming-block">
+        <ion-skeleton-text animated class="card-thumb"></ion-skeleton-text>
+        <ion-label>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-label>
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <div class="video-content">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="video-card">
+      <ion-card-header class="card-head upcoming-block">
+        <ion-skeleton-text animated class="card-thumb"></ion-skeleton-text>
+        <ion-label>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-label>
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <div class="video-content">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="video-card">
+      <ion-card-header class="card-head upcoming-block">
+        <ion-skeleton-text animated class="card-thumb"></ion-skeleton-text>
+        <ion-label>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-label>
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <div class="video-content">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
+  <!-- S K E L E T O N   E N D S-->
+</div>
+<div class="no-data" *ngIf="!searchProgram && programList.length < 1">
+  <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+  <p>No Program Found</p>
+</div>

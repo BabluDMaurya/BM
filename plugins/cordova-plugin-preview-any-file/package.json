@@ -1,0 +1,53 @@
+{
+  "_from": "cordova-plugin-preview-any-file@0.1.5",
+  "_id": "cordova-plugin-preview-any-file@0.1.5",
+  "_inBundle": false,
+  "_integrity": "sha512-WCMq8Sf+T4fG3ZIg4ITXOhxv4ZCf9oDYI3/w4iPtAOogGDx/YHOKfqEbpz2MkFlSjk8Xuj3S4saIcRTj1vVuhA==",
+  "_location": "/cordova-plugin-preview-any-file",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-preview-any-file@0.1.5",
+    "name": "cordova-plugin-preview-any-file",
+    "escapedName": "cordova-plugin-preview-any-file",
+    "rawSpec": "0.1.5",
+    "saveSpec": null,
+    "fetchSpec": "0.1.5"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-preview-any-file/-/cordova-plugin-preview-any-file-0.1.5.tgz",
+  "_shasum": "ef5866c9a175059873fe9a7617a811ee181c99f4",
+  "_spec": "cordova-plugin-preview-any-file@0.1.5",
+  "_where": "/Users/macsierra/Downloads/intoactive-virajion-2",
+  "author": {
+    "name": "Mostafa Mansour",
+    "email": "mostafa@outlook.kr"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-preview-any-file",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Plugin to preview any file type in native mode by providing the local or external URL",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "view document",
+    "pdf",
+    "doc",
+    "docx",
+    "cordova zip",
+    "cordova document"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-preview-any-file",
+  "version": "0.1.5"
+}

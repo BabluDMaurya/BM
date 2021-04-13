@@ -1,0 +1,115 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin"  (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>My Videos</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <ion-card class="ion-no-margin">
+    <ion-card-content class="ion-no-padding item-content">
+  <ion-thumbnail>
+    <img *ngIf="noImgData" width="100%" height="210px" src="../../../assets/images/loading.jpg">
+    <img *ngIf="!noImgData" (click)="playVideo()" width="100%" height="210px" src="{{videoThumbPath}}">
+  </ion-thumbnail>
+  <ion-icon (click)="playVideo()" ios="ios-play" md="md-play" class="play-videoBtn"></ion-icon>
+</ion-card-content>
+</ion-card>
+  <!-- <video width="100%" height="210px" controls disablePictureInPicture controlsList="nodownload" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="mb-10 videoPlayer">
+    <source src="{videoDataPath}" type="video/mp4" />
+  </video> -->
+    <h6 class="ion-padding-horizontal">{{title}}</h6>
+  <ion-list class="top-list">
+    <ion-item (click)="liked(postID, likePost)" [ngClass]="likePost ? 'active' :''">
+      <div class="top-icon"><ion-icon ios="ios-heart" md="md-heart"></ion-icon></div>
+      <ion-label>{{ postLikesCount > 0 ? postLikesCount : 0 }}</ion-label>
+    </ion-item>
+    <ion-item [routerLink]="['/comments',postID]" *ngIf=" !disableComment" detail="false">
+      <div class="top-icon"><ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon></div>
+      <ion-label>{{ commentCount > 0 ? commentCount : 0 }}</ion-label>
+    </ion-item>
+    <ion-item (click)="shareModal()">
+      <div class="top-icon"><ion-icon ios="ios-share" md="md-share"></ion-icon></div>
+      <ion-label>Share</ion-label>
+    </ion-item>
+    <ion-item (click)="info=!info" [ngClass]="info?'active':''">
+      <div class="top-icon"><ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></div>
+      <ion-label>Info</ion-label>
+    </ion-item>
+    <ion-item  (click)="addBookmark()"  [ngClass]="bookmark?'active':''">
+      <div class="top-icon"><ion-icon ios="ios-bookmark" md="md-bookmark"></ion-icon></div>
+      <ion-label>Bookmark</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list class="info-block ion-padding" *ngIf="info" [ngClass]="info?'active':''">
+    <p>{{description}}</p>
+    <p>&nbsp;</p>
+    <p>Published on {{createdAt}}</p>
+    <p>Credits - Bablu Maurya</p>
+  </ion-list>
+  <ion-list *ngIf="type != 'exclusive'" lines="none" class="video-list">
+    <ion-list-header>Up Next</ion-list-header>
+    <div *ngIf="videoType == 1">      
+      <div *ngFor="let post of upNext">         
+        <div *ngFor = "let nextpost of post.open_video_post">           
+        <ion-item  [routerLink]="['/videos',post.id,'']">
+          <ion-avatar slot="start">
+            <img src="{{storagePath + nextpost.thumb_path}}">
+          </ion-avatar>
+          <ion-label>
+            <h3>{{nextpost.title}}</h3>
+            <p class="text-gray">{{nextpost.description}}</p>
+            <p class="text-gray">{{nextpost.created_at}} . {{nextpost.views > 0 ? nextpost.views : 0}} views</p>
+          </ion-label>
+        </ion-item>
+        
+      </div>
+      </div>
+    </div>    
+    <div *ngIf="videoType == 2">
+      <div *ngFor="let post of upNext"> 
+        <div *ngFor = "let nextpost of post.exclusive_video_post">          
+        <ion-item [routerLink]="['/videos',post.id,'']">
+          <ion-avatar slot="start">
+            <img src="{{storagePath + nextpost.thumb_path}}">
+          </ion-avatar>
+          <ion-label>
+            <h3>{{nextpost.title}}</h3>
+            <p class="text-gray">{{nextpost.description}}</p>
+            <p class="text-gray">{{nextpost.created_at}} . {{nextpost.views > 0 ? nextpost.views : 0}} views</p>
+          </ion-label>
+        </ion-item>
+        </div>
+      </div>
+      </div>
+      <div *ngIf="videoType == 3">
+        <div *ngFor="let post of upNext"> 
+          <div *ngFor = "let nextpost of post.save_video_post">            
+          <ion-item  [routerLink]="['/videos',post.id,'']">
+            <ion-avatar slot="start">
+              <img src="{{storagePath + nextpost.thumb_path}}">
+            </ion-avatar>
+            <ion-label>
+              <h3>{{nextpost.title}}</h3>
+              <p class="text-gray">{{nextpost.description}}</p>
+              <p class="text-gray">{{nextpost.created_at}} . {{nextpost.views > 0 ? nextpost.views : 0}} views</p>
+            </ion-label>
+          </ion-item>
+          </div>
+        </div>
+        </div>
+        <div *ngIf="noData" class="no-data">
+          <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+          <p>No Data Found</p>
+        </div>
+
+  </ion-list>
+</ion-content>
+
+

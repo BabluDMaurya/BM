@@ -1,0 +1,38 @@
+{
+  "_from": "enablex-cordova-plugin@latest",
+  "_id": "enablex-cordova-plugin@1.8.0",
+  "_inBundle": false,
+  "_integrity": "sha512-fb/Ei90Lr198+UMTo7UfZ4mutDTxpR/UbUXEHo7EX1iv1CAs1CeTb/Gt+MAQ62CbLqAqR2XivEUmL+swdWdzAA==",
+  "_location": "/enablex-cordova-plugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "enablex-cordova-plugin@latest",
+    "name": "enablex-cordova-plugin",
+    "escapedName": "enablex-cordova-plugin",
+    "rawSpec": "latest",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/enablex-cordova-plugin/-/enablex-cordova-plugin-1.8.0.tgz",
+  "_shasum": "6d88546d9a743f7df951ef77d1b0040d59b695c1",
+  "_spec": "enablex-cordova-plugin@latest",
+  "_where": "/home/bablu/CompanyProject/wdipl/ionic/BM",
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "enablex-cordova-plugin",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Add live video streaming to your Cordova Application",
+  "name": "enablex-cordova-plugin",
+  "version": "1.8.0"
+}

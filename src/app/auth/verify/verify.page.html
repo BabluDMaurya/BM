@@ -1,0 +1,29 @@
+<ion-content class="sec-login" ion-padding>
+  <ion-row>
+    <ion-col class="ion-padding ion-text-center">
+      <div class="login-logo ion-text-center">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back" [routerLink]="['/signup']" class="back-icon"></ion-icon>
+        <img src="../../../assets/images/logo.png">  
+      </div>      
+      <ion-label class="text-white">Please check your given email id for OTP</ion-label>      
+      <form class="login-form mt-20" [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+        <ion-item class="ion-no-padding">
+          <ion-input placeholder="Enter Otp" type="number" formControlName="otp" ></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.otp">
+          <span class="error-message"
+            *ngIf="(submitted || otpForm.get('otp').touched) && otpForm.get('otp').hasError(validation.type)">
+            {{ validation.message }}
+          </span>
+        </ng-container>
+        <!-- <ion-item class="ion-no-padding">
+          <ion-input placeholder="" type="hidden" formControlName="uemail" ></ion-input>  
+        </ion-item>            -->
+        <div class="ion-text-end ion-margin-bottom text-green">
+          <p (click)="resend()" class="text-green">Resend OTP</p>
+        </div>
+        <ion-button expand="block" class="green ion-text-uppercase mt-20" (click)="onSubmit()">Submit</ion-button>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>
