@@ -95,13 +95,13 @@ export class NutritionPage implements OnInit , OnDestroy {
       { type: 'required', message: 'Description is required.' }
     ],
     nutriMealType: [
-      { type: 'required', message: 'MealType is required' }
+      { type: 'required', message: 'Meal Type is required' }
     ],
     nutriServeSize: [
-      { type: 'required', message: 'ServeSize required' },
+      { type: 'required', message: 'Serve Size is required' },
     ],
     nutriPrepMin: [
-      { type: 'required', message: 'fields required.' },
+      { type: 'required', message: 'Preperation time required.' },
     ],
     nutriIngredients: [
       { type: 'required', message: 'Ingredients are required.' },
