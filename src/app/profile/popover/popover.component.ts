@@ -12,15 +12,15 @@ export class PopoverComponent implements OnInit {
   popovervalue: any;
   postData:any;
   commentStatus :any;
+  commentText : any;
   constructor(public navCtrl: NavController, 
     private navParams: NavParams,
     private postService: PostService,
     private commonService : CommonService
     ) {
       this.postData = this.navParams.get('postId');
-      this.commentStatus = this.navParams.get('commentStatus');
-      
-      console.log(this.postData);
+      this.commentStatus = this.navParams.get('commentStatus'); 
+      this.commentText = this.commentStatus == 1 ? 'Enable Comment' : 'Disable Comment';
      }
 
   ngOnInit() {}
