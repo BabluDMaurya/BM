@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,AfterViewInit } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
-
+import { IonContent,IonTextarea,IonInput } from '@ionic/angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { NutritionService } from './../../services/nutrition.service';
 import { map } from 'rxjs/operators';
@@ -10,8 +10,8 @@ import { NavParams } from '@ionic/angular';
   templateUrl: './search-food.component.html',
   styleUrls: ['./search-food.component.scss','../../app.component.scss'],
 })
-export class SearchFoodComponent implements OnInit {
-
+export class SearchFoodComponent implements OnInit{
+  @ViewChild(IonInput, { read: IonInput,  static: false }) search_food_name: IonInput;
   apiData:any;
   foodList:any=null;
   selectedFoodList=[];
@@ -39,7 +39,14 @@ export class SearchFoodComponent implements OnInit {
                 
               }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
+  ngAfterViewInit() {
+    setTimeout(() => {
+          this.search_food_name.setFocus();
+    }, 400);
+  }
   closeModal()
   {
     let data= null;

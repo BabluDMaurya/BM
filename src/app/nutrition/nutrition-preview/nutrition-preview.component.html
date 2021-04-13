@@ -52,26 +52,31 @@
     <p *ngIf="nutritionData.form.nutriBevrageType == 2">Milk</p>
     <p *ngIf="nutritionData.form.nutriBevrageType == 3">Fruit Drink</p>    
     <p *ngIf="nutritionData.form.nutriBevrageType == 4">Soda</p>
-  </ion-item>
-  <ion-item class="beveragesList">
     <p>{{nutritionData.form.bevragveQnty}}</p> <p *ngIf="nutritionData.form.bevragveQnty == 1">Bottle</p>
     <p *ngIf="nutritionData.form.bevragveQnty == 2">Glass</p>
     <p *ngIf="nutritionData.form.bevragveQnty == 3">Bowl</p>    
     <p *ngIf="nutritionData.form.bevragveQnty == 4">Cup</p>
-  </ion-item> 
-  <ion-item >
-    <p>{{nutritionData.form.unitQnty}}</p> <p>Milliter</p>
+    <p>{{nutritionData.form.unitQnty}}</p> <p>Milliliter</p>
   </ion-item>
+  
+  <ion-item class="beveragesList">
+    
+  </ion-item> 
+  
   <ion-item >
+    
+  </ion-item>
+  <!-- <ion-item >
     <p *ngIf="nutritionData.form.bevragveinclude" >This beverage should consume with  this nutrition</p>
-     </ion-item>
+     </ion-item> -->
 </ion-list>
 <ion-grid class="ion-no-padding">
   <ion-row>
     <ion-col size="12" class="position-relative ion-no-padding">
       <ion-card *ngFor="let item of items">
         <ion-card-header class="more-card-header" (click)="expandItem(item)" >
-          <ion-card-title>More Details</ion-card-title>
+          <!-- <ion-card-title>More Details</ion-card-title> -->
+          <ion-card-title>Nutrition Details</ion-card-title>
           <ion-fab size="small" class="addmore">
             <ion-icon ios="ios-add" md="md-add"></ion-icon>
           </ion-fab>

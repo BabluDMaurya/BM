@@ -12,7 +12,8 @@
       <ion-label>{{showPreview?"Preview":"Add Nutrition"}}</ion-label>
     </ion-item>
     <ion-item class="icon-right-side ion-text-end" slot="end">
-      <ion-label *ngIf="!showPreview" (click)="toPreview()" class="text-green">Next</ion-label>
+      <!-- //*ngIf="nextVisible"  -->
+      <ion-button *ngIf="nextVisible" (click)="toPreview()"  class="text-green">Next</ion-button>
       <ion-label *ngIf="showPreview" class="text-green" (click)="confirm()">Confirm</ion-label>
     </ion-item>
   </ion-list>
@@ -56,8 +57,8 @@
         <ion-col size="12" class="ion-no-padding">
           <ion-list>
             <ion-item>
-              <ion-label position="stacked">Enter Title</ion-label>
-              <ion-input class="form-control" type="text" formControlName="nutriTitle" [ngClass]="{ 'is-invalid': submitted && f.nutriTitle.errors }">
+              <ion-label position="stacked">Enter Title<span>*</span></ion-label>
+              <ion-input class="form-control" type="text"  formControlName="nutriTitle" [ngClass]="{ 'is-invalid': submitted && f.nutriTitle.errors }">
               </ion-input>
             </ion-item>
             <ng-container *ngFor="let validation of validation_messages.nutriTitle">
@@ -67,7 +68,7 @@
               </span>
             </ng-container>
             <ion-item>
-              <ion-label position="stacked">Enter Description</ion-label>
+              <ion-label position="stacked">Enter Description<span>*</span></ion-label>
               <ion-textarea class="form-control" type="text" formControlName="nutriDescription"
                  [ngClass]="{ 'is-invalid': submitted && f.nutriDescription.errors }"></ion-textarea>
             </ion-item>
@@ -78,8 +79,8 @@
               </span>
             </ng-container>
             <ion-item>
-              <ion-label>Meal Type</ion-label>
-              <ion-select placeholder="Select Meal Type" formControlName="nutriMealType">
+              <ion-label>Meal Type<span class="">*</span></ion-label>
+              <ion-select placeholder="Select" formControlName="nutriMealType">
                 <ion-select-option value="1">Breakfast</ion-select-option>
                 <ion-select-option value="2">Brunch</ion-select-option>
                 <ion-select-option value="3">Lunch</ion-select-option>
@@ -94,8 +95,8 @@
               </span>
             </ng-container>
             <ion-item>
-              <ion-label>Serving size</ion-label>
-              <ion-input placeholder="Enter Serving size" type="number" class="ion-text-right"  color="light"
+              <ion-label>Serving size<span class="">*</span></ion-label>
+              <ion-input placeholder="Enter" type="number" class="ion-text-right"  color="light"
                  formControlName="nutriServeSize"  [ngClass]="{ 'is-invalid': submitted && f.nutriServeSize.errors }">
               </ion-input>
             </ion-item>
@@ -106,7 +107,7 @@
               </span>
             </ng-container>
             <ion-item>
-              <ion-label>Preparation Time</ion-label>
+              <ion-label>Preparation Time<span class="">*</span></ion-label>
               <ion-select placeholder="Hours" formControlName="nutriPrepHrs">
                 <ion-select-option *ngFor="let hour of [00,01,02,03,04,05,06,07,08,09,10,11,12]; let i=index;"
                   value="{{('0'+hour).slice(-2)}}">{{('0'+hour).slice(-2)}}</ion-select-option>
@@ -184,7 +185,7 @@
             <ion-list-header class="ion-no-padding min-height-auto">Instructions</ion-list-header>
             <ion-list class="ion-no-padding mb-10" *ngFor="let item of t.controls; let i = index">
               <ion-item [formGroup]="item">
-                <ion-input formControlName="name" placeholder="Enter Instruction"></ion-input>
+                <ion-input formControlName="name" placeholder="Enter Instructions"></ion-input>
                 <ion-button class="btn-square green" (click)="removeInstruction(i)" *ngIf="i!=0">
                   <ion-icon ios="ios-remove" md="md-remove"></ion-icon>
                 </ion-button>
@@ -208,7 +209,7 @@
           </ion-segment>
           <ion-item>
             <ion-label>Select Beverage</ion-label>
-            <ion-select placeholder="Beverage Type"  formControlName="nutriBevrageType">
+            <ion-select placeholder="Type"  formControlName="nutriBevrageType">
               <ion-select-option value="1">Coffee</ion-select-option>
               <ion-select-option value="2">Milk</ion-select-option>
               <ion-select-option value="3">Fruit drink</ion-select-option>
@@ -248,10 +249,10 @@
               </ion-select>
             </ion-item>
           </ion-list>
-          <ion-item lines="none">
+          <!-- <ion-item lines="none">
             <ion-label>Included in this meal</ion-label>
             <ion-toggle slot="start" formControlName="bevragveinclude" checked="false" ></ion-toggle>
-          </ion-item>
+          </ion-item> -->
         </ion-col>
       </ion-row>
     </form>
