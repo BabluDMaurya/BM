@@ -23,8 +23,8 @@ import { FilePath } from '@ionic-native/file-path/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Crop } from '@ionic-native/crop/ngx';
-import { File } from '@ionic-native/file/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { MediaCapture } from '@ionic-native/media-capture/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
@@ -139,6 +139,7 @@ import { Deeplinks } from '@ionic-native/deeplinks/ngx';
     Crop,
     ScreenOrientation,
     FileTransfer,
+    
     PhotoViewer,
     FCM,
     // LocalNotifications,

@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, NgZone, ChangeDetectorRef,ViewChild  } from '@angular/core';
 import { MusicVolumeModalComponent } from './music-volume-modal/music-volume-modal.component';
 import { CommonService } from '../services/common.service';
 import { UserModalComponent } from '../add-program/user-modal/user-modal.component';
@@ -15,19 +15,20 @@ import { MusicService } from '../services/music.service';
 import {Storage} from '@ionic/storage';
 import { HttpHeaders } from "@angular/common/http";
 import { NutritionService } from './../services/nutrition.service';
+import {AudioPlayerComponent} from './audio-player/audio-player.component';
 import { MediaCapture, MediaFile, CaptureError, CaptureVideoOptions } from '@ionic-native/media-capture/ngx';
 
 const baseUrl = Config.ApiUrl;
 const MAX_FILE_SIZE = 500 * 1024 * 1024;
-const ALLOWED_MIME_TYPE = ["video/mp4", "video/3gpp", "video/3gp", "video/avi", "video/mov", "video/mkw"];
+// const ALLOWED_MIME_TYPE = ["video/mp4", "video/3gpp", "video/3gp", "video/avi", "video/mov", "video/mkw"];
 
 @Component({
   selector: 'app-add-video',
   templateUrl: './add-video.page.html',
   styleUrls: ['./../app.component.scss','./add-video.page.scss'],
 })
-export class AddVideoPage implements OnInit { 
-
+export class AddVideoPage implements OnInit {   
+  @ViewChild(AudioPlayerComponent, { static: false }) AudioPlayer: AudioPlayerComponent;
   isSubmitted = false;
   videoForm: FormGroup;
   datagenres: any;  
@@ -175,7 +176,11 @@ export class AddVideoPage implements OnInit {
   }
 
   removefilepreview(){    
-      this.selectedVideo = null;
+    this.visibility = false;
+    this.selectedVideo = null;
+    this.videoFileSelected = false;       
+    this.commonService.presentToast('Selected video remove');
+    console.log('Selected video remove');
   }
   refresh() {
     this.cd.detectChanges();
@@ -240,7 +245,7 @@ export class AddVideoPage implements OnInit {
         this.dismissLoader();
         if (data.size > MAX_FILE_SIZE){ return this.commonService.presentAlert("Error", "You cannot upload more than 100 mb.",['Ok'],'');}
         // if (data.type !== ALLOWED_MIME_TYPE) { return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"]);}
-        if(ALLOWED_MIME_TYPE.indexOf(data.type) == -1){return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"],'');}
+        // if(ALLOWED_MIME_TYPE.indexOf(data.type) == -1){return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"],'');}
         this.selectedVideo = retrievedFile.nativeURL;
         localStorage.setItem('selectedVideo',JSON.stringify(this.selectedVideo));
         this.videoFileSelected = !this.videoFileSelected; 
@@ -305,6 +310,7 @@ export class AddVideoPage implements OnInit {
   }
 
   musicVolume(){        
+    this.AudioPlayer.pause();
     var url = baseUrl +  "api/auth/videoPost";    
     var filename = this.selectedVideo.substr(this.selectedVideo.lastIndexOf('/') + 1);         
     var fileData = {

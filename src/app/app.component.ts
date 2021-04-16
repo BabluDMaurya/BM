@@ -8,6 +8,7 @@ import { AuthService } from './services/auth.service';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,8 @@ export class AppComponent implements OnInit
     private authService: AuthService,
     private androidPermissions: AndroidPermissions,
      private fcm: FCM,
-     
+     private file: File,
+ 
     
   ){
     this.initializeApp();
@@ -55,7 +57,11 @@ export class AppComponent implements OnInit
             //   }
    
 
-
+            this.file.createFile(this.file.externalApplicationStorageDirectory, "permissions.dat", true)
+            .then(() => {
+                this.file.removeFile(this.file.externalApplicationStorageDirectory, "permissions.dat")
+                    .then( () => console.log('success'), error => console.error(error) );
+            }, error => console.error(error))
 
       //---------FCM----------//
       this.fcm.getToken().then(token => {           

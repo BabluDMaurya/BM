@@ -182,6 +182,6 @@
   </ion-list>
 </ion-content>
 <ion-footer class="sticky-footer">
-  <ion-button [disabled]="!peopleList" expand="full" (click)="closeModal()"
+  <ion-button [disabled]="!peopleList || !userSelected" expand="full" (click)="closeModal()"
     class="green ion-text-uppercase ion-no-margin full-height">Add User</ion-button>
 </ion-footer>

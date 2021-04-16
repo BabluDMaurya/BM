@@ -168,7 +168,7 @@ export class HomePage implements OnInit {
 
   async showOptions(ev: any, commentStatus) {
     //    this.commonService.showPopover( PopoverComponent, 'custom-popover',{'postId':ev , 'commentStatus':commentStatus});
-
+    console.log("commentStatus : "+ commentStatus);
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       translucent: true,

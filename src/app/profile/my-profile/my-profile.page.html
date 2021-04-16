@@ -193,7 +193,7 @@
                           <div class="post-content">
                             <ion-list class="item-post" lines="none">
                               <ion-item>
-                                <div [routerLink]="['/comments',post.id]" *ngIf=" !post?.disable_comment">
+                                <div [routerLink]="['/comments',post.id]" *ngIf="post?.disable_comment == 0">
                                   <span *ngIf="loginUserData?.comment_disable == 0">
                                     <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
                                     <span>{{post.total_comments.length}}</span>
@@ -205,7 +205,7 @@
                                 </div>
                               </ion-item>
                               <ion-item>
-                                <div (click)="showOptions(post?.id ,post?.disable_comment )">
+                                <div (click)="showOptions(post?.id ,post?.disable_comment)">
                                   <ion-icon ios="ios-more" md="md-more"></ion-icon>
                                 </div>
                               </ion-item>
@@ -266,19 +266,19 @@
                           <div class="post-content">
                             <ion-list class="item-post" lines="none">
                               <ion-item>
-                                <div [routerLink]="['/comments',consultID]"
-                                  *ngIf="postData?.post_user?.comment_disable == 0">
+                                <div [routerLink]="['/comments',post.id]"
+                                *ngIf="post?.disable_comment == 0">
                                   <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
-                                  <span>{{postData?.total_comments.length}}</span>
+                                  <span>{{post?.total_comments.length}}</span>
                                 </div>
-                                <div (click)="liked(postData?.id,postData.liked)"
-                                  class="{{ postData?.liked ?'active':'inactive' }}">
+                                <div (click)="liked(post?.id,post.liked)"
+                                  class="{{ post?.liked ?'active':'inactive' }}">
                                   <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon>
-                                  <span>{{postData?.count}}</span>
+                                  <span>{{post?.count}}</span>
                                 </div>
                               </ion-item>
                               <ion-item>
-                                <div (click)="showOptions(post?.id ,post?.disable_comment )">
+                                <div (click)="showOptions(post?.id ,post?.disable_comment)">
                                   <ion-icon ios="ios-more" md="md-more"></ion-icon>
                                 </div>
                               </ion-item>
@@ -341,7 +341,7 @@
                           <div class="post-content">
                             <ion-list class="item-post" lines="none">
                               <ion-item>
-                                <div [routerLink]="['/comments',post.id]" *ngIf=" !post?.disable_comment">
+                                <div [routerLink]="['/comments',post.id]" *ngIf="post?.disable_comment == 0">
                                   <span *ngIf="loginUserData?.comment_disable == 0">
                                     <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
                                     <span>{{post.total_comments.length}}</span>

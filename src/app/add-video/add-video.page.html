@@ -34,11 +34,11 @@
             </ng-container>            
           </ion-list>
         </form>    
-        <div *ngIf="videoFileSelected" class="position-relative">
-          <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="removefilepreview()" color="danger" class="btn-close"></ion-icon>
-          <img (click)="filepreview()" class="mb-10" width="100%" height="250px" src="../../assets/images/demo3.jpg">
-        </div>
-        {{videoPath}}
+        <div class="position-relative">
+          <ion-icon *ngIf="videoFileSelected" ios="ios-close-circle" md="md-close-circle" (click)="removefilepreview()" color="danger" class="btn-close"></ion-icon>
+          <img *ngIf="videoFileSelected" (click)="filepreview()" class="mb-10" width="100%" height="250px" src="../../assets/images/demo3.jpg">
+          <img *ngIf="!videoFileSelected" class="mb-10" width="100%" height="250px" src="../../assets/images/loading.jpg">
+        </div>        
       </ion-col>
     </ion-row>
     <ion-footer class="sticky-footer icon-footer sticky-footer-bablu">

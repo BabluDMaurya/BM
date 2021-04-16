@@ -353,7 +353,8 @@ export class MyProfilePage implements OnInit {
     this.consultantProfile = "aboutInfo";
     this.tabs = true;    
   }
-  async showOptions(ev: any, commentStatus) {
+  async showOptions(ev: any, commentStatus) {    
+    console.log("commentStatus : "+ commentStatus);
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       translucent: true,

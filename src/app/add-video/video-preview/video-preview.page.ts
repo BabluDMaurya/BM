@@ -21,6 +21,7 @@ export class VideoPreviewPage implements OnInit {
   VideoDetailsForm : any;
   formData :any;
   filepath : string;
+  videoDescription : any = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
   constructor(
     public commonService: CommonService,
     private actRoute: ActivatedRoute,
@@ -43,6 +44,7 @@ export class VideoPreviewPage implements OnInit {
       this.videoID = params.get('userData');      
     }); 
     this.videoDataPath = localStorage.getItem('videoPath');
+    this.videoDescription = localStorage.getItem('videoDescription');
     this.videoThumbArray = localStorage.getItem('videoThumb').split(",");
     this.createForm();   
   }
@@ -57,7 +59,11 @@ export class VideoPreviewPage implements OnInit {
       d.data.forEach(el=>{
         if(el.id){
           ulist +=el.id+',';
-        }        
+          this.commonService.presentToast('User selection Successfull');
+        }else{
+          this.commonService.presentToast('User Not selected');
+          console.log('User Not Selected');
+        }
       });     
       this.VideoDetailsForm.controls['userList'].setValue(ulist.slice(0, ulist.length - 1));
     });
