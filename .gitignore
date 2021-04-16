@@ -6,11 +6,7 @@
 /_MACOSX
 /.vscode
 /typings
-/resources
-/src/vendor
-/src/theme
-/src/assets
-/src/environments
+
 .env
 .phpunit.result.cache
 .package.json
