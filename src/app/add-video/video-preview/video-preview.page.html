@@ -13,7 +13,7 @@
   <ion-grid class="ion-no-padding">  
     <ion-row class="main_content no_footer" >
       <ion-col size="12" class="ion-no-padding pt-10">
-        <p class="ion-padding-horizontal mb-10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        <p class="ion-padding-horizontal mb-10">{{videoDescription}}</p>
         <video width="100%" height="200px" controls disablePictureInPicture controlsList="nodownload" preload="metadata" autoplay="autoplay"  class="videoPlayer">
           <source src="{{filepath + videoDataPath}}" type="video/mp4" />
         </video>
@@ -43,7 +43,7 @@
             </ion-item>
             <ion-item (click)="userModal()">
               <ion-label>Share With Selected Followers</ion-label>
-              <ion-radio  slot="start" value="2" ></ion-radio>
+              <ion-radio  slot="start" value="2"></ion-radio>
             </ion-item>
             <ion-item>
               <ion-label>Save As Draft</ion-label>

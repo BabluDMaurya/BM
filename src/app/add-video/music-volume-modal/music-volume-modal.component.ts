@@ -7,6 +7,7 @@ import { Config } from "../../config/config";
 import {Router} from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { NavController } from '@ionic/angular';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 const baseUrl = Config.ApiUrl;
 @Component({
   selector: 'app-music-volume-modal',
@@ -48,15 +49,16 @@ export class MusicVolumeModalComponent implements OnInit {
     public commonService: CommonService,
     public settingsService: SettingsService,
     private ngZone:NgZone,
-    private transfer: FileTransfer, 
+    private transfer: FileTransfer,
     public storage:Storage,
     private postService:PostService,
-    private navCtrl:NavController
+    private navCtrl:NavController,private androidPermissions: AndroidPermissions,
     ) { }
     volumeSelected(volume){
       this.selectedVolume = volume;
     }
     uploadVideo(){
+      // this.filePermission();
       var options: FileUploadOptions = {
         fileName: this.fname,
         fileKey: "video",
@@ -72,9 +74,11 @@ export class MusicVolumeModalComponent implements OnInit {
           musicVolume : this.selectedVolume,
         }
       }
+      // const fileTransfer: FileTransferObject = this.transfer.create();
       this.videoFileUpload = this.transfer.create();
       this.isUploading = true;      
       this.buttonDisable = true;
+      
       this.videoFileUpload.upload(this.selectedVideo, this.furl, options)
         .then((data)=> {
           this.isUploading = false;
@@ -86,6 +90,7 @@ export class MusicVolumeModalComponent implements OnInit {
           this.postService.getVideoPostById({'videoId':this.uploadedVideo}).subscribe((data:any)=>{ 
             localStorage.setItem('videoPath',data.postData.video_path);
             localStorage.setItem('videoThumb',data.postData.thumb_path);
+            localStorage.setItem('videoDescription',data.postData.description);
             this.router.navigate([this.returnUrl,this.uploadedVideo]);
             // this.commonService.redirectUrlWithIdConfirm("Success", "Video Uploaded Successfully.",this.returnUrl,this.uploadedVideo);                
           });                  
@@ -94,11 +99,12 @@ export class MusicVolumeModalComponent implements OnInit {
           this.buttonDisable = false;
           this.uploadPercent = 0;
           this.commonService.dismissModal();
-          this.error = JSON.stringify[err];
+          this.error = JSON.stringify(err);
+          console.log("this.error: "+ this.error);
             if(this.error){
               this.errorMessage = this.error;
             }else{
-              this.errorMessage = 'Some thing wrong';
+              this.errorMessage = 'Some thing wrong in upload video';
             }
           this.commonService.presentAlert("Error", this.errorMessage,["Ok"],'');
         });
@@ -116,6 +122,17 @@ export class MusicVolumeModalComponent implements OnInit {
     }
   ngOnInit() {
     
+  }
+  filePermission() {
+    this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE).then(
+      result => console.log('Has permission?', result.hasPermission),
+      err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE)
+    );
+    this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE).then(
+      result => console.log('Has permission?', result.hasPermission),
+      err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE)
+    );
+
   }
 
   goBack() {

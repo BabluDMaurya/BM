@@ -61,6 +61,6 @@ export class PostService {
     return this.http.post<any>(Config.ApiUrl+'api/auth/videoUpdateById', videoData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('updateVideoPostById', videoData)));
   }
     getAddByPGId(pgId){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/addByPGId', pgId ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getVideoPostById', pgId)));
+    return this.http.post<any>(Config.ApiUrl+'api/auth/addByPGId', pgId ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getAddByPGId', pgId)));
     }
 }

@@ -8,93 +8,108 @@
   },
   "installed_plugins": {
     "com-sarriaroman-photoviewer": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-android-support-gradle-release": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-crop": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-fcm-with-dependecy-updated": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
-    },
-    "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-filepath": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-iosrtc": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-media": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-preview-any-file": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-screen-orientation": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "cordova-plugin-streaming-media": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "enablex-cordova-plugin": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "ionic-plugin-deeplinks": {
+      "URL_SCHEME": "myapp",
+      "DEEPLINK_SCHEME": "https",
+      "DEEPLINK_HOST": "ionicinto.wdipl.com",
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     }
   },
   "dependent_plugins": {
     "cordova-clipboard": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-android-permissions": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-badge": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
-    },
-    "cordova-plugin-local-notification": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-media-capture": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-request-location-accuracy": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-telerik-imagepicker": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "es6-promise-plugin": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "phonegap-plugin-barcodescanner": {
-      "PACKAGE_NAME": "com.bablu.ionicfcm"
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     }
   }
 }

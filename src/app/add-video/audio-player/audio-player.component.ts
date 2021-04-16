@@ -33,6 +33,9 @@ export class AudioPlayerComponent implements OnInit, AfterViewInit {
     this.selectedAudio[1] = 0;    
     this._player.paused ? this._player.play() : this._player.pause();
   }
+  pause(): void {        
+    this._player.pause();
+  }
 
   seek({ detail: { value } }: { detail: { value: number } }): void {
       this._player.currentTime = value;

@@ -17,6 +17,7 @@ export class UserModalComponent implements OnInit {
   peopleList: any;
   peopleForm: any;
   userData: any;
+  userSelected : boolean = false; 
   profileUrl: any = Config.profilePic;
   constructor(public commonService: CommonService,
     private navParams: NavParams,
@@ -72,7 +73,9 @@ export class UserModalComponent implements OnInit {
         if( checkArray.length<1)
         {
            checkArray.push(new FormControl(e.target.value));
+           this.userSelected = true;
         }else{
+          this.userSelected = false;
           msg = 'In private program only 1 user can select.Other will  not consider';
           this.commonService.presentAlert('Alert',msg,['Ok'],'remove_header');
         }
@@ -83,13 +86,16 @@ export class UserModalComponent implements OnInit {
         {
          
           checkArray.push(new FormControl(e.target.value));
+          this.userSelected = true;
         }else{
+          this.userSelected = false;
           msg = 'In group program 2 way only 4 users can select. Other will  not consider';
           this.commonService.presentAlert('Alert',msg,['Ok'],'');
         }
 
       }else{
         checkArray.push(new FormControl(e.target.value));
+        this.userSelected = true;
       }
      
     } else {
@@ -114,7 +120,7 @@ export class UserModalComponent implements OnInit {
   }
   closeModal() {
     let abc = this.commonService.dismissModal(this.peopleForm.value.peopleSelect);
-
+    this.userSelected = false;
   }
 
   searchPersonList: any;
