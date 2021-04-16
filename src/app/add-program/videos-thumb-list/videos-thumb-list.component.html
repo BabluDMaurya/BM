@@ -1,0 +1,34 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="closeModal()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>All Videos</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <ion-row>
+    <ion-col>
+      <ion-list class="ion-no-padding thumb-list" lines="none" *ngIf="videoList?.length>0 ; else no_content">
+        <ion-radio-group *ngFor="let item of videoList">
+          <ion-item>
+            <div class="galleryRadio">
+              <ion-checkbox [(ngModel)]="item.sele" name="item.id" slot="start"> </ion-checkbox>
+            </div>
+            <img src="{{url}}{{item.thumb_path}}" *ngIf="item?.thumb_path" />
+            <ion-label>{{item.title}}</ion-label>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ng-template #no_content><div class="no-data"> <img src="../../../assets/images/error.svg" class="mb-10" width="40px" /><p>No post video yet!!!</p></div></ng-template>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<ion-footer class="sticky-footer">
+  <ion-button expand="full" class="green ion-no-margin full-height" (click)="submit()">Ok</ion-button>
+</ion-footer>

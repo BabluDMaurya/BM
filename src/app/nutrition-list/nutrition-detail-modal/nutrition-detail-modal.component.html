@@ -1,0 +1,113 @@
+<ion-header class="top-header three-block ion-no-padding">
+  <ion-list class="top-heading">
+    <ion-item>
+      <ion-buttons slot="start" (click)="closeModal()">
+        <ion-icon ios="ios-arrow-back"  md="md-arrow-back" ></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{nutriDetails?.title}}</ion-label>
+    </ion-item>
+    <ion-item></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content no_footer">
+  <ion-card-content class="ion-no-padding item-content">
+    <div class="preview-img" *ngIf="nutriDetails.img_array">
+      <ion-button (click)="slidePrev()" class="slidebtns slideBack">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-button>
+      <ion-slides pager="true" [options]="imageSlider" class="full-slider mb-10" #mySlider>
+        <ion-slide (click)="showdetails()" *ngFor="let imgpath of nutriDetails.img_array; let i =index;">
+          <img src="{{url}}{{imgpath}}" /> 
+        </ion-slide>
+      </ion-slides>
+      <ion-button (click)="slideNext()" class="slidebtns slideNext">
+        <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+      </ion-button>
+    </div> 
+</ion-card-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="nutrition-head">        
+        <p>{{nutriDetails?.description}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="nutrition-flex">
+        <div class="nutrition-sub">
+          <ion-icon ios="ios-restaurant" md="md-restaurant"></ion-icon> {{nutriDetails?.serving_size}}
+        </div>
+        <div class="nutrition-sub ion-text-right">
+          <!-- <ion-icon ios="ios-time" md="md-time"></ion-icon> {{nutriDetails?.preparation_time }} (hh:mm) -->
+          <ion-icon ios="ios-time" md="md-time"></ion-icon> {{nutriDetails?.preparation_time[0]}} hrs {{nutriDetails?.preparation_time[1]}} min
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list lines="none" class="ingredient-list">
+    <ion-list-header class="grey-header green text-white">Ingredients</ion-list-header>
+    <ion-item *ngFor="let item of nutriDetails?.ingredient_array; let i=index;">
+      <p>{{i+1}}. {{item}}</p>
+    </ion-item>
+
+  </ion-list>
+  <ion-list lines="none" class="instructions-list">
+    <ion-list-header class="grey-header green text-white">Instructions</ion-list-header>
+    <ion-item *ngFor="let item  of nutriDetails?.instruction_array; let i=index;">
+      <p>{{i+1}}. {{item}}</p>
+    </ion-item>
+
+  </ion-list>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size="12" class="position-relative ion-no-padding">
+        <!-- <ion-fab size="small" class="addmore" (click)="expandItem(item)">
+          <ion-icon ios="ios-add" md="md-add"></ion-icon>
+        </ion-fab> -->
+        <ion-card  *ngFor="let item of items">
+
+          <ion-card-header class="more-card-header" (click)="expandItem(item)" >
+            <!-- <ion-card-title>More Details</ion-card-title> -->
+            <ion-card-title>Nutrition Details</ion-card-title>
+            <ion-fab size="small" class="addmore">
+              <ion-icon ios="ios-add" md="md-add"></ion-icon>
+            </ion-fab>
+          </ion-card-header>
+          <ion-card-content>
+         
+            <app-expandable expandHeight="300px" [expanded]="item.expanded">
+              <ion-list class="details-list" lines="none">
+                <ion-item>
+                  <ion-label>Calories</ion-label>
+                  <ion-text>{{totalMinerals.cal | number : '1.2-2'}}</ion-text>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Carbohydrates</ion-label>
+                  <ion-text>{{totalMinerals.carbo | number : '1.2-2'}}</ion-text>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Proteins</ion-label>
+                  <ion-text>{{totalMinerals.prot | number : '1.2-2'}}</ion-text>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Fats</ion-label>
+                  <ion-text>{{totalMinerals.fat | number : '1.2-2'}}</ion-text>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Sugar</ion-label>
+                  <ion-text>{{totalMinerals.sug | number : '1.2-2'}}</ion-text>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Cholestrol</ion-label>
+                  <ion-text>{{totalMinerals.chol | number : '1.2-2'}}</ion-text>
+                </ion-item>
+              </ion-list>
+            </app-expandable> 
+            
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

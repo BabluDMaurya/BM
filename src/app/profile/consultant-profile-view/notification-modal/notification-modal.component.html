@@ -1,0 +1,51 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item>
+      <ion-buttons class="ion-no-margin" slot="start" (click)="closeModal()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mute Notification</ion-label>
+    </ion-item>
+    <ion-item></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <ion-row>
+    <ion-col size="12" class="ion-no-padding bg">
+      <ion-card>
+        <ion-card-content>
+          <p class="note">Mute notification so you wont recieve any notification from
+            {{this.profileData?.userData?.user_name}}.</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-card>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label>Discussions</ion-label>
+          <ion-toggle slot="end" name="discussions" [(ngModel)]="toggleDiscussion"
+            (click)="disableNotification(1,!toggleDiscussion)"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Images</ion-label>
+          <ion-toggle slot="end" name="images" [(ngModel)]="toggleImage" (click)="disableNotification(2,!toggleImage)">
+          </ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Video</ion-label>
+          <ion-toggle slot="end" name="video" [(ngModel)]="toggleVideo" (click)="disableNotification(3,!toggleVideo)">
+          </ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Program</ion-label>
+          <ion-toggle slot="end" name="program" [(ngModel)]="toggleProgram"
+            (click)="disableNotification(4,!toggleProgram)"></ion-toggle>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
