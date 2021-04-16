@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
-import { NavParams } from '@ionic/angular'
+import { NavParams,ModalController } from '@ionic/angular'
 import { NutritionService } from './../../services/nutrition.service' 
 import { Config } from '../../config/config';
-
+import { ProgramNutritionDetailModalComponent } from '../../add-program/program-nutrition-detail-modal/program-nutrition-detail-modal.component';
 @Component({
   selector: 'app-add-equipments',
   templateUrl: './add-equipments.component.html',
@@ -48,7 +48,7 @@ export class AddEquipmentsComponent implements OnInit {
   nutritionList: any;
 
   constructor(public commonService: CommonService, private navParams: NavParams,
-    private nutritionService: NutritionService) {
+    private nutritionService: NutritionService,private modalCtrl:ModalController) {
     this.programId = this.navParams.data.programData;
     this.modelOpen = this.navParams.data.modelOpen;
     if(this.modelOpen == 2 )
@@ -133,6 +133,15 @@ export class AddEquipmentsComponent implements OnInit {
     }
 
   }
+  async showdetails(item){
 
+    const modal = await this.modalCtrl.create({
+     component: ProgramNutritionDetailModalComponent,
+     cssClass: 'fullModal',
+     componentProps: { 'details':item}
+
+   });
+   return await modal.present();
+}
 
 }

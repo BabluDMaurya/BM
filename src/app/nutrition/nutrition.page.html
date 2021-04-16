@@ -13,7 +13,9 @@
     </ion-item>
     <ion-item class="icon-right-side ion-text-end" slot="end">
       <!-- //*ngIf="nextVisible"  -->
-      <ion-button *ngIf="nextVisible" (click)="toPreview()"  class="text-green">Next</ion-button>
+      <div *ngIf="nextVisible">
+      <ion-button *ngIf="!showPreview" (click)="toPreview()"  class="text-green">Next</ion-button>
+      </div>
       <ion-label *ngIf="showPreview" class="text-green" (click)="confirm()">Confirm</ion-label>
     </ion-item>
   </ion-list>
@@ -61,6 +63,9 @@
               <ion-input class="form-control" type="text"  formControlName="nutriTitle" [ngClass]="{ 'is-invalid': submitted && f.nutriTitle.errors }">
               </ion-input>
             </ion-item>
+            <div  *ngIf="nutritionForm.get('nutriTitle').hasError('maxlength')">
+              <span class="error-message">Maximum length 25 charecters</span> 
+            </div>
             <ng-container *ngFor="let validation of validation_messages.nutriTitle">
               <span class="error-message"
                 *ngIf="(submitted || nutritionForm.get('nutriTitle').touched) && nutritionForm.get('nutriTitle').hasError(validation.type)">

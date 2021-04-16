@@ -40,7 +40,7 @@ export class SearchFoodComponent implements OnInit{
               }
 
   ngOnInit() {
-
+    this.checkFoodName('apple');
   }
   ngAfterViewInit() {
     setTimeout(() => {

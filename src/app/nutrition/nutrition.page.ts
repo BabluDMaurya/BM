@@ -58,7 +58,7 @@ export class NutritionPage implements OnInit , OnDestroy {
         Validators.required
       ])), 
       nutriDescription: new FormControl('', Validators.compose([
-        Validators.required
+        Validators.required,
       ])),
       nutriMealType: new FormControl('', Validators.compose([
         Validators.required,

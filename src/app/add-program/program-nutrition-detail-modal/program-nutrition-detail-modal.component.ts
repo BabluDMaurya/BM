@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { CommonService } from '../../services/common.service';
 
 import { Config } from './../../config/config'
 import { NavParams,IonSlides } from '@ionic/angular';
 @Component({
-  selector: 'app-nutrition-detail-modal',
-  templateUrl: './nutrition-detail-modal.component.html',
-  styleUrls: ['../../app.component.scss', './nutrition-detail-modal.component.scss'],
+  selector: 'app-program-nutrition-detail-modal',
+  templateUrl: './program-nutrition-detail-modal.component.html',
+  styleUrls: ['./program-nutrition-detail-modal.component.scss'],
 })
-export class NutritionDetailModalComponent implements OnInit {
+export class ProgramNutritionDetailModalComponent implements OnInit {
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
   sliderOpts = {
     zoom: true,
@@ -75,4 +75,5 @@ export class NutritionDetailModalComponent implements OnInit {
       });
     }
   }
+
 }

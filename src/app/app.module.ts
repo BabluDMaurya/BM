@@ -60,6 +60,7 @@ import { RequestsModalComponent } from './chats/requests-modal/requests-modal.co
 import { RequestedDropdownComponent } from './program/requested-dropdown/requested-dropdown.component';
 import { VideosThumbListComponent } from './add-program/videos-thumb-list/videos-thumb-list.component'
 import { AddEquipmentsComponent } from './add-program/add-equipments/add-equipments.component';
+import { ProgramNutritionDetailModalComponent } from './add-program/program-nutrition-detail-modal/program-nutrition-detail-modal.component';
 import { ScheduleModalComponent } from './program/schedule-modal/schedule-modal.component';
 import { AdDetailsComponent } from './program/ad-details/ad-details.component';
 import { SponserCommentComponent } from './program//ad-details/sponser-comment/sponser-comment.component'; 

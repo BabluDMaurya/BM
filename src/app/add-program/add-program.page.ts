@@ -14,7 +14,7 @@ import { Config } from './../config/config';
 import { ProgramService } from './../services/program.service';
 import { Router } from '@angular/router';
 import { MusicService } from '../services/music.service';
-
+import { NutritionDetailModalComponent } from '../nutrition-list/nutrition-detail-modal/nutrition-detail-modal.component';
 @Component({
   selector: 'app-add-program',
   templateUrl: './add-program.page.html',
