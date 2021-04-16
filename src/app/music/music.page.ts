@@ -19,7 +19,9 @@ export class MusicPage implements OnInit {
   artistList: any;
   playList: any;
   allMusic: any =false;
-
+  tabArtist: any = false;
+  tabPlaylist: any = false;
+  tabMusic: any = true;
   constructor(
     public popoverController: PopoverController,
     public modalController: ModalController,
@@ -44,6 +46,7 @@ export class MusicPage implements OnInit {
 
     this.musicService.getPlaylist().subscribe((data: any) => {
       this.playList = data.status;
+      console.log(this.playList);
     });
 
   }
@@ -70,6 +73,23 @@ export class MusicPage implements OnInit {
   musicTypes: string = 'genre';
   musicList(ev: any) {
     this.musicTypes = ev.detail.value;
+    if(this.musicTypes == 'genre'){
+      this.tabArtist = false;
+      this.tabPlaylist = false;
+      this.tabMusic = true;
+      this.ngOnInit();
+    }
+    if(this.musicTypes == 'artists'){
+      this.tabArtist = true;
+      this.tabPlaylist = false;
+      this.tabMusic = false;
+    }
+    if(this.musicTypes == 'playlist'){
+      this.tabArtist = false;
+      this.tabPlaylist = true;
+      this.tabMusic = false;
+    }
+    console.log(this.musicTypes);
   }
   selectMusicList: string = 'hiphop';
   selectMusic(ev: any) {
@@ -90,7 +110,29 @@ export class MusicPage implements OnInit {
       );
     }
   }
-
+  searchArtist(artistname) {
+    const searchTerm = artistname.srcElement.value;
+    if (!searchTerm) {
+      this.ngOnInit();
+    }else{
+      var abc =  this.artistList.filter(artist =>
+      artist.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
+      this.artistList = abc;
+    }
+     
+      
+  }
+  searchPlaylist(playlistname) {
+    console.log(this.playList);
+    const searchTerm = playlistname.srcElement.value;
+    if (!searchTerm) {
+      this.ngOnInit();
+    }else{
+      var abc =  this.playList.filter(playlist =>
+        playlist.playlist_name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
+      this.playList = abc;
+    }
+  }
   goBack() {
     this.navCtrl.back();
   }

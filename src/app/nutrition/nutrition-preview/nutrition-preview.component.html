@@ -56,7 +56,7 @@
     <p *ngIf="nutritionData.form.bevragveQnty == 2">Glass</p>
     <p *ngIf="nutritionData.form.bevragveQnty == 3">Bowl</p>    
     <p *ngIf="nutritionData.form.bevragveQnty == 4">Cup</p>
-    <p>{{nutritionData.form.unitQnty}}</p> <p>Milliliter</p>
+    <p>{{nutritionData.form.unitQnty}}</p> <p *ngIf="nutritionData.form.bevragveUnit == 1">Liter</p><p *ngIf="nutritionData.form.bevragveUnit == 2">Milliliter</p>
   </ion-item>
   
   <ion-item class="beveragesList">

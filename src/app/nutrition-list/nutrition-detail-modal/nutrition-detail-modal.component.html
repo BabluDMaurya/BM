@@ -2,30 +2,28 @@
   <ion-list class="top-heading">
     <ion-item>
       <ion-buttons slot="start" (click)="closeModal()">
-        <ion-icon ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon>
+        <ion-icon ios="ios-arrow-back"  md="md-arrow-back" ></ion-icon>
       </ion-buttons>
     </ion-item>
   </ion-list>
 </ion-header>
 <ion-content class="main_content no_footer">
+  <ion-card-content class="ion-no-padding item-content">
+    <div class="preview-img" *ngIf="nutriDetails.img_array">
+      <ion-button (click)="slidePrev()" class="slidebtns slideBack">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-button>
+      <ion-slides pager="true" [options]="imageSlider" class="full-slider mb-10" #mySlider>
+        <ion-slide (click)="showdetails()" *ngFor="let imgpath of nutriDetails.img_array; let i =index;">
+          <img src="{{url}}{{imgpath}}" /> 
+        </ion-slide>
+      </ion-slides>
+      <ion-button (click)="slideNext()" class="slidebtns slideNext">
+        <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+      </ion-button>
+    </div> 
+</ion-card-content>
   <ion-grid>
-    <ion-row class="preview-img mb-10">
-      <ion-card-content class="ion-no-padding item-content">
-        <ion-col size="12" class="ion-no-padding" *ngIf="nutriDetails.img_array">
-          <ion-button (click)="slidePrev()" class="slidebtns slideBack">
-            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
-          </ion-button>
-          <ion-slides pager="true" [options]="imageSlider" class="full-slider mb-10" #mySlider>
-            <ion-slide (click)="showdetails()" *ngFor="let imgpath of nutriDetails.img_array; let i =index;">
-              <img src="{{url}}{{imgpath}}" /> 
-            </ion-slide>
-          </ion-slides>
-          <ion-button (click)="slideNext()" class="slidebtns slideNext">
-            <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
-          </ion-button>
-        </ion-col> 
-    </ion-card-content>
-    </ion-row>
     <ion-row>
       <ion-col size="12" class="nutrition-head">
         <ion-text color="primary">

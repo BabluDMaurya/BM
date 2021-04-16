@@ -14,8 +14,14 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content">
-  <ion-toolbar class="searchbar">
+  <ion-toolbar *ngIf="tabMusic" class="searchbar">
     <ion-searchbar (ionInput)="searchChanged($event)"></ion-searchbar>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="tabArtist" class="searchbar">
+    <ion-searchbar (ionInput)="searchArtist($event)"></ion-searchbar>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="tabPlaylist" class="searchbar">
+    <ion-searchbar (ionInput)="searchPlaylist($event)"></ion-searchbar>
   </ion-toolbar>
   <div  *ngIf="!allMusic">
     <ion-segment class="ion-no-padding top-segment" (ionChange)="musicList($event)">

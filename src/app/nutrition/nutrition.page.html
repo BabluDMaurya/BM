@@ -13,9 +13,9 @@
     </ion-item>
     <ion-item class="icon-right-side ion-text-end" slot="end">
       <!-- //*ngIf="nextVisible"  -->
-      <div *ngIf="nextVisible">
+      <!-- <div *ngIf="nextVisible"> -->
       <ion-button *ngIf="!showPreview" (click)="toPreview()"  class="text-green">Next</ion-button>
-      </div>
+      <!-- </div> -->
       <ion-label *ngIf="showPreview" class="text-green" (click)="confirm()">Confirm</ion-label>
     </ion-item>
   </ion-list>
