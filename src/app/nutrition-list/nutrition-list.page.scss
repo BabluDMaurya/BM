@@ -12,8 +12,24 @@ ion-card:first-child{margin-top: 0;}
 .video-card{box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09);}
 ion-slides{background: transparent;padding: 0 5px;}
 .swiper-slide img{border-radius: 6px;height: 85px;margin-bottom: 5px;}
-.nutritionCard{border-radius: 0;box-shadow: none;border-bottom: 5px solid #f7f7f7;margin-bottom: 0;margin-top:0;
+.nutritionCard{border-radius: 0;box-shadow: none;margin-bottom: 0;margin-top:0;
     ion-card-header{color: #FFF;background: #26a69a;height: 45px;line-height: 45px;padding: 0 16px;}
+}
+
+ion-card{border-radius: 0;
+    ion-card-header{margin-bottom: 0;}
+    ion-card-content{
+        ion-segment{margin: 10px 0;
+            ion-segment-button{width: 32%;max-width: 130px;background: #f3f3f3;padding: 0;margin: 0 5px;--padding-start: 0;--padding-end: 0;border-radius: 4px;overflow: hidden; height: 110px;--color-checked: transparent;
+                img{height: 85px;margin-bottom: 5px;object-fit: cover;}
+                ion-label{font-size: 0.75rem;margin: 0;text-transform: capitalize;letter-spacing: 0;color: #444;}
+            }
+            ion-segment-button:first-child{margin-left: 15px;}
+        }
+    }
+}
+ion-skeleton-text.grey-header {
+    border-radius: 0;
 }
 // hitesh css strt
 .nutrition-no-data{height: calc(100vh - 320px);}

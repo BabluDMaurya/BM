@@ -60,6 +60,9 @@
     },
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     }
   },
   "dependent_plugins": {

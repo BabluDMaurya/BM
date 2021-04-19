@@ -15,7 +15,7 @@ import { Clipboard } from '@ionic-native/clipboard/ngx';
 //import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { PrivacyPage } from '../../settings/privacy/privacy.page';
-
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 @Component({
   selector: 'app-consultant-profile-view',
   templateUrl: './consultant-profile-view.page.html',
@@ -67,6 +67,7 @@ export class ConsultantProfileViewPage implements OnInit {
     private clipboard: Clipboard,
     public deeplink: Deeplinks,
     private platform: Platform,
+    public socialSharing: SocialSharing,
   ) {
 
     platform.ready().then(() => {
@@ -342,5 +343,26 @@ export class ConsultantProfileViewPage implements OnInit {
         alert('Error: ' + reject);
       }
     );
+  }
+  shareItem() {
+    // var options = {
+    //   message: 'Profile Page', // not supported on some apps (Facebook, Instagram)
+    //   // subject: 'the subject', // fi. for email
+    //   // files: ['', ''], // an array of filenames either locally or remotely
+    //   url: 'https://ionicinto.wdipl.com/consultant-profile-view/' + this.consultID,
+    //   chooserTitle: 'Pick an intoactive app', // Android only, you can override the default share sheet title
+    //   appPackageName: 'com.bm.ionicfcm', // Android only, you can provide id of the App you want to share with
+    //   // iPadCoordinates: '0,0,0,0' //IOS only iPadCoordinates for where the popover should be point.  Format with x,y,width,height
+    // };
+    // this.socialSharing.shareWithOptions(options);
+    //this code is to use the social sharing plugin
+    // message, subject, file, url
+    this.socialSharing.share("Profile Page","","","https://ionicinto.wdipl.com/consultant-profile-view/" + this.consultID)
+    .then(() => {
+
+    })
+    .catch(() => {
+
+    });
   }
 }

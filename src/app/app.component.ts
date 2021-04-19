@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
-import { Platform,AlertController,NavController } from '@ionic/angular';
+import { Platform,AlertController,NavController} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {LoadingController} from '@ionic/angular';
@@ -9,7 +9,8 @@ import { FCM } from '@ionic-native/fcm/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { File } from '@ionic-native/file/ngx';
-
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { SigninPage } from './auth/signin/signin.page';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -18,7 +19,7 @@ import { File } from '@ionic-native/file/ngx';
 export class AppComponent implements OnInit
 
 {
-  
+  @ViewChild(NavController,{static:false}) navChild:NavController;
   loaderToShow: any;
   currentScreenOrientation:string;  
 
@@ -34,9 +35,24 @@ export class AppComponent implements OnInit
     private androidPermissions: AndroidPermissions,
      private fcm: FCM,
      private file: File,
- 
+     public deeplinks: Deeplinks,
     
   ){
+    platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      this.statusBar.styleDefault();
+
+      //this is the code who responds to the app deeplinks
+      //Deeplinks if from Ionic Native
+      this.deeplinks.routeWithNavController(this.navChild, {
+        '/signin': SigninPage,
+      }).subscribe((match) => {
+        console.log('Successfully routed', match);
+      }, (nomatch) => {
+        console.log('Unmatched Route', nomatch);
+      });
+    });
     this.initializeApp();
     this.backButtonEvent();
 

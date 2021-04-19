@@ -31,7 +31,6 @@
       "SUPPORT_LIBRARY_VERSION": "28.0.0",
       "ANDROID_DEFAULT_NOTIFICATION_ICON": "@mipmap/ic_launcher",
       "PACKAGE_NAME": "com.bm.ionicfcm"
-
     },
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
@@ -57,6 +56,9 @@
     "cordova-plugin-streaming-media": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
@@ -64,7 +66,7 @@
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "ionic-plugin-deeplinks": {
-      "URL_SCHEME": "myapp",
+      "URL_SCHEME": "Intoactive",
       "DEEPLINK_SCHEME": "https",
       "DEEPLINK_HOST": "ionicinto.wdipl.com",
       "ANDROID_PATH_PREFIX": "/",

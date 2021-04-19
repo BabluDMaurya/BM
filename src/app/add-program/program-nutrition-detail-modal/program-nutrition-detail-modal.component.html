@@ -1,36 +1,35 @@
-<ion-header class="top-header ion-no-padding">
+<ion-header class="top-header three-block ion-no-padding">
   <ion-list class="top-heading">
     <ion-item>
       <ion-buttons slot="start" (click)="closeModal()">
-        <ion-icon ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon>
+        <ion-icon ios="ios-arrow-back"  md="md-arrow-back" ></ion-icon>
       </ion-buttons>
     </ion-item>
+    <ion-item>
+      <ion-label>{{nutriDetails?.title}}</ion-label>
+    </ion-item>
+    <ion-item></ion-item>
   </ion-list>
 </ion-header>
 <ion-content class="main_content no_footer">
+  <ion-card-content class="ion-no-padding item-content">
+    <div class="preview-img" *ngIf="nutriDetails.img_array">
+      <ion-button (click)="slidePrev()" class="slidebtns slideBack">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-button>
+      <ion-slides pager="true" [options]="imageSlider" class="full-slider mb-10" #mySlider>
+        <ion-slide (click)="showdetails()" *ngFor="let imgpath of nutriDetails.img_array; let i =index;">
+          <img src="{{url}}{{imgpath}}" /> 
+        </ion-slide>
+      </ion-slides>
+      <ion-button (click)="slideNext()" class="slidebtns slideNext">
+        <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+      </ion-button>
+    </div> 
+</ion-card-content>
   <ion-grid>
-    <ion-row class="preview-img mb-10">
-      <ion-card-content class="ion-no-padding item-content">
-        <ion-col size="12" class="ion-no-padding" *ngIf="nutriDetails.img_array">
-          <ion-button (click)="slidePrev()" class="slidebtns slideBack">
-            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
-          </ion-button>
-          <ion-slides pager="true" [options]="imageSlider" class="full-slider mb-10" #mySlider>
-            <ion-slide (click)="showdetails()" *ngFor="let imgpath of nutriDetails.img_array; let i =index;">
-              <img src="{{url}}{{imgpath}}" /> 
-            </ion-slide>
-          </ion-slides>
-          <ion-button (click)="slideNext()" class="slidebtns slideNext">
-            <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
-          </ion-button>
-        </ion-col> 
-    </ion-card-content>
-    </ion-row>
     <ion-row>
       <ion-col size="12" class="nutrition-head">
-        <ion-text color="primary">
-          <h4>{{nutriDetails?.title}}</h4>
-        </ion-text>
         <p>{{nutriDetails?.description}}</p>
       </ion-col>
     </ion-row>
@@ -47,14 +46,14 @@
     </ion-row>
   </ion-grid>
   <ion-list lines="none" class="ingredient-list">
-    <ion-list-header class="grey-header">Ingredients</ion-list-header>
+    <ion-list-header class="grey-header green text-white">Ingredients</ion-list-header>
     <ion-item *ngFor="let item of nutriDetails?.ingredient_array; let i=index;">
       <p>{{i+1}}. {{item}}</p>
     </ion-item>
 
   </ion-list>
   <ion-list lines="none" class="instructions-list">
-    <ion-list-header class="grey-header">Instructions</ion-list-header>
+    <ion-list-header class="grey-header green text-white">Instructions</ion-list-header>
     <ion-item *ngFor="let item  of nutriDetails?.instruction_array; let i=index;">
       <p>{{i+1}}. {{item}}</p>
     </ion-item>

@@ -144,7 +144,7 @@
     },
     "is_top_level": true,
     "variables": {
-      "URL_SCHEME": "myapp",
+      "URL_SCHEME": "Intoactive",
       "DEEPLINK_SCHEME": "https",
       "DEEPLINK_HOST": "ionicinto.wdipl.com"
     }
@@ -153,6 +153,14 @@
     "source": {
       "type": "registry",
       "id": "cordova-plugin-file-transfer"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-x-socialsharing": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-x-socialsharing"
     },
     "is_top_level": true,
     "variables": {}

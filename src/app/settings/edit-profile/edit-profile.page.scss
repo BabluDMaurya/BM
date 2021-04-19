@@ -11,7 +11,9 @@ ion-grid{
 .hometown-item ion-label{position: absolute;top: 0;}
 .hometown-item ion-label+ion-textarea{margin-top: 25px;--padding-start: 0;}
 .error-message{display: inline-block;}
-.bioTextarea{margin-bottom: 14px;--padding-bottom: 14px;}
+.bioTextarea{margin-bottom: 10px;margin-top: 10px;--padding-bottom: 0px;--padding-top: 0;}
+.taglineTextarea{margin-bottom: 10px;margin-top: 10px;--padding-bottom: 0px;--padding-top: 0;}
+.hometownTextarea{width: calc(100% - 30px);font-size: 0.8125rem;margin-top: 0;}
 // hitesh css strt
 .three-block ion-item:first-child, .three-block ion-item:last-child {min-width: unset;}
 .add-disp-name { padding-right: 5px;font-size: 14px !important;}

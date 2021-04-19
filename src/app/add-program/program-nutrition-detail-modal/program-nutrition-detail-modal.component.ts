@@ -6,7 +6,7 @@ import { NavParams,IonSlides } from '@ionic/angular';
 @Component({
   selector: 'app-program-nutrition-detail-modal',
   templateUrl: './program-nutrition-detail-modal.component.html',
-  styleUrls: ['./program-nutrition-detail-modal.component.scss'],
+  styleUrls: ['../../app.component.scss','./program-nutrition-detail-modal.component.scss'],
 })
 export class ProgramNutritionDetailModalComponent implements OnInit {
   @ViewChild('mySlider', { static: true }) slides: IonSlides;

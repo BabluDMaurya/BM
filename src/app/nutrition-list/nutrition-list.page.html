@@ -23,98 +23,103 @@
 <ion-content class="main_content no_footer">
   <div *ngIf="nutritionList">
     <ion-card class="nutritionCard">
-      <ion-card-header class="grey-header">Breakfast</ion-card-header>
+      <ion-card-header class="grey-header green text-white">Breakfast</ion-card-header>
       <ion-card-content class="ion-no-padding">
-        <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
-          <ion-slide *ngFor="let item of nutritionList  | filter:'BreakFast':'type'" (click)="showdetails(item)">
-            <div *ngIf="!item.empty ">
-              <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
-              <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
-              <ion-label>{{item?.title}}</ion-label>
+        <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
+          <ion-segment-button *ngFor="let item of nutritionList  | filter:'BreakFast':'type'" (click)="showdetails(item)">
+            <div class="checkboxThumb">
+              <div *ngIf="!item.empty ">
+                <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
+                <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
+                <ion-label>{{item?.title}}</ion-label>
+              </div>
+              <div *ngIf="item.empty" class="no-data nutrition-no-data">
+                <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+                <p>No BreakFast</p>
+              </div>
             </div>
-            <div *ngIf="item.empty" class="no-data nutrition-no-data">
-              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
-              <p>No BreakFast</p>
-            </div>
-          </ion-slide>
-        </ion-slides>
+          </ion-segment-button>
+        </ion-segment>
       </ion-card-content>
     </ion-card>
     <ion-card class="nutritionCard">
-      <ion-card-header class="grey-header">Brunch</ion-card-header>
+      <ion-card-header class="grey-header green text-white">Brunch</ion-card-header>
       <ion-card-content class="ion-no-padding">
-        <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
-          <ion-slide *ngFor="let item of nutritionList  | filter:'Brunch':'type'" (click)="showdetails(item)">
-            <div *ngIf="!item.empty">
-              <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
-              <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
-              <ion-label>{{item?.title}}</ion-label>
+        <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
+          <ion-segment-button *ngFor="let item of nutritionList  | filter:'Brunch':'type'" (click)="showdetails(item)">
+            <div class="checkboxThumb">
+              <div *ngIf="!item.empty">
+                <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
+                <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
+                <ion-label>{{item?.title}}</ion-label>
+              </div>
+              <div *ngIf="item.empty" class="no-data nutrition-no-data">
+                <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+                <p>No Brunch</p>
+              </div>
             </div>
-            <div *ngIf="item.empty" class="no-data nutrition-no-data">
-              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
-              <p>No Brunch</p>
-            </div>
-          </ion-slide>
-        </ion-slides>
+          </ion-segment-button>
+        </ion-segment>
       </ion-card-content>
     </ion-card>
     <ion-card class="nutritionCard">
-      <ion-card-header class="grey-header">Lunch</ion-card-header>
+      <ion-card-header class="grey-header green text-white">Lunch</ion-card-header>
       <ion-card-content class="ion-no-padding">
-        <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
-          <ion-slide *ngFor="let item of nutritionList  | filter:'Lunch':'type'" (click)="showdetails(item)">
-            <div *ngIf="!item.empty">
-              <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
-              <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
-              <ion-label>{{item?.title}}</ion-label>
+        <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
+          <ion-segment-button *ngFor="let item of nutritionList  | filter:'Lunch':'type'" (click)="showdetails(item)">
+            <div class="checkboxThumb">
+              <div *ngIf="!item.empty">
+                <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
+                <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
+                <ion-label>{{item?.title}}</ion-label>
+              </div>
+              <div *ngIf="item.empty" class="no-data nutrition-no-data">
+                <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+                <p>No Lunch</p>
+              </div>
             </div>
-            <div *ngIf="item.empty" class="no-data nutrition-no-data">
-              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
-              <p>No Lunch</p>
-            </div>
-          </ion-slide>
-
-        </ion-slides>
+          </ion-segment-button>
+        </ion-segment>
       </ion-card-content>
     </ion-card>
     <ion-card class="nutritionCard">
-      <ion-card-header class="grey-header">Snacks</ion-card-header>
+      <ion-card-header class="grey-header green text-white">Snacks</ion-card-header>
       <ion-card-content class="ion-no-padding">
-        <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
-          <ion-slide *ngFor="let item of nutritionList  | filter:'Snacks':'type'" (click)="showdetails(item)">
-            <div *ngIf="!item.empty">
-              <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
-              <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
-              <ion-label>{{item?.title}}</ion-label>
+        <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
+          <ion-segment-button *ngFor="let item of nutritionList  | filter:'Snacks':'type'" (click)="showdetails(item)">
+            <div class="checkboxThumb">
+              <div *ngIf="!item.empty">
+                <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
+                <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
+                <ion-label>{{item?.title}}</ion-label>
+              </div>
+              <div *ngIf="item.empty" class="no-data nutrition-no-data">
+                <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+                <p>No Snacks</p>
+              </div>
             </div>
-            <div *ngIf="item.empty" class="no-data nutrition-no-data">
-              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
-              <p>No Snacks</p>
-            </div>
-          </ion-slide>
-
-
-        </ion-slides>
+          </ion-segment-button>
+        </ion-segment>
       </ion-card-content>
     </ion-card>
     <ion-card class="nutritionCard">
-      <ion-card-header class="grey-header">Dinner</ion-card-header>
+      <ion-card-header class="grey-header green text-white">Dinner</ion-card-header>
       <ion-card-content class="ion-no-padding">
-        <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
-
-          <ion-slide *ngFor="let item of nutritionList  | filter:'Dinner':'type'" (click)="showdetails(item)">
-            <div *ngIf="!item.empty">
-              <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
-              <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
-              <ion-label>{{item?.title}}</ion-label>
+        <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
+          <ion-segment-button *ngFor="let item of nutritionList  | filter:'Dinner':'type'" (click)="showdetails(item)">
+            <div class="checkboxThumb">
+              <div *ngIf="!item.empty">
+                <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
+                <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
+                <ion-label>{{item?.title}}</ion-label>
+              </div>
+              <div *ngIf="item.empty" class="no-data nutrition-no-data">
+                <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+                <p>No Dinner</p>
+              </div>
             </div>
-            <div *ngIf="item.empty" class="no-data nutrition-no-data">
-              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
-              <p>No Dinner</p>
-            </div>
-          </ion-slide>
-
-        </ion-slides>
+          </ion-segment-button>
+        </ion-segment>
       </ion-card-content>
     </ion-card>
   </div>

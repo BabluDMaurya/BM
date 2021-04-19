@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { CommonService } from '../services/common.service';
 import { UserModalComponent } from '../add-program/user-modal/user-modal.component';
 import { Router, ActivatedRoute, ParamMap} from "@angular/router";
@@ -7,6 +7,7 @@ import { PostService } from '../services/post.service';
 import { NavController } from '@ionic/angular';
 import { PeopleViewService } from './../services/people-view.service';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 const baseUrl = Config.ApiUrl;
 
 @Component({
@@ -15,6 +16,7 @@ const baseUrl = Config.ApiUrl;
   styleUrls: ['./../app.component.scss','./videos.page.scss'],
 })
 export class VideosPage implements OnInit {
+  @ViewChild(NavController,{static:false}) navChild: NavController;
   info = false;  
   likePost : any; 
   postID : any;   
@@ -43,7 +45,8 @@ export class VideosPage implements OnInit {
     private postService : PostService,
     private peopleView: PeopleViewService,
     private streamingMedia : StreamingMedia,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    public socialSharing: SocialSharing,
     ) {          
       this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
         this.postID = params.get('id');
@@ -132,6 +135,17 @@ export class VideosPage implements OnInit {
     //------------------ -- GO BACK  ------------
     goBack() {
       this.navCtrl.back();
+    }
+    shareItem() {
+      //this code is to use the social sharing plugin
+      // message, subject, file, url
+      this.socialSharing.share("Intoactive Video","","","https://ionicinto.wdipl.com/videos/" + this.postID)
+      .then(() => {
+  
+      })
+      .catch(() => {
+  
+      });
     }
 
 }

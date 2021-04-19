@@ -3,3 +3,18 @@ ion-textarea.form-control textarea{height: 100%;padding: 0;}
 .scrollable-imgs ion-segment-button{border-radius: 8px;--padding-start: 0;--padding-end: 0;margin-right: 8px;background: whitesmoke;--border-color: transparent;display: block;height: 100%;width: 160px;max-width: 160px}
 .scrollable-imgs ion-segment-button img{width: 100%;height: 100%;object-fit: cover;}
 .scrollable-imgs ion-segment-button ion-icon{position: absolute;right: 0;top: 0;margin: 0;color:#222}
+ion-footer.sticky-footer{padding: 0;
+	ion-list{    flex-wrap: nowrap;
+		ion-item{width: 50%;margin: 0;text-align: center;    background: #3da89e;
+			--background: #3da89e;
+			img{margin: auto;}
+		}
+		ion-item::after{content: '';width: 1px;height: 30px;
+			background: #94e2db;
+			position: absolute;
+			top: 13px;right: 0;}
+		ion-item:nth-child(2)::after{display: none;}
+		ion-item:nth-child(2){    background: #3da89e;
+			--background: #3da89e;}
+	}
+}

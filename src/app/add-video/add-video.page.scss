@@ -30,6 +30,21 @@ ion-radio{position: absolute;top:5px}
 .musiclistFooter{position: fixed;bottom: 0;width: 100%}
 .deactive{display:none;}
 .active{display: block;}
+ion-footer.sticky-footer{padding: 0;
+	ion-list{    flex-wrap: nowrap;
+		ion-item{width: 50%;margin: 0;text-align: center;    background: #3da89e;
+			--background: #3da89e;
+			img{margin: auto;}
+		}
+		ion-item::after{content: '';width: 1px;height: 30px;
+			background: #94e2db;
+			position: absolute;
+			top: 13px;right: 0;}
+		ion-item:nth-child(2)::after{display: none;}
+		ion-item:nth-child(2){    background: #3da89e;
+			--background: #3da89e;}
+	}
+}
 
 // hitesh css strt
 
@@ -59,8 +74,5 @@ ion-radio{position: absolute;top:5px}
 	font-size: 0.70rem;
 	color: #000;
 	margin-top: 3px;
-}
-.musicWrapper ion-toolbar .range-knob-handle .range-knob{
-    
 }
 // hitesh css ends

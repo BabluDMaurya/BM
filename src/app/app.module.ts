@@ -79,6 +79,7 @@ import {VerifyUserComponent} from 'src/app/modalContent/verify-user/verify-user.
 import{VerifyUserInfoComponent} from "src/app/modalContent/verify-user-info/verify-user-info.component";
 // import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @NgModule({
   declarations: [AppComponent, UserDetailsComponent, FollowersComponent, FollowingComponent, SearchFoodComponent,
@@ -139,7 +140,7 @@ import { Deeplinks } from '@ionic-native/deeplinks/ngx';
     Crop,
     ScreenOrientation,
     FileTransfer,
-    
+    SocialSharing,
     PhotoViewer,
     FCM,
     // LocalNotifications,
