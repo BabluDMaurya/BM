@@ -129,7 +129,7 @@ export class AddProgramPage implements OnInit {
     this.programForm = this.fb.group({
       programTitle: new FormControl('', Validators.compose([
         //UsernameValidator.validUsername,
-        Validators.maxLength(150),
+        Validators.maxLength(40),
         Validators.required
       ])),
       programDescription: new FormControl(''),
@@ -152,7 +152,7 @@ export class AddProgramPage implements OnInit {
   'validation_messages' = {
     programTitle: [
       { type: 'required', message: 'title is required.' },
-      { type: 'maxlength', message: '150 chars allowed' }
+      { type: 'maxlength', message: '40 chars allowed' }
     ],
 
     programType: [
@@ -306,24 +306,30 @@ export class AddProgramPage implements OnInit {
     }
      
     let arr = [];
-    for (let i = 1; i <= 60; i++) {
-      arr.push({ text: i, value: i });
+    var hrs = ['05','10','15','20','25','30','35','40','45','50','55','60'];
+    for (let i = 0; i <= 11; i++) {
+      
+      arr.push({ text: hrs[i], value: hrs[i] });
     } 
+    this.selected = new Date(ev.selectedTime);
+    var hours =  this.selected.getHours();
     const defaultColumnOptions = [
       {
         name: 'Minutes',
-        options:arr
+        options:arr,
+        
       }
     ];
     const buttons = [
       {
-        text: 'Select Minute',
+        text: 'Select Minute' + hours,
         cssClass: 'timeHeading'
       },
       {
         text: 'Cancel',
         role: 'cancel'
       },
+      
       {
         text: 'Confirm',
         handler: (value) => { 
@@ -332,9 +338,10 @@ export class AddProgramPage implements OnInit {
         }
       }
     ]
-    this.selected = new Date(ev.selectedTime);
+    // this.selected = new Date(ev.selectedTime);
     this.event.startTime = this.selected.toISOString();
     this.selected.setHours(this.selected.getHours());
+    console.log(this.selected.getHours());
     if (this.selected.getTime() > (new Date().getTime())) {
       this.commonService.presentItemPicker(defaultColumnOptions, buttons);
     } else {

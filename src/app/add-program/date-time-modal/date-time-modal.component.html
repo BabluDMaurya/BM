@@ -28,22 +28,22 @@
         <ion-text class="inline-flex">{{selectedDateTime}}</ion-text>
       </ion-item>
       <ion-item *ngIf="programData?.programType!=6" class="durationItem">
-        <ion-label>Type Duration (in Minutes)</ion-label>
+        <ion-label>Session Duration (in Minutes)</ion-label>
         <ion-input placeholder="Minutes" name="duration" type="number" [(ngModel)]="duration"></ion-input>
       </ion-item>
     </ion-list>
     <h6 class="repeatedHeading">Repeated</h6>
     <ion-radio-group value="calendar" class="radio-group">
       <ion-item>
-        <ion-label>Daily</ion-label>
+        <ion-label>Repeated</ion-label>
         <ion-radio slot="start" value="clone" (click)="multiple()"
           checked="{{repetative==1? true: false}}"></ion-radio>
       </ion-item>
-      <ion-item>
+      <!-- <ion-item>
         <ion-label>Weekly</ion-label>
         <ion-radio slot="start" value="weekly" (click)="basic()"
           checked="{{repetative==2 ? true: false}}"></ion-radio>
-      </ion-item>
+      </ion-item> -->
     </ion-radio-group>
     <div *ngIf="programData?.programType==6">
       <h6 class="repeatedHeading mb-10">Select Video</h6>
@@ -87,7 +87,7 @@
           <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
           </ion-icon>
           <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
-          <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon>
+          <!-- <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon> -->
         </div>
       </ion-list-header>
       <ion-item>
