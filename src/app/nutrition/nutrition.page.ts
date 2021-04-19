@@ -224,7 +224,7 @@ export class NutritionPage implements OnInit , OnDestroy {
       quality: 60,
       sourceType: sourceType,
       destinationType: this.camera.DestinationType.DATA_URL,
-      mediaType: this.camera.MediaType.ALLMEDIA,
+      mediaType: this.camera.MediaType.PICTURE,
       correctOrientation: true
     }
     this.camera.getPicture(options).then((imageData) => {
@@ -244,7 +244,7 @@ export class NutritionPage implements OnInit , OnDestroy {
       quality: 60,
       sourceType: sourceType,
       destinationType: this.camera.DestinationType.DATA_URL,
-      mediaType: this.camera.MediaType.ALLMEDIA,
+      mediaType: this.camera.MediaType.PICTURE,
       correctOrientation: true
     }
     this.camera.getPicture(options).then((imageData) => {
