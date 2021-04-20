@@ -1,5 +1,16 @@
 .preview-img{background: #fbfbfb;}
-.preview-img img{height: 150px;}
-.ion-slide{
-    // div{width: 100%;}
+.preview-img img{height: 250px;width: 100%;object-fit: cover; object-position: top;}
+ion-card{border: none;box-shadow: none;margin: 0;border-bottom: 4px solid #f1f1f1;
+    ion-card-header{
+        ion-fab{position: absolute;top: 13px;right: 15px;color: #26a69a;}
+    }
+}
+ion-list.ingredient-list{padding: 0;border-bottom: 4px solid #f1f1f1;padding-bottom: 15px;
+    ion-list-header{color: #26a69a;font-size: .85rem;font-weight: 500;}
+}
+ion-list.instructions-list{padding: 0;border-bottom: 4px solid #f1f1f1;padding-bottom: 15px;
+    ion-list-header{color: #26a69a;font-size: .85rem;font-weight: 500;}
+}
+.ingredientItems{display: flex;flex-wrap: wrap;padding: 0 15px;
+    p {background: #f1f1f1;margin-right: 5px;border-radius: 30px;padding: 4px 13px;margin-bottom: 5px;}
 }

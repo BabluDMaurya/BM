@@ -74,5 +74,8 @@ export class NutritionService {
   searchMusic(data: any): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/searchMusic', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('searchMusic', data)));
   }
+  deleteNutrition(data: any): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/deleteNutrition', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('deleteNutrition', data)));
+  }
 
 }

@@ -9,9 +9,6 @@
 .nutrition-sub:last-child{margin-right: 0;}
 .nutrition-sub ion-icon{font-size: 1rem;margin-right: 3px;color: #26a69a;}
 .nutrition-flex{display: flex; align-items: center;}
-.more-card-header{display: flex; justify-content: space-between;align-items: center;height: 40px;padding: 0 10px;background: #26a69a;}
-.more-card-header ion-card-title{font-size: .85rem;color: #FFF;}
-.more-card-header+ion-card-content{padding: 0;}
 // .addmore{position: absolute;right: 10px;top: 10px;color: #FFF;font-size: 1.5rem;z-index: 99;width: 38px;height: 38px;display: flex;justify-content: center;align-items: center;cursor: pointer;}
 .details-list{padding: 0;
     ion-item{padding-top: 0;--min-height: auto;font-size: 0.85rem;}
@@ -25,4 +22,20 @@
     .beveragesList+ion-item{
         p:first-child{width: 5%;}
     }
+}
+
+.preview-img img{height: 250px;width: 100%;object-fit: cover; object-position: top;}
+ion-card{border: none;box-shadow: none;margin: 0;border-bottom: 4px solid #f1f1f1;
+    ion-card-header{
+        ion-fab{position: absolute;top: 13px;right: 15px;color: #26a69a;}
+    }
+}
+ion-list.ingredient-list{padding: 0;border-bottom: 4px solid #f1f1f1;padding-bottom: 15px;
+    ion-list-header{color: #26a69a;font-size: .85rem;font-weight: 500;}
+}
+ion-list.instructions-list{padding: 0;border-bottom: 4px solid #f1f1f1;padding-bottom: 15px;
+    ion-list-header{color: #26a69a;font-size: .85rem;font-weight: 500;}
+}
+.ingredientItems{display: flex;flex-wrap: wrap;padding: 0 15px;
+    p {background: #f1f1f1;margin-right: 5px;border-radius: 30px;padding: 4px 13px;margin-bottom: 5px;}
 }
