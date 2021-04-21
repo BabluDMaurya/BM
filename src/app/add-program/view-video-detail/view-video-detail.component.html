@@ -1,0 +1,62 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin"  (click)="closeModal()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>My Videos</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <ion-card class="ion-no-margin">
+    <ion-card-content class="ion-no-padding item-content">
+  <ion-thumbnail>
+    <img *ngIf="noImgData" width="100%" height="210px" src="../../../assets/images/loading.jpg">
+    <img *ngIf="!noImgData" (click)="playVideo()" width="100%" height="210px" src="{{videoThumbPath}}">
+  </ion-thumbnail>
+  <ion-icon (click)="playVideo()" ios="ios-play" md="md-play" class="play-videoBtn"></ion-icon>
+</ion-card-content>
+</ion-card>
+  <!-- <video width="100%" height="210px" controls disablePictureInPicture controlsList="nodownload" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="mb-10 videoPlayer">
+    <source src="{videoDataPath}" type="video/mp4" />
+  </video> -->
+  <div class="ion-padding-horizontal">
+    <h6 style="margin-bottom: 5px;">{{title}}</h6>
+    <p>{{description}}</p>
+  </div>
+  <ion-list class="top-list" style="display: none;">
+    <ion-item (click)="liked(postID, likePost)" [ngClass]="likePost ? 'active' :''">
+      <div class="top-icon"><ion-icon ios="ios-heart" md="md-heart"></ion-icon></div>
+      <ion-label>{{ postLikesCount > 0 ? postLikesCount : 0 }}</ion-label>
+    </ion-item>
+    <ion-item [routerLink]="['/comments',postID]" *ngIf=" !disableComment" detail="false">
+      <div class="top-icon"><ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon></div>
+      <ion-label>{{ commentCount > 0 ? commentCount : 0 }}</ion-label>
+    </ion-item>
+    <!-- <ion-item (click)="shareItem()">
+      <div class="top-icon"><ion-icon ios="ios-share" md="md-share"></ion-icon></div>
+      <ion-label>Share</ion-label>
+    </ion-item> -->
+    <!-- <ion-item (click)="info=!info" [ngClass]="info?'active':''">
+      <div class="top-icon"><ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></div>
+      <ion-label>Info</ion-label>
+    </ion-item> -->
+    <!-- <ion-item  (click)="addBookmark()"  [ngClass]="bookmark?'active':''">
+      <div class="top-icon"><ion-icon ios="ios-bookmark" md="md-bookmark"></ion-icon></div>
+      <ion-label>Bookmark</ion-label>
+    </ion-item> -->
+  </ion-list>
+  <ion-list class="info-block ion-padding" style="padding-top: 0;">   
+    <!--  *ngIf="info"  [ngClass]="info?'active':''" -->
+    <p>&nbsp;</p>
+    <p>Published on {{createdAt}}</p>
+    <p>Credits - Bablu Maurya</p>
+  </ion-list>
+  
+</ion-content>
+
+

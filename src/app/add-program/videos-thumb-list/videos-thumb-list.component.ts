@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
 import { Config } from './../../config/config';
-import { NavParams } from '@ionic/angular'
-import { ProgramService }from './../../services/program.service'
+import { NavParams, ModalController } from '@ionic/angular'
+import { ProgramService }from './../../services/program.service';
+import { ViewVideoDetailComponent } from '../../add-program/view-video-detail/view-video-detail.component';
 @Component({
   selector: 'app-videos-thumb-list',
   templateUrl: './videos-thumb-list.component.html',
@@ -16,7 +17,7 @@ export class VideosThumbListComponent implements OnInit {
   videosel:any;
   constructor(public commonService: CommonService,
     private navParams:NavParams,
-    private programService:ProgramService) { }
+    private programService:ProgramService,private modalCtrl:ModalController) { }
 
   ngOnInit() {
     let userData = JSON.parse(localStorage.getItem('userData'));
@@ -50,4 +51,14 @@ export class VideosThumbListComponent implements OnInit {
     //    this.commonService.dismissLoader();
     // });
   }
+  async showVideoDetails(item){
+
+    const modal = await this.modalCtrl.create({
+     component: ViewVideoDetailComponent,
+     cssClass: 'fullModal',
+     componentProps: { 'details':item}
+
+   });
+   return await modal.present();
+}
 }
