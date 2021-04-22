@@ -73,11 +73,11 @@ export class AppComponent implements OnInit
             //   }
    
 
-            this.file.createFile(this.file.externalApplicationStorageDirectory, "permissions.dat", true)
-            .then(() => {
-                this.file.removeFile(this.file.externalApplicationStorageDirectory, "permissions.dat")
-                    .then( () => console.log('success'), error => console.error(error) );
-            }, error => console.error(error))
+            // this.file.createFile(this.file.externalApplicationStorageDirectory, "permissions.dat", true)
+            // .then(() => {
+            //     this.file.removeFile(this.file.externalApplicationStorageDirectory, "permissions.dat")
+            //         .then( () => console.log('success'), error => console.error(error) );
+            // }, error => console.error(error))
 
       //---------FCM----------//
       this.fcm.getToken().then(token => {           

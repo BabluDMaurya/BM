@@ -58,6 +58,7 @@ export class SigninPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log("ngOnInit signin");
     //  this.authService.autoLogin();
     this.diviceToken = localStorage.getItem('deviceToken');
   }
@@ -172,6 +173,7 @@ export class SigninPage implements OnInit, OnDestroy {
     this.router.navigate(["/signup"]);
   }
   ionViewWillEnter() {
+    console.log("ionViewWillEnter signin");
     this.subscribe = this.platform.backButton.subscribeWithPriority(10, async () => {
       if (this.router.isActive('/signin', true) && this.router.url === '/signin') { 
           let header: 'Are you sure you want Exit the  App?' ;
@@ -192,6 +194,7 @@ export class SigninPage implements OnInit, OnDestroy {
   }
 
   ionViewWillLeave() {
+    console.log("ionViewWillLeave signin");
     this.subscribe.unsubscribe();
   }
   // ngAfterContentInit() {
@@ -202,8 +205,10 @@ export class SigninPage implements OnInit, OnDestroy {
   //   }
   // }
   ngOnDestroy() {
+    console.log("ngOnDestroy signin");
     // this.backButtonSubscription.unsubscribe();  
   }
   ionNavDidChange() {
+    console.log("ionNavDidChange signin");
   }
 }

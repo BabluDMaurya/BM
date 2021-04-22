@@ -27,7 +27,7 @@ export class VideosPage implements OnInit {
   createdAt : any;
   commentCount : any;
   postLikesCount : any;
-  disableComment : any;
+  disableComment : any = true;
   myPosts: any;
   loginUserData : any;
   videoType : any;

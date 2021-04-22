@@ -20,7 +20,7 @@ export class PopoverComponent implements OnInit {
     ) {
       this.postData = this.navParams.get('postId');
       this.commentStatus = this.navParams.get('commentStatus'); 
-      this.commentText = this.commentStatus == 1 ? 'Enable Comment' : 'Disable Comment';
+      this.commentText = this.commentStatus == 1 ? 'Enable Comments' : 'Disable Comments';
      }
 
   ngOnInit() {}

@@ -91,7 +91,7 @@
             <ion-list class="item-post" lines="none">
               <ion-item>
                 <div [routerLink]="['/comments',post.id]"
-                  *ngIf="post?.disable_comment == 0 && post?.post_user?.comment_disable == 0">
+                  *ngIf="post?.disable_comment == 0">
                   <span class="d-flex">
                     <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
                     <span>{{post.total_comments.length}}</span>

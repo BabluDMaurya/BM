@@ -1,9 +1,7 @@
 <ion-header class="top-header ion-no-padding">
-  <ion-list class="top-heading three-block video-preview-ion-list">
-    <!-- <ion-item slot="start"></ion-item> -->
-    <!-- <ion-item slot="center">
-      <ion-label>Preview</ion-label>
-    </ion-item> -->
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start"></ion-item>
+    <ion-item slot="center"></ion-item>
     <ion-item class="icon-right-side ion-text-end" slot="end">
       <ion-label class="text-green" (click)="videoFormSubmit()">Upload</ion-label>
     </ion-item>
@@ -13,10 +11,14 @@
   <ion-grid class="ion-no-padding">  
     <ion-row class="main_content no_footer" >
       <ion-col size="12" class="ion-no-padding pt-10">
-        <p class="ion-padding-horizontal mb-10">{{videoDescription}}</p>
+        
         <video width="100%" height="200px" controls disablePictureInPicture controlsList="nodownload" preload="metadata" autoplay="autoplay"  class="videoPlayer">
           <source src="{{filepath + videoDataPath}}" type="video/mp4" />
         </video>
+        <div class="videoContent">
+          <h4>{{videoTitle}}</h4>
+          <p>{{videoDescription}}</p> 
+        </div>      
         <form class="nutrition-form" [formGroup]="VideoDetailsForm">
         <!-- <ion-form class="nutrition-form" [formGroup]="videoFormCompelet"> -->
         <ion-list-header class="grey-header">Select Thumbnail :</ion-list-header>
@@ -42,7 +44,7 @@
               <ion-radio slot="start" value="1" [checked]="true"></ion-radio>
             </ion-item>
             <ion-item (click)="userModal()">
-              <ion-label>Share With Selected Followers</ion-label>
+              <ion-label>Share With Followers</ion-label>
               <ion-radio  slot="start" value="2"></ion-radio>
             </ion-item>
             <ion-item>

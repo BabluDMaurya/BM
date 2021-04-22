@@ -483,19 +483,23 @@ ion-select{color: #222;}
     ion-label{font-size: 0.75rem;color: #000;text-transform: uppercase;}
 }
 .ingredient-list ion-item, .instructions-list ion-item{--min-height:auto}
-.ingredient-list ion-item p, .instructions-list ion-item p{width: 100%;border-bottom: 1px solid whitesmoke;padding-bottom: 5px;margin-bottom: 5px;}
+.ingredient-list ion-item p, .instructions-list ion-item p{width: 100%;border-bottom: 1px solid whitesmoke;padding-bottom: 5px;margin-bottom: 5px;font-size: 13px;}
 .ingredient-list ion-item:last-child p, .instructions-list ion-item:last-child p{border-bottom: none;padding-bottom: 0;margin-bottom: 0;}
+.nutrition-head{padding: 0 16px 15px;border-bottom: 4px solid #f1f1f1;}
 .nutrition-head h4{font-size: 1.15rem;font-weight: 400;color: #000;margin-top:0}
+.nutrition-head p{margin-bottom: 10px;line-height: 1.4;font-size: 13px;}
 .nutrition-sub{font-size: 0.85rem;display: flex;align-items: center;margin-right: 20px;}
 .nutrition-sub:last-child{margin-right: 0;}
 .nutrition-sub ion-icon{font-size: 1rem;margin-right: 3px;color: #26a69a;}
 .nutrition-flex{display: flex; align-items: center;}
-.more-card-header{@extend %flex-space;height: 38px;padding: 0 10px;background: #26a69a;}
-.more-card-header ion-card-title{font-size: .85rem;color: #FFF;}
+.more-card-header{@extend %flex-space;height: 38px;padding: 0 15px;background: transparent;}
+.more-card-header ion-card-title{font-size: .85rem;color: #26a69a;}
 .more-card-header+ion-card-content{padding: 0;}
 .addmore{position: absolute;top: 0;right: 0;color: #FFF;font-size: 1.5rem;z-index: 99;width: 38px;height: 38px;display: flex;justify-content: center;align-items: center;cursor: pointer;}
+.details-list{padding-top: 0;}
 .details-list ion-item{padding-top: 5px;--min-height: auto;font-size: 0.85rem;}
-.details-list ion-item ion-label{margin: 0;}
+.details-list ion-item ion-label{margin: 0;font-size: 13px;}
+.details-list ion-input{--padding-top: 0;--padding-bottom: 0;}
 .position-relative{position: relative;}
 
 // To show right side card icon with header
@@ -566,7 +570,7 @@ ion-select{color: #222;}
 .item-header ion-card-title{font-size: 0.90rem;color: #262626;font-weight: 500;}
 .item-header ion-card-subtitle, .post-timedate p{font-size: 0.757rem;text-transform: capitalize;margin-bottom: 0;color: #676767;font-weight: 400;}
 .header-right{display: flex;justify-content: space-between;width: 100%;}
-.item-content ion-thumbnail{width: 100%;height: 191px;}
+.item-content ion-thumbnail{width: 100%;height: 260px;}
 .post-content{padding: 10px;}
 .post-content p{color: #999;}
 .item-post{display: flex;justify-content: space-between;align-items: center;padding: 0;}
@@ -799,7 +803,7 @@ ion-item-divider{--padding-start: 0;}
 
 .footer ion-icon{color: #999;}
 
-.post-slider ion-slide{height: 200px}
+.post-slider ion-slide{height: 260px}
 .post-slider ion-slide img{object-fit: cover;width: 100%;height: 100%;}
 ion-checkbox{--background-checked: #2bbbad;--border-color-checked: #2bbbad;}
 .circle-badge{border-radius: 50%;width:20px;height: 20px;position: absolute;top: 5px;}

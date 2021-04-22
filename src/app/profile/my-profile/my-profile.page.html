@@ -108,7 +108,7 @@
     <ion-row *ngIf="tabs" class="mb-10">
       <ion-col size="12" class="photo-heading ion-padding-horizontal">
         <ion-text>Photo's</ion-text>
-        <ion-button size="small" [routerLink]="['/tabs/all-images',profileData?.userData?.id , profileData?.userData?.user_name]" *ngIf="previewImage.length>0">See More</ion-button>
+        <!-- <ion-button size="small" [routerLink]="['/tabs/all-images',profileData?.userData?.id , profileData?.userData?.user_name]" *ngIf="previewImage.length>0">See More</ion-button> -->
       </ion-col>
       <ion-col size="12" class="ion-no-padding">
         <ion-slides [options]="sliderOpts" class="profile-slider">
@@ -194,10 +194,10 @@
                             <ion-list class="item-post" lines="none">
                               <ion-item>
                                 <div [routerLink]="['/comments',post.id]" *ngIf="post?.disable_comment == 0">
-                                  <span *ngIf="loginUserData?.comment_disable == 0">
+                                  <!-- <span *ngIf="loginUserData?.comment_disable == 0"> -->
                                     <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
                                     <span>{{post.total_comments.length}}</span>
-                                  </span>
+                                  <!-- </span> -->
                                 </div>
                                 <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
                                   <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon>
@@ -342,10 +342,10 @@
                             <ion-list class="item-post" lines="none">
                               <ion-item>
                                 <div [routerLink]="['/comments',post.id]" *ngIf="post?.disable_comment == 0">
-                                  <span *ngIf="loginUserData?.comment_disable == 0">
+                                  <!-- <span *ngIf="loginUserData?.comment_disable == 0"> -->
                                     <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
                                     <span>{{post.total_comments.length}}</span>
-                                  </span>
+                                  <!-- </span> -->
                                 </div>
                                 <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
                                   <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon>

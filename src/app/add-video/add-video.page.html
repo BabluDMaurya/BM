@@ -20,24 +20,26 @@
       <ion-col size="12" class="ion-no-padding">
         <form class="nutrition-form" [formGroup]="videoForm">
           <ion-list>
-            <ion-item class="mb-10">
-              <ion-input formControlName="title" type="text" placeholder="* Title" class="form-control"></ion-input>
+            <ion-item class="floatingItem">
+              <ion-label position="floating">Title <span>*</span></ion-label>
+              <ion-input formControlName="title" type="text" class="form-control"></ion-input>
             </ion-item>
             <ng-container *ngFor="let validation of validation_messages.title">
               <span class="error-message" *ngIf="(isSubmitted || videoForm.get('title').touched) && videoForm.get('title').hasError(validation.type)">{{ validation.message }}</span>
             </ng-container>
-            <ion-item class="mb-10">
-              <ion-textarea  auto-grow="true" formControlName="description" placeholder="* Description" class="form-control"></ion-textarea>
+            <ion-item class="floatingItem">
+              <ion-label position="floating">Description <span>*</span></ion-label>
+              <ion-textarea rows="5" auto-grow="true" formControlName="description" class="form-control"></ion-textarea>
             </ion-item>           
             <ng-container *ngFor="let validation of validation_messages.description">
               <span class="error-message" *ngIf="(isSubmitted || videoForm.get('description').touched) && videoForm.get('description').hasError(validation.type)">{{ validation.message }}</span>
             </ng-container>            
           </ion-list>
         </form>    
-        <div class="position-relative">
+        <div class="position-relative" style="text-align: center;background: #f1f0f5;">
           <ion-icon *ngIf="videoFileSelected" ios="ios-close-circle" md="md-close-circle" (click)="removefilepreview()" color="danger" class="btn-close"></ion-icon>
-          <img *ngIf="videoFileSelected" (click)="filepreview()" class="mb-10" width="100%" height="250px" src="../../assets/images/demo3.jpg">
-          <img *ngIf="!videoFileSelected" class="mb-10" width="100%" height="250px" src="../../assets/images/loading.jpg">
+          <img *ngIf="videoFileSelected" (click)="filepreview()" class="mb-10" height="250px" src="../../assets/images/demo3.jpg">
+          <img *ngIf="!videoFileSelected" class="mb-10" height="250px" src="../../assets/images/loading.jpg">
         </div>        
       </ion-col>
     </ion-row>
