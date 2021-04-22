@@ -3,7 +3,7 @@ ion-card{border-radius: 0;
     ion-card-content{
         ion-segment{margin: 10px 0;
             ion-segment-button{width: 32%;max-width: 130px;background: #f3f3f3;padding: 0;margin: 0 5px;--padding-start: 0;--padding-end: 0;border-radius: 4px;overflow: hidden;
-                ion-button{position: absolute;top: 0;right: 0;--background: transparent;--box-shadow: none;color: #26a69a;--padding-start: 0;--padding-end: 0;height: auto;font-size: 16px;margin: 3px;z-index: 9;}
+                ion-button{position: absolute;top: 0;right: 0;--background: #26a69a;--box-shadow: none;color: #FFF;--padding-start: 0;--padding-end: 0;height: auto;font-size: 16px;margin: 3px;z-index: 9;--border-radius:50%}
             }
             ion-segment-button:first-child{margin-left: 15px;}
         }

@@ -22,7 +22,9 @@
             </div>
             <img src="{{url}}{{item.thumb_path}}" *ngIf="item?.thumb_path" />
             <ion-label>{{item.title}}</ion-label>
+            <ion-button class="infoIcon" (click)="showVideoDetails(item.posts_id)"><ion-icon name="information-circle"></ion-icon></ion-button>
           </ion-item>
+          
         </ion-radio-group>
       </ion-list>
       <ng-template #no_content><div class="no-data"> <img src="../../../assets/images/error.svg" class="mb-10" width="40px" /><p>No post video yet!!!</p></div></ng-template>

@@ -54,7 +54,7 @@ export class NutritionPage implements OnInit , OnDestroy {
     this.nutritionForm = this.fb.group({
       nutriTitle: new FormControl('', Validators.compose([
         //UsernameValidator.validUsername,
-        Validators.maxLength(25),
+        Validators.maxLength(40),
         Validators.required
       ])), 
       nutriDescription: new FormControl('', Validators.compose([
@@ -89,7 +89,7 @@ export class NutritionPage implements OnInit , OnDestroy {
   'validation_messages' = {
     nutriTitle: [
       { type: 'required', message: 'Title is required.' },
-      { type: 'maxLength', message: 'Maximum length 25 charecters' }
+      { type: 'maxLength', message: 'Maximum length 40 charecters' }
     ],
     nutriDescription: [
       { type: 'required', message: 'Description is required.' }
@@ -224,7 +224,7 @@ export class NutritionPage implements OnInit , OnDestroy {
       quality: 60,
       sourceType: sourceType,
       destinationType: this.camera.DestinationType.DATA_URL,
-      mediaType: this.camera.MediaType.ALLMEDIA,
+      mediaType: this.camera.MediaType.PICTURE,
       correctOrientation: true
     }
     this.camera.getPicture(options).then((imageData) => {
@@ -244,7 +244,7 @@ export class NutritionPage implements OnInit , OnDestroy {
       quality: 60,
       sourceType: sourceType,
       destinationType: this.camera.DestinationType.DATA_URL,
-      mediaType: this.camera.MediaType.ALLMEDIA,
+      mediaType: this.camera.MediaType.PICTURE,
       correctOrientation: true
     }
     this.camera.getPicture(options).then((imageData) => {

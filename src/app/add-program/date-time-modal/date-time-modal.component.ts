@@ -61,10 +61,30 @@ export class DateTimeModalComponent implements OnInit {
     this.minutes = this.navParams.data.minutes;
     hourspan.setMinutes(hourspan.getMinutes() + 59);
     this.programData = this.navParams.data.programData;
+    //get days name
     this.programList = this.navParams.data.programList; 
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var dayName = new Date(this.calendarData);
+    var curr_day = days[dayName.getDay()];
+    var curr_date: number = dayName.getDate();
+    var curr_year: number = dayName.getFullYear();
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    var curr_month = monthNames[this.calendarData.getMonth()];
+    // this.selectedDateTime = this.convert(new Date(this.calendarData))+' '+this.calendarData.getHours()+':'+this.minutes;
+     let suffix = 'th',
+        day = curr_date;
 
-    this.selectedDateTime = this.convert(new Date(this.calendarData))+' '+this.calendarData.getHours()+':'+this.minutes;
-    
+        if (day === 1 || day === 21 || day === 31) {
+            suffix = 'st'
+        } else if (day === 2 || day === 22) {
+            suffix = 'nd';
+        } else if (day === 3 || day === 23) {
+           suffix = 'rd';
+        }
+    this.selectedDateTime = curr_day+', '+curr_date+suffix+' '+curr_month+' '+curr_year+' '+this.calendarData.getHours()+':'+this.minutes;
+    console.log(this.selectedDateTime);
     // ------------ S O R T I N G ---------------
     this.programList.forEach(el => {
       let startTime = new Date(el.startTime);

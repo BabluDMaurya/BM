@@ -58,9 +58,10 @@ export class VideosPage implements OnInit {
   
   ngOnInit() {
       this.noImgData = true;
+      console.log(this.postID);
       this.postService.getPostById({'postId':this.postID}).subscribe((data)=>{
       this.postData = data.postData;
-      
+      console.log(data);
       this.postUserId = data.postData.user_id;
 
       this.disableComment = data.postData.disable_comment

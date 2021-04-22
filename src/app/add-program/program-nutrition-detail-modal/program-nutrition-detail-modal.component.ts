@@ -11,6 +11,8 @@ import { NavParams,IonSlides } from '@ionic/angular';
 export class ProgramNutritionDetailModalComponent implements OnInit {
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
   sliderOpts = {
+    initialSlide: 1,
+    speed: 400,
     zoom: true,
     slidesPerView: 1,
     centeredSlides: true,
@@ -26,7 +28,25 @@ export class ProgramNutritionDetailModalComponent implements OnInit {
       { expanded: false, },
          ];
   }
+  slidesDidLoad(slides: IonSlides) {
+    slides.startAutoplay();
+  }
+  ionViewWillLeave(){
+    this.slides.stopAutoplay();
 
+    }
+    //
+    ionViewDidEnter() {
+    // this.slides.startAutoplay();
+    this.sliderOpts = {
+      initialSlide: 1,
+      speed: 400,
+      zoom: true,
+      slidesPerView: 1,
+      centeredSlides: true,
+      spaceBetween: 0
+    };
+    }
   ngOnInit() {
     this.nutriDetails = this.navParams.data.details
     console.log(this.nutriDetails);
