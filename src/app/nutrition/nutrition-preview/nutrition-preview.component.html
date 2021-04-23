@@ -1,4 +1,4 @@
-<ion-slides [options]="sliderOpts">
+<ion-slides pager="true" class="preview-img" [options]="sliderOpts">
   <ion-slide *ngFor="let img of images">
     <img src="{{ img }}" tappable (click)="openPreview(img)">
   </ion-slide>
@@ -12,7 +12,7 @@
     </div>
     <div class="nutrition-sub ion-text-right">
       <ion-icon ios="ios-time" md="md-time"></ion-icon>
-      {{nutritionData.form.nutriPrepHrs}}:{{nutritionData.form.nutriPrepMin}} (hh:mm)
+      {{nutritionData.form.nutriPrepHrs}} hrs {{nutritionData.form.nutriPrepMin}} min
     </div>
   </div>
 </div>
@@ -66,7 +66,7 @@
 <ion-list lines="none" class="ingredient-list">
   <ion-list-header>Ingredients</ion-list-header>
   <div class="ingredientItems">
-    <span *ngFor="let Ingredient of nutritionData.form.nutriIngredients">{{Ingredient.name}}</span>
+    <p *ngFor="let Ingredient of nutritionData.form.nutriIngredients"><span>{{Ingredient.name}}</span></p>
   </div>
   <div class="ingredientItems">
   <p *ngFor="let item of nutritionData.minerals let i=index;">
@@ -81,8 +81,8 @@
 </ion-list>
 <ion-list lines="none" class="instructions-list">
   <ion-list-header>Instructions</ion-list-header>
-  <ion-item *ngFor="let instruction of nutritionData.form.nutriInstruction">
-    <p>{{instruction.name}}</p>
+  <ion-item *ngFor="let instruction of nutritionData.form.nutriInstruction; let i=index;">
+    <p>{{i+1}}. {{instruction.name}}</p>
   </ion-item>
 </ion-list>
 <ion-list lines="none" class="instructions-list">
@@ -92,10 +92,10 @@
     <p *ngIf="nutritionData.form.nutriBevrageType == 2">Milk</p>
     <p *ngIf="nutritionData.form.nutriBevrageType == 3">Fruit Drink</p>    
     <p *ngIf="nutritionData.form.nutriBevrageType == 4">Soda</p>
-    <p>{{nutritionData.form.bevragveQnty}} <span *ngIf="nutritionData.form.bevragveQnty == 1">Bottle</span></p>
-    <p *ngIf="nutritionData.form.bevragveQnty == 2">Glass</p>
-    <p *ngIf="nutritionData.form.bevragveQnty == 3">Bowl</p>    
-    <p *ngIf="nutritionData.form.bevragveQnty == 4">Cup</p>
+    <p>{{nutritionData.form.bevragveQnty}} <span *ngIf="nutritionData.form.bevragveQnty == 1">Bottle</span>
+    <span *ngIf="nutritionData.form.bevragveQnty == 2">Glass</span>
+    <span *ngIf="nutritionData.form.bevragveQnty == 3">Bowl</span>    
+    <span *ngIf="nutritionData.form.bevragveQnty == 4">Cup</span></p>
     <p>{{nutritionData.form.unitQnty}} <span *ngIf="nutritionData.form.bevragveUnit == 1">Liter</span> <span *ngIf="nutritionData.form.bevragveUnit == 2">Milliliter</span></p>
   </div>
   

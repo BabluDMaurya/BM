@@ -39,3 +39,8 @@ ion-list.instructions-list{padding: 0;border-bottom: 4px solid #f1f1f1;padding-b
 .ingredientItems{display: flex;flex-wrap: wrap;padding: 0 15px;
     p {background: #f1f1f1;margin-right: 5px;border-radius: 30px;padding: 4px 13px;margin-bottom: 5px;}
 }
+.preview-img{margin-bottom: 10px;
+    ion-slide{
+        img{height: 250px;width: 100%;object-fit: cover;    object-position: center;}
+    }
+}

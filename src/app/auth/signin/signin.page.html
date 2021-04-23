@@ -5,8 +5,9 @@
         <img src="../../../assets/images/logo.png">  
       </div>
       <form class="login-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <ion-item class="ion-no-padding">
-          <ion-input type="text" formControlName="username"  placeholder="Username or Email" 
+        <ion-item class="ion-no-padding floatingItem">
+            <ion-label position="floating">Username or Email <span>*</span></ion-label>
+          <ion-input type="text" formControlName="username" 
             [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
           </ion-input>
         </ion-item>
@@ -16,8 +17,9 @@
             {{ validation.message }}
           </span>
         </ng-container>
-        <ion-item class="ion-no-padding">
-          <ion-input formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [type]="cpwd
+        <ion-item class="ion-no-padding floatingItem">
+        <ion-label position="floating">Password <span>*</span></ion-label>
+          <ion-input formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [type]="cpwd
             ? 'password' : 'text'" >
               </ion-input>      
               <span toggle=" #password-field" class="change-toggle-password">

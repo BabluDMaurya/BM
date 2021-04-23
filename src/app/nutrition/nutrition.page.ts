@@ -67,8 +67,8 @@ export class NutritionPage implements OnInit , OnDestroy {
         Validators.required,
       ])),
       // nutriPrepHrs: new FormControl('00'),
-      nutriPrepHrs: new FormControl(''),
-      nutriPrepMin: new FormControl('', Validators.compose([
+      nutriPrepHrs: new FormControl('00'),
+      nutriPrepMin: new FormControl('00', Validators.compose([
         Validators.required,
       ])),
       nutriInstruction: new FormArray([this.fb.group({
@@ -283,4 +283,7 @@ export class NutritionPage implements OnInit , OnDestroy {
    console.log('destroy');
   
  }
+ removeImg(index) {
+  this.gallaryImgPath.splice(index, 1);
+}
 }

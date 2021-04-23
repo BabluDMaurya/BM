@@ -64,6 +64,7 @@ export class CommentsPage implements OnInit {
         this.data = true;
        this.comment = data.status;
        this.count = data.count;
+       console.log('this.postId' + this.postId);
       });
 
       this.postService.getProfileImage().subscribe(

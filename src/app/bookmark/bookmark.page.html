@@ -49,7 +49,7 @@
             <ion-list class="item-post" lines="none">
               <ion-item>
                 <div [routerLink]="['/comments',post?.id]" *ngIf="post?.posts?.post_user?.comment_disable == 0">
-                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>{{post?.posts?.total_comments?.length}}</span>
+                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>{{post?.Tcount}}</span>
                 </div>
                 <div  (click)="liked(post.posts.id,post?.liked)"  class="{{ post.liked ?'active':'inactive' }}"  >
                   <ion-icon  class="like-icon" ios="ios-heart" md="md-heart" ></ion-icon> <span>{{post?.count}}</span>
@@ -103,7 +103,7 @@
             <ion-list class="item-post" lines="none">
               <ion-item>
                 <div [routerLink]="['/comments',post?.id]" *ngIf="post?.posts?.post_user?.comment_disable == 0">
-                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>{{post?.posts?.total_comments?.length}}</span>
+                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>{{post?.Tcount}}</span>
                 </div>
                 <div  (click)="liked(post.posts.id,post?.liked)"  class="{{ post.liked ?'active':'inactive' }}"  >
                   <ion-icon  class="like-icon" ios="ios-heart" md="md-heart" ></ion-icon> <span>{{post?.count}}</span>
