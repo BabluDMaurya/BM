@@ -115,14 +115,13 @@ export class NutritionDetailModalComponent implements OnInit {
           }
         }, {
           text: 'Yes',
-          handler: () => {
-            
+          handler: () => {            
           this.commonService.presentLoader();
-          this.nutritionService.deleteNutrition({'id':id}).subscribe((data: any) => {
-            this.commonService.dismissLoader();
+          this.nutritionService.deleteNutrition({'id':id}).subscribe((data: any) => {            
             if(data){
-              this.router.navigateByUrl('/nutrition-list');
-              this.router.navigate(['/nutrition-list']);
+              // this.router.navigateByUrl('/nutrition-list');
+              this.router.navigate(['/nutrition-list']);              
+              this.commonService.dismissLoader();
             }
           });
 
