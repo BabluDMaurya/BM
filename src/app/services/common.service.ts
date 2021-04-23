@@ -1,4 +1,4 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable, Optional,OnDestroy } from '@angular/core';
 import { AlertController,ToastController,LoadingController,ModalController ,PopoverController ,NavController, PickerController} from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import {SettingsService} from './../services/settings.service'
@@ -14,7 +14,7 @@ import { ChatService } from 'src/app/services/chat.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CommonService {
+export class CommonService implements OnDestroy{
   private handleError: HandleError;
   public token: any;
   public headers: any;
@@ -197,6 +197,7 @@ export class CommonService {
            localStorage.clear          
            
            this.dismissLoader(); 
+           this.ngOnDestroy();
           this.router.navigateByUrl('/signin');
           this.navCtrl.navigateRoot;
             
@@ -315,5 +316,8 @@ export class CommonService {
     bookmarkPost(formData){
       return this.http.post<any>(Config.ApiUrl+'api/auth/bookmark', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('bookmarkPost', formData)));
     }  
+    ngOnDestroy() {
+      console.log('ngOnDestroy');
+    }
 
 }

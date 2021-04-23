@@ -91,6 +91,7 @@ export class MusicVolumeModalComponent implements OnInit {
             localStorage.setItem('videoPath',data.postData.video_path);
             localStorage.setItem('videoThumb',data.postData.thumb_path);
             localStorage.setItem('videoDescription',data.postData.description);
+            localStorage.setItem('videoTitle',data.postData.title);
             this.router.navigate([this.returnUrl,this.uploadedVideo]);
             // this.commonService.redirectUrlWithIdConfirm("Success", "Video Uploaded Successfully.",this.returnUrl,this.uploadedVideo);                
           });                  
@@ -102,9 +103,9 @@ export class MusicVolumeModalComponent implements OnInit {
           this.error = JSON.stringify(err);
           console.log("this.error: "+ this.error);
             if(this.error){
-              this.errorMessage = this.error;
+              this.errorMessage = "Video not uploaded. Please try again";
             }else{
-              this.errorMessage = 'Some thing wrong in upload video';
+              this.errorMessage = 'Some thing wrong.Please try again';
             }
           this.commonService.presentAlert("Error", this.errorMessage,["Ok"],'');
         });

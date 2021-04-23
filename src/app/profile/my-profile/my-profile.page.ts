@@ -17,7 +17,7 @@ import { ToastController } from '@ionic/angular';
   templateUrl: './my-profile.page.html',
   styleUrls: ['./../../app.component.scss', './my-profile.page.scss'],
 })
-export class MyProfilePage implements OnInit {
+export class MyProfilePage implements OnInit,OnDestroy {
   block = true;
   bookmark = true;
   isLoading = false;
@@ -87,6 +87,7 @@ export class MyProfilePage implements OnInit {
     };
   }
   ngOnInit() {
+    console.log("ngOnInit");
     this.previewImage = [];
     this.commonService.footerTabHooks.subscribe(data => {
       if (data) {
@@ -122,16 +123,17 @@ export class MyProfilePage implements OnInit {
   postData() {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
     this.notification.getUnreadCountMyProfile().subscribe((data: any) => {
-      this.notificationCount = data.status.length;
-
+      this.notificationCount = data.status;
+      
       if(data.status.length > 0){
-      this.notificationCount.forEach((element, i) => {
-        this.notificationCount[i].count = element.post_likes.length;
-        element.post_likes.filter((f) => {
-          if (f.user_id == this.loginUserData.id) {
-            this.notificationCount[i].liked = true;
-          }
-        });
+      this.notificationCount.forEach((element, i) => {      
+        
+          this.notificationCount[i].count = element.post_likes.length;
+          element.post_likes.filter((f) => {
+            if (f.user_id == this.loginUserData.id) {
+              this.notificationCount[i].liked = true;
+            }
+          });      
         element.post_bookmarks.filter((f) => {
           if (f.user_id == this.loginUserData.id) {
             this.myPosts[i].bookmarked = true;
@@ -258,6 +260,7 @@ export class MyProfilePage implements OnInit {
     });
   }
   ionViewWillEnter() {
+    console.log("ionViewWillEnter");
     this.subscribe = this.platform.backButton.subscribeWithPriority(10, () => {
       if (this.router.isActive('/tabs/consultant-profile', true) && this.router.url === '/tabs/consultant-profile' &&  !this.commonService.modal) {
        let  buttons= [
@@ -292,7 +295,7 @@ export class MyProfilePage implements OnInit {
     });
   }
   ngAfterViewInit() {
-    
+    console.log('ngAfterViewInit');
   }
   @HostListener('window:scroll', ['$event'])
 
@@ -341,14 +344,17 @@ export class MyProfilePage implements OnInit {
     this.getContent().scrollToTop(500);
   }
   ngOnDestroy() {
+    console.log('ngOnDestroy');
     this.consultantProfile = "aboutInfo";
   }
   ionViewWillLeave() {
+    console.log('ionViewWillLeave');
     this.subscribe.unsubscribe();
     this.consultantProfile = "aboutInfo";
     this.tabs = true;
   }
   ionViewDidLeave() {
+    console.log('ionViewDidLeave');
     this.subscribe.unsubscribe();
     this.consultantProfile = "aboutInfo";
     this.tabs = true;    

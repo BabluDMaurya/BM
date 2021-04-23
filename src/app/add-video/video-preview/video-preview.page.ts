@@ -21,6 +21,7 @@ export class VideoPreviewPage implements OnInit {
   VideoDetailsForm : any;
   formData :any;
   filepath : string;
+  videoTitle : any = "Title";
   videoDescription : any = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
   constructor(
     public commonService: CommonService,
@@ -45,6 +46,7 @@ export class VideoPreviewPage implements OnInit {
     }); 
     this.videoDataPath = localStorage.getItem('videoPath');
     this.videoDescription = localStorage.getItem('videoDescription');
+    this.videoTitle = localStorage.getItem('videoTitle');
     this.videoThumbArray = localStorage.getItem('videoThumb').split(",");
     this.createForm();   
   }

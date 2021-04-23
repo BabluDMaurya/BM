@@ -23,7 +23,7 @@ ion-segment-button ion-skeleton-text{position: absolute;height: 100%;margin: 0;w
 .video-skeleton{height: 200px;}
 p ion-skeleton-text, .radio-list ion-item ion-skeleton-text{margin: 0;height: 20px;}
 
-.btn-close{position: absolute;right: 0; top: 0;z-index: 9;}
+.btn-close{position: absolute;right: 0; top: 0;z-index: 9;font-size: 28px;}
 
 .ml-30{margin-left: 30px;}
 ion-radio{position: absolute;top:5px}
@@ -44,6 +44,11 @@ ion-footer.sticky-footer{padding: 0;
 		ion-item:nth-child(2){    background: #3da89e;
 			--background: #3da89e;}
 	}
+}
+
+ion-item.floatingItem{
+	ion-label{color:#a5a4a4}
+	ion-textarea{margin-top:0}
 }
 
 // hitesh css strt
@@ -74,5 +79,8 @@ ion-footer.sticky-footer{padding: 0;
 	font-size: 0.70rem;
 	color: #000;
 	margin-top: 3px;
+}
+.musicWrapper ion-toolbar .range-knob-handle .range-knob{
+    
 }
 // hitesh css ends

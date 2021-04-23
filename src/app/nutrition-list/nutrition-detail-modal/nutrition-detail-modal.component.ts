@@ -115,8 +115,7 @@ export class NutritionDetailModalComponent implements OnInit {
           }
         }, {
           text: 'Yes',
-          handler: () => {
-            
+          handler: () => {            
           this.commonService.presentLoader();
           this.nutritionService.deleteNutrition({'id':id}).subscribe((data: any) => {
             
