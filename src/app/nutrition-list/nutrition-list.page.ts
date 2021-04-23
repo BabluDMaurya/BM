@@ -50,8 +50,14 @@ export class NutritionListPage implements OnInit {
        componentProps: { 'details':item}
 
      });
-     return await modal.present();
+     
+
+     modal.onDidDismiss().then((d: any) => {
+        this.ngOnInit();
+     });
+     return await modal.present(); 
   }
+  
 
   goBack() {
     this.navCtrl.back();

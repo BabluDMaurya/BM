@@ -235,7 +235,7 @@ export class NutritionPage implements OnInit , OnDestroy {
       this.nextVisible = true;
     }, (err) => {
       // Handle error
-      alert(err); 
+      // alert(err); 
     });
   }
 
@@ -255,7 +255,7 @@ export class NutritionPage implements OnInit , OnDestroy {
       this.nextVisible = true;
     }, (err) => {
       // Handle error
-      alert(err);
+      // alert(err);
     });
   }
   // ------------------------------  I M G  -  P I C K E R  ENDS ------------------------------//

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener  } from '@angular/core';
 import { CommonService } from '../services/common.service';
 import { NutritionModalComponent } from '../user-profile/nutrition-modal/nutrition-modal.component';
 import { SettingsService } from './../services/settings.service';
@@ -8,12 +8,15 @@ import { Config } from './../config/config';
 import { ModalController } from '@ionic/angular';
 import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 import { PostService } from './../services/post.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bookmark',
   templateUrl: './bookmark.page.html',
   styleUrls: ['./../app.component.scss', './bookmark.page.scss'],
 })
+
+
 export class BookmarkPage implements OnInit {
   bookmarkPost: any;
   loginUserData: any;
@@ -30,12 +33,16 @@ export class BookmarkPage implements OnInit {
     private peopleService: PeopleViewService,
     public modalController: ModalController,
     public postService: PostService,
-    private navCtrl: NavController) { }
+    private navCtrl: NavController,
+    public router: Router,) { router.events.subscribe();
+      console.log(this.router.url);
+    }
 
   tabs(ev: any) {
     this.bookmarkBlock = ev.detail.value;
   }
-
+  
+  
   ngOnInit() {
     this.loginUserData = JSON.parse(localStorage.getItem("userData"));
     this.settingService.getBookmarkPost().subscribe((data: any) => {
@@ -93,7 +100,7 @@ export class BookmarkPage implements OnInit {
       }); 
     });
   }
-
+  
   nutritionModal(data) {
     this.commonService.presentModal(NutritionModalComponent, 'fullModal', { 'data': data });
   }
@@ -155,5 +162,12 @@ export class BookmarkPage implements OnInit {
   
   goBack() {
     this.navCtrl.back();
+  }
+  ionViewWillEnter() {
+   
+  }
+  ionViewDidLeave(){
+    console.log(this.router.url);
+    console.log('dddddddd');
   }
 }
