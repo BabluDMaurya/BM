@@ -57,6 +57,7 @@ export class ProgramDetailsPage implements OnInit {
   userList: any;
   profileUrl = Config.profilePic;
   url = Config.imgUrl;
+  programDateTime : any;
     ANDROID_PERMISSIONS = [
     this.androidPermissions.PERMISSION.CAMERA,
     this.androidPermissions.PERMISSION.RECORD_AUDIO,
@@ -181,11 +182,14 @@ export class ProgramDetailsPage implements OnInit {
       this.programDetail.img_array =data.programData.image_path.split(','); 
       //  ------------ C O U N T   D O W N   T I M E R ---------
       let a: any = new Date(this.programDetail.program_date + 'Z');
+      this.programDateTime = a;
       let b: any = new Date();
       let c: any;
       if (a > b) {
           c = Math.abs(a - b) / 1000;
           this.programDetail.cd = c;
+
+          console.log("this.programDetail.cd : " + this.programDateTime);
 
           this.ss = timer(0, 1000).pipe(take(this.programDetail.cd), map(() => {
             if (this.programDetail.cd > 0) {

@@ -43,8 +43,7 @@
     </ion-col>
     <ion-col size="12" class="ion-padding">
       <div class="programDesc">
-        <p>{{programDetail?.description }} &nbsp;</p>
-        <ion-text class="text-green" (click)="showSchedule(programDetail)" slot="end">View Schedule</ion-text>
+        <p>{{programDetail?.description }} &nbsp;</p>        
       </div>
       <ion-list lines="none" class="users-list d-block" *ngIf="userList?.length>0">
         <ion-item class="d-flex">
@@ -62,17 +61,22 @@
       <h6 *ngIf="adData?.id && adData?.video_approve_status== 0"> Your Video is Not Approved </h6>
     </ion-col>
   </ion-row>
-  <ion-row class="counter-box ion-padding" *ngIf="!programDetail?.live && !programDetail?.ended "> 
+  <!-- <ion-row class="counter-box ion-padding" *ngIf="!programDetail?.live && !programDetail?.ended ">  -->
+    <ion-row class="counter-box ion-padding" > 
     <ion-col size="4" class="ion-no-padding">
-      <ion-text><span>{{hh | async}}</span> Hours</ion-text>
+      <ion-text><p>{{hh | async}}</p> Hours</ion-text>
     </ion-col>
     <ion-col size="4" class="ion-no-padding">
-      <ion-text><span>{{mm| async}}</span> Minutes</ion-text>
+      <ion-text><p>{{mm| async}}</p> Minutes</ion-text>
     </ion-col>
     <ion-col size="4" class="ion-no-padding">
-      <ion-text><span>{{ss | async}}</span> Seconds</ion-text>
+      <ion-text><p>{{ss | async}}</p> Seconds</ion-text>
     </ion-col>
-  </ion-row>
+    <ion-col size="12" class="ion-no-padding mt-15">
+      <ion-text><p class="text-green text-center">{{programDateTime|date:'medium'}}</p></ion-text>
+    </ion-col>
+  </ion-row>   
+    <!-- programDescription -->
   <!-- <ion-button *ngIf="programDetail?.type_id == 'video'" [routerLink]="['/video-program-view',programDetail?.video_program,programDetail?.id]">Go Live Video</ion-button> -->
   <!-- <ion-button *ngIf="programDetail?.live" [routerLink]="['/broadcaster',broadcastId]">Go Live</ion-button> -->
   <ion-label *ngIf="programDetail?.ended" >This Program has been Ended </ion-label>
@@ -98,11 +102,11 @@
           </div>
           <ion-label>Chat</ion-label>
         </ion-item>
-        <ion-item detail="false">
+        <ion-item detail="false" (click)="showSchedule(programDetail)">
           <div class="top-icon">
-            <ion-icon ios="ios-bicycle" md="md-bicycle"></ion-icon>
+            <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
           </div>
-          <ion-label>Activity</ion-label>
+          <ion-label>View Schedule</ion-label>
         </ion-item>
       </ion-list>
     </ion-col>

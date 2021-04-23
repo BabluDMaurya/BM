@@ -42,7 +42,7 @@ export class AppComponent implements OnInit
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-
+      
       //this is the code who responds to the app deeplinks
       //Deeplinks if from Ionic Native
       this.deeplinks.routeWithNavController(this.navChild, {
@@ -50,7 +50,9 @@ export class AppComponent implements OnInit
       }).subscribe((match) => {
         console.log('Successfully routed', match);
       }, (nomatch) => {
-        console.log('Unmatched Route', nomatch);
+        let url ="https://play.google.com/store";
+        nomatch.url;
+        // console.log('Unmatched Route', nomatch);
       });
     });
     this.initializeApp();
