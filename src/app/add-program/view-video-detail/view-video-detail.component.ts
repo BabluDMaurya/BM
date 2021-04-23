@@ -4,6 +4,7 @@ import { CommonService } from '../../services/common.service';
 import { Config } from './../../config/config'
 import { NavParams,IonSlides } from '@ionic/angular';
 import { PostService } from '../../services/post.service'; 
+import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media/ngx';
 const baseUrl = Config.ApiUrl;
 @Component({
   selector: 'app-view-video-detail',
@@ -36,7 +37,8 @@ export class ViewVideoDetailComponent implements OnInit {
   noImgData : boolean = false;
   constructor(public commonService: CommonService,
     public navParams: NavParams,
-    private postService : PostService) { 
+    private postService : PostService,
+    private streamingMedia : StreamingMedia,) { 
       this.loginUserData = JSON.parse(localStorage.getItem('userData')); 
       this.storagePath = baseUrl+'storage/';
     }
@@ -79,6 +81,17 @@ export class ViewVideoDetailComponent implements OnInit {
       });     
       console.log(this.postData);
     });
+  }
+  playVideo(){
+    let options: StreamingVideoOptions = {
+      successCallback: () => { console.log('Video played') },
+      errorCallback: (e) => { console.log('Error streaming') },
+      orientation: 'landscape',//protrait or landscape
+      shouldAutoClose: true,
+      controls: true
+    };
+    
+    this.streamingMedia.playVideo(this.videoDataPath, options);
   }
   closeModal() {
     this.commonService.dismissModal();

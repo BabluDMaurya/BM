@@ -7,6 +7,7 @@ import { NavController, IonInfiniteScroll } from '@ionic/angular';
 import { Config } from './../config/config';
 import { ModalController } from '@ionic/angular';
 import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
+import { PostService } from './../services/post.service';
 
 @Component({
   selector: 'app-bookmark',
@@ -28,6 +29,7 @@ export class BookmarkPage implements OnInit {
     private settingService: SettingsService,
     private peopleService: PeopleViewService,
     public modalController: ModalController,
+    public postService: PostService,
     private navCtrl: NavController) { }
 
   tabs(ev: any) {
@@ -58,8 +60,34 @@ export class BookmarkPage implements OnInit {
           }); 
           if (element.post_type == 1) {
             this.bookmarkImg.push(element);
+            this.bookmarkImg.forEach((element, i) => {
+              this.postService.getComment({'postId' : element.id }).subscribe(
+                (data: any) => {
+                  var iCount = data.count;
+                  this.bookmarkImg[i].Tcount = iCount;
+                  // this.data = true;
+                //  this.comment = data.status;
+                //  var count = data.count;
+                //  console.log(count);
+                //  console.log('hh' + element.id);
+                });
+            });
           } else if (element.post_type == 2) {
             this.bookmarkVideo.push(element);
+            this.bookmarkVideo.forEach((element, i) => {
+              this.postService.getComment({'postId' : element.id }).subscribe(
+                (data: any) => {
+                  var cCount = data.count;
+                  this.bookmarkVideo[i].Tcount = cCount;
+                  // this.data = true;
+                //  this.comment = data.status;
+                //  var count = data.count;
+                //  console.log(count);
+                //  console.log('hh' + element.id);
+                });
+            });
+            
+            // console.log(this.bookmarkVideo);
           }
         }  
       }); 
@@ -71,9 +99,11 @@ export class BookmarkPage implements OnInit {
   }
 
   liked(postId, likeStat) {
+    // console.log(this.bookmarkPost);
     this.bookmarkPost.forEach((element, i) => {
-
-      if (element.id == postId) {
+      console.log(element.post_id + 'eid');
+      console.log(postId + 'pid');
+      if (element.post_id == postId) {
         this.bookmarkPost[i].liked = !likeStat;
         if (likeStat) {
           this.bookmarkPost[i].count = (this.bookmarkPost[i].count - 1);
@@ -83,8 +113,8 @@ export class BookmarkPage implements OnInit {
         }
       }
     });
-    console.log(postId);
-    console.log(likeStat);
+    // console.log(postId);
+    // console.log(likeStat);
     this.peopleService.likedPost({ 'postId': postId, 'liked': likeStat }).subscribe((data: any) => {
       if (data.status) {
         this.commonService.presentToast(data.status);
@@ -96,7 +126,7 @@ export class BookmarkPage implements OnInit {
   bookmarked(postId, bmStat, post_type) {
     console.log(postId, bmStat);
     this.bookmarkPost.forEach((element, i) => {
-      if (element.id == postId) {
+      if (element.post_id == postId) {
         this.bookmarkPost[i].bookmarked = !bmStat;
       }
     });

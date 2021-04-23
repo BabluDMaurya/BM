@@ -52,6 +52,7 @@ export class NutritionListPage implements OnInit {
      });
      return await modal.present();
   }
+
   goBack() {
     this.navCtrl.back();
   }

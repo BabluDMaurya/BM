@@ -20,7 +20,7 @@ ion-slides{background: transparent;padding: 0 5px;}
 .nutriimages-list .thumb-checkbox ion-checkbox{opacity:0;width:100%;height:85px;padding:0 0}
 .nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked{opacity:1;--background-checked:transparent;--border-color-checked:transparent;--size:0;--checkmark-color:transparent}
 .nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked:after{content:'';width:20px;height:20px;background:#26a69a;display:block;border-radius:50%;position:absolute;top:5px;left:5px}
-.checkboxThumb::after{content: '';width: 16px;height: 16px;border: 2px solid #7d7d7d;display: block;border-radius: 50%;position: absolute;top: 5px;left: 5px;}
+.checkboxThumb::after{content: '';width: 16px;height: 16px;border: 2px solid #7d7d7d;display: block;border-radius: 50%;position: absolute;top: 5px;left: 5px;background: #FFF;}
 
 // hitesh css strt
 .nutrition-no-data img {

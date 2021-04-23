@@ -22,6 +22,7 @@ ion-card{border-radius: 0;
         ion-segment{margin: 10px 0;
             ion-segment-button{width: 32%;max-width: 130px;background: #f3f3f3;padding: 0;margin: 0 5px;--padding-start: 0;--padding-end: 0;border-radius: 4px;overflow: hidden; height: 110px;--color-checked: transparent;
                 img{height: 85px;margin-bottom: 5px;object-fit: cover;}
+                ion-button{position: absolute;top: 0;right: 0;--background: #26a69a;--box-shadow: none;color: #FFF;--padding-start: 0;--padding-end: 0;height: auto;font-size: 16px;margin: 3px;z-index: 9;--border-radius:50%}
                 ion-label{font-size: 0.75rem;margin: 0;text-transform: capitalize;letter-spacing: 0;color: #444;}
             }
             ion-segment-button:first-child{margin-left: 15px;}

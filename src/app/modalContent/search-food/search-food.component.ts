@@ -40,6 +40,7 @@ export class SearchFoodComponent implements OnInit{
               }
 
   ngOnInit() {
+    this.commonService.presentLoader();
     this.checkFoodName('apple');
   }
   ngAfterViewInit() {
@@ -71,6 +72,7 @@ export class SearchFoodComponent implements OnInit{
               el['selected']=false;
             }            
           });
+          this.commonService.dismissLoader();
           console.log(data.common);
           this.foodList = Array.of(data); 
           console.log();
