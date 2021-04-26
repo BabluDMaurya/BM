@@ -29,7 +29,7 @@ export class ProgramNutritionDetailModalComponent implements OnInit {
          ];
   }
   slidesDidLoad(slides: IonSlides) {
-    slides.startAutoplay();
+    // slides.startAutoplay();
   }
   ionViewWillLeave(){
     this.slides.stopAutoplay();

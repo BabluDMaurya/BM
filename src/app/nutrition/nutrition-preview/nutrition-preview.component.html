@@ -12,7 +12,7 @@
     </div>
     <div class="nutrition-sub ion-text-right">
       <ion-icon ios="ios-time" md="md-time"></ion-icon>
-      {{nutritionData.form.nutriPrepHrs}} hrs {{nutritionData.form.nutriPrepMin}} min
+      {{nutritionData.form.nutriPrepHrs}} hrs {{nutritionData.form.nutriPrepMin}} mins
     </div>
   </div>
 </div>
@@ -79,33 +79,37 @@
     <span *ngIf="item.food_name">{{item?.food_name}}</span>
   </p></div>
 </ion-list>
-<ion-list lines="none" class="instructions-list">
+<ion-list lines="none" class="instructions-list" *ngIf="nutritionData.form.nutriInstruction[0].name != '' ">
   <ion-list-header>Instructions</ion-list-header>
   <ion-item *ngFor="let instruction of nutritionData.form.nutriInstruction; let i=index;">
     <p>{{i+1}}. {{instruction.name}}</p>
   </ion-item>
 </ion-list>
-<ion-list lines="none" class="instructions-list">
+<ion-list lines="none" class="instructions-list"  *ngIf ='nutritionData.form.nutriBevrageType != ""  || nutritionData.form.bevragveQnty != "" '>
   <ion-list-header>Beverages</ion-list-header>
   <div class="ingredientItems">
     <p *ngIf="nutritionData.form.nutriBevrageType == 1">Cofee</p>
     <p *ngIf="nutritionData.form.nutriBevrageType == 2">Milk</p>
     <p *ngIf="nutritionData.form.nutriBevrageType == 3">Fruit Drink</p>    
     <p *ngIf="nutritionData.form.nutriBevrageType == 4">Soda</p>
-    <p>{{nutritionData.form.bevragveQnty}} <span *ngIf="nutritionData.form.bevragveQnty == 1">Bottle</span>
-    <span *ngIf="nutritionData.form.bevragveQnty == 2">Glass</span>
-    <span *ngIf="nutritionData.form.bevragveQnty == 3">Bowl</span>    
-    <span *ngIf="nutritionData.form.bevragveQnty == 4">Cup</span></p>
-    <p>{{nutritionData.form.unitQnty}} <span *ngIf="nutritionData.form.bevragveUnit == 1">Liter</span> <span *ngIf="nutritionData.form.bevragveUnit == 2">Milliliter</span></p>
+
+    <p *ngIf="nutritionData.form.bevragveQnty != '' && nutritionData.form.bevragveQnty != ''  ">{{nutritionData.form.bevragveQnty}} 
+      <span *ngIf="nutritionData.form.bevragveQnty == 1">Bottle</span>
+      <span *ngIf="nutritionData.form.bevragveQnty == 2">Glass</span>
+      <span *ngIf="nutritionData.form.bevragveQnty == 3">Bowl</span>    
+      <span *ngIf="nutritionData.form.bevragveQnty == 4">Cup</span>
+    </p>
+
+    <p *ngIf="nutritionData.form.unitQnty != '' && nutritionData.form.bevragveUnit != ''  ">{{nutritionData.form.unitQnty}} 
+      <span *ngIf="nutritionData.form.bevragveUnit == 1">Liter</span>
+      <span *ngIf="nutritionData.form.bevragveUnit == 2">Milliliter</span>
+    </p>
   </div>
   
   <ion-item class="beveragesList">
     
   </ion-item> 
   
-  <ion-item >
-    
-  </ion-item>
   <!-- <ion-item >
     <p *ngIf="nutritionData.form.bevragveinclude" >This beverage should consume with  this nutrition</p>
      </ion-item> -->
