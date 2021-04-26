@@ -9,6 +9,8 @@ import { ModalController } from '@ionic/angular';
 import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 import { PostService } from './../services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { BookmarkPostCommentComponent } from '../bookmark/bookmark-post-comment/bookmark-post-comment.component';
 
 @Component({
   selector: 'app-bookmark',
@@ -34,9 +36,9 @@ export class BookmarkPage implements OnInit,OnDestroy {
     public modalController: ModalController,
     public postService: PostService,
     private navCtrl: NavController,
-    public router: Router,) { 
-      // router.events.subscribe();
-      // console.log(this.router.url);
+    private location: Location,
+    public router: Router,) { router.events.subscribe();
+      console.log(this.router.url);
     }
 
   tabs(ev: any) {
@@ -160,6 +162,17 @@ export class BookmarkPage implements OnInit,OnDestroy {
     }); 
     return await modal.present();
   }
+  async postComment(postId){
+
+    const modal = await this.modalController.create({
+     component: BookmarkPostCommentComponent,
+     cssClass: 'fullModal',
+     componentProps: { 'details':postId}
+
+   });
+   return await modal.present();
+
+}
   
   goBack() {
     this.navCtrl.back();
@@ -173,4 +186,9 @@ export class BookmarkPage implements OnInit,OnDestroy {
   ngOnDestroy(){
     console.log("Bookmark ngOnDestroy");
   }
+
+  back(): void {
+    this.location.back()
+  }
+  
 }
