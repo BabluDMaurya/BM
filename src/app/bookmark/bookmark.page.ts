@@ -9,6 +9,8 @@ import { ModalController } from '@ionic/angular';
 import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 import { PostService } from './../services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { BookmarkPostCommentComponent } from '../bookmark/bookmark-post-comment/bookmark-post-comment.component';
 
 @Component({
   selector: 'app-bookmark',
@@ -34,6 +36,7 @@ export class BookmarkPage implements OnInit {
     public modalController: ModalController,
     public postService: PostService,
     private navCtrl: NavController,
+    private location: Location,
     public router: Router,) { router.events.subscribe();
       console.log(this.router.url);
     }
@@ -159,6 +162,17 @@ export class BookmarkPage implements OnInit {
     }); 
     return await modal.present();
   }
+  async postComment(postId){
+
+    const modal = await this.modalController.create({
+     component: BookmarkPostCommentComponent,
+     cssClass: 'fullModal',
+     componentProps: { 'details':postId}
+
+   });
+   return await modal.present();
+
+}
   
   goBack() {
     this.navCtrl.back();
@@ -170,4 +184,9 @@ export class BookmarkPage implements OnInit {
     console.log(this.router.url);
     console.log('dddddddd');
   }
+
+  back(): void {
+    this.location.back()
+  }
+  
 }
