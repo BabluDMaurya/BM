@@ -120,7 +120,7 @@
                 <ion-select-option *ngFor="let hour of [00,01,02,03,04,05,06,07,08,09,10,11,12]; let i=index;"
                   value="{{('0'+hour).slice(-2)}}">{{('0'+hour).slice(-2)}}</ion-select-option>
               </ion-select>              
-              <ion-label style="max-width: 25px;margin-left: 12px;">Min</ion-label>
+              <ion-label style="max-width: 35px;margin-left: 12px;">Mins</ion-label>
               <ion-select  formControlName="nutriPrepMin" style="padding-left: 8px;margin-top: 3px;">
                 <ion-select-option *ngFor="let hour of [].constructor(60) let i=index;" value="{{('0'+i).slice(-2)}}">
                   {{('0'+i).slice(-2)}}</ion-select-option>
@@ -142,9 +142,12 @@
             <ion-segment-button value="create-food" (click)="foodTab=true" checked>
               <ion-label>Create Food</ion-label>
             </ion-segment-button>
-            <ion-segment-button value="search-food" (click)="foodTab=false">
+            <ion-segment-button value="search-food" (click)="foodTab=false" *ngIf="scanData.length > 0 && scanData[0].data.length > 0 ">
               <ion-label>Search Food</ion-label>
             </ion-segment-button>
+              <ion-segment-button value="search-food" (click)="searchFoodModal() && foodTab=false" *ngIf="scanData.length == 0 || scanData[0].data.length == 0  ">
+                <ion-label>Search Food</ion-label>
+              </ion-segment-button>
           </ion-segment>
           <div [ngSwitch]="foodTab">
             <div class="nutrition-form ingredientsBlock mt-20" *ngSwitchCase=true>
@@ -223,16 +226,9 @@
               <ion-select-option value="3">Fruit drink</ion-select-option>
               <ion-select-option value="4">Soda</ion-select-option>
             </ion-select>
-          </ion-item>
-          <ion-list class="beverages-inputs">
-            <ion-item>
-              <ion-label>Select Quantity</ion-label>
-              <ion-select placeholder="Quantity"  formControlName="bevragveQnty">
-                <ion-select-option>1</ion-select-option>
-                <ion-select-option>2</ion-select-option>
-                <ion-select-option>3</ion-select-option>
-              </ion-select>
-            </ion-item>
+          </ion-item>          
+          <ion-label style="color: #000;">Select Type</ion-label>
+          <ion-list class="beverages-inputs" style="padding-top: 0;">
             <ion-item>
               <ion-label>Select Option</ion-label>
               <ion-select placeholder="Options" formControlName="bevragveOption">
@@ -242,9 +238,17 @@
                 <ion-select-option value="3">Cup</ion-select-option>
               </ion-select>
             </ion-item>
-           
-          </ion-list>
-          <ion-list class="beverages-inputs">
+            <ion-item>
+              <ion-label>Select Quantity</ion-label>
+              <ion-select placeholder="Quantity"  formControlName="bevragveQnty">
+                <ion-select-option>1</ion-select-option>
+                <ion-select-option>2</ion-select-option>
+                <ion-select-option>3</ion-select-option>
+              </ion-select>
+            </ion-item>           
+          </ion-list>          
+          <ion-label style="color: #000;">Select Measure/Units</ion-label>
+          <ion-list class="beverages-inputs" style="padding-top: 0;">
             <ion-item>
               <ion-input placeholder="Enter Quantity"  formControlName="unitQnty" type="number"  color="light" >
               </ion-input>

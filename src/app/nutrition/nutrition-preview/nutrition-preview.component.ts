@@ -38,8 +38,8 @@ export class NutritionPreviewComponent implements OnInit, OnDestroy {
       this.nutritionData = data;
       this.images = data['form'].file;
     });
-    console.log(this.nutritionData);
-    console.log(this.nutritionData['minerals']);
+    console.log(this.nutritionData.form.nutriBevrageType);
+    console.log(this.nutritionData['minerals'] + 'mmm');
     let cal = 0;
     let carbo = 0;
     let prot = 0;
@@ -72,7 +72,7 @@ export class NutritionPreviewComponent implements OnInit, OnDestroy {
     this.totalMinerals['sug'] = sug;
     this.totalMinerals['chol'] = chol;
 
-    console.log(this.apiIngredients);
+    // console.log(this.apiIngredients);
 
     // create reactive form field
     this.mineralForm = this.fb.group({
@@ -106,7 +106,7 @@ export class NutritionPreviewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log(this.nutritionService.confirmEvent)
     this.subscription = this.nutritionService.confirmEvent.subscribe(data => {
-      console.log(data);
+      // console.log(data);
       if (data) {
         this.toSave();
       }

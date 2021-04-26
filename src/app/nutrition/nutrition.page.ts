@@ -169,6 +169,8 @@ export class NutritionPage implements OnInit , OnDestroy {
   }
 
   async searchFoodModal() {
+    console.log(this.scanData);
+    console.log('fff');
     const modal = await this.modalController.create({
       component: SearchFoodComponent,
       cssClass: '',

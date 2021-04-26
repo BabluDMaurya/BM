@@ -1,5 +1,5 @@
 .preview-img{background: #fbfbfb;}
-.preview-img img{height: 250px;width: 100%;object-fit: cover; object-position: top;}
+.preview-img img{height: 250px;width: 100%;object-fit: contain; object-position: top;}
 ion-card{border: none;box-shadow: none;margin: 0;border-bottom: 4px solid #f1f1f1;
     ion-card-header{
         ion-fab{position: absolute;top: 13px;right: 15px;color: #26a69a;}
