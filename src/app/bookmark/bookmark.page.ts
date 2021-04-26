@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener  } from '@angular/core';
+import { Component, OnInit, HostListener,OnDestroy  } from '@angular/core';
 import { CommonService } from '../services/common.service';
 import { NutritionModalComponent } from '../user-profile/nutrition-modal/nutrition-modal.component';
 import { SettingsService } from './../services/settings.service';
@@ -17,7 +17,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 
-export class BookmarkPage implements OnInit {
+export class BookmarkPage implements OnInit,OnDestroy {
   bookmarkPost: any;
   loginUserData: any;
   bookmarkImg = [];
@@ -34,8 +34,9 @@ export class BookmarkPage implements OnInit {
     public modalController: ModalController,
     public postService: PostService,
     private navCtrl: NavController,
-    public router: Router,) { router.events.subscribe();
-      console.log(this.router.url);
+    public router: Router,) { 
+      // router.events.subscribe();
+      // console.log(this.router.url);
     }
 
   tabs(ev: any) {
@@ -163,11 +164,13 @@ export class BookmarkPage implements OnInit {
   goBack() {
     this.navCtrl.back();
   }
-  ionViewWillEnter() {
-   
+  ionViewWillEnter() {    
+    console.log('Bookmark ionViewWillEnter');
   }
-  ionViewDidLeave(){
-    console.log(this.router.url);
-    console.log('dddddddd');
+  ionViewDidLeave(){   
+    console.log('Bookmark ionViewDidLeave');
+  }
+  ngOnDestroy(){
+    console.log("Bookmark ngOnDestroy");
   }
 }
