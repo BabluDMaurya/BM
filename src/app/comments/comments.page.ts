@@ -16,6 +16,7 @@ export class CommentsPage implements OnInit {
   data: any;
   postId: any;
   comment: any;
+  routeUrl: any;
   count:any;
   profileImage: any;
   commentId: any;
@@ -32,7 +33,8 @@ export class CommentsPage implements OnInit {
               public commonService: CommonService,
               public postService: PostService,
               public storage: Storage,
-              public navCtrl: NavController) {
+              public navCtrl: NavController,
+              public urlrouter: Router) {
     
               this.createForm();
               this.activatedRoute.paramMap.subscribe((params:ParamMap)=>{
@@ -45,6 +47,8 @@ export class CommentsPage implements OnInit {
   }
   @HostListener('window:scroll', ['$event'])
   ngOnInit() {
+    this.routeUrl = this.urlrouter.url;
+    console.log(this.urlrouter.url + 'hhhhh');
     this.scrollToBottomOnInit();
     this.profilePicPath = Config.profilePic;
     const dataPromise = this.storage.get('userData');
