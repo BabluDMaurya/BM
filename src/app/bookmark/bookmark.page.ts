@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener,OnDestroy  } from '@angular/core';
+import { Component, OnInit, HostListener  } from '@angular/core';
 import { CommonService } from '../services/common.service';
 import { NutritionModalComponent } from '../user-profile/nutrition-modal/nutrition-modal.component';
 import { SettingsService } from './../services/settings.service';
@@ -19,7 +19,7 @@ import { BookmarkPostCommentComponent } from '../bookmark/bookmark-post-comment/
 })
 
 
-export class BookmarkPage implements OnInit,OnDestroy {
+export class BookmarkPage implements OnInit {
   bookmarkPost: any;
   loginUserData: any;
   bookmarkImg = [];
@@ -170,25 +170,31 @@ export class BookmarkPage implements OnInit,OnDestroy {
      componentProps: { 'details':postId}
 
    });
+   modal.onDidDismiss().then((d: any) => {
+     console.log(d.data[0].getpostId);
+    // this.ngOnInit();
+    this.bookmarkVideo.forEach((element, i) => {
+      if(this.bookmarkVideo[i].id == d.data[0].getpostId){
+        this.bookmarkVideo[i].Tcount = d.data[0].count;
+      }
+
+    });
+    this.bookmarkImg.forEach((element, i) => {
+      if(this.bookmarkImg[i].id == d.data[0].getpostId){
+        this.bookmarkImg[i].Tcount = d.data[0].count;
+      }
+          console.log(element);
+          console.log(this.bookmarkImg[i]);
+
+    });
+ });
    return await modal.present();
 
-}
-  
+}  
   goBack() {
     this.navCtrl.back();
-  }
-  ionViewWillEnter() {    
-    console.log('Bookmark ionViewWillEnter');
-  }
-  ionViewDidLeave(){   
-    console.log('Bookmark ionViewDidLeave');
-  }
-  ngOnDestroy(){
-    console.log("Bookmark ngOnDestroy");
-  }
-
+  }  
   back(): void {
     this.location.back()
   }
-  
 }
