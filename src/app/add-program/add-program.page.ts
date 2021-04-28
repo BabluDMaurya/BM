@@ -151,7 +151,7 @@ export class AddProgramPage implements OnInit {
 
   'validation_messages' = {
     programTitle: [
-      { type: 'required', message: 'title is required.' },
+      { type: 'required', message: 'Title is required.' },
       { type: 'maxlength', message: '40 chars allowed' }
     ],
 
@@ -159,7 +159,7 @@ export class AddProgramPage implements OnInit {
       { type: 'required', message: 'Program Type is required' },
     ],
     paymentType: [
-      { type: 'required', message: 'payment typee is required.' },
+      { type: 'required', message: 'Payment typee is required.' },
     ],
     participantsType: [
       { type: 'required', message: 'Select participant types.' },
@@ -295,7 +295,7 @@ export class AddProgramPage implements OnInit {
     this.commonService.dismissModal();
     alert.present();
   }
-
+  
   programDetail: any;
   minutes :any;
   // Time slot was clicked
@@ -312,17 +312,19 @@ export class AddProgramPage implements OnInit {
       arr.push({ text: hrs[i], value: hrs[i] });
     } 
     this.selected = new Date(ev.selectedTime);
-    var hours =  this.selected.getHours();
+    var hours = this.selected.getHours();
+    var AmOrPm = hours >= 12 ? 'pm' : 'am';
+    hours = (hours % 12) || 12;
     const defaultColumnOptions = [
       {
         name: 'Minutes',
-        options:arr,
+        options:arr
         
       }
     ];
     const buttons = [
       {
-        text: 'Select Minute' + hours,
+        text: 'Select Minute ' + hours+' '+AmOrPm ,
         cssClass: 'timeHeading'
       },
       {
