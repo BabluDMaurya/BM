@@ -196,8 +196,5 @@ export class BookmarkPage implements OnInit {
     this.navCtrl.back();
   }
   
-  back(): void {
-    this.location.back()
-  }
   
 }

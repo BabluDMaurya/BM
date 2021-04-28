@@ -84,7 +84,7 @@
         <form class="nutrition-form" [formGroup]="programForm">
           <ion-list>
             <ion-item>
-              <ion-input placeholder="Title" class="form-control" formControlName="programTitle"
+              <ion-input placeholder="Title *" class="form-control" formControlName="programTitle"
                 [ngClass]="{ 'is-invalid': submitted && f.programTitle.errors }"></ion-input>
 
             </ion-item>
@@ -93,7 +93,7 @@
                 *ngIf="(submitted || programForm.get('programTitle').touched) && programForm.get('programTitle').hasError(validation.type)">{{ validation.message }}</span>
             </ng-container>
             <ion-item class="mb-10">
-              <ion-textarea placeholder="Description" class="form-control" formControlName="programDescription">
+              <ion-textarea placeholder="Description *" class="form-control" formControlName="programDescription">
               </ion-textarea>
             </ion-item>
             <ion-item class="mb-10">
@@ -165,7 +165,7 @@
                     [disabled]="f.programType.value==5 || !f.programType.value?true:false"></ion-radio>
                 </ion-item>
                 <ion-item lines="none" class="mb-10" (click)="clearExcl()">
-                  <ion-label>open (Let users request to join)</ion-label>
+                  <ion-label>Open (Let users request to join)</ion-label>
                   <ion-radio slot="start" value="2" checked formControlName="participantsType"></ion-radio>
                 </ion-item>
                 <ng-container *ngFor="let validation of validation_messages.participantsType">
