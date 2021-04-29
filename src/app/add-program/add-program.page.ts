@@ -324,7 +324,7 @@ export class AddProgramPage implements OnInit {
     ];
     const buttons = [
       {
-        text: 'Select Minute ' + hours+' '+AmOrPm ,
+        text: 'Select Minute        ' + hours+' '+AmOrPm ,
         cssClass: 'timeHeading'
       },
       {
