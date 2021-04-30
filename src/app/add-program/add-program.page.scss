@@ -36,3 +36,26 @@ ion-slides{height: 190px;}
 .dayview-allday-label, .calendar-hour-column {
     width: 45px !important; 
 }
+
+ion-item.floatingItem{
+	ion-label{color:#a5a4a4}
+	ion-textarea{margin-top:0}
+}
+.programPreview{
+    ion-item{--padding-start: 0;--inner-padding-end: 0; margin-bottom: 15px;    font-size: 0.90rem;
+        ion-list-header{padding-left: 0;}
+        ion-input{min-width: 50px;border-bottom: 1px solid #d1d1d1;padding:15px 3px 8px}
+    }
+    ion-label{color:#000}
+    .radioPreview{display: flex;
+        ion-item{--background: transparent;
+            --inner-border-width: 0 0 0 0;
+            --padding-start: 0;
+            --inner-padding-end: 0;font-size: 0.90rem;margin-right: 30px;
+            ion-radio{margin-right: 10px;}
+        }
+    }
+    .sticky-footer{position: fixed;bottom: 0;left: 0;display:flex;
+        ion-button{width: 100%;margin:0;--border-radius: 0;height: 100%;--background: #27a69a;}
+    }
+}

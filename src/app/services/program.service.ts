@@ -149,5 +149,12 @@ export class ProgramService {
   getEnxData(data){
     return this.http.post<any>(Config.ApiUrl+'api/auth/get_enx_data', data ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getEnxData', data)));
   }
-  
+  fetchEquipmentList(): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/fetchEquipmentList', null, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('fetchEquipmentList')));
+  }
+
+  updateProgramFees(data: any): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/updateProgramFees', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('updateProgramFees', data)));
+  }
+
 }

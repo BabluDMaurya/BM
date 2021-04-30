@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
 import { NavParams,ModalController } from '@ionic/angular'
-import { NutritionService } from './../../services/nutrition.service' 
+import { NutritionService } from './../../services/nutrition.service' ;
+import { ProgramService } from './../../services/program.service';
 import { Config } from '../../config/config';
 import { ProgramNutritionDetailModalComponent } from '../../add-program/program-nutrition-detail-modal/program-nutrition-detail-modal.component';
 @Component({
@@ -12,31 +13,32 @@ import { ProgramNutritionDetailModalComponent } from '../../add-program/program-
 export class AddEquipmentsComponent implements OnInit {
 
   url: any = Config.imgUrl;
-  equipments = [{
-    id: 1, name: 'Dumbels', selected: false,
-  },
-  {
-    id: 2, name: 'Rope', selected: false,
-  },
-  {
-    id: 3, name: 'Leg Exerciser', selected: false,
-  },
-  {
-    id: 4, name: 'Treadmill', selected: false,
-  },
-  {
-    id: 5, name: 'Ellipticals', selected: false,
-  },
-  {
-    id: 6, name: 'Abdominal Crunchers', selected: false,
-  },
-  {
-    id: 7, name: 'Aerobic steppers', selected: false,
-  },
-  {
-    id: 8, name: 'Rowing Machines', selected: false,
-  },
-  ];
+  equipments: any;
+  // equipments = [{
+  //   id: 1, name: 'Dumbels', selected: false,
+  // },
+  // {
+  //   id: 2, name: 'Rope', selected: false,
+  // },
+  // {
+  //   id: 3, name: 'Leg Exerciser', selected: false,
+  // },
+  // {
+  //   id: 4, name: 'Treadmill', selected: false,
+  // },
+  // {
+  //   id: 5, name: 'Ellipticals', selected: false,
+  // },
+  // {
+  //   id: 6, name: 'Abdominal Crunchers', selected: false,
+  // },
+  // {
+  //   id: 7, name: 'Aerobic steppers', selected: false,
+  // },
+  // {
+  //   id: 8, name: 'Rowing Machines', selected: false,
+  // },
+  // ];
   sliderOpts = {
     zoom: false,
     slidesPerView: 3,
@@ -48,9 +50,13 @@ export class AddEquipmentsComponent implements OnInit {
   nutritionList: any;
 
   constructor(public commonService: CommonService, private navParams: NavParams,
-    private nutritionService: NutritionService,private modalCtrl:ModalController) {
+    private nutritionService: NutritionService,private modalCtrl:ModalController,private programService: ProgramService,) {
     this.programId = this.navParams.data.programData;
     this.modelOpen = this.navParams.data.modelOpen;
+    this.programService.fetchEquipmentList().subscribe((data) => {
+      console.log(data)
+      this.equipments = data.equipmentList;
+    });
     if(this.modelOpen == 2 )
     {
       this.commonService.presentLoader();
@@ -76,7 +82,11 @@ export class AddEquipmentsComponent implements OnInit {
         this.commonService.presentToast('something went wrong.'); 
       });
     }else{
-      this.equipments.filter(el => {
+      this.programService.fetchEquipmentList().subscribe((data) => {
+        console.log(data)
+        this.equipments = data.equipmentList;
+      
+        data.equipmentList.filter(el => {
         if (this.programId) {
           if ((this.programId).includes(el.id )) {
             el.selected = true;
@@ -86,6 +96,7 @@ export class AddEquipmentsComponent implements OnInit {
           return el
         }
       })
+    });
     }
     
   }
