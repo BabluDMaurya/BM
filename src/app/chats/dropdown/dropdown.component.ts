@@ -55,6 +55,7 @@ export class DropdownComponent implements OnInit {
   clear(){
     this.dataService.clearChatUser({'receiver_id':this.receiverId,'lastChatId':this.lastchatid}).subscribe(
       (data: any) => {
+        console.log('DismissClick Clear');
         this.DismissClick('refresh');
       });
   }

@@ -190,8 +190,7 @@ export class BookmarkPage implements OnInit {
  });
    return await modal.present();
 
-}
-  
+}  
   goBack() {
     this.navCtrl.back();
   }

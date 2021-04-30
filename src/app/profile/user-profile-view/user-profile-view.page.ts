@@ -90,7 +90,7 @@ export class UserProfileViewPage implements OnInit {
   }
 
   async messagePopup(ev: any) {
-    this.router.navigate(["/chat-consultant/"+ this.consultID]);
+    this.router.navigate(["/chat-consultant/"+ this.consultID + "/1"]);
     // const popover = await this.popoverController.create({
     //   component: MessagePopupComponent,
     //   event: ev,

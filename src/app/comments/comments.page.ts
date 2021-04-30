@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener,OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap} from "@angular/router";
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommonService } from './../services/common.service';
@@ -11,7 +11,7 @@ import { IonContent,  NavController} from '@ionic/angular';
   templateUrl: './comments.page.html',
   styleUrls: ['./../app.component.scss','./comments.page.scss'],
 })
-export class CommentsPage implements OnInit {
+export class CommentsPage implements OnInit,OnDestroy {
   @ViewChild('commentfield', {static: true}) content: ElementRef;
   data: any;
   postId: any;
@@ -41,10 +41,7 @@ export class CommentsPage implements OnInit {
                 this.postId = params.get('postId');
               });
        
-   }
-  ionViewWillEnter() {
-   
-  }
+   } 
   @HostListener('window:scroll', ['$event'])
   ngOnInit() {
     this.routeUrl = this.urlrouter.url;
@@ -154,5 +151,14 @@ export class CommentsPage implements OnInit {
 
   goBack(){
     this.navCtrl.back();
+  }
+  ngOnDestroy(){
+    console.log("comment ngOnDestroy");
+  }
+  ionViewWillEnter() {    
+    console.log('comment ionViewWillEnter');
+  }
+  ionViewDidLeave(){   
+    console.log('comment ionViewDidLeave');
   }
 }

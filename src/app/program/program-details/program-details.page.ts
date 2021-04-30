@@ -54,9 +54,12 @@ export class ProgramDetailsPage implements OnInit {
   broadcastId: any;
   programId: any;
   programDetail: any;
+  programTitle:any;
+  requestSent: any;
   userList: any;
   profileUrl = Config.profilePic;
   url = Config.imgUrl;
+  programDateTime : any;
     ANDROID_PERMISSIONS = [
     this.androidPermissions.PERMISSION.CAMERA,
     this.androidPermissions.PERMISSION.RECORD_AUDIO,
@@ -162,7 +165,9 @@ export class ProgramDetailsPage implements OnInit {
     this.commonService.presentLoader();
     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
       this.programDetail = data.programData;
-      
+      console.log("PG: "+JSON.stringify(this.programDetail));
+      this.programTitle = data.programData.title;
+      this.requestSent = data.programData.request_sent;      
       //1 = private , 2 = closed , 3 = public
       this.programType = data.programData.type_id;
       if(this.programType == 'private oneway' || this.programType == 'private twoway'){
@@ -181,11 +186,14 @@ export class ProgramDetailsPage implements OnInit {
       this.programDetail.img_array =data.programData.image_path.split(','); 
       //  ------------ C O U N T   D O W N   T I M E R ---------
       let a: any = new Date(this.programDetail.program_date + 'Z');
+      this.programDateTime = a;
       let b: any = new Date();
       let c: any;
       if (a > b) {
           c = Math.abs(a - b) / 1000;
           this.programDetail.cd = c;
+
+          console.log("this.programDetail.cd : " + this.programDateTime);
 
           this.ss = timer(0, 1000).pipe(take(this.programDetail.cd), map(() => {
             if (this.programDetail.cd > 0) {
@@ -282,7 +290,11 @@ export class ProgramDetailsPage implements OnInit {
     this.commonService.presentModal(EquipmentsComponent, 'halfModal', { 'programDetail': this.programDetail  });
   }
   showChatUsers() {
-    this.commonService.presentModal(ChatUserComponent, 'fullModal', '');
+    if(this.programType != "public"){
+      this.router.navigate(["/chat-consultant/"+this.programId+"/3"]); 
+    }else{
+      this.commonService.presentToast("Chat Not Allow on Public Program");
+    }
   }
   goBack() {
     this.navCtrl.back();
@@ -349,64 +361,5 @@ export class ProgramDetailsPage implements OnInit {
     };
     this.router.navigate(['/broadcast'], navigationExtras);
       // this.checkAndroidPermissions();
-  }
-  // private checkAndroidPermissions(): Promise<any> {
-  //   return new Promise((resolve, reject) => {
-  //       this.platform.ready().then(() => {
-  //           this.androidPermissions
-  //               .requestPermissions(this.ANDROID_PERMISSIONS)
-  //               .then(() => {
-  //                   this.androidPermissions
-  //                       .checkPermission(this.androidPermissions.PERMISSION.CAMERA)
-  //                       .then(camera => {
-  //                           this.androidPermissions
-  //                               .checkPermission(this.androidPermissions.PERMISSION.RECORD_AUDIO)
-  //                               .then(audio => {
-  //                                   this.androidPermissions
-  //                                       .checkPermission(this.androidPermissions.PERMISSION.MODIFY_AUDIO_SETTINGS)
-  //                                       .then(modifyAudio => {
-  //                                           if (camera.hasPermission && audio.hasPermission && modifyAudio.hasPermission) {
-  //                                               // resolve();
-  //                                           } else {
-  //                                               reject(
-  //                                                   new Error(
-  //                                                       'Permissions denied: ' +
-  //                                                       '\n' +
-  //                                                       ' CAMERA = ' +
-  //                                                       camera.hasPermission +
-  //                                                       '\n' +
-  //                                                       ' AUDIO = ' +
-  //                                                       audio.hasPermission +
-  //                                                       '\n' +
-  //                                                       ' AUDIO_SETTINGS = ' +
-  //                                                       modifyAudio.hasPermission,
-  //                                                   ),
-  //                                               );
-  //                                           }
-  //                                       })
-  //                                       .catch(err => {
-  //                                           console.error(
-  //                                               'Checking permission ' +
-  //                                               this.androidPermissions.PERMISSION.MODIFY_AUDIO_SETTINGS +
-  //                                               ' failed',
-  //                                           );
-  //                                           reject(err);
-  //                                       });
-  //                               })
-  //                               .catch(err => {
-  //                                   console.error(
-  //                                       'Checking permission ' + this.androidPermissions.PERMISSION.RECORD_AUDIO + ' failed',
-  //                                   );
-  //                                   reject(err);
-  //                               });
-  //                       })
-  //                       .catch(err => {
-  //                           console.error('Checking permission ' + this.androidPermissions.PERMISSION.CAMERA + ' failed');
-  //                           reject(err);
-  //                       });
-  //               })
-  //               .catch(err => console.error('Error requesting permissions: ', err));
-  //       });
-  //   });
-  // }
+  }  
 }
