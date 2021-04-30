@@ -280,14 +280,18 @@ export class AddProgramPage implements OnInit {
   }
   sendrequest()
   {
+    this.commonService.presentLoader();
+
     if(this.programDetail.type_id == 'video')
     {
       // console.log('programId:'+this.programDetail.id);
       this.programService.advertiseRequest({'programId':this.programDetail.id}).subscribe(data=>{
         this.adData = data.status;
         this.request_approve_btn = true;
+        this.commonService.dismissLoader();
       } );
     }else{
+      this.commonService.dismissLoader();
       this.commonService.presentToast('Only Video Program are eligible');
     }
     
