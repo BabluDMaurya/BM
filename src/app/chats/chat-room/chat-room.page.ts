@@ -4,6 +4,7 @@ import { DropdownComponent } from './../dropdown/dropdown.component';
 import { IonContent,IonTextarea } from '@ionic/angular';
 import { Action } from '../../clientmodel/action';
 import { Socket } from 'ngx-socket-io';
+// import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ToastController } from '@ionic/angular';
 import { ParamMap, ActivatedRoute } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
@@ -234,6 +235,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
     });
     popover.onDidDismiss()
       .then((data) => {
+        console.log("onDidDismiss:" + data.data);
         if(data.data == 'refresh'){
           this.socket.disconnect();
           this.doRefresh();

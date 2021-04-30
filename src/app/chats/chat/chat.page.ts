@@ -24,6 +24,8 @@ export class ChatPage implements OnInit {
   callApiv : any; 
   term = ''; 
   consultantId : any;
+  type :any;
+  pgroom:any;
   constructor(
     public commonService:CommonService,
     private router:Router,
@@ -34,7 +36,9 @@ export class ChatPage implements OnInit {
   ngOnInit() {   
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.consultantId = params.get('consultantId');
+      this.type = params.get('type');
       if(this.consultantId > 0){
+        this.commonService.presentLoader();
         this.checkChatUser();
       }
     });
@@ -54,12 +58,20 @@ export class ChatPage implements OnInit {
       clearInterval(this.callApiv);
     }
   }
-  checkChatUser(){
+  checkChatUser(){    
     this.dataService.checkChatUser({'id':this.consultantId}).subscribe((data: any) => {      
       if(data.length > 0){
         this.chatRoom(data[0].receiverID,data[0].chatroom.room,data[0].type);
       }else{
-        console.log('NO RECORD fOUND');
+        this.dataService.sendChatRequest({'type':this.type,'peopleSelect':[this.consultantId]}).subscribe(
+          (data: any) => {
+            if(data.status == 'success'){
+              this.router.navigate(['/chat-room/'+data.reciverID+'/'+data.room+'/'+data.type]);
+            }else{
+                console.log('Somthing wrong');
+            }
+              this.commonService.dismissLoader();
+          });
       }
     });
   }
@@ -115,11 +127,11 @@ export class ChatPage implements OnInit {
     });
     return await modal.present();
   }
-  doRefresh(event) {
-    this.ngOnInit();
-    this.ionViewWillEnter();
-    setTimeout(() => {
-      event.target.complete();
-    }, 2000);
-  }
+  // doRefresh(event) {
+  //   this.ngOnInit();
+  //   this.ionViewWillEnter();
+  //   setTimeout(() => {
+  //     event.target.complete();
+  //   }, 2000);
+  // }
 }
