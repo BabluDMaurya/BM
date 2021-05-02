@@ -237,9 +237,11 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
       .then((data) => {
         console.log("onDidDismiss:" + data.data);
         if(data.data == 'refresh'){
+          console.log("onDidDismiss refresh if:");
           this.socket.disconnect();
           this.doRefresh();
         }else{
+          console.log("onDidDismiss refresh else:");
           this.bSOUser = data['data'];
           this.socket.emit('userBlockStatus',this.userData.id,this.receiverId);
         }
@@ -249,10 +251,10 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
   doRefresh() {
     if(this.chatType == 2){
       this.groupChat();
-      // console.log('groupchat doRefresh');
+      console.log('groupchat doRefresh');
     }else{-  
       this.privateChat();
-      // console.log('privateChat doRefresh');
+      console.log('privateChat doRefresh');
     }
   }
   sendMessage() {
