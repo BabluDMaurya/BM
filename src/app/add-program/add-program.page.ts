@@ -3,7 +3,7 @@ import { CommonService } from '../services/common.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { UserModalComponent } from './user-modal/user-modal.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { FormControl, FormBuilder, Validators, } from '@angular/forms';
+import { FormControl, FormBuilder, Validators,FormGroup } from '@angular/forms';
 import { CalendarComponent } from '../calendar/calendar.component';
 import { formatDate, DatePipe } from '@angular/common';
 import { DateTimeModalComponent } from './date-time-modal/date-time-modal.component';
@@ -15,6 +15,7 @@ import { ProgramService } from './../services/program.service';
 import { Router } from '@angular/router';
 import { MusicService } from '../services/music.service';
 import { NutritionDetailModalComponent } from '../nutrition-list/nutrition-detail-modal/nutrition-detail-modal.component';
+import{VerifyUserInfoComponent} from "./../modalContent/verify-user-info/verify-user-info.component";
 @Component({
   selector: 'app-add-program',
   templateUrl: './add-program.page.html',
@@ -58,6 +59,11 @@ export class AddProgramPage implements OnInit {
   selected: any;
   allMusic: any;
   genres: any;
+  loginUserData:any;
+  approval_btn: any = false;
+  request_approve_btn: any = false;
+  adData:any;
+  finalForm: FormGroup;
   constructor(public commonService: CommonService,
     private alertCtrl: AlertController,
     @Inject(LOCALE_ID) private locale: string,
@@ -81,6 +87,9 @@ export class AddProgramPage implements OnInit {
       this.genres = data.genres;
       this.allMusic = data.genres[0].musics;
     });
+    this.finalForm = this.fb.group({
+      programFees: new FormControl(''),
+    });
   }
   data: any;
   ionViewWillEnter() {
@@ -91,6 +100,8 @@ export class AddProgramPage implements OnInit {
   }
 
   ngOnInit() {
+    this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+  
     this.createForm();
 
   }
@@ -122,9 +133,16 @@ export class AddProgramPage implements OnInit {
     this.eventSource = (events);
     return events;
   }
+  sponsar_prog(){
+    this.approval_btn = true;
+  }
+  unsponsar_prog(){
+    this.approval_btn = false;
+  }
   /**
    * function to create add program form with validation.
    */
+  
   createForm() {
     this.programForm = this.fb.group({
       programTitle: new FormControl('', Validators.compose([
@@ -213,13 +231,71 @@ export class AddProgramPage implements OnInit {
     this.commonService.presentModal(UserListComponent, 'fullModal', { "userList": this.modalData });
   }
   selectVolume() {
-    if (!this.musicId) {
-      this.commonService.presentToast('Select Music ');
-      return false;
-    }
-    this.commonService.presentModal(MusicVolComponent, 'bottomModal', { "musicId": this.musicId, "programId": this.programDetail.id });
+    var fees = this.finalForm.value;
+    this.commonService.presentLoader();
+    // if(this.programDetail.type_id != 'video'){
+    this.programService.updateProgramFees({ "programFees": fees.programFees, "programId": this.programDetail.id}).subscribe(
+      (data) => {
+        // console.log(data);
+        this.commonService.dismissLoader();
+        this.router.navigate(["tabs/program"])
+      }
+    );
+  // }
+    // if (!this.musicId) {
+    //   this.commonService.presentToast('Select Music ');
+    //   return false;
+    // }
+    // this.commonService.presentModal(MusicVolComponent, 'bottomModal', { "musicId": this.musicId, "programId": this.programDetail.id });
   }
+  applyAdvertise()
+  {
+    this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+    
+    let title ="Advertise Rule";
+    let msg ="<p>1. Your Video will send for verification.</p>"
+            +"<p class='mb-0'>2. Once approved Video Program will be locked</p>";
+    let btn=  [
+      {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+      }, {
+        text: 'Okay',
+        handler: () => {
+          console.log('Confirm Okay');
+          this.sendrequest();
+        }
+      }
+    ];
+    
+      if(this.loginUserData.trilloMatch != 1){
+        this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
+      }else{
+        this.commonService.presentAlert(title,msg,btn,'custom-alert advertiseAlert'); 
+      }
+  }
+  sendrequest()
+  {
+    this.commonService.presentLoader();
 
+    if(this.programDetail.type_id == 'video')
+    {
+      // console.log('programId:'+this.programDetail.id);
+      this.programService.advertiseRequest({'programId':this.programDetail.id}).subscribe(data=>{
+        this.adData = data.status;
+        this.request_approve_btn = true;
+        this.commonService.dismissLoader();
+      } );
+    }else{
+      this.commonService.dismissLoader();
+      this.commonService.presentToast('Only Video Program are eligible');
+    }
+    
+  }
   resetEvent() {
     this.event = {
       startTime: new Date().toISOString(),
@@ -501,12 +577,15 @@ export class AddProgramPage implements OnInit {
       this.audioFile = this.baseUrl + "public/storage/audio/" + this.selectedAudioFile;
     });
   }
-  toMusic() {
-    if (this.programDetail && this.programForm.value.programType != 6) {
+  toLastScreen() {
+    console.log(this.programDetail);
+    // if (this.programDetail && this.programForm.value.programType != 6) {
+      if (this.programDetail ) {
       this.showProgram = 3;
-    } else {
-      this.router.navigate(["/tabs/program" ])
-    }
+    } 
+    // else {
+    //   this.router.navigate(["/tabs/program" ])
+    // }
   }
   removeImg(index) {
     this.gallaryImgPath.splice(index, 1);
@@ -523,4 +602,13 @@ export class AddProgramPage implements OnInit {
   ngOnDestroy() {
     this.programForm.reset();
   }
+  verifyUserInfoModal() {    
+    if(this.loginUserData.trilloMatch != 1){
+      this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', ''); 
+    }else{
+
+    }    
+  }
+  
+
 }

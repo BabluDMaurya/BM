@@ -4,6 +4,7 @@ import { ModalController, NavParams } from '@ionic/angular';
 import { ProgramService } from './../../services/program.service';
 import { AddEquipmentsComponent } from '../add-equipments/add-equipments.component';
 import { VideosThumbListComponent } from '../videos-thumb-list/videos-thumb-list.component';
+import { ViewVideoDetailComponent } from '../../add-program/view-video-detail/view-video-detail.component';
 import {
   CalendarComponentOptions,
   CalendarModal,
@@ -132,6 +133,8 @@ export class DateTimeModalComponent implements OnInit {
     if (this.programData.programType == '6') {
       this.commonService.loadVideoType({ 'userId': userData.id, 'postType': 2, 'videoType': 3 }).subscribe(data => {
         this.videoList = data.posts.data;
+        console.log(this.videoList);
+        console.log('video ');
       });
     }
   }
@@ -309,4 +312,15 @@ export class DateTimeModalComponent implements OnInit {
   detailsUpdate($event, programId) {
     $event.detail.programId = programId; 
   }
+
+  async showVideoDetails(item){
+
+    const modal = await this.modalCtrl.create({
+     component: ViewVideoDetailComponent,
+     cssClass: 'fullModal',
+     componentProps: { 'details':item}
+
+   });
+   return await modal.present();
+}
 }

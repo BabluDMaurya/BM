@@ -32,7 +32,7 @@
         <ion-input placeholder="Minutes" name="duration" type="number" [(ngModel)]="duration"></ion-input>
       </ion-item>
     </ion-list>
-    <h6 class="repeatedHeading">Repeated</h6>
+    <!-- <h6 class="repeatedHeading">Repeated</h6> -->
     <ion-radio-group value="calendar" class="radio-group">
       <ion-item>
         <ion-label>Repeated</ion-label>
@@ -58,6 +58,7 @@
               <img *ngIf="preview?.thumb_path" src="{{storagePath}}{{preview?.thumb_path}}" alt="path" />
               <img *ngIf="!preview?.thumb_path" src="../../../assets/images/video.png" />
               <ion-label>{{preview.title}}</ion-label>
+              <ion-button class="infoIcon" (click)="showVideoDetails(preview.posts_id)"><ion-icon name="information-circle"></ion-icon></ion-button>
             </div>
           </ion-segment-button>
         </ion-segment>

@@ -36,3 +36,7 @@ ion-slides{background: transparent;padding: 0 5px;}
     font-weight: 700;
 }
 // hitesh css ends
+
+.users-list{--min-height: auto;display: flex;align-items: center;margin: 6px 0;}
+.users-list img{width: 36px;height: 36px;object-fit: cover;border-radius: 50%;margin-left: -10px;}
+.users-list img:first-child{margin-left: 0;}

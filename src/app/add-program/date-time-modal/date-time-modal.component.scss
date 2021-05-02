@@ -54,3 +54,15 @@ ion-list{padding-top: 0 !important;padding-bottom: 0 !important;
     }
 }
 .repeatedHeading{font-weight: 400;font-size: 15px;margin-bottom: 0;}
+.infoIcon{position: absolute;
+    top: 0;
+    right: 0;
+    --background: #26a69a;
+    --box-shadow: none;
+    color: #FFF;
+    --padding-start: 0;
+    --padding-end: 0;
+    height: auto;
+    font-size: 16px;
+    margin: 3px;
+    z-index: 9;--border-radius:50%}

@@ -265,6 +265,8 @@ export class ProgramDetailsPage implements OnInit {
       }
       this.programService.getAdDetail({'programId':advtProgId}).subscribe(data=>{
         this.adData =data.data;
+        console.log(this.adData);
+        console.log(this.hh);
         this.commonService.dismissLoader();
       },
       err=>{
@@ -323,7 +325,7 @@ export class ProgramDetailsPage implements OnInit {
     ];
     
       if(this.loginUserData.trilloMatch != 1){
-        this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
+        this.verifyUser();
       }else{
         this.commonService.presentAlert(title,msg,btn,'custom-alert advertiseAlert'); 
       }
@@ -331,6 +333,9 @@ export class ProgramDetailsPage implements OnInit {
   
   ngOnDestroy() {
 
+  }
+  verifyUser(){
+    this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
   }
   sendrequest()
   {

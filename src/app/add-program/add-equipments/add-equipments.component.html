@@ -15,10 +15,13 @@
 <ion-content class="main_content">
   <ion-list class="user-list ion-no-padding" *ngIf="modelOpen==1">
     <ion-item *ngFor="let equip of equipments">
+      <div class="users-list" >
+        <img src="../../assets/images/{{equip.equipment_pic}}" />
+      </div>
       <ion-label class="ion-padding-horizontal">
-        <h3 class="list-person"> {{equip.name}} </h3>
+        <h3 class="list-person"> {{equip.equipment_name}} </h3>
       </ion-label>
-      <ion-checkbox slot="end" [(ngModel)]="equip.selected" name="equip.name"></ion-checkbox>
+      <ion-checkbox slot="end" [(ngModel)]="equip.selected" name="equip.equipment_name"></ion-checkbox>
     </ion-item>
   </ion-list>
   <div class="user-list ion-no-padding" *ngIf="modelOpen==2 && nutritionList?.length>0; else no_content ">
