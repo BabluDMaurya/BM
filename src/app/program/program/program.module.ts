@@ -11,7 +11,6 @@ import { HostingDropdownComponent } from '../hosting-dropdown/hosting-dropdown.c
 
 import { ComponentModule } from '../../profile/components.modules';
 import { InviteRequestComponent } from './../invite-request/invite-request.component';
-
 import { PipeModule } from '../../nutrition-list/pipe.module'
 @NgModule({
   imports: [
@@ -19,7 +18,7 @@ import { PipeModule } from '../../nutrition-list/pipe.module'
     FormsModule,
     IonicModule,
     ProgramPageRoutingModule,ComponentModule,
-    PipeModule
+    PipeModule,
   ],
   declarations: [ProgramPage ,HostingDropdownComponent , 
     InviteRequestComponent],

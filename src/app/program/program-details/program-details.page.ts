@@ -59,7 +59,9 @@ export class ProgramDetailsPage implements OnInit {
   userList: any;
   profileUrl = Config.profilePic;
   url = Config.imgUrl;
+  program_fee:any;
   programDateTime : any;
+  programFee:any;
     ANDROID_PERMISSIONS = [
     this.androidPermissions.PERMISSION.CAMERA,
     this.androidPermissions.PERMISSION.RECORD_AUDIO,
@@ -164,10 +166,14 @@ export class ProgramDetailsPage implements OnInit {
     console.log('ionviewwillenter');
     this.commonService.presentLoader();
     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
-      this.programDetail = data.programData;
-      console.log("PG: "+JSON.stringify(this.programDetail));
+      this.programDetail = data.programData;     
       this.programTitle = data.programData.title;
-      this.requestSent = data.programData.request_sent;      
+      this.requestSent = data.programData.request_sent; 
+      if(this.programDetail.payment_type == 'Paid'){
+        this.programFee = '$ '+this.programDetail.program_fee;
+      }else if(this.programDetail.payment_type == 'Free'){
+        this.programFee = this.programDetail.payment_type;
+      }
       //1 = private , 2 = closed , 3 = public
       this.programType = data.programData.type_id;
       if(this.programType == 'private oneway' || this.programType == 'private twoway'){

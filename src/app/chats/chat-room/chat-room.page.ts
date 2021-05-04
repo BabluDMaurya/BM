@@ -90,7 +90,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
   }
   
   ionViewDidEnter() {
-    // this.commonService.dismissLoader();
+    this.commonService.dismissLoader();
     // console.log('ionViewDidEnter');
   }
  
@@ -142,8 +142,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
       this.contentArea.scrollToBottom();
     });
   }
-  privateChat(){
-    // this.commonService.presentLoader();
+  privateChat(){    
     this.socket.fromEvent('message').subscribe(message => {
       this.messages.push(message);
       this.contentArea.scrollToBottom();
@@ -234,14 +233,14 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
       translucent: true
     });
     popover.onDidDismiss()
-      .then((data) => {
-        console.log("onDidDismiss:" + data.data);
-        if(data.data == 'refresh'){
-          console.log("onDidDismiss refresh if:");
+      .then((data) => {        
+        if(data.data == 'refresh'){          
           this.socket.disconnect();
           this.doRefresh();
-        }else{
-          console.log("onDidDismiss refresh else:");
+        }else if(data.data == 'clear'){
+          this.storeMessages = [];
+          this.messages = [];
+        }else{          
           this.bSOUser = data['data'];
           this.socket.emit('userBlockStatus',this.userData.id,this.receiverId);
         }
@@ -251,10 +250,8 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
   doRefresh() {
     if(this.chatType == 2){
       this.groupChat();
-      console.log('groupchat doRefresh');
-    }else{-  
+    }else{
       this.privateChat();
-      console.log('privateChat doRefresh');
     }
   }
   sendMessage() {

@@ -24,7 +24,7 @@ import{VerifyUserInfoComponent} from "./../modalContent/verify-user-info/verify-
 export class AddProgramPage implements OnInit {
 
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
-  @ViewChild(CalendarComponent, { read: 'any', static: false }) myCal: CalendarComponent;
+  // @ViewChild(CalendarComponent, { read: 'any', static: false }) myCal: CalendarComponent;
 
   sliderOpts = {
     zoom: true,

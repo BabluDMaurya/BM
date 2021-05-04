@@ -12,7 +12,8 @@ import { ProgramService } from './../../services/program.service';
   styleUrls: ['../../app.component.scss', './program.page.scss'],
 })
 
-export class ProgramPage implements OnInit {
+export class ProgramPage implements OnInit {    
+  
   classVariable :any = 0;
   myDate: any = new Date().toISOString();
   url: any = Config.ApiUrl;
@@ -20,15 +21,21 @@ export class ProgramPage implements OnInit {
   programTabs: any;
   accTabData: any;
   reqTabData: any;
+  pgCount : any = 0;  
   tabs(ev: any) {
     this.programTabs = ev.detail.value;
   } 
   userData: any;
   showAll: any;
   programList: any;
+  scheduleList : any;
   accProgramList: any;
   reqProgramList: any;
   allProgramList: any;
+  weekLayout:any = "";
+  dayDate : any = [];  
+  currentDate : any;
+  clickActiveClass : any = '';
   public items: any = [];
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
   sliderOpts = {
@@ -37,7 +44,6 @@ export class ProgramPage implements OnInit {
     centeredSlides: false,
     spaceBetween: 5,
   }
-
   constructor(public popoverController: PopoverController,
     public navCtrl: NavController,
     public commonService: CommonService,
@@ -56,13 +62,103 @@ export class ProgramPage implements OnInit {
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     if (this.userData.user_type) {
-      this.programTabs = 'hosting';
+      this.programTabs = 'schedule';
     } else {
       this.programTabs = 'attending'
     }
+    this.myCalender();
   }
+  // My calender
+   getWeek(fromDate) {
+    var sunday = new Date(fromDate.setDate(fromDate.getDate() - fromDate.getDay())),
+      result = [new Date(sunday)];
+    while (sunday.setDate(sunday.getDate() + 1) && sunday.getDay() !== 0) {
+      result.push(new Date(sunday));
+    }
+    return result;
+  }
+  // getDaysInMonth(month :any , year:any) {
+  //   var date : any = new Date(year, month, 1);
+  //   var days : any = [];
+  //   while (date.getMonth() === month) {
+  //     days.push(new Date(date));
+  //     date.setDate(date.getDate() + 1);
+  //   }
+  //   return months = days;
+  // }
+  // getYear() {
+  //   var mthLayout = ""
+  //   for (var i = 0; months.length > i; i++) {
+  //     var data = months[i];
+  //     mthLayout = mthLayout + "<li>" + data + "</li>";
+  //   }
+    // if($('.calendar').length > 0){
+    //  $('.calendar ul').remove(); $('.calendar').append("<ul>" + mthLayout + "</ul>");
+    // } else {
+    //   $('.calendar').append("<ul>" + mthLayout + "</ul>");
+    // }
+    
+  // }
+  myCalender(){
+    var today : any = new Date();
+    var dd : any = today.getDate();
+    var mm : any = today.getMonth() + 1; //January is 0!
+    var yyyy : any = today.getFullYear();
+    
+    if (dd < 10) {
+      dd = '0' + dd
+    }    
+    if (mm < 10) {
+      mm = '0' + mm
+    }    
+    today = mm + '/' + dd + '/' + yyyy;
+    var week = this.getWeek(new Date(today)); 
+    this.currentDate = new Date(today).getDate();   
+    
+    var weekday = new Array(7);
+        weekday[0] = "Sun";
+        weekday[1] = "Mon";
+        weekday[2] = "Tue";
+        weekday[3] = "Wed";
+        weekday[4] = "Thu";
+        weekday[5] = "Fri";
+        weekday[6] = "Sat";
+    for (var i = 0; week.length > i; i++) {
+      var date = new Date(week[i]).getDate();
+      if(this.currentDate == date){
+        var addClass = 'active';
+        var addDisableClass = 0;        
+      }else if(this.currentDate > date){
+        var addClass = '';
+        var addDisableClass = 1;
+      }else{
+        var addDisableClass = 0;
+        var addClass = '';
+      }
+      this.dayDate.push( { "day": weekday[week[i].getDay()], "date":  date, 'activeClass' : addClass,'myDate':week[i],'disableClass':addDisableClass} );
+    } 
+    var months = "";
+    var cal = false;
+    
+    
+    
+    // $('a#mth').click(function(e) {
+    //  if(cal == false){
+    //   cal = true;
+    //   this.getDaysInMonth(4, 2017);
+    //   console.log(months);
+    //   getYear();
+    //   } else {
+    //   cal = false;
+       
+    // $('.calendar ul').remove(); $('.calendar').append("<ul>" + weekLayout + "</ul>");
+    //   }
+    //   e.preventDefault();
+    // });
 
-  onChange(event) { 
+
+  }
+  onChange(event) {     
     if (this.showAll) {
       this.programService.getAllUpcomingPrograms(null).subscribe(data => {
         this.allProgramList = data.data.filter(el => {
@@ -73,14 +169,15 @@ export class ProgramPage implements OnInit {
           el.expanded = false;
           return el;
         });
+        this.pgCount = this.allProgramList.length;
         this.commonService.presentToast("All upcoming programs listed");
       },
-      err=>{
-        
+      err=>{        
       this.commonService.presentToast("Couldnt load data, Something went wrong.");
-      })
+      })  
     } else {
       this.allProgramList = null;
+      this.pgCount = this.scheduleList.length;
     } 
   }
   ionViewWillEnter() {
@@ -102,7 +199,7 @@ export class ProgramPage implements OnInit {
         el.converted = new Date(el.program_date + 'Z');
         el.expanded = false;
         return el;
-      });
+      });      
     },
     err=> {
       this.commonService.presentToast("Couldnt load data, Something went wrong.")
@@ -120,10 +217,27 @@ export class ProgramPage implements OnInit {
       },
       err=> {
         this.commonService.presentToast("Couldnt load data, Something went wrong.")
-      });
+      });      
     });
 
+    this.programService.getSchedulePrograms(null).subscribe(data => {
+      this.scheduleList = data.programList.filter(el => {
+        if (el.image_path) {
+          el.img_arr = el.image_path.split(',');
+        }
+        el.converted = new Date(el.program_date + 'Z');
+        el.expanded = false;
+        return el;
+      });
+      this.pgCount = this.scheduleList.length;
+    },
+    err=> {
+      this.commonService.presentToast("Couldnt load data, Something went wrong.")
+    }
+    );
+
     this.programService.getAcceptedPrograms(null).subscribe(data => {
+      if(data.list != null){
       this.accProgramList = data.list.filter(el => {
         if (el.image_path) {
           el.img_arr = el.image_path.split(',');
@@ -132,6 +246,7 @@ export class ProgramPage implements OnInit {
         el.expanded = false;
         return el;
       });
+    }
     },
     err=> {
       this.commonService.presentToast("Couldnt load data, Something went wrong.")
@@ -229,8 +344,40 @@ export class ProgramPage implements OnInit {
     }
   }
 
-  sortDate(ev) { 
+  mySortDate(selectedDate : any) { 
+    this.commonService.presentLoader();    
+    var today = new Date();
+    let userZoneDate = new Date(selectedDate);
+    userZoneDate.setHours(today.getHours(), today.getMinutes(), today.getSeconds());
+    
+    this.programService.getSchedulePrograms({ 'sortDate': userZoneDate.toUTCString() }).subscribe(data => {
+      this.scheduleList = data.programList.filter(el => {
+        if (el.image_path) {
+          el.img_arr = el.image_path.split(',');
+        }
+        el.expanded = false;
+        el.converted = new Date(el.program_date + 'Z');
+        return el;
+      });
+      this.pgCount = this.scheduleList.length;
+    });
+
+    this.programService.getRequestedPrograms({ 'sortDate': userZoneDate.toUTCString() }).subscribe(data => {
+      this.reqProgramList = data.list.filter(el => {
+        if (el.image_path) {
+          el.img_arr = el.image_path.split(',');
+        }
+        el.expanded = false;
+        el.converted = new Date(el.program_date + 'Z');
+        return el;
+      });
+      this.commonService.dismissLoader();
+    });
+  } 
+
+  sortDate(ev) {     
     let userZoneDate = new Date(this.myDate); 
+
     let temp = userZoneDate.setHours(0, 0, 0); 
     this.programService.getHostedPrograms({ 'sortDate': userZoneDate.toUTCString() }).subscribe(data => {
       this.programList = data.programList.filter(el => {
@@ -265,7 +412,7 @@ export class ProgramPage implements OnInit {
         return el;
       });
     });
-  } 
+  }
 
   async requestDropdown(ev: any) {
     const popover = await this.popoverController.create({
@@ -282,6 +429,9 @@ export class ProgramPage implements OnInit {
       }
     });
     return await popover.present();
+  }
+  tostmess(){
+    this.commonService.presentToast('Past date program not allowed');
   }
 
 }
