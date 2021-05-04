@@ -133,7 +133,7 @@
       <ion-card class="video-card" *ngFor="let post of myPosts">
         <ion-card-header class="card-head upcoming-block" [routerLink]="['/videos',post.posts_id,'exclusive']">
           <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}" *ngIf="profileData?.userData?.bios?.profile_pic">
-          <img src="{{url}}images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
+          <img src="../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
           <ion-label class="full-width">
             <a>
               <ion-card-title>{{profileData.userData.user_name}}</ion-card-title>

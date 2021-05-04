@@ -28,9 +28,6 @@ export class DropdownComponent implements OnInit {
     this.popoverController.dismiss(data);
   }
   ngOnInit() {
-    console.log("userDataid:"+this.userDataid);
-    console.log("bidOUser:"+this.bidOUser);
-    console.log("receiverId:"+this.receiverId);
     this.dataService.chatGroup({'id':this.receiverId}).subscribe(
       (data: any) => {
         this.adminId = data.admin_id;
@@ -55,8 +52,7 @@ export class DropdownComponent implements OnInit {
   clear(){
     this.dataService.clearChatUser({'receiver_id':this.receiverId,'lastChatId':this.lastchatid}).subscribe(
       (data: any) => {
-        console.log('DismissClick Clear');
-        this.DismissClick('refresh');
+        this.DismissClick('clear');
       });
   }
   delete(){

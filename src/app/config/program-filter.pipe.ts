@@ -9,7 +9,7 @@ export class ProgramFilterPipe implements PipeTransform {
         {
           return value;
         }
-        console.log(value)
+        // console.log(value)
         const resultArray= [];
         let progIdList=[];
         value.forEach(function(item , i ){
@@ -31,7 +31,7 @@ export class ProgramFilterPipe implements PipeTransform {
            }
           
         });
-        console.log(resultArray)
+        // console.log(resultArray)
       return resultArray;
     }
 }

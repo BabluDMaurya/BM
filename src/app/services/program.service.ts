@@ -79,6 +79,9 @@ export class ProgramService {
   getHostedPrograms(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getHostedPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getHostedPrograms', formData)));
   }
+  getSchedulePrograms(formData){
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/getSchedulePrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getSchedulePrograms', formData)));
+  }
 
   getRequestedPrograms(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getRequestedPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getRequestedPrograms', formData)));

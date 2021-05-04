@@ -194,7 +194,7 @@ export class SigninPage implements OnInit, OnDestroy {
   }
 
   ionViewWillLeave() {
-    console.log("ionViewWillLeave signin");
+    //console.log("ionViewWillLeave signin");
     this.subscribe.unsubscribe();
   }
   // ngAfterContentInit() {
@@ -205,10 +205,10 @@ export class SigninPage implements OnInit, OnDestroy {
   //   }
   // }
   ngOnDestroy() {
-    console.log("ngOnDestroy signin");
+    //console.log("ngOnDestroy signin");
     // this.backButtonSubscription.unsubscribe();  
   }
   ionNavDidChange() {
-    console.log("ionNavDidChange signin");
+    //console.log("ionNavDidChange signin");
   }
 }

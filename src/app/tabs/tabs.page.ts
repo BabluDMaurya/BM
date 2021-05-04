@@ -7,7 +7,7 @@ import { CommonService } from './../services/common.service'
 })
 export class TabsPage implements OnInit {
   userData:any;
-  userType:any;
+  userType:any = 0;
   totalchat:any;
   unreadMess : any;
   constructor(
@@ -15,37 +15,29 @@ export class TabsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-  }
-  
+  }  
   openToggle(){
     document.getElementById('circularMenu').classList.toggle('active');
     document.getElementById('floting-position').classList.toggle('active');
   }
   ionViewWillEnter() {
     this.userData =JSON.parse(localStorage.getItem('userData'));
-    this.totalchat =JSON.parse(localStorage.getItem('totalchat'));
+    setInterval(() => {
+      this.totalchat =JSON.parse(localStorage.getItem('totalchat'));
+    }, 5000);   
     this.unreadMessage();
-    // this.unreadMess = setInterval(() => {
-    //   this.unreadMessage(); 
-    // }, 15000);
-    // console.log('ion enter')
-     this.userType =this.userData.user_type;
-     this.commonService.footerTabHooks.next(true);
+    this.userType =this.userData.user_type;
+    this.commonService.footerTabHooks.next(true);
   }
-ionViewDidEnter	(){
-//  console.log('iionViewDidEnter')
-}
-ionViewWillLeave(){
-  this.commonService.footerTabHooks.next(false);
-  // if (this.unreadMess) {
-  //   clearInterval(this.unreadMess);
-  // }
-}
-ionViewDidLeave(){
-  // console.log('ionViewWillLeave');
-  this.commonService.footerTabHooks.next(false);
-}
-unreadMessage(){
-  this.commonService.getUnreadCountMyProfile();
-}
+  ionViewDidEnter	(){
+  }
+  ionViewWillLeave(){
+    this.commonService.footerTabHooks.next(false);
+  }
+  ionViewDidLeave(){  
+    this.commonService.footerTabHooks.next(false);
+  }
+  unreadMessage(){
+    this.commonService.getUnreadCountMyProfile();
+  }
 }

@@ -9,7 +9,7 @@
         </ion-item>
         <ion-item slot="start">
           <ion-label id="display_name" *ngIf="defaultInputText">{{ displayName }}</ion-label>
-          <ion-label class="add-disp-name" id="display_name" *ngIf="!defaultInputText">Add Display Name</ion-label>
+          <ion-label class="add-disp-name" id="display_name" *ngIf="!defaultInputText">Add Display Name: </ion-label>
           <div *ngIf="defaultInputBox">
             <ion-input type="text" placeholder="Enter Name" (change)="detailsUpdate($event)" name="display_name"  value="{{displayName}}"></ion-input>
             <ng-container *ngFor="let validation of validation_messages.display_name">

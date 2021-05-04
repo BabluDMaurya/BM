@@ -8,7 +8,11 @@
     <ion-item slot="center">
       <ion-label>{{programDetail?.title}}</ion-label>
     </ion-item>
+<<<<<<< HEAD
     <ion-item  detail="false" class="icon-right-side ion-text-end" slot="end" [routerLink]="['/edit-program',programId]">
+=======
+    <ion-item  detail="false" class="icon-right-side ion-text-end" slot="end" [routerLink]="['/edit-program/',programId]">
+>>>>>>> 3610bdec9fcffbb8d95653cf40c3e1d3eab97548
       <ion-icon ios="ios-create" md="md-create" slot="end"></ion-icon>
     </ion-item>
   </ion-list>
@@ -29,7 +33,7 @@
         </ion-item>
         <ion-item>
           <img src="../../../assets/images/purse.svg" />
-          <ion-label>{{programDetail?.payment_type}}</ion-label>
+          <ion-label>{{programFee}}</ion-label>
         </ion-item>
         <ion-item>
           <img src="../../../assets/images/group.svg" />
@@ -63,14 +67,17 @@
   </ion-row>
   <!-- <ion-row class="counter-box ion-padding" *ngIf="!programDetail?.live && !programDetail?.ended ">  -->
     <ion-row class="counter-box ion-padding" > 
-    <ion-col size="4" class="ion-no-padding">
+    <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
       <ion-text><p>{{hh | async}}</p> Hours</ion-text>
     </ion-col>
-    <ion-col size="4" class="ion-no-padding">
+    <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
       <ion-text><p>{{mm| async}}</p> Minutes</ion-text>
     </ion-col>
-    <ion-col size="4" class="ion-no-padding">
+    <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
       <ion-text><p>{{ss | async}}</p> Seconds</ion-text>
+    </ion-col>
+    <ion-col size="12" class="ion-no-padding" *ngIf="programDetail?.ended">
+      <ion-text>This Program has been Ended </ion-text>
     </ion-col>
     <ion-col size="12" class="ion-no-padding mt-15">
       <ion-text><p class="text-green text-center">{{programDateTime|date:'medium'}}</p></ion-text>
@@ -79,7 +86,7 @@
     <!-- programDescription -->
   <!-- <ion-button *ngIf="programDetail?.type_id == 'video'" [routerLink]="['/video-program-view',programDetail?.video_program,programDetail?.id]">Go Live Video</ion-button> -->
   <!-- <ion-button *ngIf="programDetail?.live" [routerLink]="['/broadcaster',broadcastId]">Go Live</ion-button> -->
-  <ion-label *ngIf="programDetail?.ended" >This Program has been Ended </ion-label>
+  <!-- <ion-label *ngIf="programDetail?.ended" >This Program has been Ended </ion-label> -->
   <div *ngIf="userData.trilloMatch == '1' ">
     <ion-button *ngIf="programDetail?.live" (click)="joinRoom()">Go Live</ion-button>
   </div>

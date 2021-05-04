@@ -80,7 +80,7 @@ export class ChatPage implements OnInit {
     this.dataService.chatUserList().subscribe((data: any) => {
         this.items = data.chatlist;
         this.requestCount = data.requestcount; 
-        localStorage.setItem('totalchat',this.requestCount);     
+        localStorage.setItem('totalchat',data.unreadchatcount);     
       });       
       this.commonService.dismissLoader();
   }

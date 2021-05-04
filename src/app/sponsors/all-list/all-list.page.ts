@@ -22,6 +22,7 @@ export class AllListPage implements OnInit {
   sponcersChat:boolean = false;
   sponcerCount: any;
   customClass : any =0;
+  chatCount:any = 0;
   constructor(
     private notification: NotificationService,
     private programService : ProgramService,
@@ -66,23 +67,22 @@ export class AllListPage implements OnInit {
       (data: any) => {
         this.commonService.dismissLoader();
         if(data.slist.length > 0){
-          this.sponcersChat  = true;
+          this.sponcersChat  = true;          
           this.sponcers = data.slist;
+          this.sponcers.forEach(element => {
+            this.chatCount = (parseInt(this.chatCount) + parseInt(element.chat_count));
+          });          
         }else{this.sponcers
           this.sponcersChatEmpty  = true;
         }
       });
-  }
-
-  unread(event){
-    console.log("event:"+JSON.stringify(event));
+  }  
+  unread(event){   
     this.commonService.presentModal(SponserCommentComponent,'fullModal',{'adDetails':event});
   }
-
   goBack() {
     this.navCtrl.back();
   }
-
   expand(index)
   {
     this.customClass = index;

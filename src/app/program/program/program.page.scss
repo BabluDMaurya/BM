@@ -60,3 +60,15 @@ ion-label{
       ion-datetime{padding: 0;}
     }    
   }
+  ion-label.active p{    
+    width: 18px;
+    height: 18px;
+    background: #27a69a;
+    border-radius: 50%;
+    font-weight: 400;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color : #f7f7f7;
+  } 
