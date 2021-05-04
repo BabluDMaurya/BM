@@ -21,6 +21,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'home1',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../home1/home1.module').then( m => m.Home1PageModule)
+          }
+        ]
+        
+      },
+      {
         path: 'home',
         children: [
           {

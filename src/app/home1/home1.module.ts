@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { Home1PageRoutingModule } from './home1-routing.module';
 
-import { HomePage } from './home.page';
-import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { Home1Page } from './home1.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
-    LazyLoadImageModule
+    Home1PageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [Home1Page]
 })
-export class HomePageModule {}
+export class Home1PageModule {}

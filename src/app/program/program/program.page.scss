@@ -63,12 +63,37 @@ ion-label{
   ion-label.active p{    
     width: 18px;
     height: 18px;
-    background: #27a69a;
+    background: #FFF;
     border-radius: 50%;
     font-weight: 400;
     font-size: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color : #f7f7f7;
+    color : #2bbbad;
   } 
+  .programCalendar{text-align: center;
+    ion-item{
+      background: #2bbbad;
+      --background: #2bbbad;
+      ion-label{text-align: center;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 500;
+        color: #FFFf;
+        p{padding: 0;width: 24px;
+          height: 24px;
+          margin: 10px auto 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;color: #FFF;}
+      }
+      ion-label.active{
+        p{color: #2bbbad;}
+      }
+    }
+  }
+
+.programCalendar+.top-segment+div .no-data{
+    height: calc(100vh - 298px);
+}

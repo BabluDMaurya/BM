@@ -18,6 +18,10 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./../../app.component.scss', './my-profile.page.scss'],
 })
 export class MyProfilePage implements OnInit {
+  bannerDefaultImage = './../../../assets/images/editcoverpic.png';
+  profileDefaultImage = './../../../assets/images/user.jpg';
+  bannerImage :any;
+  profileImage :any; 
   block = true;
   bookmark = true;
   isLoading = false;
@@ -283,12 +287,11 @@ export class MyProfilePage implements OnInit {
       this.router.navigate(["/tabs/user-profile"]);
     }
     this.settingsService.getProfileData().subscribe((data: any) => {
-
       this.profileData = data.status;
       this.gotData = true;
-      
-      localStorage.setItem('userData',JSON.stringify(data.status.userData));  
-
+      this.bannerImage = this.backgroundPicUrl + this.profileData.userData.bios.profile_background_image;
+      this.profileImage = this.profilePicUrl + this.profileData.userData.bios.profile_pic;
+      localStorage.setItem('userData',JSON.stringify(data.status.userData)); 
     });
   }
   ngAfterViewInit() {

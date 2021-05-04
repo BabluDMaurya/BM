@@ -40,17 +40,11 @@
     <ion-row *ngIf="tabs">
       <ion-col class="ion-no-padding">
         <div class="sec-banner">
-          <div class="top-banner"> <img
-              src="{{backgroundPicUrl}}{{profileData?.userData?.bios?.profile_background_image}}"
-              *ngIf="profileData?.userData?.bios?.profile_background_image">
-            <img src="./../../../assets/images/editcoverpic.png" *ngIf="!profileData?.userData?.bios?.profile_pic">
+          <div class="top-banner"> <img [defaultImage] = "bannerDefaultImage" [lazyLoad]="bannerImage">
           </div>
           <div class="profile-heading">
             <div class="img-profile">
-              <img class="user-img" src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
-                *ngIf="profileData?.userData?.bios?.profile_pic">
-              <img class="user-img" src="../../assets/images/user.jpg"
-                *ngIf="!profileData?.userData?.bios?.profile_pic">
+              <img [defaultImage] = "profileDefaultImage" [lazyLoad]="profileImage">              
             </div>
             <ion-text>
               <h6 class="userDisplayName" *ngIf="profileData?.userData?.bios?.display_name">

@@ -166,7 +166,10 @@ export class ProgramDetailsPage implements OnInit {
     console.log('ionviewwillenter');
     this.commonService.presentLoader();
     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
-      this.programDetail = data.programData;     
+      this.programDetail = data.programData;
+      console.log("PG: "+JSON.stringify(this.programDetail));
+
+      console.log(this.programDetail.id + 'iddddd');
       this.programTitle = data.programData.title;
       this.requestSent = data.programData.request_sent; 
       if(this.programDetail.payment_type == 'Paid'){

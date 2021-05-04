@@ -9,6 +9,7 @@ import { ComponentModule } from './../components.modules';
 import { MyProfilePage } from './my-profile.page';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +17,8 @@ import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
     IonicModule,
     MyProfilePageRoutingModule,
     ComponentModule     ,
-    NgxIonicImageViewerModule 
+    NgxIonicImageViewerModule,
+    LazyLoadImageModule
   ],
   entryComponents: [],
   declarations: [MyProfilePage ]
