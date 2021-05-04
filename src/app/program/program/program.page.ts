@@ -22,6 +22,7 @@ export class ProgramPage implements OnInit {
   accTabData: any;
   reqTabData: any;
   pgCount : any = 0;  
+  notShowAll : boolean = true;
   tabs(ev: any) {
     this.programTabs = ev.detail.value;
   } 
@@ -160,6 +161,7 @@ export class ProgramPage implements OnInit {
   }
   onChange(event) {     
     if (this.showAll) {
+      this.notShowAll = false;
       this.programService.getAllUpcomingPrograms(null).subscribe(data => {
         this.allProgramList = data.data.filter(el => {
           if (el.image_path) {
@@ -176,6 +178,7 @@ export class ProgramPage implements OnInit {
       this.commonService.presentToast("Couldnt load data, Something went wrong.");
       })  
     } else {
+      this.notShowAll = true;
       this.allProgramList = null;
       this.pgCount = this.scheduleList.length;
     } 

@@ -40,6 +40,7 @@ export class ProgramViewPage implements OnInit {
   request_join: any;
   profileUrl = Config.profilePic;
   url = Config.imgUrl;
+  programDateTime : any;
   tmp: any;
   adData: any;
   countDown: Observable<number>;
@@ -119,7 +120,7 @@ export class ProgramViewPage implements OnInit {
   }
   ionViewWillEnter() {
     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
-      this.programDetail = data.programData;
+      this.programDetail = data.programData;      
       this.broadcastId = 'programId_' + data.programData.id;
       this.programType = data.programData.type_id;
       if(this.programType == 'private oneway' || this.programType == 'private twoway'){
@@ -138,6 +139,7 @@ export class ProgramViewPage implements OnInit {
       }  
       //  ------------ C O U N T   D O W N   T I M E R ---------
       let a: any = new Date(this.programDetail.program_date + 'Z');
+      this.programDateTime = a;
       let b: any = new Date();
       let c: any;
       if (a > b) {
@@ -168,7 +170,6 @@ export class ProgramViewPage implements OnInit {
               this.checkStreaming();
             }
             if (this.programDetail.cd > 0) {
-              console.log('sdf');
               --this.programDetail.cd;
             } else {
               this.programDetail.cd = 0
@@ -192,19 +193,16 @@ export class ProgramViewPage implements OnInit {
       if (this.programDetail.request_accepted != null) {
 
         if ((this.programDetail.request_accepted.split(',')).includes(this.userData.id.toString())) {
-          console.log('sdfsd');
           this.request_accs = true;
         }
       } else if (this.programDetail.request_sent != null) {
         if ((this.programDetail.request_sent.split(',')).includes(this.userData.id.toString())) {
-          console.log('sdfsd');
           this.request_accs_pending = true;
         }
       }
       if (this.programDetail.request_recive != null) {
 
         if ((this.programDetail.request_recive.split(',')).includes(this.userData.id.toString())) {
-          console.log('sdfsd');
           this.request_join = true;
         }
       }
@@ -222,8 +220,7 @@ export class ProgramViewPage implements OnInit {
         });
       });
   }
-  showSchedule(event) {
-    console.log(this.request_accs);
+  showSchedule(event) {    
     this.commonService.presentModal(ScheduleModalComponent, 'fullModal', { 'programDetail': event });
   }
 
@@ -231,7 +228,11 @@ export class ProgramViewPage implements OnInit {
     this.commonService.presentModal(EquipmentsComponent, 'halfModal', { 'programDetail': this.programDetail });
   }
   showChatUsers() {
-    this.commonService.presentModal(ChatUserComponent, 'fullModal', '');
+    if(this.programType != "public"){
+      this.router.navigate(["/chat-consultant/"+this.programId+"/3"]); 
+    }else{
+      this.commonService.presentToast("Chat Not Allow on Public Program");
+    }
   }
   goBack() {
     this.navCtrl.back();

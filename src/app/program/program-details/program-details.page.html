@@ -8,7 +8,7 @@
     <ion-item slot="center">
       <ion-label>{{programDetail?.title}}</ion-label>
     </ion-item>
-    <ion-item  detail="false" class="icon-right-side ion-text-end" slot="end" [routerLink]="['/add-program']">
+    <ion-item  detail="false" class="icon-right-side ion-text-end" slot="end" [routerLink]="['/edit-program/',programId]">
       <ion-icon ios="ios-create" md="md-create" slot="end"></ion-icon>
     </ion-item>
   </ion-list>

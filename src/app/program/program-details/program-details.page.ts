@@ -198,9 +198,6 @@ export class ProgramDetailsPage implements OnInit {
       if (a > b) {
           c = Math.abs(a - b) / 1000;
           this.programDetail.cd = c;
-
-          console.log("this.programDetail.cd : " + this.programDateTime);
-
           this.ss = timer(0, 1000).pipe(take(this.programDetail.cd), map(() => {
             if (this.programDetail.cd > 0) {
               --this.programDetail.cd;
