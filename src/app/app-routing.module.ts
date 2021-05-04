@@ -255,7 +255,6 @@ const routes: Routes = [
     path: 'confrence',
     loadChildren: () => import('./confrence/confrence.module').then( m => m.ConfrencePageModule)
   },
- 
 ];
 
 @NgModule({

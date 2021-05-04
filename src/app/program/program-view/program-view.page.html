@@ -66,17 +66,16 @@
   <!-- <ion-label *ngIf="programDetail?.ended" >This Program has been Ended  </ion-label> -->
   
   <!-- <ion-button [routerLink]="['/broadcaster',broadcastId]">Tmp Live</ion-button> -->
-  <ion-list lines="none" class="users-list d-block">
-    <ion-item>
-         <ion-button *ngIf="programDetail?.is_requested ==1 && !request_join && !programDetail?.ended" size="small"  class="green" (click)="joinRequest()" >Request To Join</ion-button> 
-       <ion-button *ngIf="request_accs_pending && !programDetail?.ended" size="small" class="green" (click)="acceptRequest()" >Accept Request</ion-button>      
-         </ion-item>
+
+         <ion-button *ngIf="programDetail?.is_requested ==1 && !request_join && !programDetail?.ended" size="small"  class="green btnVerify" (click)="joinRequest()" >Request To Join</ion-button> 
+       <ion-button *ngIf="request_accs_pending && !programDetail?.ended" size="small" class="green btnVerify" (click)="acceptRequest()" >Accept Request</ion-button>      
+       <div class="users-list">
          <!-- <ion-button (click)="joinRoom()">Join Room</ion-button> -->
          <div *ngIf="request_accs && !programDetail?.live" size="medium"  >Program will start sooon   
          </div>
          <div *ngIf="programDetail?.is_requested ==1 && !request_join && !programDetail?.ended" size="medium"  (click)="joinRoom()" >Requested to join Program 
         </div>
-  </ion-list>
+      </div>
   <ion-row>
     <ion-col size="12" class="ion-no-padding">
       <ion-list lines="none" class="top-list three-block">

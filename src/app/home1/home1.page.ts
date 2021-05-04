@@ -7,18 +7,13 @@ import { CommonService } from '../services/common.service';
 import { PopoverComponent } from '../profile/popover/popover.component';
 import { SearchService } from '../services/search.service';
 import { NavigationExtras } from '@angular/router';
- 
+
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss', './../app.component.scss'],
+  selector: 'app-home1',
+  templateUrl: './home1.page.html',
+  styleUrls: ['./home1.page.scss', './../app.component.scss'],
 })
-export class HomePage implements OnInit {
-  defaultPostImage : any = './../../assets/images/loading.jpg';
-  defaultCatImage : any = './../../assets/images/activity.png';
-  defaultConsultantBackgroundImage : any = './../../assets/images/bgimage.png';
-  defaultUserImage : any = './../../assets/images/user.jpg';
-  postImage :any;
+export class Home1Page implements OnInit { 
   postData: any = [];
   loadPostData :any = [];
   gotData: boolean = false;
@@ -215,6 +210,5 @@ export class HomePage implements OnInit {
     });
     return arr;
   }
- 
 
 }

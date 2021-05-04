@@ -84,10 +84,10 @@
   <!-- <ion-button *ngIf="programDetail?.live" [routerLink]="['/broadcaster',broadcastId]">Go Live</ion-button> -->
   <!-- <ion-label *ngIf="programDetail?.ended" >This Program has been Ended </ion-label> -->
   <div *ngIf="userData.trilloMatch == '1' ">
-    <ion-button *ngIf="programDetail?.live" (click)="joinRoom()">Go Live</ion-button>
+    <ion-button class="btnVerify" *ngIf="programDetail?.live" (click)="joinRoom()">Go Live</ion-button>
   </div>
   <div *ngIf="userData.trilloMatch != '1' ">
-    <ion-button  (click)="verifyUser()">Verify to Go Live</ion-button>
+    <ion-button class="btnVerify" (click)="verifyUser()">Verify to Go Live</ion-button>
   </div>
   <ion-row>
     <ion-col size="12" class="ion-no-padding">

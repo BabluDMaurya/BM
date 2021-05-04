@@ -14,6 +14,7 @@ export class NotificationControlPage implements OnInit {
   programAcceptances: any;
   videoSent: any;
   posts: any;
+  chats: any;
   postResponses: any;
   following: any;
   
@@ -46,6 +47,9 @@ export class NotificationControlPage implements OnInit {
   }
   postsNotiCont(){  
     this.posts = this.apiResponce('posts',this.posts);
+  }
+  chatNotiCont(){
+    this.chats = this.apiResponce('chats',this.chats);
   }
   postResponsesNotiCont(){
     this.postResponses = this.apiResponce('postResponses',this.postResponses);

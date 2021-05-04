@@ -25,33 +25,36 @@
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
       refreshingText="Refreshing...">
     </ion-refresher-content>
-  </ion-refresher>  
-  <ion-grid *ngIf="specialities?.length>0" class="home-cat">
-    <ion-row class="row">
-      <!--<ion-col size="3" *ngFor="let special of  specialities">
-        <ion-card class="category-card"> 
-            <img src="{{url}}public/{{special?.specialities_image}}" *ngIf="special?.specialities_image">              
-        </ion-card>
-        <h4>{{special?.name}}</h4>
-      </ion-col>-->
-      <ion-slides [options]="sliderOpts">
-        <ion-slide class="white-background" *ngFor="let special of  specialities">
-          <ion-col size="12">
-            <ion-card class="category-card"> 
-                <img src="{{url}}public/{{special?.specialities_image}}" *ngIf="special?.specialities_image">              
-            </ion-card>
-            <h4>{{special?.name}}</h4>
-          </ion-col>
-        </ion-slide>
-      </ion-slides>
-    </ion-row>
-  </ion-grid>
+  </ion-refresher>
+
   <div *ngIf="gotData">
+    <ion-grid *ngIf="specialities?.length>0" class="home-cat">
+      <ion-row class="row">
+        <!-- <ion-col size="3" *ngFor="let special of  specialities">
+          <ion-card class="category-card"> 
+              <img src="{{url}}public/{{special?.specialities_image}}" *ngIf="special?.specialities_image">              
+          </ion-card>
+          <h4>{{special?.name}}</h4>
+        </ion-col> -->
+
+        <ion-slides [options]="sliderOpts">
+          <ion-slide class="white-background" *ngFor="let special of  specialities">
+            <ion-col size="12">
+              <ion-card class="category-card"> 
+                  <img src="{{url}}public/{{special?.specialities_image}}" *ngIf="special?.specialities_image">              
+              </ion-card>
+              <h4>{{special?.name}}</h4>
+            </ion-col>
+          </ion-slide>
+        </ion-slides>
+      </ion-row>
+    </ion-grid>
+
     
     <div *ngIf="!postData?.length > 0" class="no-data" style="height: calc(100vh - 230px);">
       <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
       <p>No post added yet!!!</p>
-    </div>    
+    </div>
     <div *ngFor="let post of postData; let i= index;"> 
       <ion-card class="item-card" *ngIf="   !post?.length">
         <ion-card-header class="item-header">
