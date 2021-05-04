@@ -39,6 +39,7 @@
         <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider>
           <ion-slide (click)="showdetails()" *ngFor="let imgpath of gallaryImgPath; let i=index;">
             <img src="{{imgpath}}" />
+            <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="removeImg(i)"></ion-icon>
           </ion-slide>
         </ion-slides>
         <ion-button (click)="slideNext(slides)" class="slidebtns slideNext">
@@ -249,10 +250,10 @@
           </ion-buttons>
         </ion-item>
         <ion-item slot="center">
-          <ion-label>Select Music</ion-label>
+          <ion-label>Payment</ion-label>
         </ion-item>
         <ion-item class="icon-right-side ion-text-end" slot="end" (click)="selectVolume()">
-          <ion-label class="text-green" >Next</ion-label>
+          <ion-label class="text-green" >Save</ion-label>
         </ion-item>
       </ion-list>
     </ion-header>
