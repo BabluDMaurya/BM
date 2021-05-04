@@ -166,6 +166,8 @@ export class ProgramDetailsPage implements OnInit {
     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
       this.programDetail = data.programData;
       console.log("PG: "+JSON.stringify(this.programDetail));
+
+      console.log(this.programDetail.id + 'iddddd');
       this.programTitle = data.programData.title;
       this.requestSent = data.programData.request_sent;      
       //1 = private , 2 = closed , 3 = public
