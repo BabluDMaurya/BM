@@ -34,6 +34,9 @@ export class ProgramService {
   insertProgram(data: any): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/insertProgram', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('insertProgram', data)));
   }
+  editProgram(data: any): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/editProgram', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('editProgram', data)));
+  }
 
   fetchAllProgram(): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/fetchAllProgram', null, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('fetchAllProgram')));

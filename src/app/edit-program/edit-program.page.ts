@@ -3,7 +3,7 @@ import { CommonService } from '../services/common.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { UserModalComponent } from '../add-program/user-modal/user-modal.component';
 import { UserListComponent } from '../add-program/user-list/user-list.component';
-import { FormControl, FormBuilder, Validators, } from '@angular/forms';
+import { FormControl, FormBuilder, Validators,FormGroup } from '@angular/forms';
 import { CalendarComponent } from '../calendar/calendar.component';
 import { formatDate } from '@angular/common';
 import { DateTimeModalComponent } from '../add-program/date-time-modal/date-time-modal.component';
@@ -15,6 +15,7 @@ import { Config } from './../config/config';
 import { ProgramService } from './../services/program.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { MusicService } from '../services/music.service';
+import{VerifyUserInfoComponent} from "./../modalContent/verify-user-info/verify-user-info.component";
 @Component({
   selector: 'app-edit-program',
   templateUrl: './edit-program.page.html',
@@ -59,6 +60,12 @@ export class EditProgramPage implements OnInit {
   programId:any;
   allMusic: any;
   genres: any;
+  approval_btn: any = false;
+  loginUserData:any;
+  request_approve_btn: any = false;
+  programDetail: any;
+  adData:any;
+  finalForm: FormGroup;
   constructor(public commonService: CommonService,
     private alertCtrl: AlertController,
     @Inject(LOCALE_ID) private locale: string,
@@ -83,11 +90,15 @@ export class EditProgramPage implements OnInit {
       this.genres = data.genres;
       this.allMusic = data.genres[0].musics;
     });
+    this.finalForm = this.fb.group({
+      programFees: new FormControl(''),
+    });
   }
   data: any;
   ionViewWillEnter() {
     this.programService.getProgramById({ 'programId': this.programId }).subscribe((data) => {
-      this.programList = data.programData
+      this.programList = data.programData;
+      console.log(this.programList );
       let startTime = new Date(data.programData.program_date + 'Z');
       let endTime = new Date(data.programData.program_end_time + 'Z');
       let events=[]; 
@@ -119,6 +130,8 @@ export class EditProgramPage implements OnInit {
   }
 
   ngOnInit() {
+    // console.log(this.programDetail);
+    this.loginUserData = JSON.parse(localStorage.getItem('userData'));
     this.createForm();
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.programId = params.get('programId');
@@ -222,14 +235,14 @@ export class EditProgramPage implements OnInit {
   userList() {
     this.commonService.presentModal(UserListComponent, 'fullModal', { "userList": this.modalData });
   }
-  selectVolume() {
-    if (!this.musicId) {
-      this.commonService.presentToast('Select Music ');
-      return false;
-    }
-    this.commonService.presentModal(MusicVolComponent, 'bottomModal', { "musicId": this.musicId, "programId": this.programDetail.id });
-  }
-
+  // selectVolume() {
+  //   if (!this.musicId) {
+  //     this.commonService.presentToast('Select Music ');
+  //     return false;
+  //   }
+  //   this.commonService.presentModal(MusicVolComponent, 'bottomModal', { "musicId": this.musicId, "programId": this.programDetail.id });
+  // }
+  
   resetEvent() {
     this.event = {
       //title: '',
@@ -313,7 +326,7 @@ export class EditProgramPage implements OnInit {
     this.commonService.dismissModal();
     alert.present();
   }
-  programDetail: any;
+  
   // Time slot was clicked
   async onTimeSelected(ev) {
     if (this.programDetail) {
@@ -365,6 +378,7 @@ export class EditProgramPage implements OnInit {
     // }    
 
   }
+  
 
   goBack() {
     this.navCtrl.back();
@@ -513,4 +527,87 @@ export class EditProgramPage implements OnInit {
     this.programForm.reset();
 
   }
+  sponsar_prog(){
+    this.approval_btn = true;
+  }
+  unsponsar_prog(){
+    this.approval_btn = false;
+  }
+  verifyUserInfoModal() {    
+    if(this.loginUserData.trilloMatch != 1){
+      this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', ''); 
+    }else{
+
+    }    
+  }
+  applyAdvertise()
+  {
+    this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+    
+    let title ="Advertise Rule";
+    let msg ="<p>1. Your Video will send for verification.</p>"
+            +"<p class='mb-0'>2. Once approved Video Program will be locked</p>";
+    let btn=  [
+      {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+      }, {
+        text: 'Okay',
+        handler: () => {
+          console.log('Confirm Okay');
+          this.sendrequest();
+        }
+      }
+    ];
+    
+      if(this.loginUserData.trilloMatch != 1){
+        this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
+      }else{
+        this.commonService.presentAlert(title,msg,btn,'custom-alert advertiseAlert'); 
+      }
+  }
+  sendrequest()
+  {
+    this.commonService.presentLoader();
+
+    if(this.programDetail.type_id == 'video')
+    {
+      // console.log('programId:'+this.programDetail.id);
+      this.programService.advertiseRequest({'programId':this.programDetail.id}).subscribe(data=>{
+        this.adData = data.status;
+        this.request_approve_btn = true;
+        this.commonService.dismissLoader();
+      } );
+    }else{
+      this.commonService.dismissLoader();
+      this.commonService.presentToast('Only Video Program are eligible');
+    }
+    
+  }
+  selectVolume() {
+    var fees = this.finalForm.value;
+    var progData = this.programForm.value;
+    this.programList.program_fee = fees.programFees;
+    this.programList.description = progData.programDescription;
+    this.programList.title = progData.programTitle;
+    // this.programList.file = this.gallaryImgPath;
+    console.log(this.gallaryImgPath);
+    console.log('hh');
+    console.log(this.programList);
+    this.commonService.presentLoader();
+    // this.programService.updateProgramFees({ "programFees": fees.programFees, "programId": this.programList.id}).subscribe(
+    //   (data) => {
+    //     this.commonService.dismissLoader();
+    //     this.router.navigate(["tabs/program"])
+    //   }
+    // );
+    this.programService.editProgram(this.programList).subscribe((data) => {
+      this.commonService.dismissLoader();
+      // this.router.navigate(["tabs/program"])
+    });
+ }
 }

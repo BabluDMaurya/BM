@@ -256,186 +256,40 @@
         </ion-item>
       </ion-list>
     </ion-header>
-    <ion-row class="main_content">
-      <ion-col size="12" class="ion-no-padding">
-        <!-- <ion-segment class="top-segment" (ionChange)="musicList($event)">
-          <ion-segment-button value="music" checked>
-            <span>Music</span>
-          </ion-segment-button>
-          <ion-segment-button value="playlist">
-            <span>Playlist</span>
-          </ion-segment-button>
-        </ion-segment> -->
-        <div [ngSwitch]="musicTypes">
-          <div *ngSwitchCase="'music'">
-            <ion-toolbar class="searchbar">
-              <ion-searchbar type="text" (ionInput)="searchChanged($event)"></ion-searchbar>
-            </ion-toolbar>
-            <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="allMusic">
-              <ion-segment class="ion-no-padding" scrollable="true" (ionChange)="selectMusic($event)">
-                <ion-segment-button *ngFor="let item of genres; let i =index " (click)="allMusic=item?.musics" [checked]="i==0?'true':'false'" >{{item?.name}}</ion-segment-button>                
-              </ion-segment>
-            </ion-toolbar>
-            <div [ngSwitch]="selectMusicList" *ngIf="allMusic">
-              <ion-list lines="none" class="ion-no-padding musiclist"  >
-                <!-- [ngClass]="musicSelect==1?'active':''" -->
-                <ion-item *ngFor="let music of allMusic"
-                  [ngClass]="musicId==music.id?'active':''"  (click)="musicSelect([music.id,music.filename,music.title,music.duration])">
-                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
-                  <ion-label>{{music.title}}</ion-label>
-                  <ion-text>{{music?.duration ? music?.duration : '00:00' }}</ion-text>
-                </ion-item>
-
-              </ion-list> 
-            </div>
-            <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="!allMusic">
-              <ion-segment class="ion-no-padding" scrollable="true" (ionChange)="selectMusic($event)">
-                <ion-segment-button value="hiphop" checked>
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="classical">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="edm">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="folk">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="rock">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="jazz">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="indianfolk">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="blues">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="beats">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="trap">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="alternativehiphop">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-              </ion-segment>
-            </ion-toolbar>
-            <div [ngSwitch]="selectMusicList" *ngIf="!allMusic">
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'hiphop'">
-                <ion-item (click)="musicSelect=1" [ngClass]="musicSelect==1?'active':''">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-item>
-                <ion-item (click)="musicSelect=2" [ngClass]="musicSelect==2?'active':''">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-item>
-                <ion-item (click)="musicSelect=3" [ngClass]="musicSelect==3?'active':''">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-item>
-                <ion-item (click)="musicSelect=4" [ngClass]="musicSelect==4?'active':''">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'classical'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'edm'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'folk'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'rock'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'jazz'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-            </div>
-          </div>
-          <!-- <div *ngSwitchCase="'playlist'">
-            <ion-toolbar class="searchbar">
-              <ion-searchbar></ion-searchbar>
-            </ion-toolbar>
-            <ion-toolbar no-border-top class="profile_tabs subprofile_tabs">
-              
-            </ion-toolbar>
-            <div [ngSwitch]="selectMusicList">
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'hiphop'">
-                <ion-item (click)="musicSelect=1" [ngClass]="musicSelect==1?'active':''">
-                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
-                  <ion-label>Norman connect</ion-label>
-                  <ion-text>03:11</ion-text>
-                </ion-item>
-                <ion-item (click)="musicSelect=2" [ngClass]="musicSelect==2?'active':''">
-                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
-                  <ion-label>Norman connect</ion-label>
-                  <ion-text>03:11</ion-text>
-                </ion-item>
-                <ion-item (click)="musicSelect=3" [ngClass]="musicSelect==3?'active':''">
-                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
-                  <ion-label>Norman connect</ion-label>
-                  <ion-text>03:11</ion-text>
-                </ion-item>
-                <ion-item (click)="musicSelect=4" [ngClass]="musicSelect==4?'active':''">
-                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
-                  <ion-label>Norman connect</ion-label>
-                  <ion-text>03:11</ion-text>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'classical'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'edm'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'folk'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'rock'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'jazz'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-            </div>
-            <ion-footer class="sticky-footer">
-              <ion-list class="musiclist">
-                <ion-item>
-                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
-                  <ion-label>Norman connect</ion-label>
-                  <ion-text>03:11</ion-text>
-                </ion-item>
-              </ion-list>
-            </ion-footer>
-          </div> -->
-        </div>
-      </ion-col>
-    </ion-row>
+    <div class="main_content ion-padding programPreview">
+      <form [formGroup]="finalForm" (ngSubmit)="saveProg()">
+        <h6 style="margin: 0 0 15px 0">Program Name: {{ programList.title }} </h6>
+        <ion-item lines="none">
+          <ion-label style="display: contents;">How much would you like to charge:</ion-label>
+          <ion-label style="    margin-left: 40px;">$</ion-label>
+          <ion-input class="form-control" type="number" formControlName="programFees" value="{{programList.program_fee}}"></ion-input>
+        </ion-item>
+        <div *ngIf="programList.type_id == 'video' ">
+        <ion-label style="display: block;margin-top: 15px;">Would you like to request Sponsors:</ion-label>
+      <ion-item lines="none">
+        <ion-radio-group value="sponsors_group" class="radio-group radioPreview">
+          <ion-item>
+            <ion-label>Yes</ion-label>
+            <ion-radio slot="start" value="1" (click)="sponsar_prog()" ></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>No</ion-label>
+            <ion-radio slot="start" value="2" (click)="unsponsar_prog()" ></ion-radio>
+          </ion-item>
+        </ion-radio-group>      
+      </ion-item>
+      </div>
+      <ion-item lines="none" (click)="verifyUserInfoModal()" *ngIf="loginUserData.trilloMatch != '1' && programList.type_id != 'video' ">
+        <ion-button class="green">Earn with Intoative</ion-button>
+      </ion-item>
+    </form>
+      <ion-footer class="sticky-footer" *ngIf="approval_btn && !request_approve_btn ">
+        <ion-button (click)="applyAdvertise()" class="green">Request Approval</ion-button> 
+      </ion-footer>
+      <ion-footer class="sticky-footer" *ngIf="request_approve_btn">
+        <ion-button class="green">Request Sent</ion-button> 
+      </ion-footer>
+    </div>
   </ion-grid>
 </ion-content>
 
