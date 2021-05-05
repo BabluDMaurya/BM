@@ -173,7 +173,7 @@ export class ProgramDetailsPage implements OnInit {
       this.programTitle = data.programData.title;
       this.requestSent = data.programData.request_sent; 
       if(this.programDetail.payment_type == 'Paid'){
-        this.programFee = '$ '+this.programDetail.program_fee;
+        this.programFee = this.programDetail.program_fee;
       }else if(this.programDetail.payment_type == 'Free'){
         this.programFee = this.programDetail.payment_type;
       }
@@ -287,7 +287,7 @@ export class ProgramDetailsPage implements OnInit {
 
   }
   showSchedule(event) {
-    this.commonService.presentModal(ScheduleModalComponent, 'fullModal', { 'programDetail': event });
+    this.commonService.presentModal(ScheduleModalComponent, 'fullModal', { 'programDetail': event,'user_type': this.userData.user_type});
   }
   showParticipants() {
     this.commonService.presentModal(ParticipantsComponent, 'fullModal', { 'userList': this.userList, 'programDetails': this.programDetail });

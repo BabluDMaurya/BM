@@ -43,8 +43,8 @@ export class RequestsModalComponent implements OnInit {
     }
   }
   
-  navigate(id : any,senderId:any,type:any){
-    this.close();
+  navigate(id : any,senderId:any,type:any){    
+    this.close();    
     this.router.navigate(['/access/'+id+'/'+senderId+'/'+type]);
   }
 }

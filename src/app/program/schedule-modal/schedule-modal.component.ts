@@ -23,8 +23,9 @@ export class ScheduleModalComponent implements OnInit {
   url=Config.imgUrl;
   programDetail: any;
   allProgram: any;
-  scheduleTabs: string = 'nutrition';
+  scheduleTabs: string = 'programs';
   nutritionList: any;
+  user_type:any;
   constructor(public commonService: CommonService,
     private navParams: NavParams,
     private nutritionService: NutritionService,
@@ -40,6 +41,7 @@ export class ScheduleModalComponent implements OnInit {
 
   ngOnInit() { 
     this.programDetail = this.navParams.data.programDetail;
+    this.user_type = this.navParams.data.user_type;
     let programId
     if (this.programDetail.parent_program) {
       programId = this.programDetail.parent_program

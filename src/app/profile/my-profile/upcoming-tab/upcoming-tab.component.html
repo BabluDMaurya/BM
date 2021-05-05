@@ -1,7 +1,7 @@
 <ion-card class="ion-no-margin upcomingCard" *ngFor="let upcoming of upcomingList; let i=index;">
   <ion-item lines="none">
     <ion-avatar slot="start">
-      <img src="{{url}}{{programimg_array[i]}}" *ngIf="upcomingList[i]?.image_path">
+      <img src="{{url}}{{upcoming?.img_arr[0]}}" *ngIf="upcomingList[i]?.image_path">
       <!-- <img src="{{profile_url}}{{upcoming?.program_user?.bios?.profile_pic}}" *ngIf="upcoming?.program_user?.bios?.profile_pic"> -->
       <img  src="../../assets/images/loading.jpg" *ngIf="!upcomingList[i]?.image_path">
     </ion-avatar>

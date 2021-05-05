@@ -26,7 +26,7 @@
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>  
-  <ion-grid *ngIf="specialities?.length>0" class="home-cat">
+  <ion-grid class="home-cat">
     <ion-row class="row">
       <!--<ion-col size="3" *ngFor="let special of  specialities">
         <ion-card class="category-card"> 
@@ -38,7 +38,7 @@
         <ion-slide class="white-background" *ngFor="let special of  specialities">
           <ion-col size="12">
             <ion-card class="category-card"> 
-                <img src="{{url}}public/{{special?.specialities_image}}" *ngIf="special?.specialities_image">              
+                <img [defaultImage]="defaultCatImage" [lazyLoad]="caturl+special?.specialities_image" />              -->
             </ion-card>
             <h4>{{special?.name}}</h4>
           </ion-col>
@@ -46,19 +46,21 @@
       </ion-slides>
     </ion-row>
   </ion-grid>
-  <div *ngIf="gotData">
+  <!-- <div *ngIf="gotData"> -->
     
     <div *ngIf="!postData?.length > 0" class="no-data" style="height: calc(100vh - 230px);">
       <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
       <p>No post added yet!!!</p>
     </div>    
     <div *ngFor="let post of postData; let i= index;"> 
-      <ion-card class="item-card" *ngIf="   !post?.length">
+      <ion-card class="item-card" *ngIf="!post?.length">
         <ion-card-header class="item-header">
-          <ion-avatar >
-            <img src="https://ionicinto.wdipl.com/public/profile_pic/thumb/{{post?.post_user?.bios?.profile_pic}}"
+          <ion-avatar >  
+            <img [defaultImage]="defaultUserImage" [lazyLoad]="userPPicurl+post?.post_user?.bios?.profile_pic"/>
+
+            <!-- <img src="https://ionicinto.wdipl.com/public/profile_pic/thumb/{{post?.post_user?.bios?.profile_pic}}"
               *ngIf="post?.post_user?.bios?.profile_pic">
-            <img src="../../assets/images/user.jpg" *ngIf="!post?.post_user?.bios?.profile_pic">
+            <img src="../../assets/images/user.jpg" *ngIf="!post?.post_user?.bios?.profile_pic"> -->
           </ion-avatar>
           <div class="header-right">
             <ion-label  >
@@ -74,14 +76,12 @@
           <ion-thumbnail *ngIf="post?.image_post">
             <ion-slides [options]="imageSlider" class="post-slider" [pager]="true">
               <ion-slide *ngFor="let imgpath of post?.image_post['0']?.thumb_path; let i =index;">
-                <img (click)="openViewer(post?.image_post['0']?.thumb_path[i])" src="{{url}}{{imgpath}}"
-                  alt="{{imgpath}}" />
+                <img (click)="openViewer(post?.image_post['0']?.thumb_path[i])" [defaultImage]="defaultPostImage" [lazyLoad]="url+ imgpath" alt="{{imgpath}}"/>
               </ion-slide>
             </ion-slides>
           </ion-thumbnail>
           <ion-thumbnail *ngIf="post?.video_post" [routerLink]="['/videos',post.id,'']">
-            <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" />
-            <!-- <img (click)="openViewer(post['video_post']['0']['thumb_path'])" src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
+            <img [defaultImage]="defaultPostImage" [lazyLoad]="storagePath+ post['video_post']['0']['thumb_path']" alt="Video Thumnail Path"/>
           </ion-thumbnail>
           <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam" *ngIf="post?.video_post"></ion-icon>
           <div class="post-content">
@@ -157,15 +157,14 @@
       <ion-grid *ngIf="post?.length>0" class="home-cat">
         <ion-row class="row">
           <ion-col size="6" *ngFor="let user of  post">
-            <ion-card class="cat-card">
-              
-                <div class="catBG"> <img src="https://ionicinto.wdipl.com/public/profile_background_image/thumb/{{user?.bios?.profile_background_image}}"
-                  *ngIf="user?.bios?.profile_pic"></div>
+            <ion-card class="cat-card">              
+                <div class="catBG"> 
+                  <img [defaultImage]="defaultConsultantBackgroundImage" [lazyLoad]="consultantBackgroundImag+user?.bios?.profile_background_image"/>
+                  <!-- <img src="https://ionicinto.wdipl.com/public/profile_background_image/thumb/{{user?.bios?.profile_background_image}}" *ngIf="user?.bios?.profile_pic"> -->
+                </div>
                   <ion-card-content>
                 <ion-avatar [routerLink]="['/tabs/consultant-profile-view/',user?.id]">
-                  <img src="https://ionicinto.wdipl.com/public/profile_pic/thumb/{{user?.bios?.profile_pic}}"
-                    *ngIf="user?.bios?.profile_pic">
-                  <img src="./../../assets/images/user.jpg" *ngIf="!user?.bios?.profile_pic">
+                  <img [defaultImage]="defaultUserImage" [lazyLoad]="userPPicurl+user?.bios?.profile_pic"/>
                 </ion-avatar>
                 {{user?.user_name}}
               </ion-card-content>
@@ -174,14 +173,13 @@
         </ion-row>
       </ion-grid>
     </div>
-
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
-  </div>
+  <!-- </div> -->
   <!-- ANIMATED LOADER -->
-  <div *ngIf="!gotData">
+  <!-- <div *ngIf="!gotData">
     <ion-card class="video-card">
       <ion-card-header class="card-head upcoming-block">
         <ion-skeleton-text animated class="card-thumb"></ion-skeleton-text>
@@ -216,5 +214,5 @@
         </div>
       </ion-card-content>
     </ion-card>
-  </div>
+  </div> -->
 </ion-content>

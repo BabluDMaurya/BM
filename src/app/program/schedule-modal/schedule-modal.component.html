@@ -12,20 +12,33 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content no_footer">
-  <ion-segment class="top-segment" (ionChange)="scheduleChanged($event)">
-    <ion-segment-button value="nutrition" checked>
-      <span>Nutrition & Video</span>
-    </ion-segment-button>
-    <ion-segment-button value="programs">
+  <ion-segment class="top-segment" (ionChange)="scheduleChanged($event)">    
+    <ion-segment-button value="programs" checked>
       <span>Programs</span>
     </ion-segment-button>
+    <ion-segment-button value="nutrition" >
+      <span>Nutrition & Video</span>
+    </ion-segment-button>
   </ion-segment>
-  <div [ngSwitch]="scheduleTabs">
-    <ion-list lines="none" class="item-list ion-no-padding" *ngSwitchCase="'nutrition'">
-     
+  <div [ngSwitch]="scheduleTabs">    
+    <ion-list lines="none" class="item-list ion-no-padding" *ngSwitchCase="'programs'">     
+      <div *ngFor="let progItem of allProgram">        
+        <ion-list-header class="ion-padding-horizontal green text-white">{{progItem?.convertedTime | date:'medium'}}
+          <ion-icon *ngIf="user_type == 1"
+            ios="ios-create" md="md-create" (click)="closeModal()"  [routerLink]="['/edit-program',progItem?.id]">
+          </ion-icon>
+        </ion-list-header>
+        <ion-item class="ion-padding-horizontal">
+          <p>{{progItem?.description}}</p>
+        </ion-item>
+      </div>
+    </ion-list>
+    <ion-list lines="none" class="item-list ion-no-padding" *ngSwitchCase="'nutrition'">     
       <div *ngFor="let progItem of allProgram">
-        <ion-list-header class="ion-padding-horizontal green text-white">{{progItem?.convertedTime| date:'medium'}}<ion-icon
-            ios="ios-add" md="md-add" (click)="addEquipments2(2,progItem)"></ion-icon>
+        <ion-list-header class="ion-padding-horizontal green text-white">{{progItem?.convertedTime| date:'medium'}}
+          <ion-icon *ngIf="user_type == 1"
+            ios="ios-add" md="md-add" (click)="addEquipments2(2,progItem)">
+          </ion-icon>
         </ion-list-header> 
           <ion-card class="video-card"  *ngIf="progItem?.nutrition_id || progItem?.video_program">
             <ion-card-content class="ion-no-padding">
@@ -46,18 +59,6 @@
             <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
             <p>No Nutrition Found</p>
           </div>
-      </div>
-    </ion-list>
-    <ion-list lines="none" class="item-list ion-no-padding" *ngSwitchCase="'programs'">
-     
-      <div *ngFor="let progItem of allProgram">
-        
-        <ion-list-header class="ion-padding-horizontal green text-white">{{progItem?.convertedTime | date:'medium'}}<ion-icon
-            ios="ios-create" md="md-create" (click)="closeModal()"  [routerLink]="['/edit-program',progItem?.id]"></ion-icon>
-        </ion-list-header>
-        <ion-item class="ion-padding-horizontal">
-          <p>{{progItem?.description}}</p>
-        </ion-item>
       </div>
     </ion-list>
   </div>

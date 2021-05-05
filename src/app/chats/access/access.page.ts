@@ -45,32 +45,22 @@ export class AccessPage implements OnInit {
     public commonService:CommonService,
     private router: Router,
     private socket: Socket,
-    ) { }
-    getStart(){
-      this.socket.connect();
-    this.currentUser = this.room;
-    this.socket.emit('set-name', this.room,this.chatType);
-    // this.socket.fromEvent('users-changed').subscribe(data => {
-      // if (data['event'] === 'left') {
-        // this.showToast('User left: ' + this.room);
-        // this.UserOnLineStatus = 'is OffLine';
-      // } else {
-        // this.showToast('User joined: ' + this.room);
-        // this.UserOnLineStatus = 'is OnLine';
-      // }
-    // });      
-    }
+    ) { }    
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.requestId = params.get('id');
       this.senderId = params.get('senderId');//in group chat this is room
       this.chatType = params.get('type');
+      if(this.chatType != 2){
+        this.dataService.getChatRoom({'userId':this.senderId}).subscribe((data:any)=>{
+          this.room = data.chatroom.room;
+          this.getStart();
+        });
+      }else{
+        this.getStart();
+      }
     });
-
-
-    this.getStart();
-
     if(this.chatType == 2){
       //-----group chat--- 
       this.groupChat();
@@ -79,6 +69,12 @@ export class AccessPage implements OnInit {
       this.privateChat();
     } 
   }
+  getStart(){
+    this.socket.connect();
+    this.currentUser = this.room;
+    // console.log("this.room:" + this.room);
+    this.socket.emit('set-name', this.room,this.chatType);         
+    }
   privateChat(){
     this.socket.fromEvent('storchatdate').subscribe(data => {
       // console.log("storchatdate : "+JSON.stringify(data));
@@ -137,9 +133,11 @@ export class AccessPage implements OnInit {
           this.messageButtons = false;
           if(data.status && this.chatType == 1){
             this.socket.disconnect();
+            console.log('1/chat-room/+this.senderId++data.room+this.chatType'+this.senderId+'/'+data.room+'/'+this.chatType);
             this.router.navigateByUrl('/chat-room/'+this.senderId+'/'+data.room+'/'+this.chatType);
           }else{
             this.socket.disconnect();
+            console.log('2/chat-room/+this.requestId++data.room+this.chatType'+this.requestId+'/'+data.room+'/'+this.chatType);
             this.router.navigateByUrl('/chat-room/'+this.requestId+'/'+data.room+'/'+this.chatType);
           }
       });

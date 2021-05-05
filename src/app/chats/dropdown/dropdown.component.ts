@@ -49,7 +49,7 @@ export class DropdownComponent implements OnInit {
         }
       });
   }
-  clear(){
+  clear(){    
     this.dataService.clearChatUser({'receiver_id':this.receiverId,'lastChatId':this.lastchatid}).subscribe(
       (data: any) => {
         this.DismissClick('clear');

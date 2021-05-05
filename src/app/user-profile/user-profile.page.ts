@@ -14,12 +14,19 @@ import { Config } from './../config/config'
 })
 
 export class UserProfilePage implements OnInit {
+  bannerDefaultImage = './../../../assets/images/editcoverpic.png';
+  profileDefaultImage = './../../../assets/images/user.jpg';
+  programDefaultImage = './../../../assets/images/loading.jpg';
+  bannerImage :any;
+  profileImage :any; 
   gotData :boolean = false;
   profileData :any ;
   userProfile: string = "aboutInfo";
   userData:any;
   upcomingProgram:any;
-  profile_url= Config.profilePic;
+  url: any = Config.imgUrl;
+  profilePicUrl: any = Config.profilePic;
+  backgroundPicUrl: any = Config.backgroundPic;
   constructor(private commonService: CommonService,
     public popoverController: PopoverController,
     private settingsService: SettingsService,
@@ -34,6 +41,8 @@ export class UserProfilePage implements OnInit {
     this.settingsService.getProfileData().subscribe((data:any)=>{
       this.profileData =data.status;
       this.gotData =true;
+      this.bannerImage = this.backgroundPicUrl + this.profileData.userData.bios.profile_background_image;
+      this.profileImage = this.profilePicUrl + this.profileData.userData.bios.profile_pic;
     });
 
     
@@ -57,6 +66,9 @@ export class UserProfilePage implements OnInit {
     this.programService.getUpcomingPrograms(null).subscribe(data=>{
       console.log(data);
       this.upcomingProgram = data.programList.filter(el => {
+        if (el.image_path) {
+          el.img_arr = el.image_path.split(',');
+        }
         el.convertedTime = new Date(el.program_date + 'Z');
         let a: any = new Date(el.program_date + 'Z');
         let b: any = new Date();

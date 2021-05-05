@@ -23,6 +23,9 @@ export class HomePage implements OnInit {
   loadPostData :any = [];
   gotData: boolean = false;
   url = Config.imgUrl;
+  consultantBackgroundImag  = Config.backgroundPic;
+  userPPicurl = Config.profilePic;
+  caturl = this.url+'public/';
   storagePath = Config.storagePath;
   consultID: any;
   last_page: any;

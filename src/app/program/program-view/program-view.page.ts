@@ -41,6 +41,7 @@ export class ProgramViewPage implements OnInit {
   profileUrl = Config.profilePic;
   url = Config.imgUrl;
   programDateTime : any;
+  programFee:any;
   tmp: any;
   adData: any;
   countDown: Observable<number>;
@@ -123,6 +124,11 @@ export class ProgramViewPage implements OnInit {
       this.programDetail = data.programData;      
       this.broadcastId = 'programId_' + data.programData.id;
       this.programType = data.programData.type_id;
+      if(this.programDetail.payment_type == 'Paid'){
+        this.programFee = this.programDetail.program_fee;
+      }else if(this.programDetail.payment_type == 'Free'){
+        this.programFee = this.programDetail.payment_type;
+      }
       if(this.programType == 'private oneway' || this.programType == 'private twoway'){
         this.participants = 2;
       }else if(this.programType == 'group oneway' || this.programType == 'group twoway'){
