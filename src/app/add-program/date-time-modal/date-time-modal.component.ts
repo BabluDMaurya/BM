@@ -144,7 +144,8 @@ export class DateTimeModalComponent implements OnInit {
   }
   async openCalendar() {
     const options = {
-      pickMode: 'multi',
+      
+      pickMode: 'single',
       color: 'dark',
       doneIcon: true,
       closeIcon: true

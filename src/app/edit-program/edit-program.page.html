@@ -32,11 +32,16 @@
           <ion-card-title>Camera</ion-card-title>
         </ion-card>
       </ion-col>
-      <ion-col size="12" class="ion-no-padding" *ngIf="gallaryImgPath?.length>0">
+      <ion-col size="12" class="ion-no-padding" *ngIf="gallaryImgPath?.length>0 || preGallaryImgPath?.length>0">
         <ion-button (click)="slidePrev(slides)" class="slidebtns slideBack">
           <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
         </ion-button>
-        <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider>
+        
+        <ion-slides pager="true"  [options]="sliderOpts" class="full-slider mb-10" #mySlider>
+          <ion-slide (click)="showdetails()" *ngFor="let preImgpath of preGallaryImgPath; let i=index;">
+            <img src="{{url}}{{preImgpath}}" />
+            <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="preRemoveImg(i)"></ion-icon>
+          </ion-slide>
           <ion-slide (click)="showdetails()" *ngFor="let imgpath of gallaryImgPath; let i=index;">
             <img src="{{imgpath}}" />
             <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="removeImg(i)"></ion-icon>
@@ -236,7 +241,7 @@
 
 
         <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="eventSource[0].startTime"
-          scrollToHour="{{currentHrs}}" [lockSwipeToPrev]="lockSwipeToPrev" (onEventSelected)="onEventSelected($event)"
+          scrollToHour="{{currentHrs}}" (onTitleChanged)="onViewTitleChanged($event)" [lockSwipeToPrev]="lockSwipeToPrev" (onEventSelected)="onEventSelected($event)"
          startHour="0"   endHour="24" step="1" class="calendar-table"></calendar>
       </ion-col>
     </ion-row>
