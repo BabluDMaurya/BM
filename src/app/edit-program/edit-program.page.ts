@@ -48,6 +48,7 @@ export class EditProgramPage implements OnInit {
   duration: any = -1;
   position: any = 0;
   gallaryImgPath: any = [];
+  preGallaryImgPath: any = [];
   get_duration_interval: any;
   get_position_interval: any;
   // ------- viraj variable ------ /
@@ -66,6 +67,9 @@ export class EditProgramPage implements OnInit {
   programDetail: any;
   adData:any;
   finalForm: FormGroup;
+  url: any = Config.imgUrl;
+  
+  ImgPath: any;
   constructor(public commonService: CommonService,
     private alertCtrl: AlertController,
     @Inject(LOCALE_ID) private locale: string,
@@ -99,6 +103,18 @@ export class EditProgramPage implements OnInit {
     this.programService.getProgramById({ 'programId': this.programId }).subscribe((data) => {
       this.programList = data.programData;
       console.log(this.programList );
+      // console.log(this.programList.image_path);
+      var arr = this.programList.image_path;
+      var image = arr.split(',');
+      var ImgPath = [];
+      var imageUrl = Config.imgUrl;
+      image.forEach(function (value,key) {
+        ImgPath.push(value);
+      });
+      this.preGallaryImgPath = ImgPath;
+      console.log(this.preGallaryImgPath);
+      console.log(this.gallaryImgPath);
+  
       let startTime = new Date(data.programData.program_date + 'Z');
       let endTime = new Date(data.programData.program_end_time + 'Z');
       let events=[]; 
@@ -202,6 +218,12 @@ export class EditProgramPage implements OnInit {
   }
   slideNext(slides) {
     this.slides.slideNext();
+  }
+  removeImg(index) {
+    this.gallaryImgPath.splice(index, 1);
+  }
+  preRemoveImg(index) {
+    this.preGallaryImgPath.splice(index, 1);
   }
   async userModal() {
     console.log(this.modalData);
@@ -570,6 +592,7 @@ export class EditProgramPage implements OnInit {
         this.commonService.presentAlert(title,msg,btn,'custom-alert advertiseAlert'); 
       }
   }
+ 
   sendrequest()
   {
     this.commonService.presentLoader();
@@ -589,25 +612,29 @@ export class EditProgramPage implements OnInit {
     
   }
   selectVolume() {
+    
+    this.finalForm.value.file = this.gallaryImgPath;
     var fees = this.finalForm.value;
     var progData = this.programForm.value;
     this.programList.program_fee = fees.programFees;
+    this.programList.file = fees.file;
     this.programList.description = progData.programDescription;
     this.programList.title = progData.programTitle;
-    // this.programList.file = this.gallaryImgPath;
-    console.log(this.gallaryImgPath);
-    console.log('hh');
-    console.log(this.programList);
+    
+    // var images = this.preGallaryImgPath.toString();
+    // var image = images.split(',');
+    //   var ImgPath = [];
+    //   image.forEach(function (value,key) {
+    //     ImgPath.push(value.replace('https://ionicinto.wdipl.com/',''));
+    //   });
+    // this.preGallaryImgPath = ImgPath;
+    this.programList.image_path = this.preGallaryImgPath.toString();
+    console.log(this.preGallaryImgPath);
     this.commonService.presentLoader();
-    // this.programService.updateProgramFees({ "programFees": fees.programFees, "programId": this.programList.id}).subscribe(
-    //   (data) => {
-    //     this.commonService.dismissLoader();
-    //     this.router.navigate(["tabs/program"])
-    //   }
-    // );
+
     this.programService.editProgram(this.programList).subscribe((data) => {
       this.commonService.dismissLoader();
-      // this.router.navigate(["tabs/program"])
+      this.router.navigate(["tabs/program"])
     });
  }
 }

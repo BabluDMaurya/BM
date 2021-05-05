@@ -71,30 +71,34 @@ export class BookmarkPage implements OnInit {
           if (element.post_type == 1) {
             this.bookmarkImg.push(element);
             this.bookmarkImg.forEach((element, i) => {
-              this.postService.getComment({'postId' : element.id }).subscribe(
-                (data: any) => {
-                  var iCount = data.count;
-                  this.bookmarkImg[i].Tcount = iCount;
-                  // this.data = true;
-                //  this.comment = data.status;
-                //  var count = data.count;
-                //  console.log(count);
-                //  console.log('hh' + element.id);
-                });
+              console.log(element.posts.total_comments.length);
+              this.bookmarkImg[i].Tcount = element.posts.total_comments.length;
+              // this.postService.getComment({'postId' : element.id }).subscribe(
+              //   (data: any) => {
+              //     var iCount = data.count;
+              //     this.bookmarkImg[i].Tcount = iCount;
+              //     // this.data = true;
+              //   //  this.comment = data.status;
+              //   //  var count = data.count;
+              //   //  console.log(count);
+              //   //  console.log('hh' + element.id);
+              //   });
+                // console.log(this.bookmarkImg[i]);
             });
           } else if (element.post_type == 2) {
             this.bookmarkVideo.push(element);
             this.bookmarkVideo.forEach((element, i) => {
-              this.postService.getComment({'postId' : element.id }).subscribe(
-                (data: any) => {
-                  var cCount = data.count;
-                  this.bookmarkVideo[i].Tcount = cCount;
-                  // this.data = true;
-                //  this.comment = data.status;
-                //  var count = data.count;
-                //  console.log(count);
-                //  console.log('hh' + element.id);
-                });
+              // this.postService.getComment({'postId' : element.id }).subscribe(
+              //   (data: any) => {
+              //     var cCount = data.count;
+                  this.bookmarkVideo[i].Tcount = element.posts.total_comments.length;
+              //     // this.data = true;
+              //   //  this.comment = data.status;
+              //   //  var count = data.count;
+              //   //  console.log(count);
+              //   //  console.log('hh' + element.id);
+              //   });
+                console.log(this.bookmarkImg[i]);
             });
             
             // console.log(this.bookmarkVideo);
@@ -174,17 +178,17 @@ export class BookmarkPage implements OnInit {
      console.log(d.data[0].getpostId);
     // this.ngOnInit();
     this.bookmarkVideo.forEach((element, i) => {
-      if(this.bookmarkVideo[i].id == d.data[0].getpostId){
+      if(this.bookmarkVideo[i].post_id == d.data[0].getpostId){
         this.bookmarkVideo[i].Tcount = d.data[0].count;
       }
 
     });
     this.bookmarkImg.forEach((element, i) => {
-      if(this.bookmarkImg[i].id == d.data[0].getpostId){
+      if(this.bookmarkImg[i].post_id == d.data[0].getpostId){
         this.bookmarkImg[i].Tcount = d.data[0].count;
       }
-          console.log(element);
-          console.log(this.bookmarkImg[i]);
+          // console.log(element);
+          // console.log(this.bookmarkImg[i]);
 
     });
  });
