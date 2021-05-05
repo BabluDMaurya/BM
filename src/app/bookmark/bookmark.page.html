@@ -19,15 +19,16 @@
   </ion-segment>
   <div [ngSwitch]="bookmarkBlock" *ngIf="!data">
     <div *ngSwitchCase="'images'"> 
-      <div *ngIf="!bookmarkImg?.length > 0" class="no-data">
+      <div *ngIf="bimg" class="no-data">
         <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
         <p>No post added yet!!!</p>
       </div>
       <ion-card class="item-card" *ngFor="let post of bookmarkImg">
         <ion-card-header class="item-header">
           <ion-avatar>
-            <img src="{{profile_url}}{{post.posts.post_user?.bios?.profile_pic}}" *ngIf="post.posts.post_user?.bios?.profile_pic">
-            <img src="../../assets/images/user.jpg" *ngIf="!post.posts.post_user?.bios?.profile_pic">  
+            <img [defaultImage]="defaultUserImage" [lazyLoad]="userPPicurl+post?.post_user?.bios?.profile_pic"/>
+            <!-- <img src="{{profile_url}}{{post.posts.post_user?.bios?.profile_pic}}" *ngIf="post.posts.post_user?.bios?.profile_pic">
+            <img src="../../assets/images/user.jpg" *ngIf="!post.posts.post_user?.bios?.profile_pic">   -->
           </ion-avatar> 
             <div class="header-right">  
             <ion-label>
@@ -41,7 +42,7 @@
           <ion-thumbnail>
             <ion-slides [options]="imageSlider" class="post-slider" [pager]="true">
               <ion-slide *ngFor="let imgpath of post.posts['image_post']['0']['thumb_path']; let i = index;">
-                <img (click)="openViewer(post.posts['image_post']['0']['image_path'][i])" src="{{url}}{{imgpath}}" alt="{{imgpath}}" />
+                <img (click)="openViewer(post.posts['image_post']['0']['image_path'][i])" [defaultImage]="defaultPostImage" [lazyLoad]="url+ imgpath" alt="{{imgpath}}"/>
               </ion-slide>              
             </ion-slides>
           </ion-thumbnail>      
@@ -74,15 +75,16 @@
       </ion-card>
     </div>
     <div *ngSwitchCase="'video'">
-      <div *ngIf="!bookmarkVideo?.length > 0" class="no-data">
+      <div *ngIf="bvid" class="no-data">
         <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
         <p>No video added yet!!!</p>
       </div>
       <ion-card class="item-card" *ngFor="let post of bookmarkVideo">
         <ion-card-header class="item-header">
           <ion-avatar>
-            <img src="{{profile_url}}{{post?.posts?.post_user?.bios?.profile_pic}}" *ngIf="post?.posts?.post_user?.bios?.profile_pic">
-            <img src="../../assets/images/user.jpg" *ngIf="!post?.posts?.post_user?.bios?.profile_pic">  
+            <img [defaultImage]="defaultUserImage" [lazyLoad]="userPPicurl+post?.posts?.post_user?.bios?.profile_pic"/>
+            <!-- <img src="{{profile_url}}{{post?.posts?.post_user?.bios?.profile_pic}}" *ngIf="post?.posts?.post_user?.bios?.profile_pic">
+            <img src="../../assets/images/user.jpg" *ngIf="!post?.posts?.post_user?.bios?.profile_pic">   -->
           </ion-avatar> 
             <div class="header-right">  
             <ion-label>
@@ -95,7 +97,8 @@
         <ion-card-content class="ion-no-padding item-content">
           <ion-thumbnail [routerLink]="['/videos',post.post_id]"
           *ngIf="post?.posts?.video_post[0].thumb_path">
-          <img src="{{storagePath + post?.posts?.video_post[0].thumb_path}}" alt="Thumnail Path" />
+          <img [defaultImage]="defaultPostImage" [lazyLoad]="storagePath+ post?.posts?.video_post[0].thumb_path" alt="Video Thumnail Path"/>
+          <!-- <img src="{{storagePath + post?.posts?.video_post[0].thumb_path}}" alt="Thumnail Path" /> -->
           <!-- <img (click)="openViewer(post['video_post']['0']['thumb_path'])" src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
         </ion-thumbnail>
         <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
@@ -134,8 +137,9 @@
       </div>
       <ion-item class="item-card" *ngFor="let prog of bookmarkProg">
         <ion-avatar slot="start">
-          <img src="{{profile_url}}{{prog?.programs?.program_user?.bios?.profile_pic}}" *ngIf="prog?.programs?.program_user?.bios?.profile_pic">
-          <img src="../../assets/images/user.jpg" *ngIf="!prog?.programs?.program_user?.bios?.profile_pic">  
+          <img [defaultImage]="defaultUserImage" [lazyLoad]="profile_url+prog?.programs?.program_user?.bios?.profile_pic"/>
+          <!-- <img src="{{profile_url}}{{prog?.programs?.program_user?.bios?.profile_pic}}" *ngIf="prog?.programs?.program_user?.bios?.profile_pic">
+          <img src="../../assets/images/user.jpg" *ngIf="!prog?.programs?.program_user?.bios?.profile_pic">   -->
 
         </ion-avatar>
         <ion-label     [routerLink]="loginUserData?.id ==prog?.programs?.program_user?.user_id ? ['/program-details/',prog?.programs?.id] : ['/program-view/',prog?.programs?.id]">
@@ -153,7 +157,7 @@
       </ion-item>      
     </div>
   </div>
-  <div [ngSwitch]="bookmarkBlock"  *ngIf="data">
+  <!-- <div [ngSwitch]="bookmarkBlock"  *ngIf="data">
     <div *ngSwitchCase="'images'"> 
       <ion-card class="item-card">
         <ion-card-header class="item-header">
@@ -296,5 +300,5 @@
         </ion-label>
       </ion-item>
     </ion-list>
-  </div>
+  </div> -->
 </ion-content>

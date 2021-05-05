@@ -20,6 +20,7 @@ import { ToastController } from '@ionic/angular';
 export class MyProfilePage implements OnInit {
   bannerDefaultImage = './../../../assets/images/editcoverpic.png';
   profileDefaultImage = './../../../assets/images/user.jpg';
+  defaultPostImage : any = './../../../assets/images/loading.jpg';
   bannerImage :any;
   profileImage :any; 
   block = true;

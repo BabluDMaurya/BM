@@ -50,6 +50,7 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.commonService.presentLoader();
     this.loginUserData = this.commonService.getUserData();
     this.currentPage = 0;
     this.searchService.getSpecialities(null).subscribe(data => {
@@ -61,8 +62,7 @@ export class HomePage implements OnInit {
       this.currentPage = data.postData.current_page;
       this.searchService.getTopConsultant().subscribe((data: any) => {
         this.postData = [];
-        let topPeople = data.topuser;
-        this.gotData = true;
+        let topPeople = data.topuser;        
         postData.filter((el, i) => {
           if (i % 5 == 0) {
             this.postData.push(topPeople.splice(0, 2));
@@ -71,6 +71,10 @@ export class HomePage implements OnInit {
         });
         this.remainingTopConsultent = topPeople;
       });
+      if(postData.length < 1){
+        this.gotData = true;
+      }
+      this.commonService.dismissLoader();
     });
   }
 
