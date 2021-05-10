@@ -8,6 +8,9 @@
         <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
       </ion-buttons>
     </ion-item>
+    <ion-item slot="center">
+      <ion-label>Select Date</ion-label>
+    </ion-item>
   </ion-list>
 </ion-header>
   <!-- <calendar  [calendarMode]="monthcalendar.mode"  [currentDate]="monthcalendar.currentDate"
@@ -37,7 +40,7 @@
       </ion-item>
     </ion-list>
     <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
-      scrollToHour="{{currentHrs}}" [lockSwipeToPrev]="lockSwipeToPrev" (onEventSelected)="onEventSelected($event)"
+      scrollToHour="{{currentHrs}}" [lockSwipeToPrev]="lockSwipeToPrev" 
       (onTitleChanged)="onViewTitleChanged($event)" (onCurrentDateChanged)="onCurrentDatechanged($event)"  startHour="0"
       endHour="24" step="1" class="calendar-table" (dateSelected)="onDateSelected($event)" (onTimeSelected)="onTimeSelected($event)" ></calendar>
       <!-- <ion-datetime #dateTime1 displayFormat="mm"></ion-datetime> -->

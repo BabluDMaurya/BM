@@ -101,7 +101,7 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
     // console.log('ff');
   }
   onTimeSelected(event){
-    // console.log(event);
+    console.log(event);
     this.noEvent = true;
     console.log(this.calendarData);
 
@@ -125,8 +125,8 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
     if(this.noEvent == true){
       
       this.repetatedDateCopy.forEach(el => {
-        console.log(el.getDate());
-        console.log(this.dateObj.getDate());
+        // console.log(el.getDate());
+        // console.log(this.dateObj.getDate());
         if(el.getDate() == this.dateObj.getDate()){
           this.noEvent = false;
           return false;
@@ -136,7 +136,7 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
       });
       
       if(this.noEvent == true){
-        console.log(this.noEvent);
+        // console.log(this.noEvent);
         this.repetatedDateCopy.push(this.dateObj);
       }
     }
