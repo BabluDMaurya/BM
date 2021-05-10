@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
 import { ModalController } from '@ionic/angular';
 import { RequestsModalComponent } from '../requests-modal/requests-modal.component';
@@ -11,7 +11,7 @@ import { ActivatedRoute, ParamMap,Router } from '@angular/router';
   templateUrl: './chat.page.html',
   styleUrls: ['../../app.component.scss','./chat.page.scss'],
 })
-export class ChatPage implements OnInit {  
+export class ChatPage implements OnInit,OnDestroy {  
   public searchTerm: string = "";
   public items: any;
   newSearchPersonList: any = [];
@@ -31,7 +31,7 @@ export class ChatPage implements OnInit {
     private router:Router,
     private dataService: ChatService,
     private actRoute: ActivatedRoute,
-    public modalController: ModalController) { }  
+    public modalController: ModalController) {}  
 
   ngOnInit() {   
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
@@ -48,10 +48,11 @@ export class ChatPage implements OnInit {
   }
   ionViewWillEnter() {
     this.commonService.presentLoader();
-    this.callApi();
+    this.callApi();    
     this.callApiv = setInterval(() => {
       this.callApi(); 
     }, 5000);
+    this.commonService.dismissLoader();
   }
   ngOnDestroy() {    
     if (this.callApiv) {
@@ -81,8 +82,7 @@ export class ChatPage implements OnInit {
         this.items = data.chatlist;
         this.requestCount = data.requestcount; 
         localStorage.setItem('totalchat',data.unreadchatcount);     
-      });       
-      this.commonService.dismissLoader();
+      });
   }
   chatRoom(receiverID:any,room:any,type:any){
     if (this.callApiv) {
@@ -133,5 +133,5 @@ export class ChatPage implements OnInit {
   //   setTimeout(() => {
   //     event.target.complete();
   //   }, 2000);
-  // }
+  // }  
 }

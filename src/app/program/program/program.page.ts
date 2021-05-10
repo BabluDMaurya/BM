@@ -171,7 +171,28 @@ export class ProgramPage implements OnInit {
           el.expanded = false;
           return el;
         });
-        this.pgCount = this.allProgramList.length;
+        const resultArray= [];
+        let progIdList=[];
+        this.allProgramList.forEach(function(item , i ){
+           if(item.repeate_status==2)
+           {
+            resultArray.push(item);
+           }else{
+                if(item.repeate_status==1)
+                {
+                    resultArray.push(item);
+                    progIdList.push(item.id);
+                }else{
+                    if(!progIdList.includes(item.parent_program))
+                    {
+                        resultArray.push(item);
+                        progIdList.push(item.parent_program);
+                    }
+                }
+           }
+          
+        });
+        this.pgCount = resultArray.length;
         this.commonService.presentToast("All upcoming programs listed");
       },
       err=>{        
@@ -261,7 +282,8 @@ export class ProgramPage implements OnInit {
     const popover = await this.popoverController.create({
       component: HostingDropdownComponent,
       componentProps: {
-        "id": ev
+        "id": ev,
+        "user_type": this.userData.user_type,
       },
       translucent: false,
       cssClass: 'dropdown-menu'
@@ -421,7 +443,8 @@ export class ProgramPage implements OnInit {
     const popover = await this.popoverController.create({
       component: RequestedDropdownComponent,
       componentProps: {
-        "id": ev
+        "id": ev,
+        "user_type": this.userData.user_type,
       },
       translucent: false,
       cssClass: 'dropdown-menu'

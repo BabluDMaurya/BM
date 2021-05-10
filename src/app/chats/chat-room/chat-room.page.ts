@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild,AfterViewInit} from '@angular/core';
-import { PopoverController, NavController,AlertController} from '@ionic/angular';
+import { Component, OnInit, ViewChild,AfterViewInit,OnDestroy} from '@angular/core';
+import { PopoverController, NavController,AlertController, IonThumbnail} from '@ionic/angular';
 import { DropdownComponent } from './../dropdown/dropdown.component';
 import { IonContent,IonTextarea } from '@ionic/angular';
 import { Action } from '../../clientmodel/action';
@@ -15,7 +15,7 @@ import { Config } from './../../config/config';
   templateUrl: './chat-room.page.html',
   styleUrls: ['../../app.component.scss', './chat-room.page.scss'],
 })
-export class ChatRoomPage implements OnInit ,AfterViewInit{
+export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
   @ViewChild(IonContent, { read: IonContent,  static: false }) contentArea: IonContent;
   @ViewChild(IonTextarea, { read: IonTextarea,  static: false }) sendmessage: IonTextarea;
   messageBox = false;
@@ -64,6 +64,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
     ) {  
       }
   ngOnInit() {
+    this.commonService.presentLoader();
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.room = params.get('room');
@@ -89,10 +90,10 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
     }, 400);
   }
   
-  ionViewDidEnter() {
-    this.commonService.dismissLoader();
-    // console.log('ionViewDidEnter');
-  }
+  // ionViewDidEnter() {
+  //   this.commonService.dismissLoader();
+  //   // console.log('ionViewDidEnter');
+  // }
  
   getStart(){   
     this.socket.connect();
@@ -106,8 +107,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
         // this.showToast('User joined: ' + this.room);
         this.UserOnLineStatus = 'is OnLine';
       }
-    });    
-    this.commonService.dismissLoader();
+    }); 
   }
   
   groupChat(){
@@ -143,12 +143,14 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
     });
   }
   privateChat(){    
+    
     this.socket.fromEvent('message').subscribe(message => {
       this.messages.push(message);
       this.contentArea.scrollToBottom();
     });
     this.socket.fromEvent('lastChatId').subscribe(lastchatId => {
-      this.lastChatId = lastchatId;
+      this.lastChatId = lastchatId;    
+      console.log("this.lastChatId : " + this.lastChatId);
     });
     this.socket.fromEvent('blockStatusOfUser').subscribe(blockStatusOfUser => {
       this.bSOUser = blockStatusOfUser['status'];
@@ -176,11 +178,11 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
     this.socket.emit("storemassagerequest",this.userData.id,this.receiverId);
 
     this.socket.fromEvent('stormessage').subscribe(storMessage => {      
-      this.storeMessages = storMessage;
+      this.storeMessages = storMessage; 
       setTimeout(() => {
         this.contentArea.scrollToBottom();
-      }, 400);      
-      this.commonService.dismissLoader();
+      }, 400); 
+      this.commonService.dismissLoader(); 
     });
 
     this.socket.fromEvent('userName').subscribe(data => {
@@ -190,7 +192,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
     this.socket.fromEvent('userBio').subscribe(data => {
       this.display_name = data[0].display_name;
       this.profile_pic = data[0].profile_pic;      
-    });
+    });   
   }
   async blockStatusOfUser(id : any) {
     const alert = await this.alertController.create({
@@ -216,8 +218,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
     });
     await alert.present();
   }  
-  async presentPopover(ev: any) {
-    console.log("this.lastChatId:"+this.lastChatId);
+  async presentPopover(ev: any) {    
     const popover = await this.popoverController.create({
       component: DropdownComponent,
       event: ev,
@@ -317,5 +318,8 @@ export class ChatRoomPage implements OnInit ,AfterViewInit{
     } else {
       return wholeDate;
     }
+  }
+  ngOnDestroy(){
+    this.socket.disconnect();
   }
 }

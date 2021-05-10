@@ -29,7 +29,11 @@ export class BookmarkPage implements OnInit {
   profile_url: any = Config.profilePic;
   storagePath: any = Config.storagePath; 
   bookmarkBlock: string = 'images';
-
+  defaultUserImage : any = './../../assets/images/user.jpg';
+  userPPicurl = Config.profilePic;
+  defaultPostImage : any = './../../assets/images/loading.jpg';
+  bimg : boolean = false;
+  bvid : boolean = false;
   constructor(public commonService: CommonService,
     private settingService: SettingsService,
     private peopleService: PeopleViewService,
@@ -38,7 +42,7 @@ export class BookmarkPage implements OnInit {
     private navCtrl: NavController,
     private location: Location,
     public router: Router,) { router.events.subscribe();
-      console.log(this.router.url);
+      // console.log(this.router.url);
     }
 
   tabs(ev: any) {
@@ -47,6 +51,7 @@ export class BookmarkPage implements OnInit {
   
   
   ngOnInit() {
+    this.commonService.presentLoader();
     this.loginUserData = JSON.parse(localStorage.getItem("userData"));
     this.settingService.getBookmarkPost().subscribe((data: any) => {
       this.bookmarkPost = data.posts; 
@@ -55,7 +60,7 @@ export class BookmarkPage implements OnInit {
         if(element.post_type == 5)
         {
           element.programs.convertedTime = new Date(element.programs.program_date + 'Z');
-          this.bookmarkProg.push(element);
+          this.bookmarkProg.push(element);          
         }else{
           this.bookmarkPost[i].count = element.posts.post_likes.length;
           element.posts.post_likes.filter((f) => {
@@ -71,7 +76,7 @@ export class BookmarkPage implements OnInit {
           if (element.post_type == 1) {
             this.bookmarkImg.push(element);
             this.bookmarkImg.forEach((element, i) => {
-              console.log(element.posts.total_comments.length);
+              // console.log(element.posts.total_comments.length);
               this.bookmarkImg[i].Tcount = element.posts.total_comments.length;
               // this.postService.getComment({'postId' : element.id }).subscribe(
               //   (data: any) => {
@@ -85,6 +90,10 @@ export class BookmarkPage implements OnInit {
               //   });
                 // console.log(this.bookmarkImg[i]);
             });
+            if(this.bookmarkImg.length < 1){
+              this.bimg = true;
+            }
+            this.commonService.dismissLoader();
           } else if (element.post_type == 2) {
             this.bookmarkVideo.push(element);
             this.bookmarkVideo.forEach((element, i) => {
@@ -98,9 +107,12 @@ export class BookmarkPage implements OnInit {
               //   //  console.log(count);
               //   //  console.log('hh' + element.id);
               //   });
-                console.log(this.bookmarkImg[i]);
+                // console.log(this.bookmarkImg[i]);
             });
-            
+            if(this.bookmarkVideo.length < 1){
+              this.bvid = true;
+            }
+            this.commonService.dismissLoader();
             // console.log(this.bookmarkVideo);
           }
         }  
@@ -115,8 +127,8 @@ export class BookmarkPage implements OnInit {
   liked(postId, likeStat) {
     // console.log(this.bookmarkPost);
     this.bookmarkPost.forEach((element, i) => {
-      console.log(element.post_id + 'eid');
-      console.log(postId + 'pid');
+      // console.log(element.post_id + 'eid');
+      // console.log(postId + 'pid');
       if (element.post_id == postId) {
         this.bookmarkPost[i].liked = !likeStat;
         if (likeStat) {
@@ -138,14 +150,14 @@ export class BookmarkPage implements OnInit {
   }
   // ----------- Bookmarked start here -----------
   bookmarked(postId, bmStat, post_type) {
-    console.log(postId, bmStat);
+    // console.log(postId, bmStat);
     this.bookmarkPost.forEach((element, i) => {
       if (element.post_id == postId) {
         this.bookmarkPost[i].bookmarked = !bmStat;
       }
     });
 
-    console.log(postId, bmStat);
+    // console.log(postId, bmStat);
     this.peopleService.bookmarkPost({ 'postId': postId, 'bookmark': bmStat, 'post_type': post_type }).subscribe((data: any) => {
       if (data.status) {
         this.commonService.presentToast(data.status);
@@ -154,7 +166,7 @@ export class BookmarkPage implements OnInit {
   }
 
   async openViewer(path) {
-    console.log(this.url + path);
+    // console.log(this.url + path);
     const modal = await this.modalController.create({
       component: ViewerModalComponent,
       componentProps: {

@@ -37,16 +37,14 @@
   </ion-refresher>   
   <ion-grid class="ion-no-padding">
     <ion-row>
-      <ion-col size="12" class="ion-no-padding">
-        
+      <ion-col size="12" class="ion-no-padding">        
         <div class="sec-banner">
-          <div class="top-banner"> <img  src="https://ionicinto.wdipl.com/public/profile_background_image/thumb/{{profileData?.userData?.bios?.profile_background_image}}" *ngIf="profileData?.userData?.bios?.profile_background_image">
-            <img  src="./../../../assets/images/editcoverpic.png" *ngIf="!profileData?.userData?.bios?.profile_pic">  
+          <div class="top-banner">             
+            <img [defaultImage] = "bannerDefaultImage" [lazyLoad]="bannerImage">            
           </div>
       </div>
         <div class="profile-content">
-          <img class="user-img" src="https://ionicinto.wdipl.com/public/profile_pic/thumb/{{profileData?.userData?.bios?.profile_pic}}" *ngIf="profileData?.userData?.bios?.profile_pic">
-              <img class="user-img" src="./../../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">    
+          <img class="user-img" [defaultImage] = "profileDefaultImage" [lazyLoad]="profileImage">
           <ion-text>
             <h6 class="ion-no-margin user-name" *ngIf="profileData?.userData?.user_name">{{profileData?.userData?.user_name}}</h6>
             <!-- <a><ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon> darshan_rajgor_</a> -->
@@ -113,23 +111,19 @@
               <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
               <p>No Data Found</p>
             </div>
-            <ion-item class="upcoming-block" *ngFor="let item of upcomingProgram; "> 
-             
+            <ion-item class="upcoming-block" *ngFor="let item of upcomingProgram; let i=index;"> 
                 <ion-avatar slot="start">
-                  <img  src="../../assets/images/user.jpg" *ngIf="!item?.program_user?.bios?.profile_pic"  >
-
-                  <img  src="{{profile_url}}{{item?.program_user?.bios?.profile_pic}}" *ngIf="item?.program_user?.bios?.profile_pic">
+                  <img [defaultImage] = "programDefaultImage" [lazyLoad]="url+item?.img_arr[0]">
                 </ion-avatar>
-           
-              <ion-label>
+              <ion-label [routerLink]="profileData?.userData?.id ==item?.user_id ? ['/program-details/',item.id] : ['/program-view/',item.id]">
                 <div>
                   <h3>{{item?.title}}</h3>
                   <p>{{item?.type_id}}</p>
                   <p>By: <span>{{item?.program_user?.user_name}}</span></p>
-                  <span class="list-name d-block" *ngIf="item?.cd>0">Countdown: <b>{{ item?.hh |number  }}:  {{ item?.mm |number }}:  {{ item?.ss |number }} </b> </span>
+                  <span class="list-name d-block" *ngIf="item?.cd>0">Countdown: <b><span *ngIf="item?.hh > 0">{{ item?.hh |number }} Hours</span> {{ item?.mm |number  }} Minutes  {{ item?.ss |number }} Seconds </b> </span>
                   <span class="list-name d-block" *ngIf="item?.cd==0"> <b> L I V E</b></span>
                 </div>
-                <div class="action-links">
+                <!-- <div class="action-links">
                   <ion-toolbar>
                     <ion-buttons slot="end">
                       <ion-button (click)="settingsPopover()">
@@ -140,7 +134,7 @@
                   <a (click)="nutritionModal(item)">
                     <ion-icon ios="md-restaurant" md="md-restaurant"></ion-icon>
                   </a>
-                </div>
+                </div> -->
               </ion-label>
             </ion-item>
            

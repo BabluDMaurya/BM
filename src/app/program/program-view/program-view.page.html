@@ -28,8 +28,8 @@
           <ion-label>{{programDetail?.category_id}}</ion-label>
         </ion-item>
         <ion-item>
-          <img src="../../../assets/images/purse.svg" />
-          <ion-label>{{programDetail?.payment_type}}</ion-label>
+          <img src="../../../assets/images/doller.png" />
+          <ion-label>{{programFee}}</ion-label>
         </ion-item>
         <ion-item>
           <img src="../../../assets/images/group.svg" />
@@ -71,10 +71,12 @@
        <ion-button *ngIf="request_accs_pending && !programDetail?.ended" size="small" class="green btnVerify" (click)="acceptRequest()" >Accept Request</ion-button>      
        <div class="users-list">
          <!-- <ion-button (click)="joinRoom()">Join Room</ion-button> -->
-         <div *ngIf="request_accs && !programDetail?.live" size="medium"  >Program will start sooon   
+         <ion-button *ngIf="request_accs && !programDetail?.live" size="small"  class="green btnVerify">Program will start sooon</ion-button>
+         <ion-button *ngIf="programDetail?.is_requested ==1 && !request_join && !programDetail?.ended" size="small"  class="green btnVerify" (click)="joinRoom()">Requested to join Program</ion-button>
+         <!-- <div *ngIf="request_accs && !programDetail?.live" size="medium"  >Program will start sooon   
          </div>
          <div *ngIf="programDetail?.is_requested ==1 && !request_join && !programDetail?.ended" size="medium"  (click)="joinRoom()" >Requested to join Program 
-        </div>
+        </div> -->
       </div>
   <ion-row>
     <ion-col size="12" class="ion-no-padding">

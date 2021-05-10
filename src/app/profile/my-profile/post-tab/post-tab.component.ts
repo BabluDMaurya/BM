@@ -33,7 +33,9 @@ export class PostTabComponent implements OnInit {
   loginUserData: any;
   expanded = 0;
   url: any = Config.imgUrl;
+  profilePicUrl = Config.profilePic;
   @Input() userData: any;
+  profileDefaultImage = './../../../assets/images/user.jpg';
   ngOnInit() {
    
     this.actRoute.paramMap.subscribe((params: ParamMap) => {

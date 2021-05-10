@@ -38,7 +38,7 @@
 </div>
 <!------------- E N D   S K E L E T O N ----------------->
 <div *ngIf="notShowAll" class="programCalendar">
-  <h4>{{myDate | date}}</h4>
+  <!-- <h4>{{myDate | date}}</h4> -->
 <ion-item lines="none">  
   <ion-label *ngFor="let week of dayDate;" class="{{week.activeClass}}" (click)="week.disableClass == 0 ? mySortDate(week.myDate) : tostmess()">{{week.day}}<p>{{week.date}}</p></ion-label>
 </ion-item>
@@ -72,8 +72,8 @@
   <div [ngSwitch]="programTabs">
     <ion-list lines="none" *ngSwitchCase="'schedule'">
       <div *ngIf="scheduleList &&  !showAll">
-        <ion-card *ngFor="let program of scheduleList; let i = index;" class="ion-no-margin">
-          <ion-item>
+        <ion-card *ngFor="let program of scheduleList; let i = index;" class="ion-no-margin upcomingCard">
+          <ion-item lines="none">
             <ion-avatar slot="start" [routerLink]="['/program-details',program.id]">
               <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
               <img src="../../../assets/images/loading.jpg" *ngIf="!program?.image_path">
@@ -239,8 +239,8 @@
 
     <!----------- R E Q U E S T E D   P R O G R A M  -->
     <ion-list lines="none" *ngSwitchCase="'requested'">
-      <!-- <app-invite-request [tabData]="reqTabData"></app-invite-request> -->
-      <ion-item class="item-card" *ngFor="let item of reqProgramList; let l = index;">
+      <ion-card *ngFor="let item of reqProgramList; let l = index;" class="ion-no-margin upcomingCard">
+      <ion-item lines="none">
         <ion-avatar slot="start" [routerLink]="['/program-view',item.id]">
           <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
           <img src="../../../assets/images/loading.jpg" *ngIf="!item?.image_path">
@@ -258,6 +258,7 @@
           </ion-icon> -->
         </div>
       </ion-item>
+      </ion-card>
       <div *ngIf="reqProgramList?.length < 1" class="no-data">
         <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
         <p>No Requested Program</p>
@@ -276,7 +277,6 @@
           </ion-label>
         </ion-item>
       </ion-list>
-
     </app-expandable> -->
   </div>
   

@@ -107,7 +107,7 @@
       <ion-col size="12" class="ion-no-padding">
         <ion-slides [options]="sliderOpts" class="profile-slider">
           <ion-slide *ngFor="let preview of previewImage">
-            <img src="{{url}}{{preview}}" (click)="openViewer(preview)" *ngIf="previewImage.length>0" />
+            <img [defaultImage] = "defaultPostImage" [lazyLoad]="url+preview" (click)="openViewer(preview)">
           </ion-slide>
         </ion-slides>
         <div class="no-data photoNodata" *ngIf="previewImage.length==0">
@@ -162,9 +162,10 @@
                       <ion-card class="item-card" *ngIf="post['video_post']['0']['video_type'] == 1">
                         <ion-card-header class="item-header" [routerLink]="['/videos',post.id,'']">
                           <ion-avatar>
-                            <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
+                            <img [defaultImage]="profileDefaultImage" [lazyLoad]="profilePicUrl+profileData?.userData?.bios?.profile_pic"/>
+                            <!-- <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
                               *ngIf="profileData?.userData?.bios?.profile_pic">
-                            <img src="../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
+                            <img src="../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic"> -->
                           </ion-avatar>
                           <div class="header-right">
                             <ion-label>
@@ -179,7 +180,8 @@
                         <ion-card-content class="ion-no-padding item-content">
                           <ion-thumbnail [routerLink]="['/videos',post.id,'']"
                             *ngIf="post['video_post']['0']['thumb_path']">
-                            <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" />
+                            <img [defaultImage] = "defaultPostImage" [lazyLoad]="storagePath+post['video_post']['0']['thumb_path']" alt="Video Thumnail">
+                            <!-- <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
                             <!-- <img (click)="openViewer(post['video_post']['0']['thumb_path'])" src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
                           </ion-thumbnail>
                           <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
@@ -235,9 +237,10 @@
                       <ion-card class="item-card" *ngIf="post['video_post']['0']['video_type'] == 2">
                         <ion-card-header class="item-header" [routerLink]="['/videos',post.id,'']">
                           <ion-avatar>
-                            <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
+                            <img [defaultImage]="profileDefaultImage" [lazyLoad]="profilePicUrl+profileData?.userData?.bios?.profile_pic"/>
+                            <!-- <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
                               *ngIf="profileData?.userData?.bios?.profile_pic">
-                            <img src="../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
+                            <img src="../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic"> -->
                           </ion-avatar>
                           <div class="header-right">
                             <ion-label>
@@ -252,7 +255,8 @@
                         <ion-card-content class="ion-no-padding item-content">
                           <ion-thumbnail [routerLink]="['/videos',post.id,'']"
                             *ngIf="post['video_post']['0']['thumb_path']">
-                            <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" />
+                            <img [defaultImage] = "defaultPostImage" [lazyLoad]="storagePath+post['video_post']['0']['thumb_path']" alt="Video Thumnail">
+                            <!-- <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
                             <!-- <img (click)="openViewer(post['video_post']['0']['thumb_path'])" src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
                           </ion-thumbnail>
                           <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
@@ -311,9 +315,10 @@
                         </ion-col> -->
                         <ion-card-header class="item-header" [routerLink]="['/videos',post.id,'']">
                           <ion-avatar>
-                            <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
+                            <img [defaultImage]="profileDefaultImage" [lazyLoad]="profilePicUrl+profileData?.userData?.bios?.profile_pic"/>
+                            <!-- <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
                               *ngIf="profileData?.userData?.bios?.profile_pic">
-                            <img src="../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
+                            <img src="../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic"> -->
                           </ion-avatar>
                           <div class="header-right">
                             <ion-label>
@@ -328,7 +333,8 @@
                         <ion-card-content class="ion-no-padding item-content">
                           <ion-thumbnail [routerLink]="['/videos',post.id,'']"
                             *ngIf="post['video_post']['0']['thumb_path']">
-                            <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" />
+                            <img [defaultImage] = "defaultPostImage" [lazyLoad]="storagePath+post['video_post']['0']['thumb_path']" alt="Video Thumnail">
+                            <!-- <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
                             <!-- <img (click)="openViewer(post['video_post']['0']['thumb_path'])" src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
                           </ion-thumbnail>
                           <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>

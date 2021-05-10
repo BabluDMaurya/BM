@@ -9,6 +9,7 @@ import { ProgramService } from '../../services/program.service'
 export class HostingDropdownComponent implements OnInit {
 
   programId:any;
+  user_type:any;
   constructor(private modalController: ModalController,
     private navParams: NavParams,
     private programService:ProgramService,
@@ -16,6 +17,7 @@ export class HostingDropdownComponent implements OnInit {
 
   ngOnInit() {
     this.programId = this.navParams.data.id
+    this.user_type = this.navParams.data.user_type
   }
 
   delete()

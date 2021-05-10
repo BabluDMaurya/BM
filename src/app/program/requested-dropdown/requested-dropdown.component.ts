@@ -9,6 +9,7 @@ import { ProgramService } from './../../services/program.service'
 })
 export class RequestedDropdownComponent implements OnInit {
   programid:any;
+  user_type :any;
   constructor(private navParams: NavParams,
     private programService:ProgramService,
     private popOver:PopoverController) {
@@ -16,8 +17,9 @@ export class RequestedDropdownComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.programid = this.navParams.get('programId');
-    console.log(this.programid);
+    
+    this.programid = this.navParams.data.id;
+    this.user_type = this.navParams.data.user_type;
   }
 
   accept()

@@ -57,12 +57,16 @@ export class UpcomingTabComponent implements OnInit {
         this.noData=true;
       }
       this.upcomingList = this.getCounter(data.programList);
-      this.programimg_array =this.upcomingList[0].image_path.split(',');
-      
-    });
-    
-  }
-  
+      this.upcomingList = data.programList.filter(el => {
+        if (el.image_path) {
+          el.img_arr = el.image_path.split(',');
+        }
+        el.converted = new Date(el.program_date + 'Z');
+        el.expanded = false;
+        return el;
+      });
+    });    
+  }  
   getConsultProg(id) {
     this.programService.getConsultPrograms({'consultId':id}).subscribe(data => {
       if(data.data.length<1)
