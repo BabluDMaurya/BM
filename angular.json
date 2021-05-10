@@ -37,9 +37,12 @@
               },
               {
                 "input": "src/global.scss"
-              }
+              },
+              "./node_modules/@mobiscroll/angular/dist/css/mobiscroll.min.css"
             ],
-            "scripts": [ "./node_modules/jquery/dist/jquery.js"]
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -128,7 +131,9 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {

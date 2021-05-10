@@ -11,6 +11,8 @@ import { ViewVideoDetailComponent } from './../add-program/view-video-detail/vie
 import { AddProgramPage } from './add-program.page';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { ComponentModule } from '../profile/components.modules';
+import { CalenderMonthWeekTimeComponent } from './../add-program/calender-month-week-time/calender-month-week-time.component';
+import { MbscModule } from '@mobiscroll/angular';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,10 +21,11 @@ import { ComponentModule } from '../profile/components.modules';
     ReactiveFormsModule,
     AddProgramPageRoutingModule,
     NgCalendarModule,
-    ComponentModule
+    ComponentModule,
+    MbscModule
   ],
   declarations: [AddProgramPage ,
-    AudioPlayerProgramComponent,ProgramNutritionDetailModalComponent,ViewVideoDetailComponent],
-    entryComponents: [ProgramNutritionDetailModalComponent,ViewVideoDetailComponent]
+    AudioPlayerProgramComponent,ProgramNutritionDetailModalComponent,ViewVideoDetailComponent,CalenderMonthWeekTimeComponent],
+    entryComponents: [ProgramNutritionDetailModalComponent,ViewVideoDetailComponent,CalenderMonthWeekTimeComponent]
 })
 export class AddProgramPageModule {}

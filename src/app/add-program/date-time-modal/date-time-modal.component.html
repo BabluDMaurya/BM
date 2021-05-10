@@ -34,16 +34,17 @@
     </ion-list>
     <!-- <h6 class="repeatedHeading">Repeated</h6> -->
     <ion-radio-group value="calendar" class="radio-group">
-      <ion-item>
+      <!-- <ion-item>
         <ion-label>Repeated</ion-label>
         <ion-radio slot="start" value="clone" (click)="multiple()"
           checked="{{repetative==1? true: false}}"></ion-radio>
-      </ion-item>
-      <!-- <ion-item>
-        <ion-label>Weekly</ion-label>
-        <ion-radio slot="start" value="weekly" (click)="basic()"
-          checked="{{repetative==2 ? true: false}}"></ion-radio>
+          
       </ion-item> -->
+      <ion-item>
+        <ion-label>Repeated</ion-label>
+        <ion-radio slot="start" value="weekly" (click)="newtest()"
+          checked=""></ion-radio>
+      </ion-item>
     </ion-radio-group>
     <div *ngIf="programData?.programType==6">
       <h6 class="repeatedHeading mb-10">Select Video</h6>

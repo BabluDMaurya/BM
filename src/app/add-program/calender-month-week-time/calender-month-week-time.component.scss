@@ -1,0 +1,17 @@
+.calendar-header{display: flex;justify-content: space-between;align-items: center;}
+.date_items {
+    --ion-item-background: #27a69a !important;
+    color: #fff;
+}
+.date_items ion-icon {
+    --ion-item-background: transparent;
+    color: #fff;
+    margin-top: 5px;
+}
+.date_items h6{
+    margin-left: 5px;
+}
+.event-detail-container {
+    // max-height: 150px;
+    // overflow: scroll;
+}

@@ -53,6 +53,7 @@
     "@ionic/angular": "^4.11.11",
     "@ionic/cli": "^6.11.8",
     "@ionic/storage": "^2.3.1",
+    "@mobiscroll/angular": "https://npm.mobiscroll.com/@mobiscroll/angular-trial/-/angular-trial-5.4.0.tgz",
     "@types/cors": "^2.8.7",
     "@types/express": "^4.17.8",
     "@types/moment-timezone": "^0.5.30",
