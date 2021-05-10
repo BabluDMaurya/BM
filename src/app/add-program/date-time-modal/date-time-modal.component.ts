@@ -5,6 +5,7 @@ import { ProgramService } from './../../services/program.service';
 import { AddEquipmentsComponent } from '../add-equipments/add-equipments.component';
 import { VideosThumbListComponent } from '../videos-thumb-list/videos-thumb-list.component';
 import { ViewVideoDetailComponent } from '../../add-program/view-video-detail/view-video-detail.component';
+import { CalenderMonthWeekTimeComponent } from '../../add-program/calender-month-week-time/calender-month-week-time.component';
 import {
   CalendarComponentOptions,
   CalendarModal,
@@ -53,7 +54,8 @@ export class DateTimeModalComponent implements OnInit {
     public commonService: CommonService,
     public modalCtrl: ModalController,
     private programService: ProgramService,
-    private navParams: NavParams
+    private navParams: NavParams,
+    public modalController: ModalController,
   ) {
     let start_arr = [];
     let end_arr = [];
@@ -144,8 +146,7 @@ export class DateTimeModalComponent implements OnInit {
   }
   async openCalendar() {
     const options = {
-      
-      pickMode: 'single',
+      pickMode: 'multi',
       color: 'dark',
       doneIcon: true,
       closeIcon: true
@@ -226,11 +227,48 @@ export class DateTimeModalComponent implements OnInit {
         let dateObj = new Date(el.dateObj + 'Z');
         dateObj.setHours((hourspan.getHours()), hourspan.getMinutes());
         this.repetatedDate.push(dateObj);
+        // console.log(this.repetatedDate);
+        console.log(this.repetatedDate);
       });
       
     }
   }
-
+  async newtest(){
+    this.repetatedDate = []; 
+    this.repetatedDateCopy=[];
+    this.repetative = 1;
+    const options: CalendarModalOptions = {
+      pickMode: 'range',
+     
+    };
+    const modal = await this.modalController.create({
+      component: CalenderMonthWeekTimeComponent,
+      cssClass: 'fullModal',
+      
+      componentProps: { 'minutes':this.minutes,'programList':this.programList,'calendarData':this.calendarData,options: options }
+    });
+    modal.onDidDismiss().then((data: any) => {
+      console.log(data);
+      if (data == null) {
+        this.repetative = '';
+        this.repetatedDate = [];
+        this.repetatedDateCopy=[]
+        this.commonService.presentToast('For Repeate Program select Date otherwise it will create single program ');
+      }else{
+        
+      this.repetatedDateCopy.push({'date':this.calendarData ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''})
+      data.data.forEach(el => {
+        console.log(el);
+        console.log('el');
+        this.repetatedDateCopy.push({'date':el ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
+        this.repetatedDate.push(el);
+      });
+      console.log(this.repetatedDate);
+      }
+      
+  });
+    return await modal.present();
+  }
   addExtraDay(event) {
     let val =new Date(event.detail.value);
     
@@ -264,6 +302,7 @@ export class DateTimeModalComponent implements OnInit {
     let hourspan = this.calendarData;
     hourspan.setMinutes(hourspan.getMinutes() + parseInt(this.minutes));
     this.commonService.presentLoader();
+   
     this.repetatedDate.filter(el => {
       el = el.setHours((hourspan.getHours()), hourspan.getMinutes());
     });
@@ -272,6 +311,7 @@ export class DateTimeModalComponent implements OnInit {
     this.programData.progRepetation = this.repetative;
     this.programData.repetatedDate = this.repetatedDate;
     this.programData.repetatedDateCopy = this.repetatedDateCopy;
+    console.log(this.programData);
     this.programService.insertProgram(this.programData).subscribe((data) => {
       this.commonService.dismissLoader();
     this.closeModal(data.statusDetails);

@@ -1,3 +1,4 @@
+import { MbscModule } from '@mobiscroll/angular';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -103,7 +104,8 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     GroupusersModalComponent, ParticipantsComponent, DropdownComponent, RequestsModalComponent,
     AdDetailsComponent, SponserCommentComponent, AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent],
 
-  imports: [
+  imports: [ 
+    MbscModule, 
     BrowserModule,
     IonicModule.forRoot({
 

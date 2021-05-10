@@ -25,7 +25,7 @@ export class AddProgramPage implements OnInit {
 
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
   // @ViewChild(CalendarComponent, { read: 'any', static: false }) myCal: CalendarComponent;
-
+  @ViewChild(CalendarComponent, {static: true }) myCal: CalendarComponent;
   sliderOpts = {
     zoom: true,
     slidesPerView: 1,
@@ -206,6 +206,7 @@ export class AddProgramPage implements OnInit {
   slideNext(slides) {
     this.slides.slideNext();
   }
+  
   async userModal() {
     const modal = await this.modalCtrl.create({
       component: UserModalComponent,
@@ -448,6 +449,7 @@ export class AddProgramPage implements OnInit {
     });
 
     modal.onDidDismiss().then((d: any) => {
+      console.log(d);
       if (d.data.program_date) {
         let startTime;
         let endTime;
