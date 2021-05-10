@@ -4,19 +4,20 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProgramDetailsPageRoutingModule } from './program-details-routing.module';
+import { ChatListPageRoutingModule } from './chat-list-routing.module';
 
-import { ProgramDetailsPage } from './program-details.page';
+import { ChatListPage } from './chat-list.page';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProgramDetailsPageRoutingModule,
+    ChatListPageRoutingModule,
     LazyLoadImageModule
   ],
-  declarations: [ProgramDetailsPage]
+  declarations: [ChatListPage]
 })
-export class ProgramDetailsPageModule {}
+export class ChatListPageModule {}

@@ -22,17 +22,13 @@
       <ion-col size="12" class="ion-no-padding">
         <div class="sec-banner "> 
           <div class="top-banner"> 
-            <img  src="https://ionicinto.wdipl.com/public/thumb/profile_background_image/{{profileData?.userData?.bios?.profile_background_image}}"
-             *ngIf="profileData?.userData?.bios?.profile_background_image">
-            <img src="./../../../assets/images/bgimage.png" *ngIf="!profileData?.userData?.bios?.profile_pic">
+            <img [defaultImage] = "bannerDefaultImage" [lazyLoad]="backgroundPicUrl+profileData?.userData?.bios?.profile_background_image">           
           </div>
         </div>
         <div class="profile-content">
-          <img class="user-img" src="https://ionicinto.wdipl.com/public/profile_pic/thumb/{{profileData?.userData?.bios?.profile_pic}}" *ngIf="profileData?.userData?.bios?.profile_pic">
-          <img class="user-img" src="../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
+          <img class="user-img" [defaultImage] = "profileDefaultImage" [lazyLoad]="profilePicUrl+profileData?.userData?.bios?.profile_pic">           
           <ion-text>
-            <h6 class="ion-no-margin" *ngIf="profileData?.userData?.user_name">{{profileData?.userData?.user_name}}</h6>
-            <a><ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon> darshan_rajgor_</a>
+            <h6 class="ion-no-margin" *ngIf="profileData?.userData?.user_name">{{profileData?.userData?.user_name}}</h6>            
           </ion-text>
           <ion-fab horizontal="end" vertical="center" slot="fixed">
             <ion-fab-button class="share-btn" color="primary" size="small" (click)="openModal()">

@@ -110,6 +110,9 @@ export class ChatService {
     return this.http.post<any>(Config.ApiUrl+'api/auth/chatGroup',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('chatGroup',data)));
 
   }
+  checkChatProgram(data:any): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/checkChatProgram',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('checkChatProgram',data)));
+}
   
   filterItems(searchTerm) {
     return this.items.filter(item => {

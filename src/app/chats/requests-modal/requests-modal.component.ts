@@ -44,6 +44,7 @@ export class RequestsModalComponent implements OnInit {
   }
   
   navigate(id : any,senderId:any,type:any){    
+    console.log( "navigate: " +id+'/'+senderId+'/'+type);
     this.close();    
     this.router.navigate(['/access/'+id+'/'+senderId+'/'+type]);
   }

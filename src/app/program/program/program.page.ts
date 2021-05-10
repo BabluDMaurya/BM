@@ -37,6 +37,8 @@ export class ProgramPage implements OnInit {
   dayDate : any = [];  
   currentDate : any;
   clickActiveClass : any = '';
+  noScheduleList : boolean = false;
+  noReqProgramList : boolean = false;
   public items: any = [];
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
   sliderOpts = {
@@ -160,7 +162,9 @@ export class ProgramPage implements OnInit {
 
   }
   onChange(event) {     
+    this.noScheduleList = false;
     if (this.showAll) {
+      this.commonService.presentLoader();
       this.notShowAll = false;
       this.programService.getAllUpcomingPrograms(null).subscribe(data => {
         this.allProgramList = data.data.filter(el => {
@@ -192,16 +196,28 @@ export class ProgramPage implements OnInit {
            }
           
         });
+        this.commonService.dismissLoader();
         this.pgCount = resultArray.length;
         this.commonService.presentToast("All upcoming programs listed");
+        if(this.pgCount < 1){
+          this.noScheduleList = true;
+        }
       },
       err=>{        
+      this.commonService.dismissLoader();
       this.commonService.presentToast("Couldnt load data, Something went wrong.");
+      if(this.pgCount < 1){
+        this.noScheduleList = true;
+      }
       })  
     } else {
+      this.commonService.dismissLoader();
       this.notShowAll = true;
       this.allProgramList = null;
       this.pgCount = this.scheduleList.length;
+      if(this.pgCount < 1){
+        this.noScheduleList = true;
+      }
     } 
   }
   ionViewWillEnter() {
@@ -215,21 +231,21 @@ export class ProgramPage implements OnInit {
       'date': this.myDate
     }
 
-    this.programService.getHostedPrograms(null).subscribe(data => {
-      this.programList = data.programList.filter(el => {
-        if (el.image_path) {
-          el.img_arr = el.image_path.split(',');
-        }
-        el.converted = new Date(el.program_date + 'Z');
-        el.expanded = false;
-        return el;
-      });      
-    },
-    err=> {
-      this.commonService.presentToast("Couldnt load data, Something went wrong.")
-    }
-    );
-
+    // this.programService.getHostedPrograms(null).subscribe(data => {
+    //   this.programList = data.programList.filter(el => {
+    //     if (el.image_path) {
+    //       el.img_arr = el.image_path.split(',');
+    //     }
+    //     el.converted = new Date(el.program_date + 'Z');
+    //     el.expanded = false;
+    //     return el;
+    //   });      
+    // },
+    // err=> {
+    //   this.commonService.presentToast("Couldnt load data, Something went wrong.")
+    // }
+    // );
+    this.commonService.presentLoader();
     this.programService.getRequestedPrograms(null).subscribe(data => {
       this.reqProgramList = data.list.filter(el => {
         if (el.image_path) {
@@ -241,7 +257,18 @@ export class ProgramPage implements OnInit {
       },
       err=> {
         this.commonService.presentToast("Couldnt load data, Something went wrong.")
-      });      
+      });  
+      this.commonService.dismissLoader();
+      if(this.reqProgramList.length < 1){
+        this.noReqProgramList = true;
+      }    
+    },
+    err=> {
+      this.commonService.presentToast("Couldnt load data, Something went wrong.");
+      this.commonService.dismissLoader();
+      if(this.reqProgramList.length < 1){
+        this.noReqProgramList = true;
+      }  
     });
 
     this.programService.getSchedulePrograms(null).subscribe(data => {
@@ -254,28 +281,36 @@ export class ProgramPage implements OnInit {
         return el;
       });
       this.pgCount = this.scheduleList.length;
+      this.commonService.dismissLoader();
+      if(this.pgCount < 1){
+        this.noScheduleList = true;
+      }
     },
     err=> {
-      this.commonService.presentToast("Couldnt load data, Something went wrong.")
+      this.commonService.presentToast("Couldnt load data, Something went wrong.");
+      this.commonService.dismissLoader();
+      if(this.pgCount < 1){
+        this.noScheduleList = true;
+      }
     }
     );
 
-    this.programService.getAcceptedPrograms(null).subscribe(data => {
-      if(data.list != null){
-      this.accProgramList = data.list.filter(el => {
-        if (el.image_path) {
-          el.img_arr = el.image_path.split(',');
-        }
-        el.converted = new Date(el.program_date + 'Z');
-        el.expanded = false;
-        return el;
-      });
-    }
-    },
-    err=> {
-      this.commonService.presentToast("Couldnt load data, Something went wrong.")
-    }
-    );
+    // this.programService.getAcceptedPrograms(null).subscribe(data => {
+    //   if(data.list != null){
+    //   this.accProgramList = data.list.filter(el => {
+    //     if (el.image_path) {
+    //       el.img_arr = el.image_path.split(',');
+    //     }
+    //     el.converted = new Date(el.program_date + 'Z');
+    //     el.expanded = false;
+    //     return el;
+    //   });
+    // }
+    // },
+    // err=> {
+    //   this.commonService.presentToast("Couldnt load data, Something went wrong.")
+    // }
+    // );
   }
 
   async hostingDropdown(ev: any) {
@@ -297,6 +332,7 @@ export class ProgramPage implements OnInit {
   }
 
   goBack() {
+    this.commonService.dismissLoader();
     this.navCtrl.back();
   }
   showSchedule(event) { 
@@ -370,7 +406,9 @@ export class ProgramPage implements OnInit {
   }
 
   mySortDate(selectedDate : any) { 
-    this.commonService.presentLoader();    
+    this.commonService.presentLoader(); 
+    this.noScheduleList = false;
+    this.noReqProgramList = false;   
     var today = new Date();
     let userZoneDate = new Date(selectedDate);
     userZoneDate.setHours(today.getHours(), today.getMinutes(), today.getSeconds());
@@ -385,6 +423,17 @@ export class ProgramPage implements OnInit {
         return el;
       });
       this.pgCount = this.scheduleList.length;
+      this.commonService.dismissLoader();
+      if(this.scheduleList.length < 1){
+        this.noScheduleList = true;
+      } 
+    },
+    err=> {
+      this.commonService.presentToast("Couldnt load data, Something went wrong.");
+      this.commonService.dismissLoader();
+      if(this.scheduleList.length < 1){
+        this.noScheduleList = true;
+      }  
     });
 
     this.programService.getRequestedPrograms({ 'sortDate': userZoneDate.toUTCString() }).subscribe(data => {
@@ -397,6 +446,16 @@ export class ProgramPage implements OnInit {
         return el;
       });
       this.commonService.dismissLoader();
+      if(this.reqProgramList.length < 1){
+        this.noReqProgramList = true;
+      } 
+    },
+    err=> {
+      this.commonService.presentToast("Couldnt load data, Something went wrong.");
+      this.commonService.dismissLoader();
+      if(this.reqProgramList.length < 1){
+        this.noReqProgramList = true;
+      }  
     });
   } 
 

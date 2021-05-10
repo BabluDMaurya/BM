@@ -8,6 +8,7 @@
 .chats-list{--background:transparent;background: transparent;}
 .chats-list ion-item{--background:transparent;background: transparent;margin-bottom: 5px;}
 .chats-list ion-item>div{width: 100%;}
+.chat-box{height: auto !important;}
 .chat-box ion-label{margin:0;padding:5px 8px;border-radius:4px;font-size:.75rem;color: #000;white-space: normal;display: inline-block;line-height: 1.5;}
 .chat-box span{color: #909090;font-size: 0.70rem;display: flex;align-items: center;}
 .chat-left ion-label{background:#e3e6e6;margin-right: 55px;}
@@ -23,45 +24,17 @@
     .chat-box span{font-size: 0.65rem;}
     .chat-box span ion-icon{font-size: 1rem;}
 }
-.message {
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 4px;
-  white-space: pre-wrap;
+
+.main_content{max-height: calc(100vh - 115px);}
+.message-label{
+    white-space: pre-wrap !important;
+    text-align: left;
 }
- 
-.my-message {
-  background: var(--ion-color-tertiary);
-  color: #fff;
-}
- 
-.other-message {
-  background: var(--ion-color-secondary);
-  color: #fff;
-}
- 
-.time {
-  color: #dfdfdf;
-  float: right;
-  font-size: small;
-}
- 
-.message-input {
-  margin-top: 0px;
-  border: 1px solid var(--ion-color-medium);
-  border-radius: 10px;
-  background: #fff;
-}
- 
-.msg-btn {
-  --padding-start: 0.5em;
-  --padding-end: 0.5em;
-}
-.top-header{  
-  height: 60px !important;
-  max-height: 60px !important;
+.top-header{
+    top: 10px !important;
+    height: 60px !important;
+    max-height: 60px !important;
 }
 .main_content{
-  top: 60px !important;
+    top: 70px !important;
 }
-.chat-box{height: auto !important;}

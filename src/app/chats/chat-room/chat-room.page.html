@@ -1,7 +1,7 @@
 <ion-header class="top-header ion-no-padding" translucent>
   <ion-list class="top-heading three-block">
     <ion-item slot="start">
-      <ion-buttons slot="start" class="ion-no-margin" [routerLink]="['/tabs/chats']">
+      <ion-buttons slot="start" class="ion-no-margin" (click)="goBack()">
         <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
       </ion-buttons>
       <ion-avatar slot="start">
@@ -11,7 +11,7 @@
       <ion-label>
         <h3 class="list-person" *ngIf="groupName != '' && groupName != null && chatType == 2">{{groupName}}</h3>
         <h3 class="list-person" *ngIf="user_name != '' && user_name != null && chatType == 1">{{user_name}}</h3>
-        <span class="list-name"> {{UserOnLineStatus}}</span>
+        <span class="list-name" *ngIf="chatType == 1"> {{UserOnLineStatus}}</span>
       </ion-label>
     </ion-item>
     <ion-item class="icon-right-side ion-text-end" slot="end">

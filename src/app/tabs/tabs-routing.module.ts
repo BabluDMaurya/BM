@@ -152,6 +152,17 @@ const routes: Routes = [
         ]
       },
 
+      // {
+      //   path: 'chats',
+      //   children: [
+      //     {
+      //       path: '',
+      //       loadChildren: () =>
+      //         import('../chats/chat-list/chat-list.module').then(m => m.ChatListPageModule)
+      //     }
+      //   ]
+      // },
+
       {
         path: 'music',
         children: [

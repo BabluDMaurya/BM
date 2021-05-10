@@ -9,13 +9,16 @@ import { UserProfileViewPageRoutingModule } from './user-profile-view-routing.mo
 import { UserProfileViewPage } from './user-profile-view.page';
 import { MessagePopupComponent } from './message-popup/message-popup.component';
 import { ReportPopupComponent } from './report-popup/report-popup.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UserProfileViewPageRoutingModule
+    UserProfileViewPageRoutingModule,
+    LazyLoadImageModule
   ],
   declarations: [UserProfileViewPage,MessagePopupComponent,ReportPopupComponent],
   entryComponents: [MessagePopupComponent,ReportPopupComponent],

@@ -7,6 +7,7 @@ import { ConsultantProfileViewPage } from './consultant-profile-view.page';
 import { ChatPopupComponent } from '../consultant-profile-view/chat-popup/chat-popup.component';
 import { ReportPopupComponent } from '../consultant-profile-view/report-popup/report-popup.component';
 import { ComponentModule } from './../components.modules';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 // import { FixedFooterComponent } from '../fixed-footer/fixed-footer.component';
 
@@ -16,7 +17,8 @@ import { ComponentModule } from './../components.modules';
     FormsModule,
     IonicModule,
     ComponentModule,
-    ConsultantProfileViewPageRoutingModule
+    ConsultantProfileViewPageRoutingModule,
+    LazyLoadImageModule
   ],
   declarations: [ConsultantProfileViewPage,ChatPopupComponent,ReportPopupComponent],
   entryComponents: [ChatPopupComponent,ReportPopupComponent],

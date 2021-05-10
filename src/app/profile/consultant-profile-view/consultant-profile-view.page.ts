@@ -16,6 +16,8 @@ import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { PrivacyPage } from '../../settings/privacy/privacy.page';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { ChatService } from 'src/app/services/chat.service';
+
 @Component({
   selector: 'app-consultant-profile-view',
   templateUrl: './consultant-profile-view.page.html',
@@ -48,9 +50,14 @@ export class ConsultantProfileViewPage implements OnInit {
   @ViewChild('stickyMenu', { static: false }) menuElement: ElementRef;
   sticky: boolean = false;
   elementPosition: any;
+
   url: any = Config.imgUrl;
   profilePicUrl: any = Config.profilePic;
   backgroundPicUrl: any = Config.backgroundPic;
+  bannerDefaultImage = './../../../assets/images/editcoverpic.png';
+  profileDefaultImage = './../../../assets/images/user.jpg';
+  defaultPostImage : any = './../../../assets/images/loading.jpg';
+
   last_page: any;
   currentPage: any = 0;
   myPosts: any;
@@ -68,6 +75,7 @@ export class ConsultantProfileViewPage implements OnInit {
     public deeplink: Deeplinks,
     private platform: Platform,
     public socialSharing: SocialSharing,
+    public chatService : ChatService,
   ) {
 
     platform.ready().then(() => {
@@ -100,7 +108,7 @@ export class ConsultantProfileViewPage implements OnInit {
       this.profileData = data;
     });
     this.peopleView.getBlockStatus({ 'blockUserId': this.consultID }).subscribe((data) => {
-      if (data.statusDetails.block_status == '1') {
+      if (data.statusDetails.block_status != null && data.statusDetails.block_status == '1') {
         this.block = true;
       } else {
         this.block = false;
@@ -153,7 +161,6 @@ export class ConsultantProfileViewPage implements OnInit {
       }
     });
   }
-
   videoPostData() {
     //postType,userId, videoType,page    
     this.peopleView.getVedioType('2', this.consultID, 1, 1).subscribe((data: any) => {
@@ -177,7 +184,6 @@ export class ConsultantProfileViewPage implements OnInit {
       this.gotData = true;
     });
   }
-
   loadVideoData(event) {
     setTimeout(() => {
       if (this.currentPage > 0) {
@@ -207,7 +213,6 @@ export class ConsultantProfileViewPage implements OnInit {
       }
     }, 500);
   }
-
   async followUp(followStatus) {
     if (followStatus == 'Unfollow') {
       var status = 'true';
@@ -230,29 +235,39 @@ export class ConsultantProfileViewPage implements OnInit {
         }
       });
   }
-
   getContent() {
     return document.querySelector('ion-content');
   }
-
   videoTabsScroll() {
     this.tabs = true;
     this.getContent().scrollToTop(500);
   }
-
   otherTabsScroll() {
     this.tabs = false;
     this.getContent().scrollToTop(500);
-  }
-
-  async chatPopup(ev: any) {
-    this.router.navigate(["/chat-consultant/"+ this.consultID + "/1"]);
-    // const popover = await this.popoverController.create({
-    //   component: ChatPopupComponent,
-    //   event: ev,
-    //   cssClass: 'chat_popup',
-    // });
-    // return await popover.present();
+  }  
+  async chatPopup(ev: any) {  
+    this.commonService.presentLoader();  
+    this.chatService.checkChatUser({'id':this.consultID}).subscribe((data: any) => {  
+      if(data.length > 0){
+        this.commonService.dismissLoader();
+        var chatRoom = data[0].chatroom.room;    
+        var chatReceiverId = data[0].receiverID;    
+        var chatSenderId = data[0].senderID;    
+        var chatType = data[0].type;  
+        var roomId = data[0].id;    
+        this.commonService.dismissLoader();
+        this.router.navigate(['/chat-room/'+chatReceiverId+'/'+chatRoom+'/'+chatType]);
+      }else{
+        this.commonService.dismissLoader();
+        // chat_type = 1:consultant,2:user,3:program
+        this.router.navigate(["/first-message/"+ this.consultID + "/1"]);
+      }      
+    },
+    err=> {
+      this.commonService.presentToast("Couldnt load data, Something went wrong.");
+      this.commonService.dismissLoader();      
+    });
   }
 
   reportPopup(ev: any) {

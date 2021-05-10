@@ -7,6 +7,9 @@ import { UserFollowersComponent } from './user-followers/user-followers.componen
 import { PeopleViewService } from "../../services/people-view.service";
 import { Router, ActivatedRoute, ParamMap} from "@angular/router";
 import { PopoverController,NavController } from '@ionic/angular';
+import { ChatService } from 'src/app/services/chat.service';
+import { Config } from './../../config/config';
+
 
 @Component({
   selector: 'app-user-profile-view',
@@ -21,12 +24,17 @@ export class UserProfileViewPage implements OnInit {
   userData:any;
   userId: any;
   followStatus: any;
+  bannerDefaultImage = './../../../assets/images/editcoverpic.png';
+  profileDefaultImage = './../../../assets/images/user.jpg';
+  profilePicUrl: any = Config.profilePic;
+  backgroundPicUrl: any = Config.backgroundPic;
   constructor(public popoverController: PopoverController, 
               public commonService: CommonService,
               public router: Router,
               private navCtrl:NavController,
               private peopleView: PeopleViewService,
-              private actRoute: ActivatedRoute,) {
+              private actRoute: ActivatedRoute,
+              private chatService : ChatService) {
 
                }
                ionViewWillEnter(){
@@ -90,14 +98,27 @@ export class UserProfileViewPage implements OnInit {
   }
 
   async messagePopup(ev: any) {
-    this.router.navigate(["/chat-consultant/"+ this.consultID + "/1"]);
-    // const popover = await this.popoverController.create({
-    //   component: MessagePopupComponent,
-    //   event: ev,
-    //   componentProps: { page: 'Login' },
-    //   cssClass: 'popover_class',
-    // });
-    // return await popover.present();
+    this.commonService.presentLoader();  
+    this.chatService.checkChatUser({'id':this.consultID}).subscribe((data: any) => {  
+      if(data.length > 0){
+        this.commonService.dismissLoader();
+        var chatRoom = data[0].chatroom.room;    
+        var chatReceiverId = data[0].receiverID;    
+        var chatSenderId = data[0].senderID;    
+        var chatType = data[0].type;  
+        var roomId = data[0].id;    
+        this.commonService.dismissLoader();
+        this.router.navigate(['/chat-room/'+chatReceiverId+'/'+chatRoom+'/'+chatType]);
+      }else{
+        this.commonService.dismissLoader();
+        // chat_type = 1:consultant,2:user,3:program
+        this.router.navigate(["/first-message/"+ this.consultID + "/2"]);
+      }      
+    },
+    err=> {
+      this.commonService.presentToast("Couldnt load data, Something went wrong.");
+      this.commonService.dismissLoader();      
+    });
   }
 
   async reportPopup(ev: any) {
@@ -121,7 +142,7 @@ export class UserProfileViewPage implements OnInit {
     this.commonService.presentLoader();
     this.peopleView.blockuser({'blockUserId':this.consultID , 'blocked':event}).subscribe(data=>{
       this.commonService.dismissLoader();
-      if(data.statusDetails.block_status)
+      if(data.statusDetails.block_status != null)
       {
         this.commonService.presentToast('Blocked User');
         this.block=true;

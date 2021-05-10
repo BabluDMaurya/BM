@@ -55,24 +55,20 @@ export class AccessPage implements OnInit {
       if(this.chatType != 2){
         this.dataService.getChatRoom({'userId':this.senderId}).subscribe((data:any)=>{
           this.room = data.chatroom.room;
+          console.log("data.chatroom.room:" + this.room);
           this.getStart();
+          this.privateChat();
         });
       }else{
         this.getStart();
+        this.groupChat();
       }
-    });
-    if(this.chatType == 2){
-      //-----group chat--- 
-      this.groupChat();
-    }else{
-      //-----private chat---  
-      this.privateChat();
-    } 
+    });    
   }
   getStart(){
     this.socket.connect();
     this.currentUser = this.room;
-    // console.log("this.room:" + this.room);
+    console.log("room:" + this.room);
     this.socket.emit('set-name', this.room,this.chatType);         
     }
   privateChat(){
@@ -87,7 +83,7 @@ export class AccessPage implements OnInit {
     });
 
     this.socket.emit("addUser", this.userData.id,this.senderId);
-    
+    console.log("privateChat room:" + this.room);
     this.socket.emit("newUser", [this.userData.id,this.senderId, this.room]);
 
     this.socket.emit("storemassagerequest",this.userData.id,this.senderId);
@@ -106,10 +102,10 @@ export class AccessPage implements OnInit {
     });
   }
   groupChat(){
-    this.room = this.senderId;
-    
+    console.log("groupChat");
+    this.room = this.senderId;    
     this.socket.emit("newGroup", this.userData.id,this.requestId, this.room);
-
+    this.socket.emit('stormessagerequest',this.userData.id,this.requestId);
     this.socket.fromEvent('groupChatRequestData').subscribe(groupChatRequestData => {
       this.groupName = groupChatRequestData[0].group_name;
       this.adminId = groupChatRequestData[0].admin_id;
@@ -117,6 +113,10 @@ export class AccessPage implements OnInit {
       this.acceptMember = groupChatRequestData[0].accept_member;
       this.groupImage = groupChatRequestData[0].group_image;
       this.groupId = groupChatRequestData[0].id;
+    });
+    this.socket.fromEvent('stormessage').subscribe(stormessage => {
+      this.storeMessages = stormessage;      
+      console.log("storeMessages :" + JSON.stringify(stormessage));
     });
     this.socket.fromEvent('groupmessage').subscribe(message => {
       this.groupMessages.push(message);

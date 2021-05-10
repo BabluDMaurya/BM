@@ -24,13 +24,13 @@
     <!-- <ion-item>
       <ion-label class="chat-duration"><span>{{(storeMessage.created_at | date:'dd/MM/y') == chatDates? : }}</span></ion-label>
     </ion-item> -->
-    <ion-item class="chat-box chat-right" *ngIf="storeMessage.sender_id ===  userData?.id &&  storeMessage.receiver_id == receiverId">
+    <!-- <ion-item class="chat-box chat-right" *ngIf="storeMessage.sender_id ===  userData?.id &&  storeMessage.receiver_id == receiverId">
       <div class="ion-text-end">
         <ion-label>{{ storeMessage.message }}{{storeMessage.read_mess}}</ion-label>
         <span class="chat-time">{{ storeMessage.created_at | date:'shortTime' }} <ion-icon ios="ios-done-all" md="md-done-all" [ngClass]="{ 'text-green': storeMessage.read_mess == 1 }"></ion-icon></span>
       </div>
-    </ion-item>
-    <ion-item class="chat-box chat-left" *ngIf="storeMessage.sender_id !== userData?.id && storeMessage.receiver_id == userData?.id">
+    </ion-item> -->
+    <ion-item class="chat-box chat-left" >
       <div class="ion-text-start">
         <ion-label>{{ storeMessage.message }}</ion-label>
         <span class="chat-time">{{ storeMessage.created_at | date:'shortTime' }}</span>

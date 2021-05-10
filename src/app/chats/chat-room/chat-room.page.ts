@@ -6,7 +6,7 @@ import { Action } from '../../clientmodel/action';
 import { Socket } from 'ngx-socket-io';
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ToastController } from '@ionic/angular';
-import { ParamMap, ActivatedRoute } from '@angular/router';
+import { ParamMap, ActivatedRoute,Router} from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import { Config } from './../../config/config';
 
@@ -41,7 +41,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
   bSOUser : any = 'unblock';
   bidOUser : any;
   chatDates : string;
-  chatType : any;
+  chatType : any = 0;
   groupName : any = '';
   adminId : any = '';
   groupMember : any = '';
@@ -61,18 +61,23 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
     private actRoute: ActivatedRoute,
     private toastCtrl: ToastController,
     public commonService:CommonService,
+    public router :Router,
     ) {  
       }
   ngOnInit() {
-    this.commonService.presentLoader();
+    // this.commonService.presentLoader();
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.room = params.get('room');
+      console.log("room :" + this.room);
       //--reciver is ( in private chat is sender id and in group chat request id)-----
       this.receiverId = params.get('receiver');
+      console.log("receiverId :" + this.receiverId);
       this.chatType = params.get('type');
+      console.log("chattype :" + this.chatType);
     });
-
+  }
+  ionViewWillEnter(){
     this.getStart();
 
     if(this.chatType == 2){
@@ -81,20 +86,21 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
     }else{
       //-----private chat---  
       this.privateChat();
+      console.log("privateChat");
     }
-    // console.log('ngInit');   
+    // console.log('ngInit');
+    // this.commonService.dismissLoader();
+    console.log("chat-room ionViewWillEnter");
   }
   ngAfterViewInit() {
     setTimeout(() => {
           this.sendmessage.setFocus();
     }, 400);
-  }
-  
+  }  
   // ionViewDidEnter() {
   //   this.commonService.dismissLoader();
   //   // console.log('ionViewDidEnter');
-  // }
- 
+  // } 
   getStart(){   
     this.socket.connect();
     this.currentUser = this.room;
@@ -120,16 +126,16 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
     this.socket.fromEvent('receiveDate').subscribe(receiveDate =>{
       // console.log('receiveDate:'+JSON.stringify(receiveDate));
     });
-
     this.socket.fromEvent('stormessage').subscribe(stormessage => {
       this.storeMessages = stormessage; 
       setTimeout(() => {
         this.contentArea.scrollToBottom();
       }, 400);
-      this.commonService.dismissLoader();   
+      // this.commonService.dismissLoader();   
     });
 
     this.socket.fromEvent('groupChatRequestData').subscribe(groupChatRequestData => {
+      console.log("GROUP:" + JSON.stringify(groupChatRequestData));
       this.groupName = groupChatRequestData[0].group_name;
       this.adminId = groupChatRequestData[0].admin_id;
       this.groupMember = groupChatRequestData[0].group_member;
@@ -182,14 +188,16 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
       setTimeout(() => {
         this.contentArea.scrollToBottom();
       }, 400); 
-      this.commonService.dismissLoader(); 
+      // this.commonService.dismissLoader(); 
     });
 
     this.socket.fromEvent('userName').subscribe(data => {
+      console.log("UserName");
       this.user_name = data[0].user_name;
     });
 
     this.socket.fromEvent('userBio').subscribe(data => {
+      console.log("UserBio");
       this.display_name = data[0].display_name;
       this.profile_pic = data[0].profile_pic;      
     });   
@@ -257,6 +265,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
   }
   sendMessage() {
     if(this.message != '' && this.message != null && this.chatType == 1){
+      console.log("sendMessage");
       if(this.bSOUser == 'unblock'){
         this.socket.emit('send-message', { text: this.message, blockstatus : this.blockstatus });
       }else{
@@ -268,10 +277,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
         this.groupMessage = '';
     }
     this.sendmessage.setFocus();
-  }
-  ionViewWillLeave() {
-    this.socket.disconnect();
-  }
+  }  
   async showToast(msg) {
     let toast = await this.toastCtrl.create({
       message: msg,
@@ -319,7 +325,16 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
       return wholeDate;
     }
   }
+  ionViewWillLeave() {
+    this.socket.disconnect();
+    console.log("chat-room ionViewWillLeave");
+  }
   ngOnDestroy(){
     this.socket.disconnect();
+  }
+  goBack() {    
+    this.socket.disconnect();    
+    this.router.navigate(['/tabs/chats']);
+    // this.navCtrl.back();
   }
 }

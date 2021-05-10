@@ -27,18 +27,16 @@ export class UpcomingTabComponent implements OnInit {
         if (params.get('userData')) {
           this.consultID = params.get('userData');
         }
-        // console.log(this.consultID);
+        console.log("this.consultID" + this.consultID);
       });
-
       this.userData = JSON.parse(localStorage.getItem('userData'));
-      // console.log(this.userData);
+      console.log("this.userData :" + this.userData);
   }
 
 
   ngOnInit() {
   // console.log('ngonit');
-    if (this.consultID) {
-      
+    if (this.consultID) {      
       this.getConsultProg(this.consultID);
     } else {
       this.getMyprog();
@@ -74,7 +72,14 @@ export class UpcomingTabComponent implements OnInit {
         this.noData=true;
       }
       this.upcomingList = this.getCounter(data.data);
-
+      this.upcomingList = data.data.filter(el => {
+        if (el.image_path) {
+          el.img_arr = el.image_path.split(',');
+        }
+        el.converted = new Date(el.program_date + 'Z');
+        el.expanded = false;
+        return el;
+      });
     });
   }
   getCounter(elementArr) {
