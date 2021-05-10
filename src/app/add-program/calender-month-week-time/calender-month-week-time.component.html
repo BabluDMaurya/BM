@@ -40,7 +40,7 @@
       </ion-item>
     </ion-list>
     <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
-      scrollToHour="{{currentHrs}}" [lockSwipeToPrev]="lockSwipeToPrev" 
+      scrollToHour="{{currentHrs}}" [lockSwipeToPrev]="lockSwipeToPrev" (onEventSelected)="onEventSelected($event)"
       (onTitleChanged)="onViewTitleChanged($event)" (onCurrentDateChanged)="onCurrentDatechanged($event)"  startHour="0"
       endHour="24" step="1" class="calendar-table" (dateSelected)="onDateSelected($event)" (onTimeSelected)="onTimeSelected($event)" ></calendar>
       <!-- <ion-datetime #dateTime1 displayFormat="mm"></ion-datetime> -->
