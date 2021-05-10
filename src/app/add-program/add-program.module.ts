@@ -12,7 +12,7 @@ import { AddProgramPage } from './add-program.page';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { ComponentModule } from '../profile/components.modules';
 import { CalenderMonthWeekTimeComponent } from './../add-program/calender-month-week-time/calender-month-week-time.component';
-import { MbscModule } from '@mobiscroll/angular';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -21,8 +21,7 @@ import { MbscModule } from '@mobiscroll/angular';
     ReactiveFormsModule,
     AddProgramPageRoutingModule,
     NgCalendarModule,
-    ComponentModule,
-    MbscModule
+    ComponentModule
   ],
   declarations: [AddProgramPage ,
     AudioPlayerProgramComponent,ProgramNutritionDetailModalComponent,ViewVideoDetailComponent,CalenderMonthWeekTimeComponent],

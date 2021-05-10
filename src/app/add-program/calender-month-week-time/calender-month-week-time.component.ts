@@ -8,12 +8,8 @@ import {
   CalendarModalOptions,
   CalendarResult
 } from 'ion2-calendar';
-import { setOptions } from '@mobiscroll/angular';
 import { exit } from 'process';
-setOptions({
-  theme: 'ios',
-  themeVariant: 'light'
-});
+
 @Component({
   selector: 'app-calender-month-week-time',
   templateUrl: './calender-month-week-time.component.html',
@@ -177,7 +173,18 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
           var hours = value.Hours.value;
           // console.log(this.hours);
           this.dateObj.setHours((hours),  parseInt(this.minutes));
+          this.repetatedDateCopy.forEach(el => {
+            // console.log(el.getDate());
+            // console.log(this.dateObj.getDate());
+            if(el.getDate() == this.dateObj.getDate()){
+              this.noEvent = false;
+              return false;
+            }else{
+              // this.noEvent = true;
+            }
+          });
           this.repetatedDateCopy.push(this.dateObj);
+          hours  = '';
          
         }
       }
