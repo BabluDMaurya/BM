@@ -421,6 +421,8 @@ export class AddProgramPage implements OnInit {
     this.event.startTime = this.selected.toISOString();
     this.selected.setHours(this.selected.getHours());
     console.log(this.selected.getHours());
+    console.log(this.selected.getTime());
+    console.log(new Date().getTime());
     if (this.selected.getTime() > (new Date().getTime())) {
       this.commonService.presentItemPicker(defaultColumnOptions, buttons);
     } else {

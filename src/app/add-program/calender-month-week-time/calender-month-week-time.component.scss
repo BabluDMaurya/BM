@@ -1,17 +1,21 @@
 .calendar-header{display: flex;justify-content: space-between;align-items: center;}
 .date_items {
-    --ion-item-background: #27a69a !important;
-    color: #fff;
+    --ion-item-background: none !important;
+    color: #000;
 }
 .date_items ion-icon {
     --ion-item-background: transparent;
-    color: #fff;
+    color: #000;
     margin-top: 5px;
 }
 .date_items h6{
     margin-left: 5px;
 }
-.event-detail-container {
-    // max-height: 150px;
-    // overflow: scroll;
+
+.top-heading{display: flex;justify-content: space-between;align-items: center;}
+.text-green {
+    color: #2bbbad !important;
+}
+.top-heading ion-item{
+    --inner-border-width: 0;
 }
