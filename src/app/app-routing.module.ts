@@ -259,12 +259,6 @@ const routes: Routes = [
     path: 'first-message/:id/:chat_type',
     loadChildren: () => import('./chats/first-message/first-message.module').then( m => m.FirstMessagePageModule)
   },
-  {
-    path: 'chat-list',
-    loadChildren: () => import('./chats/chat-list/chat-list.module').then( m => m.ChatListPageModule)
-  },
-
-
 ];
 
 @NgModule({

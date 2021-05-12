@@ -142,27 +142,25 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'chat-list/:list',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../chats/chat-list/chat-list.module').then(m => m.ChatListPageModule)
+          }
+        ]
+      },
+      {
         path: 'chats',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../chats/chat/chat.module').then(m => m.ChatPageModule)
+              import('../chats/chat-list/chat-list.module').then(m => m.ChatListPageModule)
           }
         ]
       },
-
-      // {
-      //   path: 'chats',
-      //   children: [
-      //     {
-      //       path: '',
-      //       loadChildren: () =>
-      //         import('../chats/chat-list/chat-list.module').then(m => m.ChatListPageModule)
-      //     }
-      //   ]
-      // },
-
       {
         path: 'music',
         children: [

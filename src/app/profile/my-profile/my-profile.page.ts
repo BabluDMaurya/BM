@@ -127,21 +127,21 @@ export class MyProfilePage implements OnInit {
   postData() {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
     this.notification.getUnreadCountMyProfile().subscribe((data: any) => {
-      this.notificationCount = data.status.length;
+      this.notificationCount = data.status;
 
       if(data.status.length > 0){
       this.notificationCount.forEach((element, i) => {
-        this.notificationCount[i].count = element.post_likes.length;
-        element.post_likes.filter((f) => {
-          if (f.user_id == this.loginUserData.id) {
-            this.notificationCount[i].liked = true;
-          }
-        });
-        element.post_bookmarks.filter((f) => {
-          if (f.user_id == this.loginUserData.id) {
-            this.myPosts[i].bookmarked = true;
-          }
-        });
+        // this.notificationCount[i].count = element.post_likes.length;
+        // element.post_likes.filter((f) => {
+        //   if (f.user_id == this.loginUserData.id) {
+        //     this.notificationCount[i].liked = true;
+        //   }
+        // });
+        // element.post_bookmarks.filter((f) => {
+        //   if (f.user_id == this.loginUserData.id) {
+        //     this.myPosts[i].bookmarked = true;
+        //   }
+        // });
       });
     }
     if(data.posts != '' && data.posts != null){
