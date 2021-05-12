@@ -4,7 +4,7 @@
 <ion-header class="top-header ion-no-padding">
   <ion-list class="top-heading three-block">
     <ion-item slot="start">
-      <ion-buttons class="ion-no-margin" (click)="closeModal('')">
+      <ion-buttons class="ion-no-margin" (click)="back('')">
         <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
       </ion-buttons>
     </ion-item>
@@ -51,8 +51,8 @@
 
   </ion-col>
   <ion-item class="date_items" *ngFor="let dates of repetatedDateCopy; let i =index"> 
-    <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="preRemovedate(i)"></ion-icon>
     <h6>{{dates | date :'medium'}} </h6>
+    <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="preRemovedate(i)"></ion-icon>
   </ion-item> 
 </ion-row>
 </ion-content>

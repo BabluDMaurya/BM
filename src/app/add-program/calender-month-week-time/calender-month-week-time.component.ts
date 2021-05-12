@@ -42,6 +42,7 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
   pretime:any;
   mainHours:any;
   durTime:any;
+  progEndTime:any;
   minDate = new Date().toISOString();
   eventSource = [];
   viewTitle;
@@ -65,7 +66,7 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
     
     this.progDuration = this.navParams.data.progDuration;
     this.preCalendarData = this.navParams.data.preCalendarData;
-    this.pretime = this.preCalendarData.getMinutes() + parseInt(this.progDuration)
+    // this.pretime = this.preCalendarData.getMinutes() + parseInt(this.progDuration)
   }
 
   ngOnInit() {
@@ -106,47 +107,60 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
     // console.log('ff');
   }
   onTimeSelected(event){
-    // console.log(event);
+    console.log(event);
     this.minutes = this.navParams.data.minutes;
     this.noEvent = true;
     this.eventList = event;
+    var nd = new Date(event.selectedTime + 'Z');
     // console.log(this.calendarData);
     this.mainHours = this.calendarData;
     let hourspan = this.mainHours;
     this.durTime = this.preCalendarData;
-    this.durTime.setMinutes(this.pretime);
+    // this.durTime.setMinutes(this.pretime);
     // this.durTime.setMinutes(this.durTime.getMinutes() + parseInt(this.progDuration));
-    console.log(this.durTime + 'dur');
+    // console.log(this.durTime + 'dur');
     hourspan.setMinutes(parseInt(this.minutes));
     this.dateObj = new Date(event.selectedTime + 'Z');
     
+    nd.setHours((hourspan.getHours()),  parseInt(this.minutes)+parseInt(this.progDuration));
+    this.progEndTime = nd;
     this.dateObj.setHours((hourspan.getHours()),  parseInt(this.minutes));
-    console.log(hourspan.getHours());
+    // nd.setMinutes(nd.getMinutes() + parseInt(this.progDuration));
+    console.log(this.progEndTime + ' end time');
+    // console.log(this.dateObj + 'click date');
+    // console.log(this.dateObj.getTime());
+    // console.log(this.mainHours + 'pre selet');
+    // console.log(this.mainHours.getTime());
     if(event.events.length > 0){
       event.events.forEach(el => {
         if (el.startTime.getHours() == hourspan.getHours()) {
           // console.log(el.startTime);
-          // console.log(this.durTime);
-          console.log(el.endTime.getMinutes());
-          console.log(el.startTime.getTime());
-          console.log(this.mainHours.getTime());
-          console.log(el.endTime.getTime());
-          console.log(this.durTime.getTime());
+          // console.log(el.startTime);
+          // console.log(el.endTime.getMinutes());
+          console.log(el.startTime.getTime() + 'event time');
+          // console.log(el.endTime.getTime());
+          // console.log(nd.getTime());          
+          // console.log(this.durTime.getTime());
           this.noEvent = false;
-          // if (this.mainHours.getTime() > (el.startTime.getTime()) && this.mainHours.getTime() < (el.endTime.getTime()) ) {
-          //   this.selectNewTime();
-          // }else if(el.startTime.getTime() > (this.mainHours.getTime()) && el.startTime.getTime() > (this.durTime.getTime()) ){
-          //   this.noEvent = true;
-          // }
-          if(el.startTime.getTime() > (this.mainHours.getTime()) && el.startTime.getTime() < (this.durTime.getTime())){
-              this.noEvent = true;
-              console.log('first');
-          }else if(el.endTime.getTime() < (this.mainHours.getTime()) && el.endTime.getTime() > (this.durTime.getTime())){
-              this.noEvent = true;
-              console.log('second');
+          if ( (el.startTime.getTime() > this.dateObj.getTime() && el.startTime.getTime() >= nd.getTime()) || (el.endTime.getTime() <= this.dateObj.getTime())) {
+            console.log('start time' + this.dateObj.getTime());
+            console.log('End time' + nd.getTime());
+            console.log('event start time' + el.startTime.getTime());
+            console.log('event end time' + el.endTime.getTime());
+            this.noEvent = true;
+            
           }else{
             this.selectNewTime();
           }
+          // if(el.startTime.getTime() > (this.mainHours.getTime()) && el.startTime.getTime() > (this.durTime.getTime())){
+          //     this.noEvent = true;
+          //     console.log('first');
+          // }else if(el.endTime.getTime() < (this.mainHours.getTime()) && el.endTime.getTime() > (this.durTime.getTime())){
+          //     this.noEvent = true;
+          //     console.log('second');
+          // }else{
+          //   this.selectNewTime();
+          // }
       }
       // else{
       //   }
@@ -175,7 +189,7 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
       }
     }
     this.minutes = '';
-    this.dateObj = '';
+    // this.dateObj = '';
     
   }
 
@@ -211,30 +225,50 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
         handler: (value) => { 
           this.noEvent = true;
           var hours = value.Hours.value;
-          // console.log(this.hours);
-          this.dateObj.setMinutes(parseInt(hours));
+          console.log(hours);
+          
+          this.dateObj.setMinutes(hours);
+          console.log(this.dateObj);
+          console.log(this.durTime);
+          
           this.eventList.events.forEach(el => {
-            if(el.startTime.getTime() < (this.dateObj.getTime()) && el.startTime.getTime() < (this.durTime.getTime())){
-              this.noEvent = true;
-              console.log('first');
-          }else if(el.endTime.getTime() < (this.dateObj.getTime()) && el.endTime.getTime() > (this.durTime.getTime())){
-              this.noEvent = true;
-              console.log('second');
-          }else{
-              this.commonService.presentToast('this time slot already has event');
+            if (el.startTime.getHours() == this.dateObj.getHours()) {
+              
+              console.log(el.startTime.getTime());
+              console.log(el.endTime.getTime());
+              console.log(this.dateObj.getTime());          
+              console.log(this.durTime.getTime());
+            // if(el.startTime.getTime() < (this.dateObj.getTime()) && el.startTime.getTime() < (this.durTime.getTime())){
+            //   this.noEvent = true;
+            //   console.log('first');
+            // }else if(el.endTime.getTime() < (this.dateObj.getTime()) && el.endTime.getTime() > (this.durTime.getTime())){
+            //     this.noEvent = true;
+            //     console.log('second');
+            // }
+            if ((el.startTime.getTime() > this.dateObj.getTime() && el.startTime.getTime() >= this.progEndTime.getTime()) || (el.endTime.getTime() <= this.dateObj.getTime())) {  
+              this.noEvent == true;
             }
+            else{
+              this.commonService.presentToast('this time slot already has event');
+              this.noEvent = false;
+            }
+          }
           });
+        
           this.repetatedDateCopy.forEach(el => {
             // console.log(el.getDate());
             // console.log(this.dateObj.getDate());
             if(el.getDate() == this.dateObj.getDate()){
               this.noEvent = false;
-              return false;
+              return ;
             }else{
               // this.noEvent = true;
             }
           });
-          this.repetatedDateCopy.push(this.dateObj);
+          if(this.noEvent == true){
+            this.repetatedDateCopy.push(this.dateObj);
+          }
+          
           hours  = '';
          
         }
@@ -249,9 +283,13 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
     this.repetatedDateCopy.splice(index, 1);
   }
   onCurrentDatechanged(ev){
-    console.log(ev);
+    // console.log(ev);
   }
   closeModal(data) {
+    this.commonService.dismissModal(this.repetatedDateCopy);
+  }
+  back(data) {
+    this.repetatedDateCopy = [];
     this.commonService.dismissModal(this.repetatedDateCopy);
   }
   
