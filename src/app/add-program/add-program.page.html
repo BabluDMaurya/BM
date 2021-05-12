@@ -166,7 +166,7 @@
                   <ion-radio slot="start" value="1" formControlName="participantsType"
                     [disabled]="f.programType.value==5 || !f.programType.value?true:false"></ion-radio>
                 </ion-item>
-                <ion-item lines="none" class="mb-10" (click)="clearExcl()">
+                <ion-item lines="none" class="mb-10 sel-parti-open-item" (click)="clearExcl()">
                   <ion-label>Open (Let users request to join)</ion-label>
                   <ion-radio slot="start" value="2" checked formControlName="participantsType"></ion-radio>
                 </ion-item>
@@ -340,16 +340,20 @@
         </ion-radio-group>      
       </ion-item>
       </div>
+     
+      <ion-list class="prog_btn_list">
       <ion-item lines="none" (click)="verifyUserInfoModal()" *ngIf="loginUserData.trilloMatch != '1' && programDetail.type_id != 'video' ">
-        <ion-button class="green">Earn with Intoative</ion-button>
+        <ion-button class="green btn button-medium">Earn with Intoative</ion-button>
       </ion-item>
+    
+      <ion-item class="" *ngIf="approval_btn && !request_approve_btn ">
+        <ion-button (click)="applyAdvertise()" class="green btn button-medium">Request Approval</ion-button> 
+      </ion-item>
+      <ion-item class="" *ngIf="request_approve_btn">
+        <ion-button class="green btn button-medium">Request Sent</ion-button> 
+      </ion-item>
+      </ion-list>
     </form>
-      <ion-footer class="sticky-footer" *ngIf="approval_btn && !request_approve_btn ">
-        <ion-button (click)="applyAdvertise()" class="green">Request Approval</ion-button> 
-      </ion-footer>
-      <ion-footer class="sticky-footer" *ngIf="request_approve_btn">
-        <ion-button class="green">Request Sent</ion-button> 
-      </ion-footer>
     </div>
 
     <!-- <ion-row class="main_content">

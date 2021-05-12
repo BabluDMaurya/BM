@@ -234,6 +234,10 @@ export class DateTimeModalComponent implements OnInit {
     }
   }
   async newtest(){
+    if(!this.duration){
+      this.commonService.presentToast('Please select Duration');
+      return;
+    }else {
     this.repetatedDate = []; 
     this.repetatedDateCopy=[];
     this.repetative = 1;
@@ -245,7 +249,7 @@ export class DateTimeModalComponent implements OnInit {
       component: CalenderMonthWeekTimeComponent,
       cssClass: 'fullModal',
       
-      componentProps: { 'minutes':this.minutes,'programList':this.programList,'calendarData':this.calendarData,options: options }
+      componentProps: { 'minutes':this.minutes,'programList':this.programList,'calendarData':this.calendarData,options: options,'progDuration':this.duration,'preCalendarData':this.calendarData }
     });
     modal.onDidDismiss().then((data: any) => {
       console.log(data);
@@ -265,9 +269,10 @@ export class DateTimeModalComponent implements OnInit {
       });
       console.log(this.repetatedDate);
       }
-      
+    
   });
     return await modal.present();
+  } 
   }
   addExtraDay(event) {
     let val =new Date(event.detail.value);

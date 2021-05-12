@@ -59,3 +59,18 @@ ion-item.floatingItem{
         ion-button{width: 100%;margin:0;--border-radius: 0;height: 100%;--background: #27a69a;}
     }
 }
+.sel-parti-open-item{
+    max-width: 160px;
+}
+.sel-parti-open-item .sc-ion-label-md-h {
+    white-space: unset;
+}
+.prog_btn_list .btn{
+    --padding-start: 2.1em;
+    --padding-end: 2.1em;
+    font-size: 14px;
+    text-transform: uppercase;
+    height: 40px;
+    letter-spacing: 1px;
+
+}
