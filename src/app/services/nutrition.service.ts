@@ -61,7 +61,9 @@ export class NutritionService {
   insertNutrition(data: any): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/insertNutrition', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('insertNutrition', data)));
   }
-  
+  uploadGroupPicture(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/uploadGroupPicture', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('uploadGroupPicture', formData)));
+  }
   uploadPost(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/uploadPost', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('uploadPost', formData)));
   }

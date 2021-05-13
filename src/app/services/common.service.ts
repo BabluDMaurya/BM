@@ -11,6 +11,7 @@ import { Config } from "../config/config";
 import { HttpErrorHandlerService, HandleError } from "./http-error-handler.service";
 import { NotificationService } from '../services/notification.service';
 import { ChatService } from 'src/app/services/chat.service';
+import { ChatRoomsComponent } from '../chats/chat-rooms/chat-rooms.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -94,6 +95,13 @@ export class CommonService implements OnDestroy{
                     (data: any) => {
                       this.dismissLoader();
                       if(data.status == 'success'){
+                        var fileData = {
+                          chatType : data.type,
+                          room : data.room,
+                          receiverId : parseInt(data.requestID),
+                          }                          
+                        // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
+
                         this.router.navigate(['/chat-room/'+data.requestID +'/'+data.room+'/'+data.type]);
                       }else{
                           console.log('Somthing wrong');

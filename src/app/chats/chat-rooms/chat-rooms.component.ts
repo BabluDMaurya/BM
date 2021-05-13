@@ -31,6 +31,7 @@ export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
   ioConnection: any;
   message = '';
   messages = [];
+  chatListArr : any = [];
   storeMessage = '';
   storeMessages : any;  
   currentUser = '';
@@ -108,7 +109,7 @@ export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
   //   // console.log('ionViewDidEnter');
   // } 
   getStart(){   
-    // this.socket.connect();
+    this.socket.connect();
     this.currentUser = this.room;
     this.socket.emit('set-name', this.room,this.chatType);
     this.socket.fromEvent('users-changed').subscribe(data => {
@@ -332,16 +333,20 @@ export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
     }
   }
   ionViewWillLeave() {
-    this.socket.disconnect();
+    // this.socket.disconnect();
     console.log("chat-room ionViewWillLeave");
   }
   ngOnDestroy(){
-    this.socket.disconnect();
+    // this.socket.disconnect();
   }
   goBack() {    
-    console.log("chat-room goBack");
-    // this.socket.disconnect(); 
-    this.commonService.dismissModal();
+    console.log("chat-room goBack");    
+    this.socket.emit("update-chat-list", this.userData.id);
+    this.socket.fromEvent('my-chat-list').subscribe(receiveMessageArr => {  
+      this.chatListArr = receiveMessageArr;
+      this.socket.disconnect(); 
+      this.commonService.dismissModal(this.chatListArr);
+    });    
   }
 
 }

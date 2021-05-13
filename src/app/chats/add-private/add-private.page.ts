@@ -7,7 +7,8 @@ import { Config } from './../../config/config';
 import { SearchService } from './../../services/search.service';
 import { ChatService } from 'src/app/services/chat.service';
 import { Router } from '@angular/router';
-
+import { ChatRoomsComponent } from './../chat-rooms/chat-rooms.component';
+import { CreateGroupChatComponent } from './../create-group-chat/create-group-chat.component';
 @Component({
   selector: 'app-add-private',
   templateUrl: './add-private.page.html',
@@ -100,14 +101,29 @@ export class AddPrivatePage implements OnInit {
       this.formData.type = 2;
       let title :any = 'Group Chat';
       let msg : any = 'Enter your Group Name Bellow';
+      var fileData = {
+        title : title,
+        msg : msg,
+        formData : this.formData,
+        }
+
       this.commonService.presentPromptRedirect(title,msg,this.formData);
+      // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
+      // this.commonService.presentModal(ChatRoomsComponent,'bottomModal',fileData);
     }else{    
       this.commonService.presentLoader();  
       this.formData.type = 1;
       this.chatService.sendChatRequest(this.formData).subscribe(
         (data: any) => {
           if(data.status == 'success'){
-            this.router.navigate(['/chat-room/'+data.reciverID+'/'+data.room+'/1']);
+            var fileData = {
+              chatType : 1,
+              room : data.room,
+              receiverId : parseInt(data.reciverID),
+              }
+            var returndata = this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
+            // console.log("returndata :" + JSON.stringify(returndata));
+            // this.router.navigate(['/chat-room/'+data.reciverID+'/'+data.room+'/1']);
           }else{
               console.log('Somthing wrong');
           }

@@ -2,6 +2,9 @@ import { Component, OnInit ,Input} from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
 import { Router } from '@angular/router';
 import { PopoverController} from '@ionic/angular';
+import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
+import { CommonService } from '../../services/common.service';
+import { NutritionService } from '../../services/nutrition.service';
 
 @Component({
   selector: 'app-dropdown',
@@ -19,10 +22,14 @@ export class DropdownComponent implements OnInit {
   status:any = 0;
   returnStatus:any;
   adminId : any;
+  gallaryImgPath: any = [];
   constructor(    
     private dataService: ChatService,
     private router:Router,
-    public popoverController: PopoverController
+    public popoverController: PopoverController,
+    private imagePicker: ImagePicker,
+    private commonService: CommonService,
+    private nutritionService: NutritionService,
     ) { }
   DismissClick(data:any) {
     this.popoverController.dismiss(data);
@@ -72,6 +79,44 @@ export class DropdownComponent implements OnInit {
           this.router.navigate(['/tabs/chats']);
         }
       });
+  }
+  openGallery() {
+    let options: ImagePickerOptions = {
+      maximumImagesCount: 8,
+      outputType: 1
+    };
+    if (!this.imagePicker.hasReadPermission) {
+      this.imagePicker.requestReadPermission();
+      return null;
+    }
+    if (this.imagePicker.hasReadPermission) {
+      this.imagePicker.getPictures(options).then((results) => {
+        console.log('batman', results);
+        if (results == 'OK') {
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          this.gallaryImgPath.push('data:image/jpeg;base64,' + results[i]);
+        }
+      }, (err) => { alert(err) });
+    }
+    if (this.gallaryImgPath.length == 0) {
+      return false;
+    }else{
+      this.commonService.presentLoader();
+      this.nutritionService.uploadPost({ 'file[]': this.gallaryImgPath, 'description': "Hello"}).subscribe((data: any) => {
+        this.commonService.dismissLoader();
+        this.DismissClick('refresh');
+        if(data.deleted){
+          this.router.navigate(['/tabs/chats']);
+        }
+      }, (err) => {  
+        this.commonService.dismissLoader();
+      });
+    }
+  }
+  addgrouppicture(){
+    console.log("Group Image");
   }
   exitgroup(){
     this.dataService.exitGroup({'id':this.receiverId}).subscribe(
