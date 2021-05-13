@@ -19,6 +19,7 @@ export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
   @Input() chatType;
   @Input() room;
   @Input() receiverId;
+  @Input() returnUrl;
 
 
   @ViewChild(IonContent, { read: IonContent,  static: false }) contentArea: IonContent;
@@ -346,7 +347,10 @@ export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
       this.chatListArr = receiveMessageArr;
       this.socket.disconnect(); 
       this.commonService.dismissModal(this.chatListArr);
-    });    
+    });
+    if(this.returnUrl == 'list'){
+      this.router.navigate(['/tabs/chats']);
+    }
   }
 
 }

@@ -31,7 +31,7 @@ export class AddPrivatePage implements OnInit {
     private searchService: SearchService,
     private chatService: ChatService,
     private router:Router,
-  ) {
+  ) {    
     this.userData = JSON.parse(localStorage.getItem('userData'));
     // this.formData = this.navParams.data.formData;
     // this.source = this.navParams.data.source;
@@ -104,12 +104,12 @@ export class AddPrivatePage implements OnInit {
       var fileData = {
         title : title,
         msg : msg,
+        returnUrl : 'list',
         formData : this.formData,
         }
 
-      this.commonService.presentPromptRedirect(title,msg,this.formData);
-      // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
-      // this.commonService.presentModal(ChatRoomsComponent,'bottomModal',fileData);
+      // this.commonService.presentPromptRedirect(title,msg,this.formData);      
+      this.commonService.presentModal(CreateGroupChatComponent,'bottomModal',fileData);
     }else{    
       this.commonService.presentLoader();  
       this.formData.type = 1;
@@ -117,6 +117,7 @@ export class AddPrivatePage implements OnInit {
         (data: any) => {
           if(data.status == 'success'){
             var fileData = {
+              returnUrl : 'list',
               chatType : 1,
               room : data.room,
               receiverId : parseInt(data.reciverID),
