@@ -384,7 +384,7 @@ export class AddProgramPage implements OnInit {
   dismissLoader() {
     this.commonService.dismissLoader();
   }
-  ilepreview(){
+  filepreview(){
     this.previewAnyFile.preview(this.selectedVideo)
     .then((res: any) => console.log(res))
     .catch((error: any) => console.error(error));

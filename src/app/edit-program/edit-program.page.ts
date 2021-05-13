@@ -617,7 +617,8 @@ export class EditProgramPage implements OnInit {
     var fees = this.finalForm.value;
     var progData = this.programForm.value;
     this.programList.program_fee = fees.programFees;
-    this.programList.file = fees.file;
+    // this.programList.file = fees.file;
+    this.programList.value.file = this.gallaryImgPath;
     this.programList.description = progData.programDescription;
     this.programList.title = progData.programTitle;
     
