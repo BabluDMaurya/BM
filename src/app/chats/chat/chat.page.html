@@ -21,7 +21,7 @@
   </ion-toolbar>
   <ion-list class="followers-list">
     <ion-list-header class="ion-padding-horizontal">
-      <h5 class="ion-no-margin">Messages</h5>
+      <h5 class="ion-no-margin" [routerLink]="['/chat-list']">Messages</h5>
       <ion-label *ngIf="requestCount > 0" class="text-green" (click)="showRequests()">{{requestCount}} Requests</ion-label>
     </ion-list-header>    
     <ion-list lines="none" detail="false" *ngFor="let groups of items | filter:term">
@@ -37,8 +37,8 @@
         <span class="list-name" *ngIf="groups.recentchat">{{groups.recentchat.message}}</span>
         </ion-label>
       <img slot="end" class="w26" src="../../../assets/images/follower-user.svg" />
-      <ion-badge *ngIf="groups.receiverID == userData.id  && groups.unreadmessagereceiver.count > 0 " color="secondary" slot="end">{{groups.unreadmessagereceiver.count}}</ion-badge>
-      <ion-badge *ngIf="groups.receiverID != userData.id  && groups.unreadmessagesender.count > 0 " color="secondary" slot="end">{{groups.unreadmessagesender.count}}</ion-badge>
+      <ion-badge *ngIf="groups.receiverID == userData.id" color="secondary" slot="end">{{groups.unreadmessagereceiver.count}}</ion-badge>
+      <!-- <ion-badge *ngIf="groups.receiverID != userData.id  && groups.unreadmessagesender.count > 0 " color="secondary" slot="end">{{groups.unreadmessagesender.count}}</ion-badge> -->
     </ion-item>
   </div>   
   <div *ngIf="groups.type == 2">

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild,AfterViewInit,OnDestroy} from '@angular/core';
+import { Component, OnInit, ViewChild,AfterViewInit,OnDestroy,Input} from '@angular/core';
 import { PopoverController, NavController,AlertController, IonThumbnail} from '@ionic/angular';
 import { DropdownComponent } from './../dropdown/dropdown.component';
 import { IonContent,IonTextarea } from '@ionic/angular';
@@ -11,11 +11,16 @@ import { CommonService } from 'src/app/services/common.service';
 import { Config } from './../../config/config';
 
 @Component({
-  selector: 'app-chat-room',
-  templateUrl: './chat-room.page.html',
-  styleUrls: ['../../app.component.scss', './chat-room.page.scss'],
+  selector: 'app-chat-rooms',
+  templateUrl: './chat-rooms.component.html',
+  styleUrls: ['../../app.component.scss','./chat-rooms.component.scss'],
 })
-export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
+export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
+  @Input() chatType;
+  @Input() room;
+  @Input() receiverId;
+
+
   @ViewChild(IonContent, { read: IonContent,  static: false }) contentArea: IonContent;
   @ViewChild(IonTextarea, { read: IonTextarea,  static: false }) sendmessage: IonTextarea;
   messageBox = false;
@@ -30,8 +35,8 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
   storeMessages : any;  
   currentUser = '';
   userData:any;
-  receiverId :any;
-  room : any ;
+  // receiverId :any;
+  // room : any ;
   user_name : any;
   display_name :any;
   profile_pic : any;
@@ -41,7 +46,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
   bSOUser : any = 'unblock';
   bidOUser : any;
   chatDates : string;
-  chatType : any = 0;
+  // chatType : any = 0;
   groupName : any = '';
   adminId : any = '';
   groupMember : any = '';
@@ -67,15 +72,15 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
   ngOnInit() {
     // this.commonService.presentLoader();
     this.userData = JSON.parse(localStorage.getItem('userData'));
-    this.actRoute.paramMap.subscribe((params: ParamMap) => {
-      this.room = params.get('room');
+    // this.actRoute.paramMap.subscribe((params: ParamMap) => {
+    //   this.room = params.get('room');
       console.log("room :" + this.room);
       //--reciver is ( in private chat is sender id and in group chat request id)-----
-      this.receiverId = params.get('receiver');
+      // this.receiverId = params.get('receiver');
       console.log("receiverId :" + this.receiverId);
-      this.chatType = params.get('type');
+      // this.chatType = params.get('type');
       console.log("chattype :" + this.chatType);
-    });
+    // });
   }
   ionViewWillEnter(){
     this.getStart();
@@ -83,10 +88,11 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
     if(this.chatType == 2){
       //-----group chat--- 
       this.groupChat();
+      console.log("groupChat ionViewWillEnter chatRooms 1");
     }else{
       //-----private chat---  
       this.privateChat();
-      console.log("privateChat");
+      console.log("privateChat ionViewWillEnter chatRooms 1");
     }
     // console.log('ngInit');
     // this.commonService.dismissLoader();
@@ -102,7 +108,7 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
   //   // console.log('ionViewDidEnter');
   // } 
   getStart(){   
-    this.socket.connect();
+    // this.socket.connect();
     this.currentUser = this.room;
     this.socket.emit('set-name', this.room,this.chatType);
     this.socket.fromEvent('users-changed').subscribe(data => {
@@ -176,11 +182,11 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
     this.socket.fromEvent('UserOnLineStatus').subscribe(UserOnLineStatus => {
       this.UserOnLineStatus = UserOnLineStatus;
     });
-
+    
+    console.log("UserData.id :" + this.userData.id);
+    console.log("receiverId :" + this.receiverId);
     this.socket.emit("addUser", this.userData.id,this.receiverId);
     this.socket.emit("newUser", [this.userData.id,this.receiverId, this.room]);
-    
-
     this.socket.emit("storemassagerequest",this.userData.id,this.receiverId);
 
     this.socket.fromEvent('stormessage').subscribe(storMessage => {      
@@ -333,8 +339,9 @@ export class ChatRoomPage implements OnInit ,AfterViewInit,OnDestroy{
     this.socket.disconnect();
   }
   goBack() {    
-    this.socket.disconnect();    
-    // this.router.navigate(['/tabs/chats']);
-    this.navCtrl.back();
+    console.log("chat-room goBack");
+    // this.socket.disconnect(); 
+    this.commonService.dismissModal();
   }
+
 }

@@ -18,12 +18,12 @@ export class ChatService {
   public options:any;
   constructor(private http :HttpClient,httpErrorHandler:HttpErrorHandlerService) { 
     this.items = [
-      { title: "Pooja0001" },
-      { title: "Prateek0002" },
-      { title: "Darshan0003" },
-      { title: "Viraj0004" },
-      { title: "Bablu0005" },
-      { title: "Allister0006" }
+      // { title: "Pooja0001" },
+      // { title: "Prateek0002" },
+      // { title: "Darshan0003" },
+      // { title: "Viraj0004" },
+      // { title: "Bablu0005" },
+      // { title: "Allister0006" }
     ];
     this.handleError= httpErrorHandler.createHandleError('SearchService');
   }
@@ -110,6 +110,9 @@ export class ChatService {
     return this.http.post<any>(Config.ApiUrl+'api/auth/chatGroup',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('chatGroup',data)));
 
   }
+  checkChatProgram(data:any): Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/auth/checkChatProgram',data,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('checkChatProgram',data)));
+}
   
   filterItems(searchTerm) {
     return this.items.filter(item => {

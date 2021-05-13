@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProgramDetailsPageRoutingModule } from './program-details-routing.module';
+import { FirstMessagePageRoutingModule } from './first-message-routing.module';
 
-import { ProgramDetailsPage } from './program-details.page';
+import { FirstMessagePage } from './first-message.page';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
@@ -14,9 +14,8 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     CommonModule,
     FormsModule,
     IonicModule,
-    ProgramDetailsPageRoutingModule,
-    LazyLoadImageModule
+    FirstMessagePageRoutingModule,LazyLoadImageModule
   ],
-  declarations: [ProgramDetailsPage]
+  declarations: [FirstMessagePage]
 })
-export class ProgramDetailsPageModule {}
+export class FirstMessagePageModule {}

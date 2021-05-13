@@ -304,7 +304,6 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
   back(data) {
     this.repetatedDateCopy = [];
     this.commonService.dismissModal(this.repetatedDateCopy);
-  }
-  
+  } 
   
 }

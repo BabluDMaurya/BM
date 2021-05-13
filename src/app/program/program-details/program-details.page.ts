@@ -13,6 +13,7 @@ import { Observable, timer } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 import{VerifyUserInfoComponent} from "../../modalContent/verify-user-info/verify-user-info.component";
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { ChatService } from 'src/app/services/chat.service';
 import { HttpClient} from '@angular/common/http';
 
 /* To try the app with Enablex hosted service you need to set the kTry = true */
@@ -54,6 +55,7 @@ export class ProgramDetailsPage implements OnInit {
   broadcastId: any;
   programId: any;
   programDetail: any;
+  programImage :any;
   programTitle:any;
   requestSent: any;
   userList: any;
@@ -62,6 +64,7 @@ export class ProgramDetailsPage implements OnInit {
   program_fee:any;
   programDateTime : any;
   programFee:any;
+  defaultPostImage : any = './../../../assets/images/loading.jpg';
     ANDROID_PERMISSIONS = [
     this.androidPermissions.PERMISSION.CAMERA,
     this.androidPermissions.PERMISSION.RECORD_AUDIO,
@@ -75,6 +78,7 @@ export class ProgramDetailsPage implements OnInit {
     public platform: Platform,
     public router : Router,
     public httpClient : HttpClient,
+    private chatService : ChatService
     ) {
 
   }
@@ -193,6 +197,7 @@ export class ProgramDetailsPage implements OnInit {
       this.initRoom();
       
       this.programDetail.img_array =data.programData.image_path.split(','); 
+      this.programImage = this.programDetail.img_array[0];
       //  ------------ C O U N T   D O W N   T I M E R ---------
       let a: any = new Date(this.programDetail.program_date + 'Z');
       this.programDateTime = a;
@@ -296,8 +301,25 @@ export class ProgramDetailsPage implements OnInit {
     this.commonService.presentModal(EquipmentsComponent, 'halfModal', { 'programDetail': this.programDetail  });
   }
   showChatUsers() {
-    if(this.programType != "public"){
-      this.router.navigate(["/chat-consultant/"+this.programId+"/3"]); 
+    if(this.programType != "public"){         
+      this.commonService.presentLoader();      
+      this.chatService.checkChatProgram({'programId':this.programId,'type':3}).subscribe((data: any) => {       
+        if(data.id > 0){       
+          this.commonService.dismissLoader(); 
+          var chatRoom = data.room_id;    
+          var chatReceiverId = data.group_id; 
+          var chatType = 2;    
+          this.router.navigate(['/chat-room/'+chatReceiverId+'/'+chatRoom+'/'+chatType]);
+        }else{
+          this.commonService.dismissLoader();
+          // chat_type = 1:consultant,2:user,3:program
+          this.router.navigate(["/first-message/"+ this.programId + "/3"]);
+        }      
+      },
+      err=> {
+        this.commonService.presentToast("Couldnt load data, Something went wrong.");
+        this.commonService.dismissLoader();      
+      });
     }else{
       this.commonService.presentToast("Chat Not Allow on Public Program");
     }

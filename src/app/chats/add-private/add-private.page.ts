@@ -100,7 +100,6 @@ export class AddPrivatePage implements OnInit {
       this.formData.type = 2;
       let title :any = 'Group Chat';
       let msg : any = 'Enter your Group Name Bellow';
-      let Url : any = '/chat-room/29/46';
       this.commonService.presentPromptRedirect(title,msg,this.formData);
     }else{    
       this.commonService.presentLoader();  

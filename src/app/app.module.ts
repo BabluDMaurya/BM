@@ -1,3 +1,4 @@
+import { MbscModule } from '@mobiscroll/angular';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -47,6 +48,7 @@ import { UserModalComponent } from './add-program/user-modal/user-modal.componen
 import { UserListComponent } from './add-program/user-list/user-list.component';
 import { MusicVolumeModalComponent } from './add-video/music-volume-modal/music-volume-modal.component';
 import { MusicVolComponent } from './add-program/music-vol/music-vol.component';
+import {ChatRoomsComponent}  from './chats/chat-rooms/chat-rooms.component';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
@@ -91,7 +93,8 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     RequestedDropdownComponent, FormatTimePipe, EquipmentsComponent,
     GroupusersModalComponent, DropdownComponent, PlaylistDropdownComponent,
     RequestsModalComponent, ParticipantsComponent, AdDetailsComponent,
-    SponserCommentComponent,  MusicDropdownComponent,AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent
+    SponserCommentComponent,  MusicDropdownComponent,AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent,
+    ChatRoomsComponent
   ],
 
   entryComponents: [UserDetailsComponent, FollowersComponent, FollowingComponent,
@@ -102,9 +105,10 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     PopoverComponent, DateTimeModalComponent, EquipmentsComponent, AddEquipmentsComponent
     , VideosThumbListComponent, ScheduleModalComponent, RequestedDropdownComponent,
     GroupusersModalComponent, ParticipantsComponent, DropdownComponent, RequestsModalComponent,
-    AdDetailsComponent, SponserCommentComponent, AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent],
+    AdDetailsComponent, SponserCommentComponent, AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent,ChatRoomsComponent],
 
   imports: [ 
+    MbscModule,  
     BrowserModule,
     IonicModule.forRoot({
 

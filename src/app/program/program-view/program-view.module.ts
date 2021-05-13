@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ProgramViewPageRoutingModule } from './program-view-routing.module';
-
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ProgramViewPage } from './program-view.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { ProgramViewPage } from './program-view.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ProgramViewPageRoutingModule
+    ProgramViewPageRoutingModule,
+    LazyLoadImageModule
   ],
   declarations: [ProgramViewPage]
 })

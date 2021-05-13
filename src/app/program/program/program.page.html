@@ -74,18 +74,18 @@
       <div *ngIf="scheduleList &&  !showAll">
         <ion-card *ngFor="let program of scheduleList; let i = index;" class="ion-no-margin upcomingCard">
           <ion-item lines="none">
-            <ion-avatar slot="start" [routerLink]="['/program-details',program.id]">
+            <ion-avatar slot="start" [routerLink]="(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]">
               <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
               <img src="../../../assets/images/loading.jpg" *ngIf="!program?.image_path">
             </ion-avatar>
-            <ion-label [routerLink]="['/program-details', program.id]">
+            <ion-label [routerLink]="(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]">
               <h3 class="list-person">{{program?.title}}</h3>
               <span class="list-name d-block">{{program?.type_id}}</span>
               <span class="list-name">By: {{program?.program_user?.user_name}}</span>
               <p class="text-green">{{program?.converted |date:'medium'}}</p>
             </ion-label>
             <div class="action-links" slot="end">
-              <ion-icon ios="ios-more" md="md-more" (click)="hostingDropdown(program?.id)"></ion-icon>
+              <ion-icon ios="ios-more" md="md-more" *ngIf="(program?.user_id == userData?.id)" (click)="hostingDropdown(program?.id)"></ion-icon>
               <ion-icon ios="ios-restaurant" md="md-restaurant" (click)="showSchedule(program)"></ion-icon>
              </div>
           </ion-item>          
@@ -94,24 +94,24 @@
       <div *ngIf="showAll">
         <ion-card *ngFor="let program of allProgramList | programFilter; let j = index;" class="ion-no-margin">
           <ion-item class="item-card">
-            <ion-avatar slot="start" [routerLink]="['/program-details',program.id]">
+            <ion-avatar slot="start" [routerLink]="(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]">
               <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
               <img src="../../../assets/images/loading.jpg" *ngIf="!program?.image_path">
             </ion-avatar>
-            <ion-label [routerLink]="['/program-details', program.id]">
+            <ion-label [routerLink]="(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]">
               <h3 class="list-person">{{program?.title}}</h3>
               <span class="list-name d-block">{{program?.type_id}}</span>
               <span class="list-name">By: {{program?.program_user?.user_name}}</span>
               <p class="text-green">{{program?.converted |date:'medium'}}</p>
             </ion-label>
             <div class="action-links" slot="end">
-              <ion-icon ios="ios-more" md="md-more" (click)="hostingDropdown(program?.id)"></ion-icon>
+              <ion-icon ios="ios-more" md="md-more" *ngIf="(program?.user_id == userData?.id)" (click)="hostingDropdown(program?.id)"></ion-icon>
               <ion-icon ios="ios-restaurant" md="md-restaurant" (click)="showSchedule(program)"></ion-icon>
              </div>
           </ion-item>          
         </ion-card>
       </div>
-      <div *ngIf="scheduleList?.length < 1 && allProgramList?.length<1" class="no-data">
+      <div *ngIf="noScheduleList" class="no-data">
         <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
         <p>No Schedule Program</p>
       </div>
@@ -259,7 +259,7 @@
         </div>
       </ion-item>
       </ion-card>
-      <div *ngIf="reqProgramList?.length < 1" class="no-data">
+      <div *ngIf="noReqProgramList" class="no-data">
         <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
         <p>No Requested Program</p>
       </div>

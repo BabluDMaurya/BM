@@ -18,8 +18,7 @@
     <ion-col size="12" class="ion-no-padding">
       <ion-card-content class="item-content ion-no-padding">
         <ion-thumbnail>
-          <img src="{{url}}{{programDetail?.img_array[0]}}" *ngIf="programDetail?.image_path">
-          <img src="../../../assets/images/loading.jpg" *ngIf="!programDetail?.image_path">
+          <img [defaultImage] = "defaultPostImage" [lazyLoad]="url+programImage">         
         </ion-thumbnail>
       </ion-card-content>
       <ion-list lines="none" class="list-info">

@@ -85,9 +85,9 @@ export class ChatPage implements OnInit,OnDestroy {
       });
   }
   chatRoom(receiverID:any,room:any,type:any){
-    if (this.callApiv) {
-      clearInterval(this.callApiv);
-    }
+    // if (this.callApiv) {
+    //   clearInterval(this.callApiv);
+    // }
     this.router.navigate(['/chat-room/'+receiverID+'/'+room+'/'+type]);
   }
   ionViewWillLeave() {
