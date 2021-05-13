@@ -109,13 +109,13 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
   onTimeSelected(event){
     // console.log(new Date());
     
-    // let cEvent = event.selectedTime;
+    let cEvent = event.selectedTime;
    
-    // if ((cEvent.getDate() < (new Date().getDate()) && cEvent.getMonth() <= (new Date().getMonth())) || cEvent.getMonth() < (new Date().getMonth())){
-    //   this.commonService.presentToast('Sorry, this is past time');
-    //   alert('gg');
-    //   return;
-    // }
+    if ((cEvent.getDate() < (new Date().getDate()) && cEvent.getMonth() <= (new Date().getMonth())) || cEvent.getMonth() < (new Date().getMonth())){
+      this.commonService.presentToast('Sorry, this is past time');
+     
+      return;
+    }
     this.minutes = this.navParams.data.minutes;
     this.noEvent = true;
     this.eventList = event;
@@ -141,7 +141,7 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
     // console.log(this.mainHours.getTime());
     if(event.events.length > 0){
       event.events.forEach(el => {
-        if (el.startTime.getHours() == hourspan.getHours()) {
+        if (el.startTime.getHours() == hourspan.getHours() || el.endTime.getHours() == hourspan.getHours()) {
           // console.log(el.startTime);
           // console.log(el.startTime);
           // console.log(el.endTime.getMinutes());
@@ -243,7 +243,7 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
           console.log(this.progEndTime);
           console.log('fffffffffffffffffff');
           this.eventList.events.forEach(el => {
-            if (el.startTime.getHours() == this.dateObj.getHours()) {
+            if (el.startTime.getHours() == this.dateObj.getHours() || el.endTime.getHours() == this.dateObj.getHours()) {
               
               console.log(el.startTime.getTime());
               console.log(el.endTime.getTime());
