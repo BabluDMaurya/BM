@@ -8,7 +8,7 @@ import { CalendarComponent } from '../calendar/calendar.component';
 import { formatDate, DatePipe } from '@angular/common';
 import { DateTimeModalComponent } from './date-time-modal/date-time-modal.component';
 import { NavController, Platform, ModalController, IonSlides, ActionSheetController, AlertController, PickerController } from '@ionic/angular';
-import { MediaCapture, MediaFile, CaptureError } from '@ionic-native/media-capture/ngx';
+import { MediaCapture, MediaFile, CaptureError, CaptureVideoOptions } from '@ionic-native/media-capture/ngx';
 import { MusicVolComponent } from './music-vol/music-vol.component';
 import { Config } from './../config/config';
 import { ProgramService } from './../services/program.service';
@@ -16,6 +16,9 @@ import { Router } from '@angular/router';
 import { MusicService } from '../services/music.service';
 import { NutritionDetailModalComponent } from '../nutrition-list/nutrition-detail-modal/nutrition-detail-modal.component';
 import{VerifyUserInfoComponent} from "./../modalContent/verify-user-info/verify-user-info.component";
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { PreviewAnyFile } from '@ionic-native/preview-any-file/ngx';
 @Component({
   selector: 'app-add-program',
   templateUrl: './add-program.page.html',
@@ -63,6 +66,10 @@ export class AddProgramPage implements OnInit {
   approval_btn: any = false;
   request_approve_btn: any = false;
   adData:any;
+  selectedVideo: string; 
+  uploadedVideo: string; 
+  videoFileSelected : boolean = false;
+  visibility : boolean = false;
   finalForm: FormGroup;
   constructor(public commonService: CommonService,
     private alertCtrl: AlertController,
@@ -78,6 +85,8 @@ export class AddProgramPage implements OnInit {
     private platform: Platform,
     private pickerController: PickerController,
     private musicService: MusicService,
+    private file: File,
+    private previewAnyFile: PreviewAnyFile,
     private camera: Camera,public modalController: ModalController) {
 
     let d = new Date();
@@ -328,14 +337,65 @@ export class AddProgramPage implements OnInit {
     await actionSheet.present();
   }
   recordVideo() {
-    this.mediaCapture.captureVideo().then(
-      (data: MediaFile[]) => {
+    let options: CaptureVideoOptions = { 
+      limit: 1,
+      duration: 30,
+      quality : 0
+     };
+    this.mediaCapture.captureVideo(options).then(
+      async (data: MediaFile[]) => {
         if (data.length > 0) {
-          this.copyFileToLocalDir(data[0].fullPath);
+          // this.copyFileToLocalDir(data[0].fullPath);
+          // this.showLoader();
+          this.uploadedVideo = null; 
+          var filename = data[0].name;
+          var dirpath = data[0].fullPath.substr(0, data[0].fullPath.lastIndexOf('/') + 1);
+          dirpath = dirpath.includes("file://") ? dirpath : "file://" + dirpath;  
+          this.selectedVideoFile(dirpath,filename);
+          this.visibility = true;
         }
       },
       (err: CaptureError) => console.error(err)
     );
+  }
+  async selectedVideoFile(dirpath,filename){
+    try {
+      var dirUrl = await this.file.resolveDirectoryUrl(dirpath);
+      var retrievedFile = await this.file.getFile(dirUrl, filename, {});           
+    } catch(err) {
+      this.dismissLoader();
+      this.commonService.presentAlert("Error","Something went wrong.",['Ok'],'');
+    }
+    retrievedFile.file( data => {
+        this.dismissLoader();
+        if (data.size > 50){ return this.commonService.presentAlert("Error", "You cannot upload more than 100 mb.",['Ok'],'');}
+        // if (data.type !== ALLOWED_MIME_TYPE) { return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"]);}
+        // if(ALLOWED_MIME_TYPE.indexOf(data.type) == -1){return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"],'');}
+        this.selectedVideo = retrievedFile.nativeURL;
+        localStorage.setItem('selectedVideo',JSON.stringify(this.selectedVideo));
+        this.videoFileSelected = !this.videoFileSelected; 
+        // this.videoFileSelected = https://www.dropbox.com/s/df2d2gf1dvnr5uj/Sample_1280x720_mp4.mp4';
+    });
+  }
+  showLoader() {
+    this.commonService.presentLoader();   
+  }
+
+  dismissLoader() {
+    this.commonService.dismissLoader();
+  }
+  ilepreview(){
+    this.previewAnyFile.preview(this.selectedVideo)
+    .then((res: any) => console.log(res))
+    .catch((error: any) => console.error(error));
+  }
+
+  removefilepreview(){    
+    this.visibility = false;
+    this.selectedVideo = null;
+    this.videoFileSelected = false;       
+    this.commonService.presentToast('Selected video remove');
+    console.log('Selected video remove');
   }
   copyFileToLocalDir(fullPath) {
     let myPath = fullPath;

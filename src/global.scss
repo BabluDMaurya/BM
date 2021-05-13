@@ -259,3 +259,23 @@ ion-modal ion-calendar-modal ion-content .month-box .days .days-btn.today.on-sel
 
 .preview-img .swiper-pagination-bullet{background: #3e3e3e;opacity: 1;}
 .preview-img .swiper-pagination-bullet-active{width: 8px;background: #26a69a;}
+.event-detail-container ion-item{
+  --padding-start: 20px;
+  --inner-border-width: 0 !important;
+  border: 0px;
+}
+.event-detail-container ion-item .item-inner{
+  --inner-border-width: 0 !important;
+  border: 0px;
+}
+.monthview-primary-with-event {
+  background-color: #69bdad !important;
+  color: white;
+}
+.monthview-selected {
+  background-color: #26a69a !important;
+}
+
+.calendar-event-inner {
+  background-color: #69bdad !important;
+}

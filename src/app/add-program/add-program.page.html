@@ -34,6 +34,10 @@
 
         </ion-card>
       </ion-col>
+      <ion-col size="12" class="ion-no-padding" >
+      <ion-icon *ngIf="videoFileSelected" ios="ios-close-circle" md="md-close-circle" (click)="removefilepreview()" color="danger" class="btn-close"></ion-icon>
+      <img *ngIf="videoFileSelected" (click)="filepreview()" class="mb-10" height="250px" src="../../assets/images/demo3.jpg">
+      </ion-col>    
       <ion-col size="12" class="ion-no-padding" *ngIf="gallaryImgPath?.length>0">
         <ion-button (click)="slidePrev()" class="slidebtns slideBack">
           <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
@@ -278,7 +282,7 @@
         <!-- Move back one screen of the slides -->
         <ion-list lines="none" class="calendar-header">
           <ion-item class="ion-text-left">
-            <ion-button fill="clear" (click)="back()">
+            <ion-button class="calend_arrow" fill="clear" (click)="back()">
               <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
             </ion-button>
           </ion-item>
@@ -287,7 +291,7 @@
           </ion-item>
           <!-- Move forward one screen of the slides -->
           <ion-item class="ion-text-right">
-            <ion-button fill="clear" (click)="next()">
+            <ion-button class="calend_arrow" fill="clear" (click)="next()">
               <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
             </ion-button>
           </ion-item>
@@ -342,10 +346,12 @@
       </div>
      
       <ion-list class="prog_btn_list">
-      <ion-item lines="none" (click)="verifyUserInfoModal()" *ngIf="loginUserData.trilloMatch != '1' && programDetail.type_id != 'video' ">
+      <!-- <ion-item class="text-center" lines="none" (click)="verifyUserInfoModal()" *ngIf="loginUserData.trilloMatch != '1' && programDetail.type_id != 'video' ">
+        <ion-button class="green btn button-medium">Earn with Intoative</ion-button>
+      </ion-item> -->
+      <ion-item lines="none" (click)="verifyUserInfoModal() ">
         <ion-button class="green btn button-medium">Earn with Intoative</ion-button>
       </ion-item>
-    
       <ion-item class="" *ngIf="approval_btn && !request_approve_btn ">
         <ion-button (click)="applyAdvertise()" class="green btn button-medium">Request Approval</ion-button> 
       </ion-item>

@@ -946,3 +946,22 @@ ion-badge{width:18px;height:18px;background:#27a69a;border-radius:50%;font-weigh
   .subprofile_tabs ion-segment-button {background: #dbf0ee;}
   .subprofile_tabs ion-segment-button.segment-button-checked {background: #27a69a !important;}
   // hitesh css ends
+
+  .event-detail-container ion-item{
+    --padding-start: 20px;
+    --inner-border-width: 0 !important;
+    border: 0px;
+}
+.event-detail-container ion-item .item-inner{
+    --inner-border-width: 0 !important;
+    border: 0px;
+}
+.calendar-event-inner {
+    background-color: #81cfc7 !important;;
+}
+.monthview-primary-with-event {
+    background-color: #81cfc7 !important;
+}
+.monthview-selected {
+    background-color: #26a69a !important;
+  }
