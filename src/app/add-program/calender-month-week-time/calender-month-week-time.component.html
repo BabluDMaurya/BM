@@ -1,6 +1,5 @@
 <!-- <mbsc-datepicker [controls]="['calendar']" display="inline" [selectMultiple]="true"></mbsc-datepicker> -->
 
-
 <ion-header class="top-header ion-no-padding">
   <ion-list class="top-heading three-block">
     <ion-item slot="start">
@@ -29,7 +28,7 @@
     <!-- Move back one screen of the slides -->
     <ion-list lines="none" class="calendar-header">
       <ion-item class="ion-text-left">
-        <ion-button fill="clear" (click)="back()">
+        <ion-button class="calend_arrow" fill="clear" (click)="back()">
           <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
         </ion-button>
       </ion-item>
@@ -38,7 +37,7 @@
       </ion-item>
       <!-- Move forward one screen of the slides -->
       <ion-item class="ion-text-right">
-        <ion-button fill="clear" (click)="next()">
+        <ion-button class="calend_arrow" fill="clear" (click)="next()">
           <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
         </ion-button>
       </ion-item>

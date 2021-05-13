@@ -234,7 +234,7 @@ export class DateTimeModalComponent implements OnInit {
     }
   }
   async newtest(){
-    if(!this.duration){
+    if(!this.duration && this.programData.programType !== '6'){
       this.commonService.presentToast('Please select Duration');
       return;
     }else {
@@ -308,9 +308,9 @@ export class DateTimeModalComponent implements OnInit {
     hourspan.setMinutes(hourspan.getMinutes() + parseInt(this.minutes));
     this.commonService.presentLoader();
    
-    this.repetatedDate.filter(el => {
-      el = el.setHours((hourspan.getHours()), hourspan.getMinutes());
-    });
+    // this.repetatedDate.filter(el => {
+    //   el = el.setHours((hourspan.getHours()), hourspan.getMinutes());
+    // });
     this.programData.progDateTime = hourspan;
     this.programData.progDuration = this.duration;
     this.programData.progRepetation = this.repetative;

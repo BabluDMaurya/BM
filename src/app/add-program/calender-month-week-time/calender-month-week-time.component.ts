@@ -107,7 +107,15 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
     // console.log('ff');
   }
   onTimeSelected(event){
-    console.log(event);
+    // console.log(new Date());
+    
+    // let cEvent = event.selectedTime;
+   
+    // if ((cEvent.getDate() < (new Date().getDate()) && cEvent.getMonth() <= (new Date().getMonth())) || cEvent.getMonth() < (new Date().getMonth())){
+    //   this.commonService.presentToast('Sorry, this is past time');
+    //   alert('gg');
+    //   return;
+    // }
     this.minutes = this.navParams.data.minutes;
     this.noEvent = true;
     this.eventList = event;
@@ -230,14 +238,17 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
           this.dateObj.setMinutes(hours);
           console.log(this.dateObj);
           console.log(this.durTime);
-          
+          // var newEndTime = new Date(this.eventList.selectedTime + 'Z');
+          this.progEndTime.setHours((this.mainHours.getHours()),  parseInt(hours)+parseInt(this.progDuration));
+          console.log(this.progEndTime);
+          console.log('fffffffffffffffffff');
           this.eventList.events.forEach(el => {
             if (el.startTime.getHours() == this.dateObj.getHours()) {
               
               console.log(el.startTime.getTime());
               console.log(el.endTime.getTime());
               console.log(this.dateObj.getTime());          
-              console.log(this.durTime.getTime());
+              
             // if(el.startTime.getTime() < (this.dateObj.getTime()) && el.startTime.getTime() < (this.durTime.getTime())){
             //   this.noEvent = true;
             //   console.log('first');
@@ -286,6 +297,8 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
     // console.log(ev);
   }
   closeModal(data) {
+    console.log(this.repetatedDateCopy);
+    console.log('gg');
     this.commonService.dismissModal(this.repetatedDateCopy);
   }
   back(data) {
