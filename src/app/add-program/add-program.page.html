@@ -34,10 +34,16 @@
 
         </ion-card>
       </ion-col>
+
       <ion-col size="12"  class="ion-no-padding video_col" >
-      <ion-icon *ngIf="videoFileSelected" ios="ios-close-circle" md="md-close-circle" (click)="removefilepreview()" color="danger" class="btn-close"></ion-icon>
-      <img *ngIf="videoFileSelected" (click)="filepreview()" class="mb-10" height="250px" src="../../assets/images/demo3.jpg">
-      </ion-col>    
+        <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider>
+        <ion-slide (click)="filepreview()">
+          <ion-icon *ngIf="videoFileSelected" ios="ios-close-circle" md="md-close-circle" (click)="removefilepreview()" color="danger" class="btn-close"></ion-icon>
+          <img *ngIf="videoFileSelected" (click)="filepreview()" class="mb-10" height="250px" src="../../assets/images/demo3.jpg">
+        </ion-slide>
+        </ion-slides>  
+        </ion-col>  
+
       <ion-col size="12" class="ion-no-padding" *ngIf="gallaryImgPath?.length>0">
         <ion-button (click)="slidePrev()" class="slidebtns slideBack">
           <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>

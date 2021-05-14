@@ -355,7 +355,7 @@ export class AddProgramPage implements OnInit {
           this.visibility = true;
         }
       },
-      (err: CaptureError) => console.error(err)
+      (err: CaptureError) => console.error(err + 'yyyyerror')
     );
   }
   async selectedVideoFile(dirpath,filename){
@@ -363,10 +363,12 @@ export class AddProgramPage implements OnInit {
       var dirUrl = await this.file.resolveDirectoryUrl(dirpath);
       var retrievedFile = await this.file.getFile(dirUrl, filename, {});           
     } catch(err) {
+      console.log('vidoe error');
       this.dismissLoader();
       this.commonService.presentAlert("Error","Something went wrong.",['Ok'],'');
     }
     retrievedFile.file( data => {
+       console.log('data');
         this.dismissLoader();
         if (data.size > 50){ return this.commonService.presentAlert("Error", "You cannot upload more than 100 mb.",['Ok'],'');}
         // if (data.type !== ALLOWED_MIME_TYPE) { return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"]);}
@@ -385,6 +387,7 @@ export class AddProgramPage implements OnInit {
     this.commonService.dismissLoader();
   }
   filepreview(){
+    console.log(this.selectedVideo);
     this.previewAnyFile.preview(this.selectedVideo)
     .then((res: any) => console.log(res))
     .catch((error: any) => console.error(error));
