@@ -196,26 +196,26 @@ const routes: Routes = [
     path: 'program-details/:programId',
     loadChildren: () => import('./program/program-details/program-details.module').then( m => m.ProgramDetailsPageModule)
   },
-  {
-    path: 'chat',
-    loadChildren: () => import('./chats/chat/chat.module').then( m => m.ChatPageModule)
-  },
-  {
-    path: 'chat-consultant/:consultantId/:type',
-    loadChildren: () => import('./chats/chat/chat.module').then( m => m.ChatPageModule)
-  },
+  // {
+  //   path: 'chat',
+  //   loadChildren: () => import('./chats/chat/chat.module').then( m => m.ChatPageModule)
+  // },
+  // {
+  //   path: 'chat-consultant/:consultantId/:type',
+  //   loadChildren: () => import('./chats/chat/chat.module').then( m => m.ChatPageModule)
+  // },
   {
     path: 'add-private',
     loadChildren: () => import('./chats/add-private/add-private.module').then( m => m.AddPrivatePageModule)
   },
-  {
-    path: 'add-group',
-    loadChildren: () => import('./chats/add-group/add-group.module').then( m => m.AddGroupPageModule)
-  },
-  {
-    path: 'chat-room/:receiver/:room/:type',
-    loadChildren: () => import('./chats/chat-room/chat-room.module').then( m => m.ChatRoomPageModule)
-  },
+  // {
+  //   path: 'add-group',
+  //   loadChildren: () => import('./chats/add-group/add-group.module').then( m => m.AddGroupPageModule)
+  // },
+  // {
+  //   path: 'chat-room/:receiver/:room/:type',
+  //   loadChildren: () => import('./chats/chat-room/chat-room.module').then( m => m.ChatRoomPageModule)
+  // },
   {
     path: 'edit-program/:programId',
     loadChildren: () => import('./edit-program/edit-program.module').then( m => m.EditProgramPageModule)

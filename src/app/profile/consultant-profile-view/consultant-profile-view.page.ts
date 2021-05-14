@@ -17,6 +17,7 @@ import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { PrivacyPage } from '../../settings/privacy/privacy.page';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { ChatService } from 'src/app/services/chat.service';
+import { ChatRoomsComponent } from './../../chats/chat-rooms/chat-rooms.component';
 
 @Component({
   selector: 'app-consultant-profile-view',
@@ -256,8 +257,16 @@ export class ConsultantProfileViewPage implements OnInit {
         var chatSenderId = data[0].senderID;    
         var chatType = data[0].type;  
         var roomId = data[0].id;    
+        var request_id = data[0].chatroom.request_id; 
+
         this.commonService.dismissLoader();
-        this.router.navigate(['/chat-room/'+chatReceiverId+'/'+chatRoom+'/'+chatType]);
+        var fileData = {
+          chatType : parseInt(chatType),
+          room : chatRoom,
+          receiverId : parseInt(chatReceiverId),
+          requestId : parseInt(request_id),
+          }
+        this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
       }else{
         this.commonService.dismissLoader();
         // chat_type = 1:consultant,2:user,3:program

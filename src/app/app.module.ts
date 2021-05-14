@@ -58,7 +58,7 @@ import { Config } from "./config/config";
 import { DateTimeModalComponent } from './add-program/date-time-modal/date-time-modal.component';
 import { CalendarModule } from "ion2-calendar";
 import { PopoverComponent } from './profile/popover/popover.component';
-import { GroupusersModalComponent } from '../app/chats/groupusers-modal/groupusers-modal.component';
+// import { GroupusersModalComponent } from '../app/chats/groupusers-modal/groupusers-modal.component';
 import { DropdownComponent } from './chats/dropdown/dropdown.component';
 import { RequestsModalComponent } from './chats/requests-modal/requests-modal.component';
 import { RequestedDropdownComponent } from './program/requested-dropdown/requested-dropdown.component';
@@ -92,7 +92,9 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     , UserListComponent, MusicVolumeModalComponent, MusicVolComponent, TermsComponent, PrivacyComponent, PopoverComponent,
     DateTimeModalComponent, AddEquipmentsComponent, VideosThumbListComponent, ScheduleModalComponent,
     RequestedDropdownComponent, FormatTimePipe, EquipmentsComponent,
-    GroupusersModalComponent, DropdownComponent, PlaylistDropdownComponent,
+
+    // GroupusersModalComponent,
+     DropdownComponent, PlaylistDropdownComponent,
     RequestsModalComponent, ParticipantsComponent, AdDetailsComponent,
     SponserCommentComponent,  MusicDropdownComponent,AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent,
     ChatRoomsComponent,CreateGroupChatComponent
@@ -105,7 +107,10 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     MusicDropdownComponent, PlaylistDropdownComponent, MusicVolumeModalComponent, MusicVolComponent,
     PopoverComponent, DateTimeModalComponent, EquipmentsComponent, AddEquipmentsComponent
     , VideosThumbListComponent, ScheduleModalComponent, RequestedDropdownComponent,
-    GroupusersModalComponent, ParticipantsComponent, DropdownComponent, RequestsModalComponent,
+
+    // GroupusersModalComponent,
+    
+    ParticipantsComponent, DropdownComponent, RequestsModalComponent,
     AdDetailsComponent, SponserCommentComponent, AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent,ChatRoomsComponent,CreateGroupChatComponent],
 
   imports: [ 

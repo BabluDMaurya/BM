@@ -14,6 +14,7 @@ import { take, map } from 'rxjs/operators';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { ChatService } from 'src/app/services/chat.service';
 import { HttpClient} from '@angular/common/http';
+import { ChatRoomsComponent } from './../../chats/chat-rooms/chat-rooms.component';
 
 /* To try the app with Enablex hosted service you need to set the kTry = true */
 var kTry      = true;
@@ -245,7 +246,12 @@ export class ProgramViewPage implements OnInit {
           var chatRoom = data.room_id;    
           var chatReceiverId = data.group_id; 
           var chatType = 2;    
-          this.router.navigate(['/chat-room/'+chatReceiverId+'/'+chatRoom+'/'+chatType]);
+          var fileData = {
+            chatType : chatType,
+            room : chatRoom,
+            receiverId : parseInt(chatReceiverId)
+            }
+          this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
         }else{
           this.commonService.dismissLoader();
           // chat_type = 1:consultant,2:user,3:program
