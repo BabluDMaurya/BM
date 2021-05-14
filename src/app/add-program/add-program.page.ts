@@ -336,6 +336,30 @@ export class AddProgramPage implements OnInit {
     });
     await actionSheet.present();
   }
+  async openGallery() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'What would you like to add?',
+      buttons: [
+        {
+          text: 'Select Image',
+          handler: () => {
+            this.pickImageFromGallery(this.camera.PictureSourceType.PHOTOLIBRARY);
+          }
+        },
+        {
+          text: 'Select Video',
+          handler: () => {
+            this.pickVideoFromGallery(this.camera.PictureSourceType.PHOTOLIBRARY);
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+    await actionSheet.present();
+  }
   recordVideo() {
     let options: CaptureVideoOptions = { 
       limit: 1,
@@ -368,9 +392,10 @@ export class AddProgramPage implements OnInit {
       this.commonService.presentAlert("Error","Something went wrong.",['Ok'],'');
     }
     retrievedFile.file( data => {
-       console.log('data');
+       console.log(data);
+       console.log(data.size);
         this.dismissLoader();
-        if (data.size > 50){ return this.commonService.presentAlert("Error", "You cannot upload more than 100 mb.",['Ok'],'');}
+        // if (data.size > 500){ return this.commonService.presentAlert("Error", "You cannot upload more than 100 mb.",['Ok'],'');}
         // if (data.type !== ALLOWED_MIME_TYPE) { return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"]);}
         // if(ALLOWED_MIME_TYPE.indexOf(data.type) == -1){return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"],'');}
         this.selectedVideo = retrievedFile.nativeURL;
@@ -541,9 +566,9 @@ export class AddProgramPage implements OnInit {
     this.navCtrl.back();
   }
 
-  openGallery() {
-    this.pickFromGallery(this.camera.PictureSourceType.PHOTOLIBRARY);
-  }
+  // openGallery() {
+  //   this.pickFromGallery(this.camera.PictureSourceType.PHOTOLIBRARY);
+  // }
   takeSnap() {
     this.pickImage(this.camera.PictureSourceType.CAMERA);
   }
@@ -561,12 +586,26 @@ export class AddProgramPage implements OnInit {
       alert(err);
     });
   }
-  pickFromGallery(sourceType) {
+  // pickFromGallery(sourceType) {
+  //   const options: CameraOptions = {
+  //     quality: 60,
+  //     sourceType: sourceType,
+  //     destinationType: this.camera.DestinationType.DATA_URL,
+  //     mediaType: this.camera.MediaType.ALLMEDIA,
+  //     correctOrientation: true
+  //   }
+  //   this.camera.getPicture(options).then((imageData) => {
+  //     this.gallaryImgPath.push('data:image/jpeg;base64,' + imageData);
+  //   }, (err) => {
+  //     alert(err);
+  //   });
+  // }
+  pickImageFromGallery(sourceType) {
     const options: CameraOptions = {
       quality: 60,
       sourceType: sourceType,
       destinationType: this.camera.DestinationType.DATA_URL,
-      mediaType: this.camera.MediaType.ALLMEDIA,
+      mediaType: this.camera.MediaType.PICTURE,
       correctOrientation: true
     }
     this.camera.getPicture(options).then((imageData) => {
@@ -575,6 +614,25 @@ export class AddProgramPage implements OnInit {
       alert(err);
     });
   }
+  pickVideoFromGallery(sourceType) {
+    const options: CameraOptions = {
+      quality: 60,
+      sourceType: sourceType,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      mediaType: this.camera.MediaType.VIDEO,
+      correctOrientation: true
+    }
+    this.camera.getPicture(options).then((data) => {
+      var filename = data[0].name;
+          var dirpath = data[0].fullPath.substr(0, data[0].fullPath.lastIndexOf('/') + 1);
+          dirpath = dirpath.includes("file://") ? dirpath : "file://" + dirpath; 
+      this.selectedVideoFile(dirpath,filename);
+      // this.gallaryImgPath.push('data:image/jpeg;base64,' + imageData);
+    }, (err) => {
+      alert(err);
+    });
+  }
+  
   musicId: any;
   async fsubmit() {
     if (!this.musicId || !this.programDetail.id) {
