@@ -107,7 +107,6 @@ export class AddPrivatePage implements OnInit {
         returnUrl : 'list',
         formData : this.formData,
         }
-
       // this.commonService.presentPromptRedirect(title,msg,this.formData);      
       this.commonService.presentModal(CreateGroupChatComponent,'bottomModal',fileData);
     }else{    
@@ -121,8 +120,9 @@ export class AddPrivatePage implements OnInit {
               chatType : 1,
               room : data.room,
               receiverId : parseInt(data.reciverID),
+              requestId : parseInt(data.request_id),
               }
-            var returndata = this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
+            this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
             // console.log("returndata :" + JSON.stringify(returndata));
             // this.router.navigate(['/chat-room/'+data.reciverID+'/'+data.room+'/1']);
           }else{

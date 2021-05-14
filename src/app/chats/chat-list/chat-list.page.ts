@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Config } from './../../config/config';
 import { Socket } from 'ngx-socket-io';
-import { NavController,ModalController } from '@ionic/angular';
+import { NavController,ModalController,ToastController } from '@ionic/angular';
 import { RequestsModalComponent } from '../requests-modal/requests-modal.component';
-import { ParamMap, ActivatedRoute,Router} from '@angular/router';
+import { Router} from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import { ChatService } from 'src/app/services/chat.service';
 import { ChatRoomsComponent } from './../chat-rooms/chat-rooms.component';
@@ -12,7 +12,7 @@ import { ChatRoomsComponent } from './../chat-rooms/chat-rooms.component';
   templateUrl: './chat-list.page.html',
   styleUrls: ['../../app.component.scss','./chat-list.page.scss'],
 })
-export class ChatListPage implements OnInit,OnDestroy {
+export class ChatListPage implements OnInit {
   public searchTerm: string = "";
   list : any = 0;
   userData:any;
@@ -29,30 +29,29 @@ export class ChatListPage implements OnInit,OnDestroy {
     private router:Router,
     private commonService : CommonService,
     private chatService : ChatService,
-    private actRoute: ActivatedRoute,
+    private toastCtrl: ToastController,
   ) { }
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.setFilteredItems();
   }
-  ionViewWillEnter() {
-    console.log("chat-list ionViewWillEnter");
-    this.socket.connect();
-    this.socket.emit('set-name', this.userData.id,'chatList');
+  async showToast(msg) {
+    let toast = await this.toastCtrl.create({
+      message: msg,
+      position: 'top',
+      duration: 2000
+    });
+    toast.present();
+  }
+  ionViewWillEnter() {    
     this.socket.emit('user-list', this.userData.id);
     this.callApiv = setInterval(() => {
       this.socket.emit('user-list', this.userData.id); 
-    }, 5000);    
-    // this.actRoute.paramMap.subscribe((params: ParamMap) => {
-    //   this.list = params.get('list');
-    // });
+    }, 5000);
     this.myChatList();    
   }
-  myChatList(){
-    // if(this.list > 0){
-    //   console.log("list found");
-    // }
+  myChatList(){   
     this.socket.fromEvent('my-chat-list').subscribe(receiveMessageArr => {
       this.requestCount = 0;
       this.items = receiveMessageArr;
@@ -76,54 +75,37 @@ export class ChatListPage implements OnInit,OnDestroy {
     });
     return await modal.present();
   }
-  chatRoom(groups:any){    
-    this.socket.disconnect();
-    var params = groups; 
-    // console.log("params :" + JSON.stringify(params));   
-    // console.log("params.receiverID :" + JSON.stringify(params.receiverID));   
-    // console.log("params.room :" + JSON.stringify(params.room));   
-    // console.log("params.room :" + JSON.stringify(params.type));   
-    // console.log("params.id :" + JSON.stringify(params.id));   
+  chatRoom(groups:any){ 
+    console.log("groups" + JSON.stringify(groups));
+    var params = groups;   
     var RID = '';
     if(this.userData.id == params.senderID){
       RID = params.receiverID;
     }else{
       RID = params.senderID;
     }
-
     // if(parseInt(params.type) == 1){
     //   this.router.navigate(['/chat-room/'+parseInt(RID)+'/'+params.room+'/'+parseInt(params.type)]);
     // }else{
     //   // groups.id,groups.room,groups.type
     //   this.router.navigate(['/chat-room/'+parseInt(params.id)+'/'+params.room+'/'+parseInt(params.type)]);
     // }
-    var reqId = 0;
+    
+    var recId = 0;
     if(parseInt(params.type) == 1){
-      reqId = parseInt(RID);
+      recId = parseInt(RID);
     }else{
-      reqId = parseInt(params.id);
+      recId = parseInt(params.id);
     }
-
     var fileData = {
       chatType : parseInt(params.type),
       room : params.room,
-      receiverId : reqId,
+      receiverId : recId,
+      requestId : parseInt(params.request_id),
       }
-    var returndata = this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
-    console.log("returndata :" + JSON.stringify(returndata));
+    this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
   }
   goBack() {
-    this.socket.disconnect();
     this.navCtrl.back();
-  }
-  ionViewWillLeave() {    
-    console.log("chat-list ionViewWillLeave");
-    this.socket.disconnect();
-  }
-  ngOnDestroy(){
-    if (this.callApiv) {
-      clearInterval(this.callApiv);
-    }
-    this.socket.disconnect();  
-  }
+  }  
 }

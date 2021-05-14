@@ -11,6 +11,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { SigninPage } from './auth/signin/signin.page';
+import { Socket } from 'ngx-socket-io';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -22,7 +23,7 @@ export class AppComponent implements OnInit
   @ViewChild(NavController,{static:false}) navChild:NavController;
   loaderToShow: any;
   currentScreenOrientation:string;  
-
+  userData:any;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit
      private fcm: FCM,
      private file: File,
      public deeplinks: Deeplinks,
+     private socket: Socket,
     
   ){
     platform.ready().then(() => {
@@ -134,7 +136,10 @@ export class AppComponent implements OnInit
     
   } 
   ngOnInit(){
-       this.authService.autoLogin();    
+      this.authService.autoLogin(); 
+      this.userData = JSON.parse(localStorage.getItem('userData'));
+      this.socket.connect();
+      this.socket.emit('set-name', this.userData.id,'chatList');     
   } 
  
 }

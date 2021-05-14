@@ -9,7 +9,7 @@ import { Router, ActivatedRoute, ParamMap} from "@angular/router";
 import { PopoverController,NavController } from '@ionic/angular';
 import { ChatService } from 'src/app/services/chat.service';
 import { Config } from './../../config/config';
-
+import { ChatRoomsComponent } from './../../chats/chat-rooms/chat-rooms.component';
 
 @Component({
   selector: 'app-user-profile-view',
@@ -107,8 +107,16 @@ export class UserProfileViewPage implements OnInit {
         var chatSenderId = data[0].senderID;    
         var chatType = data[0].type;  
         var roomId = data[0].id;    
+        var request_id = data[0].chatroom.request_id; 
+
         this.commonService.dismissLoader();
-        this.router.navigate(['/chat-room/'+chatReceiverId+'/'+chatRoom+'/'+chatType]);
+        var fileData = {
+          chatType : parseInt(chatType),
+          room : chatRoom,
+          receiverId : parseInt(chatReceiverId),
+          requestId : parseInt(request_id),
+          }
+        this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
       }else{
         this.commonService.dismissLoader();
         // chat_type = 1:consultant,2:user,3:program

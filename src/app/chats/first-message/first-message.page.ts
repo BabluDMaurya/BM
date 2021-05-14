@@ -42,7 +42,7 @@ export class FirstMessagePage implements OnInit,AfterViewInit,OnDestroy {
               private programService : ProgramService) { }
   ngOnInit() {
     // connect ot socket.io
-    this.socket.connect();
+    // this.socket.connect();
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.chat_type = parseInt(params.get('chat_type'));
@@ -74,13 +74,13 @@ export class FirstMessagePage implements OnInit,AfterViewInit,OnDestroy {
       if(this.chat_type != 3){  
           //Private chat
           console.log("private chat type : firstMessage");
-          this.socket.emit('set-name', this.userData.id,'firstMessage');
-          this.socket.emit("addUser", this.userData.id,this.receiver_id);
-          this.socket.emit("newUser", [this.userData.id,this.receiver_id, this.room]);          
+          // this.socket.emit('set-name', this.userData.id,'firstMessage');
+          // this.socket.emit("addUser", this.userData.id,this.receiver_id);
+          // this.socket.emit("newUser", [this.userData.id,this.receiver_id, this.room]);          
       }else{
         //Group chat
         console.log("group chat type : programMessage");
-        this.socket.emit('set-name', this.userData.id,'programMessage');
+        // this.socket.emit('set-name', this.userData.id,'programMessage');
         // this.socket.emit("newGroup", this.userData.id,this.requestId, this.room);
       }
     });    
@@ -123,8 +123,12 @@ export class FirstMessagePage implements OnInit,AfterViewInit,OnDestroy {
             console.log("requestId:" + this.requestId);
             if(this.chat_type == 3){
               this.socket.emit("newGroup", this.userData.id,this.requestId, this.room);
+
               this.socket.emit('send-group-message', { text: massa});
             }else{              
+              this.socket.emit("addUser", this.userData.id,this.receiver_id);
+              this.socket.emit("newUser", [this.userData.id,this.receiver_id, this.room]); 
+
               this.socket.emit('send-message', { text: massa, blockstatus : blocks, requestId : this.requestId});
             }
         }
@@ -151,18 +155,18 @@ export class FirstMessagePage implements OnInit,AfterViewInit,OnDestroy {
     this.sendmessage.setFocus();
   }
   goBack() {    
-    this.socket.disconnect();
+    // this.socket.disconnect();
     this.messages = [];    
     this.chat_type = '';
     this.navCtrl.back();
   }
   ionViewWillLeave() {
-    this.socket.disconnect();
+    // this.socket.disconnect();
     this.messages = [];
     this.chat_type = '';
   }
   ngOnDestroy(){
-    this.socket.disconnect();
+    // this.socket.disconnect();
     this.messages = [];
     this.chat_type = '';
   }

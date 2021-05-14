@@ -11,6 +11,7 @@
 /src/theme
 /src/assets
 /src/environments
+/src/app/chats
 .env
 .phpunit.result.cache
 .package.json

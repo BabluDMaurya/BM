@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild,AfterViewInit,OnDestroy,Input} from '@angular/core';
+import { Component, OnInit, ViewChild,AfterViewInit,Input} from '@angular/core';
 import { PopoverController, NavController,AlertController, IonThumbnail} from '@ionic/angular';
 import { DropdownComponent } from './../dropdown/dropdown.component';
 import { IonContent,IonTextarea } from '@ionic/angular';
 import { Action } from '../../clientmodel/action';
 import { Socket } from 'ngx-socket-io';
-// import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ToastController } from '@ionic/angular';
 import { ParamMap, ActivatedRoute,Router} from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
@@ -15,11 +14,12 @@ import { Config } from './../../config/config';
   templateUrl: './chat-rooms.component.html',
   styleUrls: ['../../app.component.scss','./chat-rooms.component.scss'],
 })
-export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
+export class ChatRoomsComponent implements OnInit,AfterViewInit {
   @Input() chatType;
   @Input() room;
   @Input() receiverId;
   @Input() returnUrl;
+  @Input() requestId;
 
 
   @ViewChild(IonContent, { read: IonContent,  static: false }) contentArea: IonContent;
@@ -71,62 +71,25 @@ export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
     public router :Router,
     ) {  
       }
-  ngOnInit() {
-    // this.commonService.presentLoader();
-    this.userData = JSON.parse(localStorage.getItem('userData'));
-    // this.actRoute.paramMap.subscribe((params: ParamMap) => {
-    //   this.room = params.get('room');
-      console.log("room :" + this.room);
-      //--reciver is ( in private chat is sender id and in group chat request id)-----
-      // this.receiverId = params.get('receiver');
-      console.log("receiverId :" + this.receiverId);
-      // this.chatType = params.get('type');
-      console.log("chattype :" + this.chatType);
-    // });
+  ngOnInit() {    
+    this.userData = JSON.parse(localStorage.getItem('userData'));   
   }
   ionViewWillEnter(){
-    this.getStart();
-
     if(this.chatType == 2){
-      //-----group chat--- 
       this.groupChat();
       console.log("groupChat ionViewWillEnter chatRooms 1");
     }else{
-      //-----private chat---  
       this.privateChat();
       console.log("privateChat ionViewWillEnter chatRooms 1");
     }
-    // console.log('ngInit');
-    // this.commonService.dismissLoader();
     console.log("chat-room ionViewWillEnter");
   }
   ngAfterViewInit() {
     setTimeout(() => {
           this.sendmessage.setFocus();
     }, 400);
-  }  
-  // ionViewDidEnter() {
-  //   this.commonService.dismissLoader();
-  //   // console.log('ionViewDidEnter');
-  // } 
-  getStart(){   
-    this.socket.connect();
-    this.currentUser = this.room;
-    this.socket.emit('set-name', this.room,this.chatType);
-    this.socket.fromEvent('users-changed').subscribe(data => {
-      if (data['event'] === 'left') {
-        // this.showToast('User left: ' + this.room);
-        this.UserOnLineStatus = 'is OffLine';
-      } else {
-        // this.showToast('User joined: ' + this.room);
-        this.UserOnLineStatus = 'is OnLine';
-      }
-    }); 
   }
-  
   groupChat(){
-    // this.commonService.presentLoader();
-
     this.socket.emit("newGroup", this.userData.id,this.receiverId, this.room);
 
     this.socket.emit('stormessagerequest',this.userData.id,this.receiverId);
@@ -138,8 +101,7 @@ export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
       this.storeMessages = stormessage; 
       setTimeout(() => {
         this.contentArea.scrollToBottom();
-      }, 400);
-      // this.commonService.dismissLoader();   
+      }, 400);        
     });
 
     this.socket.fromEvent('groupChatRequestData').subscribe(groupChatRequestData => {
@@ -184,19 +146,15 @@ export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
     this.socket.fromEvent('UserOnLineStatus').subscribe(UserOnLineStatus => {
       this.UserOnLineStatus = UserOnLineStatus;
     });
-    
-    console.log("UserData.id :" + this.userData.id);
-    console.log("receiverId :" + this.receiverId);
     this.socket.emit("addUser", this.userData.id,this.receiverId);
-    this.socket.emit("newUser", [this.userData.id,this.receiverId, this.room]);
+    this.socket.emit("privateUser", [this.userData.id,this.receiverId, this.room]);
     this.socket.emit("storemassagerequest",this.userData.id,this.receiverId);
 
     this.socket.fromEvent('stormessage').subscribe(storMessage => {      
       this.storeMessages = storMessage; 
       setTimeout(() => {
         this.contentArea.scrollToBottom();
-      }, 400); 
-      // this.commonService.dismissLoader(); 
+      }, 400);       
     });
 
     this.socket.fromEvent('userName').subscribe(data => {
@@ -251,8 +209,7 @@ export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
     });
     popover.onDidDismiss()
       .then((data) => {        
-        if(data.data == 'refresh'){          
-          this.socket.disconnect();
+        if(data.data == 'refresh'){ 
           this.doRefresh();
         }else if(data.data == 'clear'){
           this.storeMessages = [];
@@ -273,9 +230,9 @@ export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
   }
   sendMessage() {
     if(this.message != '' && this.message != null && this.chatType == 1){
-      console.log("sendMessage");
+      console.log("sendMessage:" + this.requestId);
       if(this.bSOUser == 'unblock'){
-        this.socket.emit('send-message', { text: this.message, blockstatus : this.blockstatus });
+        this.socket.emit('send-message', { text: this.message, blockstatus : this.blockstatus, requestId : this.requestId });
       }else{
         this.blockStatusOfUser(this.bidOUser);
       }   
@@ -333,24 +290,11 @@ export class ChatRoomsComponent implements OnInit,AfterViewInit,OnDestroy {
       return wholeDate;
     }
   }
-  ionViewWillLeave() {
-    // this.socket.disconnect();
-    console.log("chat-room ionViewWillLeave");
-  }
-  ngOnDestroy(){
-    // this.socket.disconnect();
-  }
-  goBack() {    
-    console.log("chat-room goBack");    
-    this.socket.emit("update-chat-list", this.userData.id);
-    this.socket.fromEvent('my-chat-list').subscribe(receiveMessageArr => {  
-      this.chatListArr = receiveMessageArr;
-      this.socket.disconnect(); 
-      this.commonService.dismissModal(this.chatListArr);
-    });
+  goBack() {        
+    this.commonService.dismissModal();
     if(this.returnUrl == 'list'){
       this.router.navigate(['/tabs/chats']);
-    }
+    }  
   }
 
 }
