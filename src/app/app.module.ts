@@ -49,6 +49,7 @@ import { UserListComponent } from './add-program/user-list/user-list.component';
 import { MusicVolumeModalComponent } from './add-video/music-volume-modal/music-volume-modal.component';
 import { MusicVolComponent } from './add-program/music-vol/music-vol.component';
 import {ChatRoomsComponent}  from './chats/chat-rooms/chat-rooms.component';
+import {CreateGroupChatComponent}  from './chats/create-group-chat/create-group-chat.component';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
@@ -94,7 +95,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     GroupusersModalComponent, DropdownComponent, PlaylistDropdownComponent,
     RequestsModalComponent, ParticipantsComponent, AdDetailsComponent,
     SponserCommentComponent,  MusicDropdownComponent,AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent,
-    ChatRoomsComponent
+    ChatRoomsComponent,CreateGroupChatComponent
   ],
 
   entryComponents: [UserDetailsComponent, FollowersComponent, FollowingComponent,
@@ -105,7 +106,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     PopoverComponent, DateTimeModalComponent, EquipmentsComponent, AddEquipmentsComponent
     , VideosThumbListComponent, ScheduleModalComponent, RequestedDropdownComponent,
     GroupusersModalComponent, ParticipantsComponent, DropdownComponent, RequestsModalComponent,
-    AdDetailsComponent, SponserCommentComponent, AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent,ChatRoomsComponent],
+    AdDetailsComponent, SponserCommentComponent, AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent,ChatRoomsComponent,CreateGroupChatComponent],
 
   imports: [ 
     MbscModule,  

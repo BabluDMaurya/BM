@@ -6,6 +6,7 @@ import { RequestsModalComponent } from '../requests-modal/requests-modal.compone
 import { ParamMap, ActivatedRoute,Router} from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import { ChatService } from 'src/app/services/chat.service';
+import { ChatRoomsComponent } from './../chat-rooms/chat-rooms.component';
 @Component({
   selector: 'app-chat-list',
   templateUrl: './chat-list.page.html',
@@ -90,13 +91,26 @@ export class ChatListPage implements OnInit,OnDestroy {
       RID = params.senderID;
     }
 
+    // if(parseInt(params.type) == 1){
+    //   this.router.navigate(['/chat-room/'+parseInt(RID)+'/'+params.room+'/'+parseInt(params.type)]);
+    // }else{
+    //   // groups.id,groups.room,groups.type
+    //   this.router.navigate(['/chat-room/'+parseInt(params.id)+'/'+params.room+'/'+parseInt(params.type)]);
+    // }
+    var reqId = 0;
     if(parseInt(params.type) == 1){
-      this.router.navigate(['/chat-room/'+parseInt(RID)+'/'+params.room+'/'+parseInt(params.type)]);
+      reqId = parseInt(RID);
     }else{
-      // groups.id,groups.room,groups.type
-      this.router.navigate(['/chat-room/'+parseInt(params.id)+'/'+params.room+'/'+parseInt(params.type)]);
+      reqId = parseInt(params.id);
     }
-    
+
+    var fileData = {
+      chatType : parseInt(params.type),
+      room : params.room,
+      receiverId : reqId,
+      }
+    var returndata = this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
+    console.log("returndata :" + JSON.stringify(returndata));
   }
   goBack() {
     this.socket.disconnect();

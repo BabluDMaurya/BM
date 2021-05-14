@@ -291,6 +291,7 @@ export class MyProfilePage implements OnInit {
       this.profileData = data.status;
       this.gotData = true;
       this.bannerImage = this.backgroundPicUrl + this.profileData.userData.bios.profile_background_image;
+      this.validateFile(this.profileData.userData.bios.profile_pic);
       this.profileImage = this.profilePicUrl + this.profileData.userData.bios.profile_pic;
       localStorage.setItem('userData',JSON.stringify(data.status.userData)); 
     });
@@ -389,5 +390,20 @@ export class MyProfilePage implements OnInit {
     });
     toast.present();
   }
-
+  validateFile(name: String) {
+    var ext = name.substring(name.lastIndexOf('.') + 1);
+    if (ext.toLowerCase() == 'png') {
+      console.log(name + " it's a image");
+        return true;        
+    }else if(ext.toLowerCase() == 'jpeg'){
+      console.log(name + " it's a image");
+        return true;
+    }else if(ext.toLowerCase() == 'jpg'){
+      console.log(name + " it's a image");
+        return true;
+    }else {
+        console.log(name + " it's Not a image");
+        return false;
+    }
+}
 }

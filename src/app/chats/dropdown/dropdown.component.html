@@ -10,8 +10,13 @@
   </ion-item>
 </ion-list>
 <ion-list class="dropdown-list" lines="none" *ngIf="type == 2">
-  <ion-item>
-    <ion-label *ngIf="adminId == userDataid" (click)="deletegroup()">Delete Group</ion-label>
-    <ion-label *ngIf="adminId != userDataid" (click)="exitgroup()">Exit Group</ion-label>
+  <ion-item *ngIf="adminId == userDataid">
+    <ion-label (click)="deletegroup()">Delete Group</ion-label>    
+  </ion-item>
+  <!-- <ion-item *ngIf="adminId == userDataid">
+    <ion-label (click)="openGallery()">Add Group Picture</ion-label>
+  </ion-item> -->
+  <ion-item *ngIf="adminId != userDataid">
+    <ion-label (click)="exitgroup()">Exit Group</ion-label>
   </ion-item>
 </ion-list>
