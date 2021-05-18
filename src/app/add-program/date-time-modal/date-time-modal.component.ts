@@ -35,6 +35,7 @@ export class DateTimeModalComponent implements OnInit {
   duration: string;
   minutes: any = 0;
   repetative: any = '';
+  dupliEntry: any ='';
   programList: any;
   repetatedDate: any = [];
   bonusDates: any = [];
@@ -259,13 +260,24 @@ export class DateTimeModalComponent implements OnInit {
         this.repetatedDateCopy=[]
         this.commonService.presentToast('For Repeate Program select Date otherwise it will create single program ');
       }else{
-        
-      this.repetatedDateCopy.push({'date':this.calendarData ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''})
+        let i = 0;
+        data.data.forEach(el => {
+          
+          if(el.getDate() == this.calendarData.getDate() && el.getMonth() == this.calendarData.getMonth()){
+            i++;
+          }
+        });  
+        console.log(i + 'fgfgf');
+        if(i == 0){
+          this.repetatedDateCopy.push({'date':this.calendarData ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''})
+        }
+      
       data.data.forEach(el => {
         console.log(el);
         console.log('el');
         this.repetatedDateCopy.push({'date':el ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
-        this.repetatedDate.push(el);
+        // this.repetatedDate.push(el);
+        this.repetatedDate.push({'date':el ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
       });
       console.log(this.repetatedDate);
       }
@@ -332,9 +344,11 @@ export class DateTimeModalComponent implements OnInit {
     modal.onDidDismiss().then((d: any) => {
       if(event == 1)
       {
-        this.repetatedDateCopy[i].equipments = d.data.filter(Boolean)  ;
+        this.repetatedDateCopy[i].equipments = d.data.filter(Boolean) ;
+        this.repetatedDate[i].equipments = d.data.filter(Boolean) ;
       }else{
         this.repetatedDateCopy[i].nutrition_id = d.data.filter(Boolean) ;
+        this.repetatedDate[i].nutrition_id = d.data.filter(Boolean) ;
       }
       console.log(this.repetatedDateCopy);
     });
@@ -350,6 +364,7 @@ export class DateTimeModalComponent implements OnInit {
     modal.onDidDismiss().then((d: any) => {
       if (d.data) {
         this.repetatedDateCopy[i].video=d.data;
+        this.repetatedDate[i].video=d.data;
       }
     });
     return await modal.present();

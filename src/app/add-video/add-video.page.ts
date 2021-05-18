@@ -247,6 +247,9 @@ export class AddVideoPage implements OnInit {
         // if (data.type !== ALLOWED_MIME_TYPE) { return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"]);}
         // if(ALLOWED_MIME_TYPE.indexOf(data.type) == -1){return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"],'');}
         this.selectedVideo = retrievedFile.nativeURL;
+        console.log(JSON.stringify(this.selectedVideo));
+        console.log(this.selectedVideo);
+        console.log('this.selectedVideo');
         localStorage.setItem('selectedVideo',JSON.stringify(this.selectedVideo));
         this.videoFileSelected = !this.videoFileSelected; 
         this.refresh();

@@ -85,7 +85,9 @@ export class AddEquipmentsComponent implements OnInit {
       this.programService.fetchEquipmentList().subscribe((data) => {
         console.log(data)
         this.equipments = data.equipmentList;
-      
+        console.log(this.programId);
+        console.log(this.equipments);
+
         data.equipmentList.filter(el => {
         if (this.programId) {
           if ((this.programId).includes(el.id )) {

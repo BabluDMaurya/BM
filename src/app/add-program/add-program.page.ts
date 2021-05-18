@@ -19,6 +19,7 @@ import{VerifyUserInfoComponent} from "./../modalContent/verify-user-info/verify-
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { PreviewAnyFile } from '@ionic-native/preview-any-file/ngx';
+import { Media, MediaObject } from '@ionic-native/media/ngx';
 @Component({
   selector: 'app-add-program',
   templateUrl: './add-program.page.html',
@@ -77,6 +78,7 @@ export class AddProgramPage implements OnInit {
     private modalCtrl: ModalController,
     private datePipe: DatePipe,
     public navCtrl: NavController,
+    private media: Media,
     private fb: FormBuilder,
     private actionSheetController: ActionSheetController,
     private mediaCapture: MediaCapture,
@@ -374,6 +376,10 @@ export class AddProgramPage implements OnInit {
           this.uploadedVideo = null; 
           var filename = data[0].name;
           var dirpath = data[0].fullPath.substr(0, data[0].fullPath.lastIndexOf('/') + 1);
+          var dur = this.media.create(dirpath);
+          let duration = dur.getDuration();
+          console.log(dur + 'dur');
+          console.log(duration + 'duration');
           dirpath = dirpath.includes("file://") ? dirpath : "file://" + dirpath;  
           this.selectedVideoFile(dirpath,filename);
           this.visibility = true;
@@ -617,15 +623,21 @@ export class AddProgramPage implements OnInit {
   pickVideoFromGallery(sourceType) {
     const options: CameraOptions = {
       quality: 60,
-      sourceType: sourceType,
-      destinationType: this.camera.DestinationType.DATA_URL,
       mediaType: this.camera.MediaType.VIDEO,
-      correctOrientation: true
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+      // sourceType: sourceType,
+      // destinationType: this.camera.DestinationType.DATA_URL,
+      // mediaType: this.camera.MediaType.VIDEO,
+      // correctOrientation: true
     }
-    this.camera.getPicture(options).then((data) => {
-      var filename = data[0].name;
-          var dirpath = data[0].fullPath.substr(0, data[0].fullPath.lastIndexOf('/') + 1);
-          dirpath = dirpath.includes("file://") ? dirpath : "file://" + dirpath; 
+    this.camera.getPicture(options).then((videoUrl) => {
+      var filename = videoUrl.substr(videoUrl.lastIndexOf('/') + 1);         
+      var dirpath = videoUrl.substr(0, videoUrl.lastIndexOf('/') + 1);
+      var dur = this.media.create(dirpath);
+          let duration = dur.getDuration();
+          console.log(dur + 'dur');
+          console.log(duration + 'duration');
+      dirpath = dirpath.includes("file://") ? dirpath : "file://" + dirpath;
       this.selectedVideoFile(dirpath,filename);
       // this.gallaryImgPath.push('data:image/jpeg;base64,' + imageData);
     }, (err) => {

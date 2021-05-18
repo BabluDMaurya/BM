@@ -50,6 +50,8 @@ export class ScheduleModalComponent implements OnInit {
     }
     this.commonService.presentLoader();
     this.programService.getProgramById({ 'parentId': programId }).subscribe(data => {
+      console.log(data);
+      console.log(data.cloneList);
       this.allProgram = data.cloneList;
       this.allProgram.filter(el => {
         el.convertedTime = new Date(el.program_date + 'Z');

@@ -160,19 +160,7 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
           }else{
             this.selectNewTime();
           }
-          // if(el.startTime.getTime() > (this.mainHours.getTime()) && el.startTime.getTime() > (this.durTime.getTime())){
-          //     this.noEvent = true;
-          //     console.log('first');
-          // }else if(el.endTime.getTime() < (this.mainHours.getTime()) && el.endTime.getTime() > (this.durTime.getTime())){
-          //     this.noEvent = true;
-          //     console.log('second');
-          // }else{
-          //   this.selectNewTime();
-          // }
       }
-      // else{
-      //   }
-
       });
     }else {
       this.noEvent = true;
@@ -183,9 +171,9 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
       this.repetatedDateCopy.forEach(el => {
         // console.log(el.getDate());
         // console.log(this.dateObj.getDate());
-        if(el.getDate() == this.dateObj.getDate()){
+        if(el.getDate() == this.dateObj.getDate() && el.getMonth() == this.dateObj.getMonth()){
           this.noEvent = false;
-          return false;
+          return ;
         }else{
           // this.noEvent = true;
         }
@@ -248,14 +236,7 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
               console.log(el.startTime.getTime());
               console.log(el.endTime.getTime());
               console.log(this.dateObj.getTime());          
-              
-            // if(el.startTime.getTime() < (this.dateObj.getTime()) && el.startTime.getTime() < (this.durTime.getTime())){
-            //   this.noEvent = true;
-            //   console.log('first');
-            // }else if(el.endTime.getTime() < (this.dateObj.getTime()) && el.endTime.getTime() > (this.durTime.getTime())){
-            //     this.noEvent = true;
-            //     console.log('second');
-            // }
+       
             if ((el.startTime.getTime() > this.dateObj.getTime() && el.startTime.getTime() >= this.progEndTime.getTime()) || (el.endTime.getTime() <= this.dateObj.getTime())) {  
               this.noEvent == true;
             }
@@ -267,8 +248,6 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
           });
         
           this.repetatedDateCopy.forEach(el => {
-            // console.log(el.getDate());
-            // console.log(this.dateObj.getDate());
             if(el.getDate() == this.dateObj.getDate()){
               this.noEvent = false;
               return ;

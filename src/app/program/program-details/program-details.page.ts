@@ -5,7 +5,7 @@ import { ParticipantsComponent } from '../participants/participants.component';
 import { EquipmentsComponent } from '../equipments/equipments.component';
 import { ChatUserComponent } from '../chat-user/chat-user.component';
 import { AdDetailsComponent} from '../ad-details/ad-details.component';
-import { NavController, Platform} from '@ionic/angular';
+import { NavController, Platform,ModalController} from '@ionic/angular';
 import { ActivatedRoute, ParamMap, Router,NavigationExtras} from '@angular/router'
 import { ProgramService } from './../../services/program.service'
 import { Config } from './../../config/config'
@@ -79,7 +79,8 @@ export class ProgramDetailsPage implements OnInit {
     public platform: Platform,
     public router : Router,
     public httpClient : HttpClient,
-    private chatService : ChatService
+    private chatService : ChatService,
+    private modalCtrl: ModalController,
     ) {
 
   }
@@ -298,8 +299,19 @@ export class ProgramDetailsPage implements OnInit {
   showParticipants() {
     this.commonService.presentModal(ParticipantsComponent, 'fullModal', { 'userList': this.userList, 'programDetails': this.programDetail });
   }
-  equipments() {
-    this.commonService.presentModal(EquipmentsComponent, 'halfModal', { 'programDetail': this.programDetail  });
+  async equipments() {
+    // this.commonService.presentModal(EquipmentsComponent, 'halfModal', { 'programDetail': this.programDetail  });
+    const modal = await this.modalCtrl.create({
+      component: EquipmentsComponent,
+      cssClass: 'halfModal',
+      componentProps: { "programDetail": this.programDetail }
+    });
+    modal.onDidDismiss().then((d: any) => {
+      this.programDetail.equipments = d.data;
+      console.log(d);
+      console.log(this.programDetail.equipments);
+    });
+    return await modal.present();
   }
   showChatUsers() {
     if(this.programType != "public"){         

@@ -162,5 +162,8 @@ export class ProgramService {
   updateProgramFees(data: any): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/updateProgramFees', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('updateProgramFees', data)));
   }
+  updateEquipmentList(data: any): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/updateEquipmentList', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('updateEquipmentList', data)));
+  }
 
 }

@@ -17,9 +17,9 @@
   
   <div *ngIf="equipment;else nodata">
     <ion-list class="user-list ion-no-padding" >
-      <ion-item *ngFor="let equp of equipments; let i=index;">      
-  
-        <ion-label class="ion-padding-horizontal" *ngIf="equp?.selected"><h3 class="list-person">{{equp?.name}} </h3></ion-label>
+      <ion-item *ngFor="let equp of equipments">      
+        
+        <ion-label class="ion-padding-horizontal" *ngIf="equp.selected"><h3 class="list-person">{{equp.equipment_name}} </h3></ion-label>
       </ion-item>
     </ion-list>
   </div>
