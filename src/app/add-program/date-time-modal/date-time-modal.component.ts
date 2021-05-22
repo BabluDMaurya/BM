@@ -63,6 +63,9 @@ export class DateTimeModalComponent implements OnInit {
     this.calendarData = new Date(this.navParams.data.calendarData);
     let hourspan = new Date(this.navParams.data.calendarData);
     this.minutes = this.navParams.data.minutes;
+    this.repetatedDateCopy = this.navParams.data.repetatedDateCopy;
+    this.repetatedDate = this.navParams.data.repetatedDate;
+    this.duration = this.navParams.data.duration;
     hourspan.setMinutes(hourspan.getMinutes() + 59);
     this.programData = this.navParams.data.programData;
     //get days name
@@ -243,7 +246,7 @@ export class DateTimeModalComponent implements OnInit {
     this.repetatedDateCopy=[];
     this.repetative = 1;
     const options: CalendarModalOptions = {
-      pickMode: 'range',
+      pickMode: 'multi',
      
     };
     const modal = await this.modalController.create({
@@ -276,8 +279,8 @@ export class DateTimeModalComponent implements OnInit {
         console.log(el);
         console.log('el');
         this.repetatedDateCopy.push({'date':el ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
-        // this.repetatedDate.push(el);
-        this.repetatedDate.push({'date':el ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
+        this.repetatedDate.push(el);
+        // this.repetatedDate.push({'date':el ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
       });
       console.log(this.repetatedDate);
       }
@@ -293,10 +296,10 @@ export class DateTimeModalComponent implements OnInit {
     this.abDateSelect = ''
   }
   onSubmit() {
-    if (this.programData.programType !== '6' && !this.duration) {
-      this.commonService.presentToast('Please select Duration');
-      return;
-    }
+    // if (this.programData.programType !== '6' && !this.duration) {
+    //   this.commonService.presentToast('Please select Duration');
+    //   return;
+    // }
     if (this.programData.programType == '6') {
       let data = [];
       this.videoList.forEach(el => {
@@ -323,12 +326,14 @@ export class DateTimeModalComponent implements OnInit {
     // this.repetatedDate.filter(el => {
     //   el = el.setHours((hourspan.getHours()), hourspan.getMinutes());
     // });
-    this.programData.progDateTime = hourspan;
+    this.repetative = 1;
+    this.programData.progDateTime = this.repetatedDate[0];
     this.programData.progDuration = this.duration;
     this.programData.progRepetation = this.repetative;
     this.programData.repetatedDate = this.repetatedDate;
     this.programData.repetatedDateCopy = this.repetatedDateCopy;
-    console.log(this.programData);
+    console.log(this.repetatedDateCopy);
+    console.log(this.repetatedDate);
     this.programService.insertProgram(this.programData).subscribe((data) => {
       this.commonService.dismissLoader();
     this.closeModal(data.statusDetails);
@@ -345,12 +350,13 @@ export class DateTimeModalComponent implements OnInit {
       if(event == 1)
       {
         this.repetatedDateCopy[i].equipments = d.data.filter(Boolean) ;
-        this.repetatedDate[i].equipments = d.data.filter(Boolean) ;
+        // this.repetatedDate[i].equipments = d.data.filter(Boolean) ;
       }else{
         this.repetatedDateCopy[i].nutrition_id = d.data.filter(Boolean) ;
-        this.repetatedDate[i].nutrition_id = d.data.filter(Boolean) ;
+        // this.repetatedDate[i].nutrition_id = d.data.filter(Boolean) ;
       }
       console.log(this.repetatedDateCopy);
+      console.log(this.repetatedDate);
     });
     return await modal.present();
   }
@@ -364,7 +370,7 @@ export class DateTimeModalComponent implements OnInit {
     modal.onDidDismiss().then((d: any) => {
       if (d.data) {
         this.repetatedDateCopy[i].video=d.data;
-        this.repetatedDate[i].video=d.data;
+        // this.repetatedDate[i].video=d.data;
       }
     });
     return await modal.present();
