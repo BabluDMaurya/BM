@@ -271,7 +271,7 @@
     <ion-header class="top-header ion-no-padding">
       <ion-list class="top-heading three-block">
         <ion-item slot="start">
-          <ion-buttons class="ion-no-margin" (click)="showProgram=1">
+          <ion-buttons class="ion-no-margin" (click)="backToFirst()">
             <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
           </ion-buttons>
         </ion-item>
@@ -280,7 +280,7 @@
         </ion-item>
         <ion-item class="icon-right-side ion-text-end" slot="end">
           <!-- <ion-label (click)="toLastScreen()" class="text-green">Next</ion-label> -->
-          <ion-label (click)="toPrevScreen()" class="text-green">Next</ion-label>
+          <ion-label *ngIf="repetatedDateCopy.length > 0" (click)="toPrevScreen()" class="text-green">Next</ion-label>
         </ion-item>
       </ion-list>
     </ion-header>

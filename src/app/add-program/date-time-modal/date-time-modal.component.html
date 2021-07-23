@@ -73,14 +73,14 @@
 
   </form>
   <div *ngIf="repetatedDateCopy.length>0">
-    <div class="ion-padding-horizontal">
+    <!-- <div class="ion-padding-horizontal">
     <ion-list>            
         <ion-item class="ion-no-padding ion-margin-vertical">
           <ion-label>Add Bonus Video, Nutrition</ion-label>
           <ion-datetime value="" display-timezone="utc"  (ionChange)="addExtraDay($event)"></ion-datetime>
         </ion-item>
       </ion-list> 
-    </div>
+    </div> -->
     <ion-list *ngFor="let date of repetatedDateCopy let i = index">
       <ion-list-header class="ion-padding-horizontal green text-white">
         {{date.date | date :'medium'}}

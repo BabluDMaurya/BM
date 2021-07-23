@@ -7,7 +7,7 @@ import { FormControl, FormBuilder, Validators,FormGroup } from '@angular/forms';
 import { CalendarComponent } from '../calendar/calendar.component';
 import { formatDate, DatePipe } from '@angular/common';
 import { DateTimeModalComponent } from './date-time-modal/date-time-modal.component';
-import { NavController, Platform, ModalController, IonSlides, ActionSheetController, AlertController, PickerController } from '@ionic/angular';
+import { NavController, Platform, ModalController, IonSlides, ActionSheetController, AlertController, PickerController, ToastController } from '@ionic/angular';
 import { MediaCapture, MediaFile, CaptureError, CaptureVideoOptions } from '@ionic-native/media-capture/ngx';
 import { MusicVolComponent } from './music-vol/music-vol.component';
 import { Config } from './../config/config';
@@ -83,8 +83,10 @@ export class AddProgramPage implements OnInit {
   videoFileSelected : boolean = false;
   visibility : boolean = false;
   finalForm: FormGroup;
+  
   constructor(public commonService: CommonService,
     private alertCtrl: AlertController,
+    private toastCtrl: ToastController,
     @Inject(LOCALE_ID) private locale: string,
     private modalCtrl: ModalController,
     private datePipe: DatePipe,
@@ -454,8 +456,23 @@ export class AddProgramPage implements OnInit {
   }
 
   back() {
+    
     let swiper = document.querySelector('.swiper-container')['swiper'];
     swiper.slidePrev();
+      
+  }
+  backToFirst(){
+    this.showProgram=1;
+    this.selected = [];
+    this.repetatedDateCopy = [];
+    this.repetatedDate= [];
+    this.progDuration = [];
+    this.noEvent = false;
+    this.timeSlot = false;
+    // this.programForm.value = [];
+    // this.eventSource = '';
+    this.minutes = '';
+    // alert('hh');
   }
   onViewTitleChanged(title) {
     this.viewTitle = title;
@@ -484,6 +501,7 @@ export class AddProgramPage implements OnInit {
   // Time slot was clicked
   onTimeSelected(event) {
     // this.repetatedDate = this.repetatedDateCopy;
+    console.log(this.repetatedDateCopy.length);
     if (this.programDetail) {
       this.commonService.presentToast('only one program can create at a time');
       return true;
@@ -616,6 +634,7 @@ export class AddProgramPage implements OnInit {
   async presentPrompt() {
     let alert = this.alertCtrl.create({
      header: 'Duration',
+     message:'',
       inputs: [
         {
           name: 'duration',
@@ -631,7 +650,7 @@ export class AddProgramPage implements OnInit {
       buttons: [
        
         {
-          text: 'COnfirm',
+          text: 'Confirm',
           handler: data => {
             // if (User.isValid(data.username, data.password)) {
             //   // logged in!
@@ -639,6 +658,14 @@ export class AddProgramPage implements OnInit {
             //   // invalid login
             //   return false;
             // }
+            console.log(data.duration);
+            if(data.duration <= 0 ){
+              this.showErrorToast('Enter Valid Duration');
+              return false;
+            }else if(data.duration > 60 ){
+              this.showErrorToast('Enter Upto 60 minutes');
+              return false;
+            }else{
             this.progDuration = data.duration;
             console.log(data);
             this.dateObj.setHours((this.hours),  parseInt(this.minutes));
@@ -679,12 +706,25 @@ export class AddProgramPage implements OnInit {
               this.timeSlot = true;
               // this.repetatedDate = this.repetatedDateCopy;
             }
+           }
           }
         }
       ]
     });
     (await alert).present();
   }
+  async showErrorToast(data: any) {
+    const toast = await this.toastCtrl.create({
+      message: data,
+      duration: 3000,
+      position: 'bottom'
+    });
+
+    
+
+    toast.present();
+  }
+
   preRemovedate(index) {
     this.repetatedDateCopy.splice(index, 1);
     this.selectDate.splice(index, 1);
@@ -1051,6 +1091,13 @@ export class AddProgramPage implements OnInit {
   get f() { return this.programForm.controls; }
 
   nextStep(event) {
+    this.selected = [];
+      this.repetatedDateCopy = [];
+      this.repetatedDate= [];
+      this.progDuration = [];
+      // this.programForm.value = [];
+      // this.eventSource = '';
+      this.minutes = '';
     let formControl = this.programForm.controls
     this.submitted = true
     if (event == 2) {
