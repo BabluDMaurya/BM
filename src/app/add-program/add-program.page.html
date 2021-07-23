@@ -311,7 +311,7 @@
 
       </ion-col>
       <!-- <ion-icon ios="ios-construct" md="md-construct" ></ion-icon> -->
-      <ion-list-header class=" green text-white">
+      <ion-list-header  *ngIf="repetatedDateCopy.length <= 0" class=" green green-alram-icon text-white">
         <div >
           <ion-icon ios="ios-alarm" md="md-alarm" class="" (click)="selectTimeSlot()"></ion-icon>
           <!-- <ion-icon ios="ios-construct" md="md-construct" class="ion-margin-start" ></ion-icon>
@@ -427,9 +427,9 @@
       <ion-item class="" *ngIf="approval_btn && !request_approve_btn ">
         <ion-button (click)="applyAdvertise()" class="green btn button-medium">Request Approval</ion-button> 
       </ion-item>
-      <ion-item class="" *ngIf="request_approve_btn">
+      <!-- <ion-item class="" *ngIf="request_approve_btn">
         <ion-button class="green btn button-medium">Request Sent</ion-button> 
-      </ion-item>
+      </ion-item> -->
       </ion-list>
     </form>
     </div>

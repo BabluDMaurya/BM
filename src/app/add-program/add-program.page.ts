@@ -314,6 +314,7 @@ export class AddProgramPage implements OnInit {
         this.adData = data.status;
         this.request_approve_btn = true;
         this.commonService.dismissLoader();
+        this.commonService.presentToast('Request Sent');
       } );
     }else{
       this.commonService.dismissLoader();
@@ -521,12 +522,12 @@ export class AddProgramPage implements OnInit {
     this.dateObj = new Date(event.selectedTime + 'Z');
     this.noEvent = true;
     this.selectDate.forEach(el => {
-      // console.log(el.getDate());
-      // console.log(this.dateObj.getDate());
+      console.log(el.getDate());
+      console.log(this.dateObj.getDate());
       if(el.getDate() == this.dateObj.getDate() && el.getMonth() == this.dateObj.getMonth()){
-      // alert('same date');
+      console.log('same date');
        this.noEvent = false;
-        return ;
+        return false;
       }
     });
     
@@ -539,31 +540,49 @@ export class AddProgramPage implements OnInit {
             console.log(el.startTime.getTime() + 'event time');
             
             this.noEvent = false;
-            console.log(el.startTime.getTime());
-            console.log(this.dateObj.getTime());
-            console.log(el.endTime.getTime());
+            // console.log(el.startTime.getTime());
+            // console.log(this.dateObj.getTime());
+            // console.log(el.endTime.getTime());
             // if ( (el.startTime.getTime() > this.dateObj.getTime() && el.startTime.getTime() >= nd.getTime()) || (el.endTime.getTime() <= this.dateObj.getTime())) {
-              if ( (el.startTime.getTime() > this.dateObj.getTime() ) || (el.endTime.getTime() <= this.dateObj.getTime())) {
+              if ( (el.startTime.getTime() > this.dateObj.getTime() && el.endTime.getTime() <= this.dateObj.getTime()) || (el.endTime.getTime() <= this.dateObj.getTime())) { 
+            // if ( (el.startTime.getTime() > this.dateObj.getTime() ) ||  (el.endTime.getTime() <= this.dateObj.getTime())) {
               this.noEvent = true;
+              console.log('newww');
              
             }else{
-              // this.selectNewTime();
+              this.noEvent = false;
+              this.selectNewTime();
+              console.log('exist');
+              // return ;
+              
+              
               
             }
         }else{
           this.noEvent = true;
         }
         });
-      }}else {
-        this.noEvent = true;
       }
+    
+    }
+    // else {
+    //     this.noEvent = true;
+    //   }
     if(this.noEvent == true){
       console.log(this.hours);
       this.dateObj.setHours((this.hours),  parseInt(this.minutes));
+      if ((this.dateObj.getDate() == (new Date().getDate()) && this.dateObj.getMonth() <= (new Date().getMonth())) && this.dateObj.getHours() < (new Date().getHours())){
+        this.commonService.presentToast('Sorry, this is past time');
+        this.noEvent = false;
+        return ;
+      }
       this.selectDate.push(this.dateObj);
       // this.selectDate.forEach(el => {
       this.repetatedDateCopy.push({'date':this.dateObj ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
       this.repetatedDate.push(this.dateObj);
+    }else{
+      // this.selectTimeSlot();
+      this.selectNewTime();
     }
     }
     console.log(this.timeSlot);
@@ -666,9 +685,26 @@ export class AddProgramPage implements OnInit {
               this.showErrorToast('Enter Upto 60 minutes');
               return false;
             }else{
+              // this.dateObj = new Date(event.selectedTime + 'Z');
+              // this.noEvent = true;
+              
+              this.selectDate.forEach(el => {
+                // console.log(el.getDate());
+                // console.log(this.dateObj.getDate());
+                if(el.getDate() == this.dateObj.getDate() && el.getMonth() == this.dateObj.getMonth()){
+                // alert('same date');
+                 this.noEvent = false;
+                  return ;
+                }
+              });  
             this.progDuration = data.duration;
             console.log(data);
             this.dateObj.setHours((this.hours),  parseInt(this.minutes));
+            if ((this.dateObj.getDate() == (new Date().getDate()) && this.dateObj.getMonth() <= (new Date().getMonth())) && this.dateObj.getHours() < (new Date().getHours())){
+              this.commonService.presentToast('Sorry, this is past time');
+              this.noEvent = false;
+              return ;
+            }
             // alert(this.newEvent.events.length);
             if(this.newEvent.events.length > 0){
               this.newEvent.events.forEach(el => {
@@ -731,6 +767,7 @@ export class AddProgramPage implements OnInit {
   }
   preSelectedDate(index) {
     this.repetatedDateCopy.splice(index, 1);
+    this.selectDate.splice(index, 1);
   }
   // selectNewTime() {
     
