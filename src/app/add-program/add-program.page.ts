@@ -938,15 +938,15 @@ export class AddProgramPage implements OnInit {
           var hours = value.Hours.value;
           console.log(hours);
           
-          this.dateObj.setMinutes(hours);
+          // this.dateObj.setMinutes(hours);
           console.log(this.dateObj);
           // var newEndTime = new Date(this.eventList.selectedTime + 'Z');
           var newDateTime = this.dateObj;
-          
-          newDateTime.setHours((this.hours),  parseInt(hours)+parseInt(this.progDuration));
-          this.progEndTime = newDateTime;
+          // this.dateObj.setHours((this.hours),  parseInt(this.minutes));
+          var nd = newDateTime.setHours((this.hours),  parseInt(hours));
+          this.progEndTime = nd;
           console.log(this.progEndTime);
-          console.log('fffffffffffffffffff');
+          console.log(nd);
           this.newEvent.events.forEach(el => {
             if (el.startTime.getHours() == this.dateObj.getHours() || el.endTime.getHours() == this.dateObj.getHours()) {
               
