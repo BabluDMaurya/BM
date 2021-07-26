@@ -465,6 +465,7 @@ export class AddProgramPage implements OnInit {
   backToFirst(){
     this.showProgram=1;
     this.selected = [];
+    this.selectDate = [];
     this.repetatedDateCopy = [];
     this.repetatedDate= [];
     this.progDuration = [];
@@ -521,6 +522,7 @@ export class AddProgramPage implements OnInit {
 
     this.dateObj = new Date(event.selectedTime + 'Z');
     this.noEvent = true;
+    console.log(this.selectDate);
     this.selectDate.forEach(el => {
       console.log(el.getDate());
       console.log(this.dateObj.getDate());
@@ -724,8 +726,9 @@ export class AddProgramPage implements OnInit {
                     this.noEvent = true;
                     // alert('tt');
                   }else{
+                    console.log('nn');
                     this.selectNewTime();
-                    // alert('nn');
+                    
                   }
               }else{
                 this.noEvent = true;
@@ -772,6 +775,7 @@ export class AddProgramPage implements OnInit {
   preSelectedDate(index) {
     this.repetatedDateCopy.splice(index, 1);
     this.selectDate.splice(index, 1);
+    console.log(this.selectDate);
   }
   // selectNewTime() {
     
@@ -967,6 +971,8 @@ export class AddProgramPage implements OnInit {
           });
           if(this.noEvent == true){
             // this.repetatedDateCopy.push(this.dateObj);
+            this.selectDate.push(this.dateObj);
+            this.repetatedDate.push(this.dateObj);
             this.repetatedDateCopy.push({'date':this.dateObj ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
           }
           
