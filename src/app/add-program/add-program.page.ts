@@ -582,7 +582,7 @@ export class AddProgramPage implements OnInit {
       this.repetatedDate.push(this.dateObj);
     }else{
       // this.selectTimeSlot();
-      this.selectNewTime();
+      // this.selectNewTime();
     }
     }
     console.log(this.timeSlot);
@@ -714,6 +714,7 @@ export class AddProgramPage implements OnInit {
                   var nd = new Date(this.newEvent.selectedTime + 'Z');
                   nd.setHours((this.hours),  parseInt(this.minutes)+parseInt(this.progDuration));
                   this.progEndTime = nd;
+                  console.log(this.progEndTime + 'endTime');
                   this.noEvent = false;
                   console.log(el.startTime.getTime());
                   console.log(this.dateObj.getTime());
@@ -736,6 +737,9 @@ export class AddProgramPage implements OnInit {
             // alert(this.noEvent);
             if(this.noEvent == true){
               // alert('hj');
+              // var nd = this.dateObj;
+              // nd.setHours((this.hours),  parseInt(this.minutes)+parseInt(this.progDuration));
+              // this.progEndTime = nd;
               this.selectDate.push(this.dateObj);
               this.repetatedDateCopy.push({'date':this.dateObj ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
               this.repetatedDate.push(this.dateObj);
@@ -929,7 +933,10 @@ export class AddProgramPage implements OnInit {
           this.dateObj.setMinutes(hours);
           console.log(this.dateObj);
           // var newEndTime = new Date(this.eventList.selectedTime + 'Z');
-          this.progEndTime.setHours((this.hours),  parseInt(hours)+parseInt(this.progDuration));
+          var newDateTime = this.dateObj;
+          
+          newDateTime.setHours((this.hours),  parseInt(hours)+parseInt(this.progDuration));
+          this.progEndTime = newDateTime;
           console.log(this.progEndTime);
           console.log('fffffffffffffffffff');
           this.newEvent.events.forEach(el => {
