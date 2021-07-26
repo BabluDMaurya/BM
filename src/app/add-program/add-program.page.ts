@@ -537,14 +537,16 @@ export class AddProgramPage implements OnInit {
       if(this.newEvent.events.length > 0){
         if( this.noEvent == true){
         this.newEvent.events.forEach(el => {
+          console.log(this.hours);
+          console.log(el.startTime.getHours());
           if (el.startTime.getHours() == this.hours || el.endTime.getHours() == this.hours) {
             
             console.log(el.startTime.getTime() + 'event time');
             
             this.noEvent = false;
-            // console.log(el.startTime.getTime());
-            // console.log(this.dateObj.getTime());
-            // console.log(el.endTime.getTime());
+            console.log(el.startTime.getTime());
+            console.log(this.dateObj.getTime());
+            console.log(el.endTime.getTime());
             // if ( (el.startTime.getTime() > this.dateObj.getTime() && el.startTime.getTime() >= nd.getTime()) || (el.endTime.getTime() <= this.dateObj.getTime())) {
               if ( (el.startTime.getTime() > this.dateObj.getTime() && el.endTime.getTime() <= this.dateObj.getTime()) || (el.endTime.getTime() <= this.dateObj.getTime())) { 
             // if ( (el.startTime.getTime() > this.dateObj.getTime() ) ||  (el.endTime.getTime() <= this.dateObj.getTime())) {
@@ -560,9 +562,10 @@ export class AddProgramPage implements OnInit {
               
               
             }
-        }else{
-          this.noEvent = true;
         }
+        // else{
+        //   this.noEvent = true;
+        // }
         });
       }
     
@@ -570,6 +573,7 @@ export class AddProgramPage implements OnInit {
     // else {
     //     this.noEvent = true;
     //   }
+    console.log(this.noEvent);
     if(this.noEvent == true){
       console.log(this.hours);
       this.dateObj.setHours((this.hours),  parseInt(this.minutes));
