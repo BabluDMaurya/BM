@@ -63,13 +63,13 @@
   <!-- <ion-row class="counter-box ion-padding" *ngIf="!programDetail?.live && !programDetail?.ended ">  -->
     <ion-row class="counter-box ion-padding" > 
     <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
-      <ion-text><p>{{hh | async}}</p> Hours</ion-text>
+      <ion-text><p class="count_time">{{hh | async}}</p> Hours</ion-text>
     </ion-col>
     <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
-      <ion-text><p>{{mm| async}}</p> Minutes</ion-text>
+      <ion-text><p class="count_time">{{mm| async}}</p> Minutes</ion-text>
     </ion-col>
     <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
-      <ion-text><p>{{ss | async}}</p> Seconds</ion-text>
+      <ion-text><p class="count_time">{{ss | async}}</p> Seconds</ion-text>
     </ion-col>
     <ion-col size="12" class="ion-no-padding" *ngIf="programDetail?.ended">
       <ion-text>This Program has been Ended </ion-text>

@@ -224,6 +224,7 @@ export class ProgramViewPage implements OnInit {
     this.sub = interval(5000)
       .subscribe((val) => {
         this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
+          console.log(this.programDetail);
           if (data.programData.is_live) {
             this.programDetail.live = true;
           }

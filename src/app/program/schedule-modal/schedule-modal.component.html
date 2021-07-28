@@ -48,8 +48,8 @@
                   <ion-label>Video</ion-label>
                 </ion-slide>  
                 <ion-slide *ngFor="let item of nutritionList | inArray:'id':progItem?.nutrition_array "  (click)="nutritionModal(progItem)" >
-                  <img src="{{url}}{{item?.image_path}}" *ngIf="item?.image_path" />
-                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:70% !important; height: auto;"/>
+                  <img src="{{url}}{{item?.fImage}}" *ngIf="item?.fImage" />
+                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:70% !important; height: auto;"/>
                   <ion-label>{{item?.title}}</ion-label>
                 </ion-slide>  
               </ion-slides>

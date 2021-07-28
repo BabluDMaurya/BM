@@ -170,6 +170,7 @@ export class ProgramDetailsPage implements OnInit {
   }
   ionViewWillEnter() {
     console.log('ionviewwillenter');
+    
     this.commonService.presentLoader();
     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
       this.programDetail = data.programData;
@@ -195,7 +196,7 @@ export class ProgramDetailsPage implements OnInit {
       this.programDurations = data.programData.program_duration;
       this.programDescription = data.programData.description;
       
-      this.programDetail.live = true;
+      // this.programDetail.live = true;
       this.initRoom();
       
       this.programDetail.img_array =data.programData.image_path.split(','); 
@@ -255,6 +256,8 @@ export class ProgramDetailsPage implements OnInit {
         }
         
       }
+      // console.log(this.programDetail.live + 'psss');
+    console.log(this.programDetail.cd + 'ssss');
       //----------------------------------------
       this.broadcastId = 'programId_' + data.programData.id;
       let payload ='';

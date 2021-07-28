@@ -5,6 +5,13 @@
 .users-list ion-item img:first-child{margin-left: 0;}
 .view-all{width:42px;height:42px;max-width: 42px;text-align:center;background:#f1f0f0;border-radius:50%;display:flex;justify-content:center;align-items:center;margin: 0;margin-left: -10px;}
 
+.users-list{--min-height: auto;display: flex;align-items: center;margin: 6px 0;}
+.users-list img{width: 36px;height: 36px;object-fit: cover;border-radius: 50%;margin-left: -10px;}
+.users-list img:first-child{margin-left: 0;}
+.users-list ion-label{width: 100px;}
+.view-all{width:36px;height:36px;max-width: 36px;text-align:center;background:#f1f0f0;border-radius:50%;display:flex;justify-content:center;align-items:center;margin: 0;margin-left: -10px;}
+.nutriimages-list ion-label{font-size: 0.75rem;margin: 3px 0;text-transform: capitalize;letter-spacing: 0;font-weight: 400;display: block;color: #444;}
+
 .calendar-header{display: flex;justify-content: space-between;align-items: center;}
 .calendar-header ion-item{--padding-start: 0;--inner-padding-end: 0;}
 .calendar-header ion-item:nth-child(2){display: contents;}
@@ -46,4 +53,18 @@ ion-slides{height: 190px;}
         --inner-padding-end: 0;font-size: 0.90rem;margin-right: 30px;
         ion-radio{margin-right: 10px;}
     }
+}
+.thumb-list {
+    ion-item{
+        ion-label{
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    background: rgba(38, 166, 154, 0.50);
+    width: 100%;
+    color: #FFF;
+    padding: 5px;
+    text-align: center;
+}
+}
 }

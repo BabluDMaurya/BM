@@ -73,6 +73,14 @@ export class ScheduleModalComponent implements OnInit {
       this.nutritionService.getNutritionById({ 'nutriId': nutriArr.toLocaleString() }).subscribe(ndata => {
        
         this.nutritionList = ndata.nutritionList;
+        
+        this.nutritionList.forEach(el => {
+         console.log(el.image_path);
+         console.log(el.image_path.split(','));
+         var imgArr = el.image_path.split(',');
+        //  console.log(this.nutritionList[el]);
+         el.fImage = imgArr[0];
+        });
         console.log(this.nutritionList);
         this.commonService.dismissLoader();
       },

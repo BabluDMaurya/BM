@@ -15,7 +15,9 @@ import { Config } from './../config/config';
 import { ProgramService } from './../services/program.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { MusicService } from '../services/music.service';
+// import { AddEquipmentsComponent } from './../add-equipments/add-equipments.component';
 import{VerifyUserInfoComponent} from "./../modalContent/verify-user-info/verify-user-info.component";
+import { AddEquipmentsComponent } from '../add-program/add-equipments/add-equipments.component';
 @Component({
   selector: 'app-edit-program',
   templateUrl: './edit-program.page.html',
@@ -68,7 +70,7 @@ export class EditProgramPage implements OnInit {
   adData:any;
   finalForm: FormGroup;
   url: any = Config.imgUrl;
-  
+  repetatedDateCopy: any= [];
   ImgPath: any;
   constructor(public commonService: CommonService,
     private alertCtrl: AlertController,
@@ -109,7 +111,11 @@ export class EditProgramPage implements OnInit {
       var ImgPath = [];
       var imageUrl = Config.imgUrl;
       image.forEach(function (value,key) {
-        ImgPath.push(value);
+        console.log(value);
+        console.log('value');
+        if(value != ''){
+          ImgPath.push(value);
+        }
       });
       this.preGallaryImgPath = ImgPath;
       console.log(this.preGallaryImgPath);
@@ -127,7 +133,7 @@ export class EditProgramPage implements OnInit {
       this.eventSource =events;
       this.commonService.getUsersById({ "userId": this.programList.request_sent }).subscribe(users => {
         this.modalData = users.userList;
-
+        console.log(this.modalData);
         let uList
         users.userList.forEach(el => {
           if (el.id) {
@@ -400,7 +406,26 @@ export class EditProgramPage implements OnInit {
     // }    
 
   }
-  
+  async addEquipments2(event, item, i) {
+    const modal = await this.modalCtrl.create({
+      component: AddEquipmentsComponent,
+      cssClass: 'fullModal',
+      componentProps: { "programData": item, "modelOpen": event }
+    });
+    modal.onDidDismiss().then((d: any) => {
+      if(event == 1)
+      {
+        this.repetatedDateCopy[i].equipments = d.data.filter(Boolean) ;
+        // this.repetatedDate[i].equipments = d.data.filter(Boolean) ;
+      }else{
+        this.repetatedDateCopy[i].nutrition_id = d.data.filter(Boolean) ;
+        // this.repetatedDate[i].nutrition_id = d.data.filter(Boolean) ;
+      }
+      console.log(this.repetatedDateCopy);
+      // console.log(this.repetatedDate);
+    });
+    return await modal.present();
+  }
 
   goBack() {
     this.navCtrl.back();
@@ -507,6 +532,17 @@ export class EditProgramPage implements OnInit {
         this.commonService.presentToast('Selected exclusive but no user selected');
         return false;
       }
+      var nutriId = [];
+      var equipId = [];
+      if(this.programList.nutrition_id != ''){
+        nutriId = this.programList.nutrition_id.split(',');
+      }
+      if(this.programList.equipments != ''){
+        equipId = this.programList.equipments.split(',');
+      }
+      this.repetatedDateCopy.push({'date':this.programList.program_date ,'equipments':equipId, 'nutrition_id':nutriId , 'video': '','description':''});
+      // new Date(data.programData.program_date + 'Z');  
+      // this.repetatedDateCopy[i].equipments;
       this.showProgram = 2;
     }
   }
@@ -612,15 +648,19 @@ export class EditProgramPage implements OnInit {
     
   }
   selectVolume() {
-    
-    this.finalForm.value.file = this.gallaryImgPath;
+    console.log(this.gallaryImgPath);
+    console.log(this.finalForm);
+    // this.finalForm.value.file = this.gallaryImgPath;
+    this.programForm.value.file = this.gallaryImgPath;
     var fees = this.finalForm.value;
     var progData = this.programForm.value;
     this.programList.program_fee = fees.programFees;
-    // this.programList.file = fees.file;
-    this.programList.value.file = this.gallaryImgPath;
+    this.programList.file = this.gallaryImgPath;
+    this.programList.value = this.programForm.value;
     this.programList.description = progData.programDescription;
     this.programList.title = progData.programTitle;
+    this.programList.equipments = this.repetatedDateCopy[0].equipments.toString();
+    this.programList.nutrition_id = this.repetatedDateCopy[0].nutrition_id.toString();
     
     // var images = this.preGallaryImgPath.toString();
     // var image = images.split(',');

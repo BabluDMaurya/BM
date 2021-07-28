@@ -730,13 +730,15 @@ export class AddProgramPage implements OnInit {
                     this.noEvent = true;
                     // alert('tt');
                   }else{
+                    this.noEvent = false;
                     console.log('nn');
                     this.selectNewTime();
                     
                   }
-              }else{
-                this.noEvent = true;
               }
+              // else{
+              //   this.noEvent = true;
+              // }
               });
             }else {
               this.noEvent = true;

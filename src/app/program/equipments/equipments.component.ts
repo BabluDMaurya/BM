@@ -48,7 +48,9 @@ export class EquipmentsComponent implements OnInit {
       
     this.programDetails = this.navParams.data.programDetail;
     console.log(this.programDetails);
-    this.equipment = this.programDetails.equipments.split(',');
+    if(this.programDetails.equipments != null){
+      this.equipment = this.programDetails.equipments.split(',');
+    }
     console.log(this.equipment);
     this.programService.fetchEquipmentList().subscribe((data) => {
       
