@@ -420,6 +420,7 @@ export class AddProgramPage implements OnInit {
         // if(ALLOWED_MIME_TYPE.indexOf(data.type) == -1){return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"],'');}
         this.selectedVideo = retrievedFile.nativeURL;
         localStorage.setItem('selectedVideo',JSON.stringify(this.selectedVideo));
+        this.programForm.value.file = this.selectedVideo;
         this.videoFileSelected = !this.videoFileSelected; 
         // this.videoFileSelected = https://www.dropbox.com/s/df2d2gf1dvnr5uj/Sample_1280x720_mp4.mp4';
     });
