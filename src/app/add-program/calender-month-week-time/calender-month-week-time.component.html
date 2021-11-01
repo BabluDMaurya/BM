@@ -1,0 +1,57 @@
+<!-- <mbsc-datepicker [controls]="['calendar']" display="inline" [selectMultiple]="true"></mbsc-datepicker> -->
+
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="back('')">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>Select Date</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end">
+     
+      <ion-label class="text-green" (click)="closeModal('')">Confirm</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-header>
+  <!-- <calendar  [calendarMode]="monthcalendar.mode"  [currentDate]="monthcalendar.currentDate"
+      scrollToHour="{{currentHrs}}" [lockSwipeToPrev]="lockSwipeToPrev" (onEventSelected)="onEventSelected($event)"
+      (onTitleChanged)="onViewTitleChanged($event)" (dateSelected)="onDateSelected($event)"
+      (onCurrentDateChanged)="onCurrentDatechanged($event)" startHour="0"
+      endHour="24" step="1" class="calendar-table"></calendar> -->
+  
+<ion-content class="main_content">  
+<ion-row class="ion-padding-horizontal main_content">
+  <ion-col size="12" class="ion-no-padding">
+    <!-- Move back one screen of the slides -->
+    <ion-list lines="none" class="calendar-header">
+      <ion-item class="ion-text-left">
+        <ion-button class="calend_arrow" fill="clear" (click)="back()">
+          <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-title>{{ viewTitle }}</ion-title>
+      </ion-item>
+      <!-- Move forward one screen of the slides -->
+      <ion-item class="ion-text-right">
+        <ion-button class="calend_arrow" fill="clear" (click)="next()">
+          <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+    <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+      scrollToHour="{{currentHrs}}" [lockSwipeToPrev]="lockSwipeToPrev" (onEventSelected)="onEventSelected($event)"
+      (onTitleChanged)="onViewTitleChanged($event)" (onCurrentDateChanged)="onCurrentDatechanged($event)"  startHour="0"
+      endHour="24" step="1" class="calendar-table" (dateSelected)="onDateSelected($event)" (onTimeSelected)="onTimeSelected($event)" ></calendar>
+      <!-- <ion-datetime #dateTime1 displayFormat="mm"></ion-datetime> -->
+
+  </ion-col>
+  <ion-item class="date_items" *ngFor="let dates of repetatedDateCopy; let i =index"> 
+    <h6>{{dates | date :'medium'}} </h6>
+    <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="preRemovedate(i)"></ion-icon>
+  </ion-item> 
+</ion-row>
+</ion-content>

@@ -1,0 +1,6 @@
+.sticky-footer .send-img{width: 26px;}
+.item-card ion-button.green{margin-inline-start: 3px;}
+ion-item{margin-bottom: 5px;border-radius: 4px;--border-radius: 4px;}
+.item-card ion-radio{width:100%;position:absolute;left:0;margin:0;height:100%;opacity: 0;}
+.item-card.item-radio-checked{--background:rgba(43, 187, 173, 0.10)}
+.item-card.item-radio-checked ion-radio{--color-checked:transparent;background:rgba(43,187,173,.13);}

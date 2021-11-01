@@ -1,0 +1,31 @@
+.thumbnail-slider ion-slide{position: relative;border-radius: 8px;overflow: hidden;}
+.thumbnail-slider ion-slide ion-item{position: absolute;width: 100%;height: 100%;--min-height: 100%;--background: transparent;--padding-start: 0;--inner-padding-end: 0;}
+.swiper-slide img{width: 100%;height: 100%;object-fit: cover;}
+.thumbnail-slider ion-slide ion-radio{margin-top: -50px;background: #FFF;border-radius: 50%;}
+
+.top-header{display:flex;height:50px;max-height: 48px;min-height: 48px;justify-content:space-between;background:#fff;-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);-moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.17);box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.17);}
+.top-heading{display: flex;justify-content: space-between;align-items: center;width: 100%;margin-bottom: 0;}
+
+
+// hitesh css strt
+.video-preview-ion-list{
+    display: flex;
+    justify-content: space-around;
+    outline: none;
+}
+.video-preview-ion-list ion-item {
+    border: none;outline: none;
+	--border-color: transparent;
+}
+.video-preview-ion-list ion-item ion-label{
+    border: none;outline: none;    
+	--border-color: transparent;
+}
+.text-green{color:#2bbbad !important}
+.videoContent{padding: 10px 16px;border-bottom: 4px solid #f1f1f1;
+    h4{font-size:18px;font-weight: 500;margin: 0;}
+    p{font-size: 14px;margin: 0;margin-top: 10px;margin-bottom: 0;max-height: 81px;overflow-y: auto;}
+}
+.radio-list{
+    ion-radio{margin-right: 10px;}
+}

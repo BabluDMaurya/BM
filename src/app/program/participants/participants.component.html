@@ -1,0 +1,68 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="closeModal()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>Participants</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end">
+      <!-- <ion-toggle slot="end"></ion-toggle> -->
+    </ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <ion-list lines="none">
+    <ion-radio-group>
+      <ion-item class="item-card" *ngFor="let users of userData; let i=index;">
+        <ion-avatar slot="start">
+          <img *ngIf = "users.image != null " src="{{profileUrl}}{{ users.image }}">
+          <img *ngIf = "users.image == null "  src="../../assets/images/user.png">
+        </ion-avatar>
+        <ion-label>
+          <h3 class="list-person">{{ users.name }}</h3>
+          <span class="list-name">You invited {{ users.user_name }} for this program</span>
+        </ion-label>
+
+        <!-- <ion-label *ngIf = "userData != '' ">
+          <h3>No Participant found.</h3>
+        </ion-label> -->
+        <div *ngIf="!programDetail?.is_requested">
+          <ion-button size="small" slot="end" fill="outline" color="medium" *ngIf="users?.request_accepted" disabled>
+            Request Accepted</ion-button>
+            <ion-button size="small" slot="end" class="green" *ngIf="!users?.request_accepted" (click)="accept( users?.id )" >Accept</ion-button>
+          <!-- <ion-button size="small" slot="end" fill="outline" color="medium" *ngIf="!users?.request_accepted">Pending
+          </ion-button> -->
+          <ion-button size="small" slot="end" class="green" (click)="deleteRequest(users?.id )" *ngIf="!users?.request_accepted">
+            Delete</ion-button>
+        </div>
+        <div *ngIf="programDetail?.is_requested">
+          <ion-button size="small" slot="end" fill="outline" color="medium" *ngIf="users?.request_accepted" disabled>
+            Request Accepted</ion-button>
+          <ion-button size="small" slot="end" class="green" *ngIf="!users?.request_accepted" (click)="accept( users?.id )" >Accept</ion-button>
+         
+        </div>
+      </ion-item>
+      <ion-item class="item-card" *ngFor="let users of acceptedData; let i=index;">
+        <ion-avatar slot="start">
+          <img *ngIf = "users.image != null " src="{{profileUrl}}{{ users.image }}">
+          <img *ngIf = "users.image == null "  src="../../assets/images/user.png">
+        </ion-avatar>
+        <ion-label>
+          <h3 class="list-person">{{ users.name }}</h3>
+          <span class="list-name">You invited {{ users.user_name }} for this program</span>
+        </ion-label>
+        <ion-button size="small" slot="end" fill="outline" color="medium"  disabled>
+          Request Accepted</ion-button>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+</ion-content>
+<!-- <ion-footer class="sticky-footer">
+  <ion-item lines="none">
+    <ion-input placeholder="Compose Message"></ion-input>
+    <img (click)="closeModal()" src="../../assets/images/send.svg" class="send-img">
+  </ion-item>
+</ion-footer> -->

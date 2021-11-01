@@ -1,0 +1,39 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="center" style="padding-left: 16px;">
+      <ion-label>Payment Pending</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end" (click)="closeModal()">X</ion-item>
+  </ion-list>
+</ion-header>
+<ion-list lines="none" class="ion-no-padding radio-list" *ngIf="type == 2">
+  <ion-card class="ion-no-margin upcomingCard">  
+    <ion-item class="mt-20">
+      <ion-avatar slot="start">
+        <img src="{{url}}{{pgimg}}" *ngIf="pgimg">
+        <img src="../../../assets/images/loading.jpg" *ngIf="!pgimg">
+      </ion-avatar>
+      <ion-label>
+        <h3 class="list-person">Program Name : {{pgname}}</h3>
+        <span class="list-person">Amount : ${{pgamount}}</span>
+      </ion-label>      
+    </ion-item>  
+    </ion-card>
+</ion-list>
+<ion-list lines="none" class="ion-no-padding radio-list" *ngIf="type == 1">
+  <ion-card class="upcomingCard">  
+    <ion-item class="mt-20">
+      <span class="list-person">
+        Payment required to enter additional
+        Private & Group Streams
+      </span>
+      <span class="list-person">
+        <p>Intoactive charge a small transaction fee for Live, Private and Group Session</p>
+      </span>
+     
+        <span class="list-person">Amount : ${{pgamount}}</span>
+         
+    </ion-item>  
+    </ion-card>
+</ion-list>
+<ion-button expand="full" class="green ion-no-margin"  (click)="payment()" >Payment</ion-button>

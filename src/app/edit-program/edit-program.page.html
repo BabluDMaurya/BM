@@ -1,0 +1,282 @@
+<ion-content>
+  <ion-grid class="ion-no-padding" *ngIf="showProgram==1">
+    <ion-header class="top-header ion-no-padding">
+      <ion-list class="top-heading three-block">
+        <ion-item slot="start">
+          <ion-buttons class="ion-no-margin" (click)="goBack()">
+            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          </ion-buttons>
+        </ion-item>
+        <ion-item slot="center">
+          <ion-label>Edit Program</ion-label>
+        </ion-item>
+        <ion-item class="icon-right-side ion-text-end" slot="end">
+          <ion-label (click)="nextStep(2)" class="text-green">Next</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-header>
+    <ion-row class="ion-padding-horizontal main_content">
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card class="upload-box ion-noleft-margin" (click)="openGallery()">
+          <div class="upload_icon">
+            <ion-icon ios="ios-image" md="md-image"></ion-icon>
+          </div>
+          <ion-card-title>Library</ion-card-title>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card class="upload-box ion-noright-margin" (click)="selectMedia()">
+          <div class="upload_icon">
+            <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
+          </div>
+          <ion-card-title>Camera</ion-card-title>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" class="ion-no-padding" *ngIf="gallaryImgPath?.length>0 || preGallaryImgPath?.length>0 || videoFileSelected || preGallaryVidPath != null" >
+        <!-- <ion-button (click)="slidePrev(mySlider)" class="slidebtns slideBack">
+          <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        </ion-button> -->
+        
+        <ion-slides pager="true"  [options]="sliderOpts" class="full-slider mb-10" #mySlider>
+          <ion-slide (click)="showdetails()" *ngFor="let preImgpath of preGallaryImgPath; let i=index;">
+            <img src="{{url}}{{preImgpath}}" />
+            <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="preRemoveImg(i)"></ion-icon>
+          </ion-slide>
+          <ion-slide (click)="showdetails()" *ngFor="let imgpath of gallaryImgPath; let i=index;">
+            <img src="{{imgpath}}" />
+            <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="removeImg(i)"></ion-icon>
+          </ion-slide>
+          <ion-slide  *ngIf="preGallaryVidPath != null">
+            <!-- <img  class="mb-10" height="250px" (click)="preFilepreview()" src="../../assets/images/demo3.jpg"/> -->
+            <img  class="mb-10" height="250px" src="../../assets/images/demo3.jpg"/>
+            <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="preRemovevideo()"></ion-icon>
+          </ion-slide>
+          <ion-slide *ngIf="isVideoSelected">
+            <img *ngIf="videoFileSelected" (click)="filepreview()" class="mb-10" height="250px" src="../../assets/images/demo3.jpg">
+            <ion-icon *ngIf="videoFileSelected" ios="ios-close-circle" md="md-close-circle" (click)="removefilepreview()" color="danger" class="btn-close"></ion-icon>
+          </ion-slide>
+        </ion-slides>
+        <!-- <ion-button (click)="slideNext(slides)" class="slidebtns slideNext">
+          <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+        </ion-button> -->
+      </ion-col>
+      <ion-item-sliding *ngFor="let f of files">
+        <ion-item (click)="openFile(f)">
+          <ion-icon name="image" slot="start" *ngIf="f.name.endsWith('jpg')"></ion-icon>
+          <ion-icon name="videocam" slot="start" *ngIf="f.name.endsWith('MOV') || f.name.endsWith('mp4')"></ion-icon>
+          <ion-icon name="mic" slot="start" *ngIf="f.name.endsWith('wav')"></ion-icon>
+
+          <ion-label class="ion-text-wrap">
+            {{ f.name }}
+            <p>{{ f.fullPath }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+      <!-- 
+      <ion-col size="12" class="ion-no-padding">
+        <ion-button (click)="slidePrev(slides)" class="slidebtns slideBack">
+          <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        </ion-button>
+        <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider>
+          <ion-slide (click)="showdetails()">
+            <img src="../../assets/images/demo1.jpg" />
+          </ion-slide>
+          <ion-slide>
+            <img src="../../assets/images/demo2.jpg" />
+          </ion-slide>
+          <ion-slide>
+            <img src="../../assets/images/demo3.jpg" />
+          </ion-slide>
+        </ion-slides>
+        <ion-button (click)="slideNext(slides)" class="slidebtns slideNext">
+          <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+        </ion-button>
+      </ion-col> -->
+      <ion-col size="12" class="ion-no-padding">
+        <form class="nutrition-form" [formGroup]="programForm">
+          <ion-list>
+            <ion-item>
+              <ion-input placeholder="Title" class="form-control" formControlName="programTitle"
+                [ngClass]="{ 'is-invalid': submitted && f.programTitle.errors }"></ion-input>
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.programTitle">
+              <span class="error-message"
+                *ngIf="(submitted || programForm.get('programTitle').touched) && programForm.get('programTitle').hasError(validation.type)">{{ validation.message }}</span>
+            </ng-container>
+            <ion-item class="mb-10">
+              <ion-textarea placeholder="Description" class="form-control" formControlName="programDescription">
+              </ion-textarea>
+            </ion-item>
+            <ion-item lines="none" class="mb-10">
+              <ion-row>
+                <ion-col size="12" class="ion-no-padding">
+                  <ion-list-header class="grey-header">
+                    <ion-label>Program Type</ion-label>
+                  </ion-list-header>
+                  <h6 class="programHeading">{{programList?.type_id}}</h6>
+                  <ion-text>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua.
+                  </ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-item>
+            <ion-item class="mb-10">
+              <ion-row>
+                <ion-list-header class="grey-header">
+                  <ion-label>Praticipants Type</ion-label>
+                </ion-list-header>
+                <ion-item lines="none" class="grey-header" *ngIf = "programList?.is_requested == '0'">
+                  <ion-label >Exclusive</ion-label>
+                </ion-item>
+                <ion-item lines="none" class="grey-header mb-10" *ngIf = "programList?.is_requested == '1'">
+                  <ion-label>open </ion-label>
+                </ion-item>
+            </ion-row>
+            </ion-item>
+            <ion-item class="mb-10" *ngIf="modalData">
+              <ion-list lines="none" class="users-list">
+                <ion-item *ngFor="let user of modalData" >
+
+                  <img *ngIf="user?.bios?.profile_pic" src="{{profileUrl}}{{user?.bios?.profile_pic}}"  (click)="userList()"/>
+                  <img *ngIf="!user?.bios?.profile_pic" src="../../assets/images/user.jpg"  (click)="userList()"/>
+                  <!-- <ion-label class="view-all" (click)="userList()">+2</ion-label> -->
+                </ion-item>
+              </ion-list>
+            </ion-item>
+            <ion-item>
+              <ion-label>Create Chat room for program</ion-label>
+              <ion-toggle [disabled]='false' formControlName="chatStatus"  [(ngModel)]="toggleValue"  slot="end"></ion-toggle>
+            </ion-item>
+          </ion-list>
+         
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-no-padding" *ngIf="showProgram==2">
+  <ion-header class="top-header ion-no-padding">
+      <ion-list class="top-heading three-block">
+        <ion-item slot="start">
+          <ion-buttons class="ion-no-margin" (click)="showProgram=1">
+            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          </ion-buttons>
+        </ion-item>
+        <ion-item slot="center">
+          <ion-label>Preview</ion-label>
+        </ion-item>
+        <ion-item class="icon-right-side ion-text-end" slot="end">
+          <ion-label (click)="selectVolume()" class="text-green">Save</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-header>
+    <ion-row class="ion-padding-horizontal main_content">
+      <ion-col size="12" class="ion-no-padding"> -->
+        <div *ngIf="repetatedDateCopy.length>0">
+          <!-- <div class="ion-padding-horizontal">
+          <ion-list>            
+              <ion-item class="ion-no-padding ion-margin-vertical">
+                <ion-label>Add Bonus Video, Nutrition</ion-label>
+                <ion-datetime value="" display-timezone="utc"  (ionChange)="addExtraDay($event)"></ion-datetime>
+              </ion-item>
+            </ion-list> 
+          </div> -->
+          <ion-list *ngFor="let date of repetatedDateCopy let i = index">
+            <ion-list-header class="ion-padding-horizontal green text-white">
+              {{date.date | date :'medium'}}
+              <div>
+                <ion-icon ios="ios-construct" md="md-construct" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
+                <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
+                </ion-icon>
+                <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
+                <!-- <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon> -->
+              </div>
+            </ion-list-header>
+            <ion-item>
+              <ion-label>Equipments :</ion-label>
+              <div class="users-list" *ngIf="date?.equipments != '';else no_equipment">
+                <img src="../../assets/images/demo1.jpg" *ngFor="let item of date?.equipments" />
+              </div>
+              <ng-template #no_equipment>No Equipment Selected</ng-template>
+            </ion-item>
+            <ion-item>
+              <ion-label>Nutritions :</ion-label>
+              <div class="users-list" *ngIf="date.nutrition_id != '';else no_nutrition">
+                <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.nutrition_id" />
+              </div>
+              <ng-template #no_nutrition>No Nutrition Selected</ng-template>
+            </ion-item>
+            <ion-item>
+              <ion-label>Videos :</ion-label>
+              <div class="users-list" *ngIf="date?.video;else no_videos">
+              
+                <img src="../../assets/images/demo2.jpg" />
+              </div>
+              <ng-template #no_videos>No videos Selected</ng-template>
+            </ion-item>      
+            <ion-item class="descriptionItem">
+              <ion-textarea placeholder="Enter Description" (ionChange)="detailsUpdate($event ,i)"
+                  value="{{programList?.nutri_desc}}"></ion-textarea>
+            </ion-item>
+          </ion-list>    
+        </div>
+      </ion-col>
+    </ion-row> 
+  </ion-grid> 
+  <!-- <ion-grid class="ion-no-padding" *ngIf="showProgram==3">
+    <ion-header class="top-header ion-no-padding">
+      <ion-list class="top-heading three-block">
+        <ion-item slot="start">
+          <ion-buttons class="ion-no-margin" (click)="showProgram=2">
+            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          </ion-buttons>
+        </ion-item>
+        <ion-item slot="center">
+          <ion-label>Payment</ion-label>
+        </ion-item>
+        <ion-item class="icon-right-side ion-text-end" slot="end" (click)="selectVolume()">
+          <ion-label class="text-green" >Save</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-header>
+    <div class="main_content ion-padding programPreview">
+      <form [formGroup]="finalForm" (ngSubmit)="saveProg()">
+        <h6 style="margin: 0 0 15px 0">Program Name: {{ programList.title }} </h6>
+        <ion-item lines="none">
+          <ion-label style="display: contents;">How much would you like to charge:</ion-label>
+          <ion-label style="    margin-left: 40px;">$</ion-label>
+          <ion-input class="form-control" type="number" formControlName="programFees" value="{{programList.program_fee}}"></ion-input>
+        </ion-item>
+        <div *ngIf="programList.type_id == 'video' ">
+        <ion-label style="display: block;margin-top: 15px;">Would you like to request Sponsors:</ion-label>
+      <ion-item lines="none">
+        <ion-radio-group value="sponsors_group" class="radio-group radioPreview">
+          <ion-item>
+            <ion-label>Yes</ion-label>
+            <ion-radio slot="start" value="1" (click)="sponsar_prog()" ></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>No</ion-label>
+            <ion-radio slot="start" value="2" (click)="unsponsar_prog()" ></ion-radio>
+          </ion-item>
+        </ion-radio-group>      
+      </ion-item>
+      </div>
+      <ion-item lines="none" (click)="verifyUserInfoModal()" *ngIf="loginUserData.trilloMatch != '1' && programList.type_id != 'video' ">
+        <ion-button class="green">Earn with Intoative</ion-button>
+      </ion-item>
+    </form>
+      <ion-footer class="sticky-footer" *ngIf="approval_btn && !request_approve_btn ">
+        <ion-button (click)="applyAdvertise()" class="green">Request Approval</ion-button> 
+      </ion-footer>
+      <ion-footer class="sticky-footer" *ngIf="request_approve_btn">
+        <ion-button class="green">Request Sent</ion-button> 
+      </ion-footer>
+    </div>
+  </ion-grid> -->
+</ion-content>
+
+<!-- <ion-footer class="sticky-footer musiclist green" *ngIf="showProgram==3">  
+  <app-audio-player [selectedAudio]=[audioFile,musicChanged,audioFilename,audioFileDuration]>
+  </app-audio-player>
+</ion-footer> -->

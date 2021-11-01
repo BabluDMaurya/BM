@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>sponcer-chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-list>
+    <ion-list-header>
+      Recent Conversations
+    </ion-list-header>
+
+    <ion-item *ngFor="let sponcer of sponcers" (click)="unread(sponcer)">
+      <!-- <ion-item  (click)="unread(1)"> -->
+      <!-- <ion-avatar slot="start">
+        <img src="./../../../assets/images/user.jpg">
+      </ion-avatar> -->
+      <ion-label>
+        <h2>{{sponcer.company_name}}</h2>        
+        <p>{{sponcer.ad_description}}</p>
+      </ion-label>
+      <ion-badge color="secondary" slot="end">{{sponcer.chat_count}}</ion-badge>
+    </ion-item>
+
+    </ion-list>
+</ion-content>

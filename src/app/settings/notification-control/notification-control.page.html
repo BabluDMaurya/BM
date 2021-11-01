@@ -1,0 +1,65 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+      <ion-item slot="start">
+          <ion-buttons class="ion-no-margin" (click)="goBack()">
+          <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          </ion-buttons>
+      </ion-item>
+      <ion-item slot="center">
+        <ion-label>Notifications Setting</ion-label>
+      </ion-item>
+      <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <ion-list lines="none" class="ion-no-padding toggle-list">
+    <ion-list-header class="green text-white">
+      <ion-label>People</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Following</ion-label>
+      <ion-toggle checked="{{following}}" slot="end" name="following" (click)="followingNotiCont()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Post Responses</ion-label>
+      <ion-toggle checked="{{postResponses}}" slot="end" name="post-responses" (click)="postResponsesNotiCont()"></ion-toggle>
+    </ion-item>
+    <ion-list-header class="green text-white">
+      <ion-label>Media</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Posts</ion-label>
+      <ion-toggle checked="{{posts}}" slot="end" name="posts" (click)="postsNotiCont()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Chat</ion-label>
+      <ion-toggle checked="{{chat}}" slot="end" name="chat" (click)="chatNotiCont()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Videos Sent to Me</ion-label>
+      <ion-toggle checked="{{videoSent}}" slot="end" name="video-sent" (click)="videoSentNotiCont()"></ion-toggle>
+    </ion-item>
+    <ion-list-header class="green text-white">
+      <ion-label>Program</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Program Acceptances</ion-label>
+      <ion-toggle checked="{{programAcceptances}}" slot="end" name="program-acceptances" (click)="programAcceptancesNotiCont()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Program Requests from people I follow</ion-label>
+      <ion-toggle checked="{{peopleIFollow}}" slot="end" name="people I follow" (click)="peopleIFollowNotiCont()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Program Requests from anyone</ion-label>
+      <ion-toggle checked="{{requestsFromAnyone}}" slot="end" name="Requests from anyone" (click)="requestsFromAnyoneNotiCont()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email Sent</ion-label>
+      <ion-toggle checked="{{emailSent}}" slot="end" name="Email Sent" (click)="emailSentNotiCont()"></ion-toggle>
+    </ion-item>
+    <ion-list-header class="green text-white">
+      <ion-label>Payments</ion-label>
+    </ion-list-header>
+  </ion-list>
+</ion-content>

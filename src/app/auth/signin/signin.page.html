@@ -1,0 +1,46 @@
+<ion-content class="sec-login" ion-padding>
+  <ion-row>
+    <ion-col class="ion-padding ion-text-center">
+      <div class="login-logo ion-text-center">
+        <img src="../../../assets/images/logo.png">  
+      </div>
+      <form class="login-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <ion-item class="ion-no-padding floatingItem">
+            <ion-label position="floating">Username or Email <span>*</span></ion-label>
+          <ion-input type="text" formControlName="username" 
+            [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+          </ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.username">
+          <span class="error-message"
+            *ngIf="(submitted || registerForm.get('username').touched) && registerForm.get('username').hasError(validation.type)">
+            {{ validation.message }}
+          </span>
+        </ng-container>
+        <ion-item class="ion-no-padding floatingItem">
+        <ion-label position="floating">Password <span>*</span></ion-label>
+          <ion-input formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [type]="cpwd
+            ? 'password' : 'text'" >
+              </ion-input>      
+              <span toggle=" #password-field" class="change-toggle-password">
+            <ion-icon color="light" [name]="cpwd ? 'eye-off' : 'eye'" (click)="cpwd=!cpwd"> </ion-icon>
+            </span>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <span class="error-message"
+            *ngIf="(submitted || registerForm.get('password').touched) && registerForm.get('password').hasError(validation.type)">
+            {{ validation.message }}
+          </span>
+        </ng-container>
+        <div class="ion-text-end ion-margin-bottom green-text">
+          <a class="text-green" [routerLink]="['/forgot']">Forgot Password ?</a>
+        </div>
+        <ion-button [disabled]="isLoading" expand="block" (click)="onSubmit()" class="green ion-text-uppercase">Log In</ion-button>
+        <!-- <button expand="full" [disabled]="loading" class="my-class">Log In</button> -->
+        <div class="or-text"><ion-text>OR</ion-text></div>
+        <!-- <ion-button fill="outline" [routerLink]="['/home']" class="ion-text-uppercase btn-border btn-insta"><ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon> Log In With instagram</ion-button> -->
+        <p class="bottom-text">Don't have an account? <a routerLink="/signup">Sign Up</a></p>        
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>

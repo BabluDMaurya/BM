@@ -1,0 +1,34 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>Payment History</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content"> 
+  <ion-card class="ion-no-margin">
+  <ion-item slot="center">
+    <ion-label>Program Name</ion-label>
+    <ion-text>{{programName}}</ion-text>
+  </ion-item>
+  <ion-item slot="center">
+    <ion-label>Amount Paid</ion-label>
+    <ion-text>$ {{amount}}</ion-text>
+  </ion-item>
+  <ion-item slot="center">
+    <ion-label>Transaction Id</ion-label>
+    <ion-text>{{transactionId}}</ion-text>
+  </ion-item>
+
+  <ion-item slot="center">
+    <ion-label>Payment Date</ion-label>
+    <ion-text>{{paymentDate | date :'medium'}}</ion-text>
+  </ion-item>
+</ion-card>
+</ion-content>

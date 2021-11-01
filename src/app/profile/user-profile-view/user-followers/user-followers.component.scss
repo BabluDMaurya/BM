@@ -1,0 +1,15 @@
+.btn-follow{--border-radius: 30px;text-transform: capitalize;letter-spacing: 0;font-weight: 400;}
+.unfollow{--background: #f3f3f3;--color: #222;--background-focused: #208c82;--background-hover: #1c8c81;--color-activated: #ffffff;--color-focused: #ffffff;}
+.follow{--background: #26a69a;}
+.top-heading ion-item:first-child, .top-heading ion-item:last-child{width: 48px;}
+
+.sub-heading input{font-size: 0.85rem;}
+.sub-heading ion-item:first-child{width: 100%;}
+.sub-heading ion-item:last-child{position: absolute;right: 0;top:7px}
+ion-input{font-size: 0.85rem;}
+
+
+.item-card{margin-bottom: 0;border-bottom: 4px solid #f7f7f7;box-shadow: none;}
+.ios.main_content{--padding-top: 0px;}
+ion-button{--border-width: 1px;}
+ion-button.green{--border-color: #26a69a;}

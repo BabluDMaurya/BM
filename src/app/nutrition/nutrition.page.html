@@ -1,0 +1,275 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" *ngIf="!showPreview">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back" (click) = "goBack()"></ion-icon>
+      </ion-buttons>
+      <ion-buttons class="ion-no-margin" *ngIf="showPreview" (click)="showPreview=!showPreview">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>{{showPreview?"Preview":"Add Nutrition"}}</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end">
+      <!-- //*ngIf="nextVisible"  -->
+      <div *ngIf="nextVisible && !(this.nutritionForm.invalid)">
+      <ion-label *ngIf="!showPreview" (click)="toPreview()"  class="text-green">Next</ion-label>
+      </div>
+      <ion-label *ngIf="showPreview" class="text-green" (click)="confirm()">Confirm</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content no_footer">
+  <div class="" *ngIf="!showPreview">
+    <form [formGroup]="nutritionForm" (ngSubmit)="toPreview()" class="nutrition-form">
+      <ion-row class="ion-no-padding ion-padding-horizontal">
+        <ion-col size="6" class="ion-no-padding">
+          <ion-card class="upload-box ion-noleft-margin">
+            <div class="upload_icon">
+              <ion-icon ios="ios-image" md="md-image" (click)="openGallery()"></ion-icon>
+            </div>
+            <ion-card-title>Library</ion-card-title>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6" class="ion-no-padding">
+          <ion-card class="upload-box ion-noright-margin">
+            <div class="upload_icon">
+              <ion-icon ios="ios-camera" md="md-camera" (click)="takeSnap()"></ion-icon>
+            </div>
+            <ion-card-title>Camera</ion-card-title>
+          </ion-card>
+        </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-padding">
+        <ion-col size="12" class="ion-no-padding preview-img"><!-- *ngIf="gallaryImgPath?.length>0" -->
+          <!-- <ion-button (click)="slidePrev(slides)" class="slidebtns slideBack">
+            <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          </ion-button> -->
+          <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider>
+            <ion-slide class="ion-padding-horizontal" (click)="showdetails()" *ngFor="let imgpath of gallaryImgPath; let i=index;">
+              <img src="{{imgpath}}" />
+              <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="removeImg(i)"></ion-icon>
+            </ion-slide>            
+          </ion-slides>      
+          <!-- <ion-button (click)="slideNext(slides)" class="slidebtns slideNext">
+            <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+          </ion-button> -->
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-padding ion-padding-horizontal">
+        <ion-col size="12" class="ion-no-padding">
+          <ion-list>
+            
+            <ion-item class="floatingItem">
+              <ion-label position="floating">Title <span>*</span></ion-label>
+              <ion-input class="form-control" type="text" formControlName="nutriTitle" [ngClass]="{ 'is-invalid': submitted && f.nutriTitle.errors }"></ion-input>
+            </ion-item>
+            <div  *ngIf="nutritionForm.get('nutriTitle').hasError('maxlength')">
+              <span class="error-message">Maximum length 25 charecters</span> 
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.nutriTitle">
+              <span class="error-message"
+                *ngIf="(submitted || nutritionForm.get('nutriTitle').touched) && nutritionForm.get('nutriTitle').hasError(validation.type)">
+                {{ validation.message }}
+              </span>
+            </ng-container>
+            <ion-item class="floatingItem">
+              <ion-label position="floating">Description <span>*</span></ion-label>
+              <ion-textarea  class="form-control" type="text" formControlName="nutriDescription"
+                 [ngClass]="{ 'is-invalid': submitted && f.nutriDescription.errors }"></ion-textarea>
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.nutriDescription">
+              <span class="error-message"
+                *ngIf="(submitted || nutritionForm.get('nutriDescription').touched) && nutritionForm.get('nutriDescription').hasError(validation.type)">
+                {{ validation.message }}
+              </span>
+            </ng-container>
+            <ion-item>
+              <ion-label>Meal Type<span class=""> *</span></ion-label>
+              <ion-select placeholder="Select" formControlName="nutriMealType">
+                <ion-select-option value="1">Breakfast</ion-select-option>
+                <ion-select-option value="2">Brunch</ion-select-option>
+                <ion-select-option value="3">Lunch</ion-select-option>
+                <ion-select-option value="4">Snacks</ion-select-option>
+                <ion-select-option value="5">Dinner</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.nutriMealType">
+              <span class="error-message"
+                *ngIf="(submitted || nutritionForm.get('nutriMealType').touched) && nutritionForm.get('nutriMealType').hasError(validation.type)">
+                {{ validation.message }}
+              </span>
+            </ng-container>
+            <ion-item>
+              <ion-label>Serving size<span class=""> *</span></ion-label>
+              <ion-input placeholder="Enter" type="number" class="ion-text-right"  color="light"
+                 formControlName="nutriServeSize"  [ngClass]="{ 'is-invalid': submitted && f.nutriServeSize.errors }">
+              </ion-input>
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.nutriServeSize">
+              <span class="error-message"
+                *ngIf="(submitted || nutritionForm.get('nutriServeSize').touched) && nutritionForm.get('nutriServeSize').hasError(validation.type)">
+                {{ validation.message }}
+              </span>
+            </ng-container>
+            <ion-item>
+              <ion-label>Preparation Time<span class=""> *</span></ion-label>
+              <ion-label style="max-width: 25px;">Hrs</ion-label>
+              <ion-select  formControlName="nutriPrepHrs" style="padding-left:6px;margin-top: 3px;">
+                <ion-select-option *ngFor="let hour of [00,01,02,03,04,05,06,07,08,09,10,11,12]; let i=index;"
+                  value="{{('0'+hour).slice(-2)}}">{{('0'+hour).slice(-2)}}</ion-select-option>
+              </ion-select>              
+              <ion-label style="max-width: 35px;margin-left: 12px;">Mins</ion-label>
+              <ion-select  formControlName="nutriPrepMin" style="padding-left: 8px;margin-top: 3px;">
+                <ion-select-option *ngFor="let hour of [].constructor(60) let i=index;" value="{{('0'+i).slice(-2)}}">
+                  {{('0'+i).slice(-2)}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.nutriPrepMin">
+              <span class="error-message"
+                *ngIf="(submitted || nutritionForm.get('nutriPrepMin').touched) && nutritionForm.get('nutriPrepMin').hasError(validation.type)">
+                {{ validation.message }}
+              </span>
+            </ng-container>
+          </ion-list>
+
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-padding ion-padding-horizontal ion-margin-end mt-20">
+        <ion-col size="12" class="ion-no-padding">
+          <ion-segment class="top-segment mb-10">
+            <ion-segment-button value="create-food" (click)="foodTab=true" checked>
+              <ion-label>Create Food</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="search-food" (click)="foodTab=false" *ngIf="scanData.length > 0 && scanData[0].data.length > 0 ">
+              <ion-label>Search Food</ion-label>
+            </ion-segment-button>
+              <ion-segment-button value="search-food" (click)="searchFoodModal() && foodTab=false" *ngIf="scanData.length == 0 || scanData[0].data.length == 0  ">
+                <ion-label>Search Food</ion-label>
+              </ion-segment-button>
+          </ion-segment>
+          <div [ngSwitch]="foodTab">
+            <div class="nutrition-form ingredientsBlock mt-20" *ngSwitchCase=true>
+              <ion-list-header class="ion-no-padding min-height-auto">Ingredients</ion-list-header>
+              <ion-list class="ion-no-padding mb-10" *ngFor="let item of tig.controls; let i = index">
+                <ion-item [formGroup]="item">
+                  <ion-input formControlName="name" placeholder="Enter Ingredients"></ion-input>
+                  <ion-button class="btn-square green" (click)="removeIngredients(i)" *ngIf="i!=0">
+                    <ion-icon ios="ios-remove" md="md-remove"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-list>
+              <ion-button class="btn-square btn-add green" (click)="addIngredients()">
+                <ion-icon ios="ios-add" md="md-add"></ion-icon>
+              </ion-button>
+            </div>
+            <div class="nutrition-form" *ngSwitchCase="false">
+              <ion-item class="mb-10">
+                <ion-label for="ingredients">Ingredients</ion-label>
+                <ion-chip (click)="searchFoodModal()">
+                  <ion-icon name="restaurant"></ion-icon>
+                  <ion-label>Search Ingredients</ion-label>
+                </ion-chip>
+              </ion-item>
+              <ion-list lines="none" class="ingredients-list" *ngFor="let data of scanData let i= index">
+                <ion-item *ngIf="data.data.item_name;else typedata" class="roundedcorner">
+                  {{data.data.item_name}} <div class="close-ingredients">
+                    <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,data.data.item_name)"></ion-icon>
+                  </div>
+                </ion-item>
+                <ng-template #typedata>
+                  <ion-item *ngFor=" let typeData of data.data let i= index" class="roundedcorner">
+                    {{typeData.food_name}} <div class="close-ingredients">
+                      <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,typeData.food_name)"></ion-icon>
+                    </div>
+                  </ion-item>
+                </ng-template>
+              </ion-list>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-padding ion-padding-horizontal">
+        <ion-col size="12" class="ion-no-padding nutrition-form">
+          <div class="nutrition-form instructionsBlock mt-20">
+            <ion-list-header class="ion-no-padding min-height-auto">Instructions</ion-list-header>
+            <ion-list class="ion-no-padding mb-10" *ngFor="let item of t.controls; let i = index">
+              <ion-item [formGroup]="item">
+                <ion-input formControlName="name" placeholder="Enter Instructions"></ion-input>
+                <ion-button class="btn-square green" (click)="removeInstruction(i)" *ngIf="i!=0">
+                  <ion-icon ios="ios-remove" md="md-remove"></ion-icon>
+                </ion-button>
+              </ion-item>
+            </ion-list>
+            <ion-button class="btn-square btn-add green" (click)="addInstruction()">
+              <ion-icon ios="ios-add" md="md-add"></ion-icon>
+            </ion-button>
+          </div>
+          <!-- <ion-item>
+            <ion-label for="ingredients">Instruction</ion-label>
+            <ion-input class="ion-text-right" name="skillValue" placeholder="Enter Instruction"></ion-input>
+            <input type="button" value="+" (click)="addInstruction()">
+          </ion-item> -->
+        </ion-col>
+        <ion-col size="12" class="ion-no-padding mt-20">
+          <ion-segment class="top-segment">
+            <ion-segment-button class="segment-button-checked" style="max-width: 100%;" checked>
+              <ion-label>Add Beverages</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <ion-item>
+            <ion-label>Select Beverage</ion-label>
+            <ion-select placeholder="Type"  formControlName="nutriBevrageType">
+              <ion-select-option value="1">Coffee</ion-select-option>
+              <ion-select-option value="2">Milk</ion-select-option>
+              <ion-select-option value="3">Fruit drink</ion-select-option>
+              <ion-select-option value="4">Soda</ion-select-option>
+            </ion-select>
+          </ion-item>          
+          <ion-label style="color: #000;">Select Type</ion-label>
+          <ion-list class="beverages-inputs" style="padding-top: 0;">
+            <ion-item>
+              <ion-label>Select Option</ion-label>
+              <ion-select placeholder="Options" formControlName="bevragveOption">
+                <ion-select-option value="1">Bottle</ion-select-option>
+                <ion-select-option value="2">Glass</ion-select-option>
+                <ion-select-option value="3">Bowl</ion-select-option>
+                <ion-select-option value="3">Cup</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Select Quantity</ion-label>
+              <ion-select placeholder="Quantity"  formControlName="bevragveQnty">
+                <ion-select-option>1</ion-select-option>
+                <ion-select-option>2</ion-select-option>
+                <ion-select-option>3</ion-select-option>
+              </ion-select>
+            </ion-item>           
+          </ion-list>          
+          <ion-label style="color: #000;">Select Measure/Units</ion-label>
+          <ion-list class="beverages-inputs" style="padding-top: 0;">
+            <ion-item>
+              <ion-input placeholder="Enter Quantity"  formControlName="unitQnty" type="number"  color="light" >
+              </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Select Unit</ion-label>
+              <ion-select placeholder="Unit" formControlName="bevragveUnit">
+                <ion-select-option value="1">Liter</ion-select-option>
+                <ion-select-option value="2">Milliliter</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+          <!-- <ion-item lines="none">
+            <ion-label>Included in this meal</ion-label>
+            <ion-toggle slot="start" formControlName="bevragveinclude" checked="false" ></ion-toggle>
+          </ion-item> -->
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+  <ion-grid class="ion-no-padding" *ngIf="showPreview">
+    <app-nutrition-preview></app-nutrition-preview>
+  </ion-grid>
+</ion-content>

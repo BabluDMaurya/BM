@@ -1,0 +1,22 @@
+<ion-content class="sec-login" ion-padding>
+  <ion-row>
+    <ion-col class="ion-padding ion-text-center">
+      <div class="login-logo ion-text-center">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back" [routerLink]="['/signin']" class="back-icon"></ion-icon>
+        <img src="../../../assets/images/logo.png">
+      </div>
+      <ion-label class="text-white">We will send you an unique code to reset your password</ion-label>
+      <form class="login-form mt-20" [formGroup]="registerForm2" (ngSubmit)="onSubmitted()">
+        <ion-item class="ion-no-padding">
+          <!-- <ion-label position="floating">Email Address</ion-label> -->
+          <ion-input placeholder="Email Address"  formControlName="uemail"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.uemail">
+          <span class="error-message" *ngIf="(submitted || registerForm2.get('uemail').touched ) && registerForm2.get('uemail').hasError(validation.type)">{{ validation.message }}</span>
+        </ng-container>
+        <br>
+        <ion-button [disabled]="isLoading" (click)="onSubmitted()" expand="block" class="green ion-text-uppercase mt-20">Reset Password</ion-button>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>

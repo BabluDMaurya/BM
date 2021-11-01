@@ -1,0 +1,281 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.page-loader{
+    top: 45%;
+    left: 45%;
+    position: fixed;
+}
+.custom-loader-class{
+    --background:#F4B004;
+    --spinner-color:#F94701;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/font/Roboto-Medium.woff2") format("woff2"),
+    url("assets/font/Roboto-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/font/Roboto-Regular.woff2") format("woff2"),
+    url("assets/font/Roboto-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/font/Roboto-Light.woff2") format("woff2"),
+    url("assets/font/Roboto-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/font/Roboto-BoldItalic.woff2") format("woff2"),
+    url("assets/font/Roboto-BoldItalic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/font/Roboto-MediumItalic.woff2") format("woff2"),
+    url("assets/font/Roboto-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/font/Roboto-Black.woff2") format("woff2"),
+    url("assets/font/Roboto-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/font/Roboto-ThinItalic.woff2") format("woff2"),
+    url("assets/font/Roboto-ThinItalic.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/font/Roboto-Bold.woff2") format("woff2"),
+    url("assets/font/Roboto-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/font/Roboto-Thin.woff2") format("woff2"),
+    url("assets/font/Roboto-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/font/Roboto-BlackItalic.woff2") format("woff2"),
+    url("assets/font/Roboto-BlackItalic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/font/Roboto-Italic.woff2") format("woff2"),
+    url("assets/font/Roboto-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/font/Roboto-LightItalic.woff2") format("woff2"),
+    url("assets/font/Roboto-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+.bottomModal {
+  align-items: flex-end;
+}
+.bottomModal .modal-wrapper {
+  height: 45vh;
+  top: auto;
+}
+.profile-tabs{position: unset;}
+.profile-tabs ion-tab-bar{--background: #f7f7f7;}
+
+
+
+.full-width{width: 100%;}
+
+
+.alert-head.sc-ion-alert-md{background: #26a69a;padding: 10px 15px;}
+.alert-sub-title.sc-ion-alert-md, .alert-title.sc-ion-alert-md{color: #FFF;font-weight: 400;}
+.alert-checkbox-group.sc-ion-alert-md, .alert-radio-group.sc-ion-alert-md{padding: 10px 0;}
+.alert-tappable.sc-ion-alert-md{height: 35px;}
+.alert-radio-icon.sc-ion-alert-md{left: 15px;}
+.alert-radio-label.sc-ion-alert-md{padding-inline-start: 25px;padding-inline-end: 25px;padding-top: 5px;padding-bottom: 5px}
+.alert-button.sc-ion-alert-md{color: #26a69a;}
+.alert-button.sc-ion-alert-md:last-child{margin-inline-end: 0;}
+[aria-checked=true].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md{border-color: #26a69a;}
+.alert-radio-inner.sc-ion-alert-md{background-color: #26a69a;}
+.btn-back button{padding: 0 !important;}
+
+
+.chat_popup app-chat-popup{--width: 100%;}
+.searchbar ion-searchbar input.searchbar-input{box-shadow: none;border-bottom: 1px solid #c5c5c5;border-radius: 0;}
+.searchbar.ios ion-searchbar{--background: transparent;}
+
+.custom-alert .alert-head{background: transparent;text-align:center}
+.custom-alert .alert-head h2{color:#26a69a}
+.custom-alert .alert-button-group{justify-content: center;}
+.custom-alert .alert-button-group button:first-child{background: transparent;color: #939393;}
+//.custom-alert .alert-button-group button:last-child{margin-inline-end: auto;}
+//.no-alert-button .alert-button-group{padding: 0;}
+.no-alert-button .alert-head {padding-top: 20px;}
+.custom-alert .alert-message{text-align: center;font-size: 0.875rem;line-height: 1.4;}
+// .custom-alert .alert-button-group button{background: #26a69a;color: #FFF;margin: 0 auto;min-width: 55px;text-align: center;padding: 6px;}
+.custom-alert .alert-button-group button>span{justify-content: center;}
+
+
+.swiper-pagination-bullet-active{background: #26a69a;width: 40px;border-radius: 30px;}
+.post-slider .swiper-pagination-bullet-active{background: #26a69a;width: 8px;}
+.ion-img-viewer ion-slides ion-slide img{width: 100%}
+
+ion-radio{--color-checked: #26a69a;}
+.custom-loader .loading-wrapper{box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  -webkit-backdrop-filter: none !important;}
+.custom-loader .loading-wrapper ion-spinner{color: #2bbbad;width: 40px;height: 40px;}
+.custom-loader ion-backdrop{    background: #7b7b7b;}
+
+.custom-popover ion-list{margin-bottom: 0;}
+
+.calendar-table .dayview-container{height: calc(100vh - 155px) !important}
+ion-calendar-modal{
+  ion-header{
+    ion-toolbar{--ion-color-base: #2bbbad!important;}
+  }
+}
+
+.advertiseAlert .alert-message{text-align: left;}
+.mb-0{margin-bottom: 0;}
+.timeSelect .picker-wrapper .picker-toolbar{position: absolute;height: auto;display: contents;}
+.timeSelect .picker-wrapper .picker-toolbar .picker-toolbar-button button {color: #222;}
+.timeSelect .picker-wrapper .picker-toolbar .picker-toolbar-button:first-child{position: absolute;left: 0;}
+.timeSelect .picker-wrapper .picker-toolbar .picker-toolbar-button:first-child button{text-transform: capitalize;font-size: 17px;font-weight: 500;}
+.timeSelect .picker-wrapper .picker-toolbar .picker-toolbar-button:nth-child(2){position: absolute;bottom: 0;background: #f7f7f7;width: 50%;text-align: center;height: 56px;line-height: 56px;}
+.timeSelect .picker-wrapper .picker-toolbar .picker-toolbar-button:nth-child(3){position: absolute;bottom: 0;background: #26a69a;width: 50%;text-align: center;height: 56px;line-height: 56px;color: #FFF;right: 0;}
+.timeSelect .picker-wrapper .picker-toolbar .picker-toolbar-button:nth-child(3) button{color: #FFF;}
+.timeSelect .picker-wrapper .picker-columns{margin-top: 60px;height: 120px;}
+.timeSelect .picker-wrapper .picker-columns button.picker-opt-selected{color: #27a69a;}
+.timeSelect .picker-wrapper .picker-columns .picker-opts, .timeSelect .picker-wrapper .picker-columns .picker-prefix, .timeSelect .picker-wrapper .picker-columns .picker-suffix{top: 22px;}
+
+ion-modal{
+  ion-calendar-modal{
+    ion-header{
+      ion-toolbar.ion-color-primary{--ion-color-base: #2bbbad !important;
+        ion-title{text-align: center;}
+      }
+      ion-calendar-week{
+        ion-toolbar.primary{--background: #2bbbad!important;}
+      }
+    }
+    ion-content{
+      .month-box{
+        .days{
+          .days-btn.today{
+            p{color: #2bbbad !important;}            
+          }
+          button.days-btn.on-selected{background-color: #2bbbad !important;}
+        }
+      }
+    }
+  }
+}
+ion-refresher.homeRefresher{position: fixed;top: 100px;z-index: 999;
+  ion-refresher-content{width: 44px;height: 44px;margin: auto;background: #27a69a;border-radius: 50%;display: flex;justify-content: center;align-items: center;}
+}
+// hitesh css strt
+ion-modal ion-calendar-modal ion-content .month-box .days .days-btn.today.on-selected p {
+  color: #fff !important;
+}
+.calendar-event{    
+  height: 36px !important;
+}
+// hitesh css end
+
+.publisherScreen>div{height: calc(100vh - 66px) !important;}
+.chatList ion-item{--background: transparent;--border-color:transparent}
+.chatList ion-item ion-label *{color: #FFF;}
+.subscriberScreen div.OT_root {
+  width: 80px !important;
+  height: 80px !important;
+  min-width: 80px;
+  margin: 0 2px;
+  border-radius: 4px;
+}
+
+.bioTextarea textarea,.taglineTextarea textarea{height: 45px;}
+.preview-img .full-slider .swiper-pagination-bullet{background: #3e3e3e;opacity: 1;}
+.preview-img .full-slider .swiper-pagination-bullet-active{width: 8px;background: #26a69a;}
+
+.preview-img .swiper-pagination-bullet{background: #3e3e3e;opacity: 1;}
+.preview-img .swiper-pagination-bullet-active{width: 8px;background: #26a69a;}
+.event-detail-container ion-item{
+  --padding-start: 20px;
+  --inner-border-width: 0 !important;
+  border: 0px;
+}
+.event-detail-container ion-item .item-inner{
+  --inner-border-width: 0 !important;
+  border: 0px;
+}
+.monthview-primary-with-event {
+  background-color: #ffffff !important;
+    color: #000 !important;
+}
+.monthview-selected {
+  background-color: #26a69a !important;
+}
+
+.calendar-event-inner {
+  background-color: #ffffff !important;
+}

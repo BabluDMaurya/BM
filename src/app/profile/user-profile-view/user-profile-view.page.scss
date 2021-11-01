@@ -1,0 +1,18 @@
+.user-profile-bg{height: 185px;background: url(../../../assets/images/demo3.jpg) no-repeat;background-size: cover;background-position: center;padding: 0 15px;}
+.profile-content{position: relative;top: -50px;padding-top:60px;display: flex;justify-content: center;align-items: center;flex-direction: column;text-align: center;}
+.profile-content a{color: #777777;font-size: 0.85rem;display: flex;justify-content: center;align-items: center;}
+.profile-content ion-text{position: relative;top: 35px;}
+.user-img{width: 90px;height: 90px;border-radius: 50%;object-fit: cover;object-position: center;-webkit-box-shadow: 0px 0px 15px 0px rgba(82, 82, 82, 0.55);-moz-box-shadow: 0px 0px 15px 0px rgba(82, 82, 82, 0.55);box-shadow: 0px 0px 15px 0px rgba(82, 82, 82, 0.55);margin-bottom: 10px;position: absolute;top: 0;}
+.user-icon{width: 34px;height: 34px;border-radius: 50%;background: rgba(39, 166, 154, 0.07);display: flex;justify-content: center;align-items: center;}
+.user-icon img{width: 16px;height: 16px;}
+ion-card{box-shadow: 0px 8px 24px rgba(34, 35, 58, 0.09);background: #FFF;display: flex;align-items: center;}
+ion-card ion-card-header{padding-right: 0;}
+ion-card-header+.card-content-md{padding-top: 16px;}
+
+.share-btn{--background:#27a69a;--background-activated:#27a69a;--background-focused:#27a69a;--background-hover:#27a69a;--ion-color-shade:#27a69a!important;--ion-color-tint:#27a69a!important;--ion-color-base:rgba(0, 0, 0, 0.35)!important}
+
+.profile_tabs ion-segment span{text-transform: capitalize;}
+ion-card.ios ion-card-content{ font-weight: 300; font-size: 0.85rem;}
+
+ion-card-content.ios{padding-top: 20px !important;}
+ion-card.ios{margin-top: 10px;margin-bottom: 10px;}

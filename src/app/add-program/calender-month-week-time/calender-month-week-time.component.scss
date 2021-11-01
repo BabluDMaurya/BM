@@ -1,0 +1,28 @@
+.calendar-header{display: flex;justify-content: space-between;align-items: center;}
+.date_items {
+    --ion-item-background: none !important;
+    color: #000;
+}
+.date_items ion-icon {
+    --ion-item-background: transparent;
+    color: #000;
+    margin-top: 5px;
+}
+.date_items h6{
+    margin-right: 5px;
+}
+
+.top-heading{display: flex;justify-content: space-between;align-items: center;}
+.text-green {
+    color: #2bbbad !important;
+}
+.top-heading ion-item{
+    --inner-border-width: 0;
+}
+ion-item{
+    --inner-border-width: 0;
+}
+.calend_arrow{
+    // background-color: #69bdad !important;
+    color: #69bdad !important;
+}

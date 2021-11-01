@@ -1,0 +1,298 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">      
+      <ion-buttons class="ion-no-margin"  (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>My Videos</ion-label>
+    </ion-item>  
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>  
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <ion-segment  class="top-segment" (ionChange)="segmentChanged($event)" >
+    <ion-segment-button value="intoactive" checked>IntoActiv Videos</ion-segment-button>
+    <ion-segment-button value="video">Received Videos</ion-segment-button>
+    <ion-segment-button value="program">Upcoming Videos</ion-segment-button>
+    <ion-segment-button value="saved">Saved Videos</ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="consultantVideos">
+    <div *ngSwitchCase="'intoactive'"> 
+      <ion-card class="video-card">
+        <ion-card-header class="card-head upcoming-block">
+          <img src="../../assets/images/demo1.jpg">
+          <ion-label class="full-width">
+            <a href="">
+              <ion-card-title>Pooja96</ion-card-title>
+              <ion-card-subtitle>India</ion-card-subtitle>
+            </a>
+            <ion-text class="post-timedate"><p class="post-date">2019-04-23</p><p class="post-time">12:30:43</p></ion-text> 
+          </ion-label>
+        </ion-card-header>
+        <ion-card-content class="ion-no-padding">
+          <img src="../../assets/images/demo1.jpg">
+          <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+          <div class="video-content">
+            <ion-list class="video-post">
+              <ion-item>
+                <div (click)="chatModal()">
+                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>0</span>
+                </div>
+                <div (click)="like=!like" class="{{ like ?'inactive':'active' }}">
+                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon> <span>2</span>
+                </div>
+              </ion-item>
+              <!-- <ion-item>
+                <div (click)="bookmark=!bookmark" class="{{ bookmark ?'inactive':'active' }}">
+                  <ion-icon class="active-icon" ios="ios-bookmark" md="md-bookmark"></ion-icon>
+                </div>
+              </ion-item> -->
+            </ion-list>
+            <p><span class="username-text">username</span> Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend
+              a week in the woods. Wash your spirit clean.</p>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class="video-card">
+        <ion-card-header class="card-head upcoming-block">
+          <img src="../../assets/images/demo1.jpg">
+          <ion-label class="full-width">
+            <a href="">
+              <ion-card-title>Pooja96</ion-card-title>
+              <ion-card-subtitle>India</ion-card-subtitle>
+            </a>
+            <ion-text class="post-timedate"><p class="post-date">2019-04-23</p><p class="post-time">12:30:43</p></ion-text> 
+          </ion-label>
+        </ion-card-header>
+        <ion-card-content class="ion-no-padding">
+          <img src="../../assets/images/demo1.jpg">
+          <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+          <div class="video-content">
+            <ion-list class="video-post">
+              <ion-item>
+                <div (click)="chatModal()">
+                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>0</span>
+                </div>
+                <div (click)="like=!like" class="{{ like ?'inactive':'active' }}">
+                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon> <span>2</span>
+                </div>
+              </ion-item>
+              <!-- <ion-item>
+                <div (click)="bookmark=!bookmark" class="{{ bookmark ?'inactive':'active' }}">
+                  <ion-icon class="active-icon" ios="ios-bookmark" md="md-bookmark"></ion-icon>
+                </div>
+              </ion-item> -->
+            </ion-list>
+            <p><span class="username-text">username</span> Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend
+              a week in the woods. Wash your spirit clean.</p>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class="video-card">
+        <ion-card-header class="card-head upcoming-block">
+          <img src="../../assets/images/demo1.jpg">
+          <ion-label class="full-width">
+            <a href="">
+              <ion-card-title>Pooja96</ion-card-title>
+              <ion-card-subtitle>India</ion-card-subtitle>
+            </a>
+            <ion-text class="post-timedate"><p class="post-date">2019-04-23</p><p class="post-time">12:30:43</p></ion-text> 
+          </ion-label>
+        </ion-card-header>
+        <ion-card-content class="ion-no-padding">
+          <img src="../../assets/images/demo1.jpg">
+          <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+          <div class="video-content">
+            <ion-list class="video-post">
+              <ion-item>
+                <div (click)="chatModal()">
+                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>0</span>
+                </div>
+                <div (click)="like=!like" class="{{ like ?'inactive':'active' }}">
+                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon> <span>2</span>
+                </div>
+              </ion-item>
+              <!-- <ion-item>
+                <div (click)="bookmark=!bookmark" class="{{ bookmark ?'inactive':'active' }}">
+                  <ion-icon class="active-icon" ios="ios-bookmark" md="md-bookmark"></ion-icon>
+                </div>
+              </ion-item> -->
+            </ion-list>
+            <p><span class="username-text">username</span> Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend
+              a week in the woods. Wash your spirit clean.</p>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div *ngSwitchCase="'video'" lines="none"> 
+      <div class="no-data" *ngIf="!myPosts || myPosts.length === 0">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No post added yet.</p>
+      </div>          
+      <ion-card class="video-card" *ngFor="let post of myPosts">
+        <ion-card-header class="card-head upcoming-block" [routerLink]="['/videos',post.posts_id,'exclusive']">
+          <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}" *ngIf="profileData?.userData?.bios?.profile_pic">
+          <img src="../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
+          <ion-label class="full-width">
+            <a>
+              <ion-card-title>{{profileData.userData.user_name}}</ion-card-title>
+              <ion-card-subtitle>{{profileData.userData.location}}</ion-card-subtitle>
+            </a>
+            <ion-text class="post-timedate"><p class="post-date">{{post?.created_at}}</p></ion-text> 
+          </ion-label>
+        </ion-card-header>
+        <ion-card-content class="ion-no-padding">
+          <img [routerLink]="['/videos',post.posts_id,'exclusive']" src="{{storagePath + post.thumb_path}}" alt="Thumnail Path" />
+          <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+          <div class="video-content">
+            <ion-list class="video-post">
+              <ion-item>
+                <div [routerLink]="['/comments',post.id]" *ngIf=" !post?.disable_comment">                               
+                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> 
+                  <span>{{post.total_comments.length}}</span>                              
+                </div>
+                <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
+                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon> <span>{{post?.count}}</span>
+                </div>
+              </ion-item>
+              <!-- <ion-item>
+                <div (click)="bookmark=!bookmark" class="{{ bookmark ?'inactive':'active' }}">
+                  <ion-icon class="active-icon" ios="ios-bookmark" md="md-bookmark"></ion-icon>
+                </div>
+              </ion-item> -->
+            </ion-list>
+            <div>
+            <p class="mb-10" *ngIf="post.description && post.description.length < 30"><span
+              class="username-text text-green"></span>{{post.description.substr(0, 100)}}
+          </p>
+          <p class="mb-10" *ngIf="post.description && post.description.length > 29 && expanded !=  post.id">
+            <span
+              class="username-text text-green"></span>{{post.description.substr(0, 29)}}
+            <span (click)="expanded = post.id"
+              class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
+          <p class="mb-10" *ngIf="expanded ==  post.id "><span
+              class="username-text text-green"></span>{{post.description}}
+            <span (click)="expanded = 0" class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span>
+          </p>
+        </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadVideoData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>      
+    </div>
+    <ion-list lines="none" *ngSwitchCase="'program'">
+      <div class="no-data" *ngIf="!upcomingList || upcomingList.length === 0">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No upcoming program added yet.</p>
+      </div> 
+      <ion-item class="upcoming-block"  *ngFor="let upcoming of upcomingList">
+        <ion-avatar slot="start">
+          <img
+          src="{{profile_url}}{{upcoming?.program_user?.bios?.profile_pic}}" *ngIf="upcoming?.program_user?.bios?.profile_pic">
+          <img  src="../../assets/images/user.jpg" *ngIf="!upcoming?.program_user?.bios?.profile_pic"  >
+    
+            </ion-avatar>
+        <ion-label     [routerLink]="userData?.id ==upcoming?.user_id ? ['/program-details/',upcoming.id] : ['/program-view/',upcoming.id]">
+          <div>
+            <h3>{{upcoming?.title}}</h3>
+            <p>{{upcoming?.type_id}}</p>
+            <p>By: <span>{{upcoming?.program_user?.user_name}}</span></p>
+            <p class="countdown"  *ngIf="upcoming?.cd>0">Countdown <a>{{upcoming?.hh | number}}h {{upcoming?.mm | number}}m {{upcoming?.ss | number}}s </a></p>
+            <span class="list-name d-block" *ngIf="upcoming?.cd==0"> <b> L I V E</b></span>
+          </div>
+          <!-- <div class="action-links"  *ngIf="upcoming?.nutrition_id">
+            <a (click)="nutritionModal(upcoming)">
+              <ion-icon ios="md-restaurant" md="md-restaurant"></ion-icon>
+            </a>
+          </div> -->
+        </ion-label>
+      </ion-item>
+   
+    </ion-list>
+    <div *ngSwitchCase="'saved'">
+      <div  *ngFor="let post of mySavedVideoPosts" >
+      <ion-card class="item-card" *ngIf="post.video_post['0'].video_type == 3">
+        <!-- <ion-col *ngIf="post['video_post']['0']['video_type'] != 3" size="12" class="ion-no-padding">
+          <ion-slide class="no_imagedata">No post added yet 3!!!</ion-slide>
+        </ion-col> -->
+        <ion-card-header class="item-header" [routerLink]="['/videos',post.id,'']">
+          <ion-avatar>
+            <img [defaultImage]="profileDefaultImage" [lazyLoad]="profilePicUrl+profileData?.userData?.bios?.profile_pic"/>
+            <!-- <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
+              *ngIf="profileData?.userData?.bios?.profile_pic">
+            <img src="../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic"> -->
+          </ion-avatar>
+          <div class="header-right">
+            <ion-label>
+              <ion-card-title>{{loginUserData.user_name}}</ion-card-title>
+              <ion-card-subtitle>{{loginUserData.location}}</ion-card-subtitle>
+            </ion-label>
+            <ion-text class="post-timedate">
+              <p class="post-date">{{post?.created_at}}</p>
+            </ion-text>
+          </div>
+        </ion-card-header>
+        <ion-card-content class="ion-no-padding item-content">
+          <ion-thumbnail [routerLink]="['/videos',post.id,'']"
+            *ngIf="post['video_post']['0']['thumb_path']">
+            <img [defaultImage] = "defaultPostImage" [lazyLoad]="storagePath+post['video_post']['0']['thumb_path']" alt="Video Thumnail">
+            <!-- <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
+            <!-- <img (click)="openViewer(post['video_post']['0']['thumb_path'])" src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
+          </ion-thumbnail>
+          <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+          <div class="post-content">
+            <ion-list class="item-post" lines="none">
+              <ion-item>
+                <div [routerLink]="['/comments',post.id]" *ngIf="post?.disable_comment == 0">
+                  <!-- <span *ngIf="loginUserData?.comment_disable == 0"> -->
+                    <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
+                    <span>{{post.total_comments.length}}</span>
+                  <!-- </span> -->
+                </div>
+                <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
+                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon>
+                  <span>{{post?.count}}</span>
+                </div>
+              </ion-item>
+              <ion-item>
+                <div (click)="showOptions(post?.id ,post?.disable_comment )">
+                  <ion-icon ios="ios-more" md="md-more"></ion-icon>
+                </div>
+              </ion-item>
+            </ion-list>
+            <!-- -------  Description post with  post type = 2 -->
+            <div *ngIf="post?.post_type==2">
+              <p class="mb-10"
+                *ngIf="post['video_post']['0'].description && post['video_post']['0'].description.length < 30">
+                <span
+                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description.substr(0, 100)}}
+              </p>
+              <p class="mb-10"
+                *ngIf="post['video_post']['0'].description && post['video_post']['0'].description.length > 29 && expanded !=  post.id">
+                <span
+                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description.substr(0, 29)}}
+                <span (click)="expanded = post.id"
+                  class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
+              <p class="mb-10" *ngIf="expanded ==  post.id "><span
+                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description}}
+                <span (click)="expanded = 0"
+                  class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
+            </div>
+            <!-- ------- ends here   post type = 2 -->
+          </div>
+        </ion-card-content>
+      </ion-card>
+      </div>
+      <div class="no-data" *ngIf="post.video_post['0'].video_type != 3 && post?.length < 1" style="height: calc(100vh - 175px)">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>Save Video  Not Found.</p>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<!-- <app-fixed-footer></app-fixed-footer> -->
