@@ -1,0 +1,50 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" [routerLink]="['/tabs/consultant-profile']">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>Chats</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end">
+      <ion-buttons class="ion-no-margin" slot="end" [routerLink]="['/add-private']">
+        <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-header>
+
+<ion-content class="main_content">
+  <ion-list class="chatlist_header">
+    <ion-toolbar class="searchbar">
+      <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+    </ion-toolbar>
+    <ion-list-header class="ion-padding-horizontal">
+      <h5 class="ion-no-margin">Messages</h5>
+      <ion-label *ngIf="requestCount > 0" class="text-green" (click)="showRequests()">{{requestCount}} Requests</ion-label>
+    </ion-list-header>
+  </ion-list>  
+  <ion-list lines="none" class="chatList_content" detail="false">
+    <ion-item class="chatList_item"  lines="none" detail="false" *ngFor="let groups of items | filter:term" (click)="chatRoom(groups)">
+    <ion-avatar slot="start" *ngIf="(groups.user_name | slice:0:3) == 'PG_'">
+      <img *ngIf="groups?.profile_pic" src="{{pgimgurl}}{{groups?.profile_pic}}"> 
+      <img *ngIf="!groups?.profile_pic" src="../../assets/images/user.jpg">       
+    </ion-avatar>
+    <ion-avatar slot="start" *ngIf="(groups.user_name | slice:0:3) != 'PG_'">
+      <img *ngIf="groups?.profile_pic" src="{{url}}{{groups?.profile_pic}}"> 
+      <img *ngIf="!groups?.profile_pic" src="../../assets/images/user.jpg">       
+    </ion-avatar>
+
+    <ion-label>
+      <!-- <h3 class="list-person" *ngIf="(groups.user_name | slice:0:3) == 'PG_'">{{ groups.user_name | slice:0:3}}</h3> -->
+      <h3 class="list-person">{{groups.user_name}}</h3>
+      <span class="list-name">{{groups.message}}</span>
+      </ion-label>
+    <img slot="end" class="w26" *ngIf="groups.type == 1" src="../../../assets/images/follower-user.svg" />
+    <img slot="end" class="w26" *ngIf="groups.type == 2" src="../../../assets/images/follower-group.svg" />
+    <ion-badge color="secondary" slot="end" *ngIf="groups.type == 1 && groups.unreadmesage > 0">{{groups.unreadmesage}}</ion-badge>
+  </ion-item>
+  </ion-list> 
+</ion-content>

@@ -1,0 +1,109 @@
+<ion-header class="top-header ion-no-padding" translucent>
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons slot="start" class="ion-no-margin" (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+      <ion-avatar slot="start">
+        <img *ngIf="!profile_pic" src="../../assets/images/user.jpg">
+        <img *ngIf="profile_pic" src="{{profilePicUrl}}{{profile_pic}}">
+      </ion-avatar>
+      <ion-label>
+        <h3 class="list-person" *ngIf="groupName != '' && groupName != null && chatType == 2">{{groupName}}</h3>
+        <h3 class="list-person" *ngIf="user_name != '' && user_name != null && chatType == 1">{{user_name}}</h3>
+        <span class="list-name" *ngIf="chatType == 1"> {{UserOnLineStatus}}</span>
+      </ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end">
+      <ion-button slot="end" (click)="presentPopover()"><ion-icon ios="ios-more" md="md-more"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+</ion-header>
+<ion-content  class="main_content" [scrollEvents]="true"  scrollDownOnLoad="true" id="contentArea">
+  <div>
+    <ion-list class="chats-list" lines="none" *ngIf="chatType == 1">
+      <div *ngFor="let storeMessage of storeMessages; let i = index;">
+      <ion-item *ngIf="isDifferentDay(i)">
+        <ion-label class="chat-duration"><span>{{getMessageDate(i)}}</span></ion-label>
+      </ion-item>
+      <ion-item class="chat-box chat-right" *ngIf="storeMessage.sender_id ===  userData?.id &&  storeMessage.receiver_id == receiverId">
+        <div class="ion-text-end">
+          <ion-label class="message-label">{{ storeMessage.message }}</ion-label>
+          <span class="chat-time">{{ storeMessage.created_at | date:'shortTime' }} <ion-icon ios="ios-done-all" md="md-done-all" [ngClass]="{ 'text-green': storeMessage.read_mess == 1 }"></ion-icon></span>
+        </div>
+      </ion-item>
+      <ion-item class="chat-box chat-left" *ngIf="storeMessage.sender_id !== userData?.id && storeMessage.receiver_id == userData?.id">
+        <div class="ion-text-start">
+          <ion-label class="message-label">{{ storeMessage.message }}</ion-label>
+          <span class="chat-time">{{ storeMessage.created_at | date:'shortTime' }}</span>
+        </div>
+      </ion-item>  
+      </div>  
+    </ion-list>
+    <ion-list class="chats-list" lines="none" *ngIf="chatType == 1">
+      <div *ngFor="let message of messages">   
+      <ion-item class="chat-box chat-right" *ngIf="message.user ===  userData?.id &&  message.sendTo == receiverId">
+        <div class="ion-text-end">
+          <ion-label class="message-label">{{ message.msg }}</ion-label>
+          <span class="chat-time">{{ message.createdAt | date:'shortTime' }} <ion-icon ios="ios-done-all" md="md-done-all" [ngClass]="{ 'text-green': UserOnLineStatus === 'is OnLine' }"></ion-icon></span>
+        </div>
+      </ion-item>
+      <ion-item class="chat-box chat-left" *ngIf="message.user !== userData?.id && message.sendTo == userData?.id">
+        <div class="ion-text-start">
+          <ion-label class="message-label">{{ message.msg }}</ion-label>
+          <span class="chat-time">{{ message.createdAt | date:'shortTime' }}</span>
+        </div>
+      </ion-item> 
+    </div>   
+    </ion-list>
+    <!--Group Chat Message-->
+    <ion-list class="chats-list" lines="none" *ngIf="chatType == 2">
+      <div *ngFor="let groupstoreMessage of storeMessages; let i = index;">
+      <ion-item *ngIf="isDifferentDay(i)">
+        <ion-label class="chat-duration"><span>{{getMessageDate(i)}}</span></ion-label>
+      </ion-item>
+      <ion-item class="chat-box chat-right" *ngIf="groupstoreMessage.sender_id ===  userData?.id">
+        <div class="ion-text-end">        
+          <ion-label class="message-label">{{ groupstoreMessage.message }}</ion-label>
+          <span class="chat-time">{{ groupstoreMessage.created_at | date:'shortTime' }}</span>
+        </div>
+      </ion-item>
+      <ion-item class="chat-box chat-left" *ngIf="groupstoreMessage.sender_id !== userData?.id">
+        <div class="ion-text-start">
+          <h3 class="list-name">{{groupstoreMessage.user_name}}</h3>
+          <ion-label class="message-label">{{ groupstoreMessage.message }}</ion-label>
+          <span class="chat-time">{{ groupstoreMessage.created_at | date:'shortTime' }}</span>
+        </div>
+      </ion-item>   
+      </div> 
+    </ion-list>
+    <ion-list class="chats-list" lines="none" *ngIf="chatType == 2">
+      <div *ngFor="let groupMessage of groupMessages">
+      <ion-item class="chat-box chat-right" *ngIf="groupMessage.user ===  userData?.id">
+        <div class="ion-text-end">
+          <ion-label class="message-label">{{ groupMessage.msg }}</ion-label>
+          <span class="chat-time">{{ groupMessage.createdAt | date:'shortTime' }}</span>
+        </div>
+      </ion-item>
+      <ion-item class="chat-box chat-left" *ngIf="groupMessage.user !== userData?.id">
+        <div class="ion-text-start">
+          <ion-label class="message-label">{{ groupMessage.msg }}</ion-label>
+          <span class="chat-time">{{ groupMessage.createdAt | date:'shortTime' }}</span>
+        </div>
+      </ion-item> 
+    </div>   
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer class="sticky-footer" *ngIf="chatType == 1">
+  <ion-item lines="none">   
+    <ion-textarea [(ngModel)]="message" id="sendmessage" placeholder="Type here.."></ion-textarea>
+    <img src="../../assets/images/send.svg" class="send-img"  (click)="sendMessage()">
+  </ion-item>
+</ion-footer>
+<ion-footer class="sticky-footer" *ngIf="chatType == 2">
+  <ion-item lines="none">   
+    <ion-textarea  [(ngModel)]="groupMessage" id="sendmessage" placeholder="Type here.."></ion-textarea>
+    <img src="../../assets/images/send.svg" class="send-img"  (click)="sendMessage()">
+  </ion-item>
+</ion-footer> 

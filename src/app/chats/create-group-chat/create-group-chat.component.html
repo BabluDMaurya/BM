@@ -1,0 +1,32 @@
+<ion-header class="ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="center" style="padding-left: 16px;">
+      <ion-label>Group Chat</ion-label>
+    </ion-item>
+    <ion-button class="icon-right-side ion-text-end button button-small gcclose" slot="end" (click)="closeModel()">Close</ion-button>
+  </ion-list>
+</ion-header>
+<ion-content>
+  <form [formGroup]="chatGroupForm" (ngSubmit)="onSubmit()" class="chat-group-form">
+    <ion-item class="mt-20" class="gcdesc"> 
+      <ion-label>Lorem ipsum dolor sit amet</ion-label> 
+    </ion-item>    
+    <ion-item class="floatingItem">
+      <ion-label position="floating">Enter your Group Name <span>*</span></ion-label>
+      <ion-input type="text" formControlName="groupName"></ion-input>      
+    </ion-item>
+    <ion-item>
+    <ng-container *ngFor="let validation of validation_messages.groupName">
+      <span class="error-message"
+        *ngIf="(submitted ||chatGroupForm.get('groupName').touched) && chatGroupForm.get('groupName').hasError(validation.type)">
+        {{ validation.message }}
+      </span>
+    </ng-container>
+  </ion-item>
+    <ion-item class="create-group-button">
+    <ion-button expand="full" class="green ion-no-margin" (click)="onSubmit()" disabled="{{buttonDisable}}">Create</ion-button>
+  </ion-item>
+  </form>
+</ion-content>
+
+
