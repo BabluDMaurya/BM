@@ -1,0 +1,55 @@
+.calendar-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.date_items {
+  --ion-item-background: none !important;
+  color: #000;
+}
+
+.date_items ion-icon {
+  --ion-item-background: transparent;
+  color: #000;
+  margin-top: 5px;
+}
+
+.date_items h6 {
+  margin-right: 5px;
+}
+
+.top-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.text-green {
+  color: #2bbbad !important;
+}
+
+.top-heading ion-item {
+  --inner-border-width: 0;
+}
+
+ion-item {
+  --inner-border-width: 0;
+}
+
+.calend_arrow {
+  color: #69bdad !important;
+}
+/*# sourceMappingURL=calender-month-week-time.component.css.map */

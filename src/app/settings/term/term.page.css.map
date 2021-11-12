@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAA;EAAC,WAAW,EAAE,GAAG;CAAG;;AAC5B,AAAA,IAAI,AAAA,aAAa,CAAA;EAAC,aAAa,CAAA,IAAC;CAAO",
+    "sources": [
+        "term.page.scss"
+    ],
+    "names": [],
+    "file": "term.page.css"
+}

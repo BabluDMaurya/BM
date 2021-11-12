@@ -16,7 +16,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { ChatService } from 'src/app/services/chat.service';
 import { HttpClient} from '@angular/common/http';
 import { ChatRoomsComponent } from './../../chats/chat-rooms/chat-rooms.component';
-
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 /* To try the app with Enablex hosted service you need to set the kTry = true */
 var kTry      = true;
 /*Your webservice host URL, Keet the defined host when kTry = true */
@@ -85,6 +85,7 @@ export class ProgramDetailsPage implements OnInit {
     public httpClient : HttpClient,
     private chatService : ChatService,
     private modalCtrl: ModalController,
+    public socialSharing: SocialSharing,
     ) {
 
   }
@@ -457,4 +458,14 @@ export class ProgramDetailsPage implements OnInit {
     this.router.navigate(['/broadcast'], navigationExtras);
       // this.checkAndroidPermissions();
   }  
+  shareItem() {
+    
+    this.socialSharing.share("Program Details","","","program-view/" + this.programDetail.id)
+    .then(() => {
+
+    })
+    .catch(() => {
+
+    });
+  }
 }

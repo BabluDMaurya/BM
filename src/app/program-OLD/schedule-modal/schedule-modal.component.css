@@ -1,0 +1,84 @@
+.item-list ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+.item-list ion-item ion-label {
+  font-size: 0.85rem;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.item-list ion-item ion-segment-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  letter-spacing: 0;
+}
+
+.image-box {
+  margin: 10px 5px;
+  -webkit-box-shadow: 0.001em 8px 24px rgba(34, 35, 58, 0.09);
+          box-shadow: 0.001em 8px 24px rgba(34, 35, 58, 0.09);
+  border-radius: 4px;
+  padding-bottom: 5px;
+}
+
+.image-box img {
+  border-radius: 3px;
+  height: 85px;
+  margin-bottom: 5px;
+}
+
+.video-icon {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+ion-card {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+ion-card:first-child {
+  margin-top: 0;
+}
+
+.grey-header {
+  padding: 10px;
+}
+
+.inner-slider ion-slide {
+  height: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: transparent;
+}
+
+.inner-slider ion-slide ion-label {
+  font-size: 0.85rem;
+}
+
+.video-card {
+  -webkit-box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09);
+          box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09);
+}
+
+ion-slides {
+  background: transparent;
+  padding: 0 5px;
+}
+
+.swiper-slide img {
+  border-radius: 6px;
+  height: 85px;
+  margin-bottom: 5px;
+}
+
+.no-data {
+  height: 50vh;
+}
+/*# sourceMappingURL=schedule-modal.component.css.map */

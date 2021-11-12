@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,AAAA,IAAI,CAAA;EAAC,aAAa,EAAE,CAAC;CAAG",
+    "sources": [
+        "dropdown.component.scss"
+    ],
+    "names": [],
+    "file": "dropdown.component.css"
+}

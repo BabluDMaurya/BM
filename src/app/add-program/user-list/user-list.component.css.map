@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAC,QAAQ,CAAA;EAAC,aAAa,EAAE,GAAG;CAAG;;AAChD,AAAA,iBAAiB,CAAC,QAAQ,CAAC,GAAG,CAAA;EAAC,KAAK,EAAE,IAAI;EAAC,MAAM,EAAE,IAAI;EAAC,aAAa,EAAE,GAAG;EAAC,YAAY,EAAE,IAAI;CAAG;;AAChG,AAAA,iBAAiB,CAAC,QAAQ,CAAC,SAAS,CAAA;EAAC,SAAS,EAAE,OAAO;CAAG;;AAC1D,AAAA,YAAY,CAAC,YAAY,CAAA;EAAC,YAAY,EAAE,GAAG;EAAC,aAAa,EAAE,GAAG;CAAG",
+    "sources": [
+        "user-list.component.scss"
+    ],
+    "names": [],
+    "file": "user-list.component.css"
+}

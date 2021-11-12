@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,eAAe,CAAA;EAAC,aAAa,EAAE,GAAG;EAAC,cAAc,EAAE,UAAU;CAAG;;AAChE,AAAA,WAAW,CAAC,SAAS,CAAA;EAAC,SAAS,EAAC,SAAS;CAAE",
+    "sources": [
+        "verify-user.component.scss"
+    ],
+    "names": [],
+    "file": "verify-user.component.css"
+}

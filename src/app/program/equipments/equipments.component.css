@@ -1,0 +1,17 @@
+.sticky-footer .send-img {
+  width: 26px;
+}
+
+.users-list img {
+  width: 36px;
+  height: 36px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  margin-left: -10px;
+}
+
+.users-list img:first-child {
+  margin-left: 0;
+}
+/*# sourceMappingURL=equipments.component.css.map */

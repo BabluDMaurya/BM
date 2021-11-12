@@ -1,0 +1,26 @@
+.top-header ion-list {
+  background: transparent;
+}
+
+.top-header ion-list ion-item {
+  --background: transparent;
+  border: none;
+  --highlight-background: transparent;
+}
+
+.top-header ion-list ion-item ion-input {
+  color: #000;
+}
+
+.top-header ion-list ion-item.search-item {
+  width: calc(100vh - 160px);
+}
+
+ion-header ion-list .search-item {
+  width: calc(100vh - 160px);
+}
+
+.no-data p {
+  line-height: 1.5;
+}
+/*# sourceMappingURL=search-food.component.css.map */

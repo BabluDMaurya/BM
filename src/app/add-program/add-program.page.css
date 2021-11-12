@@ -1,0 +1,453 @@
+.note {
+  color: #000;
+}
+
+.users-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.users-list ion-item {
+  --min-height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+}
+
+.users-list ion-item img {
+  width: 42px;
+  height: 42px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  margin-left: -10px;
+}
+
+.users-list ion-item img:first-child {
+  margin-left: 0;
+}
+
+.view-all {
+  width: 42px;
+  height: 42px;
+  max-width: 42px;
+  text-align: center;
+  background: #f1f0f0;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  margin-left: -10px;
+}
+
+.calendar-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.calendar-header ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  text-align: center;
+}
+
+.calendar-header ion-item:nth-child(2) {
+  display: contents;
+}
+
+.table > tbody > tr > td.calendar-hour-column {
+  width: 55px;
+}
+
+ion-range {
+  position: absolute;
+  width: 100%;
+  top: -30px;
+  z-index: 99;
+}
+
+.audio-list {
+  padding: 0 15px !important;
+}
+
+.audio-list ion-item {
+  --background: transparent;
+  color: #FFF !important;
+  width: auto !important;
+}
+
+.audio-list ion-item ion-label {
+  margin: 0;
+  margin-right: 20px;
+  overflow: inherit;
+}
+
+.audio-list ion-item ion-fab-button {
+  width: 25px;
+  height: 25px;
+  --ion-color-base: transparent !important;
+  --box-shadow: none;
+}
+
+.audio-list ion-item ion-fab-button ion-icon {
+  color: #FFF;
+}
+
+.ios.main_content {
+  padding-top: 0;
+}
+
+.musiclist ion-item ion-skeleton-text {
+  height: 30px;
+}
+
+ion-segment-button {
+  position: relative;
+}
+
+ion-segment-button ion-skeleton-text {
+  position: absolute;
+  height: 100%;
+  margin: 0;
+  width: 95%;
+}
+
+.video-skeleton {
+  height: 200px;
+}
+
+p ion-skeleton-text, .radio-list ion-item ion-skeleton-text {
+  margin: 0;
+  height: 20px;
+}
+
+.swiper-slide {
+  background: #fbfbfb;
+}
+
+ion-slides {
+  height: 190px;
+}
+
+.top-header {
+  position: fixed;
+}
+
+.slides-container {
+  height: 78% !important;
+}
+
+.dayview-allday-label, .calendar-hour-column {
+  width: 45px !important;
+}
+
+ion-item.floatingItem ion-label {
+  color: #a5a4a4;
+}
+
+ion-item.floatingItem ion-textarea {
+  margin-top: 0;
+}
+
+.programPreview ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  margin-bottom: 15px;
+  font-size: 0.90rem;
+}
+
+.programPreview ion-item ion-list-header {
+  padding-left: 0;
+}
+
+.programPreview ion-item ion-input {
+  min-width: 50px;
+  border-bottom: 1px solid #d1d1d1;
+  padding: 15px 3px 8px;
+}
+
+.programPreview ion-label {
+  color: #000;
+}
+
+.programPreview .radioPreview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.programPreview .radioPreview ion-item {
+  --background: transparent;
+  --inner-border-width: 0 0 0 0;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  font-size: 0.90rem;
+  margin-right: 30px;
+}
+
+.programPreview .radioPreview ion-item ion-radio {
+  margin-right: 10px;
+}
+
+.programPreview .sticky-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.programPreview .sticky-footer ion-button {
+  width: 100%;
+  margin: 0;
+  --border-radius: 0;
+  height: 100%;
+  --background: #27a69a;
+}
+
+.sel-parti-open-item {
+  max-width: 160px;
+}
+
+.sel-parti-open-item .sc-ion-label-md-h {
+  white-space: unset;
+}
+
+.prog_btn_list .btn {
+  --padding-start: 2.1em;
+  --padding-end: 2.1em;
+  font-size: 14px;
+  text-transform: uppercase;
+  height: 40px;
+  letter-spacing: 1px;
+}
+
+.calend_arrow {
+  color: #69bdad !important;
+}
+
+.prog_btn_list ion-item {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.date_items {
+  --ion-item-background: none !important;
+  color: #000;
+}
+
+.date_items ion-icon {
+  --ion-item-background: transparent;
+  color: #000;
+  margin-top: 5px;
+}
+
+.date_items h6 {
+  margin-right: 5px;
+}
+
+.top-heading ion-item {
+  --inner-border-width: 0;
+}
+
+ion-item {
+  --inner-border-width: 0;
+}
+
+.nutriimages-list ion-label {
+  font-size: 0.75rem;
+  margin: 3px 0;
+  text-transform: capitalize;
+  letter-spacing: 0;
+  font-weight: 400;
+  display: block;
+  color: #444;
+}
+
+.video-card {
+  -webkit-box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09);
+          box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09);
+}
+
+ion-slides {
+  background: transparent;
+  padding: 0 5px;
+}
+
+.nutriimages-list ion-segment-button {
+  width: 32%;
+  border: none;
+  padding: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  margin: 0 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #f7f7f7;
+  border-radius: 4px;
+}
+
+.nutriimages-list ion-segment-button:first-child {
+  margin-left: 0;
+}
+
+.nutriimages-list ion-segment-button img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  max-width: 100%;
+}
+
+.nutriimages-list .segment-button-checked {
+  background: #eaeaea;
+  --color-checked: transparent;
+}
+
+.nutriimages-list .thumb-checkbox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.nutriimages-list .thumb-checkbox ion-checkbox {
+  opacity: 0;
+  width: 100%;
+  height: 78px;
+  padding: 0 0;
+}
+
+.checkboxThumb::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: 2px solid #7d7d7d;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked {
+  opacity: 1;
+  --background-checked:transparent;
+  --border-color-checked:transparent;
+  --size:0;
+  --checkmark-color:transparent;
+}
+
+.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked:after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: #26a69a;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.item-list ion-list-header ion-icon {
+  font-size: 1.15rem;
+}
+
+.users-list {
+  --min-height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 6px 0;
+}
+
+.users-list img {
+  width: 36px;
+  height: 36px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  margin-left: -10px;
+}
+
+.users-list img:first-child {
+  margin-left: 0;
+}
+
+.users-list ion-label {
+  width: 100px;
+}
+
+ion-list {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+ion-list ion-item {
+  font-size: 0.875rem;
+  --padding-end: 16px;
+  -webkit-padding-end: 0;
+          padding-inline-end: 0;
+  --inner-padding-end: 0;
+  --min-height: 44px;
+  --border-color: whitesmoke;
+}
+
+ion-list .descriptionItem ion-item {
+  padding: 0;
+}
+
+.green-alram-icon {
+  width: 12% !important;
+  position: center !important;
+}
+
+.monthview-selected {
+  background-color: #3a87ad !important;
+}
+
+.calender_green_bottom .ion-margin-start {
+  margin-left: 6px;
+  position: relative;
+  top: -10px;
+}
+
+.green-alram-icon {
+  position: absolute;
+  top: 330px;
+  right: 15px;
+}
+
+.event-detail-container ion-item {
+  padding-right: 2rem;
+}
+/*# sourceMappingURL=add-program.page.css.map */

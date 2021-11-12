@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAA;EAAC,SAAS,EAAE,mBAAmB;CAAG",
+    "sources": [
+        "popover.component.scss"
+    ],
+    "names": [],
+    "file": "popover.component.css"
+}

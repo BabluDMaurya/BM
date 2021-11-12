@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAA;EAAC,aAAa,EAAE,CAAC;EAAC,UAAU,EAAE,IAAI;EAAC,aAAa,EAAE,iBAAiB;CAG/E;;AAHD,AACI,aADS,CACT,UAAU,CAAA;EAAC,KAAK,EAAE,IAAI;EAAC,MAAM,EAAE,IAAI;CAAG;;AAD1C,AAEI,aAFS,CAET,SAAS,CAAA;EAAC,WAAW,EAAE,GAAG;CAAG",
+    "sources": [
+        "upcoming-tab.component.scss"
+    ],
+    "names": [],
+    "file": "upcoming-tab.component.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAA;EACP,YAAY,CAAA,aAAC;EAIb,UAAU,EAAE,IAAI;CACnB;;AAND,AAEI,WAFO,CAEP,QAAQ,CAAA;EACJ,SAAS,EAAE,IAAI;CAClB;;AAGL,AAAA,WAAW,CAAA;EAAC,YAAY,CAAA,KAAC;CAAO;;AAChC,AAAA,UAAU,CAAA;EAAC,MAAM,EAAE,GAAG;CAAG",
+    "sources": [
+        "slider-zoom.component.scss"
+    ],
+    "names": [],
+    "file": "slider-zoom.component.css"
+}

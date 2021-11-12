@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC,SAAS,CAAA;EAAC,KAAK,EAAE,GAAG;EAAC,MAAM,EAAE,CAAC;EAAC,SAAS,EAAE,MAAM;CAAG;;AACjE,AAAA,aAAa,CAAC,SAAS,CAAA;EAAC,aAAa,CAAA,EAAC;EAAG,gBAAgB,CAAA,EAAC;EAAI,aAAa,EAAE,iBAAiB;CAAG",
+    "sources": [
+        "modal-mineral.component.scss"
+    ],
+    "names": [],
+    "file": "modal-mineral.component.css"
+}

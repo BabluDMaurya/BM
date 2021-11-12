@@ -1,0 +1,8 @@
+.followers-list {
+  height: calc(100% - 60px);
+}
+
+.nutrition-no-data {
+  height: calc(100% - 100px) !important;
+}
+/*# sourceMappingURL=chat-list.page.css.map */

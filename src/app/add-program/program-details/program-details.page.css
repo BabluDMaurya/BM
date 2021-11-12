@@ -1,0 +1,64 @@
+.item-list ion-list-header ion-icon {
+  font-size: 1.15rem;
+}
+
+.users-list {
+  --min-height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 6px 0;
+}
+
+.users-list img {
+  width: 36px;
+  height: 36px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  margin-left: -10px;
+}
+
+.users-list img:first-child {
+  margin-left: 0;
+}
+
+.users-list ion-label {
+  width: 100px;
+}
+
+.view-all {
+  width: 36px;
+  height: 36px;
+  max-width: 36px;
+  text-align: center;
+  background: #f1f0f0;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  margin-left: -10px;
+}
+
+.program-card {
+  width: 100%;
+}
+
+ion-item ion-list {
+  width: 100%;
+}
+
+.item-list > ion-item {
+  --inner-padding-end: 0;
+}
+/*# sourceMappingURL=program-details.page.css.map */

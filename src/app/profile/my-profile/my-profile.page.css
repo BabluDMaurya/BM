@@ -1,0 +1,133 @@
+.top-list {
+  padding: 0.001em;
+  margin: 10px 0.001em;
+}
+
+.top-list ion-item {
+  --min-height: 65px;
+  background: #FFF;
+  -webkit-box-shadow: 0px 0px 15px rgba(34, 35, 58, 0.09);
+          box-shadow: 0px 0px 15px rgba(34, 35, 58, 0.09);
+}
+
+.top-icon {
+  width: 40px;
+  height: 40px;
+  background: #e9f6f5;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  top: -12px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.top-icon ion-icon {
+  color: #27a69a;
+  font-size: 1.25rem;
+}
+
+.top-list ion-item ion-label {
+  margin-left: 5px;
+  padding-top: 0;
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin-left: 0;
+  font-size: 0.625rem;
+}
+
+ion-item-divider {
+  padding-left: 0;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  border: none;
+  --border: none;
+}
+
+ion-item-divider + ion-item-divider {
+  top: 52px;
+}
+
+.profile_tabs ion-segment span {
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 0.625rem;
+}
+
+ion-item.item-card {
+  margin-bottom: 5px;
+  border-radius: 4px;
+  --border-radius: 4px;
+}
+
+.ion-padding-vertical {
+  --padding-top: var(--ion-padding, 22px);
+  --padding-bottom: var(--ion-padding, 164px);
+  padding-top: var(--ion-padding, 4px);
+  padding-bottom: var(--ion-padding, 27px);
+}
+
+.newPostCard ion-card-content {
+  padding-top: 12px;
+}
+
+ion-item-divider ion-segment.profile_tabs.subprofile_tabs .segment-button-checked {
+  background: #27a69a;
+  --indicator-color-checked: #27a69a;
+  color: #FFF;
+  --border-width: 0;
+}
+
+.photoNodata {
+  height: 70px;
+  background: #f7f7f7;
+}
+
+.top-header {
+  position: relative;
+}
+
+.main_content {
+  top: 0;
+}
+
+.userDisplayName {
+  margin-left: 115px;
+}
+
+.top-list ion-item {
+  width: 33.33% !important;
+}
+
+.user_details {
+  display: block;
+  padding: 0 15px;
+}
+
+.user_time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 5px;
+}
+
+.user_time .ion-no-padding {
+  -webkit-box-flex: 0 !important;
+      -ms-flex: 0 0 calc(calc(3 / var(--ion-grid-columns, 12)) * 100%) !important;
+          flex: 0 0 calc(calc(3 / var(--ion-grid-columns, 12)) * 100%) !important;
+  width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%) !important;
+  max-width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%) !important;
+}
+/*# sourceMappingURL=my-profile.page.css.map */

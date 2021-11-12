@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,oBAAoB,CAAA;EAAC,GAAG,EAAE,MAAM;CAAG",
+    "sources": [
+        "post-tab.component.scss"
+    ],
+    "names": [],
+    "file": "post-tab.component.css"
+}

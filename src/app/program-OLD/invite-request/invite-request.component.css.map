@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC,UAAU,CAAA;EAAC,aAAa,EAAE,CAAC;EAAC,eAAe,CAAA,EAAC;EAAG,MAAM,EAAE,IAAI;EAAC,KAAK,EAAE,KAAK;CAAG",
+    "sources": [
+        "invite-request.component.scss"
+    ],
+    "names": [],
+    "file": "invite-request.component.css"
+}

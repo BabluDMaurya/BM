@@ -1,0 +1,66 @@
+.list-head {
+  font-weight: 400;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.list-head span {
+  display: block;
+  font-size: 0.70rem;
+  color: #000;
+  margin-top: 3px;
+}
+
+.text-white {
+  color: #FFF;
+}
+
+ion-range {
+  position: absolute;
+  width: 100%;
+  top: -24px;
+  z-index: 99;
+  --knob-size: 16px;
+  --height: 26px;
+}
+
+.audio-list {
+  padding: 0 15px !important;
+}
+
+.audio-list ion-item {
+  --background: transparent;
+  color: #FFF !important;
+  width: 100% !important;
+}
+
+.audio-list ion-item ion-label {
+  margin: 0;
+  margin-right: 20px;
+  overflow: inherit;
+}
+
+.audio-list ion-item ion-fab-button {
+  width: 25px;
+  height: 25px;
+  --ion-color-base: transparent !important;
+  --box-shadow: none;
+}
+
+.audio-list ion-item ion-fab-button ion-icon {
+  color: #FFF;
+}
+
+.sticky-footer.musiclist {
+  position: absolute;
+  bottom: 40px;
+}
+
+.ios.sticky-footer.musiclist {
+  bottom: 48px;
+}
+
+.subprofile_tabs ion-segment-button.segment-button-checked {
+  color: #fff !important;
+}
+/*# sourceMappingURL=music.page.css.map */

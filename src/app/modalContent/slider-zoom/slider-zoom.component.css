@@ -1,0 +1,17 @@
+.close-fake {
+  --background: trasnsparent;
+  margin-top: 40px;
+}
+
+.close-fake ion-icon {
+  font-size: 2rem;
+}
+
+ion-content {
+  --background: #000;
+}
+
+ion-slides {
+  height: 80%;
+}
+/*# sourceMappingURL=slider-zoom.component.css.map */

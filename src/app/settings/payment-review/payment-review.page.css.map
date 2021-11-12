@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAA;EAAC,aAAa,EAAE,CAAC;EAAC,UAAU,EAAE,IAAI;EAAC,aAAa,EAAE,iBAAiB;CAAG",
+    "sources": [
+        "payment-review.page.scss"
+    ],
+    "names": [],
+    "file": "payment-review.page.css"
+}

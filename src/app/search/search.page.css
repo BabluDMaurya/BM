@@ -1,0 +1,25 @@
+.subprofile_tabs {
+  --background: transparent;
+}
+
+.subprofile_tabs ion-segment ion-segment-button {
+  margin: 0 5px;
+  border-radius: 30px;
+  background: rgba(39, 166, 154, 0.14);
+  position: relative;
+}
+
+.subprofile_tabs ion-segment ion-segment-button.segment-button-checked {
+  background: #27a69a;
+}
+
+.subprofile_tabs ion-segment ion-segment-button ion-skeleton-text {
+  position: absolute;
+  height: 40px;
+  margin: 0;
+}
+
+ion-item-divide {
+  border: none;
+}
+/*# sourceMappingURL=search.page.css.map */

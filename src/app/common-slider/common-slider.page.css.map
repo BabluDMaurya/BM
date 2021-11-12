@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "common-slider.page.scss"
+    ],
+    "names": [],
+    "file": "common-slider.page.css"
+}

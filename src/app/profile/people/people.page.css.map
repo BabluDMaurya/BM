@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAIA,AAAA,QAAQ,CAAA;EAAC,aAAa,EAAE,GAAG;EAAC,aAAa,EAAE,GAAG;EAAC,eAAe,CAAA,IAAC;CAAO;;AACtE,AAAA,UAAU,CAAA;EAAC,cAAc,CAAA,IAAC;CAAO;;AACjC,AAAA,IAAI,AAAA,aAAa,CAAA;EAAC,aAAa,CAAA,IAAC;CAAO;;AACvC,AAAA,QAAQ,CAAA;EAAC,MAAM,EAAE,mBAAmB;CAAG",
+    "sources": [
+        "people.page.scss"
+    ],
+    "names": [],
+    "file": "people.page.css"
+}

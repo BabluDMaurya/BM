@@ -90,6 +90,7 @@ export class AddProgramPage implements OnInit {
   liveToggleValue: boolean = true;
   finalForm: FormGroup;
   videoFileUpload: FileTransferObject;  
+  myDate: any;
 
   constructor(public commonService: CommonService,
     private alertCtrl: AlertController,
@@ -812,7 +813,23 @@ export class AddProgramPage implements OnInit {
 
     toast.present();
   }
-  myDate:any;
+
+  showdate() {
+      this.minutes = '';
+      this.hours = '';
+      console.log("this.myDate");
+      console.log(this.myDate)
+      let d = this.myDate.split('T')[1];
+      let h = d.split(':')[0];
+      let m = d.split(':')[1];
+      this.minutes = m;
+      this.hours = h;
+      if(this.hours != ''){
+        this.presentPrompt();
+      }
+      console.log(m);
+      console.log(h);
+  }
 
   click(date){
       console.log('click..',date);
@@ -970,10 +987,13 @@ export class AddProgramPage implements OnInit {
     
      
     let arr = [];
+    let min = [];
     var hrs = ['01','02','03','04','05','06','07','08','09','10','11','12','13','14'];
-    for (let i = 1; i <= 60; i++) {
-      
+    for (let i = 1; i <= 24; i++) {
       arr.push({ text: i, value: i });
+    } 
+    for (let i = 1; i <= 60; i++) {
+      min.push({ text: i, value: i });
     } 
     
     const defaultColumnOptions = [
@@ -981,11 +1001,16 @@ export class AddProgramPage implements OnInit {
         name: 'Hours',
         options:arr
         
+      },
+      {
+        name: 'Minutes',
+        options:min
       }
+      
     ];
     const buttons = [
       {
-        text: 'Program is already assign for this time slot, Select new minute ' ,
+        text: 'Program is already assign for this time slot, Select new TimeSlot(HH:MM)' ,
         cssClass: 'timeHeading'
       },
       {
@@ -997,15 +1022,17 @@ export class AddProgramPage implements OnInit {
         text: 'Confirm',
         handler: (value) => { 
           this.noEvent = true;
+          var minute = value.Minutes.value;
           var hours = value.Hours.value;
+          console.log(minute);
           console.log(hours);
-          
-          // this.dateObj.setMinutes(hours);
+          console.log(this.hours);
+          // this.dateObj.setMinutes(minute);
           console.log(this.dateObj);
           // var newEndTime = new Date(this.eventList.selectedTime + 'Z');
           var newDateTime = this.dateObj;
           // this.dateObj.setHours((this.hours),  parseInt(this.minutes));
-          var nd = newDateTime.setHours((this.hours),  parseInt(hours));
+          var nd = newDateTime.setHours((hours),  parseInt(minute));
           this.progEndTime = nd;
           console.log(this.progEndTime);
           console.log(nd);
@@ -1016,7 +1043,7 @@ export class AddProgramPage implements OnInit {
               console.log(el.endTime.getTime());
               console.log(this.dateObj.getTime());          
        
-            if ((el.startTime.getTime() > this.dateObj.getTime() && el.startTime.getTime() >= this.progEndTime.getTime()) || (el.endTime.getTime() <= this.dateObj.getTime())) {  
+            if ((el.startTime.getTime() > this.dateObj.getTime() && el.startTime.getTime() >= this.progEndTime) || (el.endTime.getTime() <= this.dateObj.getTime())) {  
               this.noEvent = true;
               this.timeSlot = true;
             }
@@ -1042,7 +1069,7 @@ export class AddProgramPage implements OnInit {
             this.repetatedDateCopy.push({'date':this.dateObj ,'equipments':[], 'nutrition_id':[] , 'video': '','description':'','is_live':false});
           }
           
-          hours  = '';
+          minute  = '';
          console.log(this.repetatedDateCopy);
         //  alert(this.noEvent)
          

@@ -1,0 +1,72 @@
+.grey-header {
+  color: #030303;
+}
+
+.bg {
+  background: #fbfbfb;
+}
+
+.user-list ion-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.85rem;
+}
+
+.user-list ion-label img {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.user-img {
+  background: rgba(69, 166, 154, 0.15);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+}
+
+ion-checkbox {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.pt-48 {
+  padding-top: 48px;
+}
+
+.top-heading input {
+  font-size: 0.85rem;
+}
+
+.top-heading ion-item:first-child {
+  width: 100%;
+}
+
+.top-heading ion-item:last-child {
+  position: absolute;
+  right: 0;
+}
+
+ion-input {
+  font-size: 0.85rem;
+}
+/*# sourceMappingURL=share-modal.component.css.map */

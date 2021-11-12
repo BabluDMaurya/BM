@@ -1,0 +1,25 @@
+.login-form ion-radio-group ion-item {
+  margin-bottom: 0;
+}
+
+.login-form ion-item ion-label {
+  font-size: 0.875rem;
+}
+
+.login-form .termsBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.login-form .termsBox ion-checkbox {
+  margin-right: 10px;
+}
+
+.login-form .termsBox ion-text {
+  text-align: left;
+  line-height: 1.5;
+}
+/*# sourceMappingURL=signup.page.css.map */

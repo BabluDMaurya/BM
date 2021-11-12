@@ -1,0 +1,161 @@
+.swiper-slide {
+  background: #fbfbfb;
+}
+
+.grey-header {
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-size: 0.75rem;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.ingredient-list ion-item, .instructions-list ion-item {
+  --min-height:auto;
+}
+
+.ingredient-list ion-item p, .instructions-list ion-item p {
+  width: 100%;
+  border-bottom: 1px solid whitesmoke;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.ingredient-list ion-item:last-child p, .instructions-list ion-item:last-child p {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.nutrition-head h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.nutrition-head p {
+  line-height: 1.5;
+}
+
+.nutrition-sub {
+  font-size: 0.85rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 20px;
+}
+
+.nutrition-sub:last-child {
+  margin-right: 0;
+}
+
+.nutrition-sub ion-icon {
+  font-size: 1rem;
+  margin-right: 3px;
+  color: #26a69a;
+}
+
+.nutrition-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.details-list {
+  padding: 0;
+}
+
+.details-list ion-item {
+  padding-top: 0;
+  --min-height: auto;
+  font-size: 0.85rem;
+}
+
+.details-list ion-label {
+  margin: 0;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.instructions-list .beveragesList p:first-child {
+  width: 5%;
+}
+
+.instructions-list .beveragesList + ion-item p:first-child {
+  width: 5%;
+}
+
+.preview-img img {
+  height: 250px;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: top;
+     object-position: top;
+}
+
+ion-card {
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  margin: 0;
+  border-bottom: 4px solid #f1f1f1;
+}
+
+ion-card ion-card-header ion-fab {
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  color: #26a69a;
+}
+
+ion-list.ingredient-list {
+  padding: 0;
+  border-bottom: 4px solid #f1f1f1;
+  padding-bottom: 15px;
+}
+
+ion-list.ingredient-list ion-list-header {
+  color: #26a69a;
+  font-size: .85rem;
+  font-weight: 500;
+}
+
+ion-list.instructions-list {
+  padding: 0;
+  border-bottom: 4px solid #f1f1f1;
+  padding-bottom: 15px;
+}
+
+ion-list.instructions-list ion-list-header {
+  color: #26a69a;
+  font-size: .85rem;
+  font-weight: 500;
+}
+
+.ingredientItems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 0 15px;
+}
+
+.ingredientItems p {
+  background: #f1f1f1;
+  margin-right: 5px;
+  border-radius: 30px;
+  padding: 4px 13px;
+  margin-bottom: 5px;
+}
+/*# sourceMappingURL=nutrition-detail-modal.component.css.map */

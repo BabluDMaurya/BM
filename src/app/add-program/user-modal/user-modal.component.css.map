@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAA;EAAC,aAAa,EAAE,CAAC;CAAG;;AAChC,AAAA,eAAe,CAAC,SAAS,CAAA;EAAC,MAAM,EAAE,CAAC;CAAG;;AACtC,AAAA,eAAe,CAAC,YAAY,CAAA;EAAC,YAAY,EAAE,GAAG;CAAG;;AAEjD,AAAA,UAAU,CAAC,QAAQ,CAAC,SAAS,CAAC,iBAAiB,CAAA;EAAC,MAAM,EAAE,CAAC;EAAC,MAAM,EAAE,IAAI;CAAG",
+    "sources": [
+        "user-modal.component.scss"
+    ],
+    "names": [],
+    "file": "user-modal.component.css"
+}

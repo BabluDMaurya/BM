@@ -1,0 +1,10 @@
+ion-label {
+  font-size: 0.85rem !important;
+}
+
+p.note {
+  color: #000;
+  font-weight: 600;
+  font-style: italic;
+}
+/*# sourceMappingURL=notification-modal.component.css.map */

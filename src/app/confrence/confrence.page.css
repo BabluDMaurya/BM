@@ -1,0 +1,99 @@
+#bottom_link {
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  height: 60px;
+}
+
+.myClass {
+  background-color: lightgray;
+  height: 100%;
+  width: 100%;
+}
+
+#button1, #button2, #button3, #button4, #button5 {
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  margin-left: 5px;
+}
+
+.bottom_link {
+  background: #ccc;
+  border-radius: 30px;
+  width: 90%;
+  margin: auto;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.conferenceFooter {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.top-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.icon-right-side ion-fab-button {
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  margin-left: 5px;
+}
+
+.icon-right-side ion-fab-button ion-icon {
+  font-size: 18px;
+}
+
+.chat-box {
+  margin-bottom: 0px !important;
+  height: 308px;
+}
+
+.item-background-color-chat {
+  --background: transparent !important;
+}
+
+.chatblock {
+  display: block;
+  position: fixed;
+  bottom: 55px;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  background: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(255, 255, 255, 0)));
+  background: linear-gradient(0deg, black 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.chatnone {
+  display: none;
+}
+
+.broadcast-content .closeChatScreen {
+  height: 40px;
+}
+
+.chatList {
+  max-height: 270px;
+  overflow-y: auto;
+}
+
+.chatList ion-list {
+  background: transparent;
+  padding: 0;
+}
+
+ion-item.send-box {
+  --background: #000;
+  --padding-top: 10px;
+}
+/*# sourceMappingURL=confrence.page.css.map */

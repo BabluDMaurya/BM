@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAA;EAAC,MAAM,EAAE,mBAAmB;CAAG",
+    "sources": [
+        "consultant-videos.page.scss"
+    ],
+    "names": [],
+    "file": "consultant-videos.page.css"
+}

@@ -1,0 +1,44 @@
+.ios.item-card ion-avatar {
+  top: 8px;
+}
+
+.ios.item-card span.notifi-right {
+  top: 8px;
+}
+
+ion-card {
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-bottom: 4px solid #f7f7f7;
+}
+
+ion-card ion-item {
+  border-bottom: 1px solid #f7f7f7;
+}
+
+ion-card ion-item ion-avatar {
+  position: absolute;
+  top: 0px;
+  left: 16px;
+}
+
+ion-card ion-item ion-label {
+  white-space: normal;
+  margin-left: 55px;
+}
+
+ion-card ion-item ion-label h3 {
+  margin-bottom: 0;
+}
+
+ion-card ion-item span.notifi-right {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+ion-content .no-data {
+  height: calc(100vh - 100px);
+}
+/*# sourceMappingURL=notification.page.css.map */

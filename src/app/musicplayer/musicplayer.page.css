@@ -1,0 +1,169 @@
+ion-content {
+  --background: linear-gradient(to top, #060606, #00695c);
+}
+
+ion-toolbar {
+  --background: #00685b;
+}
+
+ion-footer {
+  background: black;
+}
+
+ion-footer a {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.marquee {
+  width: 450px;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-animation: marquee 50s linear infinite;
+          animation: marquee 50s linear infinite;
+}
+
+ion-title {
+  font-size: 11px;
+}
+
+ion-title.textSubtitle {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.marquee:hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+/* Make it move */
+@-webkit-keyframes marquee {
+  0% {
+    text-indent: 30em;
+  }
+  100% {
+    text-indent: -105em;
+  }
+}
+@keyframes marquee {
+  0% {
+    text-indent: 30em;
+  }
+  100% {
+    text-indent: -105em;
+  }
+}
+
+.fixedContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-top: 24px;
+}
+
+.fixedContent ion-text {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.fixedContent .pUser {
+  color: var(--ion-color-light-shade);
+  font-size: 10px;
+}
+
+.fixedContent ion-thumbnail {
+  width: 40vh;
+  height: 25vh;
+  background-size: cover !important;
+  background-position: center !important;
+  margin-bottom: 16px;
+  -webkit-box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.6), 0 2px 4px 0 rgba(0, 0, 0, 0.66), 0 1px 5px 0 rgba(0, 0, 0, 0.65);
+          box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.6), 0 2px 4px 0 rgba(0, 0, 0, 0.66), 0 1px 5px 0 rgba(0, 0, 0, 0.65);
+  -webkit-transition: background-color 15ms linear, color 15ms linear, -webkit-box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 15ms linear, color 15ms linear, -webkit-box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), background-color 15ms linear, color 15ms linear;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), background-color 15ms linear, color 15ms linear, -webkit-box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-md:after {
+  bottom: 0px;
+}
+
+ion-button.play_pause_btn {
+  width: 65px !important;
+  height: 65px !important;
+  --border-radius: 50%;
+  --box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  --transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), background-color 15ms linear, color 15ms linear;
+}
+
+.darkColor {
+  color: black !important;
+  font-size: 32px;
+  margin-left: 3px;
+}
+
+ion-range {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.rangePlaytime {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.rangePlaytime .startTime {
+  padding-left: 9px;
+}
+
+.rangePlaytime .endTime {
+  padding-right: 15px;
+}
+
+.Iconsize_For_Rev {
+  font-size: 23px;
+}
+
+.flexRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.transparent_Item {
+  --background: transparent;
+}
+
+.padding_Top {
+  padding-top: 24px;
+}
+/*# sourceMappingURL=musicplayer.page.css.map */

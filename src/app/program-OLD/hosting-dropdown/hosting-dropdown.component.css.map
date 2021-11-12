@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAA;EAAC,aAAa,EAAE,CAAC;CAAG;;AAC7B,AAAA,oBAAoB,CAAC,KAAK,CAAA;EAAC,eAAe,CAAA,EAAC;CAAK",
+    "sources": [
+        "hosting-dropdown.component.scss"
+    ],
+    "names": [],
+    "file": "hosting-dropdown.component.css"
+}

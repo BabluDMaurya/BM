@@ -207,12 +207,8 @@
               <ion-label>Create Chat room for program</ion-label>
               <ion-toggle [disabled]='false' formControlName="chatStatus"  [(ngModel)]="toggleValue"  slot="end"></ion-toggle>
             </ion-item>
-            <ion-item>
-              <ion-label>Start Date</ion-label>
-              <ion-datetime display-format="h:mm A" picker-format="h:mm A"  value="1990-02-19T07:43Z"></ion-datetime>
-            </ion-item>
             
-            <button ion-button (click)="click(myDate)">Click</button>
+            
             <ion-item class="mb-10" *ngIf="modalData?.length>0">
               <ion-list lines="none" class="users-list">
                 <ion-item  *ngFor="let user of modalData" >
@@ -280,6 +276,7 @@
             </ion-item> -->
           </ion-list>
         </form>
+        
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -329,8 +326,14 @@
       <!-- <ion-icon ios="ios-construct" md="md-construct" ></ion-icon> -->
       <ion-list-header  *ngIf="repetatedDateCopy.length <= 0" class=" green green-alram-icon text-white">
         <div>
-          <ion-icon ios="ios-alarm" md="md-alarm" class="" (click)="selectTimeSlot()"></ion-icon>
+          <ion-datetime display-format="h:mm A"  picker-format="h:mm A"   id="dat" [(ngModel)]="myDate" (ionChange)="showdate()" ></ion-datetime>
         </div>
+        <ion-icon ios="ios-alarm" md="md-alarm" class=""   ></ion-icon>
+        <!-- <ion-item>
+          <ion-label>Start Date</ion-label>
+          <ion-datetime display-format="h:mm A" picker-format="h:mm A"  (ionChange)="showdate(this)"value="1990-02-19T07:43Z"></ion-datetime>
+          <ion-datetime display-format="h:mm A"  picker-format="h:mm A"   id="dat" [(ngModel)]="myDate"   (ionChange)="showdate()"></ion-datetime>
+        </ion-item> -->
       <!-- <div *ngIf="repetatedDateCopy.length > 0;">
         <div *ngFor="let date of repetatedDateCopy let i = index"> 
         <div *ngIf="date.date == dateObj">

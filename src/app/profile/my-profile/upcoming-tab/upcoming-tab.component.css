@@ -1,0 +1,16 @@
+.upcomingCard {
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-bottom: 5px solid #f7f7f7;
+}
+
+.upcomingCard ion-avatar {
+  width: 65px;
+  height: 65px;
+}
+
+.upcomingCard ion-label {
+  line-height: 1.5;
+}
+/*# sourceMappingURL=upcoming-tab.component.css.map */

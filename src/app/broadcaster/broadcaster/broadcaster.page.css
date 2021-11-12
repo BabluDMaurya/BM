@@ -1,0 +1,81 @@
+ion-header ion-fab-button ion-icon {
+  color: #FFF !important;
+}
+
+.button-list ion-label {
+  width: 30px;
+  height: 30px;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.header-btns {
+  position: absolute;
+  right: 12px;
+  top: 5px;
+  z-index: 99;
+}
+
+.close-btn ion-icon {
+  color: #FFF !important;
+}
+
+#conference {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+}
+
+#local-container, #local-media {
+  height: 100vh;
+}
+
+video#local-media {
+  height: 100vh;
+}
+
+.demo-logo {
+  max-width: calc(100% - 20px);
+}
+
+#dashboard-content {
+  --background: none;
+  background: #000  !important;
+  background-size: cover;
+  color: #ffffff;
+  text-align: center;
+}
+
+.item-has-focus .label-floating.sc-ion-label-md-h {
+  color: #b7ffc9;
+}
+
+#card {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto 25px;
+  text-align: center;
+  height: 80%;
+}
+
+#form {
+  padding: 20px;
+  background-color: #00000096;
+  border: 1px;
+  border-radius: 12px;
+}
+
+#form ion-item {
+  --background: transparent;
+}
+
+#join-button {
+  margin-top: 10px;
+}
+/*# sourceMappingURL=broadcaster.page.css.map */

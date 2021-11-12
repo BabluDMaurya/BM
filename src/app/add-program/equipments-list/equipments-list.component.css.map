@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "equipments-list.component.scss"
+    ],
+    "names": [],
+    "file": "equipments-list.component.css"
+}

@@ -1,0 +1,58 @@
+.publisherScreen {
+  width: 100vh;
+}
+
+.chat-box {
+  margin-bottom: 0px !important;
+  height: 308px;
+}
+
+.item-background-color-chat {
+  --background: transparent !important;
+}
+
+.chatblock {
+  display: block;
+  position: fixed;
+  bottom: 55px;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  background: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(255, 255, 255, 0)));
+  background: linear-gradient(0deg, black 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.chatnone {
+  display: none;
+}
+
+.broadcast-content .closeChatScreen {
+  height: 40px;
+}
+
+.chatList {
+  max-height: 270px;
+  overflow-y: auto;
+}
+
+.chatList ion-list {
+  background: transparent;
+  padding: 0;
+}
+
+ion-item.send-box {
+  --background: #000;
+  --padding-top: 10px;
+}
+
+.subscriberScreen {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow-x: auto;
+}
+/*# sourceMappingURL=broadcast.page.css.map */

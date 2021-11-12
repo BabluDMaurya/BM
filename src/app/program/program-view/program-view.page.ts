@@ -17,6 +17,7 @@ import { HttpClient} from '@angular/common/http';
 import { ChatRoomsComponent } from './../../chats/chat-rooms/chat-rooms.component';
 import { PaymentComponent } from 'src/app/modalContent/payment/payment.component';
 import { exit } from 'process';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 /* To try the app with Enablex hosted service you need to set the kTry = true */
 var kTry      = true;
@@ -88,7 +89,8 @@ export class ProgramViewPage implements OnInit {
     private localNotifications:LocalNotifications,
     public httpClient : HttpClient,
     private router: Router,
-    private chatService : ChatService) {
+    private chatService : ChatService,
+    public socialSharing: SocialSharing) {
 
     this.userData = JSON.parse(localStorage.getItem('userData'));
   }
@@ -457,6 +459,16 @@ export class ProgramViewPage implements OnInit {
       pgimg : this.programImage,
       } 
     this.commonService.presentModal(PaymentComponent, 'bottomModal', fileData);
+  }
+  shareItem() {
+    
+    this.socialSharing.share("Program Details","","","program-view/" + this.programId)
+    .then(() => {
+
+    })
+    .catch(() => {
+
+    });
   }
 
 }

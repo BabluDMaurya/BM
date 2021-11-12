@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,eAAe,CAAC;EACZ,MAAM,EAAE,iBAAiB;CAC5B;;AACD,AAAA,kBAAkB,CAAC;EACf,MAAM,EAAE,kBAAkB,CAAC,UAAU;CACxC",
+    "sources": [
+        "chat-list.page.scss"
+    ],
+    "names": [],
+    "file": "chat-list.page.css"
+}

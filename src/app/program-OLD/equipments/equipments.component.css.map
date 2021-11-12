@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAC,SAAS,CAAA;EAAC,KAAK,EAAE,IAAI;CAAG",
+    "sources": [
+        "equipments.component.scss"
+    ],
+    "names": [],
+    "file": "equipments.component.css"
+}

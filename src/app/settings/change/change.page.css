@@ -1,0 +1,13 @@
+.login-form ion-item {
+  --border-color: rgb(222, 222, 222);
+}
+
+.login-form ion-input {
+  color: #222;
+}
+
+.validation-errors {
+  position: relative;
+  top: -10px;
+}
+/*# sourceMappingURL=change.page.css.map */

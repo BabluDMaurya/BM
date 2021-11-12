@@ -1,0 +1,69 @@
+.comment-list {
+  padding: 0;
+}
+
+.comment-list ion-item {
+  padding: 0;
+}
+
+ion-avatar {
+  margin-right: 10px;
+}
+
+h2 {
+  font-weight: 500;
+  color: #000;
+  font-size: 0.90rem;
+}
+
+.comment-item ion-label ion-skeleton-text {
+  height: 28px;
+  margin-top: 0;
+}
+
+.sticky-footer .send-img {
+  width: 26px;
+}
+
+.comment {
+  width: 100%;
+  border: none;
+}
+
+ion-list {
+  margin-bottom: 56px;
+}
+
+ion-list > ion-list {
+  margin-bottom: 0;
+}
+
+.sticky-footer {
+  max-height: 100px;
+  min-height: 56px;
+  height: auto;
+}
+
+.sticky-footer form {
+  height: 100%;
+}
+
+.sticky-footer form ion-item {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.sticky-footer form ion-item ion-textarea {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  --padding-top: 14px;
+}
+
+.sticky-footer form ion-item .send-img {
+  width: 26px;
+  margin-left: 10px;
+}
+/*# sourceMappingURL=comments.page.css.map */
