@@ -824,11 +824,11 @@ export class AddProgramPage implements OnInit {
       let m = d.split(':')[1];
       this.minutes = m;
       this.hours = h;
-      if(this.hours != ''){
+      if(h != undefined || ' '){
         this.presentPrompt();
       }
-      console.log(m);
-      console.log(h);
+      console.log("test");
+      console.log("test");
   }
 
   click(date){

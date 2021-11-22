@@ -325,8 +325,8 @@
       </ion-col>
       <!-- <ion-icon ios="ios-construct" md="md-construct" ></ion-icon> -->
       <ion-list-header  *ngIf="repetatedDateCopy.length <= 0" class=" green green-alram-icon text-white">
-        <div>
-          <ion-datetime display-format="h:mm A"  picker-format="h:mm A"   id="dat" [(ngModel)]="myDate" (ionChange)="showdate()" ></ion-datetime>
+        <div class='showDateTime'>
+          <ion-datetime display-format="h:mm A"  picker-format="h:mm A"   id="dat" [(ngModel)]="myDate" (ngModelChange)="showdate()" ></ion-datetime>
         </div>
         <ion-icon ios="ios-alarm" md="md-alarm" class=""   ></ion-icon>
         <!-- <ion-item>
