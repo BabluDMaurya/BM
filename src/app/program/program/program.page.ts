@@ -406,7 +406,17 @@ export class ProgramPage implements OnInit {
     }
   }
 
-  mySortDate(selectedDate : any) { 
+  mySortDate(selectedDate : any,index) { 
+    console.log(index + 'index val');
+    
+    this.dayDate.forEach(function(item , i ){
+      console.log(i + 'i');
+      if(i == index){
+        item.activeClass = 'active sc-ion-label-md-h sc-ion-label-md-s md hydrated';
+      }else{
+        item.activeClass = 'sc-ion-label-md-h sc-ion-label-md-s md hydrated';
+      }
+    });
     this.commonService.presentLoader(); 
     this.noScheduleList = false;
     this.noReqProgramList = false;   

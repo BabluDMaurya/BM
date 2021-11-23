@@ -41,7 +41,7 @@
 <div *ngIf="notShowAll" class="programCalendar">
   <!-- <h4>{{myDate | date}}</h4> -->
 <ion-item lines="none">  
-  <ion-label *ngFor="let week of dayDate;" class="{{week.activeClass}}" (click)="week.disableClass == 0 ? mySortDate(week.myDate) : tostmess()">{{week.day}}<p>{{week.date}}</p></ion-label>
+  <ion-label *ngFor="let week of dayDate; let i = index " class="{{week.activeClass}}" (click)="week.disableClass == 0 ? mySortDate(week.myDate,i) : tostmess()">{{week.day}}<p>{{week.date}}</p></ion-label>
 </ion-item>
 </div>
   <ion-segment class="top-segment" (ionChange)="tabs($event)">

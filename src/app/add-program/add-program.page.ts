@@ -4,7 +4,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { UserModalComponent } from './user-modal/user-modal.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { FormControl, FormBuilder, Validators,FormGroup } from '@angular/forms';
-import { CalendarComponent } from '../calendar/calendar.component';
+// import { CalendarComponent } from '../calendar/calendar.component';
+import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { formatDate, DatePipe } from '@angular/common';
 import { DateTimeModalComponent } from './date-time-modal/date-time-modal.component';
 import { NavController, Platform, ModalController, IonSlides, ActionSheetController, AlertController, PickerController, ToastController } from '@ionic/angular';
@@ -34,7 +35,8 @@ export class AddProgramPage implements OnInit {
 
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
   // @ViewChild(CalendarComponent, { read: 'any', static: false }) myCal: CalendarComponent;
-  @ViewChild(CalendarComponent, {static: true }) myCal: CalendarComponent;
+  @ViewChild(CalendarComponent, {static: false }) myCal: CalendarComponent;
+  
   sliderOpts = {
     zoom: true,
     slidesPerView: 1,
@@ -235,10 +237,10 @@ export class AddProgramPage implements OnInit {
     return this.datePipe.transform(s * 1000, 'mm:ss');
   }
 
-  slidePrev(slides) {
+  slidePrev() {
     this.slides.slidePrev();
   }
-  slideNext(slides) {
+  slideNext() {
     this.slides.slideNext();
   }
   
@@ -483,6 +485,7 @@ export class AddProgramPage implements OnInit {
   next() {
     // let swiper = document.querySelector('.swiper-container')['swiper'];
     // swiper.slideNext();
+    console.log('hello' + this.myCal)
     this.myCal.slideNext();
     // this.slides.slideNext();
   }
@@ -1177,7 +1180,7 @@ export class AddProgramPage implements OnInit {
     this.camera.getPicture(options).then((imageData) => {
       this.gallaryImgPath.push('data:image/jpeg;base64,' + imageData);
     }, (err) => {
-      alert(err);
+      // alert(err);
     });
   }
   // pickFromGallery(sourceType) {
@@ -1205,7 +1208,7 @@ export class AddProgramPage implements OnInit {
     this.camera.getPicture(options).then((imageData) => {
       this.gallaryImgPath.push('data:image/jpeg;base64,' + imageData);
     }, (err) => {
-      alert(err);
+      // alert(err);
     });
   }
   pickVideoFromGallery(sourceType) {
@@ -1233,7 +1236,7 @@ export class AddProgramPage implements OnInit {
       this.selectedVideoFile(dirpath,filename);
       // this.gallaryImgPath.push('data:image/jpeg;base64,' + imageData);
     }, (err) => {
-      alert(err);
+      // alert(err);
     });
   }
   // getvideoinfo(fileUri) {

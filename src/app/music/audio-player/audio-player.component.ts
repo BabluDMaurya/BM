@@ -14,6 +14,7 @@ export class AudioPlayerComponent implements OnInit {
   selectedAudio = [];
   isPlaying = false;
   isLoading = false;
+  dragVal: any;
   currentTime = 0;
   duration :any;
   musicSelect: any;
@@ -78,16 +79,25 @@ export class AudioPlayerComponent implements OnInit {
   }
 
   seek({ detail: { value } }: { detail: { value: number } }): void {
+    console.log(this._player.currentTime);
+    console.log(value);
+    // this._player.currentTime = this._player.currentTime;
+    // console.log(this.drag)
+    this.dragVal = value;
     if (this.drag) {
-      this._player.currentTime = value;
+      
+      this._player.currentTime = this.dragVal;
     }
   }
 
   onDrag() {
     this.drag = true;
+    if (this.drag) {
+      this._player.currentTime = this.dragVal;
+    }
     setTimeout(() => {
       this.drag = false;
-    }, 300);
+    }, 2500);
   }
 
   private _bindPlayerEvents(): void {
@@ -107,6 +117,7 @@ export class AudioPlayerComponent implements OnInit {
 
     this._player.addEventListener('seeking', () => {
       this.isLoading = true;
+      // console.log(this._player.currentTime);
     });
 
     this._player.addEventListener('seeked', () => {

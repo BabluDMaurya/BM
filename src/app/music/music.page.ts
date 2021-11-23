@@ -93,6 +93,7 @@ export class MusicPage implements OnInit {
   }
   selectMusicList: string = 'hiphop';
   selectMusic(ev: any) {
+    console.log(ev);
     this.selectMusicList = ev.detail.value;
   }
 

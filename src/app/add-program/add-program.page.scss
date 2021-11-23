@@ -134,13 +134,32 @@ ion-list{padding-top: 0 !important;padding-bottom: 0 !important;
     top: -10px;
 }
 .green-alram-icon{
+    // position: absolute;
+    // top: 330px;
+    // right: 15px;
     position: absolute;
     top: 330px;
-    right: 15px;
+    right: 20px;
+    width:fit-content !important;
+    padding: 5px 10px;
 }
 .event-detail-container ion-item{
     padding-right: 2rem;
 }
 .showDateTime .datetime-text{
     display: none !important;
+}
+.showDateTime {
+    padding: 0 10px;
+    text-align: center;
+}
+ion-datetime#dat {
+    // padding: 0;
+    padding: 0 10px;
+    position: relative;
+    left: -12px;
+}
+.green ion-icon.md.hydrated {
+    right: 10px;
+    position: absolute;
 }
