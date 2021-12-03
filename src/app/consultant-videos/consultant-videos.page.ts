@@ -149,7 +149,7 @@ export class ConsultantVideosPage implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.peopleView.getMyPost('2', this.userId, 1).subscribe((data: any) => {
       this.mySavedVideoPosts = data.posts.data;
-      console.log(this.mySavedVideoPosts[0].video_post[0].video_type);
+      console.log(this.mySavedVideoPosts);
       this.mySavedVideoPosts.forEach((element, i) => {
         this.mySavedVideoPosts[i].count = element.post_likes.length;
         element.post_likes.filter((f) => {

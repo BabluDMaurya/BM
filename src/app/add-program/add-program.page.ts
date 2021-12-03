@@ -33,7 +33,7 @@ const baseUrl = Config.ApiUrl;
 })
 export class AddProgramPage implements OnInit {
 
-  @ViewChild('mySlider', { static: true }) slides: IonSlides;
+  @ViewChild('mySlider', { static: false }) slides: IonSlides;
   // @ViewChild(CalendarComponent, { read: 'any', static: false }) myCal: CalendarComponent;
   @ViewChild(CalendarComponent, {static: false }) myCal: CalendarComponent;
   

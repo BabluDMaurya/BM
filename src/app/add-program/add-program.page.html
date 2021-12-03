@@ -45,21 +45,12 @@
         </ion-slides>  
       </ion-col>   -->
 
-      <!-- <ion-col size="12" class="ion-no-padding" *ngIf="gallaryImgPath?.length>0 || videoFileSelected"> -->
-        <ion-col size="12" class="ion-no-padding">
+      <ion-col size="12" class="ion-no-padding" *ngIf="gallaryImgPath?.length>0 || videoFileSelected">
         <ion-button (click)="slidePrev()" class="slidebtns slideBack">
           <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
         </ion-button>
+        
         <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider>
-          <ion-slide >
-            <img src="http://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/img/car_4.png" />
-            <ion-icon ios="ios-close-circle" md="md-close-circle" ></ion-icon>
-            <img src="http://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/img/car_4.png" />
-            <ion-icon ios="ios-close-circle" md="md-close-circle" ></ion-icon>
-          </ion-slide>
-         
-        </ion-slides>
-        <!-- <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider>
           <ion-slide (click)="showdetails()" *ngFor="let imgpath of gallaryImgPath; let i=index;">
             <img src="{{imgpath}}" />
             <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="removeImg(i)"></ion-icon>
@@ -68,7 +59,7 @@
             <img *ngIf="videoFileSelected" (click)="filepreview()" class="mb-10" height="250px" src="../../assets/images/demo3.jpg">
             <ion-icon *ngIf="videoFileSelected" ios="ios-close-circle" md="md-close-circle" (click)="removefilepreview()" color="danger" class="btn-close"></ion-icon>
           </ion-slide>
-        </ion-slides> -->
+        </ion-slides>
         <ion-button (click)="slideNext()" class="slidebtns slideNext">
           <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
         </ion-button>
