@@ -184,7 +184,7 @@
                     [disabled]="f.programType.value==5 || !f.programType.value?true:false"></ion-radio>
                 </ion-item>
                 <ion-item lines="none" class="mb-10 sel-parti-open-item" (click)="clearExcl()">
-                  <ion-label>Open (Let users request to join)</ion-label>
+                  <ion-label>Open</ion-label>
                   <ion-radio slot="start" value="2" checked formControlName="participantsType"></ion-radio>
                 </ion-item>
                 <ng-container *ngFor="let validation of validation_messages.participantsType">
@@ -204,10 +204,41 @@
                 </ion-item>
               </ion-col>
             </ion-item>
-            <ion-item>
+            <ion-item class="mb-10">
+              <ion-radio-group lines="none" class="full-width radio-list" formControlName="chatStatus">
+                <ion-list-header class="grey-header">
+                  <ion-label>Chat room for program</ion-label>
+                </ion-list-header>
+                <ion-item lines="none" >
+                  <ion-label>Enable</ion-label>
+                  <ion-radio slot="start" value="1" checked formControlName="chatStatus"
+                    ></ion-radio>
+                </ion-item>
+                <ion-item lines="none" class="mb-10 sel-parti-open-item">
+                  <ion-label>Disable</ion-label>
+                  <ion-radio slot="start" value="2"  formControlName="chatStatus"></ion-radio>
+                </ion-item>
+                <ng-container *ngFor="let validation of validation_messages.chatStatus">
+                  <span class="error-message"
+                    *ngIf="(submitted || programForm.get('chatStatus').touched) && programForm.get('chatStatus').hasError(validation.type)">{{ validation.message }}</span>
+                </ng-container>
+              </ion-radio-group>
+              <ion-col size="6" class="ion-no-padding">
+                <ion-list-header class="grey-header">
+                  <ion-label></ion-label>
+                </ion-list-header>
+                <ion-item lines="none">
+                  <ion-text>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua.
+                  </ion-text>
+                </ion-item>
+              </ion-col>
+            </ion-item>
+            <!-- <ion-item>
               <ion-label>Create Chat room for program</ion-label>
               <ion-toggle [disabled]='false' formControlName="chatStatus"  [(ngModel)]="toggleValue"  slot="end"></ion-toggle>
-            </ion-item>
+            </ion-item> -->
             
             
             <ion-item class="mb-10" *ngIf="modalData?.length>0">
@@ -219,62 +250,6 @@
                 </ion-item>
               </ion-list>
             </ion-item>
-            <!-- <ion-item>
-              <ion-row>
-                <ion-col size="6" class="ion-no-padding">
-                  <ion-radio-group class="full-width radio-list">
-                    <ion-list-header class="grey-header">
-                      <ion-label>Program Payment</ion-label>
-                    </ion-list-header>
-                    <ion-item lines="none">
-                      <ion-label>Free</ion-label>
-                      <ion-radio slot="start" value="0" checked formControlName="paymentType"></ion-radio>
-                    </ion-item>
-                    <ion-item lines="none">
-                      <ion-label>Daily</ion-label>
-                      <ion-radio slot="start" value="1" formControlName="paymentType"></ion-radio>
-                    </ion-item>
-                    <ion-item lines="none">
-                      <ion-label>Every 2 day's</ion-label>
-                      <ion-radio slot="start" value="2" formControlName="paymentType"></ion-radio>
-                    </ion-item>
-                    <ion-item lines="none">
-                      <ion-label>Every 3 day's</ion-label>
-                      <ion-radio slot="start" value="3" formControlName="paymentType"></ion-radio>
-                    </ion-item>
-                    <ion-item lines="none">
-                      <ion-label>Every 5 day's</ion-label>
-                      <ion-radio slot="start" value="4" formControlName="paymentType"></ion-radio>
-                    </ion-item>
-                    <ion-item lines="none">
-                      <ion-label>Every 7 day's</ion-label>
-                      <ion-radio slot="start" value="5" formControlName="paymentType"></ion-radio>
-                    </ion-item>
-                    <ion-item lines="none">
-                      <ion-label>Every 14 day's</ion-label>
-                      <ion-radio slot="start" value="6" formControlName="paymentType"></ion-radio>
-                    </ion-item>
-                    <ion-item lines="none">
-                      <ion-label>Every 30 day's</ion-label>
-                      <ion-radio slot="start" value="7" formControlName="paymentType"></ion-radio>
-                    </ion-item>
-                  </ion-radio-group>
-                  <ng-container *ngFor="let validation of validation_messages.paymentType">
-                    <span class="error-message"
-                      *ngIf="(submitted || programForm.get('paymentType').touched) && programForm.get('paymentType').hasError(validation.type)">{{ validation.message }}</span>
-                  </ng-container>
-                </ion-col>
-                <ion-col size="6" class="ion-no-padding">
-                  <ion-list-header class="grey-header">
-                    <ion-label></ion-label>
-                  </ion-list-header>
-                  <ion-item lines="none">
-                    <ion-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                      ut labore et dolore magna aliqua.</ion-text>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-            </ion-item> -->
           </ion-list>
         </form>
         
@@ -451,118 +426,5 @@
       </ion-list>
     </form>
     </div>
-
-    <!-- <ion-row class="main_content">
-      <ion-col size="12" class="ion-no-padding">
-        <div [ngSwitch]="musicTypes">
-          <div *ngSwitchCase="'music'">
-            <ion-toolbar class="searchbar">
-              <ion-searchbar type="text" (ionInput)="searchChanged($event)"></ion-searchbar>
-            </ion-toolbar>
-            <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="allMusic">
-              <ion-segment class="ion-no-padding" scrollable="true" (ionChange)="selectMusic($event)">
-                <ion-segment-button *ngFor="let item of genres; let i =index " (click)="allMusic=item?.musics" [checked]="i==0?'true':'false'" >{{item?.name}}</ion-segment-button>                
-              </ion-segment>
-            </ion-toolbar>
-            <div [ngSwitch]="selectMusicList" *ngIf="allMusic">
-              <ion-list lines="none" class="ion-no-padding musiclist"  >
-                
-                <ion-item *ngFor="let music of allMusic"
-                  [ngClass]="musicId==music.id?'active':''"  (click)="musicSelect([music.id,music.filename,music.title,music.duration])">
-                  <ion-icon ios="ios-play" md="md-play"></ion-icon>
-                  <ion-label>{{music.title}}</ion-label>
-                  <ion-text>{{music?.duration ? music?.duration : '00:00' }}</ion-text>
-                </ion-item>
-
-              </ion-list> 
-            </div>
-            <ion-toolbar no-border-top class="profile_tabs subprofile_tabs" *ngIf="!allMusic">
-              <ion-segment class="ion-no-padding" scrollable="true" (ionChange)="selectMusic($event)">
-                <ion-segment-button value="hiphop" checked>
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="classical">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="edm">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="folk">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="rock">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="jazz">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="indianfolk">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="blues">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="beats">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="trap">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-                <ion-segment-button value="alternativehiphop">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-segment-button>
-              </ion-segment>
-            </ion-toolbar>
-            <div [ngSwitch]="selectMusicList" *ngIf="!allMusic">
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'hiphop'">
-                <ion-item (click)="musicSelect=1" [ngClass]="musicSelect==1?'active':''">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-item>
-                <ion-item (click)="musicSelect=2" [ngClass]="musicSelect==2?'active':''">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-item>
-                <ion-item (click)="musicSelect=3" [ngClass]="musicSelect==3?'active':''">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-item>
-                <ion-item (click)="musicSelect=4" [ngClass]="musicSelect==4?'active':''">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'classical'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'edm'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'folk'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'rock'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" class="ion-no-padding musiclist" *ngSwitchCase="'jazz'">
-                <ion-item class="no-data">
-                  <ion-label>No Music Data</ion-label>
-                </ion-item>
-              </ion-list>
-            </div>
-          </div>
-        </div>
-      </ion-col>
-    </ion-row> -->
   </ion-grid>
 </ion-content>
-<!-- <ion-footer class="sticky-footer musiclist green" *ngIf="showProgram==3">   -->
-  <!-- <div class="musiclist" *ngIf="showProgram==3">
-    <app-audio-player-program [selectedAudio]=[audioFile,musicChanged,audioFilename,audioFileDuration]>
-    </app-audio-player-program>
-  </div> -->
-<!-- </ion-footer> -->

@@ -6,6 +6,9 @@ import { AddEquipmentsComponent } from '../add-equipments/add-equipments.compone
 import { VideosThumbListComponent } from '../videos-thumb-list/videos-thumb-list.component';
 import { ViewVideoDetailComponent } from '../../add-program/view-video-detail/view-video-detail.component';
 import { CalenderMonthWeekTimeComponent } from '../../add-program/calender-month-week-time/calender-month-week-time.component';
+import{VerifyUserInfoComponent} from "../../modalContent/verify-user-info/verify-user-info.component";
+import { FormControl, FormBuilder, Validators,FormGroup } from '@angular/forms';
+
 import {
   CalendarComponentOptions,
   CalendarModal,
@@ -31,6 +34,10 @@ export class DateTimeModalComponent implements OnInit {
   optionsMulti: CalendarComponentOptions = {
     pickMode: 'multi'
   }; 
+  
+  loginUserData:any;
+  finalForm: FormGroup;
+  approval_btn: any = false;
   hours: any;
   programData: any;
   duration: string;
@@ -48,6 +55,8 @@ export class DateTimeModalComponent implements OnInit {
     spaceBetween: 1.5
   }
   // vsd = [].constructor(60);
+  adData:any;
+  request_approve_btn: any = false;
   storagePath: any = Config.storagePath;
   repetatedDateCopy: any= []; 
   abDateSelect:any;
@@ -58,6 +67,7 @@ export class DateTimeModalComponent implements OnInit {
     private programService: ProgramService,
     private navParams: NavParams,
     public modalController: ModalController,
+    private fb: FormBuilder,
   ) {
     let start_arr = [];
     let end_arr = [];
@@ -69,6 +79,7 @@ export class DateTimeModalComponent implements OnInit {
     this.duration = this.navParams.data.duration;
     hourspan.setMinutes(hourspan.getMinutes() + 59);
     this.programData = this.navParams.data.programData;
+    console.log(this.programData);
     //get days name
     this.programList = this.navParams.data.programList; 
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -105,24 +116,9 @@ export class DateTimeModalComponent implements OnInit {
         }
       }
     }); 
-    // start_arr.filter(el => {
-    //   let a = el.startTime.getMinutes();
-    //   let b = (el.endTime.getTime() - el.startTime.getTime()) / (1000 * 60);
-    //   for (let i = 0; i <= b; i++) {
-    //     this.vsd[a] = 'true';
-    //     a = a + 1;
-    //     if (a > 60)
-    //       break;
-    //   }
-    // })
-    // end_arr.filter(el => {
-    //   let b = (el.endTime.getTime() - this.calendarData.getTime()) / (1000 * 60);
-    //   for (let i = 0; i <= b; i++) {
-    //     this.vsd[i] = 'true';
-    //     if (i > 60)
-    //       break;
-    //   }
-    // })
+    this.finalForm = this.fb.group({
+      programFees: new FormControl('0'),
+    });
   }
   //------------------ 
   convert(str) {
@@ -131,7 +127,10 @@ export class DateTimeModalComponent implements OnInit {
       day = ("0" + date.getDate()).slice(-2);
     return [day,mnth,date.getFullYear()].join("-");
   }
-  ngOnInit() { }
+  ngOnInit() { 
+    this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+
+  }
   //------------------ 
   ionViewWillEnter() {
     let userData = JSON.parse(localStorage.getItem('userData'));
@@ -335,18 +334,23 @@ export class DateTimeModalComponent implements OnInit {
 
     }
     let hourspan = this.calendarData;
-    hourspan.setMinutes(hourspan.getMinutes() + parseInt(this.minutes));
+    console.log(hourspan);
+    // hourspan.setMinutes(hourspan.getMinutes() + parseInt(this.minutes));
     this.commonService.presentLoader();
    
     // this.repetatedDate.filter(el => {
     //   el = el.setHours((hourspan.getHours()), hourspan.getMinutes());
     // });
+    var fees = this.finalForm.value;
     this.repetative = 1;
-    this.programData.progDateTime = this.repetatedDate[0];
-    this.programData.progDuration = this.duration;
-    this.programData.progRepetation = this.repetative;
-    this.programData.repetatedDate = this.repetatedDate;
+    this.programData.progDateTime      = this.repetatedDate[0];
+    this.programData.progDuration      = this.duration;
+    this.programData.progRepetation    = this.repetative;
+    this.programData.repetatedDate     = this.repetatedDate;
     this.programData.repetatedDateCopy = this.repetatedDateCopy;
+    this.programData.programFees       = fees.programFees;
+
+    
     console.log(this.repetatedDateCopy);
     console.log(this.repetatedDate);
     console.log(this.programData);
@@ -393,14 +397,76 @@ export class DateTimeModalComponent implements OnInit {
     });
     return await modal.present();
   }
-
+  sponsar_prog(){
+    this.approval_btn = true;
+  }
+  unsponsar_prog(){
+    this.approval_btn = false;
+  }
   detailsUpdate($event, i) {
     // $event.detail.programId = i; 
     console.log($event.detail);
     console.log(i);
     this.repetatedDateCopy[i].description = $event.detail;
   }
+  verifyUserInfoModal() {    
+    if(this.loginUserData.trilloMatch != 1){
+      this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', ''); 
+    }else{
 
+    }    
+  }
+
+  applyAdvertise()
+  {
+    this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+    
+    let title ="Advertise Rule";
+    let msg ="<p>1. Your Video will send for verification.</p>"
+            +"<p class='mb-0'>2. Once approved Video Program will be locked</p>";
+    let btn=  [
+      {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+      }, {
+        text: 'Okay',
+        handler: () => {
+          console.log('Confirm Okay');
+          this.sendrequest();
+        }
+      }
+    ];
+    
+      if(this.loginUserData.trilloMatch != 1){
+        this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
+      }else{
+        this.commonService.presentAlert(title,msg,btn,'custom-alert advertiseAlert'); 
+      }
+  }
+  sendrequest()
+  {
+    this.commonService.presentLoader();
+
+    if(this.programData.type_id == 'video')
+    {
+      // console.log('programId:'+this.programDetail.id);
+      this.programService.advertiseRequest({'programId':this.programData.id}).subscribe(data=>{
+        this.adData = data.status;
+        this.request_approve_btn = true;
+        this.commonService.dismissLoader();
+        this.commonService.presentToast('Request Sent');
+        console.log(data);
+      } );
+    }else{
+      this.commonService.dismissLoader();
+      this.commonService.presentToast('Only Video Program are eligible');
+    }
+    
+  }
   async showVideoDetails(item){
 
     const modal = await this.modalCtrl.create({

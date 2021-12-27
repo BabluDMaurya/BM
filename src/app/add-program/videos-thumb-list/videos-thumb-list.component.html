@@ -14,8 +14,11 @@
 <ion-content class="main_content">
   <ion-row>
     <ion-col>
+      <ion-toolbar class="searchbar">
+        <ion-searchbar [(ngModel)]="videoSearchTerm"></ion-searchbar>
+      </ion-toolbar>
       <ion-list class="ion-no-padding thumb-list" lines="none" *ngIf="videoList?.length>0 ; else no_content">
-        <ion-radio-group *ngFor="let item of videoList">
+        <ion-radio-group *ngFor="let item of videoFiltered">
           <ion-item>
             <div class="galleryRadio video_button">
               <ion-checkbox [(ngModel)]="item.sele" name="item.id" slot="start"> </ion-checkbox>

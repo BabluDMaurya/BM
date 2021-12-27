@@ -14,7 +14,10 @@
 </ion-header>
 <ion-content class="main_content">
   <ion-list class="user-list ion-no-padding" *ngIf="modelOpen==1">
-    <ion-item *ngFor="let equip of equipments">
+    <ion-toolbar class="searchbar">
+      <ion-searchbar [(ngModel)]="equipmentSearchTerm"></ion-searchbar>
+    </ion-toolbar>
+    <ion-item *ngFor="let equip of equipmentFiltered">
       <div class="users-list" >
         <img src="../../assets/images/{{equip.equipment_pic}}" />
       </div>
@@ -25,11 +28,14 @@
     </ion-item>
   </ion-list>
   <div class="user-list ion-no-padding" *ngIf="modelOpen==2 && nutritionList?.length>0; else no_content ">
-    <ion-card class="ion-no-margin">
+    <ion-toolbar class="searchbar">
+      <ion-searchbar [(ngModel)]="nutritionSearchTerm"></ion-searchbar>
+    </ion-toolbar>
+    <ion-card class="ion-no-margin" *ngIf="nutritionFiltered != '' ">
       <ion-card-header class="grey-header green text-white">Breakfast</ion-card-header>
       <ion-card-content class="ion-no-padding">
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
-          <ion-segment-button *ngFor="let nutri of nutritionList  | filter:'BreakFast':'type'">
+          <ion-segment-button *ngFor="let nutri of nutritionFiltered  | filter:'BreakFast':'type'">
             <div class="checkboxThumb">
               <div class="thumb-checkbox" *ngIf="!nutri.empty">
                 <ion-checkbox slot="start" [(ngModel)]="nutri.sele"> </ion-checkbox>
@@ -47,12 +53,12 @@
         </ion-segment>
       </ion-card-content>
     </ion-card>
-    <ion-card class="ion-no-margin">
+    <ion-card class="ion-no-margin" *ngIf="nutritionFiltered != '' ">
       <ion-card-header class="grey-header green text-white">Brunch</ion-card-header>
       <ion-card-content class="ion-no-padding">
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
 
-          <ion-segment-button *ngFor="let nutri of nutritionList  | filter:'Brunch':'type'">
+          <ion-segment-button *ngFor="let nutri of nutritionFiltered  | filter:'Brunch':'type'">
             <div class="checkboxThumb">
               <div class="thumb-checkbox" *ngIf="!nutri.empty">
                 <ion-checkbox slot="start" [(ngModel)]="nutri.sele"> </ion-checkbox>
@@ -73,12 +79,12 @@
 
       </ion-card-content>
     </ion-card>
-    <ion-card class="ion-no-margin">
+    <ion-card class="ion-no-margin" *ngIf="nutritionFiltered != '' ">
       <ion-card-header class="grey-header green text-white">Lunch</ion-card-header>
       <ion-card-content class="ion-no-padding">
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
 
-          <ion-segment-button *ngFor="let nutri of nutritionList  | filter:'Lunch':'type'">
+          <ion-segment-button *ngFor="let nutri of nutritionFiltered  | filter:'Lunch':'type'">
             <div class="checkboxThumb">
             <div class="thumb-checkbox" *ngIf="!nutri.empty">
               <ion-checkbox slot="start" [(ngModel)]="nutri.sele"> </ion-checkbox>
@@ -99,11 +105,11 @@
 
       </ion-card-content>
     </ion-card>
-    <ion-card class="ion-no-margin">
+    <ion-card class="ion-no-margin" *ngIf="nutritionFiltered != '' ">
       <ion-card-header class="grey-header green text-white">Snacks</ion-card-header>
       <ion-card-content class="ion-no-padding">
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
-          <ion-segment-button *ngFor="let nutri of nutritionList | filter:'Snacks':'type' ">
+          <ion-segment-button *ngFor="let nutri of nutritionFiltered | filter:'Snacks':'type' ">
             <div class="checkboxThumb">
               <div class="thumb-checkbox" *ngIf="!nutri.empty">
                 <ion-checkbox slot="start" [(ngModel)]="nutri.sele"> </ion-checkbox>
@@ -121,11 +127,11 @@
         </ion-segment>
       </ion-card-content>
     </ion-card>
-    <ion-card class="ion-no-margin">
+    <ion-card class="ion-no-margin" *ngIf="nutritionFiltered != '' ">
       <ion-card-header class="grey-header green text-white">Dinner</ion-card-header>
       <ion-card-content class="ion-no-padding">
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
-          <ion-segment-button *ngFor="let nutri of nutritionList  | filter:'Dinner':'type'">
+          <ion-segment-button *ngFor="let nutri of nutritionFiltered  | filter:'Dinner':'type'">
             <div class="checkboxThumb">
               <div class="thumb-checkbox" *ngIf="!nutri.empty">
                 <ion-checkbox slot="start" [(ngModel)]="nutri.sele"> </ion-checkbox>
@@ -138,9 +144,17 @@
                 <p>No Dinner</p> 
               </div>
             </div>
-            <ion-button (click)="showdetails(nutri)"><ion-icon name="information-circle"></ion-icon></ion-button>
+            <ion-button *ngIf="!nutri.empty" (click)="showdetails(nutri)"><ion-icon name="information-circle"></ion-icon></ion-button>
           </ion-segment-button>
         </ion-segment>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="ion-no-margin" *ngIf="nutritionFiltered == '' ">
+      <ion-card-content>
+        <div  class="no-data nutrition-no-data"> 
+          <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+          <p>No Data Found</p> 
+        </div>
       </ion-card-content>
     </ion-card>
     <div *ngIf="!nutritionList">

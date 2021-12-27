@@ -197,9 +197,11 @@ export class AddProgramPage implements OnInit {
       participantsType: new FormControl('', Validators.compose([
         Validators.required,
       ])),
+      chatStatus: new FormControl('', Validators.compose([
+        Validators.required,
+      ])),
 
       userList: new FormControl(''),
-      chatStatus: new FormControl(''),
     });
   }
 
@@ -218,7 +220,10 @@ export class AddProgramPage implements OnInit {
     ],
     participantsType: [
       { type: 'required', message: 'Select participant types.' },
-    ]
+    ],
+    chatStatus: [
+      { type: 'required', message: 'Select ChatRoom type.' },
+    ],
 
   };
 
@@ -1152,8 +1157,9 @@ export class AddProgramPage implements OnInit {
         });
         this.programDetail = d.data;
         this.ionViewWillEnter();
-        this.showProgram = 3;
+        // this.showProgram = 3;
         this.ProgramInserted = true;
+        this.router.navigate(["tabs/program"])
       }
     });
     return await modal.present();

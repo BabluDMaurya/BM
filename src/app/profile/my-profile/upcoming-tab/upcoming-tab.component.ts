@@ -35,7 +35,7 @@ export class UpcomingTabComponent implements OnInit {
 
 
   ngOnInit() {
-  // console.log('ngonit');
+  console.log(this.consultID);
     if (this.consultID) {      
       this.getConsultProg(this.consultID);
     } else {
@@ -67,6 +67,7 @@ export class UpcomingTabComponent implements OnInit {
   }  
   getConsultProg(id) {
     this.programService.getConsultPrograms({'consultId':id}).subscribe(data => {
+      console.log(data);
       if(data.data.length<1)
       {
         this.noData=true;

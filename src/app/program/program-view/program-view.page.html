@@ -60,20 +60,28 @@
       </ion-card-content>
       <ion-list lines="none" class="list-info">
         <ion-item class="list-items">
+          <div class="icon-text">
           <img src="../../../assets/images/target.svg" />
           <ion-label>{{programDetail?.category_id}}</ion-label>
+          </div>
         </ion-item>
         <ion-item class="list-items">
+          <div class="icon-text">
           <img src="../../../assets/images/doller.png" />
           <ion-label>{{programFee}}</ion-label>
+          </div>
         </ion-item>
         <ion-item class="list-items">
+          <div class="icon-text">
           <img src="../../../assets/images/group.svg" />
           <ion-label>{{programDetail?.type_id}}</ion-label>
+          </div>
         </ion-item>
         <ion-item class="list-items">
+          <div class="icon-text">
           <img src="../../../assets/images/clock.svg" />
           <ion-label>{{programDetail?.program_duration || 0}} Min</ion-label>
+          </div>
         </ion-item>
       </ion-list>
     </ion-col>
@@ -82,16 +90,16 @@
     </ion-col>
   </ion-row>
   <ion-row class="counter-box ion-padding" *ngIf="programDetail?.is_live_status == 1">        
-    <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
+    <ion-col size="3" class="ion-no-padding" *ngIf="!programDetail?.ended">
       <ion-text><p class="count_time">{{dd | async}}</p> Days</ion-text>
     </ion-col>
-    <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
+    <ion-col size="3" class="ion-no-padding" *ngIf="!programDetail?.ended">
       <ion-text><p class="count_time">{{hh | async}}</p> Hours</ion-text>
     </ion-col>
-    <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
+    <ion-col size="3" class="ion-no-padding" *ngIf="!programDetail?.ended">
       <ion-text><p class="count_time">{{mm| async}}</p> Minutes</ion-text>
     </ion-col>
-    <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
+    <ion-col size="3" class="ion-no-padding" *ngIf="!programDetail?.ended">
       <ion-text><p class="count_time">{{ss | async}}</p> Seconds</ion-text>
     </ion-col>
     <ion-col size="12" class="ion-no-padding" *ngIf="programDetail?.ended">

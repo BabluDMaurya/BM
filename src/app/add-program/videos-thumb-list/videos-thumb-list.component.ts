@@ -10,6 +10,17 @@ import { ViewVideoDetailComponent } from '../../add-program/view-video-detail/vi
   styleUrls: ['../../app.component.scss','./videos-thumb-list.component.scss'],
 })
 export class VideosThumbListComponent implements OnInit {
+  videoFiltered: [];
+  private _searchTerm: string;
+  followers: any;
+  private _followingSearchTrem: string;
+  get videoSearchTerm(): string  {
+    return this._searchTerm;
+  }
+  set videoSearchTerm(value: string) {
+    this._searchTerm = value;
+    this.videoFiltered = this.videoFilterUser(value);
+  }
 
   videoList:any;
   url =Config.storagePath;
@@ -26,12 +37,17 @@ export class VideosThumbListComponent implements OnInit {
     this.commonService.loadVideoType({'userId':userData.id ,'postType':2, 'videoType':3}).subscribe(data=>{
       this.commonService.dismissLoader();
       this.videoList= data.posts.data;
+      this.videoFiltered = this.videoList;
       console.log(this.videoList);
     },err=>{
       
       this.commonService.dismissLoader(); 
       this.commonService.presentToast('something went wrong.');
     });
+  }
+  videoFilterUser(searchString: string) {
+    return this.videoList.filter(employee =>
+      employee.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
   }
   closeModal(data){
     this.commonService.dismissModal(data);

@@ -654,7 +654,7 @@ ion-select{color: #222;}
 .no-data{height: 100%;@extend %flex-center;text-align: center;}
 
 // Counter
-.counter-box{background: #f7f7f7;margin: 0;margin-bottom:15px;text-align: center;}
+.counter-box{background: #f7f7f7;margin: 0;margin-bottom:15px;text-align: center; display: flex;justify-content: center; height: 100px;}
 .counter-box ion-text{font-size: 0.60rem;text-transform: uppercase;}
 .counter-box ion-text span{font-size: 0.85rem}
 
@@ -982,4 +982,20 @@ display: block;
 
 .showDateTime .datetime-text{
     display: none !important;
+}
+.counter-box[_ngcontent-pyj-c13] {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    height: 100px;
+}
+p.text-green.text-center {
+    position: relative;
+    top: 35px;
+    display: inline-flex;
+    width: 140px;
+    left: -15px;
+}
+ion-col.ion-no-padding.mt-15.md.hydrated {
+    position: absolute;
 }

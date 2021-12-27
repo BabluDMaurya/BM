@@ -11,34 +11,32 @@ import { ProgramNutritionDetailModalComponent } from '../../add-program/program-
   styleUrls: ['../../app.component.scss', './add-equipments.component.scss'],
 })
 export class AddEquipmentsComponent implements OnInit {
+  equipmentFiltered: [];
+  nutritionFiltered: [];
+  private _searchTerm: string;
+  private _followingSearchTrem: string;
 
+  //search followers
+  get equipmentSearchTerm(): string  {
+    return this._searchTerm;
+  }
+  set equipmentSearchTerm(value: string) {
+    this._searchTerm = value;
+    this.equipmentFiltered = this.equipmentFilter(value);
+  }
+
+  //search followings
+  get nutritionSearchTerm(): string  {
+    return this._followingSearchTrem;
+  }
+  set nutritionSearchTerm(value: string) {
+    this._followingSearchTrem = value;
+    this.nutritionFiltered = this.nutritionFilterUser(value);
+    console.log(this.nutritionFiltered);
+  }
   url: any = Config.imgUrl;
   equipments: any;
-  // equipments = [{
-  //   id: 1, name: 'Dumbels', selected: false,
-  // },
-  // {
-  //   id: 2, name: 'Rope', selected: false,
-  // },
-  // {
-  //   id: 3, name: 'Leg Exerciser', selected: false,
-  // },
-  // {
-  //   id: 4, name: 'Treadmill', selected: false,
-  // },
-  // {
-  //   id: 5, name: 'Ellipticals', selected: false,
-  // },
-  // {
-  //   id: 6, name: 'Abdominal Crunchers', selected: false,
-  // },
-  // {
-  //   id: 7, name: 'Aerobic steppers', selected: false,
-  // },
-  // {
-  //   id: 8, name: 'Rowing Machines', selected: false,
-  // },
-  // ];
+  
   sliderOpts = {
     zoom: false,
     slidesPerView: 3,
@@ -56,6 +54,7 @@ export class AddEquipmentsComponent implements OnInit {
     this.programService.fetchEquipmentList().subscribe((data) => {
       console.log(data)
       this.equipments = data.equipmentList;
+      this.equipmentFiltered = this.equipments;
     });
     if(this.modelOpen == 2 )
     {
@@ -77,6 +76,7 @@ export class AddEquipmentsComponent implements OnInit {
           }
           return el
         });
+        this.nutritionFiltered = this.nutritionList;
       }, err => {
         this.commonService.dismissLoader();
         this.commonService.presentToast('something went wrong.'); 
@@ -104,6 +104,18 @@ export class AddEquipmentsComponent implements OnInit {
   }
 
   ngOnInit() { }
+
+  equipmentFilter(searchString: string) {
+    return this.equipments.filter(employee =>
+      employee.equipment_name.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
+  }
+
+  nutritionFilterUser(searchString: string) {
+    console.log(this.nutritionFiltered);
+    return this.nutritionList.filter(employee =>
+      employee.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
+  }
+
   closeModal(data) {
     this.commonService.dismissModal(data);
   }

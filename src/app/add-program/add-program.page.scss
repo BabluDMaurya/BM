@@ -115,7 +115,7 @@ ion-slides{background: transparent;padding: 0 5px;}
 .nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked:after{content:'';width:20px;height:20px;background:#26a69a;display:block;border-radius:50%;position:absolute;top:5px;left:5px}
 .item-list ion-list-header ion-icon{font-size: 1.15rem;}
 
-.users-list{--min-height: auto;display: flex;align-items: center;margin: 6px 0;}
+.users-list{--min-height: auto;display: flex;align-items: center;margin: 6px 0; justify-content: end;}
 .users-list img{width: 36px;height: 36px;object-fit: cover;border-radius: 50%;margin-left: -10px;}
 .users-list img:first-child{margin-left: 0;}
 .users-list ion-label{width: 100px;}
@@ -159,7 +159,23 @@ ion-datetime#dat {
     position: relative;
     left: -12px;
 }
-.green ion-icon.md.hydrated {
-    right: 10px;
-    position: absolute;
+.item .sc-ion-label-md-h {
+    overflow: visible !important;
 }
+.counter-box[_ngcontent-pyj-c13] {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    height: 100px;
+}
+p.text-green.text-center {
+    position: relative;
+    top: 35px;
+    display: inline-flex;
+    width: 140px;
+    left: -15px;
+}
+// .green ion-icon.md.hydrated {
+//     right: 10px;
+//     position: absolute;
+// }

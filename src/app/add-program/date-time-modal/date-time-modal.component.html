@@ -13,39 +13,38 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content">
+  <form [formGroup]="finalForm">
+        <ion-item lines="none">
+          <ion-label style="display: contents;">How much would you like to charge:</ion-label>
+          <ion-label style="    margin-left: 40px;">$</ion-label>
+          <ion-input class="form-control" type="number" formControlName="programFees" value="0"></ion-input>
+        </ion-item>
+      <div *ngIf="programData.programType == '6' ">
+        <ion-label style="display: block;margin-top: 15px;">Would you like to request Sponsors:</ion-label>
+        <ion-item lines="none">
+          <ion-radio-group value="sponsors_group" class="radio-group radioPreview">
+            <ion-item>
+              <ion-label>Yes</ion-label>
+              <ion-radio slot="start" value="1" (click)="sponsar_prog()" ></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>No</ion-label>
+              <ion-radio slot="start" value="2" (click)="unsponsar_prog()" ></ion-radio>
+            </ion-item>
+          </ion-radio-group>      
+        </ion-item>
+      </div>
+     
+      <ion-list class="prog_btn_list">
+        <ion-item  lines="none" (click)="verifyUserInfoModal()" *ngIf="loginUserData.trilloMatch != '1' && programData.programType != '6' ">
+          <ion-button class="green btn button-medium">Earn with Intoative</ion-button>
+        </ion-item>
+        <ion-item class="" *ngIf="approval_btn && !request_approve_btn ">
+          <ion-button (click)="applyAdvertise()" class="green btn button-medium">Request Approval</ion-button> 
+        </ion-item>
+      </ion-list>
+    </form>
   <form class="nutrition-form ion-padding-horizontal">
-    <ion-list>
-      <!-- <ion-item>
-        <ion-label>Enter Specific Time</ion-label>
-        <ion-text class="inline-flex">{{calendarData.getHours()}} : <ion-select placeholder="minutes" name="minutes"
-            [(ngModel)]="minutes">
-            <ion-select-option *ngFor="let hour of vsd let i=index;" value="{{i}}" [disabled]="hour">
-              {{('0'+i).slice(-2)}}</ion-select-option>
-          </ion-select> Minutes</ion-text>
-      </ion-item> -->
-      <!-- <ion-item class="durationItem">
-        <ion-label>Selected Date Time : </ion-label>
-        <ion-text class="inline-flex">{{selectedDateTime}}</ion-text>
-      </ion-item>
-      <ion-item *ngIf="programData?.programType!=6" class="durationItem">
-        <ion-label>Session Duration (in Minutes)</ion-label>
-        <ion-input placeholder="Minutes" name="duration" type="number" [(ngModel)]="duration"></ion-input>
-      </ion-item> -->
-    </ion-list>
-    <!-- <h6 class="repeatedHeading">Repeated</h6> -->
-    <!-- <ion-radio-group value="calendar" class="radio-group"> -->
-      <!-- <ion-item>
-        <ion-label>Repeated</ion-label>
-        <ion-radio slot="start" value="clone" (click)="multiple()"
-          checked="{{repetative==1? true: false}}"></ion-radio>
-          
-      </ion-item> -->
-      <!-- <ion-item>
-        <ion-label>Repeated</ion-label>
-        <ion-radio slot="start" value="weekly" (click)="newtest()"
-          checked=""></ion-radio>
-      </ion-item> -->
-    <!-- </ion-radio-group> -->
     <div *ngIf="programData?.programType==6">
       <h6 class="repeatedHeading mb-10">Select Video</h6>
       <ion-col size="12" class="ion-no-padding">

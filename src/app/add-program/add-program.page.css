@@ -437,8 +437,9 @@ ion-list .descriptionItem ion-item {
 
 .calender_green_bottom .ion-margin-start {
   margin-left: 6px;
-  position: relative;
-  top: -10px;
+  position: relative !important;
+  top: -12px;
+  right: 0 !important;
 }
 
 .green-alram-icon {
@@ -450,4 +451,5 @@ ion-list .descriptionItem ion-item {
 .event-detail-container ion-item {
   padding-right: 2rem;
 }
+
 /*# sourceMappingURL=add-program.page.css.map */
