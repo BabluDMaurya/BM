@@ -6,7 +6,8 @@
     <ion-item class="ion-text-end" slot="end">
       <div class="icon-right-side">
         <a [routerLink]="['/all-list']" class="set-icon"> 
-          <ion-icon ios="ios-cash" md="md-cash"></ion-icon>
+          <!-- <ion-icon ios="ios-cash" md="md-cash"></ion-icon> -->  
+          <ion-icon src="../../../assets/images//sponsor.svg"></ion-icon>
           <ion-badge slot="end" *ngIf="sponcerCount > 0">{{ sponcerCount }}</ion-badge> 
         </a>
         <!-- <a [routerLink]="['/sponcer-chat']" class="set-icon">
@@ -70,32 +71,34 @@
     <ion-row *ngIf="tabs">
       <ion-col size="12" class="ion-no-padding">
         <ion-list lines="none" class="top-list">
-          <ion-item (click)="notification1()">
+          <ion-item (click)="notification1()" class="box-shadow-none">
             <div class="top-icon">
               <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
             </div>
             <ion-label>Info</ion-label>
           </ion-item>
           <!--  -->
-          <ion-item detail="false" [routerLink]="['/nutrition-list']">
+          <ion-item detail="false" [routerLink]="['/nutrition-list']" class="box-shadow-none">
             <div class="top-icon">
               <ion-icon ios="ios-nutrition" md="md-nutrition"></ion-icon>
             </div>
             <ion-label>Nutrition</ion-label>
           </ion-item>
           <!-- [routerLink]="['/consultant-videos']" -->
-          <ion-item detail="false" [routerLink]="['/consultant-videos']">
+          <ion-item detail="false" [routerLink]="['/consultant-videos']" class="box-shadow-none">
             <div class="top-icon">
               <ion-icon ios="ios-videocam" md="md-videocam"></ion-icon>
             </div>
             <ion-label>Videos</ion-label>
           </ion-item>
-          <!-- <ion-item>
+          <ion-item detail="false" [routerLink]="['/consultant-videos']" class="box-shadow-none">
             <div class="top-icon">
-              <ion-icon ios="ios-flame" md="md-flame" (click)="presentToast()"></ion-icon>
+              <!-- <ion-icon ios="ios-flame" md="md-flame" (click)="presentToast()"></ion-icon> -->
+              <ion-icon ios="md-calendar" md="md-calendar"></ion-icon>
+              <!-- <ion-icon ios="md-calendar" md="md-calendar"></ion-icon> -->
             </div>
-            <ion-label>Activity</ion-label>
-          </ion-item> -->
+            <ion-label>Upcoming</ion-label>
+          </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>
@@ -142,7 +145,10 @@
       <ion-col class="ion-no-padding">
         <ion-list class="ion-no-padding">
           <ion-item-group>
-            <ion-item-divider lines="none" sticky>
+
+            <!-- THREE ICONS  -->
+            
+            <!-- <ion-item-divider lines="none" sticky>
               <ion-toolbar lines="none" no-border-top class="profile_tabs three-tabs">
                 <ion-segment class="ion-no-padding" [(ngModel)]="consultantProfile">
                   <ion-segment-button value="aboutInfo" (click)="videoTabsScroll()">
@@ -155,13 +161,13 @@
                   </ion-segment-button>
                   <ion-segment-button value="upcoming" (click)="otherTabsScroll()">
                     <ion-icon ios="md-calendar" md="md-calendar"></ion-icon>
-                    <span>upcoming</span>
+                    <span>Upcoming</span>
                   </ion-segment-button>
                 </ion-segment>
               </ion-toolbar>
-            </ion-item-divider>
-            <ion-item-divider lines="none" sticky *ngIf="tabs">
-              <ion-segment [(ngModel)]="videotabs" class="profile_tabs subprofile_tabs">
+            </ion-item-divider> -->
+            <!-- <ion-item-divider lines="none" sticky *ngIf="tabs">
+              <ion-segment [(ngModel)]="videotabs" class="profile_tabs subprofile_tabs"> -->
                 <!-- <ion-segment-button value="videotabs1">
                   <ion-label>Open</ion-label>
                 </ion-segment-button> -->
@@ -171,8 +177,8 @@
                 <!-- <ion-segment-button value="videotabs3">
                   <ion-label>Saved</ion-label>
                 </ion-segment-button> -->
-              </ion-segment>
-            </ion-item-divider>
+              <!-- </ion-segment>
+            </ion-item-divider> -->
             <ion-item-sliding>
               <div [ngSwitch]="consultantProfile">
                 <!-- -------------- V I D E O    V I E W  ------------------>

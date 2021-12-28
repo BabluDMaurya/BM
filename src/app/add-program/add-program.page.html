@@ -173,25 +173,27 @@
               </ion-row>
             </ion-item>
             <ion-item class="mb-10">
-
-              <ion-radio-group lines="none" class="full-width radio-list" formControlName="participantsType">
-                <ion-list-header class="grey-header">
-                  <ion-label>Select Praticipants</ion-label>
-                </ion-list-header>
-                <ion-item lines="none" (click)="userModal()">
-                  <ion-label>Exclusive</ion-label>
-                  <ion-radio slot="start" value="1" formControlName="participantsType"
-                    [disabled]="f.programType.value==5 || !f.programType.value?true:false"></ion-radio>
-                </ion-item>
-                <ion-item lines="none" class="mb-10 sel-parti-open-item" (click)="clearExcl()">
-                  <ion-label>Open</ion-label>
-                  <ion-radio slot="start" value="2" checked formControlName="participantsType"></ion-radio>
-                </ion-item>
-                <ng-container *ngFor="let validation of validation_messages.participantsType">
-                  <span class="error-message"
-                    *ngIf="(submitted || programForm.get('participantsType').touched) && programForm.get('participantsType').hasError(validation.type)">{{ validation.message }}</span>
-                </ng-container>
-              </ion-radio-group>
+              <ion-row>
+                <ion-col size="6" class="ion-no-padding">
+                  <ion-radio-group lines="none" class="full-width radio-list" formControlName="participantsType">
+                    <ion-list-header class="grey-header">
+                      <ion-label>Select Praticipants</ion-label>
+                    </ion-list-header>
+                    <ion-item lines="none" (click)="userModal()">
+                      <ion-label>Exclusive</ion-label>
+                      <ion-radio slot="start" value="1" formControlName="participantsType"
+                        [disabled]="f.programType.value==5 || !f.programType.value?true:false"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none" class="mb-10 sel-parti-open-item" (click)="clearExcl()">
+                      <ion-label>Open</ion-label>
+                      <ion-radio slot="start" value="2" checked formControlName="participantsType"></ion-radio>
+                    </ion-item>
+                    <ng-container *ngFor="let validation of validation_messages.participantsType">
+                      <span class="error-message"
+                        *ngIf="(submitted || programForm.get('participantsType').touched) && programForm.get('participantsType').hasError(validation.type)">{{ validation.message }}</span>
+                    </ng-container>
+                  </ion-radio-group>
+                </ion-col>
               <ion-col size="6" class="ion-no-padding">
                 <ion-list-header class="grey-header">
                   <ion-label></ion-label>
@@ -203,26 +205,30 @@
                   </ion-text>
                 </ion-item>
               </ion-col>
+              </ion-row>
             </ion-item>
             <ion-item class="mb-10">
-              <ion-radio-group lines="none" class="full-width radio-list" formControlName="chatStatus">
-                <ion-list-header class="grey-header">
-                  <ion-label>Chat room for program</ion-label>
-                </ion-list-header>
-                <ion-item lines="none" >
-                  <ion-label>Enable</ion-label>
-                  <ion-radio slot="start" value="1" checked formControlName="chatStatus"
-                    ></ion-radio>
-                </ion-item>
-                <ion-item lines="none" class="mb-10 sel-parti-open-item">
-                  <ion-label>Disable</ion-label>
-                  <ion-radio slot="start" value="2"  formControlName="chatStatus"></ion-radio>
-                </ion-item>
-                <ng-container *ngFor="let validation of validation_messages.chatStatus">
-                  <span class="error-message"
-                    *ngIf="(submitted || programForm.get('chatStatus').touched) && programForm.get('chatStatus').hasError(validation.type)">{{ validation.message }}</span>
-                </ng-container>
-              </ion-radio-group>
+              <ion-row>
+                <ion-col size="6" class="ion-no-padding">
+                  <ion-radio-group lines="none" class="full-width radio-list" formControlName="chatStatus">
+                    <ion-list-header class="grey-header">
+                      <ion-label>Chat room for program</ion-label>
+                    </ion-list-header>
+                    <ion-item lines="none" >
+                      <ion-label>Enable</ion-label>
+                      <ion-radio slot="start" value="1" checked formControlName="chatStatus"
+                        ></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none" class="mb-10 sel-parti-open-item">
+                      <ion-label>Disable</ion-label>
+                      <ion-radio slot="start" value="2"  formControlName="chatStatus"></ion-radio>
+                    </ion-item>
+                    <ng-container *ngFor="let validation of validation_messages.chatStatus">
+                      <span class="error-message"
+                        *ngIf="(submitted || programForm.get('chatStatus').touched) && programForm.get('chatStatus').hasError(validation.type)">{{ validation.message }}</span>
+                    </ng-container>
+                  </ion-radio-group>
+                </ion-col>
               <ion-col size="6" class="ion-no-padding">
                 <ion-list-header class="grey-header">
                   <ion-label></ion-label>
@@ -234,6 +240,7 @@
                   </ion-text>
                 </ion-item>
               </ion-col>
+              </ion-row>  
             </ion-item>
             <!-- <ion-item>
               <ion-label>Create Chat room for program</ion-label>
@@ -304,7 +311,7 @@
         <div class='showDateTime'>
           <ion-datetime display-format="h:mm A"  picker-format="h:mm A"   id="dat" [(ngModel)]="myDate" (ngModelChange)="showdate()" ></ion-datetime>
         </div>
-        <ion-icon ios="ios-alarm" md="md-alarm" class=""   ></ion-icon>
+        <ion-icon ios="ios-add-circle" md="md-add-circle" style="width: 1.5rem; height: 1.5rem;"></ion-icon>
         <!-- <ion-item>
           <ion-label>Start Date</ion-label>
           <ion-datetime display-format="h:mm A" picker-format="h:mm A"  (ionChange)="showdate(this)"value="1990-02-19T07:43Z"></ion-datetime>
@@ -322,7 +329,7 @@
     </div>
     </div> -->
       </ion-list-header>   
-      <ion-list *ngFor="let date of repetatedDateCopy let i = index">
+      <ion-list *ngFor="let date of repetatedDateCopy let i = index" >
       <!-- <div *ngIf="date.date == dateObj">  -->
       <ion-list-header class="ion-padding-horizontal green text-white">
         {{date.date | date :'medium'}}
@@ -333,8 +340,9 @@
           </ion-icon>
           <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
           <!-- <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon> -->
-          <ion-icon ios="ios-close-circle" md="md-close-circle" class="ion-margin-start" (click)="preSelectedDate(i)"></ion-icon>
+          <!-- <ion-icon ios="ios-close" md="md-close-circle" class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon> -->
         </div>
+        <ion-icon ios="ios-close-circle" md="md-close-circle" class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon>
       </ion-list-header>
       <ion-item *ngIf="date?.equipments.length>0">
         <ion-label>Equipments :</ion-label>
@@ -387,14 +395,14 @@
       </ion-list>
     </ion-header>
     <div class="main_content ion-padding programPreview">
-      <form [formGroup]="finalForm" (ngSubmit)="saveProg()">
+      <form [formGroup]="finalForm" (ngSubmit)="saveProg()" class="fixed">
         <h6 style="margin: 0 0 15px 0">Program Name: {{ programDetail.title }}</h6>
-        <ion-item lines="none">
+        <ion-item lines="none" class="fixed">
           <ion-label style="display: contents;">How much would you like to charge:</ion-label>
           <ion-label style="    margin-left: 40px;">$</ion-label>
           <ion-input class="form-control" type="number" formControlName="programFees" value="0"></ion-input>
         </ion-item>
-        <div *ngIf="programDetail.type_id == 'video' ">
+        <div *ngIf="programDetail.type_id == 'video'" class="margin-top-md">
         <ion-label style="display: block;margin-top: 15px;">Would you like to request Sponsors:</ion-label>
       <ion-item lines="none">
         <ion-radio-group value="sponsors_group" class="radio-group radioPreview">

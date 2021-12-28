@@ -138,7 +138,7 @@ ion-list{padding-top: 0 !important;padding-bottom: 0 !important;
     // top: 330px;
     // right: 15px;
     position: absolute;
-    top: 330px;
+    top: 350px;
     right: 20px;
     width:fit-content !important;
     padding: 5px 10px;
@@ -174,6 +174,31 @@ p.text-green.text-center {
     display: inline-flex;
     width: 140px;
     left: -15px;
+}
+.close-icon{
+    position: absolute;
+    right: 0;
+    top: 0;
+    // transform: translate(50%, -50%);
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.fixed {
+    position: fixed !important;
+    z-index: 9 !important;
+    background-color: #fff !important;
+}
+.margin-top-md{
+    margin-top: 10%;
+}
+// .fixed{
+//     position: fixed;
+//     z-index: 9;
+// }
+
+form.fixed.ng-untouched.ng-pristine.ng-valid {
+    position: fixed;
+    z-index: 9;
 }
 // .green ion-icon.md.hydrated {
 //     right: 10px;

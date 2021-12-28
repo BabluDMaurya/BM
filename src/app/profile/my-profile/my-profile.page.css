@@ -122,7 +122,6 @@ ion-item-divider ion-segment.profile_tabs.subprofile_tabs .segment-button-checke
   display: flex;
   padding-top: 5px;
 }
-
 .user_time .ion-no-padding {
   -webkit-box-flex: 0 !important;
       -ms-flex: 0 0 calc(calc(3 / var(--ion-grid-columns, 12)) * 100%) !important;
