@@ -8,9 +8,19 @@
     <ion-item slot="center">
       <ion-label>{{programDetail?.title}}</ion-label>
     </ion-item>
-    <ion-item  detail="false" class="icon-right-side ion-text-end" slot="end" [routerLink]="['/edit-program',programId]">
-      <ion-icon ios="ios-create" md="md-create" slot="end"></ion-icon>
-    </ion-item>
+    <div class="right-div">
+      <ion-item  detail="false" class="icon-right-side ion-text-end" slot="end" [routerLink]="['/edit-program',programId]">
+        <ion-icon ios="ios-create" md="md-create" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item  detail="false" class="icon-right-side ion-text-end" slot="end" [routerLink]="['/edit-program',programId]">
+        <ion-icon ios="ios-share" md="md-share" slot="end"></ion-icon>
+      </ion-item>
+      <!-- <ion-fab class="share-btn" *ngIf="programDetail?.is_requested == 1">
+        <ion-fab-button class="share-btn" color="primary" size="small" (click)="shareItem()">
+          <ion-icon ios="ios-share" md="md-share"></ion-icon>
+        </ion-fab-button>
+      </ion-fab> -->
+    </div>
   </ion-list>
 </ion-header>
 <ion-content class="main_content">
@@ -174,13 +184,13 @@
         </ion-item>
       </ion-list>
     </ion-col>
-    <ion-col>
+    <!-- <ion-col>
       <ion-fab class="share-btn" *ngIf="programDetail?.is_requested == 1">
         <ion-fab-button class="share-btn" color="primary" size="small" (click)="shareItem()">
           <ion-icon ios="ios-share" md="md-share"></ion-icon>
         </ion-fab-button>
       </ion-fab>
-      </ion-col>
+      </ion-col> -->
   </ion-row>  
 </ion-content>
 <ion-footer class="sticky-footer" *ngIf="programDetail?.type_id == 'video' && !programDetail?.ended && !programDetail?.live ">

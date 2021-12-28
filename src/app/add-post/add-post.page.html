@@ -14,6 +14,26 @@
     </ion-item>
   </ion-list>
 </ion-header>
+<ion-row class="ion-padding-horizontal main_content">
+  <ion-col size="6" class="ion-no-padding">
+    <ion-card class="upload-box ion-noleft-margin" (click)="openGallery()">
+      <div class="upload_icon">
+        <ion-icon ios="ios-image" md="md-image"></ion-icon>
+      </div>
+      <ion-card-title>Library</ion-card-title>
+    </ion-card>
+  </ion-col>
+  <ion-col size="6" class="ion-no-padding">
+    <ion-card class="upload-box ion-noright-margin" (click)="selectMedia()">
+
+      <div class="upload_icon">
+        <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
+      </div>
+      <ion-card-title>Camera</ion-card-title>
+
+    </ion-card>
+  </ion-col>
+  </ion-row>
 <ion-content class="main_content">
   <ion-grid class="ion-padding-horizontal">
     <ion-row class="ion-no-padding">
@@ -43,7 +63,7 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-<ion-footer class="sticky-footer icon-footer">
+<!-- <ion-footer class="sticky-footer icon-footer">
   <ion-list class="ion-no-margin">
     <ion-item>
       <img src="../../assets/images/photo.svg"  (click)="openGallery()" />
@@ -52,4 +72,4 @@
       <img src="../../assets/images/photo-camera.svg" (click)="takeSnap()" />
     </ion-item>
   </ion-list>
-</ion-footer>
+</ion-footer> -->
