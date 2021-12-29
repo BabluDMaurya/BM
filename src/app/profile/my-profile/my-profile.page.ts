@@ -13,6 +13,7 @@ import { PopoverComponent } from '../popover/popover.component';
 import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 import { ToastController } from '@ionic/angular';
 import { ProgramService } from 'src/app/services/program.service';
+import { exit } from 'process';
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.page.html',
@@ -150,7 +151,7 @@ export class MyProfilePage implements OnInit {
         this.videoPostData();
       }
     });
-    this.peopleView.getMyPost('1', '', 1).subscribe((data: any) => {
+    this.peopleView.getMyPost('1,2,8', '', 1).subscribe((data: any) => {
       if (data.status == 401) {
         this.commonService.loggingout();
       }
@@ -174,6 +175,17 @@ export class MyProfilePage implements OnInit {
     // } else {
       this.getMyprog();
     // }
+
+    this.settingsService.getProfileData().subscribe((data: any) => {
+      this.profileData = data.status;
+      this.gotData = true;
+      this.bannerImage = this.backgroundPicUrl + this.profileData.userData.bios.profile_background_image;
+      this.validateFile(this.profileData.userData.bios.profile_pic);
+      this.profileImage = this.profilePicUrl + this.profileData.userData.bios.profile_pic;
+      localStorage.setItem('userData',JSON.stringify(data.status.userData)); 
+      console.log(this.profileData.userData.bios.profile_pic);
+      console.log('profileData');
+    });
   }
   postData() {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
@@ -211,8 +223,12 @@ export class MyProfilePage implements OnInit {
   }
   videoPostData() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
-    this.peopleView.getMyPost('2', this.loginUserData.id, 1).subscribe((data: any) => {
+    this.peopleView.getMyPost('1,2,8', this.loginUserData.id, 1).subscribe((data: any) => {
+      
+      // exit;
       this.myPosts = data.posts.data;
+      console.log(this.myPosts);
+      console.log('myPost');
       this.myPosts.forEach((element, i) => {
         this.myPosts[i].count = element.post_likes.length;
         element.post_likes.filter((f) => {
@@ -254,7 +270,8 @@ export class MyProfilePage implements OnInit {
   loadVideoData(event) {
     setTimeout(() => {
       if (this.currentPage > 0) {
-        this.peopleView.getMyPost('2', this.loginUserData.id, (this.currentPage + 1)).subscribe((data: any) => {
+        // this.peopleView.getMyPost('2', this.loginUserData.id, (this.currentPage + 1)).subscribe((data: any) => {
+        this.peopleView.getMyPost('1,2,8', this.loginUserData.id, (this.currentPage + 1)).subscribe((data: any) => {
           data.posts.data.forEach((element, i) => {
             element.count = element.post_likes.length;
             element.post_likes.filter((f) => {
@@ -348,6 +365,7 @@ export class MyProfilePage implements OnInit {
       this.profileImage = this.profilePicUrl + this.profileData.userData.bios.profile_pic;
       localStorage.setItem('userData',JSON.stringify(data.status.userData)); 
       console.log(this.profileData);
+      console.log('profileData');
     });
     this.commonService.dismissLoader();
   }

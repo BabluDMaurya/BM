@@ -37,7 +37,8 @@ export class PostTabComponent implements OnInit {
   @Input() userData: any;
   profileDefaultImage = './../../../assets/images/user.jpg';
   ngOnInit() {
-   
+   console.log(this.userData);
+   console.log('userData');
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       if (params.get('userData')) {
         this.consultID = params.get('userData');
@@ -69,6 +70,7 @@ export class PostTabComponent implements OnInit {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
     this.peopleService.getMyPost('1,8', this.userData.userData.id, 1).subscribe((data: any) => {
       this.myPosts = data.posts.data;
+      console.log(this.myPosts);
       this.myPosts.forEach((element, i) => {
         this.myPosts[i].count = element.post_likes.length;
         element.post_likes.filter((f) => {
