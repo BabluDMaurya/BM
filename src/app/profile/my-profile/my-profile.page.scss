@@ -42,6 +42,10 @@ ion-item-divider{
     display: flex;
     padding-top: 5px;
 }
+.top-list .box-shadow-none{
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+  }
 .user_time .ion-no-padding {
     flex: 0 0 calc(calc(3 / var(--ion-grid-columns, 12)) * 100%) !important;
     width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%) !important;
