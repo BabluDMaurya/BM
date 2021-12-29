@@ -6,14 +6,25 @@ import { CommonService } from 'src/app/services/common.service';
 import { ScheduleModalComponent } from '../schedule-modal/schedule-modal.component';
 import { Config } from '../../config/config'
 import { ProgramService } from './../../services/program.service';
+import { CalendarComponent } from 'ionic2-calendar/calendar';
+import { CalendarModule } from "ion2-calendar";
+
 @Component({
   selector: 'app-program',
   templateUrl: './program.page.html',
   styleUrls: ['../../app.component.scss', './program.page.scss'],
 })
 
-export class ProgramPage implements OnInit {    
-  
+export class ProgramPage implements OnInit {  
+  @ViewChild(CalendarComponent, {static: false }) myCal: CalendarComponent;
+
+  eventSource = [];
+  currentHrs: any;
+  viewTitle;
+  calendar = {
+    mode: 'week',
+    currentDate: new Date(),
+  };
   classVariable :any = 0;
   myDate: any = new Date().toISOString();
   url: any = Config.ApiUrl;
@@ -51,7 +62,8 @@ export class ProgramPage implements OnInit {
     public navCtrl: NavController,
     public commonService: CommonService,
     private programService: ProgramService) {
-
+      let d = new Date();
+    this.currentHrs = d.getHours();
     this.items = [
       { expanded: false },
     ]; 
@@ -62,6 +74,7 @@ export class ProgramPage implements OnInit {
   slideNext(slides) {
     this.slides.slideNext();
   }
+  
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     if (this.userData.user_type) {
@@ -69,7 +82,10 @@ export class ProgramPage implements OnInit {
     } else {
       this.programTabs = 'attending'
     }
+    
     this.myCalender();
+   
+    
   }
   // My calender
    getWeek(fromDate) {
@@ -102,6 +118,50 @@ export class ProgramPage implements OnInit {
     // }
     
   // }
+  onTimeSelected(event) {
+    console.log(event);
+    this.programService.getAllSelectedUpcomingPrograms({ 'sortDate': event.selectedTime.toUTCString() }).subscribe(data => {
+      console.log(data);
+      this.scheduleList = data.programList.filter(el => {
+        if (el.image_path) {
+          el.img_arr = el.image_path.split(',');
+        }
+        el.expanded = false;
+        el.converted = new Date(el.program_date + 'Z');
+        return el;
+      });
+      this.pgCount = this.scheduleList.length;
+      this.commonService.dismissLoader();
+      if(this.scheduleList.length < 1){
+        this.noScheduleList = true;
+      } 
+    },
+    err=> {
+      this.commonService.presentToast("Couldnt load data, Something went wrong.");
+      this.commonService.dismissLoader();
+      if(this.scheduleList.length < 1){
+        this.noScheduleList = true;
+      }  
+    });
+  }
+
+  onViewTitleChanged(title) {
+    this.viewTitle = title;
+  }
+  next() {
+    // let swiper = document.querySelector('.swiper-container')['swiper'];
+    // swiper.slideNext();
+    console.log('hello' + this.myCal)
+    this.myCal.slideNext();
+    // this.slides.slideNext();
+  }
+
+  back() {
+    
+    // let swiper = document.querySelector('.swiper-container')['swiper'];
+    // swiper.slidePrev();
+    this.myCal.slidePrev();  
+  }
   myCalender(){
     var today : any = new Date();
     var dd : any = today.getDate();
@@ -231,7 +291,12 @@ export class ProgramPage implements OnInit {
       'tab': 2,
       'date': this.myDate
     }
-
+    let events = [];
+    events.push({
+      allDay: false,
+    });
+  
+  this.eventSource = (events);
     // this.programService.getHostedPrograms(null).subscribe(data => {
     //   this.programList = data.programList.filter(el => {
     //     if (el.image_path) {
@@ -423,7 +488,9 @@ export class ProgramPage implements OnInit {
     var today = new Date();
     let userZoneDate = new Date(selectedDate);
     userZoneDate.setHours(today.getHours(), today.getMinutes(), today.getSeconds());
-    
+    console.log(userZoneDate);
+    console.log(userZoneDate.toUTCString());
+
     this.programService.getSchedulePrograms({ 'sortDate': userZoneDate.toUTCString() }).subscribe(data => {
       this.scheduleList = data.programList.filter(el => {
         if (el.image_path) {

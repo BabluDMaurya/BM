@@ -136,6 +136,9 @@ export class ProgramService {
   getAllUpcomingPrograms(formData){
     return this.http.post<any>(Config.ApiUrl+'api/auth/getAllUpcomingProgram', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getAllUpcomingPrograms', formData)));
   }
+  getAllSelectedUpcomingPrograms(formData){
+    return this.http.post<any>(Config.ApiUrl+'api/auth/getAllSelectedUpcomingPrograms', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getAllSelectedUpcomingPrograms', formData)));
+  }
 
   getSponserComment(formData){
     return this.http.post<any>(Config.ApiUrl+'api/auth/getSponserComment', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getSponserComment', formData)));

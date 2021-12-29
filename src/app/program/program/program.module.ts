@@ -12,13 +12,21 @@ import { HostingDropdownComponent } from '../hosting-dropdown/hosting-dropdown.c
 import { ComponentModule } from '../../profile/components.modules';
 import { InviteRequestComponent } from './../invite-request/invite-request.component';
 import { PipeModule } from '../../nutrition-list/pipe.module'
+import { CalendarModule } from "ion2-calendar";
+import { NgCalendarModule  } from 'ionic2-calendar';
+
+
 @NgModule({
+  
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     ProgramPageRoutingModule,ComponentModule,
     PipeModule,
+    CalendarModule,
+    // ProgramPageModule.forChild(ProgramPage),
+    NgCalendarModule
   ],
   declarations: [ProgramPage ,HostingDropdownComponent , 
     InviteRequestComponent],

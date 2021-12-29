@@ -65,7 +65,7 @@
     </ion-segment-button> -->
     <ion-segment-button value="requested">
       <div class="chatBadge">
-        <span>Requested</span> 
+        <span>Invitation</span> 
         <ion-badge class="ml-1">{{reqProgramList?.length || 0}}</ion-badge>
       </div>     
     </ion-segment-button>
@@ -94,6 +94,28 @@
       </div>
       <div *ngIf="showAll">
         <!-- <ion-card *ngFor="let program of allProgramList | programFilter; let j = index;" class="ion-no-margin"> -->
+          <ion-list lines="none" class="calendar-header">
+            <ion-item class="ion-text-left">
+              <ion-button class="calend_arrow" fill="clear" (click)="back()">
+                <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-item>
+              <ion-title>{{ viewTitle }}</ion-title>
+            </ion-item>
+            <!-- Move forward one screen of the slides -->
+            <ion-item class="ion-text-right">
+              <ion-button class="calend_arrow " fill="clear" (click)="next()">
+                <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+          <calendar  [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+              scrollToHour="{{currentHrs}}" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" startHour="6"
+              endHour="20"
+              step="30"
+              startingDayWeek="1"  class="calendar-table swiper-container">
+          </calendar>
         <ion-card *ngFor="let program of allProgramList ; let j = index;" class="ion-no-margin">
           <ion-item class="item-card">
             <ion-avatar slot="start" [routerLink]="(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]">
@@ -241,6 +263,8 @@
 
     <!----------- R E Q U E S T E D   P R O G R A M  -->
     <ion-list lines="none" *ngSwitchCase="'requested'">
+     
+
       <ion-card *ngFor="let item of reqProgramList; let l = index;" class="ion-no-margin upcomingCard">
       <ion-item lines="none">
         <ion-avatar slot="start" [routerLink]="['/program-view',item.id]">
