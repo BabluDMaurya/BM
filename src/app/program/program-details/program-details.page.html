@@ -9,10 +9,10 @@
       <ion-label>{{programDetail?.title}}</ion-label>
     </ion-item>
     <div class="right-div">
-      <ion-item  detail="false" class="icon-right-side ion-text-end" slot="end" [routerLink]="['/edit-program',programId]">
+      <ion-item  detail="false" class="icon-right-side ion-text-end min-width-none " slot="end" [routerLink]="['/edit-program',programId]">
         <ion-icon ios="ios-create" md="md-create" slot="end"></ion-icon>
       </ion-item>
-      <ion-item  detail="false" class="icon-right-side ion-text-end" slot="end" [routerLink]="['/edit-program',programId]">
+      <ion-item  detail="false" class="icon-right-side ion-text-end min-width-none pl-8" slot="end" [routerLink]="['/edit-program',programId]">
         <ion-icon ios="ios-share" md="md-share" slot="end"></ion-icon>
       </ion-item>
       <!-- <ion-fab class="share-btn" *ngIf="programDetail?.is_requested == 1">
