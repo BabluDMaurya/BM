@@ -1,23 +1,27 @@
 <ion-header class="top-header ion-no-padding">
   <ion-list class="top-heading three-block">
-    <ion-item slot="start">
+    <ion-item slot="start" class="min-width-none">
       <ion-buttons class="ion-no-margin" (click)="closeModal()">
         <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
       </ion-buttons>
     </ion-item>
-    <ion-item slot="center">
+    <!-- <ion-item slot="center">
       <ion-label *ngIf="modelOpen==1">Select Equipments</ion-label>
       <ion-label *ngIf="modelOpen==2">Select Nutrition</ion-label>
-    </ion-item>
-    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+    </ion-item> -->
+    <ion-toolbar class="searchbar">
+      <ion-searchbar *ngIf="modelOpen==1" [(ngModel)]="equipmentSearchTerm" placeholder="Search and Select Equipments"></ion-searchbar>
+      <ion-searchbar *ngIf="modelOpen==2" [(ngModel)]="equipmentSearchTerm" placeholder="Search and Select Nutrition"></ion-searchbar>
+    </ion-toolbar>
+    <!-- <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item> -->
   </ion-list>
 </ion-header>
 <ion-content class="main_content">
   <ion-list class="user-list ion-no-padding" *ngIf="modelOpen==1">
-    <ion-toolbar class="searchbar">
+    <!-- <ion-toolbar class="searchbar">
       <ion-searchbar [(ngModel)]="equipmentSearchTerm"></ion-searchbar>
-    </ion-toolbar>
-    <ion-item *ngFor="let equip of equipmentFiltered">
+    </ion-toolbar> -->
+    <ion-item *ngFor="let equip of equipmentFiltered" class="pX-15">
       <div class="users-list" >
         <img src="../../assets/images/{{equip.equipment_pic}}" />
       </div>
@@ -28,16 +32,19 @@
     </ion-item>
   </ion-list>
   <div class="user-list ion-no-padding" *ngIf="modelOpen==2 && nutritionList?.length>0; else no_content ">
-    <ion-toolbar class="searchbar">
+    <!-- <ion-toolbar class="searchbar">
       <ion-searchbar [(ngModel)]="nutritionSearchTerm"></ion-searchbar>
-    </ion-toolbar>
+    </ion-toolbar> -->
     <ion-card class="ion-no-margin" *ngIf="nutritionFiltered != '' ">
       <ion-card-header class="grey-header green text-white">Breakfast</ion-card-header>
       <ion-card-content class="ion-no-padding">
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
-          <ion-segment-button *ngFor="let nutri of nutritionFiltered  | filter:'BreakFast':'type'">
+
+          <!-- P r e v i o u s C a r d -->
+
+          <!-- <ion-segment-button (click)="showdetails(nutri)" *ngFor="let nutri of nutritionFiltered  | filter:'BreakFast':'type'">
             <div class="checkboxThumb">
-              <div class="thumb-checkbox" *ngIf="!nutri.empty">
+              <div class="galleryRadio video_button" *ngIf="!nutri.empty">
                 <ion-checkbox slot="start" [(ngModel)]="nutri.sele"> </ion-checkbox>
               </div>
               <img src="{{url}}{{nutri?.img_array[0]}}" *ngIf="nutri?.image_path && !nutri.empty" />
@@ -47,9 +54,27 @@
                 <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
                 <p>No Breakfast </p>                
               </div>
-            </div>
-            <ion-button (click)="showdetails(nutri)"><ion-icon name="information-circle"></ion-icon></ion-button>
-          </ion-segment-button>
+            </div> -->
+            <!-- <ion-button (click)="showdetails(nutri)"><ion-icon name="information-circle"></ion-icon></ion-button> -->
+          <!-- </ion-segment-button> -->
+
+          <!-- N e w  C a r d -->
+          <ion-list class="ion-no-padding thumb-list display-flex" lines="none" *ngIf="modelOpen==2 && nutritionList?.length>0; else no_content ">
+              <ion-radio-group *ngFor="let nutri of nutritionFiltered  | filter:'BreakFast':'type'">  
+              <ion-item>
+                <div class="galleryRadio video_button">
+                  <ion-checkbox [(ngModel)]="nutri.sele" name="item.id" slot="start"> </ion-checkbox>
+                </div>
+                <img src="{{url}}{{nutri?.img_array[0]}}" (click)="showdetails(nutri)" *ngIf="nutri?.image_path && !nutri.empty" />
+                <img src="../../assets/images/nutrition2.png" (click)="showdetails(nutri)" *ngIf="!nutri.empty && !nutri?.image_path" />
+                <ion-label *ngIf="!nutri.empty">{{nutri?.title}}</ion-label>
+              </ion-item>
+              <div *ngIf="nutri.empty" class="no-data nutrition-no-data"> 
+                <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+                <p>No BreakFast</p> 
+              </div>
+              </ion-radio-group>
+          </ion-list>
         </ion-segment>
       </ion-card-content>
     </ion-card>
@@ -58,7 +83,9 @@
       <ion-card-content class="ion-no-padding">
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
 
-          <ion-segment-button *ngFor="let nutri of nutritionFiltered  | filter:'Brunch':'type'">
+          <!-- P r e v i o u s C a r d -->
+
+          <!-- <ion-segment-button *ngFor="let nutri of nutritionFiltered  | filter:'Brunch':'type'">
             <div class="checkboxThumb">
               <div class="thumb-checkbox" *ngIf="!nutri.empty">
                 <ion-checkbox slot="start" [(ngModel)]="nutri.sele"> </ion-checkbox>
@@ -72,8 +99,25 @@
               </div>
             </div>
             <ion-button (click)="showdetails(nutri)"><ion-icon name="information-circle"></ion-icon></ion-button>
-          </ion-segment-button>
+          </ion-segment-button> -->
 
+          <!-- N e w  C a r d -->
+          <ion-list class="ion-no-padding thumb-list display-flex" lines="none" *ngIf="modelOpen==2 && nutritionList?.length>0; else no_content ">
+            <ion-radio-group *ngFor="let nutri of nutritionFiltered  | filter:'Brunch':'type'">  
+            <ion-item>
+              <div class="galleryRadio video_button">
+                <ion-checkbox [(ngModel)]="nutri.sele" name="item.id" slot="start"> </ion-checkbox>
+              </div>
+              <img src="{{url}}{{nutri?.img_array[0]}}" (click)="showdetails(nutri)" *ngIf="nutri?.image_path && !nutri.empty" />
+              <img src="../../assets/images/nutrition2.png" (click)="showdetails(nutri)" *ngIf="!nutri.empty && !nutri?.image_path" />
+              <ion-label *ngIf="!nutri.empty">{{nutri?.title}}</ion-label>
+            </ion-item>
+            <div *ngIf="nutri.empty" class="no-data nutrition-no-data"> 
+              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+              <p>No Brunch</p> 
+            </div>
+            </ion-radio-group>
+          </ion-list> 
         </ion-segment>
 
 
@@ -84,7 +128,7 @@
       <ion-card-content class="ion-no-padding">
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
 
-          <ion-segment-button *ngFor="let nutri of nutritionFiltered  | filter:'Lunch':'type'">
+          <!-- <ion-segment-button *ngFor="let nutri of nutritionFiltered  | filter:'Lunch':'type'">
             <div class="checkboxThumb">
             <div class="thumb-checkbox" *ngIf="!nutri.empty">
               <ion-checkbox slot="start" [(ngModel)]="nutri.sele"> </ion-checkbox>
@@ -98,10 +142,26 @@
             </div>
             </div>
             <ion-button (click)="showdetails(nutri)"><ion-icon name="information-circle"></ion-icon></ion-button>
-          </ion-segment-button>
+          </ion-segment-button> -->
 
+
+          <ion-list class="ion-no-padding thumb-list display-flex" lines="none" *ngIf="modelOpen==2 && nutritionList?.length>0; else no_content ">
+            <ion-radio-group *ngFor="let nutri of nutritionFiltered  | filter:'Lunch':'type'">  
+            <ion-item>
+              <div class="galleryRadio video_button">
+                <ion-checkbox [(ngModel)]="nutri.sele" name="item.id" slot="start"> </ion-checkbox>
+              </div>
+              <img src="{{url}}{{nutri?.img_array[0]}}" (click)="showdetails(nutri)" *ngIf="nutri?.image_path && !nutri.empty" />
+              <img src="../../assets/images/nutrition2.png" (click)="showdetails(nutri)" *ngIf="!nutri.empty && !nutri?.image_path" />
+              <ion-label *ngIf="!nutri.empty">{{nutri?.title}}</ion-label>
+            </ion-item>
+            <div *ngIf="nutri.empty" class="no-data nutrition-no-data"> 
+              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+              <p>No Lunch</p> 
+            </div>
+            </ion-radio-group>
+          </ion-list> 
         </ion-segment>
-
 
       </ion-card-content>
     </ion-card>
@@ -109,7 +169,9 @@
       <ion-card-header class="grey-header green text-white">Snacks</ion-card-header>
       <ion-card-content class="ion-no-padding">
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
-          <ion-segment-button *ngFor="let nutri of nutritionFiltered | filter:'Snacks':'type' ">
+
+
+          <!-- <ion-segment-button *ngFor="let nutri of nutritionFiltered | filter:'Snacks':'type' ">
             <div class="checkboxThumb">
               <div class="thumb-checkbox" *ngIf="!nutri.empty">
                 <ion-checkbox slot="start" [(ngModel)]="nutri.sele"> </ion-checkbox>
@@ -123,7 +185,24 @@
               </div>
             </div>
             <ion-button (click)="showdetails(nutri)"><ion-icon name="information-circle"></ion-icon></ion-button>
-          </ion-segment-button>
+          </ion-segment-button> -->
+
+          <ion-list class="ion-no-padding thumb-list display-flex" lines="none" *ngIf="modelOpen==2 && nutritionList?.length>0; else no_content ">
+            <ion-radio-group *ngFor="let nutri of nutritionFiltered  | filter:'Snacks':'type'">  
+            <ion-item>
+              <div class="galleryRadio video_button">
+                <ion-checkbox [(ngModel)]="nutri.sele" name="item.id" slot="start"> </ion-checkbox>
+              </div>
+              <img src="{{url}}{{nutri?.img_array[0]}}" (click)="showdetails(nutri)" *ngIf="nutri?.image_path && !nutri.empty" />
+              <img src="../../assets/images/nutrition2.png" (click)="showdetails(nutri)" *ngIf="!nutri.empty && !nutri?.image_path" />
+              <ion-label *ngIf="!nutri.empty">{{nutri?.title}}</ion-label>
+            </ion-item>
+            <div *ngIf="nutri.empty" class="no-data nutrition-no-data"> 
+              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+              <p>No Snacks </p>
+            </div>
+            </ion-radio-group>
+          </ion-list> 
         </ion-segment>
       </ion-card-content>
     </ion-card>
@@ -131,7 +210,7 @@
       <ion-card-header class="grey-header green text-white">Dinner</ion-card-header>
       <ion-card-content class="ion-no-padding">
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
-          <ion-segment-button *ngFor="let nutri of nutritionFiltered  | filter:'Dinner':'type'">
+          <!-- <ion-segment-button *ngFor="let nutri of nutritionFiltered  | filter:'Dinner':'type'">
             <div class="checkboxThumb">
               <div class="thumb-checkbox" *ngIf="!nutri.empty">
                 <ion-checkbox slot="start" [(ngModel)]="nutri.sele"> </ion-checkbox>
@@ -145,7 +224,23 @@
               </div>
             </div>
             <ion-button *ngIf="!nutri.empty" (click)="showdetails(nutri)"><ion-icon name="information-circle"></ion-icon></ion-button>
-          </ion-segment-button>
+          </ion-segment-button> -->
+          <ion-list class="ion-no-padding thumb-list display-flex" lines="none" *ngIf="modelOpen==2 && nutritionList?.length>0; else no_content ">
+            <ion-radio-group *ngFor="let nutri of nutritionFiltered  | filter:'Dinner':'type'">  
+            <ion-item>
+              <div class="galleryRadio video_button">
+                <ion-checkbox [(ngModel)]="nutri.sele" name="item.id" slot="start"> </ion-checkbox>
+              </div>
+              <img src="{{url}}{{nutri?.img_array[0]}}" (click)="showdetails(nutri)" *ngIf="nutri?.image_path && !nutri.empty" />
+              <img src="../../assets/images/nutrition2.png" (click)="showdetails(nutri)" *ngIf="!nutri.empty && !nutri?.image_path" />
+              <ion-label *ngIf="!nutri.empty">{{nutri?.title}}</ion-label>
+            </ion-item>
+            <div *ngIf="nutri.empty" class="no-data nutrition-no-data"> 
+              <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
+              <p>No Dinner</p> 
+            </div>
+            </ion-radio-group>
+          </ion-list> 
         </ion-segment>
       </ion-card-content>
     </ion-card>

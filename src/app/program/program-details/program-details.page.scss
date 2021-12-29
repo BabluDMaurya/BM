@@ -63,3 +63,9 @@ ion-slides{height: 190px;}
   width: calc(calc(12 / var(--ion-grid-columns, 12)) * 100%) !important;
   max-width: calc(calc(12 / var(--ion-grid-columns, 12)) * 100%) !important;
 }
+.min-width-none {
+  min-width: 0px !important;
+}
+.pl-8{
+  padding-left: 8px !important;
+}
