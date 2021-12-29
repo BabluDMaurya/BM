@@ -26,3 +26,9 @@ img{height: 150px}
     z-index: 1;
     width: 100%;
 }
+.min-width-none{
+    min-width: 0px !important;
+}
+ion-searchbar {
+    padding-left: 0px !important;
+}

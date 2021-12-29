@@ -191,14 +191,27 @@ p.text-green.text-center {
 .margin-top-md{
     margin-top: 10%;
 }
-// .fixed{
-//     position: fixed;
-//     z-index: 9;
-// }
 
 form.fixed.ng-untouched.ng-pristine.ng-valid {
     position: fixed;
     z-index: 9;
+}
+ion-icon{
+    color: #fff;
+}
+ion-icon.active{
+    color: rgb(255, 17, 17);
+}
+ion-icon.top-0.live-icon.ios.hydrated {
+    font-size: 34px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+.top-0{
+    top: 0 !important;
+}
+.width-full{
+    width: 100% !important;
 }
 // .green ion-icon.md.hydrated {
 //     right: 10px;

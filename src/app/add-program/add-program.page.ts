@@ -1374,6 +1374,12 @@ export class AddProgramPage implements OnInit {
 
     }    
   }
-  
+
+  // TOGGLE LIVE ICON
+  item = {active:false};
+
+  toggleIcon(item){
+    item.active = !item.active;
+  }
 
 }
