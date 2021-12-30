@@ -31,12 +31,14 @@ ion-item-divider{
 .userDisplayName{
     margin-left: 115px;
 }
-.top-list ion-item{
+.top-list ion-item .top-list .icon-div{
  width: 33.33% !important;
 }
 .user_details {
     display: block;
-    padding: 0 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 0px 10px #0000002e;
 }
 .user_time {
     display: flex;
@@ -54,10 +56,18 @@ ion-item-divider{
     color: #fff;
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
     margin-right: 8px;
     border-radius: 5px;
 }
 .count_time{
     margin-bottom: 5px;
+}
+.three-tabs[_ngcontent-skm-c3] ion-segment[_ngcontent-skm-c3] ion-segment-button[_ngcontent-skm-c3] {
+    width: auto !important;
+}
+::ng-deep{
+    .item-inner .item-detail-icon .icon-inner {
+        display: none !important;
+    }
 }

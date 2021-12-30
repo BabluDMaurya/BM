@@ -153,3 +153,16 @@ ion-title.ios.title-ios.title-default.hydrated {
   padding-inline: 0px;
 }
 }
+.flex-card{
+  display: flex;
+  align-items: center;
+}
+p.text-green {
+  font-size: 14px;
+}
+.divider-line{
+  width: 2px;
+  height: 40px;
+  margin: 0 10px;
+  background-color: #000;
+}
