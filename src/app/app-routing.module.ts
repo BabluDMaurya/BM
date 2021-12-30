@@ -266,6 +266,9 @@ const routes: Routes = [
   { path: 'payment/:pgid',
   loadChildren: () => import('./paypal/paypal.module').then( m => m.PaypalPageModule)
   },
+  { path: 'upcoming',
+  loadChildren: () => import('./upcoming/upcoming.module').then( m => m.UpcomingPageModule)
+  },
 
 ];
 
