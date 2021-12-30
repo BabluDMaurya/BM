@@ -41,6 +41,7 @@ export class ProgramPage implements OnInit {
   showAll: any;
   programList: any;
   scheduleList : any;
+  allScheduleList: any;
   accProgramList: any;
   reqProgramList: any;
   allProgramList: any;
@@ -49,6 +50,8 @@ export class ProgramPage implements OnInit {
   currentDate : any;
   clickActiveClass : any = '';
   noScheduleList : boolean = false;
+  noAllScheduleList : boolean = false;
+
   noReqProgramList : boolean = false;
   public items: any = [];
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
@@ -122,7 +125,7 @@ export class ProgramPage implements OnInit {
     console.log(event);
     this.programService.getAllSelectedUpcomingPrograms({ 'sortDate': event.selectedTime.toUTCString() }).subscribe(data => {
       console.log(data);
-      this.scheduleList = data.programList.filter(el => {
+      this.allScheduleList = data.data.filter(el => {
         if (el.image_path) {
           el.img_arr = el.image_path.split(',');
         }
@@ -130,17 +133,17 @@ export class ProgramPage implements OnInit {
         el.converted = new Date(el.program_date + 'Z');
         return el;
       });
-      this.pgCount = this.scheduleList.length;
+      this.pgCount = this.allScheduleList.length;
       this.commonService.dismissLoader();
-      if(this.scheduleList.length < 1){
-        this.noScheduleList = true;
+      if(this.allScheduleList.length < 1){
+        this.noAllScheduleList = true;
       } 
     },
     err=> {
       this.commonService.presentToast("Couldnt load data, Something went wrong.");
       this.commonService.dismissLoader();
-      if(this.scheduleList.length < 1){
-        this.noScheduleList = true;
+      if(this.allScheduleList.length < 1){
+        this.noAllScheduleList = true;
       }  
     });
   }

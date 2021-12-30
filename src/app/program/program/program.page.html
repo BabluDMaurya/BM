@@ -116,7 +116,7 @@
               step="30"
               startingDayWeek="1"  class="calendar-table swiper-container">
           </calendar>
-        <ion-card *ngFor="let program of allProgramList ; let j = index;" class="ion-no-margin">
+        <ion-card *ngFor="let program of allScheduleList ; let j = index;" class="ion-no-margin">
           <ion-item class="item-card">
             <ion-avatar slot="start" [routerLink]="(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]">
               <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
@@ -135,7 +135,7 @@
           </ion-item>          
         </ion-card>
       </div>
-      <div *ngIf="noScheduleList" class="no-data">
+      <div *ngIf="noAllScheduleList" class="no-data">
         <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
         <p>No Schedule Program</p>
       </div>
