@@ -1,7 +1,15 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>upcoming</ion-title>
-  </ion-toolbar>
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <ion-label>Upcoming Program</ion-label>
+    </ion-item>
+    
+  </ion-list>
 </ion-header>
 
 <ion-content>

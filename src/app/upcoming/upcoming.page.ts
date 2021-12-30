@@ -4,6 +4,8 @@ import { CommonService } from './../services/common.service';
 import { ProgramService } from './../services/program.service';
 import { Config } from './../config/config';
 import { ActivatedRoute, ParamMap } from "@angular/router";
+import { NavController } from '@ionic/angular';
+
 import { parse } from 'querystring';
 @Component({
   selector: 'app-upcoming',
@@ -17,6 +19,7 @@ export class UpcomingPage implements OnInit {
   noData:any;
   userData:any;
   programimg_array : any;
+  public navCtrl: NavController;
   url = Config.imgUrl;
   constructor(private commonService: CommonService,
     private actRoute: ActivatedRoute,
@@ -109,6 +112,9 @@ export class UpcomingPage implements OnInit {
     });
 
     return elementArr;
+  }
+  goBack() {
+    this.navCtrl.back();
   }
 
 }
