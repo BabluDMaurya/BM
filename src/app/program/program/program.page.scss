@@ -101,3 +101,55 @@ ion-label{
   ion-avatar{width: 65px;height: 65px;}
   ion-label{line-height: 1.5;}
 }
+
+
+.swiper-wrapper .slide-container .weekview-allday-table {
+  display: none !important;
+}
+
+ion-slides.slides-container.md.slides-md.swiper-container.hydrated.swiper-container-initialized.swiper-container-horizontal {
+  background: #27A69A !important;
+}
+.table-bordered {
+  border: none !important;
+}
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+  border: none !important;
+}
+td, th {
+  border: 0!important;
+}
+.calendar{
+  background: #27A69A !important;
+}
+
+::ng-deep {
+  .weekview-allday-table {
+      display: none !important;
+  }
+  ion-slides.slides-container.md.slides-md.swiper-container.hydrated.swiper-container-initialized.swiper-container-horizontal {
+    background: #27A69A !important;
+  }
+  td, th {
+    border: 0!important;
+  }
+  .table-bordered {
+    border: 0!important;
+}
+.slides-container {
+  color: #fff !important;
+  background: #27A69A !important;
+}
+.list-ios{
+  margin-bottom: 0 !important;
+}
+.table > thead > tr > th.weekview-header {
+  font-size: 13px !important;
+  font-weight: 500;
+  padding-top: 15px;
+  padding-bottom: 15px  ;
+}
+ion-title.ios.title-ios.title-default.hydrated {
+  padding-inline: 0px;
+}
+}
