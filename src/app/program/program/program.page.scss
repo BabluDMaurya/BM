@@ -153,6 +153,10 @@ ion-title.ios.title-ios.title-default.hydrated {
   padding-inline: 0px;
 }
 }
+.list-person{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .flex-card{
   display: flex;
   align-items: center;
@@ -162,7 +166,7 @@ p.text-green {
 }
 .divider-line{
   width: 2px;
-  height: 40px;
-  margin: 0 10px;
+  height: 50px;
+  margin: 0 20px;
   background-color: #000;
 }
