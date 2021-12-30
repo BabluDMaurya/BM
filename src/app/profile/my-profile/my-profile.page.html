@@ -68,7 +68,10 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row *ngIf="tabs">
+
+    <!-- N O N  S T I C K Y  T A B -->
+
+    <!-- <ion-row *ngIf="tabs" >
       <ion-col size="12" class="ion-no-padding">
         <ion-list lines="none" class="top-list">
           <ion-item (click)="notification1()" class="box-shadow-none">
@@ -76,32 +79,76 @@
               <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
             </div>
             <ion-label>Info</ion-label>
-          </ion-item>
+          </ion-item> -->
           <!--  -->
-          <ion-item detail="false" [routerLink]="['/nutrition-list']" class="box-shadow-none">
+          <!-- <ion-item detail="false" [routerLink]="['/nutrition-list']" class="box-shadow-none">
             <div class="top-icon">
               <ion-icon ios="ios-nutrition" md="md-nutrition"></ion-icon>
             </div>
             <ion-label>Nutrition</ion-label>
-          </ion-item>
+          </ion-item> -->
           <!-- [routerLink]="['/consultant-videos']" -->
-          <ion-item detail="false" [routerLink]="['/consultant-videos']" class="box-shadow-none">
+          <!-- <ion-item detail="false" [routerLink]="['/consultant-videos']" class="box-shadow-none">
             <div class="top-icon">
               <ion-icon ios="ios-videocam" md="md-videocam"></ion-icon>
             </div>
             <ion-label>Videos</ion-label>
+          </ion-item> -->
+          <!-- <ion-item detail="false" [routerLink]="['/consultant-videos']" class="box-shadow-none">
+            <div class="top-icon"> -->
           </ion-item>
           <ion-item detail="false" [routerLink]="['/upcoming']" class="box-shadow-none">
             <div class="top-icon">
               <!-- <ion-icon ios="ios-flame" md="md-flame" (click)="presentToast()"></ion-icon> -->
-              <ion-icon ios="md-calendar" md="md-calendar"></ion-icon>
+              <!-- <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon> -->
               <!-- <ion-icon ios="md-calendar" md="md-calendar"></ion-icon> -->
+            <!-- </div>
+            <ion-label>Upcoming</ion-label>
             </div>
             <ion-label >Upcoming</ion-label>
           </ion-item>
         </ion-list>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
+
+        <!-- N O N  S T I C K Y  T A B  E N D -->
+
+
+ <!-- S T I C K Y  T A B -->
+
+  <ion-item-divider lines="none" sticky>
+    <ion-col style="height: auto; padding: 0;" lines="none" no-border-top class="profile_tabs three-tabs">
+      <ion-list lines="none" style="padding: 5px 0; margin: 0;" class="top-list" [(ngModel)]="consultantProfile">
+        <ion-item style=" padding: 10px 0;" class="box-shadow-none" value="aboutInfo" (click)="notification1()">
+          <div class="top-icon">
+            <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+          </div>
+          <ion-label>Info</ion-label>
+        </ion-item>
+        <ion-item detail="false" style=" padding: 10px 0;" class="box-shadow-none icon-div" value="post" [routerLink]="['/nutrition-list']">
+          <div class="top-icon">
+            <ion-icon ios="ios-nutrition" md="ios-nutrition"></ion-icon>
+          </div>
+          <ion-label>Nutrition</ion-label>
+        </ion-item>
+        <ion-item detail="false" style=" padding: 10px 0;" class="box-shadow-none" value="upcoming" [routerLink]="['/consultant-videos']">
+          <div class="top-icon">
+            <ion-icon ios="ios-videocam" md="md-videocam"></ion-icon>
+          </div>
+          <ion-label>Videos</ion-label>
+        </ion-item>
+        <ion-item  detail="false" style=" padding: 10px 0;" class="box-shadow-none" value="upcoming" [routerLink]="['/consultant-videos']">
+          <div class="top-icon">
+            <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+          </div>
+          <ion-label>Upcoming</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-item-divider>
+
+   <!-- S T I C K Y  T A B  E N D-->
+
     <!-- <ion-row *ngIf="tabs" class="mb-10">
       <ion-col size="12" class="photo-heading ion-padding-horizontal">
         <ion-text>Photo's</ion-text>
@@ -138,15 +185,13 @@
         <ion-text style="text-align: center;"><p class="count_time">{{ upcomingList[0]?.ss |number }} </p> Seconds</ion-text>
       </ion-col>
       </div>
-      
-      
     </ion-row> 
     <ion-row>
       <ion-col class="ion-no-padding">
         <ion-list class="ion-no-padding">
           <ion-item-group>
 
-            <!-- THREE ICONS  -->
+            <!-- T H R E E  I C O N S  -->
             
             <!-- <ion-item-divider lines="none" sticky>
               <ion-toolbar lines="none" no-border-top class="profile_tabs three-tabs">
@@ -166,6 +211,9 @@
                 </ion-segment>
               </ion-toolbar>
             </ion-item-divider> -->
+
+         <!-- T H R E E  I C O N S  E N D -->
+
             <!-- <ion-item-divider lines="none" sticky *ngIf="tabs">
               <ion-segment [(ngModel)]="videotabs" class="profile_tabs subprofile_tabs"> -->
                 <!-- <ion-segment-button value="videotabs1">
