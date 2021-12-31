@@ -48,13 +48,14 @@ ion-item ion-list{width: 100%;}
 }
 }
 .fixed {
-    position: fixed !important;
-    z-index: 9 !important;
-    background-color: #fff !important;
-    margin-top: -2px !important;
-}
-.margin-top-md{
-    margin-top: 20%;
+    // position: fixed !important;
+    // z-index: 9 !important;
+    // background-color: #fff !important;
+    // margin-top: -2px !important;
+    position: -webkit-sticky;
+    position: sticky;
+    width: 100%;
+    top: 0px;
 }
 .margintop-45{
     margin-top: 45%;

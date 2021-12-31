@@ -347,21 +347,21 @@
       </ion-list-header>
 
       <ion-item *ngIf="date?.equipments.length>0">
-        <ion-label>Equipments :</ion-label>
+        <ion-label style="overflow: initial;">Equipments :</ion-label>
         <div class="users-list" *ngIf="date?.equipments.length>0;else no_equipment">
           <img src="../../assets/images/demo1.jpg" *ngFor="let item of date?.equipments" />
         </div>
         <!-- <ng-template #no_equipment>No Equipment Selected</ng-template> -->
       </ion-item>
       <ion-item *ngIf="date.nutrition_id.length > 0">
-        <ion-label>Nutritions :</ion-label>
+        <ion-label style="overflow: initial;">Nutritions :</ion-label>
         <div class="users-list" *ngIf="date.nutrition_id.length>0;else no_nutrition">
           <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.nutrition_id" />
         </div>
         <!-- <ng-template #no_nutrition>No Nutrition Selected</ng-template> -->
       </ion-item>
       <ion-item *ngIf="date?.video">
-        <ion-label>Videos :</ion-label>
+        <ion-label style="overflow: initial;">Videos :</ion-label>
         <div class="users-list" *ngIf="date?.video;else no_videos">
         
           <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.video" />
@@ -405,7 +405,7 @@
           <ion-input class="form-control" type="number" formControlName="programFees" value="0"></ion-input>
         </ion-item>
         <div *ngIf="programDetail.type_id == 'video'" class="margin-top-md">
-        <ion-label style="display: block;margin-top: 15px;">Would you like to request Sponsors:</ion-label>
+        <ion-label style="display: block;margin-top: 15px; padding-left: 15px;">Would you like to request Sponsors:</ion-label>
       <ion-item lines="none">
         <ion-radio-group value="sponsors_group" class="radio-group radioPreview">
           <ion-item>

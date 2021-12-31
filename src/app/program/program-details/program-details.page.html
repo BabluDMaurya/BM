@@ -139,9 +139,28 @@
     </ion-col>
     
     <ion-col size="12" class="ion-no-padding mt-15">
-      <ion-text><p class="text-green text-center">{{programDateTime|date:'medium'}}</p></ion-text>
+      <ion-text><p class="text-green text-center" style="top: 0;">{{programDateTime|date:'medium'}}</p></ion-text>
     </ion-col>
   </ion-row>  
+  <!-- <ion-card class="video-card"  *ngIf="progItem?.nutrition_id || progItem?.video_program">
+    <ion-card-content class="ion-no-padding" *ngIf="programDetail.displayData">
+      <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
+          <ion-slide *ngFor="let item of progItem?.videoProg_array " (click)="showVideoDetails(item)" >
+           <img src="../../../assets/images/video.png" style="width:auto !important" />
+          <ion-label>Video</ion-label>
+        </ion-slide>  
+        <ion-slide *ngFor="let item of progItem?.videoId_array" (click)="showVideoDetails(item)" >
+          <img src="../../../assets/images/video.png" style="width:auto !important" />
+         <ion-label>Video</ion-label>
+       </ion-slide> 
+        <ion-slide *ngFor="let item of nutritionList | inArray:'id':progItem?.nutrition_array "  (click)="nutritionModal(progItem)" >
+          <img style="flex: 1" src="{{url}}{{item?.fImage}}" *ngIf="item?.fImage" />
+          <img style="flex: 1" src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:70% !important; height: auto;"/>
+          <ion-label>{{item?.title}}</ion-label>
+        </ion-slide>  
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>   -->
     <!-- programDescription -->
   <!-- <ion-button *ngIf="programDetail?.type_id == 'video'" [routerLink]="['/video-program-view',programDetail?.video_program,programDetail?.id]">Go Live Video</ion-button> -->
   <!-- <ion-button *ngIf="programDetail?.live" [routerLink]="['/broadcaster',broadcastId]">Go Live</ion-button> -->
@@ -193,7 +212,7 @@
       </ion-col> -->
   </ion-row>  
 </ion-content>
-<ion-footer class="sticky-footer" *ngIf="programDetail?.type_id == 'video' && !programDetail?.ended && !programDetail?.live ">
+<!-- <ion-footer class="sticky-footer" *ngIf="programDetail?.type_id == 'video' && !programDetail?.ended && !programDetail?.live ">
   <ion-button expand="full" *ngIf=" !adData && (hh | async)>23" (click)="applyAdvertise()" class="green ion-text-uppercase ion-no-margin full-height"> Apply For Advertise sponser</ion-button>
   <ion-button expand="full" *ngIf="adData?.id && adData?.video_approve_status== 1" (click)="showSponsersList()"   class="green ion-text-uppercase ion-no-margin full-height" >See Ad Sponser Options  </ion-button>
-</ion-footer>
+</ion-footer> -->

@@ -185,6 +185,7 @@ export class ProgramDetailsPage implements OnInit {
     this.commonService.presentLoader();
     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
       this.programDetail = data.programData;
+      console.log("PG: "+this.programDetail);
       console.log("PG: "+JSON.stringify(this.programDetail));
       console.log(data.programData.image_path[0] + 'ddddddd') ;
       this.firstImg = '';
