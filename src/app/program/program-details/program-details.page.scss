@@ -69,3 +69,13 @@ ion-slides{height: 190px;}
 .pl-8{
   padding-left: 8px !important;
 }
+@media only screen and (max-width: 360px){
+  p.text-green.text-center[_ngcontent-fca-c8] {
+    top: 0 !important;
+  }
+}
+@media only screen and (max-width: 375px){
+  p.text-green.text-center[_ngcontent-fca-c8] {
+    top: 35px !important;
+  }
+}
