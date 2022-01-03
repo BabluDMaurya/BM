@@ -17,6 +17,9 @@ import { ChatService } from 'src/app/services/chat.service';
 import { HttpClient} from '@angular/common/http';
 import { ChatRoomsComponent } from './../../chats/chat-rooms/chat-rooms.component';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { NutritionService } from './../../services/nutrition.service';
+import { NutritionModalComponent } from 'src/app/user-profile/nutrition-modal/nutrition-modal.component';
+import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/view-video-detail.component';
 /* To try the app with Enablex hosted service you need to set the kTry = true */
 var kTry      = true;
 /*Your webservice host URL, Keet the defined host when kTry = true */
@@ -86,6 +89,7 @@ export class ProgramDetailsPage implements OnInit {
     private chatService : ChatService,
     private modalCtrl: ModalController,
     public socialSharing: SocialSharing,
+    private nutritionService: NutritionService,
     ) {
 
   }
@@ -100,6 +104,8 @@ export class ProgramDetailsPage implements OnInit {
   dd:any;
   days: any;
   tick = 1000;
+  allProgram: any;
+  nutritionList: any;
   ngOnInit() {
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.programId = params.get('programId');
@@ -107,6 +113,61 @@ export class ProgramDetailsPage implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.userName = this.userData.user_name;
     
+
+    this.programService.getProgramById({ 'parentId': this.programId }).subscribe(data => {
+      console.log(data);
+      console.log(data.cloneList);
+      this.allProgram = data.cloneList;
+      this.allProgram.filter(el => {
+        el.convertedTime = new Date(el.program_date + 'Z');
+        el.nutrition_array = [];
+        el.videoId_array = [];
+        el.videoProg_array = [];
+        if (el.nutrition_id) {
+          el.nutrition_array = el.nutrition_id.split(',');
+          console.log("el.nutrition_array:"+el.nutrition_array);
+        }
+        if (el.video_id) {
+          el.videoId_array = el.video_id.split(',');
+          console.log("el.video_id:"+el.videoId_array);
+        }
+        if (el.video_program) {
+          el.videoProg_array = el.video_program.split(',');
+          console.log("el.video_id:"+el.videoProg_array);
+        }
+        return el;
+      })
+
+      let nutriArr = []
+      data.cloneList.forEach(el => {
+        if (el.nutrition_id != null) {
+          nutriArr.push(el.nutrition_id);
+        }
+
+      });
+      this.nutritionService.getNutritionById({ 'nutriId': nutriArr.toLocaleString() }).subscribe(ndata => {
+       
+        this.nutritionList = ndata.nutritionList;
+        
+        this.nutritionList.forEach(el => {
+         console.log(el.image_path);
+         console.log(el.image_path.split(','));
+         var imgArr = el.image_path.split(',');
+        //  console.log(this.nutritionList[el]);
+         el.fImage = imgArr[0];
+        });
+        console.log(this.nutritionList);
+        this.commonService.dismissLoader();
+      },
+      err=>{
+        this.commonService.dismissLoader();
+      this.commonService.presentToast("Couldnt load data, Something went wrong.")
+      });
+    },err=>{
+      this.commonService.dismissLoader();
+      this.commonService.presentToast("Couldnt load data, Something went wrong.")
+    }
+    );
   }
   initRoom(){
     if(this.userName.length == 0){
@@ -125,6 +186,13 @@ export class ProgramDetailsPage implements OnInit {
        console.log("Enablex service failed");
        console.log(error);
      });
+  }
+  nutritionModal(data) {
+    console.log(data);
+    this.commonService.presentModal(NutritionModalComponent, 'fullModal', { 'data': data });
+  }
+  async showVideoDetails(item){
+    this.commonService.presentModal(ViewVideoDetailComponent, 'fullModal', { 'details': item });
   }
   joinRoom(){
     if(this.roomID.length == 0){
@@ -184,6 +252,7 @@ export class ProgramDetailsPage implements OnInit {
     
     this.commonService.presentLoader();
     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
+      console.log(data);
       this.programDetail = data.programData;
       console.log("PG: "+this.programDetail);
       console.log("PG: "+JSON.stringify(this.programDetail));
@@ -347,6 +416,9 @@ export class ProgramDetailsPage implements OnInit {
   }
   showParticipants() {
     this.commonService.presentModal(ParticipantsComponent, 'fullModal', { 'userList': this.userList, 'programDetails': this.programDetail });
+  }
+  disclass(){
+    this.commonService.presentToast("Program is not live yet.")
   }
   async equipments() {
     // this.commonService.presentModal(EquipmentsComponent, 'halfModal', { 'programDetail': this.programDetail  });

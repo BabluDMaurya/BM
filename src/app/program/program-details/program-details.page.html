@@ -174,6 +174,52 @@
   <div *ngIf="userData.trilloMatch != '1' && programDetail?.is_live_status == 0">
     <ion-button class="btnVerify" >No live program available</ion-button>
   </div>
+  <ion-list lines="none" class="item-list ion-no-padding" >     
+    <div *ngFor="let progItem of allProgram">   
+      <ion-card class="video-card"  *ngIf="progItem?.nutrition_id || progItem?.video_program">
+        <ion-card-content class="ion-no-padding" *ngIf="programDetail.displayData">
+          <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
+            <!-- <ion-slide *ngIf="progItem?.video_program" (click)="showVideoDetails(item.posts_id)" > -->
+              <ion-slide *ngFor="let item of progItem?.videoProg_array " (click)="showVideoDetails(item)" >
+               <img src="../../../assets/images/video.png" style="width:auto !important" />
+              <ion-label>Video</ion-label>
+            </ion-slide>  
+            <ion-slide *ngFor="let item of progItem?.videoId_array" (click)="showVideoDetails(item)" >
+              <img src="../../../assets/images/video.png" style="width:auto !important" />
+             <ion-label>Video</ion-label>
+           </ion-slide> 
+            <ion-slide *ngFor="let item of nutritionList  "  (click)="nutritionModal(progItem)" >
+              <img src="{{url}}{{item?.fImage}}" *ngIf="item?.fImage" />
+              <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:70% !important; height: auto;"/>
+              <ion-label>{{item?.title}}</ion-label>
+            </ion-slide>  
+          </ion-slides>
+        </ion-card-content>
+      </ion-card>  
+      <ion-card class="video-card"  *ngIf="progItem?.nutrition_id || progItem?.video_program">
+        <ion-card-content class="ion-no-padding" *ngIf="!programDetail.displayData">
+          <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
+            <!-- <ion-slide *ngIf="progItem?.video_program" (click)="showVideoDetails(item.posts_id)" > -->
+              <ion-slide *ngFor="let item of progItem?.videoProg_array " (click)="disclass()" >
+               <img src="../../../assets/images/video.png" style="width:auto !important" />
+              <ion-label>Video</ion-label>
+            </ion-slide>  
+            <ion-slide *ngFor="let item of progItem?.videoId_array" (click)="disclass()" >
+              <img src="../../../assets/images/video.png" style="width:auto !important" />
+             <ion-label>Video</ion-label>
+           </ion-slide> 
+            <ion-slide *ngFor="let item of nutritionList "  (click)="disclass()" >
+              <img src="{{url}}{{item?.fImage}}" *ngIf="item?.fImage" />
+              <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:70% !important; height: auto;"/>
+              <ion-label>{{item?.title}}</ion-label>
+            </ion-slide>  
+          </ion-slides>
+        </ion-card-content>
+      </ion-card>
+     
+    </div>
+    
+  </ion-list>
   <ion-row>
     <ion-col size="12" class="ion-no-padding">
       <ion-list lines="none" class="top-list three-block">
