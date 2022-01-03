@@ -56,6 +56,9 @@ ion-item ion-list{width: 100%;}
     position: sticky;
     width: 100%;
     top: 0px;
+    padding-top: 5px;
+    z-index: 999;
+    background: #fff;
 }
 .margintop-45{
     margin-top: 45%;

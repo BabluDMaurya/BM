@@ -329,51 +329,58 @@
     </div>
     </div> -->
       </ion-list-header>   
-      <ion-list class="width-full" *ngFor="let date of repetatedDateCopy let i = index" >
-      <!-- <div *ngIf="date.date == dateObj">  -->
-      <ion-list-header class="ion-padding-horizontal green text-white">
-        {{date.date | date :'medium'}}
-        <div class="calender_green_bottom">
-          <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)"  checked={{date.is_live}}  slot="end"></ion-toggle> -->
-          <ion-icon class="top-0 live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon>
-          <ion-icon class="top-0" ios="ios-construct" md="md-construct" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
-          <ion-icon class="top-0" ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
-          </ion-icon>
-          <ion-icon class="top-0" ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
-          <!-- <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon> -->
-          <!-- <ion-icon ios="ios-close" md="md-close-circle" class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon> -->
-        </div>
-        <ion-icon ios="ios-close" md="md-close" class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon>
-      </ion-list-header>
-
-      <ion-item *ngIf="date?.equipments.length>0">
-        <ion-label style="overflow: initial;">Equipments :</ion-label>
-        <div class="users-list" *ngIf="date?.equipments.length>0;else no_equipment">
-          <img src="../../assets/images/demo1.jpg" *ngFor="let item of date?.equipments" />
-        </div>
-        <!-- <ng-template #no_equipment>No Equipment Selected</ng-template> -->
-      </ion-item>
-      <ion-item *ngIf="date.nutrition_id.length > 0">
-        <ion-label style="overflow: initial;">Nutritions :</ion-label>
-        <div class="users-list" *ngIf="date.nutrition_id.length>0;else no_nutrition">
-          <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.nutrition_id" />
-        </div>
-        <!-- <ng-template #no_nutrition>No Nutrition Selected</ng-template> -->
-      </ion-item>
-      <ion-item *ngIf="date?.video">
-        <ion-label style="overflow: initial;">Videos :</ion-label>
-        <div class="users-list" *ngIf="date?.video;else no_videos">
+      <div class="program__card">
+        <ion-list class="width-full" *ngFor="let date of repetatedDateCopy let i = index" >
+          <!-- <div *ngIf="date.date == dateObj">  -->
+          <ion-list-header class="ion-padding-horizontal green text-white">
+            {{date.date | date :'medium'}}
+            <div class="calender_green_bottom">
+              <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)"  checked={{date.is_live}}  slot="end"></ion-toggle> -->
+              <ion-icon class="top-0 live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon>
+              <ion-icon class="top-0" ios="ios-construct" md="md-construct" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
+              <ion-icon class="top-0" ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
+              </ion-icon>
+              <ion-icon class="top-0" ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
+              <!-- <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon> -->
+              <!-- <ion-icon ios="ios-close" md="md-close-circle" class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon> -->
+            </div>
+            
+          </ion-list-header>
+    
+          <ion-item *ngIf="date?.equipments.length>0">
+            <ion-label style="overflow: initial;">Equipments :</ion-label>
+            <div class="users-list" *ngIf="date?.equipments.length>0;else no_equipment">
+              <img src="../../assets/images/demo1.jpg" *ngFor="let item of date?.equipments" />
+            </div>
+            <!-- <ng-template #no_equipment>No Equipment Selected</ng-template> -->
+          </ion-item>
+          <ion-item *ngIf="date.nutrition_id.length > 0">
+            <ion-label style="overflow: initial;">Nutritions :</ion-label>
+            <div class="users-list" *ngIf="date.nutrition_id.length>0;else no_nutrition">
+              <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.nutrition_id" />
+            </div>
+            <!-- <ng-template #no_nutrition>No Nutrition Selected</ng-template> -->
+          </ion-item>
+          <ion-item *ngIf="date?.video">
+            <ion-label style="overflow: initial;">Videos :</ion-label>
+            <div class="users-list" *ngIf="date?.video;else no_videos">
+            
+              <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.video" />
+            </div>
+            <!-- <ng-template #no_videos>No videos Selected</ng-template> -->
+          </ion-item>      
+          <!-- <ion-item class="descriptionItem">
+            <ion-textarea placeholder="Enter Description" (ionChange)="detailsUpdate($event ,item?.id)"
+                value="{{item?.description}}"></ion-textarea>
+          </ion-item> -->
+        <!-- </div> -->
         
-          <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.video" />
-        </div>
-        <!-- <ng-template #no_videos>No videos Selected</ng-template> -->
-      </ion-item>      
-      <!-- <ion-item class="descriptionItem">
-        <ion-textarea placeholder="Enter Description" (ionChange)="detailsUpdate($event ,item?.id)"
-            value="{{item?.description}}"></ion-textarea>
-      </ion-item> -->
-    <!-- </div> -->
-      </ion-list>
+          </ion-list>
+          <div class="closeIcon" *ngFor="let date of repetatedDateCopy let i = index">
+            <ion-icon ios="ios-close" md="md-close"  class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon>
+          </div>
+      </div>
+     
       <!-- <ion-item class="date_items" *ngFor="let dates of repetatedDateCopy; let i =index"> 
         <h6 >{{dates.date | date :'medium'}} </h6>
         <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="preRemovedate(i)"></ion-icon>
