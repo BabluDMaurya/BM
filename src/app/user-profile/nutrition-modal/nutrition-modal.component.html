@@ -55,9 +55,9 @@
             <div *ngFor="let item of nutritionItem  | filter:'BreakFast':'type'">
               <div *ngIf="item.type=='BreakFast'">
                 <ion-slide *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
-                  <img src="{{url}}{{nImage}}" *ngIf="nImage" />
-                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:70% !important; height: auto;"/>
-                  <ion-label>{{item?.title}}</ion-label>
+                  <img src="{{url}}{{nImage}}"  style="width:45% !important; height: auto;" *ngIf="nImage" />
+                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/>
+                  <!-- <ion-label>{{item?.title}}</ion-label> -->
                 </ion-slide> 
                 <ion-list-header class="grey-header mb-0">{{item.title}}</ion-list-header>
                 <ion-grid>
@@ -93,7 +93,6 @@
                             <ion-item *ngFor="let ingredient of item.ingredientsArr">
                               <p>{{ingredient}}</p>
                             </ion-item>
-                            
                           </ion-list>
                         </div>
                         <div *ngSwitchCase="'instruction'">
@@ -149,7 +148,7 @@
               <div *ngIf="item.type=='Brunch'">
                 <ion-slide *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
                   <img src="{{url}}{{nImage}}" *ngIf="nImage" />
-                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:70% !important; height: auto;"/>
+                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/>
                   <ion-label>{{item?.title}}</ion-label>
                 </ion-slide> 
                 <ion-list-header class="grey-header mb-0">{{item.title}}</ion-list-header>
@@ -242,7 +241,7 @@
               <div *ngIf="item.type=='Lunch'">
                 <ion-slide *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
                   <img src="{{url}}{{nImage}}" *ngIf="nImage" />
-                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:70% !important; height: auto;"/>
+                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/>
                   <ion-label>{{item?.title}}</ion-label>
                 </ion-slide> 
                 <ion-list-header class="grey-header mb-0">{{item.title}}</ion-list-header>
@@ -335,7 +334,7 @@
               <div *ngIf="item.type=='Snacks'">
                 <ion-slide *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
                   <img src="{{url}}{{nImage}}" *ngIf="nImage" />
-                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:70% !important; height: auto;"/>
+                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/>
                   <ion-label>{{item?.title}}</ion-label>
                 </ion-slide> 
                 <ion-list-header class="grey-header mb-0">{{item.title}}</ion-list-header>
@@ -429,7 +428,7 @@
               <div *ngIf="item.type=='Dinner'">
                 <ion-slide *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
                   <img src="{{url}}{{nImage}}" *ngIf="nImage" />
-                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:70% !important; height: auto;"/>
+                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/>
                   <ion-label>{{item?.title}}</ion-label>
                 </ion-slide> 
                 <ion-list-header class="grey-header mb-0">{{item.title}}</ion-list-header>
