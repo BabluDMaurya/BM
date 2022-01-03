@@ -181,11 +181,11 @@
           <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
             <!-- <ion-slide *ngIf="progItem?.video_program" (click)="showVideoDetails(item.posts_id)" > -->
               <ion-slide *ngFor="let item of progItem?.videoProg_array " (click)="showVideoDetails(item)" >
-               <img src="../../../assets/images/video.png" style="width:auto !important" />
+               <img src="../../../assets/images/video.png" style="width:45% !important" />
               <ion-label>Video</ion-label>
             </ion-slide>  
             <ion-slide *ngFor="let item of progItem?.videoId_array" (click)="showVideoDetails(item)" >
-              <img src="../../../assets/images/video.png" style="width:auto !important" />
+              <img src="../../../assets/images/video.png" style="width:45% !important" />
              <ion-label>Video</ion-label>
            </ion-slide> 
             <ion-slide *ngFor="let item of nutritionList  "  (click)="nutritionModal(progItem)" >
@@ -201,16 +201,22 @@
           <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
             <!-- <ion-slide *ngIf="progItem?.video_program" (click)="showVideoDetails(item.posts_id)" > -->
               <ion-slide *ngFor="let item of progItem?.videoProg_array " (click)="disclass()" >
-               <img src="../../../assets/images/video.png" style="width:auto !important" />
+                <div class="program__image">
+                  <img src="../../../assets/images/video.png" style="width:45% !important" />
+                </div>
               <ion-label>Video</ion-label>
             </ion-slide>  
             <ion-slide *ngFor="let item of progItem?.videoId_array" (click)="disclass()" >
-              <img src="../../../assets/images/video.png" style="width:auto !important" />
+              <div class="program__image">
+                <img src="../../../assets/images/video.png" style="width:45% !important" />
+              </div>
              <ion-label>Video</ion-label>
            </ion-slide> 
             <ion-slide *ngFor="let item of nutritionList "  (click)="disclass()" >
-              <img src="{{url}}{{item?.fImage}}" *ngIf="item?.fImage" />
-              <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:45% !important; height: auto;"/>
+              <div class="program__image">
+                <img src="{{url}}{{item?.fImage}}" *ngIf="item?.fImage" />
+                <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:45% !important; height: auto;"/>
+              </div>
               <ion-label>{{item?.title}}</ion-label>
             </ion-slide>  
           </ion-slides>
