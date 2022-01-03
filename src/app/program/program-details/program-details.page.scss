@@ -79,3 +79,22 @@ ion-slides{height: 190px;}
     top: 35px !important;
   }
 }
+
+// Android CSS
+
+ion-text.md.hydrated p.text-green.text-center {
+  top: 35px;
+  left: -15px;
+}
+
+ion-slide.md.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
+  flex-direction: column;
+  height: auto;
+}
+
+// IOS CSS
+
+ion-text.ios.hydrated p.text-green.text-center {
+  top: 0px;
+  left: 0px;
+}

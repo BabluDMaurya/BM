@@ -329,18 +329,18 @@
     </div>
     </div> -->
       </ion-list-header>   
-      <div class="program__card">
-        <ion-list class="width-full" *ngFor="let date of repetatedDateCopy let i = index" >
+      <div class="program__card" *ngFor="let date of repetatedDateCopy let i = index">
+        <ion-list class="width-full"  >
           <!-- <div *ngIf="date.date == dateObj">  -->
           <ion-list-header class="ion-padding-horizontal green text-white">
             {{date.date | date :'medium'}}
             <div class="calender_green_bottom">
               <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)"  checked={{date.is_live}}  slot="end"></ion-toggle> -->
-              <ion-icon class="top-0 live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon>
-              <ion-icon class="top-0" ios="ios-construct" md="md-construct" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
-              <ion-icon class="top-0" ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
+              <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon>
+              <ion-icon ios="ios-construct" md="md-construct" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
+              <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
               </ion-icon>
-              <ion-icon class="top-0" ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
+              <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
               <!-- <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon> -->
               <!-- <ion-icon ios="ios-close" md="md-close-circle" class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon> -->
             </div>
