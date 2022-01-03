@@ -178,7 +178,33 @@ p.text-green.text-center {
 .program__card {
     position: relative;
     width: 100%;
+    margin-bottom: 32px;
 }
+
+// android CSS
+
+ion-icon.ion-margin-start.md.hydrated {
+    top: -10px;
+}
+
+// IOS CSS
+
+ion-icon.ion-margin-start.ios.hydrated {
+    top: -10px;
+}
+
+ion-icon.live-icon.ios.hydrated, ion-icon.live-icon.md.hydrated {
+    font-size: 34px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+ion-title.ios.title-ios.title-default.hydrated {
+    padding: 0 20px;
+}
+.list-ios{
+    margin-bottom: 0px;
+}
+
 .closeIcon {
     position: absolute;
     right: 0;
@@ -216,14 +242,6 @@ ion-icon{
 }
 ion-icon.active{
     color: rgb(255, 17, 17);
-}
-ion-icon.top-0.live-icon.ios.hydrated {
-    font-size: 34px;
-    margin-left: 12px;
-    margin-right: 12px;
-}
-.top-0{
-    top: 0 !important;
 }
 .width-full{
     width: 100% !important;
