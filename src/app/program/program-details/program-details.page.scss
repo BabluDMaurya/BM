@@ -79,6 +79,16 @@ ion-slides{height: 190px;}
     top: 35px !important;
   }
 }
+.program__image{
+  height: 140px;
+  width: 133px !important; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.199);
+  border-radius: 5px;
+}
 
 // Android CSS
 
@@ -89,7 +99,24 @@ ion-text.md.hydrated p.text-green.text-center {
 
 ion-slide.md.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
   flex-direction: column;
-  height: auto;
+  height: 140px;
+  width: 133px !important; 
+  margin-right: 10px;
+}
+// ion-card.video-card.sc-ion-card-md-h.sc-ion-card-md-s.md.hydrated {
+//   margin-bottom: 0px;
+// }
+ion-list.item-list.ion-no-padding.md.list-md.list-lines-none.list-md-lines-none.hydrated {
+  margin-bottom: 0;
+}
+ion-list.top-list.three-block.md.list-md.list-lines-none.list-md-lines-none.hydrated {
+  margin-bottom: 0;
+}
+ion-slide.md.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-next {
+  flex-direction: column;
+  height: 140px;
+  width: 133px !important;
+  margin-right: 10px;
 }
 
 // IOS CSS
@@ -97,4 +124,17 @@ ion-slide.md.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
 ion-text.ios.hydrated p.text-green.text-center {
   top: 0px;
   left: 0px;
+}
+
+ion-slide.ios.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-next {
+  flex-direction: column;
+  height: 140px;
+  width: 133px !important;
+  margin-right: 10px;
+}
+ion-slide.ios.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
+  flex-direction: column;
+  height: 140px;
+  width: 133px !important;
+  margin-right: 10px;
 }
