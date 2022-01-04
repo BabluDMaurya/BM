@@ -335,8 +335,10 @@
           <ion-list-header class="ion-padding-horizontal green text-white">
             {{date.date | date :'medium'}}
             <div class="calender_green_bottom">
-              <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)"  checked={{date.is_live}}  slot="end"></ion-toggle> -->
-              <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon>
+              <div class="toggleDiv">
+                <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)" (click)="toggleIcon(item)" checked={{date.is_live}}  slot="end"></ion-toggle>
+                <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon>
+              </div>
               <ion-icon ios="ios-construct" md="md-construct" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
               <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
               </ion-icon>

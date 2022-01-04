@@ -237,10 +237,12 @@ form.fixed.ng-untouched.ng-pristine.ng-valid {
     position: fixed;
     z-index: 9;
 }
-ion-icon{
+.live-icon{
     // color: #fff;
+    color: transparent;
 }
 ion-icon.active{
+    display: block;
     color: rgb(255, 17, 17);
 }
 .width-full{
