@@ -217,7 +217,9 @@
                 <img src="{{url}}{{item?.fImage}}" *ngIf="item?.fImage" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:45% !important; height: auto;"/>
               </div>
-              <ion-label>{{item?.title}}</ion-label>
+              <div class="program__title">
+                <ion-label>{{item?.title}}</ion-label>
+              </div>
             </ion-slide>  
           </ion-slides>
         </ion-card-content>
@@ -226,6 +228,8 @@
     </div>
     
   </ion-list>
+  <div class="bottom-space">
+  </div>
   <ion-row>
     <ion-col size="12" class="ion-no-padding">
       <ion-list lines="none" class="top-list three-block">

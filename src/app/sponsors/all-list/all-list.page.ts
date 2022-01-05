@@ -31,7 +31,7 @@ export class AllListPage implements OnInit {
 
   ngOnInit() {
     this.commonService.presentLoader();
-    this.commonService.presentToast('Fetching Sponsers');    
+    this.commonService.presentToast('Fetching Sponsors');    
     //------ sponcer list ----------//  
     this.programService.getSponserList(null).subscribe(data=>{ 
       data.data.forEach(element => { 
