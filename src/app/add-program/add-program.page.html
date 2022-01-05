@@ -321,6 +321,11 @@
           <!-- <div *ngIf="date.date == dateObj">  -->
           <ion-list-header class="ion-padding-horizontal green text-white">
             {{date.date | date :'medium'}}
+            <div class="toggleDiv"  (click)="toggleIcon(item)">
+              <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)" (click)="toggleIcon(item)" checked={{date.is_live}}  slot="end"></ion-toggle>
+              <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon> -->
+                <ion-label class="live"  (ionChange)="activatePopup(i)"   [ngClass]="{'active': item.active}">LIVE</ion-label>
+            </div>
             <div class="calender_green_bottom">
               <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)"  checked={{date.is_live}}  slot="end"></ion-toggle> -->
               <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="activatePopup(i)" [ngClass]="{'active': date.is_live}"></ion-icon>
@@ -336,7 +341,7 @@
     
           <ion-item *ngIf="date?.equipments.length>0">
             <ion-label style="overflow: initial;">Equipments :</ion-label>
-            <div class="users-list" *ngIf="date?.equipments.length>0;else no_equipment">
+            <div class="users-list" *ngIf="date?.equipments.length>0;else no_equipment">  
               <img src="../../assets/images/demo1.jpg" *ngFor="let item of date?.equipments" />
             </div>
             <!-- <ng-template #no_equipment>No Equipment Selected</ng-template> -->
@@ -363,7 +368,7 @@
         <!-- </div> -->
         
           </ion-list>
-          <div class="closeIcon" >
+          <div class="closeIcon">
             <ion-icon ios="ios-close" md="md-close"  class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon>
           </div>
       </div>

@@ -20,7 +20,7 @@
               <ion-label style="    margin-left: 40px;">$</ion-label>
               <ion-input class="form-control" type="number" formControlName="programFees" value="0"></ion-input>
             </ion-item>
-          <div >
+          <div *ngIf="programData.programType == '6' ">
             <ion-label style="display: block;margin-top: 15px; padding-left: 15px;">Would you like to request Sponsors:</ion-label>
             <ion-item lines="none">
               <ion-radio-group value="sponsors_group" class="radio-group radioPreview">

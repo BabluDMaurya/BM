@@ -129,7 +129,7 @@ ion-list{padding-top: 0 !important;padding-bottom: 0 !important;
 .green-alram-icon{width: 12% !important; position: center !important;}
 .monthview-selected{background-color: #3a87ad !important;}
 .calender_green_bottom .ion-margin-start {
-    margin-left: 6px;
+    margin-left: 7px;
     position: relative;
     top: -10px;
 }
@@ -184,13 +184,15 @@ p.text-green.text-center {
 // android CSS
 
 ion-icon.ion-margin-start.md.hydrated {
-    top: -10px;
+    top: 0px;
+    width: 1rem;
+    height: 1rem;
 }
 
 // IOS CSS
 
 ion-icon.ion-margin-start.ios.hydrated {
-    top: -10px;
+    top: 0px;
 }
 
 ion-icon.live-icon.ios.hydrated, ion-icon.live-icon.md.hydrated {
@@ -223,6 +225,7 @@ ion-title.ios.title-ios.title-default.hydrated {
     width: 1rem;
     height: 1rem;
     margin-left: 0;
+    color: #26a69a;
 }
 .fixed {
     position: fixed !important;
@@ -237,10 +240,30 @@ form.fixed.ng-untouched.ng-pristine.ng-valid {
     position: fixed;
     z-index: 9;
 }
-ion-icon{
+.live-icon{
     // color: #fff;
+    color: transparent;
+}
+.toggleDiv {
+    margin-bottom: 2px;
+}
+.live{
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 4px 6px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    transition: all .2s ease-in-out;
+    margin-bottom: 2px;
+}
+.live.active{
+    color: #FF3A3A;
+    background: #fff;
 }
 ion-icon.active{
+    display: block;
     color: rgb(255, 17, 17);
 }
 .width-full{
@@ -250,3 +273,9 @@ ion-icon.active{
 //     right: 10px;
 //     position: absolute;
 // }
+
+
+// ANDROID CSS
+
+// IOS CSS
+
