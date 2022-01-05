@@ -117,7 +117,9 @@ export class AddProgramPage implements OnInit {
     private camera: Camera,public modalController: ModalController) {
 
     let d = new Date();
-    this.currentHrs = d.getHours();
+    // this.currentHrs = d.getHours();
+    this.currentHrs = '12:00';
+
 
     this.musicService.getGenres().subscribe((data) => {
       this.genres = data.genres;
@@ -821,7 +823,13 @@ export class AddProgramPage implements OnInit {
 
     toast.present();
   }
-
+  addLiveProgram(){
+    console.log(this.dateObj);
+    this.selectDate.push(this.dateObj);
+    this.repetatedDateCopy.push({'date':this.dateObj ,'equipments':[], 'nutrition_id':[] , 'video': '','description':'','is_live':false});
+    this.repetatedDate.push(this.dateObj);
+    console.log(this.repetatedDateCopy);
+  }
   showdate() {
       this.minutes = '';
       this.hours = '';
@@ -1378,7 +1386,7 @@ export class AddProgramPage implements OnInit {
   // TOGGLE LIVE ICON
   item = {active:false};
 
-  toggleIcon(item){
+  toggleIcon(item,i){
     item.active = !item.active;
   }
 

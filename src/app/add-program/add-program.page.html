@@ -306,28 +306,15 @@
           <!-- <ion-datetime #dateTime1 displayFormat="mm"></ion-datetime> -->
 
       </ion-col>
-      <!-- <ion-icon ios="ios-construct" md="md-construct" ></ion-icon> -->
-      <ion-list-header  *ngIf="repetatedDateCopy.length <= 0" class=" green green-alram-icon text-white">
-        <div class='showDateTime'>
+
+      <!-- <ion-list-header  *ngIf="repetatedDateCopy.length <= 0" class=" green green-alram-icon text-white"> -->
+      <ion-list-header class=" green green-alram-icon text-white">
+        <!-- <div class='showDateTime'>
           <ion-datetime display-format="h:mm A"  picker-format="h:mm A"   id="dat" [(ngModel)]="myDate" (ngModelChange)="showdate()" ></ion-datetime>
-        </div>
-        <ion-icon ios="ios-add" md="md-add" style="width: 1.5rem; height: 1.5rem;"></ion-icon>
-        <!-- <ion-item>
-          <ion-label>Start Date</ion-label>
-          <ion-datetime display-format="h:mm A" picker-format="h:mm A"  (ionChange)="showdate(this)"value="1990-02-19T07:43Z"></ion-datetime>
-          <ion-datetime display-format="h:mm A"  picker-format="h:mm A"   id="dat" [(ngModel)]="myDate"   (ionChange)="showdate()"></ion-datetime>
-        </ion-item> -->
-      <!-- <div *ngIf="repetatedDateCopy.length > 0;">
-        <div *ngFor="let date of repetatedDateCopy let i = index"> 
-        <div *ngIf="date.date == dateObj">
-        <ion-icon ios="ios-alarm" md="md-alarm" class="" (click)="selectTimeSlot()"></ion-icon>
-        <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
-        </ion-icon>
-        <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
-        <ion-icon ios="ios-close-circle" md="md-close-circle" class="ion-margin-start" (click)="preSelectedDate(i)"></ion-icon>
-      </div>
-    </div>
-    </div> -->
+        </div> -->
+        
+        <ion-icon ios="ios-add" md="md-add" (click)="addLiveProgram()" style="width: 1.5rem; height: 1.5rem;"></ion-icon>
+      
       </ion-list-header>   
       <div class="program__card" *ngFor="let date of repetatedDateCopy let i = index">
         <ion-list class="width-full"  >
@@ -336,7 +323,7 @@
             {{date.date | date :'medium'}}
             <div class="calender_green_bottom">
               <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)"  checked={{date.is_live}}  slot="end"></ion-toggle> -->
-              <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon>
+              <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="activatePopup(i)" [ngClass]="{'active': date.is_live}"></ion-icon>
               <ion-icon ios="ios-construct" md="md-construct" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
               <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
               </ion-icon>
@@ -376,7 +363,7 @@
         <!-- </div> -->
         
           </ion-list>
-          <div class="closeIcon" *ngFor="let date of repetatedDateCopy let i = index">
+          <div class="closeIcon" >
             <ion-icon ios="ios-close" md="md-close"  class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon>
           </div>
       </div>
