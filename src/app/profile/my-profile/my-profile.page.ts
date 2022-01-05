@@ -447,7 +447,7 @@ export class MyProfilePage implements OnInit {
         }
         el.converted = new Date(el.program_date + 'Z');
         el.expanded = false;
-        console.log(this.upcomingList.length + 'fff');
+        console.log(this.upcomingList , 'fff');
         return el;
       });
     });    
