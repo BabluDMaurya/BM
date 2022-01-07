@@ -155,7 +155,7 @@
                           </ion-card-header>
                           
                           <ion-card-content class="ion-no-padding item-content">
-                            <ion-thumbnail [routerLink]="['/videos',post.posts_id,'']" *ngIf="post.thumb_path">
+                            <ion-thumbnail class="post-image" [routerLink]="['/videos',post.posts_id,'']" *ngIf="post.thumb_path">
                               <img src="{{storagePath + post.thumb_path}}" alt="Thumnail Path" />
                               </ion-thumbnail>
                               <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>  

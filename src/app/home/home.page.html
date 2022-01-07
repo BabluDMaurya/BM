@@ -69,14 +69,14 @@
           </div>
         </ion-card-header>
         <ion-card-content class="ion-no-padding item-content">
-          <ion-thumbnail *ngIf="post?.image_post">
+          <ion-thumbnail class="post-image" *ngIf="post?.image_post">
             <ion-slides [options]="imageSlider" class="post-slider" [pager]="true">
               <ion-slide *ngFor="let imgpath of post?.image_post['0']?.thumb_path; let i =index;">
                 <img (click)="openViewer(post?.image_post['0']?.thumb_path[i])" [defaultImage]="defaultPostImage" [lazyLoad]="url+ imgpath" alt="{{imgpath}}"/>
               </ion-slide>
             </ion-slides>
           </ion-thumbnail>
-          <ion-thumbnail *ngIf="post?.video_post" [routerLink]="['/videos',post.id,'']">
+          <ion-thumbnail class="post-video" *ngIf="post?.video_post" [routerLink]="['/videos',post.id,'']">
             <img [defaultImage]="defaultPostImage" [lazyLoad]="storagePath+ post['video_post']['0']['thumb_path']" alt="Video Thumnail Path"/>
           </ion-thumbnail>
           <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam" *ngIf="post?.video_post"></ion-icon>

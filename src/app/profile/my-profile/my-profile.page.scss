@@ -71,3 +71,41 @@ ion-item-divider{
         display: none !important;
     }
 }
+.header-right{
+    align-items: center;
+}
+.item-card{
+    border-radius: 20px;
+}
+.item-header{
+    padding: 15px 15px 0px 15px;
+}
+.post-image, 
+.post-video {
+    height: calc(100vw - 30px) !important;
+    padding: 15px;
+}
+.post-slider ion-slide {
+    height: 100% !important;
+}
+.post-slider{
+    height: 100%;
+    max-height: none !important;
+    border-radius: 20px;
+}
+.post-content{
+    padding: 0px 15px 15px 15px;
+}
+.item-post{
+    margin-bottom: 10px;
+}
+.post-thumbnail{
+    border-radius: 20px;
+}
+.video-icon{
+    top: 25px;
+    left: 30px;
+    padding: 1px 4px;
+    border-radius: 5px;
+    background: #00000029;
+}
