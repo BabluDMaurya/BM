@@ -7,7 +7,7 @@
       <div class="icon-right-side">
         <a [routerLink]="['/all-list']" class="set-icon"> 
           <!-- <ion-icon ios="ios-cash" md="md-cash"></ion-icon> -->  
-          <ion-icon src="../../../assets/images//sponsor.svg"></ion-icon>
+          <ion-icon src="../../../assets/images/sponsor.svg"></ion-icon>
           <ion-badge slot="end" *ngIf="sponcerCount > 0">{{ sponcerCount }}</ion-badge> 
         </a>
         <!-- <a [routerLink]="['/sponcer-chat']" class="set-icon">
@@ -260,9 +260,9 @@
                           </div>
                         </ion-card-header>
                         <ion-card-content class="ion-no-padding item-content">
-                          <ion-thumbnail [routerLink]="['/videos',post.id,'']"
+                          <ion-thumbnail class="post-video" [routerLink]="['/videos',post.id,'']"
                             *ngIf="post['video_post']['0']['thumb_path']">
-                            <img [defaultImage] = "defaultPostImage" [lazyLoad]="storagePath+post['video_post']['0']['thumb_path']" alt="Video Thumnail">
+                            <img class="post-thumbnail" [defaultImage] = "defaultPostImage" [lazyLoad]="storagePath+post['video_post']['0']['thumb_path']" alt="Video Thumnail">
                             <!-- <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
                             <!-- <img (click)="openViewer(post['video_post']['0']['thumb_path'])" src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
                           </ion-thumbnail>
@@ -271,15 +271,15 @@
                           <div class="post-content">
                             <ion-list class="item-post" lines="none">
                               <ion-item>
+                                <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
+                                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon>
+                                  <span>{{post?.count}}</span>
+                                </div>
                                 <div [routerLink]="['/comments',post.id]" *ngIf="post?.disable_comment == 0">
                                   <!-- <span *ngIf="loginUserData?.comment_disable == 0"> -->
                                     <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
                                     <span>{{post.total_comments.length}}</span>
                                   <!-- </span> -->
-                                </div>
-                                <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
-                                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon>
-                                  <span>{{post?.count}}</span>
                                 </div>
                               </ion-item>
                               <ion-item>
@@ -331,7 +331,7 @@
                           </div>
                         </ion-card-header>
                         <ion-card-content class="ion-no-padding item-content">
-                          <ion-thumbnail *ngIf="post['image_post']['0']['thumb_path']">
+                          <ion-thumbnail class="post-image" *ngIf="post['image_post']['0']['thumb_path']">
                             <ion-slides [options]="imageSlider" class="post-slider" [pager]="true">
                               <ion-slide *ngFor="let imgpath of post['image_post']['0']['thumb_path']; let i =index;">
                                 <img (click)="openViewer(post['image_post']['0']['image_path'][i])" src="{{url}}{{imgpath}}" alt="{{imgpath}}" />
@@ -356,15 +356,15 @@
                             <!-- ------- ends here   post type = 8 -->
                             <ion-list class="item-post" lines="none">
                               <ion-item>
+                                <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
+                                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon> 
+                                  <span>{{post?.count}}</span>
+                                </div>
                                 <div [routerLink]="['/comments',post.id]" *ngIf="post?.disable_comment==0">
                                   <span class="d-flex">
                                     <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> 
                                     <span>{{post.total_comments.length}}</span>
                                   </span>
-                                </div>
-                                <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
-                                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon> 
-                                  <span>{{post?.count}}</span>
                                 </div>
                               </ion-item>
                               <!-- --------------- bookmark for only  othepost on own -------->

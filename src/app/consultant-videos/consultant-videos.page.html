@@ -12,11 +12,11 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content">
-  <ion-segment  class="top-segment" (ionChange)="segmentChanged($event)" >
-    <ion-segment-button value="intoactive" checked>IntoActiv Videos</ion-segment-button>
-    <ion-segment-button value="video">Received Videos</ion-segment-button>
-    <ion-segment-button value="program">Upcoming Videos</ion-segment-button>
-    <ion-segment-button value="saved">Saved Videos</ion-segment-button>
+  <ion-segment scrollable='true' class="top-segment" (ionChange)="segmentChanged($event)" >
+    <ion-segment-button class="fs-small" value="intoactive" checked>IntoActiv Videos</ion-segment-button>
+    <ion-segment-button class="fs-small" value="video">Received Videos</ion-segment-button>
+    <ion-segment-button class="fs-small" value="program">Upcoming Videos</ion-segment-button>
+    <ion-segment-button class="fs-small" value="saved">Saved Videos</ion-segment-button>
   </ion-segment>
   <div [ngSwitch]="consultantVideos">
     <div *ngSwitchCase="'intoactive'"> 

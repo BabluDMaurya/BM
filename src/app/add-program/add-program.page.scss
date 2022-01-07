@@ -129,7 +129,7 @@ ion-list{padding-top: 0 !important;padding-bottom: 0 !important;
 .green-alram-icon{width: 12% !important; position: center !important;}
 .monthview-selected{background-color: #3a87ad !important;}
 .calender_green_bottom .ion-margin-start {
-    margin-left: 6px;
+    margin-left: 7px;
     position: relative;
     top: -10px;
 }
@@ -138,7 +138,7 @@ ion-list{padding-top: 0 !important;padding-bottom: 0 !important;
     // top: 330px;
     // right: 15px;
     position: absolute;
-    top: 350px;
+    top: 310px;
     right: 20px;
     width:fit-content !important;
     padding: 5px 10px;
@@ -184,13 +184,15 @@ p.text-green.text-center {
 // android CSS
 
 ion-icon.ion-margin-start.md.hydrated {
-    top: -10px;
+    top: 0px;
+    width: 1rem;
+    height: 1rem;
 }
 
 // IOS CSS
 
 ion-icon.ion-margin-start.ios.hydrated {
-    top: -10px;
+    top: 0px;
 }
 
 ion-icon.live-icon.ios.hydrated, ion-icon.live-icon.md.hydrated {
@@ -223,6 +225,7 @@ ion-title.ios.title-ios.title-default.hydrated {
     width: 1rem;
     height: 1rem;
     margin-left: 0;
+    color: #26a69a;
 }
 .fixed {
     position: fixed !important;
@@ -237,16 +240,77 @@ form.fixed.ng-untouched.ng-pristine.ng-valid {
     position: fixed;
     z-index: 9;
 }
-ion-icon{
+.live-icon{
     // color: #fff;
+    color: transparent;
+}
+.toggleDiv {
+    margin-bottom: 2px;
+    width: 50px;
+}
+.live::after{
+    content: 'Go Live';
+    color: #26a69a;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 6px 5px;
+    background: #fff;
+    // transition: all .2s ease-in-out;
+    border-radius: 3px;
+    margin-bottom: 2px;
+}
+.title{
+    font-size: 13px;
+}
+.title span{
+    font-size: 11px;
+    display: block;
+    color: #E7E7E7;
+    margin-bottom: 3px;
+}
+.live.active::after{
+    content: 'Live';
+    padding: 6px 7px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    background: #FF3A3A;
+    // transition: all .2s ease-in-out;
 }
 ion-icon.active{
+    display: block;
     color: rgb(255, 17, 17);
 }
 .width-full{
     width: 100% !important;
 }
+.divider {
+    width: 1.5px;
+    height: 35px;
+    background: #fff;
+}
 // .green ion-icon.md.hydrated {
 //     right: 10px;
 //     position: absolute;
 // }
+
+
+// ANDROID CSS
+ion-list-header.ion-padding-horizontal.green.text-white.md.hydrated {
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+ion-list.width-full.md.list-md.hydrated {
+    border-radius: 4px;
+}
+// IOS CSS
+ion-list-header.ion-padding-horizontal.green.text-white.ios.hydrated {
+    padding-bottom: 12px;
+    padding-top: 12px;
+    text-transform: initial;
+    letter-spacing: 0px;
+}
+ion-list.width-full.ios.list-ios.hydrated {
+    border-radius: 4px;
+}

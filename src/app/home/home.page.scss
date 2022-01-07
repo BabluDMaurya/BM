@@ -59,3 +59,29 @@
 .white-background{
     background: #fff !important;
 }
+
+.item-header{
+    padding: 15px 15px 0px 15px !important;
+}
+.header-right{
+    align-items: center;
+}
+
+.post-image, 
+.post-video {
+    height: calc(100vw - 30px) !important;
+    padding: 15px;
+}
+.post-image img, .post-video img{
+    border-radius: 20px;
+}
+.video-icon{
+    top: 25px !important;
+    left: 30px !important;
+    padding: 1px 4px ;
+    border-radius: 5px;
+    background: #00000029;
+}
+.post-content {
+    padding: 0px 15px 15px 15px !important;
+}
