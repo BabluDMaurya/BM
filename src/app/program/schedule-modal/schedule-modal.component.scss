@@ -12,4 +12,27 @@ ion-card:first-child{margin-top: 0;}
 .video-card{box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09);}
 ion-slides{background: transparent;padding: 0 5px;}
 .swiper-slide img{border-radius: 6px;height: 85px;margin-bottom: 5px;}
-.no-data{height: 50vh;}
+.no-data{height: auto;}
+.top-segment ion-segment-button{
+    min-width: 100vw !important;
+}
+.program-item{
+    width: 70%;
+    height: 280px;
+    margin-right: 12px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background: #fff;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
+}
+.progImage{
+        height: 80%;
+        border-radius: 10px;
+}
+.progLabel{
+    display: flex;
+    align-items: center;
+    height: 20%;
+    padding: 10px;
+}

@@ -35,18 +35,26 @@
           <ion-card-content class="ion-no-padding" *ngIf="programDetail.displayData">
             <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
               <!-- <ion-slide *ngIf="progItem?.video_program" (click)="showVideoDetails(item.posts_id)" > -->
-                <ion-slide *ngFor="let item of progItem?.videoProg_array " (click)="showVideoDetails(item)" >
-                 <img src="../../../assets/images/video.png" style="width:auto !important" />
+                <ion-slide class="program-item" *ngFor="let item of progItem?.videoProg_array " (click)="showVideoDetails(item)" >
+                  <div class="progImage">
+                    <img src="../../../assets/images/video.png" style="width:auto !important" />
+                  </div>
                 <ion-label>Video</ion-label>
               </ion-slide>  
-              <ion-slide *ngFor="let item of progItem?.videoId_array" (click)="showVideoDetails(item)" >
+              <ion-slide class="program-item" *ngFor="let item of progItem?.videoId_array" (click)="showVideoDetails(item)" >
+                <div class="progImage">
                 <img src="../../../assets/images/video.png" style="width:auto !important" />
+                </div>
                <ion-label>Video</ion-label>
              </ion-slide> 
-              <ion-slide *ngFor="let item of nutritionList | inArray:'id':progItem?.nutrition_array "  (click)="nutritionModal(progItem)" >
+              <ion-slide class="program-item" *ngFor="let item of nutritionList | inArray:'id':progItem?.nutrition_array "  (click)="nutritionModal(progItem)" >
+                <div class="progImage">
                 <img src="{{url}}{{item?.fImage}}" *ngIf="item?.fImage" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:70% !important; height: auto;"/>
-                <ion-label>{{item?.title}}</ion-label>
+                </div>
+                <div class="progLabel">
+                  <ion-label>{{item?.title}}</ion-label>
+                </div>
               </ion-slide>  
             </ion-slides>
           </ion-card-content>
@@ -71,9 +79,11 @@
             </ion-slides>
           </ion-card-content>
         </ion-card>
-        <div class="no-data" style="height: 40vh;" *ngIf="!progItem?.nutrition_id">
+        <div class="no-data" *ngIf="!progItem?.nutrition_id">
           <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
           <p>No Nutrition Found</p>
+          <ion-item class="ion-padding-horizontal">
+          </ion-item>
         </div>
       </div>
       
