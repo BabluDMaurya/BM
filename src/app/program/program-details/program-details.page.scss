@@ -99,7 +99,7 @@ ion-text.md.hydrated p.text-green.text-center {
 
 ion-slide.md.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
   flex-direction: column;
-  height: auto;
+  height: 140px;
   width: 47% !important; 
   margin-right: 10px;
 }
@@ -115,13 +115,13 @@ ion-list.top-list.three-block.md.list-md.list-lines-none.list-md-lines-none.hydr
 
 ion-slide.md.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-next {
   flex-direction: column;
-  height: auto;
+  height: 140px;
   width: 47% !important;
   margin-right: 10px;
 }
-ion-card.video-card.sc-ion-card-md-h.sc-ion-card-md-s.md.hydrated {
-  margin-bottom: 25px;
-}
+// ion-card.video-card.sc-ion-card-md-h.sc-ion-card-md-s.md.hydrated {
+//   margin-bottom: 25px;
+// }
 
 // IOS CSS
 
@@ -140,12 +140,12 @@ ion-slide.ios.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-next {
 }
 ion-slide.ios.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
   flex-direction: column;
-  height: auto;
+  height: 140px;
   width: 47% !important;
   margin-right: 10px;
 }
 .bottom-space{
-  height: 40px;
+  height: 30px;
   width: 100%;
   background: transparents;
 }

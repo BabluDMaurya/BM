@@ -24,3 +24,31 @@
 .ios.top-list{padding-top: 8px !important;padding-bottom: 8px !important;}
 .no-data{height: calc(100vh - 150px);}
 .photoNodata{height: 70px;background: #f7f7f7;}
+
+
+
+.item-header{
+    padding: 15px 15px 0px 15px;
+}
+.header-right{
+    align-items: center;
+}
+
+.post-image, 
+.post-video {
+    height: calc(100vw - 30px) !important;
+    padding: 15px;
+}
+.post-image img{
+    border-radius: 20px;
+}
+.video-icon{
+    top: 25px;
+    left: 30px;
+    padding: 1px 4px;
+    border-radius: 5px;
+    background: #00000029;
+}
+.post-content {
+    padding: 0px 15px 15px 15px;
+}

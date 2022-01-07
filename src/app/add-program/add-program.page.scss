@@ -246,21 +246,37 @@ form.fixed.ng-untouched.ng-pristine.ng-valid {
 }
 .toggleDiv {
     margin-bottom: 2px;
+    width: 50px;
 }
-.live{
-    color: #fff;
-    font-size: 13px;
+.live::after{
+    content: 'Go Live';
+    color: #26a69a;
+    font-size: 11px;
     font-weight: 500;
-    text-transform: uppercase;
-    padding: 4px 6px;
-    border-radius: 2px;
-    letter-spacing: 1px;
-    transition: all .2s ease-in-out;
+    padding: 6px 5px;
+    background: #fff;
+    // transition: all .2s ease-in-out;
+    border-radius: 3px;
     margin-bottom: 2px;
 }
-.live.active{
-    color: #FF3A3A;
-    background: #fff;
+.title{
+    font-size: 13px;
+}
+.title span{
+    font-size: 11px;
+    display: block;
+    color: #E7E7E7;
+    margin-bottom: 3px;
+}
+.live.active::after{
+    content: 'Live';
+    padding: 6px 7px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    background: #FF3A3A;
+    // transition: all .2s ease-in-out;
 }
 ion-icon.active{
     display: block;
@@ -269,6 +285,11 @@ ion-icon.active{
 .width-full{
     width: 100% !important;
 }
+.divider {
+    width: 1.5px;
+    height: 35px;
+    background: #fff;
+}
 // .green ion-icon.md.hydrated {
 //     right: 10px;
 //     position: absolute;
@@ -276,6 +297,20 @@ ion-icon.active{
 
 
 // ANDROID CSS
-
+ion-list-header.ion-padding-horizontal.green.text-white.md.hydrated {
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+ion-list.width-full.md.list-md.hydrated {
+    border-radius: 4px;
+}
 // IOS CSS
-
+ion-list-header.ion-padding-horizontal.green.text-white.ios.hydrated {
+    padding-bottom: 12px;
+    padding-top: 12px;
+    text-transform: initial;
+    letter-spacing: 0px;
+}
+ion-list.width-full.ios.list-ios.hydrated {
+    border-radius: 4px;
+}
