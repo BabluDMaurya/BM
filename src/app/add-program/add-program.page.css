@@ -451,5 +451,7 @@ ion-list .descriptionItem ion-item {
 .event-detail-container ion-item {
   padding-right: 2rem;
 }
-
+.dateTimePopUp {
+  display: none;
+}
 /*# sourceMappingURL=add-program.page.css.map */
