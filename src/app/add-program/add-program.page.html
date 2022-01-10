@@ -308,8 +308,11 @@
       </ion-col>
 
       <!-- <ion-list-header  *ngIf="repetatedDateCopy.length <= 0" class=" green green-alram-icon text-white"> -->
-      <ion-icon ios="ios-add" md="md-add" (click)="addLiveProgram()" style="width: 1.5rem; height: 1.5rem;"></ion-icon>
-      <ion-list-header class=" dateTimePopUp green green-alram-icon text-white">
+        <ion-list-header class="green-alram-icon">
+          <ion-icon ios="ios-add" md="md-add" (click)="addLiveProgram()" style="width: 1.5rem; height: 1.5rem;"></ion-icon>
+        </ion-list-header>
+
+      <ion-list-header class=" dateTimePopUp green green-alram-icon text-white" style="display: none;">
         <div class='showDateTime'>
           <ion-datetime display-format="h:mm A" #picker  picker-format="h:mm A"   id="dat" [(ngModel)]="myDate" (ngModelChange)="showdate()" ></ion-datetime>
         </div>
@@ -341,7 +344,7 @@
               <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)" (click)="toggleIcon(item)" checked={{date.is_live}}  slot="end"></ion-toggle>
               <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon> -->
                 <!-- <ion-label class="live"  (ionChange)="activatePopup(i)"   [ngClass]="{'active': item.active}"></ion-label> -->
-                <ion-icon class="live" (click)="openStart(i)" (ionChange)="activatePopup(i)"   [ngClass]="{'active': date.is_live}"></ion-icon>
+                <ion-label class="live" (click)="openStart(i)" (ionChange)="activatePopup(i)"   [ngClass]="{'active': date.is_live}"></ion-label>
             </div>
             <div class="divider"></div>
             <div class="title">

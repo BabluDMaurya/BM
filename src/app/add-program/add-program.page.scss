@@ -138,7 +138,7 @@ ion-list{padding-top: 0 !important;padding-bottom: 0 !important;
     // top: 330px;
     // right: 15px;
     position: absolute;
-    top: 310px;
+    top: 350px;
     right: 20px;
     width:fit-content !important;
     padding: 5px 10px;
@@ -294,6 +294,39 @@ ion-icon.active{
 //     right: 10px;
 //     position: absolute;
 // }
+::ng-deep {
+    table{
+        border: 0 !important;
+    }
+    tr{
+        display: flex !important;
+        justify-content: space-around;
+    }
+    th{
+        flex: 1;
+    }
+    th, td{
+        border: 0 !important;
+    }
+    td{
+        display: inline-block;
+        margin: 0.2rem !important;
+        padding: 0 !important;
+        width: 37px;
+        height: 37px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    td.monthview-secondary-with-event.text-muted {
+        border-radius: 50% !important;
+    }
+    td.monthview-primary-with-event.monthview-selected {
+        border-radius: 50% !important;
+    }
+}
+
 
 
 // ANDROID CSS
