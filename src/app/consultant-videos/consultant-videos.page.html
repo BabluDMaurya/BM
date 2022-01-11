@@ -32,16 +32,18 @@
           </ion-label>
         </ion-card-header>
         <ion-card-content class="ion-no-padding">
-          <img src="../../assets/images/demo1.jpg">
+          <ion-thumbnail class="post-video">
+           <img src="../../assets/images/demo1.jpg">
+          </ion-thumbnail>
           <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
           <div class="video-content">
             <ion-list class="video-post">
               <ion-item>
-                <div (click)="chatModal()">
-                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>0</span>
-                </div>
                 <div (click)="like=!like" class="{{ like ?'inactive':'active' }}">
                   <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon> <span>2</span>
+                </div>
+                <div (click)="chatModal()">
+                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>0</span>
                 </div>
               </ion-item>
               <!-- <ion-item>
@@ -67,16 +69,19 @@
           </ion-label>
         </ion-card-header>
         <ion-card-content class="ion-no-padding">
-          <img src="../../assets/images/demo1.jpg">
+          <ion-thumbnail class="post-video">
+            <img src="../../assets/images/demo1.jpg">
+          </ion-thumbnail>
+
           <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
           <div class="video-content">
             <ion-list class="video-post">
               <ion-item>
-                <div (click)="chatModal()">
-                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>0</span>
-                </div>
                 <div (click)="like=!like" class="{{ like ?'inactive':'active' }}">
                   <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon> <span>2</span>
+                </div>
+                <div (click)="chatModal()">
+                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>0</span>
                 </div>
               </ion-item>
               <!-- <ion-item>
@@ -102,16 +107,18 @@
           </ion-label>
         </ion-card-header>
         <ion-card-content class="ion-no-padding">
-          <img src="../../assets/images/demo1.jpg">
+          <ion-thumbnail class="post-video">
+            <img src="../../assets/images/demo1.jpg">
+          </ion-thumbnail>
           <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
           <div class="video-content">
             <ion-list class="video-post">
               <ion-item>
-                <div (click)="chatModal()">
-                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>0</span>
-                </div>
                 <div (click)="like=!like" class="{{ like ?'inactive':'active' }}">
                   <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon> <span>2</span>
+                </div>
+                <div (click)="chatModal()">
+                  <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> <span>0</span>
                 </div>
               </ion-item>
               <!-- <ion-item>
@@ -144,17 +151,19 @@
           </ion-label>
         </ion-card-header>
         <ion-card-content class="ion-no-padding">
-          <img [routerLink]="['/videos',post.posts_id,'exclusive']" src="{{storagePath + post.thumb_path}}" alt="Thumnail Path" />
+          <ion-thumbnail class="post-video">
+            <img [routerLink]="['/videos',post.posts_id,'exclusive']" src="{{storagePath + post.thumb_path}}" alt="Thumnail Path" />
+          </ion-thumbnail>  
           <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
           <div class="video-content">
             <ion-list class="video-post">
               <ion-item>
+                <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
+                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon> <span>{{post?.count}}</span>
+                </div>
                 <div [routerLink]="['/comments',post.id]" *ngIf=" !post?.disable_comment">                               
                   <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> 
                   <span>{{post.total_comments.length}}</span>                              
-                </div>
-                <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
-                  <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon> <span>{{post?.count}}</span>
                 </div>
               </ion-item>
               <!-- <ion-item>
