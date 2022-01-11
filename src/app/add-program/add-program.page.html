@@ -207,6 +207,33 @@
               </ion-col>
               </ion-row>
             </ion-item>
+            <ion-item class="mb-10" *ngIf="this.programForm.controls.participantsType.value == 2">
+              <ion-row>
+                <ion-col size="6" class="ion-no-padding">
+                  <ion-radio-group lines="none" class="full-width radio-list" formControlName="feedStatus">
+                    <ion-list-header class="grey-header">
+                      <ion-label>Share Program On Feed</ion-label>
+                    </ion-list-header>
+                    <ion-item lines="none" >
+                      <ion-label>Yes</ion-label>
+                      <ion-radio slot="start" value="1" [checked]="true" formControlName="feedStatus"
+                        ></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none" class="mb-10 sel-parti-open-item">
+                      <ion-label>No</ion-label>
+                      <ion-radio slot="start" value="2"  formControlName="feedStatus"></ion-radio>
+                    </ion-item>
+                   
+                  </ion-radio-group>
+                </ion-col>
+              <ion-col size="6" class="ion-no-padding">
+                <ion-list-header class="grey-header">
+                  <ion-label></ion-label>
+                </ion-list-header>
+                
+              </ion-col>
+              </ion-row>  
+            </ion-item>
             <ion-item class="mb-10">
               <ion-row>
                 <ion-col size="6" class="ion-no-padding">

@@ -215,6 +215,9 @@ export class AddProgramPage implements OnInit {
       chatStatus: new FormControl('', Validators.compose([
         Validators.required,
       ])),
+      feedStatus: new FormControl('', Validators.compose([
+      ])),
+      
 
       userList: new FormControl(''),
     });
