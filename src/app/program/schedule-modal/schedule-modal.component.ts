@@ -16,9 +16,9 @@ import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/
 })
 export class ScheduleModalComponent implements OnInit {
   sliderOpts = {
-    slidesPerView: 3,
+    slidesPerView: 2,
     centeredSlides: false,
-    spaceBetween: 5
+    spaceBetween: 0
   }
   url=Config.imgUrl;
   programDetail: any;

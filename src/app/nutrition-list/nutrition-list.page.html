@@ -28,17 +28,19 @@
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
           <ion-segment-button *ngFor="let item of nutritionList  | filter:'BreakFast':'type'" (click)="showdetails(item)">
             <div class="checkboxThumb">
-              <div *ngIf="!item.empty ">
+              <div *ngIf="!item.empty " class="item-image">
                 <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
+              </div>
+              <div class="item-label">
                 <ion-label>{{item?.title}}</ion-label>
               </div>
-              <div *ngIf="item.empty" class="no-data nutrition-no-data">
+              <div *ngIf="item.empty" class="no-data nutrition-no-data item-image">
                 <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
                 <p>No BreakFast</p>
               </div>
             </div>
-            <ion-button ><ion-icon name="information-circle"></ion-icon></ion-button>
+            <!-- <ion-button ><ion-icon name="information-circle"></ion-icon></ion-button> -->
           </ion-segment-button>
         </ion-segment>
       </ion-card-content>
@@ -49,17 +51,19 @@
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
           <ion-segment-button *ngFor="let item of nutritionList  | filter:'Brunch':'type'" (click)="showdetails(item)">
             <div class="checkboxThumb">
-              <div *ngIf="!item.empty">
+              <div *ngIf="!item.empty" class="item-image">
                 <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
+              </div>
+              <div class="item-label">
                 <ion-label>{{item?.title}}</ion-label>
               </div>
-              <div *ngIf="item.empty" class="no-data nutrition-no-data">
+              <div *ngIf="item.empty" class="no-data nutrition-no-data item-image">
                 <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
                 <p>No Brunch</p>
               </div>
             </div>
-            <ion-button ><ion-icon name="information-circle"></ion-icon></ion-button>
+            <!-- <ion-button ><ion-icon name="information-circle"></ion-icon></ion-button> -->
           </ion-segment-button>
         </ion-segment>
       </ion-card-content>
@@ -70,17 +74,19 @@
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
           <ion-segment-button *ngFor="let item of nutritionList  | filter:'Lunch':'type'" (click)="showdetails(item)">
             <div class="checkboxThumb">
-              <div *ngIf="!item.empty">
+              <div *ngIf="!item.empty" class="item-image">
                 <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
+              </div>
+              <div class="item-label">
                 <ion-label>{{item?.title}}</ion-label>
               </div>
-              <div *ngIf="item.empty" class="no-data nutrition-no-data">
+              <div *ngIf="item.empty" class="no-data nutrition-no-data item-image">
                 <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
                 <p>No Lunch</p>
               </div>
             </div>
-            <ion-button ><ion-icon name="information-circle"></ion-icon></ion-button>
+            <!-- <ion-button ><ion-icon name="information-circle"></ion-icon></ion-button> -->
           </ion-segment-button>
         </ion-segment>
       </ion-card-content>
@@ -91,17 +97,19 @@
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
           <ion-segment-button *ngFor="let item of nutritionList  | filter:'Snacks':'type'" (click)="showdetails(item)">
             <div class="checkboxThumb">
-              <div *ngIf="!item.empty">
+              <div *ngIf="!item.empty" class="item-image">
                 <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
+              </div>
+              <div class="item-label">
                 <ion-label>{{item?.title}}</ion-label>
               </div>
-              <div *ngIf="item.empty" class="no-data nutrition-no-data">
+              <div *ngIf="item.empty" class="no-data nutrition-no-data item-image">
                 <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
                 <p>No Snacks</p>
               </div>
             </div>
-            <ion-button ><ion-icon name="information-circle"></ion-icon></ion-button>
+            <!-- <ion-button ><ion-icon name="information-circle"></ion-icon></ion-button> -->
           </ion-segment-button>
         </ion-segment>
       </ion-card-content>
@@ -112,17 +120,19 @@
         <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
           <ion-segment-button *ngFor="let item of nutritionList  | filter:'Dinner':'type'" (click)="showdetails(item)">
             <div class="checkboxThumb">
-              <div *ngIf="!item.empty">
+              <div *ngIf="!item.empty" class="item-image">
                 <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
+              </div>
+              <div class="item-label">
                 <ion-label>{{item?.title}}</ion-label>
               </div>
-              <div *ngIf="item.empty" class="no-data nutrition-no-data">
+              <div *ngIf="item.empty" class="no-data nutrition-no-data item-image">
                 <img src="../../../assets/images/dish.svg" class="mb-10" width="40px" />
                 <p>No Dinner</p>
               </div>
             </div>
-            <ion-button ><ion-icon name="information-circle"></ion-icon></ion-button>
+            <!-- <ion-button ><ion-icon name="information-circle"></ion-icon></ion-button> -->
           </ion-segment-button>
         </ion-segment>
       </ion-card-content>

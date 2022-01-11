@@ -335,8 +335,11 @@
       </ion-col>
 
       <!-- <ion-list-header  *ngIf="repetatedDateCopy.length <= 0" class=" green green-alram-icon text-white"> -->
-      <ion-icon ios="ios-add" md="md-add" (click)="addLiveProgram()" style="width: 1.5rem; height: 1.5rem;"></ion-icon>
-      <ion-list-header class=" dateTimePopUp green green-alram-icon text-white">
+        <ion-list-header class="green-alram-icon">
+          <ion-icon ios="ios-add" md="md-add" (click)="addLiveProgram()" style="width: 1.5rem; height: 1.5rem;"></ion-icon>
+        </ion-list-header>
+
+      <ion-list-header class=" dateTimePopUp green green-alram-icon text-white" style="display: none;">
         <div class='showDateTime'>
           <ion-datetime display-format="h:mm A" #picker  picker-format="h:mm A"   id="dat" [(ngModel)]="myDate" (ngModelChange)="showdate()" ></ion-datetime>
         </div>
@@ -379,8 +382,8 @@
               <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)"  checked={{date.is_live}}  slot="end"></ion-toggle> -->
               <!-- <ion-icon class="live-icon" (click)="picker.open()" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="activatePopup(i)" [ngClass]="{'active': date.is_live}"></ion-icon> -->
               
-              <ion-icon ios="ios-construct" md="md-construct" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
-              <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
+              <ion-icon ios="ios-barbell" md="md-barbell" name="barbell-outline" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
+              <ion-icon ios="ios-restaurant" md="md-restaurant" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
               </ion-icon>
               <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
               <!-- <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon> -->
