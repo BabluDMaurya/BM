@@ -402,7 +402,7 @@
                       </span>
                       </ion-card>
                       <!-- Program Cards -->
-                      <ion-card class="item-card"   *ngIf="post?.post_type == 9">
+                      <ion-card class="item-card"   *ngIf="post?.post_type == 9 && post['program_post'].length > 0">
                         <ion-card-header class="item-header">
                           <ion-avatar>
                             <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}" *ngIf="profileData?.userData?.bios?.profile_pic">
