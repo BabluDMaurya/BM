@@ -223,7 +223,7 @@ export class MyProfilePage implements OnInit {
   }
   videoPostData() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
-    this.peopleView.getMyPost('1,2,8', this.loginUserData.id, 1).subscribe((data: any) => {
+    this.peopleView.getMyPost('1,2,8,9', this.loginUserData.id, 1).subscribe((data: any) => {
       
       // exit;
       this.myPosts = data.posts.data;

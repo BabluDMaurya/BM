@@ -93,8 +93,8 @@ export class SearchFoodComponent implements OnInit{
     console.log(itemVal);   
     let qstring = {'query':itemVal};  
     this.nutritionService.ntnxFoodDetail(qstring).subscribe((data:any)=>{
-      console.log(data['foods'])
-    
+      // console.log(data['foods'])
+    console.log(data);
       this.selectedFoodList.push(data['foods'][0]);
       console.log(this.selectedFoodList)
      });
