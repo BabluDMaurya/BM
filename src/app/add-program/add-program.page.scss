@@ -1,5 +1,5 @@
 .note{color: #000;}
-.users-list{display: flex;width: 100%;}
+.users-list{display: flex;width: auto;;}
 .users-list ion-item{--min-height: auto;display: flex;width: auto;}
 .users-list ion-item img{width: 42px;height: 42px;object-fit: cover;border-radius: 50%;margin-left: -10px;}
 .users-list ion-item img:first-child{margin-left: 0;}
@@ -115,7 +115,9 @@ ion-slides{background: transparent;padding: 0 5px;}
 .nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked:after{content:'';width:20px;height:20px;background:#26a69a;display:block;border-radius:50%;position:absolute;top:5px;left:5px}
 .item-list ion-list-header ion-icon{font-size: 1.15rem;}
 
-.users-list{--min-height: auto;display: flex;align-items: center;margin: 6px 0; justify-content: end;}
+.users-list{--min-height: auto;display: flex;align-items: center;margin: 6px 0; 
+    // justify-content: end;
+}
 .users-list img{width: 36px;height: 36px;object-fit: cover;border-radius: 50%;margin-left: -10px;}
 .users-list img:first-child{margin-left: 0;}
 .users-list ion-label{width: 100px;}
@@ -325,10 +327,20 @@ ion-icon.active{
     td.monthview-selected {
         border-radius: 50% !important;
     }
+    span.event-detail {
+        overflow: hidden !important;
+        max-width: 50vw;
+    }
+    span.monthview-eventdetail-timecolumn {
+        min-width: 100px !important;
+        width: 100px !important;
+    }
+    .item-native {
+        padding-inline-start: 0 !important;
+  
+    }
+    
 }
-
-
-
 // ANDROID CSS
 ion-list-header.ion-padding-horizontal.green.text-white.md.hydrated {
     padding-bottom: 12px;
