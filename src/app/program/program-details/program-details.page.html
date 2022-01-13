@@ -199,21 +199,25 @@
           </ion-slides>
         </ion-card-content>
       </ion-card>  
-      <ion-card class="video-card"  *ngIf="progItem?.nutrition_id || progItem?.video_program">
+      <ion-card class="video-card mb-lg"  *ngIf="progItem?.nutrition_id || progItem?.video_program">
         <ion-card-content class="ion-no-padding" *ngIf="!programDetail.displayData">
-          <ion-slides [options]="sliderOpts" class="inner-slider bg-grey mb-10">
+          <ion-slides [options]="sliderOpts" class="inner-slider bg-grey py-md mb-10">
             <!-- <ion-slide *ngIf="progItem?.video_program" (click)="showVideoDetails(item.posts_id)" > -->
               <ion-slide *ngFor="let item of progItem?.videoProg_array " (click)="disclass()" >
                 <div class="program__image">
                   <img src="../../../assets/images/video.png" style="width:100% !important" />
                 </div>
-              <ion-label>Video</ion-label>
+                <div class="program__title">
+                  <ion-label>Video</ion-label>
+                </div>
             </ion-slide>  
             <ion-slide *ngFor="let item of progItem?.videoId_array" (click)="disclass()" >
               <div class="program__image">
                 <img src="../../../assets/images/video.png" style="width:100% !important" />
               </div>
-             <ion-label>Video</ion-label>
+              <div class="program__title">
+                <ion-label>Video</ion-label>
+              </div>
            </ion-slide> 
             <ion-slide *ngFor="let item of nutritionList "  (click)="disclass()" >
               <div class="program__image">
