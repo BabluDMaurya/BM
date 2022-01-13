@@ -26,3 +26,16 @@
     .counter-box {margin-bottom: 0;}
     .count_time {font-size: 16px;}
     ion-slides{height: 190px;}
+
+
+//Android
+ion-item.icon-right-side.ion-text-end.item.md.in-list.ion-focusable.hydrated {
+    padding-left: 16px;
+    min-width: none;
+}
+
+//IOS
+ion-item.icon-right-side.ion-text-end.item.ios.in-list.ion-focusable.hydrated {
+    padding-left: 16px;
+    min-width: none;
+}

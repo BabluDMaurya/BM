@@ -116,10 +116,10 @@
             </ion-item>
             <ion-item class="mb-10">
               <ion-row>
+                <ion-list-header class="grey-header">
+                  <ion-label>Program Type</ion-label>
+                </ion-list-header>
                 <ion-col size="6" class="ion-no-padding">
-                  <ion-list-header class="grey-header">
-                    <ion-label>Program Type</ion-label>
-                  </ion-list-header>
                   <ion-radio-group class="full-width radio-list" formControlName="programType">
                     <!-- <ion-item lines="none">
                       <ion-label>Private - Oneway</ion-label>
@@ -160,9 +160,6 @@
                   </ng-container>
                 </ion-col>
                 <ion-col size="6" class="ion-no-padding">
-                  <ion-list-header class="grey-header">
-                    <ion-label></ion-label>
-                  </ion-list-header>
                   <ion-item lines="none">
                     <ion-text>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -174,11 +171,11 @@
             </ion-item>
             <ion-item class="mb-10">
               <ion-row>
+                <ion-list-header class="grey-header">
+                  <ion-label>Select Praticipants</ion-label>
+                </ion-list-header>
                 <ion-col size="6" class="ion-no-padding">
                   <ion-radio-group lines="none" class="full-width radio-list" formControlName="participantsType">
-                    <ion-list-header class="grey-header">
-                      <ion-label>Select Praticipants</ion-label>
-                    </ion-list-header>
                     <ion-item lines="none" (click)="userModal()">
                       <ion-label>Exclusive</ion-label>
                       <ion-radio slot="start" value="1" formControlName="participantsType"
@@ -195,9 +192,6 @@
                   </ion-radio-group>
                 </ion-col>
               <ion-col size="6" class="ion-no-padding">
-                <ion-list-header class="grey-header">
-                  <ion-label></ion-label>
-                </ion-list-header>
                 <ion-item lines="none">
                   <ion-text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -209,11 +203,11 @@
             </ion-item>
             <ion-item class="mb-10" *ngIf="this.programForm.controls.participantsType.value == 2">
               <ion-row>
+                <ion-list-header class="grey-header">
+                  <ion-label>Share Program On Feed</ion-label>
+                </ion-list-header>
                 <ion-col size="6" class="ion-no-padding">
                   <ion-radio-group lines="none" class="full-width radio-list" formControlName="feedStatus">
-                    <ion-list-header class="grey-header">
-                      <ion-label>Share Program On Feed</ion-label>
-                    </ion-list-header>
                     <ion-item lines="none" >
                       <ion-label>Yes</ion-label>
                       <ion-radio slot="start" value="1" [checked]="true" formControlName="feedStatus"
@@ -227,20 +221,17 @@
                   </ion-radio-group>
                 </ion-col>
               <ion-col size="6" class="ion-no-padding">
-                <ion-list-header class="grey-header">
-                  <ion-label></ion-label>
-                </ion-list-header>
-                
               </ion-col>
               </ion-row>  
             </ion-item>
             <ion-item class="mb-10">
               <ion-row>
+                <ion-list-header class="grey-header">
+                  <ion-label>Chat room for program</ion-label>
+                </ion-list-header>
                 <ion-col size="6" class="ion-no-padding">
                   <ion-radio-group lines="none" class="full-width radio-list" formControlName="chatStatus">
-                    <ion-list-header class="grey-header">
-                      <ion-label>Chat room for program</ion-label>
-                    </ion-list-header>
+
                     <ion-item lines="none" >
                       <ion-label>Enable</ion-label>
                       <ion-radio slot="start" value="1" checked formControlName="chatStatus"
@@ -257,9 +248,6 @@
                   </ion-radio-group>
                 </ion-col>
               <ion-col size="6" class="ion-no-padding">
-                <ion-list-header class="grey-header">
-                  <ion-label></ion-label>
-                </ion-list-header>
                 <ion-item lines="none">
                   <ion-text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -273,7 +261,6 @@
               <ion-label>Create Chat room for program</ion-label>
               <ion-toggle [disabled]='false' formControlName="chatStatus"  [(ngModel)]="toggleValue"  slot="end"></ion-toggle>
             </ion-item> -->
-            
             
             <ion-item class="mb-10" *ngIf="modalData?.length>0">
               <ion-list lines="none" class="users-list">

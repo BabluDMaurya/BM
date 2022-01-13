@@ -43,13 +43,23 @@
             <img [defaultImage] = "bannerDefaultImage" [lazyLoad]="bannerImage">            
           </div>
       </div>
-        <div class="profile-content">
+      <div class="profile-heading">
+        <div class="img-profile">
+          <img [defaultImage] = "profileDefaultImage" [lazyLoad]="profileImage">              
+        </div>
+        <ion-text>
+          <h6 class="userDisplayName" *ngIf="profileData?.userData?.user_name">
+            {{profileData?.userData?.user_name}}
+          </h6>
+        </ion-text>
+      </div>
+        <!-- <div class="profile-content">
           <img class="user-img" [defaultImage] = "profileDefaultImage" [lazyLoad]="profileImage">
           <ion-text>
-            <h6 class="ion-no-margin user-name ml-0" *ngIf="profileData?.userData?.user_name">{{profileData?.userData?.user_name}}</h6>
+            <h6 class="ion-no-margin user-name ml-0" *ngIf="profileData?.userData?.user_name">{{profileData?.userData?.user_name}}</h6> -->
             <!-- <a><ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon> darshan_rajgor_</a> -->
-          </ion-text>
-        </div>
+          <!-- </ion-text>
+        </div> -->
       </ion-col>
     </ion-row>
     <ion-row>
@@ -61,46 +71,50 @@
         <div [ngSwitch]="userProfile">
           <div *ngSwitchCase="'aboutInfo'" class="user-info">
             <ion-card>
-              <ion-card-header>
+              <ion-card-header class="user-profile-header">
                 <div class="user-icon">
                   <img src="../../assets/images/user.svg" />
                 </div>
+                <ion-text>Bio</ion-text>
               </ion-card-header>
-              <ion-card-content>
-                <ion-text *ngIf="profileData?.userData?.bios?.about_me">{{profileData?.userData?.bios?.about_me}}</ion-text>
+              <ion-card-content class="user-profile-details">
+                <ion-text class="user-details" *ngIf="profileData?.userData?.bios?.about_me">{{profileData?.userData?.bios?.about_me}}</ion-text>
                 <a [routerLink]="['/tabs/edit-profile']" *ngIf="!profileData?.userData?.bios?.about_me">Click here to add something interesting about yourself</a> 
               </ion-card-content>
             </ion-card>
             <ion-card>
-              <ion-card-header>
+              <ion-card-header class="user-profile-header">
                 <div class="user-icon">
                   <img src="../../assets/images/like.svg" />
                 </div>
+                <ion-text>Interests</ion-text>
               </ion-card-header>
-              <ion-card-content>
-                <ion-text *ngIf="profileData?.speciality?.primaryName?.name">{{profileData?.speciality?.primaryName?.name}}</ion-text>
+              <ion-card-content  class="user-profile-details">
+                <ion-text class="user-details" *ngIf="profileData?.speciality?.primaryName?.name">{{profileData?.speciality?.primaryName?.name}}</ion-text>
                 <a [routerLink]="['/tabs/edit-profile']" *ngIf="!profileData?.speciality?.primaryName?.name">Select catagory in which you interested</a> 
               </ion-card-content>
             </ion-card>
             <ion-card>
-              <ion-card-header>
+              <ion-card-header class="user-profile-header">
                 <div class="user-icon">
                   <img src="../../assets/images/global.svg" />
                 </div>
+                <ion-text>Language</ion-text>
               </ion-card-header>
-              <ion-card-content>
-                <ion-text *ngIf="profileData?.lang?.lang">{{profileData?.lang?.lang}}</ion-text>
+              <ion-card-content  class="user-profile-details">
+                <ion-text class="user-details" *ngIf="profileData?.lang?.lang">{{profileData?.lang?.lang}}</ion-text>
                 <a [routerLink]="['/tabs/edit-profile']" *ngIf="!profileData?.speciality?.primaryName?.name">Add languages you know</a> 
               </ion-card-content>
             </ion-card>
             <ion-card>
-              <ion-card-header>
+              <ion-card-header  class="user-profile-header">
                 <div class="user-icon">
                   <img src="../../assets/images/placeholder.svg" />
                   </div>
+                  <ion-text>Location</ion-text>
               </ion-card-header>
-              <ion-card-content>
-                <ion-text *ngIf="profileData?.address?.country?.name">{{profileData?.address?.city?.name}}{{profileData?.address?.state?.name }},{{profileData?.address?.country?.name}}</ion-text>
+              <ion-card-content  class="user-profile-details">
+                <ion-text class="user-details" *ngIf="profileData?.address?.country?.name">{{profileData?.address?.city?.name}}{{profileData?.address?.state?.name }},{{profileData?.address?.country?.name}}</ion-text>
                 <a [routerLink]="['/tabs/edit-profile']" *ngIf="!profileData?.address?.country?.name">Add Location</a> 
              
               </ion-card-content>

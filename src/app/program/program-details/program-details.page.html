@@ -127,7 +127,10 @@
       <ion-text><p class="text-green text-center">{{programDateTime|date:'medium'}}</p></ion-text>
     </ion-col>
   </ion-row> 
-  <ion-row class="counter-box ion-padding" *ngIf="programDetail?.is_live_status == 0"> 
+  <ion-row class="counter-box ion-padding" style="position: relative;" *ngIf="programDetail?.is_live_status == 0"> 
+    <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
+      <ion-text><p class="count_time">00</p> Days</ion-text>
+    </ion-col>
     <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
       <ion-text><p class="count_time">00</p> Hours</ion-text>
     </ion-col>
@@ -138,7 +141,7 @@
       <ion-text><p class="count_time">00</p> Seconds</ion-text>
     </ion-col>
     
-    <ion-col size="12" class="ion-no-padding mt-15">
+    <ion-col size="12" class="ion-no-padding mt-15 program-time">
       <ion-text><p class="text-green text-center">{{programDateTime|date:'medium'}}</p></ion-text>
     </ion-col>
   </ion-row>  
@@ -198,24 +201,24 @@
       </ion-card>  
       <ion-card class="video-card"  *ngIf="progItem?.nutrition_id || progItem?.video_program">
         <ion-card-content class="ion-no-padding" *ngIf="!programDetail.displayData">
-          <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
+          <ion-slides [options]="sliderOpts" class="inner-slider bg-grey mb-10">
             <!-- <ion-slide *ngIf="progItem?.video_program" (click)="showVideoDetails(item.posts_id)" > -->
               <ion-slide *ngFor="let item of progItem?.videoProg_array " (click)="disclass()" >
                 <div class="program__image">
-                  <img src="../../../assets/images/video.png" style="width:45% !important" />
+                  <img src="../../../assets/images/video.png" style="width:100% !important" />
                 </div>
               <ion-label>Video</ion-label>
             </ion-slide>  
             <ion-slide *ngFor="let item of progItem?.videoId_array" (click)="disclass()" >
               <div class="program__image">
-                <img src="../../../assets/images/video.png" style="width:45% !important" />
+                <img src="../../../assets/images/video.png" style="width:100% !important" />
               </div>
              <ion-label>Video</ion-label>
            </ion-slide> 
             <ion-slide *ngFor="let item of nutritionList "  (click)="disclass()" >
               <div class="program__image">
                 <img src="{{url}}{{item?.fImage}}" *ngIf="item?.fImage" />
-                <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:45% !important; height: auto;"/>
+                <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:100% !important; height: auto;"/>
               </div>
               <div class="program__title">
                 <ion-label>{{item?.title}}</ion-label>

@@ -43,6 +43,7 @@ export class UserProfilePage implements OnInit {
       this.gotData =true;
       this.bannerImage = this.backgroundPicUrl + this.profileData.userData.bios.profile_background_image;
       this.profileImage = this.profilePicUrl + this.profileData.userData.bios.profile_pic;
+      console.log(this.profileData);
     });
 
     
