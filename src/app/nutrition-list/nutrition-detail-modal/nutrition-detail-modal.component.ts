@@ -21,7 +21,7 @@ export class NutritionDetailModalComponent implements OnInit {
   nutriDetails: any;  
   url: any = Config.imgUrl;
   sliderOpts = {
-    initialSlide: 1,
+    initialSlide: 0,
     speed: 400,
     zoom: true,
     slidesPerView: 1,
@@ -50,7 +50,7 @@ export class NutritionDetailModalComponent implements OnInit {
     ionViewDidEnter() {
     // this.slides.startAutoplay();
     this.sliderOpts = {
-      initialSlide: 1,
+      initialSlide: 0,
       speed: 400,
       zoom: true,
       slidesPerView: 1,
