@@ -39,13 +39,17 @@
                   <div class="progImage">
                     <img src="../../../assets/images/video.png"  />
                   </div>
-                <ion-label>Video</ion-label>
+                  <div class="progLabel">
+                    <ion-label>Video</ion-label>
+                  </div>
               </ion-slide>  
               <ion-slide class="program-item" *ngFor="let item of progItem?.videoId_array" (click)="showVideoDetails(item)" >
                 <div class="progImage">
                 <img src="../../../assets/images/video.png"  />
                 </div>
-               <ion-label>Video</ion-label>
+                <div class="progLabel">
+                  <ion-label>Video</ion-label>
+                </div>
              </ion-slide> 
               <ion-slide class="program-item" *ngFor="let item of nutritionList | inArray:'id':progItem?.nutrition_array "  (click)="nutritionModal(progItem)" >
                 <div class="progImage">
