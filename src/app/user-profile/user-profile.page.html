@@ -134,21 +134,23 @@
                   <h3>{{item?.title}}</h3>
                   <p>{{item?.type_id}}</p>
                   <p>By: <span>{{item?.program_user?.user_name}}</span></p>
-                  <span class="list-name d-block" *ngIf="item?.cd>0">Countdown: <b><span *ngIf="item?.hh > 0">{{ item?.hh |number }} Hours</span> {{ item?.mm |number  }} Minutes  {{ item?.ss |number }} Seconds </b> </span>
+                  <!-- <span class="list-name d-block" *ngIf="item?.cd>0">Countdown: <b><span *ngIf="item?.hh > 0">{{ item?.hh |number }} Hours</span> {{ item?.mm |number  }} Minutes  {{ item?.ss |number }} Seconds </b> </span> -->
+                  <span class="list-name d-block" *ngIf="item?.cd>0"><b><span *ngIf="item?.hh > 0">{{ item?.hh |number }} Hours</span> {{ item?.mm |number  }} Minutes  {{ item?.ss |number }} Seconds </b> </span>
+
                   <span class="list-name d-block" *ngIf="item?.cd==0"> <b> L I V E</b></span>
                 </div>
-                <!-- <div class="action-links">
-                  <ion-toolbar>
+                <div class="action-links">
+                  <!-- <ion-toolbar>
                     <ion-buttons slot="end">
                       <ion-button (click)="settingsPopover()">
                         <ion-icon ios="ios-more" md="md-more"></ion-icon>
                       </ion-button>
                     </ion-buttons>
-                  </ion-toolbar>
+                  </ion-toolbar> -->
                   <a (click)="nutritionModal(item)">
                     <ion-icon ios="md-restaurant" md="md-restaurant"></ion-icon>
                   </a>
-                </div> -->
+                </div>
               </ion-label>
             </ion-item>
            

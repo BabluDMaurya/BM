@@ -67,8 +67,10 @@ export class UserProfilePage implements OnInit {
     this.programService.getUpcomingPrograms(null).subscribe(data=>{
       console.log(data);
       this.upcomingProgram = data.programList.filter(el => {
-        if (el.image_path) {
+        if (el.image_path != '') {
           el.img_arr = el.image_path.split(',');
+        }else{
+          el.img_arr = this.profileDefaultImage;
         }
         el.convertedTime = new Date(el.program_date + 'Z');
         let a: any = new Date(el.program_date + 'Z');
@@ -95,6 +97,7 @@ export class UserProfilePage implements OnInit {
         }, 1000)
         return el;
       });
+      console.log(this.upcomingProgram);
     })
   }
 
