@@ -33,3 +33,56 @@ ion-item.floatingItem{
 	ion-textarea{margin-top:0}
 }
 // .preTimeBox{display: flex;align-items: center;justify-content: flex-end;}
+.nutrition-box{
+    display: flex;
+    align-items: center;
+}
+.img-container{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+.nutrition-title{
+    font-size: 1rem;
+    color: #121212;
+    font-weight: 500;
+}
+.nutrition-container{
+    flex: 1;
+}
+.nutrition-details{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.nutrition-left{
+    display: flex;
+    flex: 1;
+}
+.nutrition-right span{
+    font-size: 13px;
+    color: rgb(139, 139, 139);
+}
+.nutrition-quantity{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+.nutrition-input{
+    border: 0.5px solid #eee;
+    border-radius: 5px;
+    max-width: 50px;
+    height: 30px;
+    margin: 0 5px;
+}
+.nutrition-select{
+    border: 0.5px solid #eee;
+    border-radius: 5px;
+    min-width: 100px;
+    height: 30px;
+    font-size: 13px;
+}
+.closeicon{
+    color: rgb(139, 139, 139);
+}
