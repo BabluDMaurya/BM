@@ -26,7 +26,9 @@ export class NutritionPage implements OnInit , OnDestroy {
   submitted: boolean = false;
   selectedImage = [];
   images: any;
-  nextVisible: boolean = false;
+  // nextVisible: boolean = false;
+  nextVisible: boolean = true;
+
   constructor(
     public settingService: SettingsService,
     public commonService: CommonService,

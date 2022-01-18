@@ -178,8 +178,8 @@
     <ion-button class="btnVerify" >No live program available</ion-button>
   </div>
   <ion-list lines="none" class="item-list ion-no-padding" >     
-    <div *ngFor="let progItem of allProgram">   
-      <ion-card class="video-card"  *ngIf="progItem?.nutrition_id || progItem?.video_program">
+    <div *ngFor="let progItem of allProgram; let i = index">   
+      <ion-card class="video-card"  *ngIf="i == 0 && (progItem?.nutrition_id || progItem?.video_program)">
         <ion-card-content class="ion-no-padding" *ngIf="programDetail.displayData">
           <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
             <!-- <ion-slide *ngIf="progItem?.video_program" (click)="showVideoDetails(item.posts_id)" > -->
@@ -199,11 +199,11 @@
           </ion-slides>
         </ion-card-content>
       </ion-card>  
-      <ion-card class="video-card mb-lg"  *ngIf="progItem?.nutrition_id || progItem?.video_program">
+      <ion-card class="video-card mb-lg"  *ngIf="i == 0 && (progItem?.nutrition_id || progItem?.video_program)">
         <ion-card-content class="ion-no-padding" *ngIf="!programDetail.displayData">
           <ion-slides [options]="sliderOpts" class="inner-slider bg-grey py-md mb-10">
             <!-- <ion-slide *ngIf="progItem?.video_program" (click)="showVideoDetails(item.posts_id)" > -->
-              <ion-slide *ngFor="let item of progItem?.videoProg_array " (click)="disclass()" >
+              <ion-slide *ngFor="let item of progItem?.videoProg_array " (click)="showVideoDetails(item)" >
                 <div class="program__image">
                   <img src="../../../assets/images/video.png" style="width:100% !important" />
                 </div>
@@ -211,7 +211,7 @@
                   <ion-label>Video</ion-label>
                 </div>
             </ion-slide>  
-            <ion-slide *ngFor="let item of progItem?.videoId_array" (click)="disclass()" >
+            <ion-slide *ngFor="let item of progItem?.videoId_array" (click)="showVideoDetails(item)">
               <div class="program__image">
                 <img src="../../../assets/images/video.png" style="width:100% !important" />
               </div>
@@ -219,8 +219,8 @@
                 <ion-label>Video</ion-label>
               </div>
            </ion-slide> 
-            <ion-slide *ngFor="let item of nutritionList "  (click)="disclass()" >
-              <div class="program__image">
+            <ion-slide *ngFor="let item of nutritionList "   >
+              <div class="program__image"  (click)="nutritionModal(progItem)">
                 <img src="{{url}}{{item?.fImage}}" *ngIf="item?.fImage" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:100% !important; height: auto;"/>
               </div>

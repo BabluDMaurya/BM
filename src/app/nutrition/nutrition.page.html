@@ -174,7 +174,26 @@
               </ion-item>
               <ion-list lines="none" class="ingredients-list" *ngFor="let data of scanData let i= index">
                 <ion-item *ngIf="data.data.item_name;else typedata" class="roundedcorner">
-                  {{data.data.item_name}} <div class="close-ingredients">
+                  {{data.data.item_name}} 
+                  <div class="close-ingredients">
+                    <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,data.data.item_name)"></ion-icon>
+                  </div>
+                </ion-item>
+                
+                <ng-template #typedata>
+                  <ion-item *ngFor=" let typeData of data.data let i= index" class="roundedcorner">
+                    {{typeData.food_name}} <div class="close-ingredients">
+                      <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,typeData.food_name)"></ion-icon>
+                    </div>
+                  </ion-item>
+                </ng-template>
+              </ion-list>
+              <ion-list lines="none" class="ingredients-list" *ngFor="let data of scanData let i= index">
+                
+                <ion-item *ngIf="data.data.item_name;else typedata" class="">
+                  <img style="max-height: 35px; max-width: 35px;"  src="{data.data.photo.thumb}">
+                  {{data.data.item_name}} 
+                  <div class="close-ingredients">
                     <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,data.data.item_name)"></ion-icon>
                   </div>
                 </ion-item>

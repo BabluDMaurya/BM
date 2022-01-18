@@ -55,12 +55,12 @@ export class NutritionPreviewComponent implements OnInit, OnDestroy {
       if(value.item_name)
       { this.apiIngredients += value['item_name'] + ',';}
       
-        cal = cal + value['nf_calories'];
+        cal   = cal + value['nf_calories'];
         carbo = carbo + value['nf_total_carbohydrate'];
-        prot = prot + value['nf_protein'];
-        fat = fat + value['nf_total_fat'];
-        sug = sug + value['nf_sugars'];
-        chol = chol + value['nf_cholesterol'];
+        prot  = prot + value['nf_protein'];
+        fat   = fat + value['nf_total_fat'];
+        sug   = sug + value['nf_sugars'];
+        chol  = chol + value['nf_cholesterol'];
       
 
     });
