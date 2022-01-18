@@ -252,7 +252,7 @@
                             <ion-label>
                               <ion-card-title>{{loginUserData.user_name}}</ion-card-title>
                               <ion-card-subtitle>{{loginUserData.location}}</ion-card-subtitle>
-                              <ion-card-subtitle *ngIf="post['video_post']['0']['video_type'] == 2">Exclusive</ion-card-subtitle>
+                              <!-- <ion-card-subtitle *ngIf="post['video_post']['0']['video_type'] == 2">Exclusive</ion-card-subtitle> -->
                             </ion-label>
                             <ion-text class="post-timedate">
                               <p class="post-date">{{post?.created_at}}</p>
@@ -260,12 +260,15 @@
                           </div>
                         </ion-card-header>
                         <ion-card-content class="ion-no-padding item-content">
-                          <ion-thumbnail class="post-video" [routerLink]="['/videos',post.id,'']"
+                          <div class="img-container">
+                            <ion-thumbnail class="post-video" [routerLink]="['/videos',post.id,'']"
                             *ngIf="post['video_post']['0']['thumb_path']">
+                            <ion-card-subtitle class="exclusive-text" *ngIf="post['video_post']['0']['video_type'] == 2">Exclusive</ion-card-subtitle>
                             <img class="post-thumbnail" [defaultImage] = "defaultPostImage" [lazyLoad]="storagePath+post['video_post']['0']['thumb_path']" alt="Video Thumnail">
                             <!-- <img src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
                             <!-- <img (click)="openViewer(post['video_post']['0']['thumb_path'])" src="{{storagePath + post['video_post']['0']['thumb_path']}}" alt="Thumnail Path" /> -->
                           </ion-thumbnail>
+                          </div>
                           <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
 
                           <div class="post-content">
@@ -331,13 +334,15 @@
                           </div>
                         </ion-card-header>
                         <ion-card-content class="ion-no-padding item-content">
-                          <ion-thumbnail class="post-image" *ngIf="post['image_post']['0']['thumb_path']">
-                            <ion-slides [options]="imageSlider" class="post-slider" [pager]="true">
-                              <ion-slide *ngFor="let imgpath of post['image_post']['0']['thumb_path']; let i =index;">
-                                <img (click)="openViewer(post['image_post']['0']['image_path'][i])" src="{{url}}{{imgpath}}" alt="{{imgpath}}" />
-                              </ion-slide>
-                            </ion-slides>
-                          </ion-thumbnail>
+                          <div class="img-container">
+                            <ion-thumbnail class="post-image" *ngIf="post['image_post']['0']['thumb_path']">
+                              <ion-slides [options]="imageSlider" class="post-slider" [pager]="true">
+                                <ion-slide *ngFor="let imgpath of post['image_post']['0']['thumb_path']; let i =index;">
+                                  <img (click)="openViewer(post['image_post']['0']['image_path'][i])" src="{{url}}{{imgpath}}" alt="{{imgpath}}" />
+                                </ion-slide>
+                              </ion-slides>
+                            </ion-thumbnail>
+                          </div>
                           <div class="post-content">
                             <!-- -------  Description post with  post type = 8 -->
                             <div *ngIf="post?.post_type==8">
@@ -419,9 +424,11 @@
                           </div>
                         </ion-card-header>
                         <ion-card-content class="ion-no-padding item-content" >
-                          <ion-thumbnail class="post-image" [routerLink]=" post['program_post']['0']?.user_id==profileData.userData?.id ? ['/program-details/', post['program_post']['0']?.id] : ['/program-view/', post['program_post']['0']?.id]" >
-                            <img class="post-thumbnail" src="../../assets/images/demo3.jpg">
-                          </ion-thumbnail>
+                          <div class="img-container">
+                            <ion-thumbnail class="post-image" [routerLink]=" post['program_post']['0']?.user_id==profileData.userData?.id ? ['/program-details/', post['program_post']['0']?.id] : ['/program-view/', post['program_post']['0']?.id]" >
+                              <img class="post-thumbnail" src="../../assets/images/demo3.jpg">
+                            </ion-thumbnail>
+                          </div>
                           <div class="post-content">
                             <ion-list class="item-post" lines="none">
                               <ion-item>

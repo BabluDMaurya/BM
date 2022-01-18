@@ -82,8 +82,25 @@ ion-item-divider{
 }
 .post-image, 
 .post-video {
-    height: calc(100vw - 30px) !important;
-    padding: 15px;
+    height: calc(100vw - 45px) !important;
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 15px 0;
+}
+.exclusive-text{
+    text-transform: capitalize;
+    position: absolute;
+    top: 26px;
+    right: -60px;
+    padding: 5px;
+    transform: rotate(45deg);
+    color: #fff;
+    text-align: center;
+    width: 200px;
+    background: #27A69A;
+}
+.img-container{
+    padding: 15px 15px 0 15px;
 }
 .post-slider ion-slide {
     height: 100% !important;

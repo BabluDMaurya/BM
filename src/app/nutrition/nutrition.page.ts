@@ -13,6 +13,15 @@ import { NutritionService } from './../services/nutrition.service';
 })
 export class NutritionPage implements OnInit , OnDestroy {
 
+  quantity = 1;
+
+  increment() {
+    this.quantity++;
+  }
+  decrement() {
+    this.quantity--;
+  }
+
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
   @ViewChild('userNameRef', { static: false }) userNameRefElement: ElementRef;
   @ViewChild('skillsSetRef', { static: false }) skillsSetRefElement: ElementRef
