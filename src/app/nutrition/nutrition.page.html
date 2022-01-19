@@ -160,32 +160,7 @@
                   </ion-button>
                 </ion-item>
               </ion-list>
-              <ion-list class="nutrition-box">
-                <div class="img-container">
-                  <img src="../../assets/images/activity.png" alt="">
-                </div>
-                <div class="nutrition-container">
-                  <ion-label class="nutrition-title">Apple</ion-label>
-                  <div class="nutrition-details">
-                    <div class="nutrition-left">
-                      <div class="nutrition-quantity">
-                        <ion-icon class="closeicon" ios="ios-remmove" md="md-remove" (click)="decrement()"></ion-icon>
-                        <ion-input type="number" class="nutrition-input" value="{{quantity}}"></ion-input>
-                        <ion-icon class="closeicon" ios="ios-add" md="md-add" (click)="increment()"></ion-icon>
-                      </div>
-                      <ion-select class="nutrition-select" interface="popover" placeholder="Select Unit">
-                        <ion-select-option value="cup">Cup</ion-select-option>
-                        <ion-select-option value="dozen">Dozen</ion-select-option>
-                        <ion-select-option value="kg">Kg</ion-select-option>
-                      </ion-select>
-                    </div>
-                    <div class="nutrition-right">
-                      <ion-icon class="closeicon" ios="ios-trash" md="md-trash" (click)="removeApiData(i,typeData.food_name)"></ion-icon>
-                    </div>
-                  </div>
-                </div>
-               
-              </ion-list>
+              
               <ion-button class="btn-square btn-add green" (click)="addIngredients()">
                 <ion-icon ios="ios-add" md="md-add"></ion-icon>
               </ion-button>
@@ -198,7 +173,7 @@
                   <ion-label>Search Ingredients</ion-label>
                 </ion-chip>
               </ion-item>
-              <ion-list lines="none" class="ingredients-list" *ngFor="let data of scanData let i= index">
+              <!-- <ion-list lines="none" class="ingredients-list" *ngFor="let data of scanData let i= index">
                 <ion-item *ngIf="data.data.item_name;else typedata" class="roundedcorner">
                   {{data.data.item_name}} 
                   <div class="close-ingredients">
@@ -213,23 +188,40 @@
                     </div>
                   </ion-item>
                 </ng-template>
-              </ion-list>
-              <ion-list lines="none" class="ingredients-list" *ngFor="let data of scanData let i= index">
-                
-                <ion-item *ngIf="data.data.item_name;else typedata" class="">
-                  <img style="max-height: 35px; max-width: 35px;"  src="{data.data.photo.thumb}">
+              </ion-list> -->
+              
+              <ion-list lines="none" class="ingredients-list " *ngFor="let data of scanData let i= index">
+                <ion-item *ngIf="data.data.item_name" class="roundedcorner">
                   {{data.data.item_name}} 
                   <div class="close-ingredients">
                     <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,data.data.item_name)"></ion-icon>
                   </div>
                 </ion-item>
-                <ng-template #typedata>
-                  <ion-item *ngFor=" let typeData of data.data let i= index" class="roundedcorner">
-                    {{typeData.food_name}} <div class="close-ingredients">
-                      <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,typeData.food_name)"></ion-icon>
-                    </div>
-                  </ion-item>
-                </ng-template>
+                    <ion-item *ngFor=" let typeData of data.data let i= index" class="roundedcorner">
+                      <div class="img-container">
+                        <img src="{{typeData.photo.thumb}}" alt="">
+                      </div>
+                      <div class="nutrition-container" >
+                        <ion-label class="nutrition-title">{{typeData.food_name}}</ion-label>
+                        <div class="nutrition-details">
+                          <div class="nutrition-left">
+                            <div class="nutrition-quantity">
+                              <ion-icon class="closeicon" ios="ios-remmove" md="md-remove" (click)="decrement()"></ion-icon>
+                              <ion-input type="number" class="nutrition-input" value="{{quantity}}"></ion-input>
+                              <ion-icon class="closeicon" ios="ios-add" md="md-add" (click)="increment()"></ion-icon>
+                            </div>
+                            <ion-select class="nutrition-select"  interface="popover" placeholder="Select Measure">
+                              <ion-select-option *ngFor=" let measures of typeData.alt_measures let i= index" value="{{measures.measure}}">{{measures.measure}}</ion-select-option>
+                              <!-- <ion-select-option value="dozen">Dozen</ion-select-option>
+                              <ion-select-option value="kg">Kg</ion-select-option> -->
+                            </ion-select>
+                          </div>
+                          <div class="nutrition-right">
+                            <ion-icon class="closeicon" ios="ios-trash" md="md-trash" (click)="removeApiData(i,typeData.food_name)"></ion-icon>
+                          </div>
+                        </div>
+                      </div>
+                    </ion-item>
               </ion-list>
             </div>
           </div>

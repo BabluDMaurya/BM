@@ -70,19 +70,23 @@ ion-item.floatingItem{
     margin-right: 15px;
 }
 .nutrition-input{
-    border: 0.5px solid #eee;
+    border: 0.5px solid #bbb;
     border-radius: 5px;
     max-width: 50px;
     height: 30px;
     margin: 0 5px;
 }
 .nutrition-select{
-    border: 0.5px solid #eee;
+    border: 0.5px solid #bbb;
     border-radius: 5px;
     min-width: 100px;
     height: 30px;
     font-size: 13px;
 }
 .closeicon{
-    color: rgb(139, 139, 139);
+    color: rgb(46, 45, 45) !important;
+}
+.roundedcorner{
+    width: 100% !important;
+    border-radius: 0 !important;
 }
