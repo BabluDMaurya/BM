@@ -197,7 +197,7 @@
                     <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,data.data.item_name)"></ion-icon>
                   </div>
                 </ion-item>
-                    <ion-item *ngFor=" let typeData of data.data let i= index" class="roundedcorner">
+                    <ion-item *ngFor=" let typeData of data.data let i= index" class="">
                       <div class="img-container">
                         <img src="{{typeData.photo.thumb}}" alt="">
                       </div>
@@ -207,13 +207,12 @@
                           <div class="nutrition-left">
                             <div class="nutrition-quantity">
                               <ion-icon class="closeicon" ios="ios-remmove" md="md-remove" (click)="decrement()"></ion-icon>
-                              <ion-input type="number" class="nutrition-input" value="{{quantity}}"></ion-input>
+                              <ion-input type="number" class="nutrition-input" formControlName="appendedValue"></ion-input>
                               <ion-icon class="closeicon" ios="ios-add" md="md-add" (click)="increment()"></ion-icon>
                             </div>
-                            <ion-select class="nutrition-select"  interface="popover" placeholder="Select Measure">
+                            <ion-select class="nutrition-select" (ionChange)="detailsUpdate(i,$event)"  interface="popover" placeholder="Select Measure">
                               <ion-select-option *ngFor=" let measures of typeData.alt_measures let i= index" value="{{measures.measure}}">{{measures.measure}}</ion-select-option>
-                              <!-- <ion-select-option value="dozen">Dozen</ion-select-option>
-                              <ion-select-option value="kg">Kg</ion-select-option> -->
+                             
                             </ion-select>
                           </div>
                           <div class="nutrition-right">

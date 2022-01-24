@@ -52,13 +52,14 @@
         </ion-toolbar>
         <div [ngSwitch]="nutritionInfo">
           <div *ngSwitchCase="'breakFast'">
-            <div *ngFor="let item of nutritionItem  | filter:'BreakFast':'type'">
+            <div *ngFor="let item of nutritionItem  | filter:'BreakFast':'type' ; let i = index">
               <div *ngIf="item.type=='BreakFast'">
                 <ion-slide *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
                   <img src="{{url}}{{nImage}}"  style="width:45% !important; height: auto;" *ngIf="nImage" />
-                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/>
+                  <!-- <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/> -->
                   <!-- <ion-label>{{item?.title}}</ion-label> -->
                 </ion-slide> 
+                <img src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' " style="width:45% !important; height: auto;"/>
                 <ion-list-header class="grey-header mb-0">{{item.title}}</ion-list-header>
                 <ion-grid>
                   <ion-row>
@@ -76,7 +77,7 @@
                     <ion-col size="12">
                       <ion-toolbar no-border-top class="profile_tabs subprofile_tabs">
                         <ion-segment class="ion-no-padding" (ionChange)="nutritionChanged($event)">
-                          <ion-segment-button value="ingredients" checked>
+                          <ion-segment-button value="ingredients+i" checked>
                             <span>Ingredients</span>
                           </ion-segment-button>
                           <ion-segment-button value="instruction">
@@ -150,9 +151,10 @@
               <div *ngIf="item.type=='Brunch'">
                 <ion-slide *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
                   <img src="{{url}}{{nImage}}" *ngIf="nImage" />
-                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/>
+                  <!-- <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/> -->
                   <!-- <ion-label>{{item?.title}}</ion-label> -->
                 </ion-slide> 
+                <img src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' " style="width:45% !important; height: auto;"/>
                 <ion-list-header class="grey-header mb-0">{{item.title}}</ion-list-header>
                 <ion-grid>
                   <ion-row>
@@ -243,9 +245,10 @@
               <div *ngIf="item.type=='Lunch'">
                 <ion-slide *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
                   <img src="{{url}}{{nImage}}" *ngIf="nImage" />
-                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/>
+                  <!-- <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/> -->
                   <!-- <ion-label>{{item?.title}}</ion-label> -->
                 </ion-slide> 
+                <img src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' " style="width:45% !important; height: auto;"/>
                 <ion-list-header class="grey-header mb-0">{{item.title}}</ion-list-header>
                 <ion-grid>
                   <ion-row>
@@ -334,11 +337,12 @@
           <div *ngSwitchCase="'snacks'">
             <div *ngFor="let item of nutritionItem | filter:'Snacks':'type'">
               <div *ngIf="item.type=='Snacks'">
-                <ion-slide *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
+                <ion-slide *ngFor="let nImage of item.image_path.split(','); "  (click)="nutritionModal(progItem)" >
                   <img src="{{url}}{{nImage}}" *ngIf="nImage" />
-                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/>
+                  <!-- <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/> -->
                   <!-- <ion-label>{{item?.title}}</ion-label> -->
                 </ion-slide> 
+                <img src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' " style="width:45% !important; height: auto;"/>
                 <ion-list-header class="grey-header mb-0">{{item.title}}</ion-list-header>
                 <ion-grid>
                   <ion-row>
@@ -426,13 +430,14 @@
          
           </div>
           <div *ngSwitchCase="'dinner'">
-            <div *ngFor="let item of nutritionItem  | filter:'Snacks':'type'">
+            <div *ngFor="let item of nutritionItem  | filter:'Dinner':'type'">
               <div *ngIf="item.type=='Dinner'">
                 <ion-slide *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
-                  <img src="{{url}}{{nImage}}" *ngIf="nImage" />
-                  <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage" style="width:45% !important; height: auto;"/>
+                  <img  src="{{url}}{{nImage}}" *ngIf="nImage" />
+                  
                   <!-- <ion-label>{{item?.title}}</ion-label> -->
                 </ion-slide> 
+                <img src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' " style="width:45% !important; height: auto;"/>
                 <ion-list-header class="grey-header mb-0">{{item.title}}</ion-list-header>
                 <ion-grid>
                   <ion-row>

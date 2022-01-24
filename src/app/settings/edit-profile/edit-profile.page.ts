@@ -394,6 +394,7 @@ export class EditProfilePage implements OnInit {
 
     // update profile values
     detailsUpdate(editvalue) {
+        console.log(editvalue);
         let abc = editvalue.target.value;
 
         if (Array.isArray(editvalue.target.value)) {

@@ -14,7 +14,7 @@ import { NutritionService } from './../services/nutrition.service';
 export class NutritionPage implements OnInit , OnDestroy {
 
   quantity = 1;
-
+  appendedValue = 1;
   increment() {
     this.quantity++;
   }
@@ -93,7 +93,8 @@ export class NutritionPage implements OnInit , OnDestroy {
       bevragveOption: new FormControl(''),
       unitQnty:new FormControl(''),
       bevragveUnit: new FormControl(''),
-      bevragveinclude: new FormControl('')
+      bevragveinclude: new FormControl(''),
+      appendedValue: new FormControl(''),
     });
   }
 
@@ -118,6 +119,7 @@ export class NutritionPage implements OnInit , OnDestroy {
       { type: 'required', message: 'Ingredients are required.' },
     ],
     nutriBevrageType: [],
+    appendedValue:[]
   };
 
   get f() { return this.nutritionForm.controls; }
@@ -219,7 +221,28 @@ export class NutritionPage implements OnInit , OnDestroy {
     });
     console.log(this.scanData);
   }
+  detailsUpdate(i,value) {
+    let abc = value.target.value;
+    this.scanData.forEach(element => {
+      if (Array.isArray(element.data)) {
+        element.data.forEach(el => {
+          el.alt_measures.forEach(el => {
+          if (el.measure == abc) {
+            console.log(el.qty);
+            this.appendedValue = el.qty;
+          }
+        });
+      });
+      } else {
 
+        if (element.data.item_name == abc) {
+          ;
+          // this.scanData.splice(i, 1);
+        }
+      }
+    });
+    console.log(abc);
+  }
   // ----------------------------- Open gallery  with multiple --------------//
   gallaryImgPath: any = [];
   openGallery() {
