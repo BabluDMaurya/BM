@@ -10,6 +10,12 @@
     "com-sarriaroman-photoviewer": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
+    "com.moust.cordova.videoplayer": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "com.paypal.cordova.mobilesdk": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
     "cordova-android-support-gradle-release": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
@@ -23,6 +29,9 @@
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-fcm-with-dependecy-updated": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-filepath": {
@@ -46,6 +55,9 @@
     "cordova-plugin-streaming-media": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
@@ -53,19 +65,16 @@
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "ionic-plugin-deeplinks": {
-      "URL_SCHEME": "myapp",
+      "URL_SCHEME": "Intoactive",
       "DEEPLINK_SCHEME": "https",
       "DEEPLINK_HOST": "ionicinto.wdipl.com",
-      "PACKAGE_NAME": "com.bm.ionicfcm"
-    },
-    "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "com.bm.ionicfcm"
-    },
-    "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     }
   },
   "dependent_plugins": {
+    "card.io.cordova.mobilesdk": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
     "cordova-clipboard": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },

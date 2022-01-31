@@ -17,6 +17,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "com.moust.cordova.videoplayer.VideoPlayer",
+      "file": "plugins/com.moust.cordova.videoplayer/www/videoplayer.js",
+      "pluginId": "com.moust.cordova.videoplayer",
+      "clobbers": [
+        "VideoPlayer"
+      ]
+    },
+    {
       "id": "com.paypal.cordova.mobilesdk.PayPalMobile",
       "file": "plugins/com.paypal.cordova.mobilesdk/www/cdv-plugin-paypal-mobile-sdk.js",
       "pluginId": "com.paypal.cordova.mobilesdk",
@@ -564,19 +572,12 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "cordova.plugins.barcodeScanner"
       ]
-    },
-    {
-      "id": "com.moust.cordova.videoplayer.VideoPlayer",
-      "file": "plugins/com.moust.cordova.videoplayer/www/videoplayer.js",
-      "pluginId": "com.moust.cordova.videoplayer",
-      "clobbers": [
-        "VideoPlayer"
-      ]
     }
   ];
   module.exports.metadata = {
     "card.io.cordova.mobilesdk": "2.1.0",
     "com-sarriaroman-photoviewer": "1.2.4",
+    "com.moust.cordova.videoplayer": "1.0.1",
     "com.paypal.cordova.mobilesdk": "3.5.0",
     "cordova-android-support-gradle-release": "3.0.1",
     "cordova-clipboard": "1.3.0",
@@ -610,7 +611,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-sqlite-storage": "4.0.0",
     "enablex-cordova-plugin": "1.8.0",
     "ionic-plugin-deeplinks": "1.0.22",
-    "phonegap-plugin-barcodescanner": "8.1.0",
-    "com.moust.cordova.videoplayer": "1.0.1"
+    "phonegap-plugin-barcodescanner": "8.1.0"
   };
 });

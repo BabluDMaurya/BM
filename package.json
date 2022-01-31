@@ -199,9 +199,9 @@
       "com.paypal.cordova.mobilesdk": {}
     },
     "platforms": [
-      "ios",
       "browser",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

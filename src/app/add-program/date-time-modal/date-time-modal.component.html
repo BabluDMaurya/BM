@@ -15,10 +15,20 @@
 <ion-content class="main_content">
   <div class="fixed">
       <form [formGroup]="finalForm" class="">
-            <ion-item lines="none" class="margin-15">
+            <ion-item lines="none" class="margin-15" *ngIf="totalLiveSession > 0">
               <ion-label style="display: contents;">How much would you like to charge:</ion-label>
               <ion-label style="    margin-left: 40px;">$</ion-label>
-              <ion-input class="form-control" type="number" formControlName="programFees" value="0"></ion-input>
+              <ion-input class="form-control" type="number" (change)="updateTotalPrice($event)" formControlName="programFees" value="0"></ion-input>
+            </ion-item>
+            <ion-item lines="none" class="margin-15" *ngIf="totalLiveSession > 0">
+              <ion-label style="display: contents;">Total for {{totalLiveSession}} session:</ion-label>
+              <ion-label style="    margin-left: 40px;">$</ion-label>
+              <ion-label style="    margin-left: 40px;">{{totalLiveAmt}}</ion-label>
+             </ion-item> 
+            <ion-item lines="none" class="margin-15">
+              <ion-label style="display: contents;">Charge for Non-Live component:</ion-label>
+              <ion-label style="    margin-left: 40px;">$</ion-label>
+              <ion-input class="form-control" type="number" formControlName="non_live_component_fee" value="0"></ion-input>
             </ion-item>
           <div *ngIf="programData.programType == '6' ">
             <ion-label style="display: block;margin-top: 15px; padding-left: 15px;">Would you like to request Sponsors:</ion-label>
