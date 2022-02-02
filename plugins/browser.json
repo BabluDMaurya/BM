@@ -69,6 +69,9 @@
       "DEEPLINK_SCHEME": "https",
       "DEEPLINK_HOST": "ionicinto.wdipl.com",
       "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "cordova-plugin-stripe": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     }
   },
   "dependent_plugins": {

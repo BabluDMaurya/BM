@@ -206,13 +206,14 @@
                         <div class="nutrition-details">
                           <div class="nutrition-left">
                             <div class="nutrition-quantity">
-                              <ion-icon class="closeicon" ios="ios-remmove" md="md-remove" (click)="decrement()"></ion-icon>
+                              <!-- <ion-icon class="closeicon" ios="ios-remmove" md="md-remove" (click)="decrement()"></ion-icon> -->
                               <ion-input type="number" class="nutrition-input" value="{{typeData?.newQty}}"></ion-input>
-                              <ion-icon class="closeicon" ios="ios-add" md="md-add" (click)="increment()"></ion-icon>
+                              <!-- <ion-icon class="closeicon" ios="ios-add" md="md-add" (click)="increment()"></ion-icon> -->
                             </div>
                             <ion-select class="nutrition-select" (ionChange)="detailsUpdate(f,typeData.food_name,$event)"  interface="popover" placeholder="Select Measure">
                               <ion-select-option *ngFor=" let measures of typeData.alt_measures let i= index" [selected]="i == 0" value="{{measures.measure}}">{{measures.measure}}</ion-select-option>
                             </ion-select>
+                            <ion-label>{{typeData.nf_calories}} Cal</ion-label>
                           </div>
                           <div class="nutrition-right">
                             <ion-icon class="closeicon" ios="ios-trash" md="md-trash" (click)="removeApiData(f,typeData.food_name)"></ion-icon>

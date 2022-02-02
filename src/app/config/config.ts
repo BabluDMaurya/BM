@@ -11,4 +11,6 @@ export class Config {
     static storagePath = "https://ionicinto.wdipl.com/storage/";
     static musicPath= "https://ionicinto.wdipl.com/public/storage/audio/";
     static admanager= "https://ionicinto.wdipl.com/admanager/user/";
+    static stripePublishKey = "pk_test_51KO87nAP43uk3CaTrUFIEuhw98Ux1fa0U7absrdFsrlC8VeIQeUlkl3oNqcIFQNIQ0tcQbhQokm2icOn78WMGxJY00cSFjevjE";
+    static stripeSecretKey = "sk_test_51KO87nAP43uk3CaToPSpdYoLuvmAvHDknMoE7pTBYNgwuxJkOWorgjiH6YUWzAY4WpRBCfHojKydJneUJuhZRXuR00skzGPslD";
 }

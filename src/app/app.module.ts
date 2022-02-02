@@ -88,6 +88,7 @@ import { ThankyouComponent } from './paypal/thankyou/thankyou.component';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 import { PaymentComponent } from './modalContent/payment/payment.component'; 
 import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/view-video-detail.component';
+import {Stripe} from '@ionic-native/stripe/ngx';
 
 @NgModule({
   declarations: [AppComponent, UserDetailsComponent, FollowersComponent, FollowingComponent, SearchFoodComponent,
@@ -170,6 +171,7 @@ import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/
     LocalNotifications,
     BarcodeScanner,
     Deeplinks,
+    Stripe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
     // {

@@ -578,6 +578,20 @@ module.exports = [
         "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
         "pluginId": "phonegap-plugin-barcodescanner",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+        "id": "cordova-plugin-stripe.stripe",
+        "pluginId": "cordova-plugin-stripe",
+        "clobbers": [
+            "cordova.plugins.stripe"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-stripe/src/browser/CordovaStripe.js",
+        "id": "cordova-plugin-stripe.CordovaStripe",
+        "pluginId": "cordova-plugin-stripe",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -619,7 +633,8 @@ module.exports.metadata =
     "cordova-sqlite-storage": "4.0.0",
     "enablex-cordova-plugin": "1.8.0",
     "ionic-plugin-deeplinks": "1.0.22",
-    "phonegap-plugin-barcodescanner": "8.1.0"
+    "phonegap-plugin-barcodescanner": "8.1.0",
+    "cordova-plugin-stripe": "1.5.3"
 }
 // BOTTOM OF METADATA
 });

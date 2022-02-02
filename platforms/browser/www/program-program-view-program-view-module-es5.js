@@ -1898,7 +1898,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".top-list {\n  padding: 0;\n  margin: 10px 0; }\n\n.top-list ion-item {\n  --min-height: 85px;\n  background: #FFF;\n  box-shadow: none; }\n\n.top-list ion-item ion-label {\n  padding-top: 0;\n  position: absolute;\n  bottom: 8px;\n  left: 50%;\n  transform: translateX(-50%);\n  margin-left: 0; }\n\n.top-icon {\n  width: 40px;\n  height: 40px;\n  background: #e9f6f5;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  top: -10px;\n  left: 50%;\n  transform: translateX(-50%); }\n\n.top-icon ion-icon {\n  color: #27a69a;\n  font-size: 1.25rem; }\n\n.users-list {\n  display: block;\n  width: 100%; }\n\n.users-list ion-item {\n  --min-height: auto;\n  display: flex;\n  width: 100%;\n  --padding-start: 0;\n  --inner-padding-end: 0; }\n\n.users-list ion-item img {\n  width: 42px;\n  height: 42px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 50%;\n  margin-left: -10px; }\n\n.users-list ion-item img:first-child {\n  margin-left: 0; }\n\n.view-all {\n  width: 42px;\n  height: 42px;\n  max-width: 42px;\n  text-align: center;\n  background: #f1f0f0;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 0;\n  margin-left: -10px; }\n\n.list-info {\n  display: flex;\n  flex-wrap: wrap;\n  padding: 6px; }\n\n.list-info ion-item {\n  width: 25%;\n  box-shadow: 0.001em 5px 12px rgba(34, 35, 58, 0.09);\n  margin: auto;\n  margin-bottom: 8px; }\n\n.list-info ion-item img {\n  width: 24px;\n  margin-right: 8px; }\n\n.list-info ion-item ion-label {\n  font-size: 0.85rem; }\n\n.btnVerify {\n  width: 100%;\n  margin: 0;\n  background: #27a69a;\n  --background: #27a69a;\n  --border-radius: 0;\n  border-radius: 0;\n  height: 50px; }\n\n.counter-box {\n  margin-bottom: 0; }\n\n.count_time {\n  font-size: 16px; }\n\nion-slides {\n  height: 190px; }\n\nion-item.icon-right-side.ion-text-end.item.md.in-list.ion-focusable.hydrated {\n  padding-left: 16px;\n  min-width: none; }\n\nion-item.icon-right-side.ion-text-end.item.ios.in-list.ion-focusable.hydrated {\n  padding-left: 16px;\n  min-width: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJvZ3JhbS9wcm9ncmFtLXZpZXcvQzpcXHhhbXBwXFxodGRvY3NcXGludG9hY3RpdmVcXEJNL3NyY1xcYXBwXFxwcm9ncmFtXFxwcm9ncmFtLXZpZXdcXHByb2dyYW0tdmlldy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBVSxVQUFVO0VBQUMsY0FBYyxFQUFBOztBQUNuQztFQUFtQixrQkFBYTtFQUFNLGdCQUFnQjtFQUFDLGdCQUFnQixFQUFBOztBQUN2RTtFQUE2QixjQUFjO0VBQUMsa0JBQWtCO0VBQUMsV0FBVztFQUFDLFNBQVM7RUFBQywyQkFBMkI7RUFBQyxjQUFjLEVBQUE7O0FBQy9IO0VBQVUsV0FBVztFQUFDLFlBQVk7RUFBQyxtQkFBbUI7RUFBQyxrQkFBa0I7RUFBQyxhQUFhO0VBQUMsdUJBQXVCO0VBQUMsbUJBQW1CO0VBQUMsa0JBQWtCO0VBQUMsVUFBVTtFQUFDLFNBQVM7RUFBQywyQkFBMkIsRUFBQTs7QUFDdk07RUFBb0IsY0FBYztFQUFDLGtCQUFrQixFQUFBOztBQUVyRDtFQUFZLGNBQWM7RUFBQyxXQUFXLEVBQUE7O0FBQ3RDO0VBQXFCLGtCQUFhO0VBQU0sYUFBYTtFQUFDLFdBQVc7RUFBQyxrQkFBZ0I7RUFBRyxzQkFBb0IsRUFBQTs7QUFDekc7RUFBeUIsV0FBVztFQUFDLFlBQVk7RUFBQyxvQkFBaUI7S0FBakIsaUJBQWlCO0VBQUMsa0JBQWtCO0VBQUMsa0JBQWtCLEVBQUE7O0FBQ3pHO0VBQXFDLGNBQWMsRUFBQTs7QUFDbkQ7RUFBVSxXQUFVO0VBQUMsWUFBVztFQUFDLGVBQWU7RUFBQyxrQkFBaUI7RUFBQyxtQkFBa0I7RUFBQyxrQkFBaUI7RUFBQyxhQUFZO0VBQUMsdUJBQXNCO0VBQUMsbUJBQWtCO0VBQUMsU0FBUztFQUFDLGtCQUFrQixFQUFBOztBQUUzTDtFQUFXLGFBQWE7RUFBQyxlQUFlO0VBQUMsWUFBWSxFQUFBOztBQUNyRDtFQUFvQixVQUFVO0VBQUMsbURBQW1EO0VBQUMsWUFBWTtFQUFDLGtCQUFrQixFQUFBOztBQUNsSDtFQUF3QixXQUFXO0VBQUMsaUJBQWlCLEVBQUE7O0FBQ3JEO0VBQThCLGtCQUFrQixFQUFBOztBQUVoRDtFQUFXLFdBQVc7RUFDbEIsU0FBUztFQUNULG1CQUFtQjtFQUNuQixxQkFBYTtFQUNiLGtCQUFnQjtFQUNoQixnQkFBZ0I7RUFDaEIsWUFBWSxFQUFBOztBQUVaO0VBQWMsZ0JBQWdCLEVBQUE7O0FBQzlCO0VBQWEsZUFBZSxFQUFBOztBQUM1QjtFQUFXLGFBQWEsRUFBQTs7QUFJNUI7RUFDSSxrQkFBa0I7RUFDbEIsZUFBZSxFQUFBOztBQUluQjtFQUNJLGtCQUFrQjtFQUNsQixlQUFlLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9wcm9ncmFtL3Byb2dyYW0tdmlldy9wcm9ncmFtLXZpZXcucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRvcC1saXN0e3BhZGRpbmc6IDA7bWFyZ2luOiAxMHB4IDA7fVxyXG4udG9wLWxpc3QgaW9uLWl0ZW17LS1taW4taGVpZ2h0OiA4NXB4O2JhY2tncm91bmQ6ICNGRkY7Ym94LXNoYWRvdzogbm9uZTt9XHJcbi50b3AtbGlzdCBpb24taXRlbSBpb24tbGFiZWx7cGFkZGluZy10b3A6IDA7cG9zaXRpb246IGFic29sdXRlO2JvdHRvbTogOHB4O2xlZnQ6IDUwJTt0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7bWFyZ2luLWxlZnQ6IDA7fVxyXG4udG9wLWljb257d2lkdGg6IDQwcHg7aGVpZ2h0OiA0MHB4O2JhY2tncm91bmQ6ICNlOWY2ZjU7Ym9yZGVyLXJhZGl1czogNTAlO2Rpc3BsYXk6IGZsZXg7anVzdGlmeS1jb250ZW50OiBjZW50ZXI7YWxpZ24taXRlbXM6IGNlbnRlcjtwb3NpdGlvbjogcmVsYXRpdmU7dG9wOiAtMTBweDtsZWZ0OiA1MCU7dHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO31cclxuLnRvcC1pY29uIGlvbi1pY29uIHtjb2xvcjogIzI3YTY5YTtmb250LXNpemU6IDEuMjVyZW07fVxyXG5cclxuLnVzZXJzLWxpc3R7ZGlzcGxheTogYmxvY2s7d2lkdGg6IDEwMCU7fVxyXG4udXNlcnMtbGlzdCBpb24taXRlbXstLW1pbi1oZWlnaHQ6IGF1dG87ZGlzcGxheTogZmxleDt3aWR0aDogMTAwJTstLXBhZGRpbmctc3RhcnQ6IDA7LS1pbm5lci1wYWRkaW5nLWVuZDogMDt9XHJcbi51c2Vycy1saXN0IGlvbi1pdGVtIGltZ3t3aWR0aDogNDJweDtoZWlnaHQ6IDQycHg7b2JqZWN0LWZpdDogY292ZXI7Ym9yZGVyLXJhZGl1czogNTAlO21hcmdpbi1sZWZ0OiAtMTBweDt9XHJcbi51c2Vycy1saXN0IGlvbi1pdGVtIGltZzpmaXJzdC1jaGlsZHttYXJnaW4tbGVmdDogMDt9XHJcbi52aWV3LWFsbHt3aWR0aDo0MnB4O2hlaWdodDo0MnB4O21heC13aWR0aDogNDJweDt0ZXh0LWFsaWduOmNlbnRlcjtiYWNrZ3JvdW5kOiNmMWYwZjA7Ym9yZGVyLXJhZGl1czo1MCU7ZGlzcGxheTpmbGV4O2p1c3RpZnktY29udGVudDpjZW50ZXI7YWxpZ24taXRlbXM6Y2VudGVyO21hcmdpbjogMDttYXJnaW4tbGVmdDogLTEwcHg7fVxyXG5cclxuLmxpc3QtaW5mb3tkaXNwbGF5OiBmbGV4O2ZsZXgtd3JhcDogd3JhcDtwYWRkaW5nOiA2cHg7fVxyXG4ubGlzdC1pbmZvIGlvbi1pdGVte3dpZHRoOiAyNSU7Ym94LXNoYWRvdzogMC4wMDFlbSA1cHggMTJweCByZ2JhKDM0LCAzNSwgNTgsIDAuMDkpO21hcmdpbjogYXV0bzttYXJnaW4tYm90dG9tOiA4cHg7fVxyXG4ubGlzdC1pbmZvIGlvbi1pdGVtIGltZ3t3aWR0aDogMjRweDttYXJnaW4tcmlnaHQ6IDhweDt9XHJcbi5saXN0LWluZm8gaW9uLWl0ZW0gaW9uLWxhYmVse2ZvbnQtc2l6ZTogMC44NXJlbTt9XHJcblxyXG4uYnRuVmVyaWZ5e3dpZHRoOiAxMDAlO1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgYmFja2dyb3VuZDogIzI3YTY5YTtcclxuICAgIC0tYmFja2dyb3VuZDogIzI3YTY5YTtcclxuICAgIC0tYm9yZGVyLXJhZGl1czogMDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDA7XHJcbiAgICBoZWlnaHQ6IDUwcHg7fVxyXG4gIFxyXG4gICAgLmNvdW50ZXItYm94IHttYXJnaW4tYm90dG9tOiAwO31cclxuICAgIC5jb3VudF90aW1lIHtmb250LXNpemU6IDE2cHg7fVxyXG4gICAgaW9uLXNsaWRlc3toZWlnaHQ6IDE5MHB4O31cclxuXHJcblxyXG4vL0FuZHJvaWRcclxuaW9uLWl0ZW0uaWNvbi1yaWdodC1zaWRlLmlvbi10ZXh0LWVuZC5pdGVtLm1kLmluLWxpc3QuaW9uLWZvY3VzYWJsZS5oeWRyYXRlZCB7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDE2cHg7XHJcbiAgICBtaW4td2lkdGg6IG5vbmU7XHJcbn1cclxuXHJcbi8vSU9TXHJcbmlvbi1pdGVtLmljb24tcmlnaHQtc2lkZS5pb24tdGV4dC1lbmQuaXRlbS5pb3MuaW4tbGlzdC5pb24tZm9jdXNhYmxlLmh5ZHJhdGVkIHtcclxuICAgIHBhZGRpbmctbGVmdDogMTZweDtcclxuICAgIG1pbi13aWR0aDogbm9uZTtcclxufSJdfQ== */";
+    __webpack_exports__["default"] = ".top-list {\n  padding: 0;\n  margin: 10px 0; }\n\n.top-list ion-item {\n  --min-height: 85px;\n  background: #FFF;\n  box-shadow: none; }\n\n.top-list ion-item ion-label {\n  padding-top: 0;\n  position: absolute;\n  bottom: 8px;\n  left: 50%;\n  transform: translateX(-50%);\n  margin-left: 0; }\n\n.top-icon {\n  width: 40px;\n  height: 40px;\n  background: #e9f6f5;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  top: -10px;\n  left: 50%;\n  transform: translateX(-50%); }\n\n.top-icon ion-icon {\n  color: #27a69a;\n  font-size: 1.25rem; }\n\n.users-list {\n  display: block;\n  width: 100%; }\n\n.users-list ion-item {\n  --min-height: auto;\n  display: flex;\n  width: 100%;\n  --padding-start: 0;\n  --inner-padding-end: 0; }\n\n.users-list ion-item img {\n  width: 42px;\n  height: 42px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 50%;\n  margin-left: -10px; }\n\n.users-list ion-item img:first-child {\n  margin-left: 0; }\n\n.view-all {\n  width: 42px;\n  height: 42px;\n  max-width: 42px;\n  text-align: center;\n  background: #f1f0f0;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 0;\n  margin-left: -10px; }\n\n.list-info {\n  display: flex;\n  flex-wrap: wrap;\n  padding: 6px; }\n\n.list-info ion-item {\n  width: 25%;\n  box-shadow: 0.001em 5px 12px rgba(34, 35, 58, 0.09);\n  margin: auto;\n  margin-bottom: 8px; }\n\n.list-info ion-item img {\n  width: 24px;\n  margin-right: 8px; }\n\n.list-info ion-item ion-label {\n  font-size: 0.85rem; }\n\n.btnVerify {\n  width: 100%;\n  margin: 0;\n  background: #27a69a;\n  --background: #27a69a;\n  --border-radius: 0;\n  border-radius: 0;\n  height: 50px; }\n\n.counter-box {\n  margin-bottom: 0; }\n\n.count_time {\n  font-size: 16px; }\n\nion-slides {\n  height: 190px; }\n\nion-item.icon-right-side.ion-text-end.item.md.in-list.ion-focusable.hydrated {\n  padding-left: 16px;\n  min-width: none; }\n\nion-item.icon-right-side.ion-text-end.item.ios.in-list.ion-focusable.hydrated {\n  padding-left: 16px;\n  min-width: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJvZ3JhbS9wcm9ncmFtLXZpZXcvQzpcXHhhbXBwXFxodGRvY3NcXGludG9hY3RpdmUvc3JjXFxhcHBcXHByb2dyYW1cXHByb2dyYW0tdmlld1xccHJvZ3JhbS12aWV3LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUFVLFVBQVU7RUFBQyxjQUFjLEVBQUE7O0FBQ25DO0VBQW1CLGtCQUFhO0VBQU0sZ0JBQWdCO0VBQUMsZ0JBQWdCLEVBQUE7O0FBQ3ZFO0VBQTZCLGNBQWM7RUFBQyxrQkFBa0I7RUFBQyxXQUFXO0VBQUMsU0FBUztFQUFDLDJCQUEyQjtFQUFDLGNBQWMsRUFBQTs7QUFDL0g7RUFBVSxXQUFXO0VBQUMsWUFBWTtFQUFDLG1CQUFtQjtFQUFDLGtCQUFrQjtFQUFDLGFBQWE7RUFBQyx1QkFBdUI7RUFBQyxtQkFBbUI7RUFBQyxrQkFBa0I7RUFBQyxVQUFVO0VBQUMsU0FBUztFQUFDLDJCQUEyQixFQUFBOztBQUN2TTtFQUFvQixjQUFjO0VBQUMsa0JBQWtCLEVBQUE7O0FBRXJEO0VBQVksY0FBYztFQUFDLFdBQVcsRUFBQTs7QUFDdEM7RUFBcUIsa0JBQWE7RUFBTSxhQUFhO0VBQUMsV0FBVztFQUFDLGtCQUFnQjtFQUFHLHNCQUFvQixFQUFBOztBQUN6RztFQUF5QixXQUFXO0VBQUMsWUFBWTtFQUFDLG9CQUFpQjtLQUFqQixpQkFBaUI7RUFBQyxrQkFBa0I7RUFBQyxrQkFBa0IsRUFBQTs7QUFDekc7RUFBcUMsY0FBYyxFQUFBOztBQUNuRDtFQUFVLFdBQVU7RUFBQyxZQUFXO0VBQUMsZUFBZTtFQUFDLGtCQUFpQjtFQUFDLG1CQUFrQjtFQUFDLGtCQUFpQjtFQUFDLGFBQVk7RUFBQyx1QkFBc0I7RUFBQyxtQkFBa0I7RUFBQyxTQUFTO0VBQUMsa0JBQWtCLEVBQUE7O0FBRTNMO0VBQVcsYUFBYTtFQUFDLGVBQWU7RUFBQyxZQUFZLEVBQUE7O0FBQ3JEO0VBQW9CLFVBQVU7RUFBQyxtREFBbUQ7RUFBQyxZQUFZO0VBQUMsa0JBQWtCLEVBQUE7O0FBQ2xIO0VBQXdCLFdBQVc7RUFBQyxpQkFBaUIsRUFBQTs7QUFDckQ7RUFBOEIsa0JBQWtCLEVBQUE7O0FBRWhEO0VBQVcsV0FBVztFQUNsQixTQUFTO0VBQ1QsbUJBQW1CO0VBQ25CLHFCQUFhO0VBQ2Isa0JBQWdCO0VBQ2hCLGdCQUFnQjtFQUNoQixZQUFZLEVBQUE7O0FBRVo7RUFBYyxnQkFBZ0IsRUFBQTs7QUFDOUI7RUFBYSxlQUFlLEVBQUE7O0FBQzVCO0VBQVcsYUFBYSxFQUFBOztBQUk1QjtFQUNJLGtCQUFrQjtFQUNsQixlQUFlLEVBQUE7O0FBSW5CO0VBQ0ksa0JBQWtCO0VBQ2xCLGVBQWUsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3Byb2dyYW0vcHJvZ3JhbS12aWV3L3Byb2dyYW0tdmlldy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudG9wLWxpc3R7cGFkZGluZzogMDttYXJnaW46IDEwcHggMDt9XHJcbi50b3AtbGlzdCBpb24taXRlbXstLW1pbi1oZWlnaHQ6IDg1cHg7YmFja2dyb3VuZDogI0ZGRjtib3gtc2hhZG93OiBub25lO31cclxuLnRvcC1saXN0IGlvbi1pdGVtIGlvbi1sYWJlbHtwYWRkaW5nLXRvcDogMDtwb3NpdGlvbjogYWJzb2x1dGU7Ym90dG9tOiA4cHg7bGVmdDogNTAlO3RyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKTttYXJnaW4tbGVmdDogMDt9XHJcbi50b3AtaWNvbnt3aWR0aDogNDBweDtoZWlnaHQ6IDQwcHg7YmFja2dyb3VuZDogI2U5ZjZmNTtib3JkZXItcmFkaXVzOiA1MCU7ZGlzcGxheTogZmxleDtqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjthbGlnbi1pdGVtczogY2VudGVyO3Bvc2l0aW9uOiByZWxhdGl2ZTt0b3A6IC0xMHB4O2xlZnQ6IDUwJTt0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7fVxyXG4udG9wLWljb24gaW9uLWljb24ge2NvbG9yOiAjMjdhNjlhO2ZvbnQtc2l6ZTogMS4yNXJlbTt9XHJcblxyXG4udXNlcnMtbGlzdHtkaXNwbGF5OiBibG9jazt3aWR0aDogMTAwJTt9XHJcbi51c2Vycy1saXN0IGlvbi1pdGVtey0tbWluLWhlaWdodDogYXV0bztkaXNwbGF5OiBmbGV4O3dpZHRoOiAxMDAlOy0tcGFkZGluZy1zdGFydDogMDstLWlubmVyLXBhZGRpbmctZW5kOiAwO31cclxuLnVzZXJzLWxpc3QgaW9uLWl0ZW0gaW1ne3dpZHRoOiA0MnB4O2hlaWdodDogNDJweDtvYmplY3QtZml0OiBjb3Zlcjtib3JkZXItcmFkaXVzOiA1MCU7bWFyZ2luLWxlZnQ6IC0xMHB4O31cclxuLnVzZXJzLWxpc3QgaW9uLWl0ZW0gaW1nOmZpcnN0LWNoaWxke21hcmdpbi1sZWZ0OiAwO31cclxuLnZpZXctYWxse3dpZHRoOjQycHg7aGVpZ2h0OjQycHg7bWF4LXdpZHRoOiA0MnB4O3RleHQtYWxpZ246Y2VudGVyO2JhY2tncm91bmQ6I2YxZjBmMDtib3JkZXItcmFkaXVzOjUwJTtkaXNwbGF5OmZsZXg7anVzdGlmeS1jb250ZW50OmNlbnRlcjthbGlnbi1pdGVtczpjZW50ZXI7bWFyZ2luOiAwO21hcmdpbi1sZWZ0OiAtMTBweDt9XHJcblxyXG4ubGlzdC1pbmZve2Rpc3BsYXk6IGZsZXg7ZmxleC13cmFwOiB3cmFwO3BhZGRpbmc6IDZweDt9XHJcbi5saXN0LWluZm8gaW9uLWl0ZW17d2lkdGg6IDI1JTtib3gtc2hhZG93OiAwLjAwMWVtIDVweCAxMnB4IHJnYmEoMzQsIDM1LCA1OCwgMC4wOSk7bWFyZ2luOiBhdXRvO21hcmdpbi1ib3R0b206IDhweDt9XHJcbi5saXN0LWluZm8gaW9uLWl0ZW0gaW1ne3dpZHRoOiAyNHB4O21hcmdpbi1yaWdodDogOHB4O31cclxuLmxpc3QtaW5mbyBpb24taXRlbSBpb24tbGFiZWx7Zm9udC1zaXplOiAwLjg1cmVtO31cclxuXHJcbi5idG5WZXJpZnl7d2lkdGg6IDEwMCU7XHJcbiAgICBtYXJnaW46IDA7XHJcbiAgICBiYWNrZ3JvdW5kOiAjMjdhNjlhO1xyXG4gICAgLS1iYWNrZ3JvdW5kOiAjMjdhNjlhO1xyXG4gICAgLS1ib3JkZXItcmFkaXVzOiAwO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMDtcclxuICAgIGhlaWdodDogNTBweDt9XHJcbiAgXHJcbiAgICAuY291bnRlci1ib3gge21hcmdpbi1ib3R0b206IDA7fVxyXG4gICAgLmNvdW50X3RpbWUge2ZvbnQtc2l6ZTogMTZweDt9XHJcbiAgICBpb24tc2xpZGVze2hlaWdodDogMTkwcHg7fVxyXG5cclxuXHJcbi8vQW5kcm9pZFxyXG5pb24taXRlbS5pY29uLXJpZ2h0LXNpZGUuaW9uLXRleHQtZW5kLml0ZW0ubWQuaW4tbGlzdC5pb24tZm9jdXNhYmxlLmh5ZHJhdGVkIHtcclxuICAgIHBhZGRpbmctbGVmdDogMTZweDtcclxuICAgIG1pbi13aWR0aDogbm9uZTtcclxufVxyXG5cclxuLy9JT1NcclxuaW9uLWl0ZW0uaWNvbi1yaWdodC1zaWRlLmlvbi10ZXh0LWVuZC5pdGVtLmlvcy5pbi1saXN0Lmlvbi1mb2N1c2FibGUuaHlkcmF0ZWQge1xyXG4gICAgcGFkZGluZy1sZWZ0OiAxNnB4O1xyXG4gICAgbWluLXdpZHRoOiBub25lO1xyXG59Il19 */";
     /***/
   },
 
@@ -1978,69 +1978,63 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var rxjs___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-    /*! rxjs/ */
-    "./node_modules/rxjs/_esm2015/index.js");
-    /* harmony import */
-
-
-    var rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! rxjs/internal/observable/timer */
     "./node_modules/rxjs/internal/observable/timer.js");
     /* harmony import */
 
 
-    var rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__);
+    var rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__);
     /* harmony import */
 
 
-    var rxjs_operators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! rxjs/operators */
     "./node_modules/rxjs/_esm2015/operators/index.js");
     /* harmony import */
 
 
-    var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! @ionic-native/local-notifications/ngx */
     "./node_modules/@ionic-native/local-notifications/ngx/index.js");
     /* harmony import */
 
 
-    var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! src/app/services/chat.service */
     "./src/app/services/chat.service.ts");
     /* harmony import */
 
 
-    var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! @angular/common/http */
     "./node_modules/@angular/common/fesm2015/http.js");
     /* harmony import */
 
 
-    var _chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! ./../../chats/chat-rooms/chat-rooms.component */
     "./src/app/chats/chat-rooms/chat-rooms.component.ts");
     /* harmony import */
 
 
-    var src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! src/app/modalContent/payment/payment.component */
     "./src/app/modalContent/payment/payment.component.ts");
     /* harmony import */
 
 
-    var process__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    var process__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! process */
     "./node_modules/process/browser.js");
     /* harmony import */
 
 
-    var process__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(process__WEBPACK_IMPORTED_MODULE_17__);
+    var process__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(process__WEBPACK_IMPORTED_MODULE_16__);
     /* harmony import */
 
 
-    var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! @ionic-native/social-sharing/ngx */
     "./node_modules/@ionic-native/social-sharing/ngx/index.js");
     /* To try the app with Enablex hosted service you need to set the kTry = true */
@@ -2135,9 +2129,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   type: '1'
                 };
 
-                _this2.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_16__["PaymentComponent"], 'bottomModal', fileData);
+                _this2.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData);
 
-                Object(process__WEBPACK_IMPORTED_MODULE_17__["exit"])();
+                Object(process__WEBPACK_IMPORTED_MODULE_16__["exit"])();
                 return false;
               } // console.log(this.Mins);
               // console.log(this.totalIntoFee);
@@ -2179,7 +2173,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         type: '2'
                       };
 
-                      _this2.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_16__["PaymentComponent"], 'bottomModal', fileData); // this.pendingPayment();
+                      _this2.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData); // this.pendingPayment();
 
 
                       i++;
@@ -2317,28 +2311,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             if (a > b) {
               c = Math.abs(a - b) / 1000;
               _this4.programDetail.cd = c;
-              _this4.dd = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(function () {
+              _this4.dd = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
                 if (_this4.programDetail.cd > 0) {
                   --_this4.programDetail.cd;
                 }
 
                 return ~~(_this4.programDetail.cd / (60 * 60 * 24));
               }));
-              _this4.ss = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(function () {
+              _this4.ss = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
                 if (_this4.programDetail.cd > 0) {
                   --_this4.programDetail.cd;
                 }
 
                 return ~~(_this4.programDetail.cd % 3600 % 60);
               }));
-              _this4.mm = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(function () {
+              _this4.mm = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
                 if (_this4.programDetail.cd > 0) {
                   --_this4.programDetail.cd;
                 }
 
                 return ~~(_this4.programDetail.cd % 3600 / 60);
               }));
-              _this4.hh = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(function () {
+              _this4.hh = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
                 if (_this4.programDetail.cd <= 5) {
                   _this4.programDetail.ready = true;
                   _this4.programDetail.live = true;
@@ -2394,21 +2388,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "checkStreaming",
-        value: function checkStreaming() {
-          var _this5 = this;
-
-          this.sub = Object(rxjs___WEBPACK_IMPORTED_MODULE_9__["interval"])(5000).subscribe(function (val) {
-            _this5.programService.getProgramById({
-              "programId": _this5.programId
-            }).subscribe(function (data) {
-              console.log(_this5.programDetail);
-
-              if (data.programData.is_live) {
-                _this5.displayProgData = true;
-                _this5.programDetail.live = true;
-              }
-            });
-          });
+        value: function checkStreaming() {// this.sub = interval(5000)
+          //   .subscribe((val) => {
+          //     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
+          //       console.log(this.programDetail);
+          //       if (data.programData.is_live) {
+          //         this.displayProgData = true;
+          //         this.programDetail.live = true;
+          //       }
+          //     });
+          //   });
         }
       }, {
         key: "showSchedule",
@@ -2428,7 +2417,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "showChatUsers",
         value: function showChatUsers() {
-          var _this6 = this;
+          var _this5 = this;
 
           if (this.programType != "public") {
             this.commonService.presentLoader();
@@ -2437,7 +2426,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'type': 3
             }).subscribe(function (data) {
               if (data.id > 0) {
-                _this6.commonService.dismissLoader();
+                _this5.commonService.dismissLoader();
 
                 var chatRoom = data.room_id;
                 var chatReceiverId = data.group_id;
@@ -2448,17 +2437,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   receiverId: parseInt(chatReceiverId)
                 };
 
-                _this6.commonService.presentModal(_chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_15__["ChatRoomsComponent"], 'fullModal', fileData);
+                _this5.commonService.presentModal(_chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_14__["ChatRoomsComponent"], 'fullModal', fileData);
               } else {
-                _this6.commonService.dismissLoader(); // chat_type = 1:consultant,2:user,3:program
+                _this5.commonService.dismissLoader(); // chat_type = 1:consultant,2:user,3:program
 
 
-                _this6.router.navigate(["/first-message/" + _this6.programId + "/3"]);
+                _this5.router.navigate(["/first-message/" + _this5.programId + "/3"]);
               }
             }, function (err) {
-              _this6.commonService.presentToast("Couldnt load data, Something went wrong.");
+              _this5.commonService.presentToast("Couldnt load data, Something went wrong.");
 
-              _this6.commonService.dismissLoader();
+              _this5.commonService.dismissLoader();
             });
           } else {
             this.commonService.presentToast("Chat Not Allow on Public Program");
@@ -2472,16 +2461,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "acceptRequest",
         value: function acceptRequest() {
-          var _this7 = this;
+          var _this6 = this;
 
           this.programService.acceptProgramRequest({
             'programId': this.programDetail.id
           }).subscribe(function (data) {
-            var prog_date = new Date(_this7.programDetail.program_date + 'Z');
+            var prog_date = new Date(_this6.programDetail.program_date + 'Z');
 
-            _this7.localNotifications.schedule({
-              id: _this7.programId,
-              text: _this7.programDetail.title + " program will start at \n " + prog_date,
+            _this6.localNotifications.schedule({
+              id: _this6.programId,
+              text: _this6.programDetail.title + " program will start at \n " + prog_date,
               trigger: {
                 at: new Date(prog_date.getTime() - 60 * 60 * 500)
               },
@@ -2494,18 +2483,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               foreground: true
             });
 
-            _this7.router.navigateByUrl('/tabs/consultant-profile');
+            _this6.router.navigateByUrl('/tabs/consultant-profile');
           });
         }
       }, {
         key: "joinRequest",
         value: function joinRequest() {
-          var _this8 = this;
+          var _this7 = this;
 
           this.programService.joinRequest({
             'programId': this.programDetail.id
           }).subscribe(function (data) {
-            _this8.request_join = true;
+            _this7.request_join = true;
           });
         }
       }, {
@@ -2528,7 +2517,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             pgamount: this.programFee,
             pgimg: this.programImage
           };
-          this.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_16__["PaymentComponent"], 'bottomModal', fileData);
+          this.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData);
         }
       }, {
         key: "shareItem",
@@ -2550,15 +2539,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         type: _services_program_service__WEBPACK_IMPORTED_MODULE_7__["ProgramService"]
       }, {
-        type: _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_12__["LocalNotifications"]
+        type: _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_11__["LocalNotifications"]
       }, {
-        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClient"]
+        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClient"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
       }, {
-        type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_13__["ChatService"]
+        type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_12__["ChatService"]
       }, {
-        type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_18__["SocialSharing"]
+        type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_17__["SocialSharing"]
       }];
     };
 
@@ -2572,7 +2561,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       "./src/app/app.component.scss"))["default"], tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./program-view.page.scss */
       "./src/app/program/program-view/program-view.page.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"], _services_program_service__WEBPACK_IMPORTED_MODULE_7__["ProgramService"], _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_12__["LocalNotifications"], _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_13__["ChatService"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_18__["SocialSharing"]])], ProgramViewPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"], _services_program_service__WEBPACK_IMPORTED_MODULE_7__["ProgramService"], _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_11__["LocalNotifications"], _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_12__["ChatService"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_17__["SocialSharing"]])], ProgramViewPage);
     /***/
   }
 }]);

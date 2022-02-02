@@ -1639,7 +1639,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-text {\n  line-height: 1.5; }\n\n.ios.main_content {\n  --padding-top: 0px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dGluZ3MvcHJpdmFjeS9DOlxceGFtcHBcXGh0ZG9jc1xcaW50b2FjdGl2ZVxcQk0vc3JjXFxhcHBcXHNldHRpbmdzXFxwcml2YWN5XFxwcml2YWN5LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUFTLGdCQUFnQixFQUFBOztBQUN6QjtFQUFrQixrQkFBYyxFQUFBIiwiZmlsZSI6InNyYy9hcHAvc2V0dGluZ3MvcHJpdmFjeS9wcml2YWN5LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10ZXh0e2xpbmUtaGVpZ2h0OiAxLjU7fVxyXG4uaW9zLm1haW5fY29udGVudHstLXBhZGRpbmctdG9wOiAwcHg7fSJdfQ== */";
+    __webpack_exports__["default"] = "ion-text {\n  line-height: 1.5; }\n\n.ios.main_content {\n  --padding-top: 0px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dGluZ3MvcHJpdmFjeS9DOlxceGFtcHBcXGh0ZG9jc1xcaW50b2FjdGl2ZS9zcmNcXGFwcFxcc2V0dGluZ3NcXHByaXZhY3lcXHByaXZhY3kucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQVMsZ0JBQWdCLEVBQUE7O0FBQ3pCO0VBQWtCLGtCQUFjLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9zZXR0aW5ncy9wcml2YWN5L3ByaXZhY3kucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRleHR7bGluZS1oZWlnaHQ6IDEuNTt9XHJcbi5pb3MubWFpbl9jb250ZW50ey0tcGFkZGluZy10b3A6IDBweDt9Il19 */";
     /***/
   },
 

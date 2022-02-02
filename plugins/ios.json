@@ -72,6 +72,9 @@
       "DEEPLINK_SCHEME": "https",
       "DEEPLINK_HOST": "ionicinto.wdipl.com",
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-stripe": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
   "dependent_plugins": {

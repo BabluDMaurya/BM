@@ -167,6 +167,10 @@
             {
               "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"CordovaStripe\"><param name=\"ios-package\" value=\"CordovaStripe\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -366,6 +370,9 @@
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-stripe": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
@@ -943,6 +950,14 @@
       "clobbers": [
         "cordova.plugins.barcodeScanner"
       ]
+    },
+    {
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
+      "clobbers": [
+        "cordova.plugins.stripe"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -982,6 +997,7 @@
     "cordova-sqlite-storage": "4.0.0",
     "enablex-cordova-plugin": "1.8.0",
     "ionic-plugin-deeplinks": "1.0.22",
-    "phonegap-plugin-barcodescanner": "8.1.0"
+    "phonegap-plugin-barcodescanner": "8.1.0",
+    "cordova-plugin-stripe": "1.5.3"
   }
 }
