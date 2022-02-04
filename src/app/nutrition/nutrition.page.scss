@@ -82,6 +82,10 @@ ion-item.floatingItem{
     min-width: 100px;
     height: 30px;
     font-size: 13px;
+    position: relative;
+}
+.nutrition-select button{
+
 }
 .closeicon{
     color: rgb(46, 45, 45) !important;
@@ -90,3 +94,4 @@ ion-item.floatingItem{
     width: 100% !important;
     border-radius: 0 !important;
 }
+
