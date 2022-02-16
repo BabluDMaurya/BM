@@ -39,7 +39,7 @@ export class NutritionPreviewComponent implements OnInit, OnDestroy {
       this.images = data['form'].file;
     });
     console.log(this.nutritionData.form.nutriBevrageType);
-    console.log(this.nutritionData['minerals'] + 'mmm');
+    console.log(this.nutritionData['minerals'] , 'mmm');
     let cal = 0;
     let carbo = 0;
     let prot = 0;
@@ -55,7 +55,7 @@ export class NutritionPreviewComponent implements OnInit, OnDestroy {
       if(value.item_name)
       { this.apiIngredients += value['item_name'] + ',';}
       
-        cal   = cal + value['nf_calories'];
+        cal   = cal + value['newCal'];
         carbo = carbo + value['nf_total_carbohydrate'];
         prot  = prot + value['nf_protein'];
         fat   = fat + value['nf_total_fat'];

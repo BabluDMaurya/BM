@@ -1,11 +1,16 @@
 <ion-header>
+  <ion-item slot="start">
+    <ion-buttons class="ion-no-margin" *ngIf="!showPreview">
+      <ion-icon ios="ios-arrow-back" md="md-arrow-back" (click) = "goBack()"></ion-icon>
+    </ion-buttons>
+  </ion-item> 
   <ion-toolbar>
     <ion-title>card-details</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content  color="primary">
-  <form  #form="ngForm" (ngSubmit)="register(form)">
+<ion-content  color="primary" *ngIf="this.storageData.stripe_customer_id == '' ">
+  <form  #form="ngForm" (ngSubmit)="register(form)" >
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -36,4 +41,12 @@
       </ion-row>
     </ion-grid>
   </form>
+  
+</ion-content>
+<ion-content *ngIf="this.storageData.stripe_customer_id != '' ">
+  <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+    <div text-center>
+      <h3>Update Card Details!</h3>
+    </div>
+  </ion-col> 
 </ion-content>

@@ -16,6 +16,7 @@ export class NutritionPage implements OnInit , OnDestroy {
   quantity = 1;
   appendedValue = 1;
   newQty: any;
+  newCal: any;
   increment() {
     this.quantity++;
   }
@@ -201,6 +202,13 @@ export class NutritionPage implements OnInit , OnDestroy {
           if (Array.isArray(element.data)) {
             element.data.forEach(el => {
              el.newQty =  el.alt_measures[0].qty;
+            //  el.newCal =  el.nf_calories;
+             el.newCal = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_calories;
+             el.nf_total_carbohydrate = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_total_carbohydrate;
+             el.nf_protein = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_protein;
+             el.nf_total_fat = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_total_fat;
+             el.nf_sugars = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_sugars;
+             el.nf_cholesterol = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_cholesterol;
             //   el.alt_measures.forEach(el => {
             //   el.newQty = el.qty;
             // });
@@ -242,6 +250,12 @@ export class NutritionPage implements OnInit , OnDestroy {
             if (el1.measure == abc && element.data[i].food_name == food) {
               console.log(element.data[i]);
                 element.data[i].newQty  = el1.qty;
+                element.data[i].newCal                = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_calories;
+                element.data[i].nf_total_carbohydrate = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_total_carbohydrate;
+                element.data[i].nf_protein            = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_protein;
+                element.data[i].nf_total_fat          = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_total_fat;
+                element.data[i].nf_sugars             = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_sugars;
+                element.data[i].nf_cholesterol        = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_cholesterol;
             }
           });
         });

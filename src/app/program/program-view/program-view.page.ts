@@ -61,7 +61,7 @@ export class ProgramViewPage implements OnInit {
   dd: Observable<number>;
   tick = 1000;
   sub: any;
-  prePayment : any;
+  prePayment : boolean = true;
   //
   programType : any;
   programDurations : any;
@@ -318,7 +318,8 @@ export class ProgramViewPage implements OnInit {
               this.programDetail.live = true;
               this.displayProgData = true;
               this.checkStreaming();
-              console.log(this.programDetail.live + 'liveee');
+              console.log(this.programDetail);
+              console.log(this.programDetail.live , 'liveee');
             }
             if (this.programDetail.cd > 0) {
               --this.programDetail.cd;
@@ -335,6 +336,8 @@ export class ProgramViewPage implements OnInit {
         this.displayProgData = true;
         if (new Date(this.programDetail.program_end_time + 'Z') > new Date()) {
           this.programDetail.ready = true;
+          this.programDetail.live = true;
+          
           console.log(this.programDetail.live + 'liveeeeeee');
           this.checkStreaming();
 
@@ -350,6 +353,7 @@ export class ProgramViewPage implements OnInit {
 
         if ((this.programDetail.request_accepted.split(',')).includes(this.userData.id.toString())) {
           this.request_accs = true;
+          this.request_join = true;
         }
       } else if (this.programDetail.request_sent != null) {
         if ((this.programDetail.request_sent.split(',')).includes(this.userData.id.toString())) {

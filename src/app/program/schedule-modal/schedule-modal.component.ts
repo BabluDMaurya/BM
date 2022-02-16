@@ -21,6 +21,7 @@ export class ScheduleModalComponent implements OnInit {
     spaceBetween: 0
   }
   url=Config.imgUrl;
+  non_live_component_fee: any = 0;
   programDetail: any;
   allProgram: any;
   scheduleTabs: string = 'programs';
@@ -57,10 +58,13 @@ export class ScheduleModalComponent implements OnInit {
     this.commonService.presentLoader();
     this.programService.getProgramById({ 'parentId': programId }).subscribe(data => {
       console.log(data);
-      console.log(data.cloneList);
+      console.log(data.cloneList[0].non_live_component_fee);
+      this.non_live_component_fee = data.cloneList[0].non_live_component_fee;
       this.allProgram = data.cloneList;
       this.allProgram.filter(el => {
         el.convertedTime = new Date(el.program_date + 'Z');
+        console.log(el.convertedTime);
+        console.log(new Date());
         el.nutrition_array = [];
         el.videoId_array = [];
         el.videoProg_array = [];
@@ -115,6 +119,10 @@ export class ScheduleModalComponent implements OnInit {
     this.commonService.dismissModal();
   }
   disclass(){
+    console.log(this.non_live_component_fee);
+    if(this.non_live_component_fee > '0'){
+      this.commonService.presentToast("Program is Paid.")
+    }
     this.commonService.presentToast("Program is not live yet.")
   }
   async showVideoDetails(item){
