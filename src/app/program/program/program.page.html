@@ -41,7 +41,8 @@
 <div *ngIf="notShowAll" class="programCalendar">
   <!-- <h4>{{myDate | date}}</h4> -->
 <ion-item lines="none">  
-  <ion-label *ngFor="let week of dayDate; let i = index " class="{{week.activeClass}}" (click)="week.disableClass == 0 ? mySortDate(week.myDate,i) : tostmess()">{{week.day}}<p>{{week.date}}</p></ion-label>
+  <!-- <ion-label *ngFor="let week of dayDate; let i = index " class="{{week.activeClass}}" (click)="week.disableClass == 0 ? mySortDate(week.myDate,i) : tostmess()">{{week.day}}<p>{{week.date}}</p></ion-label> -->
+  <ion-label *ngFor="let week of dayDate; let i = index " class="{{week.activeClass}}" (click)="mySortDate(week.myDate,i)">{{week.day}}<p>{{week.date}}</p></ion-label>
 </ion-item>
 </div>
   <ion-segment class="top-segment" (ionChange)="tabs($event)">
@@ -151,7 +152,7 @@
           </ion-item>          
         </ion-card>
       </div>
-      <div *ngIf="noAllScheduleList" class="no-data">
+      <div *ngIf="noAllScheduleList || noScheduleList" class="no-data">
         <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
         <p>No Schedule Program</p>
       </div>

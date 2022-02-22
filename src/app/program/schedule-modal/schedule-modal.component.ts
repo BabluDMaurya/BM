@@ -9,6 +9,8 @@ import { NutritionModalComponent } from 'src/app/user-profile/nutrition-modal/nu
 import {  ModalController } from '@ionic/angular';
 import { AddEquipmentsComponent } from '../../add-program/add-equipments/add-equipments.component';
 import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/view-video-detail.component';
+import { EquipmentPaymentComponent } from 'src/app/modalContent/equipment-payment/equipment-payment.component';
+
 @Component({
   selector: 'app-schedule-modal',
   templateUrl: './schedule-modal.component.html',
@@ -121,6 +123,10 @@ export class ScheduleModalComponent implements OnInit {
   disclass(){
     console.log(this.non_live_component_fee);
     if(this.non_live_component_fee > '0'){
+      var fileData = {
+        pgamount : this.non_live_component_fee,
+        } 
+      this.commonService.presentModal(EquipmentPaymentComponent, 'bottomModal', fileData);
       this.commonService.presentToast("Program is Paid.")
     }
     this.commonService.presentToast("Program is not live yet.")

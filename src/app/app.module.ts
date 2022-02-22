@@ -87,6 +87,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { ThankyouComponent } from './paypal/thankyou/thankyou.component';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 import { PaymentComponent } from './modalContent/payment/payment.component'; 
+import { EquipmentPaymentComponent } from 'src/app/modalContent/equipment-payment/equipment-payment.component';
 import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/view-video-detail.component';
 import {Stripe} from '@ionic-native/stripe/ngx';
 
@@ -102,7 +103,7 @@ import {Stripe} from '@ionic-native/stripe/ngx';
      DropdownComponent, PlaylistDropdownComponent,
     RequestsModalComponent, ParticipantsComponent, AdDetailsComponent,
     SponserCommentComponent,  MusicDropdownComponent,AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent,
-    ChatRoomsComponent,CreateGroupChatComponent,ThankyouComponent,PaymentComponent
+    ChatRoomsComponent,CreateGroupChatComponent,ThankyouComponent,PaymentComponent,EquipmentPaymentComponent
   ],
 
   entryComponents: [UserDetailsComponent, FollowersComponent, FollowingComponent,
@@ -112,7 +113,7 @@ import {Stripe} from '@ionic-native/stripe/ngx';
     MusicDropdownComponent, PlaylistDropdownComponent, MusicVolumeModalComponent, MusicVolComponent,
     PopoverComponent, DateTimeModalComponent, EquipmentsComponent, AddEquipmentsComponent
     , VideosThumbListComponent, ScheduleModalComponent, RequestedDropdownComponent,ThankyouComponent,
-    PaymentComponent,ViewVideoDetailComponent,
+    PaymentComponent,EquipmentPaymentComponent,ViewVideoDetailComponent,
     // GroupusersModalComponent,
     
     ParticipantsComponent, DropdownComponent, RequestsModalComponent,

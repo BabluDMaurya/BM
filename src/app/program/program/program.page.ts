@@ -505,8 +505,10 @@ export class ProgramPage implements OnInit {
       });
       this.pgCount = this.scheduleList.length;
       this.commonService.dismissLoader();
+      console.log(this.pgCount , 'count');
       if(this.scheduleList.length < 1){
         this.noScheduleList = true;
+        // this.noAllScheduleList = true;
       } 
     },
     err=> {

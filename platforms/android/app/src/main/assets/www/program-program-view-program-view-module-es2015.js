@@ -1337,19 +1337,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _services_program_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../services/program.service */ "./src/app/services/program.service.ts");
 /* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../config/config */ "./src/app/config/config.ts");
-/* harmony import */ var rxjs___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/ */ "./node_modules/rxjs/_esm2015/index.js");
-/* harmony import */ var rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs/internal/observable/timer */ "./node_modules/rxjs/internal/observable/timer.js");
-/* harmony import */ var rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/local-notifications/ngx */ "./node_modules/@ionic-native/local-notifications/ngx/index.js");
-/* harmony import */ var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/app/services/chat.service */ "./src/app/services/chat.service.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./../../chats/chat-rooms/chat-rooms.component */ "./src/app/chats/chat-rooms/chat-rooms.component.ts");
-/* harmony import */ var src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! src/app/modalContent/payment/payment.component */ "./src/app/modalContent/payment/payment.component.ts");
-/* harmony import */ var process__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! process */ "./node_modules/process/browser.js");
-/* harmony import */ var process__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(process__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/social-sharing/ngx */ "./node_modules/@ionic-native/social-sharing/ngx/index.js");
-
+/* harmony import */ var rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/internal/observable/timer */ "./node_modules/rxjs/internal/observable/timer.js");
+/* harmony import */ var rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/local-notifications/ngx */ "./node_modules/@ionic-native/local-notifications/ngx/index.js");
+/* harmony import */ var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/services/chat.service */ "./src/app/services/chat.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./../../chats/chat-rooms/chat-rooms.component */ "./src/app/chats/chat-rooms/chat-rooms.component.ts");
+/* harmony import */ var src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! src/app/modalContent/payment/payment.component */ "./src/app/modalContent/payment/payment.component.ts");
+/* harmony import */ var process__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! process */ "./node_modules/process/browser.js");
+/* harmony import */ var process__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(process__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/social-sharing/ngx */ "./node_modules/@ionic-native/social-sharing/ngx/index.js");
 
 
 
@@ -1393,6 +1391,7 @@ let ProgramViewPage = class ProgramViewPage {
         this.vidUrl = _config_config__WEBPACK_IMPORTED_MODULE_8__["Config"].progVidUrl;
         this.displayProgData = false;
         this.tick = 1000;
+        this.prePayment = true;
         //
         this.userName = "Bablu";
         this.roomID = "";
@@ -1443,8 +1442,8 @@ let ProgramViewPage = class ProgramViewPage {
                         routeLink: 'progView',
                         type: '1'
                     };
-                    this.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_16__["PaymentComponent"], 'bottomModal', fileData);
-                    Object(process__WEBPACK_IMPORTED_MODULE_17__["exit"])();
+                    this.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData);
+                    Object(process__WEBPACK_IMPORTED_MODULE_16__["exit"])();
                     return false;
                 }
                 // console.log(this.Mins);
@@ -1478,7 +1477,7 @@ let ProgramViewPage = class ProgramViewPage {
                                     routeLink: 'progView',
                                     type: '2'
                                 };
-                                this.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_16__["PaymentComponent"], 'bottomModal', fileData);
+                                this.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData);
                                 // this.pendingPayment();
                                 i++;
                             }
@@ -1583,31 +1582,32 @@ let ProgramViewPage = class ProgramViewPage {
             if (a > b) {
                 c = Math.abs(a - b) / 1000;
                 this.programDetail.cd = c;
-                this.dd = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["take"])(this.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(() => {
+                this.dd = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(this.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(() => {
                     if (this.programDetail.cd > 0) {
                         --this.programDetail.cd;
                     }
                     return ~~(this.programDetail.cd / (60 * 60 * 24));
                 }));
-                this.ss = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["take"])(this.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(() => {
+                this.ss = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(this.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(() => {
                     if (this.programDetail.cd > 0) {
                         --this.programDetail.cd;
                     }
                     return ~~(this.programDetail.cd % 3600 % 60);
                 }));
-                this.mm = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["take"])(this.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(() => {
+                this.mm = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(this.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(() => {
                     if (this.programDetail.cd > 0) {
                         --this.programDetail.cd;
                     }
                     return ~~(this.programDetail.cd % 3600 / 60);
                 }));
-                this.hh = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["take"])(this.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(() => {
+                this.hh = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(this.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(() => {
                     if (this.programDetail.cd <= 5) {
                         this.programDetail.ready = true;
                         this.programDetail.live = true;
                         this.displayProgData = true;
                         this.checkStreaming();
-                        console.log(this.programDetail.live + 'liveee');
+                        console.log(this.programDetail);
+                        console.log(this.programDetail.live, 'liveee');
                     }
                     if (this.programDetail.cd > 0) {
                         --this.programDetail.cd;
@@ -1624,6 +1624,7 @@ let ProgramViewPage = class ProgramViewPage {
                 this.displayProgData = true;
                 if (new Date(this.programDetail.program_end_time + 'Z') > new Date()) {
                     this.programDetail.ready = true;
+                    this.programDetail.live = true;
                     console.log(this.programDetail.live + 'liveeeeeee');
                     this.checkStreaming();
                 }
@@ -1636,6 +1637,7 @@ let ProgramViewPage = class ProgramViewPage {
             if (this.programDetail.request_accepted != null) {
                 if ((this.programDetail.request_accepted.split(',')).includes(this.userData.id.toString())) {
                     this.request_accs = true;
+                    this.request_join = true;
                 }
             }
             else if (this.programDetail.request_sent != null) {
@@ -1652,16 +1654,16 @@ let ProgramViewPage = class ProgramViewPage {
         });
     }
     checkStreaming() {
-        this.sub = Object(rxjs___WEBPACK_IMPORTED_MODULE_9__["interval"])(5000)
-            .subscribe((val) => {
-            this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
-                console.log(this.programDetail);
-                if (data.programData.is_live) {
-                    this.displayProgData = true;
-                    this.programDetail.live = true;
-                }
-            });
-        });
+        // this.sub = interval(5000)
+        //   .subscribe((val) => {
+        //     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
+        //       console.log(this.programDetail);
+        //       if (data.programData.is_live) {
+        //         this.displayProgData = true;
+        //         this.programDetail.live = true;
+        //       }
+        //     });
+        //   });
     }
     showSchedule(event) {
         this.programDetail.displayData = this.displayProgData;
@@ -1684,7 +1686,7 @@ let ProgramViewPage = class ProgramViewPage {
                         room: chatRoom,
                         receiverId: parseInt(chatReceiverId)
                     };
-                    this.commonService.presentModal(_chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_15__["ChatRoomsComponent"], 'fullModal', fileData);
+                    this.commonService.presentModal(_chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_14__["ChatRoomsComponent"], 'fullModal', fileData);
                 }
                 else {
                     this.commonService.dismissLoader();
@@ -1738,7 +1740,7 @@ let ProgramViewPage = class ProgramViewPage {
             pgamount: this.programFee,
             pgimg: this.programImage,
         };
-        this.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_16__["PaymentComponent"], 'bottomModal', fileData);
+        this.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData);
     }
     shareItem() {
         this.socialSharing.share("Program Details", "", "", "program-view/" + this.programId)
@@ -1753,11 +1755,11 @@ ProgramViewPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["NavController"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"] },
     { type: _services_program_service__WEBPACK_IMPORTED_MODULE_7__["ProgramService"] },
-    { type: _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_12__["LocalNotifications"] },
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClient"] },
+    { type: _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_11__["LocalNotifications"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClient"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
-    { type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_13__["ChatService"] },
-    { type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_18__["SocialSharing"] }
+    { type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_12__["ChatService"] },
+    { type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_17__["SocialSharing"] }
 ];
 ProgramViewPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1769,11 +1771,11 @@ ProgramViewPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["NavController"],
         _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"],
         _services_program_service__WEBPACK_IMPORTED_MODULE_7__["ProgramService"],
-        _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_12__["LocalNotifications"],
-        _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClient"],
+        _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_11__["LocalNotifications"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClient"],
         _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"],
-        src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_13__["ChatService"],
-        _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_18__["SocialSharing"]])
+        src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_12__["ChatService"],
+        _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_17__["SocialSharing"]])
 ], ProgramViewPage);
 
 
