@@ -368,16 +368,16 @@ export class ProgramViewPage implements OnInit {
 
 
   checkStreaming() {
-    this.sub = interval(5000)
-      .subscribe((val) => {
-        this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
-          console.log(this.programDetail);
-          if (data.programData.is_live) {
-            this.displayProgData = true;
-            this.programDetail.live = true;
-          }
-        });
-      });
+    // this.sub = interval(5000)
+    //   .subscribe((val) => {
+    //     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
+    //       console.log(this.programDetail);
+    //       if (data.programData.is_live) {
+    //         this.displayProgData = true;
+    //         this.programDetail.live = true;
+    //       }
+    //     });
+    //   });
   }
   showSchedule(event) {    
     this.programDetail.displayData = this.displayProgData;

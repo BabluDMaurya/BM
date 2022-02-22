@@ -199,4 +199,8 @@ export class ProgramService {
     return this.http.post<any>(Config.ApiUrl+'api/auth/updateWatchCounter', id ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('updateWatchCounter', id)));
   }
 
+  createStripeCustomerId(data: any): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/createStripeCustomerId', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('createStripeCustomerId', data)));
+  }
+
 }

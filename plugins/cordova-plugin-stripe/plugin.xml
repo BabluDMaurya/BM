@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-stripe" version="1.5.3" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>cordova-plugin-stripe</name>
+    <js-module name="stripe" src="www/CordovaStripe.js">
+        <clobbers target="cordova.plugins.stripe" />
+    </js-module>
+
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CordovaStripe">
+                <param name="android-package" value="com.zyramedia.cordova.stripe.CordovaStripe" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/CordovaStripe.java" target-dir="src/com/zyramedia/cordova/stripe" />
+	<framework src="com.stripe:stripe-android:4.1.2" />
+
+    </platform>
+
+    <platform name="ios">
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="CordovaStripe">
+                <param name="ios-package" value="CordovaStripe" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CordovaStripe.h" />
+        <source-file src="src/ios/CordovaStripe.m" />
+
+        <framework src="src/ios/Stripe.framework" custom="true" />
+
+    </platform>
+
+    <platform name="browser">
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="CordovaStripe">
+                <param name="browser-package" value="CordovaStripe" />
+            </feature>
+        </config-file>
+
+        <js-module src="src/browser/CordovaStripe.js" name="CordovaStripe">
+            <runs />
+        </js-module>
+
+    </platform>
+
+</plugin>

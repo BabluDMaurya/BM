@@ -14,7 +14,8 @@ import { NutritionService } from './../services/nutrition.service';
 export class NutritionPage implements OnInit , OnDestroy {
 
   quantity = 1;
-
+  appendedValue = 1;
+  newQty: any;
   increment() {
     this.quantity++;
   }
@@ -93,7 +94,8 @@ export class NutritionPage implements OnInit , OnDestroy {
       bevragveOption: new FormControl(''),
       unitQnty:new FormControl(''),
       bevragveUnit: new FormControl(''),
-      bevragveinclude: new FormControl('')
+      bevragveinclude: new FormControl(''),
+      appendedValue: new FormControl(''),
     });
   }
 
@@ -118,6 +120,7 @@ export class NutritionPage implements OnInit , OnDestroy {
       { type: 'required', message: 'Ingredients are required.' },
     ],
     nutriBevrageType: [],
+    appendedValue:[]
   };
 
   get f() { return this.nutritionForm.controls; }
@@ -180,8 +183,8 @@ export class NutritionPage implements OnInit , OnDestroy {
   }
 
   async searchFoodModal() {
-    console.log(this.scanData);
-    console.log('fff');
+    // console.log(this.scanData);
+    // console.log('fff');
     const modal = await this.modalController.create({
       component: SearchFoodComponent,
       cssClass: '',
@@ -191,9 +194,19 @@ export class NutritionPage implements OnInit , OnDestroy {
     });
 
     modal.onDidDismiss().then((d: any) => {
-      console.log(d);
+      // console.log(d);
       if (d.data ) {
         this.scanData.push(d);
+        this.scanData.forEach(element => {
+          if (Array.isArray(element.data)) {
+            element.data.forEach(el => {
+             el.newQty =  el.alt_measures[0].qty;
+            //   el.alt_measures.forEach(el => {
+            //   el.newQty = el.qty;
+            // });
+          });
+          } 
+        });
       }
       console.log(this.scanData);
     });
@@ -201,7 +214,8 @@ export class NutritionPage implements OnInit , OnDestroy {
   }
 
   removeApiData(i, fName) {
-
+    console.log(i);
+    // console.log(f);
     this.scanData.forEach(element => {
       if (Array.isArray(element.data)) {
         element.data.forEach(el => {
@@ -212,14 +226,29 @@ export class NutritionPage implements OnInit , OnDestroy {
       } else {
 
         if (element.data.item_name == fName) {
-          ;
           this.scanData.splice(i, 1);
         }
       }
     });
     console.log(this.scanData);
   }
-
+  detailsUpdate(i,food,value) {
+    let abc = value.target.value;
+    this.scanData.forEach(element => {
+      if (Array.isArray(element.data)) {
+        element.data.forEach(el => {
+          
+          element.data[i].alt_measures.forEach(el1 => {
+            if (el1.measure == abc && element.data[i].food_name == food) {
+              console.log(element.data[i]);
+                element.data[i].newQty  = el1.qty;
+            }
+          });
+        });
+      }
+    });
+    
+  }
   // ----------------------------- Open gallery  with multiple --------------//
   gallaryImgPath: any = [];
   openGallery() {

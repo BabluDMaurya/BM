@@ -167,6 +167,10 @@
             {
               "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"CordovaStripe\"><param name=\"ios-package\" value=\"CordovaStripe\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -254,6 +258,9 @@
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "com-sarriaroman-photoviewer": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "com.moust.cordova.videoplayer": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "com.paypal.cordova.mobilesdk": {
@@ -365,7 +372,7 @@
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "com.moust.cordova.videoplayer": {
+    "cordova-plugin-stripe": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
@@ -385,6 +392,14 @@
       "pluginId": "com-sarriaroman-photoviewer",
       "clobbers": [
         "PhotoViewer"
+      ]
+    },
+    {
+      "id": "com.moust.cordova.videoplayer.VideoPlayer",
+      "file": "plugins/com.moust.cordova.videoplayer/www/videoplayer.js",
+      "pluginId": "com.moust.cordova.videoplayer",
+      "clobbers": [
+        "VideoPlayer"
       ]
     },
     {
@@ -937,17 +952,18 @@
       ]
     },
     {
-      "id": "com.moust.cordova.videoplayer.VideoPlayer",
-      "file": "plugins/com.moust.cordova.videoplayer/www/videoplayer.js",
-      "pluginId": "com.moust.cordova.videoplayer",
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
       "clobbers": [
-        "VideoPlayer"
+        "cordova.plugins.stripe"
       ]
     }
   ],
   "plugin_metadata": {
     "card.io.cordova.mobilesdk": "2.1.0",
     "com-sarriaroman-photoviewer": "1.2.4",
+    "com.moust.cordova.videoplayer": "1.0.1",
     "com.paypal.cordova.mobilesdk": "3.5.0",
     "cordova-android-support-gradle-release": "3.0.1",
     "cordova-clipboard": "1.3.0",
@@ -982,6 +998,6 @@
     "enablex-cordova-plugin": "1.8.0",
     "ionic-plugin-deeplinks": "1.0.22",
     "phonegap-plugin-barcodescanner": "8.1.0",
-    "com.moust.cordova.videoplayer": "1.0.1"
+    "cordova-plugin-stripe": "1.5.3"
   }
 }

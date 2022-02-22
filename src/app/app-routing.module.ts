@@ -269,6 +269,10 @@ const routes: Routes = [
   { path: 'upcoming',
   loadChildren: () => import('./upcoming/upcoming.module').then( m => m.UpcomingPageModule)
   },
+  { path: 'card-details',
+  loadChildren: () => import('./settings/card-details/card-details.module').then( m => m.CardDetailsPageModule)
+  },
+  
 
 ];
 

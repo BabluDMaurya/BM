@@ -40,7 +40,7 @@ export class DateTimeModalComponent implements OnInit {
   approval_btn: any = false;
   hours: any;
   programData: any;
-  duration: string;
+  duration: any;
   minutes: any = 0;
   repetative: any = '';
   dupliEntry: any ='';
@@ -61,6 +61,8 @@ export class DateTimeModalComponent implements OnInit {
   repetatedDateCopy: any= []; 
   abDateSelect:any;
   selectedDateTime : any;
+  totalLiveSession: any;
+  totalLiveAmt: any = 0;
   constructor(
     public commonService: CommonService,
     public modalCtrl: ModalController,
@@ -80,6 +82,16 @@ export class DateTimeModalComponent implements OnInit {
     hourspan.setMinutes(hourspan.getMinutes() + 59);
     this.programData = this.navParams.data.programData;
     console.log(this.programData);
+    console.log(this.repetatedDateCopy);
+    var i = 0; 
+    this.repetatedDateCopy.forEach(el => {
+      if(el.is_live == true){
+        i++;
+      }
+    });
+    this.totalLiveSession = i;
+    console.log(i,' total live session');
+
     //get days name
     this.programList = this.navParams.data.programList; 
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -118,6 +130,7 @@ export class DateTimeModalComponent implements OnInit {
     }); 
     this.finalForm = this.fb.group({
       programFees: new FormControl('0'),
+      non_live_component_fee: new FormControl('0'),
     });
   }
   //------------------ 
@@ -349,6 +362,8 @@ export class DateTimeModalComponent implements OnInit {
     this.programData.repetatedDate     = this.repetatedDate;
     this.programData.repetatedDateCopy = this.repetatedDateCopy;
     this.programData.programFees       = fees.programFees;
+    this.programData.non_live_component_fee       = fees.non_live_component_fee;
+
 
     
     console.log(this.repetatedDateCopy);
@@ -477,4 +492,13 @@ export class DateTimeModalComponent implements OnInit {
    });
    return await modal.present();
 }
+
+updateTotalPrice(event){
+  
+        let price     = event.target.value;
+        // let amtPerMin = (price) / 60;
+        this.totalLiveAmt =  price * this.totalLiveSession; 
+        console.log(this.totalLiveAmt);
+}
+
 }

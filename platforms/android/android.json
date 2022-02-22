@@ -146,6 +146,10 @@
             {
               "xml": "<feature name=\"VideoPlayer\"><param name=\"android-package\" value=\"com.moust.cordova.videoplayer.VideoPlayer\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"CordovaStripe\"><param name=\"android-package\" value=\"com.zyramedia.cordova.stripe.CordovaStripe\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -507,6 +511,9 @@
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "com.moust.cordova.videoplayer": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "cordova-plugin-stripe": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     }
   },
@@ -1064,6 +1071,14 @@
       "clobbers": [
         "VideoPlayer"
       ]
+    },
+    {
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
+      "clobbers": [
+        "cordova.plugins.stripe"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -1102,6 +1117,7 @@
     "phonegap-plugin-barcodescanner": "8.1.0",
     "card.io.cordova.mobilesdk": "2.1.0",
     "com.paypal.cordova.mobilesdk": "3.5.0",
-    "com.moust.cordova.videoplayer": "1.0.1"
+    "com.moust.cordova.videoplayer": "1.0.1",
+    "cordova-plugin-stripe": "1.5.3"
   }
 }

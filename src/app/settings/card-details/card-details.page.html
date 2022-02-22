@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>card-details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  color="primary">
+  <form  #form="ngForm" (ngSubmit)="register(form)">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Enter Card Details!</h3>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input  name="holder_name" type="text" placeholder="Card Holder Name" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="card_number" type="text" placeholder="Card Number" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="cvv" type="text" placeholder="CVV" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="exp_month" type="number" placeholder="Expriy Month" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="exp_year" type="number" placeholder="Expriy Year" ngModel required></ion-input>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">Save Details</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

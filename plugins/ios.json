@@ -10,6 +10,9 @@
     "com-sarriaroman-photoviewer": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
+    "com.moust.cordova.videoplayer": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
     "com.paypal.cordova.mobilesdk": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
@@ -70,7 +73,7 @@
       "DEEPLINK_HOST": "ionicinto.wdipl.com",
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "com.moust.cordova.videoplayer": {
+    "cordova-plugin-stripe": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },

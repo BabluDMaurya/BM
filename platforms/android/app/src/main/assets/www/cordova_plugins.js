@@ -552,6 +552,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "VideoPlayer"
       ]
+    },
+    {
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
+      "clobbers": [
+        "cordova.plugins.stripe"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -590,6 +598,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "phonegap-plugin-barcodescanner": "8.1.0",
     "card.io.cordova.mobilesdk": "2.1.0",
     "com.paypal.cordova.mobilesdk": "3.5.0",
-    "com.moust.cordova.videoplayer": "1.0.1"
+    "com.moust.cordova.videoplayer": "1.0.1",
+    "cordova-plugin-stripe": "1.5.3"
   };
 });

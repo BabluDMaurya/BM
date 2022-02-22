@@ -188,5 +188,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-stripe": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-stripe@^1.5.3"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <title>Radiant Media Player - Live video player example</title>
+</head>
+
+<body>
+  <!-- Radiant Media Player core library -->
+  <script src="../js/rmp-hlsjs.min.js"></script>
+  <!-- Player container -->
+  <div id="rmpPlayer">
+  </div>
+  <script>
+    // Player settings
+    var src = {
+      hls: 'https://your-live-hls-url.m3u8'
+    };
+    var liveSettings = {
+      // Enter your license key
+      licenseKey: 'your-license-key',
+      src: src,
+      width: 640,
+      height: 360,
+      pathToRmpFiles: '../',
+      contentMetadata: {
+        poster: [
+          'https://your-poster-url.jpg'
+        ]
+      }
+    };
+    // init player
+    var elementID = 'rmpPlayer';
+    var rmp = new RadiantMP(elementID);
+    rmp.init(liveSettings);
+  </script>
+</body>
+
+</html>
