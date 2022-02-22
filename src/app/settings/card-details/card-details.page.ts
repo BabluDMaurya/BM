@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Stripe} from '@ionic-native/stripe/ngx';
+import { NavController } from '@ionic/angular';
 import { Config } from '../../config/config';
 import { ProgramService } from '../../services/program.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-card-details',
@@ -11,11 +13,18 @@ import { ProgramService } from '../../services/program.service';
 export class CardDetailsPage implements OnInit {
   stripeKey: any = Config.stripePublishKey;
   paymentData: any;
+  storageData: any;
   cardDetails: { number: string; expMonth: number; expYear: number; cvc: string; };
   token: any;
-  constructor(private stripe: Stripe,private programService: ProgramService) { }
+  constructor(private stripe: Stripe,private programService: ProgramService,private navCtrl: NavController,private storage: Storage,) { }
 
   ngOnInit() {
+    const dataPromise = this.storage.get('userData');
+        dataPromise.then(data => {
+            this.storageData = JSON.parse(data);
+            console.log(this.storageData.stripe_customer_id);
+            
+        });
   }
   register(form) {
     console.log(form.form.value);
@@ -39,5 +48,8 @@ export class CardDetailsPage implements OnInit {
       })
       .catch(error => console.error(error));
     
+  }
+  goBack() {
+    this.navCtrl.back();
   }
 }

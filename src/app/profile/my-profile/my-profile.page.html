@@ -14,8 +14,11 @@
           <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
           <ion-badge slot="end" *ngIf="sponcerCount > 0">{{ sponcerCount }}</ion-badge>          
         </a> -->
-        <a [routerLink]="['/tabs/search']" class="set-icon">
+        <!-- <a [routerLink]="['/tabs/search']" class="set-icon">
           <ion-icon ios="ios-search" md="md-search"></ion-icon>
+        </a> -->
+        <a class="set-icon" [routerLink]="['/tabs/search']">
+          <ion-icon name="calendar"></ion-icon>
         </a>
         <a [routerLink]="['/notification']" id="notificationcount" class="noti-bell">
           <ion-icon ios="ios-notifications-outline" md="md-notifications-outline"></ion-icon>

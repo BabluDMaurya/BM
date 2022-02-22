@@ -1978,69 +1978,63 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var rxjs___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-    /*! rxjs/ */
-    "./node_modules/rxjs/_esm2015/index.js");
-    /* harmony import */
-
-
-    var rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! rxjs/internal/observable/timer */
     "./node_modules/rxjs/internal/observable/timer.js");
     /* harmony import */
 
 
-    var rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__);
+    var rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__);
     /* harmony import */
 
 
-    var rxjs_operators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! rxjs/operators */
     "./node_modules/rxjs/_esm2015/operators/index.js");
     /* harmony import */
 
 
-    var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! @ionic-native/local-notifications/ngx */
     "./node_modules/@ionic-native/local-notifications/ngx/index.js");
     /* harmony import */
 
 
-    var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! src/app/services/chat.service */
     "./src/app/services/chat.service.ts");
     /* harmony import */
 
 
-    var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! @angular/common/http */
     "./node_modules/@angular/common/fesm2015/http.js");
     /* harmony import */
 
 
-    var _chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! ./../../chats/chat-rooms/chat-rooms.component */
     "./src/app/chats/chat-rooms/chat-rooms.component.ts");
     /* harmony import */
 
 
-    var src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! src/app/modalContent/payment/payment.component */
     "./src/app/modalContent/payment/payment.component.ts");
     /* harmony import */
 
 
-    var process__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    var process__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! process */
     "./node_modules/process/browser.js");
     /* harmony import */
 
 
-    var process__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(process__WEBPACK_IMPORTED_MODULE_17__);
+    var process__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(process__WEBPACK_IMPORTED_MODULE_16__);
     /* harmony import */
 
 
-    var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! @ionic-native/social-sharing/ngx */
     "./node_modules/@ionic-native/social-sharing/ngx/index.js");
     /* To try the app with Enablex hosted service you need to set the kTry = true */
@@ -2074,7 +2068,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.url = _config_config__WEBPACK_IMPORTED_MODULE_8__["Config"].imgUrl;
         this.vidUrl = _config_config__WEBPACK_IMPORTED_MODULE_8__["Config"].progVidUrl;
         this.displayProgData = false;
-        this.tick = 1000; //
+        this.tick = 1000;
+        this.prePayment = true; //
 
         this.userName = "Bablu";
         this.roomID = "";
@@ -2135,9 +2130,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   type: '1'
                 };
 
-                _this2.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_16__["PaymentComponent"], 'bottomModal', fileData);
+                _this2.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData);
 
-                Object(process__WEBPACK_IMPORTED_MODULE_17__["exit"])();
+                Object(process__WEBPACK_IMPORTED_MODULE_16__["exit"])();
                 return false;
               } // console.log(this.Mins);
               // console.log(this.totalIntoFee);
@@ -2179,7 +2174,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         type: '2'
                       };
 
-                      _this2.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_16__["PaymentComponent"], 'bottomModal', fileData); // this.pendingPayment();
+                      _this2.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData); // this.pendingPayment();
 
 
                       i++;
@@ -2317,28 +2312,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             if (a > b) {
               c = Math.abs(a - b) / 1000;
               _this4.programDetail.cd = c;
-              _this4.dd = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(function () {
+              _this4.dd = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
                 if (_this4.programDetail.cd > 0) {
                   --_this4.programDetail.cd;
                 }
 
                 return ~~(_this4.programDetail.cd / (60 * 60 * 24));
               }));
-              _this4.ss = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(function () {
+              _this4.ss = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
                 if (_this4.programDetail.cd > 0) {
                   --_this4.programDetail.cd;
                 }
 
                 return ~~(_this4.programDetail.cd % 3600 % 60);
               }));
-              _this4.mm = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(function () {
+              _this4.mm = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
                 if (_this4.programDetail.cd > 0) {
                   --_this4.programDetail.cd;
                 }
 
                 return ~~(_this4.programDetail.cd % 3600 / 60);
               }));
-              _this4.hh = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_10__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(function () {
+              _this4.hh = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
                 if (_this4.programDetail.cd <= 5) {
                   _this4.programDetail.ready = true;
                   _this4.programDetail.live = true;
@@ -2346,7 +2341,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   _this4.checkStreaming();
 
-                  console.log(_this4.programDetail.live + 'liveee');
+                  console.log(_this4.programDetail);
+                  console.log(_this4.programDetail.live, 'liveee');
                 }
 
                 if (_this4.programDetail.cd > 0) {
@@ -2364,6 +2360,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               if (new Date(_this4.programDetail.program_end_time + 'Z') > new Date()) {
                 _this4.programDetail.ready = true;
+                _this4.programDetail.live = true;
                 console.log(_this4.programDetail.live + 'liveeeeeee');
 
                 _this4.checkStreaming();
@@ -2377,6 +2374,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             if (_this4.programDetail.request_accepted != null) {
               if (_this4.programDetail.request_accepted.split(',').includes(_this4.userData.id.toString())) {
                 _this4.request_accs = true;
+                _this4.request_join = true;
               }
             } else if (_this4.programDetail.request_sent != null) {
               if (_this4.programDetail.request_sent.split(',').includes(_this4.userData.id.toString())) {
@@ -2394,21 +2392,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "checkStreaming",
-        value: function checkStreaming() {
-          var _this5 = this;
-
-          this.sub = Object(rxjs___WEBPACK_IMPORTED_MODULE_9__["interval"])(5000).subscribe(function (val) {
-            _this5.programService.getProgramById({
-              "programId": _this5.programId
-            }).subscribe(function (data) {
-              console.log(_this5.programDetail);
-
-              if (data.programData.is_live) {
-                _this5.displayProgData = true;
-                _this5.programDetail.live = true;
-              }
-            });
-          });
+        value: function checkStreaming() {// this.sub = interval(5000)
+          //   .subscribe((val) => {
+          //     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
+          //       console.log(this.programDetail);
+          //       if (data.programData.is_live) {
+          //         this.displayProgData = true;
+          //         this.programDetail.live = true;
+          //       }
+          //     });
+          //   });
         }
       }, {
         key: "showSchedule",
@@ -2428,7 +2421,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "showChatUsers",
         value: function showChatUsers() {
-          var _this6 = this;
+          var _this5 = this;
 
           if (this.programType != "public") {
             this.commonService.presentLoader();
@@ -2437,7 +2430,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'type': 3
             }).subscribe(function (data) {
               if (data.id > 0) {
-                _this6.commonService.dismissLoader();
+                _this5.commonService.dismissLoader();
 
                 var chatRoom = data.room_id;
                 var chatReceiverId = data.group_id;
@@ -2448,17 +2441,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   receiverId: parseInt(chatReceiverId)
                 };
 
-                _this6.commonService.presentModal(_chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_15__["ChatRoomsComponent"], 'fullModal', fileData);
+                _this5.commonService.presentModal(_chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_14__["ChatRoomsComponent"], 'fullModal', fileData);
               } else {
-                _this6.commonService.dismissLoader(); // chat_type = 1:consultant,2:user,3:program
+                _this5.commonService.dismissLoader(); // chat_type = 1:consultant,2:user,3:program
 
 
-                _this6.router.navigate(["/first-message/" + _this6.programId + "/3"]);
+                _this5.router.navigate(["/first-message/" + _this5.programId + "/3"]);
               }
             }, function (err) {
-              _this6.commonService.presentToast("Couldnt load data, Something went wrong.");
+              _this5.commonService.presentToast("Couldnt load data, Something went wrong.");
 
-              _this6.commonService.dismissLoader();
+              _this5.commonService.dismissLoader();
             });
           } else {
             this.commonService.presentToast("Chat Not Allow on Public Program");
@@ -2472,16 +2465,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "acceptRequest",
         value: function acceptRequest() {
-          var _this7 = this;
+          var _this6 = this;
 
           this.programService.acceptProgramRequest({
             'programId': this.programDetail.id
           }).subscribe(function (data) {
-            var prog_date = new Date(_this7.programDetail.program_date + 'Z');
+            var prog_date = new Date(_this6.programDetail.program_date + 'Z');
 
-            _this7.localNotifications.schedule({
-              id: _this7.programId,
-              text: _this7.programDetail.title + " program will start at \n " + prog_date,
+            _this6.localNotifications.schedule({
+              id: _this6.programId,
+              text: _this6.programDetail.title + " program will start at \n " + prog_date,
               trigger: {
                 at: new Date(prog_date.getTime() - 60 * 60 * 500)
               },
@@ -2494,18 +2487,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               foreground: true
             });
 
-            _this7.router.navigateByUrl('/tabs/consultant-profile');
+            _this6.router.navigateByUrl('/tabs/consultant-profile');
           });
         }
       }, {
         key: "joinRequest",
         value: function joinRequest() {
-          var _this8 = this;
+          var _this7 = this;
 
           this.programService.joinRequest({
             'programId': this.programDetail.id
           }).subscribe(function (data) {
-            _this8.request_join = true;
+            _this7.request_join = true;
           });
         }
       }, {
@@ -2528,7 +2521,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             pgamount: this.programFee,
             pgimg: this.programImage
           };
-          this.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_16__["PaymentComponent"], 'bottomModal', fileData);
+          this.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData);
         }
       }, {
         key: "shareItem",
@@ -2550,15 +2543,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         type: _services_program_service__WEBPACK_IMPORTED_MODULE_7__["ProgramService"]
       }, {
-        type: _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_12__["LocalNotifications"]
+        type: _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_11__["LocalNotifications"]
       }, {
-        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClient"]
+        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClient"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
       }, {
-        type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_13__["ChatService"]
+        type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_12__["ChatService"]
       }, {
-        type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_18__["SocialSharing"]
+        type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_17__["SocialSharing"]
       }];
     };
 
@@ -2572,7 +2565,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       "./src/app/app.component.scss"))["default"], tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./program-view.page.scss */
       "./src/app/program/program-view/program-view.page.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"], _services_program_service__WEBPACK_IMPORTED_MODULE_7__["ProgramService"], _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_12__["LocalNotifications"], _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_13__["ChatService"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_18__["SocialSharing"]])], ProgramViewPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"], _services_program_service__WEBPACK_IMPORTED_MODULE_7__["ProgramService"], _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_11__["LocalNotifications"], _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_12__["ChatService"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_17__["SocialSharing"]])], ProgramViewPage);
     /***/
   }
 }]);

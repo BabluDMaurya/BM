@@ -179,6 +179,10 @@ export class ProgramService {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/insertIntoactivePaymentDetail', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('insertIntoactivePaymentDetail', data)));
   }
 
+  insertEquipmentPaymentDetail(data: any): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/insertEquipmentPaymentDetail', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('insertEquipmentPaymentDetail', data)));
+  }
+
   getPaymentStatus(): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getPaymentStatus', null, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getPaymentStatus')));
   }

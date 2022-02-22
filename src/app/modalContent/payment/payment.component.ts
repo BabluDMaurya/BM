@@ -35,25 +35,7 @@ export class PaymentComponent implements OnInit {
       this.router.navigateByUrl('/tabs/program');
     }
   }
-  payWithStripe() {
-    this.stripe.setPublishableKey(this.stripeKey);
-
-    this.cardDetails = {
-      number: '4242424242424242',
-      expMonth: 12,
-      expYear: 2025,
-      cvc: '220'
-    }
-
-    this.stripe.createCardToken(this.cardDetails)
-      .then(token => {
-        console.log(token);
-        this.token = token;
-        console.log('payment with stripeeee');
-        // this.makePayment(token.id);
-      })
-      .catch(error => console.error(error));
-  }
+  
   
   payment(){
     this.commonService.dismissModal();
