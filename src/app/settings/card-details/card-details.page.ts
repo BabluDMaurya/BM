@@ -29,12 +29,12 @@ export class CardDetailsPage implements OnInit {
   register(form) {
     console.log(form.form.value);
     this.stripe.setPublishableKey(this.stripeKey);
-
+    var card = form.form.value;
     this.cardDetails = {
-      number: form.form.value.card_number,
-      expMonth: form.form.value.exp_month,
-      expYear: form.form.value.exp_year,
-      cvc: form.form.value.cvv
+      number: card.card_number,
+      expMonth: card.exp_month,
+      expYear: card.exp_year,
+      cvc: card.cvv
     }
 
     this.stripe.createCardToken(this.cardDetails)
@@ -43,7 +43,7 @@ export class CardDetailsPage implements OnInit {
         this.token = token;
         console.log('payment with stripeeee');
         this.programService.createStripeCustomerId({"token_id" : this.token}).subscribe(data => {
-         
+         this.ngOnInit();
         });
       })
       .catch(error => console.error(error));

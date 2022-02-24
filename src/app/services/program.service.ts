@@ -207,4 +207,8 @@ export class ProgramService {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/createStripeCustomerId', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('createStripeCustomerId', data)));
   }
 
+  createStripeConnectAccount(data: any): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/createStripeConnectAccount', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('createStripeConnectAccount', data)));
+  }
+
 }
