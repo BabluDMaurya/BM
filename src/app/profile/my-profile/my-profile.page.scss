@@ -127,3 +127,17 @@ ion-item-divider{
     background: #00000029;
     font-size: 1.2rem !important;
 }
+.primary-color{
+    color: #27a69a;
+    font-size: 1.5rem;
+}
+.ABS-info{
+    position: absolute;
+    right: 15px;
+    bottom: 30px;
+}
+.ABS-info .item-native .item-inner{
+    border-style: none !important;
+    border-color: #fff !important;
+    border: none !important;
+}
