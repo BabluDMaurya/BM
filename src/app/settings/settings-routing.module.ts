@@ -48,6 +48,10 @@ const routes: Routes = [
     path: 'card-details',
     loadChildren: () => import('./card-details/card-details.module').then( m => m.CardDetailsPageModule)
   },
+  {
+    path: 'onboarding-account',
+    loadChildren: () => import('./onboarding-account/onboarding-account.module').then( m => m.OnboardingAccountPageModule)
+  },
 
   
 ];

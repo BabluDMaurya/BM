@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content  color="primary" *ngIf="this.storageData.stripe_customer_id == '' ">
+<ion-content  color="primary" *ngIf="this.storageData?.stripe_customer_id == null ">
   <form  #form="ngForm" (ngSubmit)="register(form)" >
     <ion-grid>
       <ion-row color="primary" justify-content-center>
@@ -43,7 +43,7 @@
   </form>
   
 </ion-content>
-<ion-content *ngIf="this.storageData.stripe_customer_id != '' ">
+<ion-content *ngIf="this.storageData?.stripe_customer_id != null ">
   <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
     <div text-center>
       <h3>Update Card Details!</h3>

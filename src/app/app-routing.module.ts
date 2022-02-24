@@ -272,7 +272,9 @@ const routes: Routes = [
   { path: 'card-details',
   loadChildren: () => import('./settings/card-details/card-details.module').then( m => m.CardDetailsPageModule)
   },
-  
+  { path: 'onboarding-account',
+  loadChildren: () => import('./settings/onboarding-account/onboarding-account.module').then( m => m.OnboardingAccountPageModule)
+  },
 
 ];
 
