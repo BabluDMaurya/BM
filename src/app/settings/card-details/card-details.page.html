@@ -1,12 +1,23 @@
-<ion-header>
-  <ion-item slot="start">
+<ion-header  class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click) = "goBack()" *ngIf="!showPreview">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back" ></ion-icon>
+      </ion-buttons>
+    </ion-item> 
+    <ion-item slot="center">
+        <ion-label>card-details</ion-label>
+    </ion-item>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+</ion-list>
+  <!-- <ion-item slot="start">
     <ion-buttons class="ion-no-margin" *ngIf="!showPreview">
       <ion-icon ios="ios-arrow-back" md="md-arrow-back" (click) = "goBack()"></ion-icon>
     </ion-buttons>
   </ion-item> 
   <ion-toolbar>
     <ion-title>card-details</ion-title>
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-header>
 
 <ion-content  color="primary" *ngIf="this.storageData?.stripe_customer_id == null ">
@@ -18,24 +29,41 @@
             <h3>Enter Card Details!</h3>
           </div>
           <div padding>
-            <ion-item>
-              <ion-input  name="holder_name" type="text" placeholder="Card Holder Name" ngModel required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="card_number" type="text" placeholder="Card Number" ngModel required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="cvv" type="text" placeholder="CVV" ngModel required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="exp_month" type="number" placeholder="Expriy Month" ngModel required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="exp_year" type="number" placeholder="Expriy Year" ngModel required></ion-input>
-            </ion-item>
+              <div class="input-block">
+                <ion-label>Card Holder Name</ion-label>
+                <ion-item class="input-box">
+                  <ion-input  name="holder_name" type="text" placeholder="Card Holder Name" ngModel required></ion-input>
+                </ion-item>
+              </div>
+              <div class="input-block">
+                <ion-label>Card Number</ion-label>
+                <ion-item class="input-box">
+                  <ion-input name="card_number" type="text" placeholder="Card Number" ngModel required></ion-input>
+                </ion-item>
+              </div>
+            <div class="input-container">
+              <div class="input-block w-half">
+               <ion-label>Expiry Month</ion-label>
+               <ion-item class="input-box">
+                 <ion-input name="exp_month" type="number" placeholder="Expriy Month" ngModel required></ion-input>
+               </ion-item>
+              </div>
+              <div class="input-block w-half">
+               <ion-label>Expiry Year</ion-label>
+               <ion-item class="input-box">
+                 <ion-input name="exp_year" type="number" placeholder="Expriy Year" ngModel required></ion-input>
+               </ion-item>
+              </div>
+            </div>
+             <div class="input-block">
+              <ion-label>CVV</ion-label>
+              <ion-item class="input-box">
+                <ion-input name="cvv" type="text" placeholder="CVV" ngModel required></ion-input>
+              </ion-item>
+             </div>
           </div>
           <div padding>
-            <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">Save Details</ion-button>
+            <ion-button class="save-btn"  size="large" type="submit" [disabled]="form.invalid" expand="block">Save Details</ion-button>
           </div>
         </ion-col>
       </ion-row>
