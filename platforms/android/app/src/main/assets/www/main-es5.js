@@ -5724,6 +5724,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return m.CardDetailsPageModule;
         });
       }
+    }, {
+      path: 'onboarding-account',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | settings-onboarding-account-onboarding-account-module */
+        "onboarding-account-onboarding-account-module").then(__webpack_require__.bind(null,
+        /*! ./settings/onboarding-account/onboarding-account.module */
+        "./src/app/settings/onboarding-account/onboarding-account.module.ts")).then(function (m) {
+          return m.OnboardingAccountPageModule;
+        });
+      }
     }];
 
     var AppRoutingModule = function AppRoutingModule() {
@@ -15721,6 +15732,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "createStripeCustomerId",
         value: function createStripeCustomerId(data) {
           return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/createStripeCustomerId', data, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('createStripeCustomerId', data)));
+        }
+      }, {
+        key: "createStripeConnectAccount",
+        value: function createStripeConnectAccount(data) {
+          return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/createStripeConnectAccount', data, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('createStripeConnectAccount', data)));
         }
       }]);
 
