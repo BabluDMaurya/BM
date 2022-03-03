@@ -275,6 +275,11 @@ const routes: Routes = [
   { path: 'onboarding-account',
   loadChildren: () => import('./settings/onboarding-account/onboarding-account.module').then( m => m.OnboardingAccountPageModule)
   },
+  {
+    path: 'invitated-programs',
+    loadChildren: () => import('./program/invitated-programs/invitated-programs.module').then( m => m.InvitatedProgramsPageModule)
+  },
+
 
 ];
 

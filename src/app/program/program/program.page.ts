@@ -279,6 +279,7 @@ export class ProgramPage implements OnInit {
       this.notShowAll = true;
       this.allProgramList = null;
       this.pgCount = this.scheduleList.length;
+      this.noAllScheduleList = false;
       if(this.pgCount < 1){
         this.noScheduleList = true;
       }

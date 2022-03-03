@@ -10,7 +10,7 @@ import { NavController } from '@ionic/angular';
 })
 export class NotificationPage implements OnInit {
   data: any;
-  notification_tabs: string = "people";
+  notification_tabs: string = "activity";
   mediaNotification = [];
   peopleNotification = [];
   url: any = Config.profilePic;

@@ -64,12 +64,16 @@
         <ion-badge class="ml-1">{{accProgramList?.length || 0}}</ion-badge>
       </div>       
     </ion-segment-button> -->
-    <ion-segment-button value="requested">
+
+<!-- comment by darshan -->
+    <!-- <ion-segment-button value="requested">
       <div class="chatBadge">
         <span>Invitation</span> 
         <ion-badge class="ml-1">{{reqProgramList?.length || 0}}</ion-badge>
       </div>     
-    </ion-segment-button>
+    </ion-segment-button> -->
+
+
   </ion-segment>
   <div [ngSwitch]="programTabs">
     <ion-list lines="none" *ngSwitchCase="'schedule'">

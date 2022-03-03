@@ -13,9 +13,11 @@
 </ion-header>
 <ion-content class="main_content"> 
   <ion-segment class="top-segment"  [(ngModel)]="notification_tabs">
-    <ion-segment-button value="people" checked>People</ion-segment-button>
+    
+    <ion-segment-button value="activity" checked>Activity</ion-segment-button>
+    <!-- <ion-segment-button value="people" >People</ion-segment-button>
     <ion-segment-button value="media">Media</ion-segment-button>
-    <ion-segment-button value="program">Program</ion-segment-button>
+    <ion-segment-button value="program">Program</ion-segment-button> -->
     <ion-segment-button value="payments">Payments</ion-segment-button>
   </ion-segment> 
   <ion-refresher class="page-refresher" slot="fixed" (ionRefresh)="doRefresh($event)">
@@ -26,7 +28,29 @@
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>  
-  <div [ngSwitch]="notification_tabs">    
+  <div [ngSwitch]="notification_tabs">   
+    
+    <div lines="none" *ngSwitchCase="'activity'">
+      <div class="no-data" *ngIf="!mediaNotification.length > 0  && data">
+        <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+        <p>No Data Found</p>
+      </div>
+      <ion-card *ngFor="let medianoti of mediaNotification" class="ion-no-margin">
+        <ion-item lines="none">
+          <ion-avatar slot="start">              
+            <img  *ngIf = "medianoti?.user?.bios?.profile_pic" src="{{url}}{{medianoti?.user?.bios?.profile_pic}}">
+            <img  *ngIf = "!medianoti?.user?.bios?.profile_pic" src="../../assets/images/user.jpg">
+          </ion-avatar>
+          <ion-label>
+              <h3 class="list-person">{{medianoti?.user?.user_name}} <span class="list-name">{{medianoti?.type}}</span></h3>
+              <span class="list-name">{{medianoti?.description}} </span>
+          </ion-label>
+          <span class="notifi-right">{{medianoti?.created_at}}</span>
+        </ion-item>
+      </ion-card>        
+    </div>
+    
+
     <div lines="none" *ngSwitchCase="'people'">
       <div class="no-data" *ngIf="!peopleNotification.length > 0 && data">
           <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />

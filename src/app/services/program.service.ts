@@ -87,6 +87,10 @@ export class ProgramService {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getRequestedPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getRequestedPrograms', formData)));
   }
 
+  getAllRequestedPrograms(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/getAllRequestedPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getAllRequestedPrograms', formData)));
+  }
+  
   acceptProgramRequest(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/acceptProgramRequest', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('acceptProgramRequest', formData)));
   }

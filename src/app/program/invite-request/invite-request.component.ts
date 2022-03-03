@@ -24,7 +24,7 @@ export class InviteRequestComponent implements OnInit {
   ngOnInit() {
     console.log(this.tabData);
     let params: any = null
-    if (this.tabData.tab == 2) {
+    // if (this.tabData.tab == 2) {
       let userZoneDate = new Date(this.tabData.date);
       userZoneDate.setHours(0, 0, 0);
       params = { 'sortDate': userZoneDate.toUTCString() };
@@ -37,21 +37,21 @@ export class InviteRequestComponent implements OnInit {
         });
       });
       
-    } else {
+    // } else {
 
-      let userZoneDate = new Date(this.tabData.date);
-      userZoneDate.setHours(0, 0, 0);
-      params = { 'sortDate': userZoneDate.toUTCString() };
-      console.log(userZoneDate);
+    //   let userZoneDate = new Date(this.tabData.date);
+    //   userZoneDate.setHours(0, 0, 0);
+    //   params = { 'sortDate': userZoneDate.toUTCString() };
+    //   console.log(userZoneDate);
 
-      this.programService.getAcceptedPrograms(null).subscribe(data => {
-        this.programList = data.list.filter(el => {
-          el.converted = new Date(el.program_date + 'Z');
-          return el;
-        });
-      });
+    //   this.programService.getAcceptedPrograms(null).subscribe(data => {
+    //     this.programList = data.list.filter(el => {
+    //       el.converted = new Date(el.program_date + 'Z');
+    //       return el;
+    //     });
+    //   });
       
-    }
+    // }
 
 
   }
