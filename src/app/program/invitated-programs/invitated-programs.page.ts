@@ -8,11 +8,12 @@ import { ScheduleModalComponent } from '../schedule-modal/schedule-modal.compone
 @Component({
   selector: 'app-invitated-programs',
   templateUrl: './invitated-programs.page.html',
-  styleUrls: ['./invitated-programs.page.scss'],
+  styleUrls: ['./../../app.component.scss', './invitated-programs.page.scss'],
 })
 export class InvitatedProgramsPage implements OnInit {
   programList: any;
   userData: any;
+  programData: any;
   myDate: any = new Date().toISOString();
   constructor(public popoverController: PopoverController,private programService: ProgramService,
     private commonService: CommonService,public navCtrl: NavController,) { }
@@ -27,11 +28,14 @@ export class InvitatedProgramsPage implements OnInit {
 
     this.programService.getAllRequestedPrograms(params).subscribe(data => {
       console.log(data);
+      this.programData = data.list.length;
+      console.log(this.programData);
       this.programList = data.list.filter(el => {
         el.converted = new Date(el.program_date + 'Z');
         return el;
       });
     });
+    console.log(this.programList);
   }
   ionItemViewWillEnter() {
 

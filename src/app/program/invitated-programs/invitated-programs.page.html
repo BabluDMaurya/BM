@@ -1,18 +1,18 @@
-<ion-header>
+<ion-header class="top-header ion-no-padding">
   <ion-list class="top-heading three-block">
     <ion-item slot="start">
-      <ion-buttons class="ion-no-margin" (click)="goBack()">
-        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      <ion-buttons class="ion-no-margin" (click) = "goBack()" *ngIf="!showPreview">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back" ></ion-icon>
       </ion-buttons>
-    </ion-item>
+    </ion-item> 
     <ion-item slot="center">
-      <ion-label >Program List</ion-label>
+        <ion-label>Program List</ion-label>
     </ion-item>
-   
-  </ion-list>
+    <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
+</ion-list>
 </ion-header>
 
-<ion-content>
+<ion-content class="main_content" *ngIf="programData > 0 ">
   <ion-item class="item-card" *ngFor="let item of programList">
     <ion-avatar slot="start" [routerLink]="['/program-view',item.id]">
       <img src="../../../assets/images/demo2.jpg" *ngIf="item?.image_path">
@@ -27,8 +27,14 @@
     <div class="action-links" slot="end">
       <ion-icon ios="ios-more" md="md-more" (click)="requestedDropdown(item.id)"></ion-icon>
       <ion-icon ios="ios-restaurant" md="md-restaurant" (click)="showSchedule(item)"></ion-icon>
-
     </div>
   </ion-item>
-  
+</ion-content>
+<ion-content class="main_content" *ngIf="programData == 0">
+  <div class="container">
+    <div class="empty-state">
+      <img src= "../../../assets/images/emptydate.svg" >     
+      <ion-label>No Program</ion-label>
+    </div>
+  </div>
 </ion-content>
