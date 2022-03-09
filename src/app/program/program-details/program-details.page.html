@@ -31,25 +31,25 @@
           <img [defaultImage] = "defaultPostImage" [lazyLoad]="url+programImage">         
         </ion-thumbnail> -->
         <!-- image/program/program_46_20210806150601_0.jpeg -->
-        <ion-slides *ngIf="progImage && progVideo" pager="true" [options]="sliderOpts" class="full-slider" #mySlider>          
-          <ion-slide  *ngFor="let imgpath of programDetail?.image_path.split(','); let i=index;"> 
+        <ion-slides *ngIf="progImage && progVideo" pager="true" [options]="sliderOpts" class="full-slider program-slide" #mySlider>          
+          <ion-slide  *ngFor="let imgpath of programDetail?.image_path.split(','); let i=index;" class="program-slides"> 
             <img *ngIf="progImage" src="{{url+imgpath}}" /> 
           </ion-slide>
-        <ion-slide>
+        <ion-slide class="program-slides">
           <video *ngIf="progVideo" width="100%" height="200px" controls="controls" preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer">
             <source src="{{vidUrl+programDetail?.video_path}}" type="video/mp4" />
           </video>
         </ion-slide>
         </ion-slides>
 
-        <ion-slides *ngIf="progImage && !progVideo" pager="true" [options]="sliderOpts" class="full-slider" #mySlider>          
-          <ion-slide  *ngFor="let imgpath of programDetail?.image_path.split(','); let i=index;"> 
+        <ion-slides *ngIf="progImage && !progVideo" pager="true" [options]="sliderOpts" class="full-slider program-slide" #mySlider>          
+          <ion-slide  *ngFor="let imgpath of programDetail?.image_path.split(','); let i=index;" class="program-slides"> 
             <img *ngIf="progImage" src="{{url+imgpath}}" /> 
           </ion-slide>
         
         </ion-slides>
-        <ion-slides *ngIf="!progImage && progVideo" pager="true" [options]="sliderOpts" class="full-slider" #mySlider>            
-        <ion-slide>
+        <ion-slides *ngIf="!progImage && progVideo" pager="true" [options]="sliderOpts" class="full-slider program-slide" #mySlider>            
+        <ion-slide class="program-slides">
           <video *ngIf="progVideo" width="100%" height="200px" controls="controls" preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer">
             <source src="{{vidUrl+programDetail?.video_path}}" type="video/mp4" />
           </video>
