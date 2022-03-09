@@ -181,17 +181,17 @@
     <div *ngFor="let progItem of allProgram; let i = index">   
       <ion-card class="video-card"  *ngIf="i == 0 && (progItem?.nutrition_id || progItem?.video_program)">
         <ion-card-content class="ion-no-padding" *ngIf="programDetail.displayData">
-          <ion-slides [options]="sliderOpts" class="inner-slider mb-10">
+          <ion-slides [options]="sliderOpts" class="inner-slider mb-10 program-slide">
             <!-- <ion-slide *ngIf="progItem?.video_program" (click)="showVideoDetails(item.posts_id)" > -->
-              <ion-slide *ngFor="let item of progItem?.videoProg_array " (click)="showVideoDetails(item)" >
+              <ion-slide *ngFor="let item of progItem?.videoProg_arra" class="program-slides" (click)="showVideoDetails(item)" >
                <img src="../../../assets/images/video.png" style="width:45% !important" />
               <ion-label>Video</ion-label>
             </ion-slide>  
-            <ion-slide *ngFor="let item of progItem?.videoId_array" (click)="showVideoDetails(item)" >
+            <ion-slide *ngFor="let item of progItem?.videoId_arr" class="program-slides" (click)="showVideoDetails(item)" >
               <img src="../../../assets/images/video.png" style="width:45% !important" />
              <ion-label>Video</ion-label>
            </ion-slide> 
-            <ion-slide *ngFor="let item of nutritionList  "  (click)="nutritionModal(progItem)" >
+            <ion-slide *ngFor="let item of nutritionList" class="program-slides"  (click)="nutritionModal(progItem)" >
               <img src="{{url}}{{item?.fImage}}" *ngIf="item?.fImage" />
               <img src="../../assets/images/nutrition2.png" *ngIf="!item?.fImage" style="width:45% !important; height: auto;"/>
               <ion-label>{{item?.title}}</ion-label>

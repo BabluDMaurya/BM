@@ -42,3 +42,17 @@ ion-card.ios{margin-top: 10px;margin-bottom: 10px;}
 .user-details{
     font-size: 0.9rem;
 }
+.primary-color{
+    color: #27a69a;
+    font-size: 1.5rem;
+}
+.ABS-info{
+    position: absolute;
+    right: 15px;
+    bottom: 7px;
+}
+.ABS-info .item-native .item-inner{
+    border-style: none !important;
+    border-color: #fff !important;
+    border: none !important;
+}
