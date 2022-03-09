@@ -30,4 +30,8 @@ export class HomeService {
   getHomeContent(formData): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getHomeContent', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getHomeContent', formData)));
   }
+
+  getUsersFollowingContent(formData): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/getUsersFollowingContent', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getUsersFollowingContent', formData)));
+  }
 }
