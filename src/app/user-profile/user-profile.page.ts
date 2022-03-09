@@ -8,6 +8,8 @@ import {Router} from '@angular/router';
 import { ProgramService } from './../services/program.service';
 import { Config } from './../config/config';
 import { HomeService } from '../services/home.service';
+import { FollowersComponent } from '../modalContent/followers/followers.component';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.page.html',
@@ -15,9 +17,11 @@ import { HomeService } from '../services/home.service';
 })
 
 export class UserProfilePage implements OnInit {
+  defaultPostImage : any = './../../../assets/images/loading.jpg';
   bannerDefaultImage = './../../../assets/images/editcoverpic.png';
   profileDefaultImage = './../../../assets/images/user.jpg';
   programDefaultImage = './../../../assets/images/loading.jpg';
+  storagePath = Config.storagePath;
   bannerImage :any;
   profileImage :any; 
   gotData :boolean = false;
@@ -30,6 +34,7 @@ export class UserProfilePage implements OnInit {
   profilePicUrl: any = Config.profilePic;
   backgroundPicUrl: any = Config.backgroundPic;
   currentPage: any = 0;
+  postData: any = [];
   constructor(private commonService: CommonService,
     private homeService: HomeService,
     public popoverController: PopoverController,
@@ -52,11 +57,11 @@ export class UserProfilePage implements OnInit {
     });
     this.currentPage = 0;
     this.homeService.getUsersFollowingContent({ 'page': (this.currentPage) }).subscribe(data => {
-      let postData = this.like_bookmark(data.postData.data);
+      this.postData = this.like_bookmark(data.postData.data);
       this.last_page = data.postData.last_page;
       this.currentPage = data.postData.current_page;
-      console.log(postData);
-      if(postData.length < 1){
+      console.log(this.postData);
+      if(this.postData.length < 1){
         this.gotData = true;
       }
       this.commonService.dismissLoader();
@@ -153,5 +158,41 @@ export class UserProfilePage implements OnInit {
       });
     });
     return arr;
+  }
+
+  notification1(){
+    this.commonService.presentModal(FollowersComponent, 'fullModal', { 'profileData': this.profileData, 'otherUser': false });  
+  }
+  bookmarked(postId, bmStat, post_type) {
+    //console.log(postId, bmStat);
+    this.postData.forEach((element, i) => {
+      if (element.id == postId) {
+        this.postData[i].bookmarked = !bmStat;
+      }
+    });
+    //console.log(postId, bmStat);
+    this.commonService.bookmarkPost({ 'postId': postId, 'bookmark': bmStat, 'post_type': post_type }).subscribe((data: any) => {
+      if (data.status) {
+        this.commonService.presentToast(data.status);
+      }
+    });
+  }
+  liked(postId, likeStat) {
+    this.postData.forEach((element, i) => {
+      if (element.id == postId) {
+        this.postData[i].liked = !likeStat;
+        if (likeStat) {
+          this.postData[i].count = (this.postData[i].count - 1);
+
+        } else {
+          this.postData[i].count = (this.postData[i].count + 1);
+        }
+      }
+    });
+    this.postData.likedPost({ 'postId': postId, 'liked': likeStat }).subscribe((data: any) => {
+      if (data.status) {
+        this.commonService.presentToast(data.status);
+      }
+    });
   }
 }

@@ -56,3 +56,15 @@ ion-card.ios{margin-top: 10px;margin-bottom: 10px;}
     border-color: #fff !important;
     border: none !important;
 }
+.exclusive-text{
+    text-transform: capitalize;
+    position: absolute;
+    top: 26px;
+    right: -60px;
+    padding: 5px;
+    transform: rotate(45deg);
+    color: #fff;
+    text-align: center;
+    width: 200px;
+    background: #27A69A;
+}
