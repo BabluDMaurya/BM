@@ -194,6 +194,9 @@ ion-slide.ios.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
 .program-slide{
   height: 300px;
 }
-.program-slides{
+.program-slides video{
+  height: 100%;
+}
+ion-slide.program-slides.ios.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
   width: 95% !important;
 }
