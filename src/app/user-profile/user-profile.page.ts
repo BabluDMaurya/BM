@@ -6,7 +6,8 @@ import { PopOverComponent } from '../user-profile/pop-over/pop-over.component';
 import { SettingsService } from './../services/settings.service';
 import {Router} from '@angular/router';
 import { ProgramService } from './../services/program.service';
-import { Config } from './../config/config'
+import { Config } from './../config/config';
+import { HomeService } from '../services/home.service';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.page.html',
@@ -24,10 +25,13 @@ export class UserProfilePage implements OnInit {
   userProfile: string = "aboutInfo";
   userData:any;
   upcomingProgram:any;
+  last_page: any;
   url: any = Config.imgUrl;
   profilePicUrl: any = Config.profilePic;
   backgroundPicUrl: any = Config.backgroundPic;
+  currentPage: any = 0;
   constructor(private commonService: CommonService,
+    private homeService: HomeService,
     public popoverController: PopoverController,
     private settingsService: SettingsService,
     private platform: Platform,
@@ -38,6 +42,7 @@ export class UserProfilePage implements OnInit {
 
   ngOnInit() {
     this.userData =JSON.parse(localStorage.getItem('userData'));
+    console.log(this.userData);
     this.settingsService.getProfileData().subscribe((data:any)=>{
       this.profileData =data.status;
       this.gotData =true;
@@ -45,8 +50,17 @@ export class UserProfilePage implements OnInit {
       this.profileImage = this.profilePicUrl + this.profileData.userData.bios.profile_pic;
       console.log(this.profileData);
     });
-
-    
+    this.currentPage = 0;
+    this.homeService.getUsersFollowingContent({ 'page': (this.currentPage) }).subscribe(data => {
+      let postData = this.like_bookmark(data.postData.data);
+      this.last_page = data.postData.last_page;
+      this.currentPage = data.postData.current_page;
+      console.log(postData);
+      if(postData.length < 1){
+        this.gotData = true;
+      }
+      this.commonService.dismissLoader();
+    });
   }
   async settingsPopover(ev: any) {
     const popover = await this.popoverController.create({
@@ -124,4 +138,20 @@ export class UserProfilePage implements OnInit {
     this.commonService.presentModal(NutritionModalComponent, 'fullModal', { 'data': data });
   }
 
+  like_bookmark(arr: any) {
+    arr.filter((element, i) => {
+      element.count = element.post_likes.length;
+      element.post_likes.filter((f) => {
+        if (f.user_id == this.userData.id) {
+          element.liked = true;
+        }
+      });
+      element.post_bookmarks.filter((f) => {
+        if (f.user_id == this.userData.id) {
+          element.bookmarked = true;
+        }
+      });
+    });
+    return arr;
+  }
 }
