@@ -88,3 +88,18 @@ ion-list{padding-top: 0 !important;padding-bottom: 0 !important;
     font-size: 16px;
     margin: 3px;
     z-index: 9;--border-radius:50%}
+
+    .ion-block{
+        display: flex;
+        align-items: center;
+    }
+    .ion-left{
+        flex: 1;
+    }
+    .ion-right{
+        display: flex;
+        align-items: center;
+    }
+    .width-30{
+        width: 30px;
+    }
