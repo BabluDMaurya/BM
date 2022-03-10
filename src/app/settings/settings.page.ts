@@ -10,6 +10,7 @@ import { CommonService } from './../services/common.service';
 import { Config } from "./../config/config";
 
 import{VerifyUserInfoComponent} from "./../modalContent/verify-user-info/verify-user-info.component";
+import { FollowersComponent } from '../modalContent/followers/followers.component';
 
 @Component({
   selector: 'app-settings',
@@ -21,6 +22,7 @@ export class SettingsPage implements OnInit {
   id :any; 
   toggleValue: boolean;
   loginUserData:any;
+  profileData :any ;
   uv : any = 'Earn with IntoActive';
   constructor(
     public router: Router,
@@ -40,6 +42,7 @@ export class SettingsPage implements OnInit {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
     this.settingService.getProfileData().subscribe(
       (data: any) => {
+        this.profileData =data.status;
         if(data.status.userData.comment_disable == 0 || data.status.userData.comment_disable == null){
           this.toggleValue = false;
         }else{
@@ -203,4 +206,9 @@ this.clipboard.paste().then(
 
     }    
   }
+
+  myInfo(){
+    this.commonService.presentModal(FollowersComponent, 'fullModal', { 'profileData': this.profileData, 'otherUser': false }); 
+  }
+
 }

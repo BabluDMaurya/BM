@@ -53,7 +53,7 @@
           </h6>
         </ion-text>
       </div>
-      <ion-icon class="primary-color ABS-info" ios="ios-information-circle" md="md-information-circle" (click)="notification1()"></ion-icon>
+      <!-- <ion-icon class="primary-color ABS-info" ios="ios-information-circle" md="md-information-circle" (click)="notification1()"></ion-icon> -->
     
       </ion-col>
     </ion-row>
@@ -286,6 +286,10 @@
              
               </ion-card-content>
             </ion-card> -->
+            <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+              <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+              </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
           </div>
           <ion-list *ngSwitchCase="'upcomingProgram'" lines="none" class="upcomingProgram-list">
             <div *ngIf="upcomingProgram.length==0" class="no-data">

@@ -9,6 +9,7 @@ import { ProgramService } from './../services/program.service';
 import { Config } from './../config/config';
 import { HomeService } from '../services/home.service';
 import { FollowersComponent } from '../modalContent/followers/followers.component';
+import { PeopleViewService } from './../services/people-view.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -41,6 +42,7 @@ export class UserProfilePage implements OnInit {
     private settingsService: SettingsService,
     private platform: Platform,
     private programService:ProgramService,
+    private peopleView: PeopleViewService,
     private router: Router) {
   
    } 
@@ -189,10 +191,32 @@ export class UserProfilePage implements OnInit {
         }
       }
     });
-    this.postData.likedPost({ 'postId': postId, 'liked': likeStat }).subscribe((data: any) => {
+    this.peopleView.likedPost({ 'postId': postId, 'liked': likeStat }).subscribe((data: any) => {
       if (data.status) {
         this.commonService.presentToast(data.status);
       }
     });
+  }
+
+  loadData(event) {   
+    setTimeout(() => {
+      if (this.currentPage > 0) {
+        this.homeService.getUsersFollowingContent({ 'page': (this.currentPage + 1) }).subscribe((data: any) => {
+          event.target.complete();
+          
+            this.postData = this.postData.concat(this.like_bookmark(data.postData.data));
+          
+          console.log(this.postData);
+          console.log('postData');
+          // this.remainingTopConsultent = this.remainingTopConsultent;
+
+          this.last_page = data.postData.last_page;
+          this.currentPage = data.postData.current_page;
+        });
+      }
+      if (this.last_page <= (this.currentPage + 1)) {
+        event.target.disabled = true;
+      }
+    }, 500);
   }
 }
