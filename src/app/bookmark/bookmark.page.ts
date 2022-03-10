@@ -32,8 +32,8 @@ export class BookmarkPage implements OnInit {
   defaultUserImage : any = './../../assets/images/user.jpg';
   userPPicurl = Config.profilePic;
   defaultPostImage : any = './../../assets/images/loading.jpg';
-  bimg : boolean = false;
-  bvid : boolean = false;
+  bimg : boolean = true;
+  bvid : boolean = true;
   constructor(public commonService: CommonService,
     private settingService: SettingsService,
     private peopleService: PeopleViewService,
@@ -54,6 +54,7 @@ export class BookmarkPage implements OnInit {
     this.commonService.presentLoader();
     this.loginUserData = JSON.parse(localStorage.getItem("userData"));
     this.settingService.getBookmarkPost().subscribe((data: any) => {
+      console.log(data);
       this.bookmarkPost = data.posts; 
       this.bookmarkPost.forEach((element, i) => {
         console.log(element);
@@ -65,6 +66,7 @@ export class BookmarkPage implements OnInit {
           this.bookmarkProg[i].bookmarked = true;
                 
         }else{
+          
           this.bookmarkPost[i].count = element.posts.post_likes.length;
           element.posts.post_likes.filter((f) => {
             if (f.user_id == this.loginUserData.id) {
@@ -77,6 +79,7 @@ export class BookmarkPage implements OnInit {
             }
           }); 
           if (element.post_type == 1) {
+            this.bimg = false;
             this.bookmarkImg.push(element);
             this.bookmarkImg.forEach((element, i) => {
               // console.log(element.posts.total_comments.length);
@@ -98,6 +101,7 @@ export class BookmarkPage implements OnInit {
             }
             this.commonService.dismissLoader();
           } else if (element.post_type == 2) {
+            this.bvid = false;
             this.bookmarkVideo.push(element);
             this.bookmarkVideo.forEach((element, i) => {
               // this.postService.getComment({'postId' : element.id }).subscribe(
@@ -116,7 +120,7 @@ export class BookmarkPage implements OnInit {
               this.bvid = true;
             }
             this.commonService.dismissLoader();
-            // console.log(this.bookmarkVideo);
+            console.log(this.bookmarkVideo);
           }
         }  
       }); 

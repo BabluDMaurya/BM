@@ -636,8 +636,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.defaultUserImage = './../../assets/images/user.jpg';
         this.userPPicurl = _config_config__WEBPACK_IMPORTED_MODULE_7__["Config"].profilePic;
         this.defaultPostImage = './../../assets/images/loading.jpg';
-        this.bimg = false;
-        this.bvid = false;
+        this.bimg = true;
+        this.bvid = true;
         router.events.subscribe(); // console.log(this.router.url);
       }
 
@@ -654,6 +654,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.commonService.presentLoader();
           this.loginUserData = JSON.parse(localStorage.getItem("userData"));
           this.settingService.getBookmarkPost().subscribe(function (data) {
+            console.log(data);
             _this4.bookmarkPost = data.posts;
 
             _this4.bookmarkPost.forEach(function (element, i) {
@@ -680,6 +681,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 });
 
                 if (element.post_type == 1) {
+                  _this4.bimg = false;
+
                   _this4.bookmarkImg.push(element);
 
                   _this4.bookmarkImg.forEach(function (element, i) {
@@ -703,6 +706,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   _this4.commonService.dismissLoader();
                 } else if (element.post_type == 2) {
+                  _this4.bvid = false;
+
                   _this4.bookmarkVideo.push(element);
 
                   _this4.bookmarkVideo.forEach(function (element, i) {
@@ -722,8 +727,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     _this4.bvid = true;
                   }
 
-                  _this4.commonService.dismissLoader(); // console.log(this.bookmarkVideo);
+                  _this4.commonService.dismissLoader();
 
+                  console.log(_this4.bookmarkVideo);
                 }
               }
             });

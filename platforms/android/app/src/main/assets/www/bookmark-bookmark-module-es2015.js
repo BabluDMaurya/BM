@@ -379,8 +379,8 @@ let BookmarkPage = class BookmarkPage {
         this.defaultUserImage = './../../assets/images/user.jpg';
         this.userPPicurl = _config_config__WEBPACK_IMPORTED_MODULE_7__["Config"].profilePic;
         this.defaultPostImage = './../../assets/images/loading.jpg';
-        this.bimg = false;
-        this.bvid = false;
+        this.bimg = true;
+        this.bvid = true;
         router.events.subscribe();
         // console.log(this.router.url);
     }
@@ -391,6 +391,7 @@ let BookmarkPage = class BookmarkPage {
         this.commonService.presentLoader();
         this.loginUserData = JSON.parse(localStorage.getItem("userData"));
         this.settingService.getBookmarkPost().subscribe((data) => {
+            console.log(data);
             this.bookmarkPost = data.posts;
             this.bookmarkPost.forEach((element, i) => {
                 console.log(element);
@@ -413,6 +414,7 @@ let BookmarkPage = class BookmarkPage {
                         }
                     });
                     if (element.post_type == 1) {
+                        this.bimg = false;
                         this.bookmarkImg.push(element);
                         this.bookmarkImg.forEach((element, i) => {
                             // console.log(element.posts.total_comments.length);
@@ -435,6 +437,7 @@ let BookmarkPage = class BookmarkPage {
                         this.commonService.dismissLoader();
                     }
                     else if (element.post_type == 2) {
+                        this.bvid = false;
                         this.bookmarkVideo.push(element);
                         this.bookmarkVideo.forEach((element, i) => {
                             // this.postService.getComment({'postId' : element.id }).subscribe(
@@ -453,7 +456,7 @@ let BookmarkPage = class BookmarkPage {
                             this.bvid = true;
                         }
                         this.commonService.dismissLoader();
-                        // console.log(this.bookmarkVideo);
+                        console.log(this.bookmarkVideo);
                     }
                 }
             });

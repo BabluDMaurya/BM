@@ -20,6 +20,7 @@ export class ConsultantVideosPage implements OnInit {
   myPosts: any;
   mySavedVideoPosts:any;
   gotData: boolean = false;
+  emptySaveVideo: boolean = true;
   userData: any;
   userId: any;
   profileData:any;
@@ -55,7 +56,8 @@ export class ConsultantVideosPage implements OnInit {
     });
     this.videoLoadData();
     this.videoPostData();
-    
+    console.log(this.profileData);
+    console.log(this.userData);
    
   }
 
@@ -149,9 +151,12 @@ export class ConsultantVideosPage implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.peopleView.getMyPost('2', this.userId, 1).subscribe((data: any) => {
       this.mySavedVideoPosts = data.posts.data;
-      console.log(this.mySavedVideoPosts);
+      console.log(this.mySavedVideoPosts, 'mySavedVideoPosts');
       this.mySavedVideoPosts.forEach((element, i) => {
         this.mySavedVideoPosts[i].count = element.post_likes.length;
+        if( element.video_post.video_type == '3'){
+          this.emptySaveVideo = false;
+        }
         element.post_likes.filter((f) => {
           if (f.user_id == this.userData.id) {
             this.mySavedVideoPosts[i].liked = true;
@@ -206,6 +211,25 @@ export class ConsultantVideosPage implements OnInit {
 
         } else {
           this.myPosts[i].count = (this.myPosts[i].count + 1);
+        }
+      }
+    });
+    this.peopleView.likedPost({ 'postId': postId, 'liked': likeStat }).subscribe((data: any) => {
+      if (data.status) {
+        this.commonService.presentToast(data.status);
+      }
+    });
+  }
+
+  Savedliked(postId, likeStat) {
+    this.mySavedVideoPosts.forEach((element, i) => {
+      if (element.id == postId) {
+        this.mySavedVideoPosts[i].liked = !likeStat;
+        if (likeStat) {
+          this.mySavedVideoPosts[i].count = (this.mySavedVideoPosts[i].count - 1);
+
+        } else {
+          this.mySavedVideoPosts[i].count = (this.mySavedVideoPosts[i].count + 1);
         }
       }
     });

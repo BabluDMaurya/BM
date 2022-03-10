@@ -11,7 +11,7 @@ import { ProgramNutritionDetailModalComponent } from '../../add-program/program-
   styleUrls: ['../../app.component.scss', './add-equipments.component.scss'],
 })
 export class AddEquipmentsComponent implements OnInit {
-  equipmentFiltered: [];
+  equipmentFiltered: any;
   nutritionFiltered: [];
   private _searchTerm: string;
   private _followingSearchTrem: string;
@@ -84,9 +84,9 @@ export class AddEquipmentsComponent implements OnInit {
     }else{
       this.programService.fetchEquipmentList().subscribe((data) => {
         console.log(data)
-        this.equipments = data.equipmentList;
+        this.equipmentFiltered = data.equipmentList;
         console.log(this.programId);
-        console.log(this.equipments);
+        console.log(this.equipmentFiltered);
 
         data.equipmentList.filter(el => {
         if (this.programId) {
@@ -124,7 +124,7 @@ export class AddEquipmentsComponent implements OnInit {
     this.commonService.presentLoader();
     let data = [];
     if (this.modelOpen == 1) {
-      this.equipments.forEach(el => {
+      this.equipmentFiltered.forEach(el => {
         if (el.selected == true) {
           data[el.id] = el.id
         }

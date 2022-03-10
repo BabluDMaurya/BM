@@ -117,7 +117,7 @@ ion-text.md.hydrated p.text-green.text-center {
 ion-slide.md.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
   flex-direction: column;
   height: auto;
-  width: 47% !important; 
+  width: 47% ; 
   margin-left: 10px;
 }
 // ion-card.video-card.sc-ion-card-md-h.sc-ion-card-md-s.md.hydrated {
@@ -133,7 +133,7 @@ ion-list.top-list.three-block.md.list-md.list-lines-none.list-md-lines-none.hydr
 ion-slide.md.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-next {
   flex-direction: column;
   height: auto;
-  width: 47% !important;
+  width: 47% ;
   margin-left: 10px;
 }
 // ion-card.video-card.sc-ion-card-md-h.sc-ion-card-md-s.md.hydrated {
@@ -191,12 +191,21 @@ ion-slide.ios.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
     margin-inline-end: 0 !important
   }
 }
+.program-slides{
+  width: 95% !important;
+}
 .program-slide{
   height: 300px;
 }
 .program-slides video{
   height: 100%;
 }
+.nutri-slide{
+  width: 47% !important;
+}
 ion-slide.program-slides.ios.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
+  width: 95% !important;
+}
+ion-slide.program-slides.md.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-next{
   width: 95% !important;
 }

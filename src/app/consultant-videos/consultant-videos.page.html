@@ -238,8 +238,8 @@
           </ion-avatar>
           <div class="header-right">
             <ion-label>
-              <ion-card-title>{{loginUserData.user_name}}</ion-card-title>
-              <ion-card-subtitle>{{loginUserData.location}}</ion-card-subtitle>
+              <ion-card-title>{{userData.user_name}}</ion-card-title>
+              <ion-card-subtitle>{{userData.location}}</ion-card-subtitle>
             </ion-label>
             <ion-text class="post-timedate">
               <p class="post-date">{{post?.created_at}}</p>
@@ -263,32 +263,32 @@
                     <span>{{post.total_comments.length}}</span>
                   <!-- </span> -->
                 </div>
-                <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
+                <div (click)="Savedliked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
                   <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon>
                   <span>{{post?.count}}</span>
                 </div>
               </ion-item>
-              <ion-item>
+              <!-- <ion-item>
                 <div (click)="showOptions(post?.id ,post?.disable_comment )">
                   <ion-icon ios="ios-more" md="md-more"></ion-icon>
                 </div>
-              </ion-item>
+              </ion-item> -->
             </ion-list>
             <!-- -------  Description post with  post type = 2 -->
             <div *ngIf="post?.post_type==2">
               <p class="mb-10"
                 *ngIf="post['video_post']['0'].description && post['video_post']['0'].description.length < 30">
                 <span
-                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description.substr(0, 100)}}
+                  class="username-text text-green">{{userData.user_name}}</span>{{post['video_post']['0'].description.substr(0, 100)}}
               </p>
               <p class="mb-10"
                 *ngIf="post['video_post']['0'].description && post['video_post']['0'].description.length > 29 && expanded !=  post.id">
                 <span
-                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description.substr(0, 29)}}
+                  class="username-text text-green">{{userData.user_name}}</span>{{post['video_post']['0'].description.substr(0, 29)}}
                 <span (click)="expanded = post.id"
                   class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
               <p class="mb-10" *ngIf="expanded ==  post.id "><span
-                  class="username-text text-green">{{loginUserData.user_name}}</span>{{post['video_post']['0'].description}}
+                  class="username-text text-green">{{userData.user_name}}</span>{{post['video_post']['0'].description}}
                 <span (click)="expanded = 0"
                   class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
             </div>
@@ -297,10 +297,10 @@
         </ion-card-content>
       </ion-card>
       </div>
-      <div class="no-data" *ngIf="post?.video_post['0']?.video_type != 3 && post?.length < 1" style="height: calc(100vh - 175px)">
+      <!-- <div class="no-data" *ngIf=" emptySaveVideo == true " style="height: calc(100vh - 175px)">
         <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
         <p>Save Video  Not Found.</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </ion-content>
