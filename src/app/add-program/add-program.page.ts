@@ -1220,6 +1220,7 @@ export class AddProgramPage implements OnInit {
         this.ProgramInserted = true;
         this.router.navigate(["tabs/program"])
       }
+      this.router.navigate(["tabs/program"])
     });
     return await modal.present();
   }
