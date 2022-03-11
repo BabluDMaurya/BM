@@ -83,6 +83,17 @@ ion-card.ios{margin-top: 10px;margin-bottom: 10px;}
     overflow: hidden;
     padding: 0 0 15px 0;
 }
+.post-thumbnail {
+    border-radius: 20px;
+}
+.video-icon {
+    top: 25px;
+    left: 30px;
+    padding: 1px 4px;
+    border-radius: 5px;
+    background: #00000029;
+    font-size: 1.2rem !important;
+}
 .post-slider {
     height: 100%;
     max-height: none !important;
@@ -94,7 +105,7 @@ ion-card.ios{margin-top: 10px;margin-bottom: 10px;}
 .post-content {
     padding: 0px 15px 15px 15px;
 }
-item-post[_ngcontent-wle-c3] {
+item-post {
     margin-bottom: 10px;
 }
 .user-info{
@@ -102,4 +113,28 @@ item-post[_ngcontent-wle-c3] {
 }
 .pb-10{
     padding-bottom: 15px;
+}
+.empty-block {
+    width: 90%;
+    margin: auto;
+    height: 200px;
+    border: dotted #cecece;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+h4.text-center {
+    text-align: center;
+}
+.btn-primary{
+    padding: 12px 20px;
+    color: #FFF;
+    border-radius: 4px;
+    background-color: #27a69a;
+}
+.flex-center{
+    height: 50vh;
+    display: flex;
+    align-items: center;
 }
