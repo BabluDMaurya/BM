@@ -199,7 +199,7 @@
           </ion-slides>
         </ion-card-content>
       </ion-card>  
-      <ion-card class="video-card mb-lg"  *ngIf="i == 0 && (progItem?.nutrition_id || progItem?.video_program)">
+      <ion-card class="video-card"  *ngIf="i == 0 && (progItem?.nutrition_id || progItem?.video_program)">
         <ion-card-content class="ion-no-padding" *ngIf="!programDetail.displayData">
           <ion-slides [options]="sliderOpts" class="inner-slider bg-grey py-md mb-10 nutri-slides">
             <!-- <ion-slide *ngIf="progItem?.video_program" (click)="showVideoDetails(item.posts_id)" > -->
@@ -235,8 +235,17 @@
     </div>
     
   </ion-list>
+
+
+  <ion-button expand="full" *ngIf=" !adData && (hh | async)>23" (click)="applyAdvertise()" class="mb-56 btn-height green ion-text-uppercase ion-no-margin full-height"> Apply For Advertise sponser</ion-button>
+  
+  <ion-button expand="full" *ngIf="adData?.id && adData?.video_approve_status== 1" (click)="showSponsersList()"   class="mb-56 btn-height green ion-text-uppercase ion-no-margin full-height" >See Ad Sponser Options  </ion-button> 
   <div class="bottom-space">
   </div>
+</ion-content>
+<ion-footer class="" >
+  <!-- <ion-button expand="full" *ngIf=" !adData && (hh | async)>23" (click)="applyAdvertise()" class="green ion-text-uppercase ion-no-margin full-height"> Apply For Advertise sponser</ion-button>
+  <ion-button expand="full" *ngIf="adData?.id && adData?.video_approve_status== 1" (click)="showSponsersList()"   class="green ion-text-uppercase ion-no-margin full-height" >See Ad Sponser Options  </ion-button> -->
   <ion-row>
     <ion-col size="12" class="ion-no-padding">
       <ion-list lines="none" class="top-list three-block">
@@ -273,9 +282,5 @@
         </ion-fab-button>
       </ion-fab>
       </ion-col> -->
-  </ion-row>  
-</ion-content>
-<!-- <ion-footer class="sticky-footer" *ngIf="programDetail?.type_id == 'video' && !programDetail?.ended && !programDetail?.live ">
-  <ion-button expand="full" *ngIf=" !adData && (hh | async)>23" (click)="applyAdvertise()" class="green ion-text-uppercase ion-no-margin full-height"> Apply For Advertise sponser</ion-button>
-  <ion-button expand="full" *ngIf="adData?.id && adData?.video_approve_status== 1" (click)="showSponsersList()"   class="green ion-text-uppercase ion-no-margin full-height" >See Ad Sponser Options  </ion-button>
-</ion-footer> -->
+  </ion-row> 
+</ion-footer>

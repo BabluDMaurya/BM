@@ -94,7 +94,12 @@
     </div> -->
     <ion-list *ngFor="let date of repetatedDateCopy let i = index">
       <ion-list-header class="ion-padding-horizontal green text-white">
-        {{date.date | date :'medium'}}
+        <div *ngIf="date.is_live">
+          {{date.date | date :'medium'}}
+        </div>
+        <div *ngIf="!date.is_live">
+          {{date.date | date :'mediumDate'}}
+        </div>
         <div>
           <ion-icon ios="ios-fitness" md="md-fitness" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
           <ion-icon ios="ios-restaurant" md="md-restaurant" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">

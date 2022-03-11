@@ -58,6 +58,7 @@ export class HomePage implements OnInit {
     });
     this.homeService.getHomeContent({ 'page': (this.currentPage) }).subscribe(data => {
       let postData = this.like_bookmark(data.postData.data);
+      console.log(postData);
       this.last_page = data.postData.last_page;
       this.currentPage = data.postData.current_page;
       this.searchService.getTopConsultant().subscribe((data: any) => {

@@ -63,6 +63,7 @@ export class DateTimeModalComponent implements OnInit {
   selectedDateTime : any;
   totalLiveSession: any;
   totalLiveAmt: any = 0;
+  sendAdvRequest: any = 0;
   constructor(
     public commonService: CommonService,
     public modalCtrl: ModalController,
@@ -363,7 +364,7 @@ export class DateTimeModalComponent implements OnInit {
     this.programData.repetatedDateCopy = this.repetatedDateCopy;
     this.programData.programFees       = fees.programFees;
     this.programData.non_live_component_fee       = fees.non_live_component_fee;
-
+    this.programData.sendAdvRequest    = this.sendAdvRequest;
 
     
     console.log(this.repetatedDateCopy);
@@ -466,16 +467,20 @@ export class DateTimeModalComponent implements OnInit {
   {
     this.commonService.presentLoader();
 
-    if(this.programData.type_id == 'video')
+    if(this.programData.programType == '6')
     {
+      this.sendAdvRequest = 1;
+      this.commonService.dismissLoader();
+      this.commonService.presentToast('Request Sent');
+
       // console.log('programId:'+this.programDetail.id);
-      this.programService.advertiseRequest({'programId':this.programData.id}).subscribe(data=>{
-        this.adData = data.status;
-        this.request_approve_btn = true;
-        this.commonService.dismissLoader();
-        this.commonService.presentToast('Request Sent');
-        console.log(data);
-      } );
+      // this.programService.advertiseRequest({'programId':this.programData.id}).subscribe(data=>{
+      //   this.adData = data.status;
+      //   this.request_approve_btn = true;
+      //   this.commonService.dismissLoader();
+      //   this.commonService.presentToast('Request Sent');
+      //   console.log(data);
+      // } );
     }else{
       this.commonService.dismissLoader();
       this.commonService.presentToast('Only Video Program are eligible');

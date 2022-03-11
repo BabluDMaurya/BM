@@ -394,7 +394,7 @@ export class ProgramDetailsPage implements OnInit {
       }else{
         advtProgId = this.programDetail.id;
       }
-      this.programService.getAdDetail({'programId':advtProgId}).subscribe(data=>{
+      this.programService.getAdDetail({'programId':this.programId}).subscribe(data=>{
         this.adData =data.data;
         console.log(this.adData);
         console.log(this.hh);
