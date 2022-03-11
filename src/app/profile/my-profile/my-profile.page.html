@@ -56,8 +56,10 @@
             <ion-text>
               <h6 class="userDisplayName" *ngIf="profileData?.userData?.bios?.display_name">
                 {{profileData?.userData?.bios?.display_name}}</h6>
-              <a class="ion-no-margin" *ngIf="!profileData?.userData?.bios?.display_name"
-               [routerLink]="['/tabs/edit-profile']">Add display name +</a>
+                <h6 class="userDisplayName">
+                  <a class="ion-no-margin clr-blk" *ngIf="!profileData?.userData?.bios?.display_name"
+                  [routerLink]="['/tabs/edit-profile']">Add display name +</a>
+                </h6>
             </ion-text>
             <!-- <div class="tagline">
               <a>
