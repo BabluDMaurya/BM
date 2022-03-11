@@ -57,7 +57,18 @@
     
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row *ngIf="postData.length == 0">
+      <ion-col class="flex-center">
+        <div class="empty-block">
+          <h4 class="text-center pb-10">Start following people</h4>
+          <button [routerLink]="['/tabs/search']" class="btn-primary">
+            start following
+          </button>
+        </div>
+      </ion-col>
+      </ion-row>
+
+    <ion-row *ngIf="postData.length > 0">
       <ion-col class="ion-no-padding">
         <!-- <ion-segment lines="none" class="top-segment" [(ngModel)]="userProfile">
           <ion-segment-button value="aboutInfo">Information</ion-segment-button>

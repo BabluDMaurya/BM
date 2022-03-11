@@ -95,6 +95,12 @@ ion-label{
         --background-focused: #27A69A;
         --background-hover: #27A69A;
     }
+    .flex-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
 // ion-item{
 //     --background: #3880ff;
 //     --color: #fff;
