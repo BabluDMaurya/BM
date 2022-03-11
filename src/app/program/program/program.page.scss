@@ -156,7 +156,11 @@ th.weekview-header.text-center.weekview-selected {
   background: #fff;
   color: #27a69a;
 }
+.calendar-hour-column{
+  display: none !important;
 }
+}
+
 .list-person{
   white-space: nowrap;
   text-overflow: ellipsis;
