@@ -16,3 +16,10 @@ ion-list.radio-list+div+ion-button,ion-list.radio-list+ion-button{height: 56px;}
     height: 28vh !important;
     top: auto;
 }
+.mw-30{
+    min-width: 30px !important;
+}
+.text-not-overflow{
+    text-overflow: initial;
+    white-space: initial;
+}
