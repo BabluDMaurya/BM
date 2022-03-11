@@ -12,7 +12,9 @@
 
 .list-info{display: flex;flex-wrap: wrap;padding: 6px;}
 .list-info ion-item{width: 25%;box-shadow: 0.001em 5px 12px rgba(34, 35, 58, 0.09);margin: auto;margin-bottom: 8px;}
-.list-info ion-item img{width: 24px;margin-right: 8px;}
+.list-info ion-item img{width: 24px;
+    // margin-right: 8px;
+}
 .list-info ion-item ion-label{font-size: 0.85rem;}
 
 .btnVerify{width: 100%;
@@ -39,3 +41,16 @@ ion-item.icon-right-side.ion-text-end.item.ios.in-list.ion-focusable.hydrated {
     padding-left: 16px;
     min-width: none;
 }
+.icon-text{
+    margin: 0 auto;
+    display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+}
+.icon-text img{
+    margin-bottom: 5px !important;
+  }
+  p.text-green.text-center{
+      left: 0 !important;
+  }

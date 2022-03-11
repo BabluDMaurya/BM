@@ -215,3 +215,21 @@ ion-slide.program-slides.md.swiper-slide.swiper-zoom-container.hydrated.swiper-s
 .mb-56{
   margin-bottom: 56px;
 }
+.icon-text{
+  margin: 0 auto;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+}
+.icon-text img{
+  margin-bottom: 5px !important;
+}
+.item-native{
+  padding-inline-start: 0px !important;
+}
+ion-slide.nutri-slide.md.swiper-slide.swiper-zoom-container.hydrated, ion-slide.nutri-slide.ios.swiper-slide.swiper-zoom-container.hydrated {
+  flex-direction: column;
+  height: auto;
+  margin-left: 10px;
+}
