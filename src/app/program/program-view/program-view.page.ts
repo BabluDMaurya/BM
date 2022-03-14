@@ -202,6 +202,7 @@ export class ProgramViewPage implements OnInit {
       alert ("Kindly Enter Room ID");
       return;
     }
+    alert(this.roomID);
     var loginString = {"name": this.userName, "role": "participant", "user_ref": "2236", "roomId": this.roomID };
     var hedare = (kTry) ? { "x-app-id" : kAppId , "x-app-key" : kAppkey, "Accept" : "application/json","Content-Type" :"application/json"} : {"Accept" : "application/json","Content-Type" :"application/json"};
      let url = kBasedURL+"createToken";

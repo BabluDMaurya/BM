@@ -190,7 +190,7 @@ export class AddVideoPage implements OnInit {
     let options: CaptureVideoOptions = { 
       limit: 1,
       duration: 600,
-      quality : 0
+      quality : 100
      };
     this.mediaCapture.captureVideo(options)
       .then(

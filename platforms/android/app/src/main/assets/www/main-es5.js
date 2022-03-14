@@ -525,7 +525,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal('')\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>{{programData?.programTitle}}</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\">\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <div class=\"fixed\">\r\n      <form [formGroup]=\"finalForm\" class=\"\">\r\n            <ion-item lines=\"none\" class=\"margin-15\" *ngIf=\"totalLiveSession > 0\">\r\n              <ion-label style=\"display: contents;\">How much would you like to charge:</ion-label>\r\n              <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n              <ion-input class=\"form-control\" type=\"number\" (change)=\"updateTotalPrice($event)\" formControlName=\"programFees\" value=\"0\"></ion-input>\r\n            </ion-item>\r\n            <ion-item lines=\"none\" class=\"margin-15\" *ngIf=\"totalLiveSession > 0\">\r\n              <ion-label style=\"display: contents;\">Total for {{totalLiveSession}} session:</ion-label>\r\n              <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n              <ion-label >{{totalLiveAmt}}</ion-label>\r\n             </ion-item> \r\n            <ion-item lines=\"none\" class=\"margin-15\">\r\n              <ion-label style=\"display: contents;\">Charge for Non-Live component:</ion-label>\r\n              <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n              <ion-input class=\"form-control\" type=\"number\" formControlName=\"non_live_component_fee\" value=\"0\"></ion-input>\r\n            </ion-item>\r\n          <div *ngIf=\"programData.programType == '6' \">\r\n            <ion-label style=\"display: block;margin-top: 15px; padding-left: 15px;\">Would you like to request Sponsors:</ion-label>\r\n            <ion-item lines=\"none\">\r\n              <ion-radio-group value=\"sponsors_group\" class=\"radio-group radioPreview\">\r\n                <ion-item>\r\n                  <ion-label>Yes</ion-label>\r\n                  <ion-radio slot=\"start\" value=\"1\" (click)=\"sponsar_prog()\" ></ion-radio>\r\n                </ion-item>\r\n                <ion-item>\r\n                  <ion-label>No</ion-label>\r\n                  <ion-radio slot=\"start\" value=\"2\" (click)=\"unsponsar_prog()\" ></ion-radio>\r\n                </ion-item>\r\n              </ion-radio-group>      \r\n            </ion-item>\r\n          </div>\r\n        \r\n          <ion-list class=\"prog_btn_list mb-0\" >\r\n            <ion-item  lines=\"none\" (click)=\"verifyUserInfoModal()\" *ngIf=\"loginUserData.trilloMatch != '1' && programData.programType != '6' \">\r\n              <ion-button class=\"green btn button-medium\">Earn with Intoative</ion-button>\r\n            </ion-item>\r\n            <ion-item class=\"\" *ngIf=\"approval_btn && !request_approve_btn \">\r\n              <ion-button (click)=\"applyAdvertise()\" class=\"green btn button-medium\">Request Approval</ion-button> \r\n            </ion-item>\r\n          </ion-list>\r\n        </form>\r\n      <form class=\"nutrition-form ion-padding-horizontal\">\r\n        <div *ngIf=\"programData?.programType==6\">\r\n          <h6 class=\"repeatedHeading mb-10\">Select Video</h6>\r\n          <ion-col size=\"12\" class=\"ion-no-padding\">\r\n            <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n              <ion-segment-button *ngFor=\"let preview of videoList\">\r\n                <div class=\"checkboxThumb\">\r\n                  <div class=\"thumb-checkbox\">\r\n                    <ion-checkbox [(ngModel)]=\"preview.sele\" name=\"preview.id\" value=\"preview.id\" slot=\"start\">\r\n                    </ion-checkbox>\r\n                  </div>\r\n                  <img *ngIf=\"preview?.thumb_path\" src=\"{{storagePath}}{{preview?.thumb_path}}\" alt=\"path\" />\r\n                  <img *ngIf=\"!preview?.thumb_path\" src=\"../../../assets/images/video.png\" />\r\n                  <ion-label>{{preview.title}}</ion-label>\r\n                  <ion-button class=\"infoIcon\" (click)=\"showVideoDetails(preview.posts_id)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n                </div>\r\n              </ion-segment-button>\r\n            </ion-segment>\r\n\r\n          </ion-col>\r\n          <div *ngIf=\"videoList.length==0\" class=\"no-data\">\r\n            <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n            <p>No post added yet!!!</p>\r\n          </div>\r\n        </div>\r\n\r\n      </form>\r\n  </div>\r\n  <div *ngIf=\"repetatedDateCopy.length>0\" class=\"margin-top-md\">\r\n    <!-- <div class=\"ion-padding-horizontal\">\r\n    <ion-list>            \r\n        <ion-item class=\"ion-no-padding ion-margin-vertical\">\r\n          <ion-label>Add Bonus Video, Nutrition</ion-label>\r\n          <ion-datetime value=\"\" display-timezone=\"utc\"  (ionChange)=\"addExtraDay($event)\"></ion-datetime>\r\n        </ion-item>\r\n      </ion-list> \r\n    </div> -->\r\n    <ion-list *ngFor=\"let date of repetatedDateCopy let i = index\">\r\n      <ion-list-header class=\"ion-padding-horizontal green text-white\">\r\n        {{date.date | date :'medium'}}\r\n        <div>\r\n          <ion-icon ios=\"ios-fitness\" md=\"md-fitness\" (click)=\"addEquipments2(1,date.equipments,i)\"></ion-icon>\r\n          <ion-icon ios=\"ios-restaurant\" md=\"md-restaurant\" class=\"ion-margin-start\" (click)=\"addEquipments2(2,date.nutrition_id,i)\">\r\n          </ion-icon>\r\n          <ion-icon ios=\"ios-videocam\" md=\"md-videocam\" class=\"ion-margin-start\" (click)=\"addVideo(item,i)\"></ion-icon>\r\n          <!-- <ion-icon ios=\"ios-create\" md=\"md-create\" class=\"ion-margin-start\" [routerLink]=\"['/add-program']\"></ion-icon> -->\r\n        </div>\r\n      </ion-list-header>\r\n      <ion-item>\r\n        <ion-label>Equipments :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date?.equipments.length>0;else no_equipment\">\r\n          <img src=\"../../assets/images/demo1.jpg\" *ngFor=\"let item of date?.equipments\" />\r\n        </div>\r\n        <ng-template #no_equipment>No Equipment Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Nutritions :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date.nutrition_id.length>0;else no_nutrition\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.nutrition_id\" />\r\n        </div>\r\n        <ng-template #no_nutrition>No Nutrition Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Videos :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date?.video;else no_videos\">\r\n        \r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.video\" />\r\n        </div>\r\n        <ng-template #no_videos>No videos Selected</ng-template>\r\n      </ion-item>      \r\n      <ion-item class=\"descriptionItem\">\r\n        <ion-textarea placeholder=\"Enter Description\" (ionChange)=\"detailsUpdate($event ,i)\"\r\n            value=\"{{item?.description}}\"></ion-textarea>\r\n      </ion-item>\r\n    </ion-list>    \r\n  </div>\r\n\r\n</ion-content>\r\n<ion-footer class=\"sticky-footer\">\r\n  <ion-button [disabled]=\"isLoading\" expand=\"full\" (click)=\"onSubmit()\"\r\n    class=\"green ion-text-uppercase ion-no-margin full-height\">Save</ion-button>\r\n</ion-footer>";
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal('')\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>{{programData?.programTitle}}</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\">\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <div class=\"fixed\">\r\n      <form [formGroup]=\"finalForm\" class=\"\">\r\n            <ion-item lines=\"none\" class=\"margin-15 ion-block\" *ngIf=\"totalLiveSession > 0\">\r\n              <div class=\"ion-left\">\r\n                <ion-label style=\"display: contents;\">How much would you like to charge:</ion-label>\r\n              </div>\r\n              <div class=\"ion-right\">\r\n                <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n                <ion-input class=\"form-control width-30\" type=\"number\" (change)=\"updateTotalPrice($event)\" formControlName=\"programFees\" value=\"0\"></ion-input>\r\n              </div>\r\n             \r\n            </ion-item>\r\n            <ion-item lines=\"none\" class=\"margin-15 ion-block\" *ngIf=\"totalLiveSession > 0\">\r\n              <div class=\"ion-left\">\r\n                <ion-label style=\"display: contents;\">Total for {{totalLiveSession}} session:</ion-label>\r\n              </div>\r\n              <div class=\"ion-right\">\r\n                <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n                <ion-label class=\"width-30\">{{totalLiveAmt}}</ion-label>\r\n              </div>\r\n\r\n             </ion-item> \r\n            <ion-item lines=\"none\" class=\"margin-15 ion-block\">\r\n              <div class=\"ion-left\">\r\n                <ion-label style=\"display: contents;\">Charge for Non-Live component:</ion-label>\r\n              </div>\r\n              <div class=\"ion-right\">\r\n                <ion-label style=\"margin-left: 40px;\">$</ion-label>\r\n              <ion-input class=\"form-control width-30\" type=\"number\" formControlName=\"non_live_component_fee\" value=\"0\"></ion-input>\r\n              </div>\r\n              \r\n            </ion-item>\r\n          <div *ngIf=\"programData.programType == '6' \">\r\n            <ion-label style=\"display: block;margin-top: 15px; padding-left: 15px;\">Would you like to request Sponsors:</ion-label>\r\n            <ion-item lines=\"none\">\r\n              <ion-radio-group value=\"sponsors_group\" class=\"radio-group radioPreview\">\r\n                <ion-item>\r\n                  <ion-label>Yes</ion-label>\r\n                  <ion-radio slot=\"start\" value=\"1\" (click)=\"sponsar_prog()\" ></ion-radio>\r\n                </ion-item>\r\n                <ion-item>\r\n                  <ion-label>No</ion-label>\r\n                  <ion-radio slot=\"start\" value=\"2\" (click)=\"unsponsar_prog()\" ></ion-radio>\r\n                </ion-item>\r\n              </ion-radio-group>      \r\n            </ion-item>\r\n          </div>\r\n        \r\n          <ion-list class=\"prog_btn_list mb-0\" >\r\n            <ion-item  lines=\"none\" (click)=\"verifyUserInfoModal()\" *ngIf=\"loginUserData.trilloMatch != '1' && programData.programType != '6' \">\r\n              <ion-button class=\"green btn button-medium\">Earn with Intoative</ion-button>\r\n            </ion-item>\r\n            <ion-item class=\"\" *ngIf=\"approval_btn && !request_approve_btn \">\r\n              <ion-button (click)=\"applyAdvertise()\" class=\"green btn button-medium\">Request Approval</ion-button> \r\n            </ion-item>\r\n          </ion-list>\r\n        </form>\r\n      <form class=\"nutrition-form ion-padding-horizontal\">\r\n        <div *ngIf=\"programData?.programType==6\">\r\n          <h6 class=\"repeatedHeading mb-10\">Select Video</h6>\r\n          <ion-col size=\"12\" class=\"ion-no-padding\">\r\n            <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n              <ion-segment-button *ngFor=\"let preview of videoList\">\r\n                <div class=\"checkboxThumb\">\r\n                  <div class=\"thumb-checkbox\">\r\n                    <ion-checkbox [(ngModel)]=\"preview.sele\" name=\"preview.id\" value=\"preview.id\" slot=\"start\">\r\n                    </ion-checkbox>\r\n                  </div>\r\n                  <img *ngIf=\"preview?.thumb_path\" src=\"{{storagePath}}{{preview?.thumb_path}}\" alt=\"path\" />\r\n                  <img *ngIf=\"!preview?.thumb_path\" src=\"../../../assets/images/video.png\" />\r\n                  <ion-label>{{preview.title}}</ion-label>\r\n                  <ion-button class=\"infoIcon\" (click)=\"showVideoDetails(preview.posts_id)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n                </div>\r\n              </ion-segment-button>\r\n            </ion-segment>\r\n\r\n          </ion-col>\r\n          <div *ngIf=\"videoList.length==0\" class=\"no-data\">\r\n            <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n            <p>No post added yet!!!</p>\r\n          </div>\r\n        </div>\r\n\r\n      </form>\r\n  </div>\r\n  <div *ngIf=\"repetatedDateCopy.length>0\" class=\"margin-top-md\">\r\n    <!-- <div class=\"ion-padding-horizontal\">\r\n    <ion-list>            \r\n        <ion-item class=\"ion-no-padding ion-margin-vertical\">\r\n          <ion-label>Add Bonus Video, Nutrition</ion-label>\r\n          <ion-datetime value=\"\" display-timezone=\"utc\"  (ionChange)=\"addExtraDay($event)\"></ion-datetime>\r\n        </ion-item>\r\n      </ion-list> \r\n    </div> -->\r\n    <ion-list *ngFor=\"let date of repetatedDateCopy let i = index\">\r\n      <ion-list-header class=\"ion-padding-horizontal green text-white\">\r\n        <div *ngIf=\"date.is_live\">\r\n          {{date.date | date :'medium'}}\r\n        </div>\r\n        <div *ngIf=\"!date.is_live\">\r\n          {{date.date | date :'mediumDate'}}\r\n        </div>\r\n        <div>\r\n          <ion-icon ios=\"ios-fitness\" md=\"md-fitness\" (click)=\"addEquipments2(1,date.equipments,i)\"></ion-icon>\r\n          <ion-icon ios=\"ios-restaurant\" md=\"md-restaurant\" class=\"ion-margin-start\" (click)=\"addEquipments2(2,date.nutrition_id,i)\">\r\n          </ion-icon>\r\n          <ion-icon ios=\"ios-videocam\" md=\"md-videocam\" class=\"ion-margin-start\" (click)=\"addVideo(item,i)\"></ion-icon>\r\n          <!-- <ion-icon ios=\"ios-create\" md=\"md-create\" class=\"ion-margin-start\" [routerLink]=\"['/add-program']\"></ion-icon> -->\r\n        </div>\r\n      </ion-list-header>\r\n      <ion-item>\r\n        <ion-label>Equipments :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date?.equipments.length>0;else no_equipment\">\r\n          <img src=\"../../assets/images/demo1.jpg\" *ngFor=\"let item of date?.equipments\" />\r\n        </div>\r\n        <ng-template #no_equipment>No Equipment Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Nutritions :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date.nutrition_id.length>0;else no_nutrition\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.nutrition_id\" />\r\n        </div>\r\n        <ng-template #no_nutrition>No Nutrition Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Videos :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date?.video;else no_videos\">\r\n        \r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.video\" />\r\n        </div>\r\n        <ng-template #no_videos>No videos Selected</ng-template>\r\n      </ion-item>      \r\n      <ion-item class=\"descriptionItem\">\r\n        <ion-textarea placeholder=\"Enter Description\" (ionChange)=\"detailsUpdate($event ,i)\"\r\n            value=\"{{item?.description}}\"></ion-textarea>\r\n      </ion-item>\r\n    </ion-list>    \r\n  </div>\r\n\r\n</ion-content>\r\n<ion-footer class=\"sticky-footer\">\r\n  <ion-button [disabled]=\"isLoading\" expand=\"full\" (click)=\"onSubmit()\"\r\n    class=\"green ion-text-uppercase ion-no-margin full-height\">Save</ion-button>\r\n</ion-footer>";
     /***/
   },
 
@@ -805,7 +805,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\n  <ion-list class=\"top-heading three-block\">\n    <ion-item slot=\"center\" style=\"padding-left: 16px;\">\n      <ion-label>Payment Pending</ion-label>\n    </ion-item>\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\"  (click)=\"closeModal()\">X</ion-item>\n  </ion-list>\n</ion-header>\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" >\n  <ion-card class=\"ion-no-margin upcomingCard\">  \n    <ion-item class=\"mt-20\">\n      <ion-avatar slot=\"start\">\n        <img src=\"../../../assets/images/loading.jpg\" >\n      </ion-avatar>\n      <ion-label>\n        <h3 class=\"list-person\">Program Name : abc</h3>\n        <span class=\"list-person\">Amount : ${{pgamount}}</span>\n      </ion-label>      \n    </ion-item>  \n    </ion-card>\n</ion-list>\n\n<ion-button expand=\"full\" class=\"green ion-no-margin\" (click)=\"payment()\" >Payment</ion-button>\n";
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"center\" style=\"padding-left: 16px;\">\r\n      <ion-label>Payment Pending</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end mw-30\" slot=\"end\"  (click)=\"closeModal()\">X</ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" >\r\n  <ion-card class=\"ion-no-margin upcomingCard\">  \r\n    <ion-item class=\"mt-20\">\r\n      <ion-avatar slot=\"start\">\r\n        <img src=\"../../../assets/images/loading.jpg\" >\r\n      </ion-avatar>\r\n      <ion-label class=\"text-not-overflow\">\r\n        <h3 class=\"list-person\">Program Name : abc</h3>\r\n        <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n      </ion-label>      \r\n    </ion-item>  \r\n    </ion-card>\r\n</ion-list>\r\n\r\n<ion-button expand=\"full\" class=\"green ion-no-margin\" (click)=\"payment()\" >Payment</ion-button>\r\n";
     /***/
   },
 
@@ -885,7 +885,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"center\" style=\"padding-left: 16px;\">\r\n      <ion-label>Payment Pending</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\" (click)=\"closeModal()\">X</ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" *ngIf=\"type == 2\">\r\n  <ion-card class=\"ion-no-margin upcomingCard\">  \r\n    <ion-item class=\"mt-20\">\r\n      <ion-avatar slot=\"start\">\r\n        <img src=\"{{url}}{{pgimg}}\" *ngIf=\"pgimg\">\r\n        <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!pgimg\">\r\n      </ion-avatar>\r\n      <ion-label>\r\n        <h3 class=\"list-person\">Program Name : {{pgname}}</h3>\r\n        <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n      </ion-label>      \r\n    </ion-item>  \r\n    </ion-card>\r\n</ion-list>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" *ngIf=\"type == 1\">\r\n  <ion-card class=\"upcomingCard\">  \r\n    <ion-item class=\"mt-20\">\r\n      <span class=\"list-person\">\r\n        Payment required to enter additional\r\n        Private & Group Streams\r\n      </span>\r\n      <span class=\"list-person\">\r\n        <p>Intoactive charge a small transaction fee for Live, Private and Group Session</p>\r\n      </span>\r\n     \r\n        <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n         \r\n    </ion-item>  \r\n    </ion-card>\r\n</ion-list>\r\n<ion-button expand=\"full\" class=\"green ion-no-margin\"  (click)=\"payment()\" >Payment</ion-button>\r\n";
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"center\" style=\"padding-left: 16px;\">\r\n      <ion-label>Payment Pending</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end mw-30\" slot=\"end\" (click)=\"closeModal()\">X</ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" *ngIf=\"type == 2\">\r\n  <ion-card class=\"ion-no-margin upcomingCard\">  \r\n    <ion-item class=\"mt-20\">\r\n      <ion-avatar slot=\"start\">\r\n        <img src=\"{{url}}{{pgimg}}\" *ngIf=\"pgimg\">\r\n        <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!pgimg\">\r\n      </ion-avatar>\r\n      <ion-label class=\"text-not-overflow\">\r\n        <h3 class=\"list-person\">Program Name : {{pgname}}</h3>\r\n        <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n      </ion-label>      \r\n    </ion-item>  \r\n    </ion-card>\r\n</ion-list>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" *ngIf=\"type == 1\">\r\n  <ion-card class=\"upcomingCard\">  \r\n    <ion-item class=\"mt-20\">\r\n      <span class=\"list-person\">\r\n        Payment required to enter additional\r\n        Private & Group Streams\r\n      </span>\r\n      <span class=\"list-person\">\r\n        <p>Intoactive charge a small transaction fee for Live, Private and Group Session</p>\r\n      </span>\r\n     \r\n        <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n         \r\n    </ion-item>  \r\n    </ion-card>\r\n</ion-list>\r\n<ion-button expand=\"full\" class=\"green ion-no-margin\"  (click)=\"payment()\" >Payment</ion-button>\r\n";
     /***/
   },
 
@@ -2702,7 +2702,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".inline-flex ion-datetime {\n  padding-left: 1px;\n  padding-right: 5px; }\n\n.radio-group {\n  display: flex; }\n\n.radio-group ion-item {\n  --background: transparent;\n  --inner-border-width: 0 0 0 0; }\n\n.radio-group ion-item ion-radio {\n  margin-right: 10px; }\n\n.nutriimages-list ion-label {\n  font-size: 0.75rem;\n  margin: 3px 0;\n  text-transform: capitalize;\n  letter-spacing: 0;\n  font-weight: 400;\n  display: block;\n  color: #444; }\n\n.video-card {\n  box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09); }\n\nion-slides {\n  background: transparent;\n  padding: 0 5px; }\n\n.nutriimages-list ion-segment-button {\n  width: 32%;\n  border: none;\n  padding: 0;\n  --padding-start: 0;\n  --padding-end: 0;\n  margin: 0 3px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: #f7f7f7;\n  border-radius: 4px; }\n\n.nutriimages-list ion-segment-button:first-child {\n  margin-left: 0; }\n\n.nutriimages-list ion-segment-button img {\n  -o-object-fit: contain;\n     object-fit: contain;\n  max-width: 100%; }\n\n.nutriimages-list .segment-button-checked {\n  background: #eaeaea;\n  --color-checked: transparent; }\n\n.nutriimages-list .thumb-checkbox {\n  position: absolute;\n  width: 100%;\n  height: 100%; }\n\n.nutriimages-list .thumb-checkbox ion-checkbox {\n  opacity: 0;\n  width: 100%;\n  height: 78px;\n  padding: 0 0; }\n\n.checkboxThumb::after {\n  content: '';\n  width: 16px;\n  height: 16px;\n  border: 2px solid #7d7d7d;\n  display: block;\n  border-radius: 50%;\n  position: absolute;\n  top: 5px;\n  left: 5px; }\n\n.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked {\n  opacity: 1;\n  --background-checked:transparent;\n  --border-color-checked:transparent;\n  --size:0;\n  --checkmark-color:transparent; }\n\n.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked:after {\n  content: '';\n  width: 20px;\n  height: 20px;\n  background: #26a69a;\n  display: block;\n  border-radius: 50%;\n  position: absolute;\n  top: 5px;\n  left: 5px; }\n\n.item-list ion-list-header ion-icon {\n  font-size: 1.15rem; }\n\n.users-list {\n  --min-height: auto;\n  display: flex;\n  align-items: center;\n  margin: 6px 0; }\n\n.users-list img {\n  width: 36px;\n  height: 36px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 50%;\n  margin-left: -10px; }\n\n.users-list img:first-child {\n  margin-left: 0; }\n\n.users-list ion-label {\n  width: 100px; }\n\n.view-all {\n  width: 36px;\n  height: 36px;\n  max-width: 36px;\n  text-align: center;\n  background: #f1f0f0;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 0;\n  margin-left: -10px; }\n\nion-list .durationItem {\n  --padding-end: 0; }\n\nion-list .durationItem ion-input {\n    position: relative;\n    top: 2px;\n    text-align: right; }\n\n.program-card {\n  width: 100%; }\n\nion-item ion-list {\n  width: 100%; }\n\n.item-list > ion-item {\n  --inner-padding-end: 0; }\n\n.thumb-list ion-item ion-label {\n  position: absolute;\n  bottom: 0;\n  margin: 0;\n  background: rgba(38, 166, 154, 0.5);\n  width: 100%;\n  color: #FFF;\n  padding: 5px;\n  text-align: center; }\n\n.fixed {\n  position: -webkit-sticky;\n  position: sticky;\n  width: 100%;\n  top: 0px;\n  padding-top: 5px;\n  z-index: 999;\n  background: #fff; }\n\n.margintop-45 {\n  margin-top: 45%; }\n\n.margin-15 {\n  margin: 15px 0px !important; }\n\n.mb-0 {\n  margin-bottom: 0 !important; }\n\nion-list {\n  padding-top: 0 !important;\n  padding-bottom: 0 !important; }\n\nion-list ion-item {\n    font-size: 0.875rem;\n    --padding-end: 16px;\n    -webkit-padding-end: 0;\n            padding-inline-end: 0;\n    --inner-padding-end: 0;\n    --min-height: 44px;\n    --border-color: whitesmoke; }\n\nion-list .descriptionItem ion-item {\n    padding: 0; }\n\n.repeatedHeading {\n  font-weight: 400;\n  font-size: 15px;\n  margin-bottom: 0; }\n\n.infoIcon {\n  position: absolute;\n  top: 0;\n  right: 0;\n  --background: #26a69a;\n  --box-shadow: none;\n  color: #FFF;\n  --padding-start: 0;\n  --padding-end: 0;\n  height: auto;\n  font-size: 16px;\n  margin: 3px;\n  z-index: 9;\n  --border-radius:50%; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWRkLXByb2dyYW0vZGF0ZS10aW1lLW1vZGFsL0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFxhZGQtcHJvZ3JhbVxcZGF0ZS10aW1lLW1vZGFsXFxkYXRlLXRpbWUtbW9kYWwuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBMEIsaUJBQWlCO0VBQUMsa0JBQWtCLEVBQUE7O0FBQzlEO0VBQWEsYUFBYSxFQUFBOztBQUMxQjtFQUFzQix5QkFBYTtFQUFhLDZCQUFxQixFQUFBOztBQUNyRTtFQUFnQyxrQkFBa0IsRUFBQTs7QUFFbEQ7RUFBNEIsa0JBQWtCO0VBQUMsYUFBYTtFQUFDLDBCQUEwQjtFQUFDLGlCQUFpQjtFQUFDLGdCQUFnQjtFQUFDLGNBQWM7RUFBQyxXQUFXLEVBQUE7O0FBQ3JKO0VBQVksK0NBQStDLEVBQUE7O0FBQzNEO0VBQVcsdUJBQXVCO0VBQUMsY0FBYyxFQUFBOztBQUNqRDtFQUFxQyxVQUFVO0VBQUMsWUFBWTtFQUFDLFVBQVU7RUFBQyxrQkFBZ0I7RUFBRyxnQkFBYztFQUFPLGFBQWE7RUFBQyxhQUFhO0VBQUMsdUJBQXVCO0VBQUMsbUJBQW1CO0VBQUMsbUJBQW1CO0VBQUMsa0JBQWtCLEVBQUE7O0FBQzlOO0VBQWlELGNBQWMsRUFBQTs7QUFDL0Q7RUFBeUMsc0JBQW1CO0tBQW5CLG1CQUFtQjtFQUFDLGVBQWUsRUFBQTs7QUFDNUU7RUFBMEMsbUJBQW1CO0VBQUMsNEJBQWdCLEVBQUE7O0FBQzlFO0VBQWtDLGtCQUFrQjtFQUFDLFdBQVc7RUFBQyxZQUFZLEVBQUE7O0FBQzdFO0VBQStDLFVBQVM7RUFBQyxXQUFVO0VBQUMsWUFBVztFQUFDLFlBQVcsRUFBQTs7QUFFM0Y7RUFBc0IsV0FBVztFQUFDLFdBQVc7RUFBQyxZQUFZO0VBQUMseUJBQXlCO0VBQUMsY0FBYztFQUFDLGtCQUFrQjtFQUFDLGtCQUFrQjtFQUFDLFFBQVE7RUFBQyxTQUFTLEVBQUE7O0FBQzVKO0VBQWdFLFVBQVM7RUFBQyxnQ0FBcUI7RUFBWSxrQ0FBdUI7RUFBWSxRQUFPO0VBQUUsNkJBQWtCLEVBQUE7O0FBQ3pLO0VBQXNFLFdBQVU7RUFBQyxXQUFVO0VBQUMsWUFBVztFQUFDLG1CQUFrQjtFQUFDLGNBQWE7RUFBQyxrQkFBaUI7RUFBQyxrQkFBaUI7RUFBQyxRQUFPO0VBQUMsU0FBUSxFQUFBOztBQUM3TDtFQUFvQyxrQkFBa0IsRUFBQTs7QUFFdEQ7RUFBWSxrQkFBYTtFQUFNLGFBQWE7RUFBQyxtQkFBbUI7RUFBQyxhQUFhLEVBQUE7O0FBQzlFO0VBQWdCLFdBQVc7RUFBQyxZQUFZO0VBQUMsb0JBQWlCO0tBQWpCLGlCQUFpQjtFQUFDLGtCQUFrQjtFQUFDLGtCQUFrQixFQUFBOztBQUNoRztFQUE0QixjQUFjLEVBQUE7O0FBQzFDO0VBQXNCLFlBQVksRUFBQTs7QUFDbEM7RUFBVSxXQUFVO0VBQUMsWUFBVztFQUFDLGVBQWU7RUFBQyxrQkFBaUI7RUFBQyxtQkFBa0I7RUFBQyxrQkFBaUI7RUFBQyxhQUFZO0VBQUMsdUJBQXNCO0VBQUMsbUJBQWtCO0VBQUMsU0FBUztFQUFDLGtCQUFrQixFQUFBOztBQUUzTDtFQUNrQixnQkFBYyxFQUFBOztBQURoQztJQUVrQixrQkFBa0I7SUFBQyxRQUFRO0lBQUMsaUJBQWlCLEVBQUE7O0FBSS9EO0VBQWMsV0FBVyxFQUFBOztBQUN6QjtFQUFrQixXQUFXLEVBQUE7O0FBQzdCO0VBQXNCLHNCQUFvQixFQUFBOztBQUMxQztFQUdJLGtCQUFrQjtFQUNsQixTQUFTO0VBQ1QsU0FBUztFQUNULG1DQUFvQztFQUNwQyxXQUFXO0VBQ1gsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0IsRUFBQTs7QUFJdEI7RUFLSSx3QkFBd0I7RUFDeEIsZ0JBQWdCO0VBQ2hCLFdBQVc7RUFDWCxRQUFRO0VBQ1IsZ0JBQWdCO0VBQ2hCLFlBQVk7RUFDWixnQkFBZ0IsRUFBQTs7QUFFcEI7RUFDSSxlQUFlLEVBQUE7O0FBRW5CO0VBQ0ksMkJBQTJCLEVBQUE7O0FBRS9CO0VBQ0ksMkJBQTJCLEVBQUE7O0FBRS9CO0VBQVMseUJBQXlCO0VBQUMsNEJBQTRCLEVBQUE7O0FBQS9EO0lBQ2EsbUJBQW1CO0lBQUMsbUJBQWM7SUFBTSxzQkFBcUI7WUFBckIscUJBQXFCO0lBQUMsc0JBQW9CO0lBQUcsa0JBQWE7SUFBTSwwQkFBZSxFQUFBOztBQURwSTtJQUdpQixVQUFVLEVBQUE7O0FBRzNCO0VBQWlCLGdCQUFnQjtFQUFDLGVBQWU7RUFBQyxnQkFBZ0IsRUFBQTs7QUFDbEU7RUFBVSxrQkFBa0I7RUFDeEIsTUFBTTtFQUNOLFFBQVE7RUFDUixxQkFBYTtFQUNiLGtCQUFhO0VBQ2IsV0FBVztFQUNYLGtCQUFnQjtFQUNoQixnQkFBYztFQUNkLFlBQVk7RUFDWixlQUFlO0VBQ2YsV0FBVztFQUNYLFVBQVU7RUFBQyxtQkFBZ0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2FkZC1wcm9ncmFtL2RhdGUtdGltZS1tb2RhbC9kYXRlLXRpbWUtbW9kYWwuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaW5saW5lLWZsZXggaW9uLWRhdGV0aW1le3BhZGRpbmctbGVmdDogMXB4O3BhZGRpbmctcmlnaHQ6IDVweDt9XHJcbi5yYWRpby1ncm91cHtkaXNwbGF5OiBmbGV4O31cclxuLnJhZGlvLWdyb3VwIGlvbi1pdGVtey0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7LS1pbm5lci1ib3JkZXItd2lkdGg6IDAgMCAwIDA7fVxyXG4ucmFkaW8tZ3JvdXAgaW9uLWl0ZW0gaW9uLXJhZGlve21hcmdpbi1yaWdodDogMTBweDt9XHJcblxyXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tbGFiZWx7Zm9udC1zaXplOiAwLjc1cmVtO21hcmdpbjogM3B4IDA7dGV4dC10cmFuc2Zvcm06IGNhcGl0YWxpemU7bGV0dGVyLXNwYWNpbmc6IDA7Zm9udC13ZWlnaHQ6IDQwMDtkaXNwbGF5OiBibG9jaztjb2xvcjogIzQ0NDt9XHJcbi52aWRlby1jYXJke2JveC1zaGFkb3c6IDBweCA0cHggMTBweCByZ2JhKDM0LCAzNSwgNTgsIDAuMDkpO31cclxuaW9uLXNsaWRlc3tiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtwYWRkaW5nOiAwIDVweDt9XHJcbi5udXRyaWltYWdlcy1saXN0IGlvbi1zZWdtZW50LWJ1dHRvbnt3aWR0aDogMzIlO2JvcmRlcjogbm9uZTtwYWRkaW5nOiAwOy0tcGFkZGluZy1zdGFydDogMDstLXBhZGRpbmctZW5kOiAwOyAgICBtYXJnaW46IDAgM3B4O2Rpc3BsYXk6IGZsZXg7anVzdGlmeS1jb250ZW50OiBjZW50ZXI7YWxpZ24taXRlbXM6IGNlbnRlcjtiYWNrZ3JvdW5kOiAjZjdmN2Y3O2JvcmRlci1yYWRpdXM6IDRweDt9XHJcbi5udXRyaWltYWdlcy1saXN0IGlvbi1zZWdtZW50LWJ1dHRvbjpmaXJzdC1jaGlsZHttYXJnaW4tbGVmdDogMDt9XHJcbi5udXRyaWltYWdlcy1saXN0IGlvbi1zZWdtZW50LWJ1dHRvbiBpbWd7b2JqZWN0LWZpdDogY29udGFpbjttYXgtd2lkdGg6IDEwMCU7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCAuc2VnbWVudC1idXR0b24tY2hlY2tlZHtiYWNrZ3JvdW5kOiAjZWFlYWVhOy0tY29sb3ItY2hlY2tlZDogdHJhbnNwYXJlbnQ7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCAudGh1bWItY2hlY2tib3h7cG9zaXRpb246IGFic29sdXRlO3dpZHRoOiAxMDAlO2hlaWdodDogMTAwJTt9XHJcbi5udXRyaWltYWdlcy1saXN0IC50aHVtYi1jaGVja2JveCBpb24tY2hlY2tib3h7b3BhY2l0eTowO3dpZHRoOjEwMCU7aGVpZ2h0Ojc4cHg7cGFkZGluZzowIDB9XHJcbi8vIC5jaGVja2JveFRodW1ie2Rpc3BsYXk6IGNvbnRlbnRzO31cclxuLmNoZWNrYm94VGh1bWI6OmFmdGVye2NvbnRlbnQ6ICcnO3dpZHRoOiAxNnB4O2hlaWdodDogMTZweDtib3JkZXI6IDJweCBzb2xpZCAjN2Q3ZDdkO2Rpc3BsYXk6IGJsb2NrO2JvcmRlci1yYWRpdXM6IDUwJTtwb3NpdGlvbjogYWJzb2x1dGU7dG9wOiA1cHg7bGVmdDogNXB4O31cclxuLm51dHJpaW1hZ2VzLWxpc3QgLnRodW1iLWNoZWNrYm94IGlvbi1jaGVja2JveC5jaGVja2JveC1jaGVja2Vke29wYWNpdHk6MTstLWJhY2tncm91bmQtY2hlY2tlZDp0cmFuc3BhcmVudDstLWJvcmRlci1jb2xvci1jaGVja2VkOnRyYW5zcGFyZW50Oy0tc2l6ZTowOy0tY2hlY2ttYXJrLWNvbG9yOnRyYW5zcGFyZW50fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCAudGh1bWItY2hlY2tib3ggaW9uLWNoZWNrYm94LmNoZWNrYm94LWNoZWNrZWQ6YWZ0ZXJ7Y29udGVudDonJzt3aWR0aDoyMHB4O2hlaWdodDoyMHB4O2JhY2tncm91bmQ6IzI2YTY5YTtkaXNwbGF5OmJsb2NrO2JvcmRlci1yYWRpdXM6NTAlO3Bvc2l0aW9uOmFic29sdXRlO3RvcDo1cHg7bGVmdDo1cHh9XHJcbi5pdGVtLWxpc3QgaW9uLWxpc3QtaGVhZGVyIGlvbi1pY29ue2ZvbnQtc2l6ZTogMS4xNXJlbTt9XHJcblxyXG4udXNlcnMtbGlzdHstLW1pbi1oZWlnaHQ6IGF1dG87ZGlzcGxheTogZmxleDthbGlnbi1pdGVtczogY2VudGVyO21hcmdpbjogNnB4IDA7fVxyXG4udXNlcnMtbGlzdCBpbWd7d2lkdGg6IDM2cHg7aGVpZ2h0OiAzNnB4O29iamVjdC1maXQ6IGNvdmVyO2JvcmRlci1yYWRpdXM6IDUwJTttYXJnaW4tbGVmdDogLTEwcHg7fVxyXG4udXNlcnMtbGlzdCBpbWc6Zmlyc3QtY2hpbGR7bWFyZ2luLWxlZnQ6IDA7fVxyXG4udXNlcnMtbGlzdCBpb24tbGFiZWx7d2lkdGg6IDEwMHB4O31cclxuLnZpZXctYWxse3dpZHRoOjM2cHg7aGVpZ2h0OjM2cHg7bWF4LXdpZHRoOiAzNnB4O3RleHQtYWxpZ246Y2VudGVyO2JhY2tncm91bmQ6I2YxZjBmMDtib3JkZXItcmFkaXVzOjUwJTtkaXNwbGF5OmZsZXg7anVzdGlmeS1jb250ZW50OmNlbnRlcjthbGlnbi1pdGVtczpjZW50ZXI7bWFyZ2luOiAwO21hcmdpbi1sZWZ0OiAtMTBweDt9XHJcblxyXG5pb24tbGlzdHtcclxuICAgIC5kdXJhdGlvbkl0ZW17LS1wYWRkaW5nLWVuZDogMDtcclxuICAgICAgICBpb24taW5wdXR7cG9zaXRpb246IHJlbGF0aXZlO3RvcDogMnB4O3RleHQtYWxpZ246IHJpZ2h0O31cclxuICAgIH1cclxufVxyXG5cclxuLnByb2dyYW0tY2FyZHt3aWR0aDogMTAwJTt9XHJcbmlvbi1pdGVtIGlvbi1saXN0e3dpZHRoOiAxMDAlO31cclxuLml0ZW0tbGlzdCA+IGlvbi1pdGVtey0taW5uZXItcGFkZGluZy1lbmQ6IDA7fVxyXG4udGh1bWItbGlzdCB7XHJcbiAgICBpb24taXRlbXtcclxuICAgICAgICBpb24tbGFiZWx7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBib3R0b206IDA7XHJcbiAgICBtYXJnaW46IDA7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2JhKDM4LCAxNjYsIDE1NCwgMC41MCk7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGNvbG9yOiAjRkZGO1xyXG4gICAgcGFkZGluZzogNXB4O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcbn1cclxufVxyXG4uZml4ZWQge1xyXG4gICAgLy8gcG9zaXRpb246IGZpeGVkICFpbXBvcnRhbnQ7XHJcbiAgICAvLyB6LWluZGV4OiA5ICFpbXBvcnRhbnQ7XHJcbiAgICAvLyBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmICFpbXBvcnRhbnQ7XHJcbiAgICAvLyBtYXJnaW4tdG9wOiAtMnB4ICFpbXBvcnRhbnQ7XHJcbiAgICBwb3NpdGlvbjogLXdlYmtpdC1zdGlja3k7XHJcbiAgICBwb3NpdGlvbjogc3RpY2t5O1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICB0b3A6IDBweDtcclxuICAgIHBhZGRpbmctdG9wOiA1cHg7XHJcbiAgICB6LWluZGV4OiA5OTk7XHJcbiAgICBiYWNrZ3JvdW5kOiAjZmZmO1xyXG59XHJcbi5tYXJnaW50b3AtNDV7XHJcbiAgICBtYXJnaW4tdG9wOiA0NSU7XHJcbn1cclxuLm1hcmdpbi0xNXtcclxuICAgIG1hcmdpbjogMTVweCAwcHggIWltcG9ydGFudDtcclxufVxyXG4ubWItMHtcclxuICAgIG1hcmdpbi1ib3R0b206IDAgIWltcG9ydGFudDtcclxufVxyXG5pb24tbGlzdHtwYWRkaW5nLXRvcDogMCAhaW1wb3J0YW50O3BhZGRpbmctYm90dG9tOiAwICFpbXBvcnRhbnQ7XHJcbiAgICBpb24taXRlbXtmb250LXNpemU6IDAuODc1cmVtOy0tcGFkZGluZy1lbmQ6IDE2cHg7cGFkZGluZy1pbmxpbmUtZW5kOiAwOy0taW5uZXItcGFkZGluZy1lbmQ6IDA7LS1taW4taGVpZ2h0OiA0NHB4Oy0tYm9yZGVyLWNvbG9yOiB3aGl0ZXNtb2tlO31cclxuICAgIC5kZXNjcmlwdGlvbkl0ZW17XHJcbiAgICAgICAgaW9uLWl0ZW17cGFkZGluZzogMDt9XHJcbiAgICB9XHJcbn1cclxuLnJlcGVhdGVkSGVhZGluZ3tmb250LXdlaWdodDogNDAwO2ZvbnQtc2l6ZTogMTVweDttYXJnaW4tYm90dG9tOiAwO31cclxuLmluZm9JY29ue3Bvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMDtcclxuICAgIHJpZ2h0OiAwO1xyXG4gICAgLS1iYWNrZ3JvdW5kOiAjMjZhNjlhO1xyXG4gICAgLS1ib3gtc2hhZG93OiBub25lO1xyXG4gICAgY29sb3I6ICNGRkY7XHJcbiAgICAtLXBhZGRpbmctc3RhcnQ6IDA7XHJcbiAgICAtLXBhZGRpbmctZW5kOiAwO1xyXG4gICAgaGVpZ2h0OiBhdXRvO1xyXG4gICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgbWFyZ2luOiAzcHg7XHJcbiAgICB6LWluZGV4OiA5Oy0tYm9yZGVyLXJhZGl1czo1MCV9Il19 */";
+    __webpack_exports__["default"] = ".inline-flex ion-datetime {\n  padding-left: 1px;\n  padding-right: 5px; }\n\n.radio-group {\n  display: flex; }\n\n.radio-group ion-item {\n  --background: transparent;\n  --inner-border-width: 0 0 0 0; }\n\n.radio-group ion-item ion-radio {\n  margin-right: 10px; }\n\n.nutriimages-list ion-label {\n  font-size: 0.75rem;\n  margin: 3px 0;\n  text-transform: capitalize;\n  letter-spacing: 0;\n  font-weight: 400;\n  display: block;\n  color: #444; }\n\n.video-card {\n  box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09); }\n\nion-slides {\n  background: transparent;\n  padding: 0 5px; }\n\n.nutriimages-list ion-segment-button {\n  width: 32%;\n  border: none;\n  padding: 0;\n  --padding-start: 0;\n  --padding-end: 0;\n  margin: 0 3px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: #f7f7f7;\n  border-radius: 4px; }\n\n.nutriimages-list ion-segment-button:first-child {\n  margin-left: 0; }\n\n.nutriimages-list ion-segment-button img {\n  -o-object-fit: contain;\n     object-fit: contain;\n  max-width: 100%; }\n\n.nutriimages-list .segment-button-checked {\n  background: #eaeaea;\n  --color-checked: transparent; }\n\n.nutriimages-list .thumb-checkbox {\n  position: absolute;\n  width: 100%;\n  height: 100%; }\n\n.nutriimages-list .thumb-checkbox ion-checkbox {\n  opacity: 0;\n  width: 100%;\n  height: 78px;\n  padding: 0 0; }\n\n.checkboxThumb::after {\n  content: '';\n  width: 16px;\n  height: 16px;\n  border: 2px solid #7d7d7d;\n  display: block;\n  border-radius: 50%;\n  position: absolute;\n  top: 5px;\n  left: 5px; }\n\n.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked {\n  opacity: 1;\n  --background-checked:transparent;\n  --border-color-checked:transparent;\n  --size:0;\n  --checkmark-color:transparent; }\n\n.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked:after {\n  content: '';\n  width: 20px;\n  height: 20px;\n  background: #26a69a;\n  display: block;\n  border-radius: 50%;\n  position: absolute;\n  top: 5px;\n  left: 5px; }\n\n.item-list ion-list-header ion-icon {\n  font-size: 1.15rem; }\n\n.users-list {\n  --min-height: auto;\n  display: flex;\n  align-items: center;\n  margin: 6px 0; }\n\n.users-list img {\n  width: 36px;\n  height: 36px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 50%;\n  margin-left: -10px; }\n\n.users-list img:first-child {\n  margin-left: 0; }\n\n.users-list ion-label {\n  width: 100px; }\n\n.view-all {\n  width: 36px;\n  height: 36px;\n  max-width: 36px;\n  text-align: center;\n  background: #f1f0f0;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 0;\n  margin-left: -10px; }\n\nion-list .durationItem {\n  --padding-end: 0; }\n\nion-list .durationItem ion-input {\n    position: relative;\n    top: 2px;\n    text-align: right; }\n\n.program-card {\n  width: 100%; }\n\nion-item ion-list {\n  width: 100%; }\n\n.item-list > ion-item {\n  --inner-padding-end: 0; }\n\n.thumb-list ion-item ion-label {\n  position: absolute;\n  bottom: 0;\n  margin: 0;\n  background: rgba(38, 166, 154, 0.5);\n  width: 100%;\n  color: #FFF;\n  padding: 5px;\n  text-align: center; }\n\n.fixed {\n  position: -webkit-sticky;\n  position: sticky;\n  width: 100%;\n  top: 0px;\n  padding-top: 5px;\n  z-index: 999;\n  background: #fff; }\n\n.margintop-45 {\n  margin-top: 45%; }\n\n.margin-15 {\n  margin: 15px 0px !important; }\n\n.mb-0 {\n  margin-bottom: 0 !important; }\n\nion-list {\n  padding-top: 0 !important;\n  padding-bottom: 0 !important; }\n\nion-list ion-item {\n    font-size: 0.875rem;\n    --padding-end: 16px;\n    -webkit-padding-end: 0;\n            padding-inline-end: 0;\n    --inner-padding-end: 0;\n    --min-height: 44px;\n    --border-color: whitesmoke; }\n\nion-list .descriptionItem ion-item {\n    padding: 0; }\n\n.repeatedHeading {\n  font-weight: 400;\n  font-size: 15px;\n  margin-bottom: 0; }\n\n.infoIcon {\n  position: absolute;\n  top: 0;\n  right: 0;\n  --background: #26a69a;\n  --box-shadow: none;\n  color: #FFF;\n  --padding-start: 0;\n  --padding-end: 0;\n  height: auto;\n  font-size: 16px;\n  margin: 3px;\n  z-index: 9;\n  --border-radius:50%; }\n\n.ion-block {\n  display: flex;\n  align-items: center; }\n\n.ion-left {\n  flex: 1; }\n\n.ion-right {\n  display: flex;\n  align-items: center; }\n\n.width-30 {\n  width: 30px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWRkLXByb2dyYW0vZGF0ZS10aW1lLW1vZGFsL0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFxhZGQtcHJvZ3JhbVxcZGF0ZS10aW1lLW1vZGFsXFxkYXRlLXRpbWUtbW9kYWwuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBMEIsaUJBQWlCO0VBQUMsa0JBQWtCLEVBQUE7O0FBQzlEO0VBQWEsYUFBYSxFQUFBOztBQUMxQjtFQUFzQix5QkFBYTtFQUFhLDZCQUFxQixFQUFBOztBQUNyRTtFQUFnQyxrQkFBa0IsRUFBQTs7QUFFbEQ7RUFBNEIsa0JBQWtCO0VBQUMsYUFBYTtFQUFDLDBCQUEwQjtFQUFDLGlCQUFpQjtFQUFDLGdCQUFnQjtFQUFDLGNBQWM7RUFBQyxXQUFXLEVBQUE7O0FBQ3JKO0VBQVksK0NBQStDLEVBQUE7O0FBQzNEO0VBQVcsdUJBQXVCO0VBQUMsY0FBYyxFQUFBOztBQUNqRDtFQUFxQyxVQUFVO0VBQUMsWUFBWTtFQUFDLFVBQVU7RUFBQyxrQkFBZ0I7RUFBRyxnQkFBYztFQUFPLGFBQWE7RUFBQyxhQUFhO0VBQUMsdUJBQXVCO0VBQUMsbUJBQW1CO0VBQUMsbUJBQW1CO0VBQUMsa0JBQWtCLEVBQUE7O0FBQzlOO0VBQWlELGNBQWMsRUFBQTs7QUFDL0Q7RUFBeUMsc0JBQW1CO0tBQW5CLG1CQUFtQjtFQUFDLGVBQWUsRUFBQTs7QUFDNUU7RUFBMEMsbUJBQW1CO0VBQUMsNEJBQWdCLEVBQUE7O0FBQzlFO0VBQWtDLGtCQUFrQjtFQUFDLFdBQVc7RUFBQyxZQUFZLEVBQUE7O0FBQzdFO0VBQStDLFVBQVM7RUFBQyxXQUFVO0VBQUMsWUFBVztFQUFDLFlBQVcsRUFBQTs7QUFFM0Y7RUFBc0IsV0FBVztFQUFDLFdBQVc7RUFBQyxZQUFZO0VBQUMseUJBQXlCO0VBQUMsY0FBYztFQUFDLGtCQUFrQjtFQUFDLGtCQUFrQjtFQUFDLFFBQVE7RUFBQyxTQUFTLEVBQUE7O0FBQzVKO0VBQWdFLFVBQVM7RUFBQyxnQ0FBcUI7RUFBWSxrQ0FBdUI7RUFBWSxRQUFPO0VBQUUsNkJBQWtCLEVBQUE7O0FBQ3pLO0VBQXNFLFdBQVU7RUFBQyxXQUFVO0VBQUMsWUFBVztFQUFDLG1CQUFrQjtFQUFDLGNBQWE7RUFBQyxrQkFBaUI7RUFBQyxrQkFBaUI7RUFBQyxRQUFPO0VBQUMsU0FBUSxFQUFBOztBQUM3TDtFQUFvQyxrQkFBa0IsRUFBQTs7QUFFdEQ7RUFBWSxrQkFBYTtFQUFNLGFBQWE7RUFBQyxtQkFBbUI7RUFBQyxhQUFhLEVBQUE7O0FBQzlFO0VBQWdCLFdBQVc7RUFBQyxZQUFZO0VBQUMsb0JBQWlCO0tBQWpCLGlCQUFpQjtFQUFDLGtCQUFrQjtFQUFDLGtCQUFrQixFQUFBOztBQUNoRztFQUE0QixjQUFjLEVBQUE7O0FBQzFDO0VBQXNCLFlBQVksRUFBQTs7QUFDbEM7RUFBVSxXQUFVO0VBQUMsWUFBVztFQUFDLGVBQWU7RUFBQyxrQkFBaUI7RUFBQyxtQkFBa0I7RUFBQyxrQkFBaUI7RUFBQyxhQUFZO0VBQUMsdUJBQXNCO0VBQUMsbUJBQWtCO0VBQUMsU0FBUztFQUFDLGtCQUFrQixFQUFBOztBQUUzTDtFQUNrQixnQkFBYyxFQUFBOztBQURoQztJQUVrQixrQkFBa0I7SUFBQyxRQUFRO0lBQUMsaUJBQWlCLEVBQUE7O0FBSS9EO0VBQWMsV0FBVyxFQUFBOztBQUN6QjtFQUFrQixXQUFXLEVBQUE7O0FBQzdCO0VBQXNCLHNCQUFvQixFQUFBOztBQUMxQztFQUdJLGtCQUFrQjtFQUNsQixTQUFTO0VBQ1QsU0FBUztFQUNULG1DQUFvQztFQUNwQyxXQUFXO0VBQ1gsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0IsRUFBQTs7QUFJdEI7RUFLSSx3QkFBd0I7RUFDeEIsZ0JBQWdCO0VBQ2hCLFdBQVc7RUFDWCxRQUFRO0VBQ1IsZ0JBQWdCO0VBQ2hCLFlBQVk7RUFDWixnQkFBZ0IsRUFBQTs7QUFFcEI7RUFDSSxlQUFlLEVBQUE7O0FBRW5CO0VBQ0ksMkJBQTJCLEVBQUE7O0FBRS9CO0VBQ0ksMkJBQTJCLEVBQUE7O0FBRS9CO0VBQVMseUJBQXlCO0VBQUMsNEJBQTRCLEVBQUE7O0FBQS9EO0lBQ2EsbUJBQW1CO0lBQUMsbUJBQWM7SUFBTSxzQkFBcUI7WUFBckIscUJBQXFCO0lBQUMsc0JBQW9CO0lBQUcsa0JBQWE7SUFBTSwwQkFBZSxFQUFBOztBQURwSTtJQUdpQixVQUFVLEVBQUE7O0FBRzNCO0VBQWlCLGdCQUFnQjtFQUFDLGVBQWU7RUFBQyxnQkFBZ0IsRUFBQTs7QUFDbEU7RUFBVSxrQkFBa0I7RUFDeEIsTUFBTTtFQUNOLFFBQVE7RUFDUixxQkFBYTtFQUNiLGtCQUFhO0VBQ2IsV0FBVztFQUNYLGtCQUFnQjtFQUNoQixnQkFBYztFQUNkLFlBQVk7RUFDWixlQUFlO0VBQ2YsV0FBVztFQUNYLFVBQVU7RUFBQyxtQkFBZ0IsRUFBQTs7QUFFM0I7RUFDSSxhQUFhO0VBQ2IsbUJBQW1CLEVBQUE7O0FBRXZCO0VBQ0ksT0FBTyxFQUFBOztBQUVYO0VBQ0ksYUFBYTtFQUNiLG1CQUFtQixFQUFBOztBQUV2QjtFQUNJLFdBQVcsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2FkZC1wcm9ncmFtL2RhdGUtdGltZS1tb2RhbC9kYXRlLXRpbWUtbW9kYWwuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaW5saW5lLWZsZXggaW9uLWRhdGV0aW1le3BhZGRpbmctbGVmdDogMXB4O3BhZGRpbmctcmlnaHQ6IDVweDt9XHJcbi5yYWRpby1ncm91cHtkaXNwbGF5OiBmbGV4O31cclxuLnJhZGlvLWdyb3VwIGlvbi1pdGVtey0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7LS1pbm5lci1ib3JkZXItd2lkdGg6IDAgMCAwIDA7fVxyXG4ucmFkaW8tZ3JvdXAgaW9uLWl0ZW0gaW9uLXJhZGlve21hcmdpbi1yaWdodDogMTBweDt9XHJcblxyXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tbGFiZWx7Zm9udC1zaXplOiAwLjc1cmVtO21hcmdpbjogM3B4IDA7dGV4dC10cmFuc2Zvcm06IGNhcGl0YWxpemU7bGV0dGVyLXNwYWNpbmc6IDA7Zm9udC13ZWlnaHQ6IDQwMDtkaXNwbGF5OiBibG9jaztjb2xvcjogIzQ0NDt9XHJcbi52aWRlby1jYXJke2JveC1zaGFkb3c6IDBweCA0cHggMTBweCByZ2JhKDM0LCAzNSwgNTgsIDAuMDkpO31cclxuaW9uLXNsaWRlc3tiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtwYWRkaW5nOiAwIDVweDt9XHJcbi5udXRyaWltYWdlcy1saXN0IGlvbi1zZWdtZW50LWJ1dHRvbnt3aWR0aDogMzIlO2JvcmRlcjogbm9uZTtwYWRkaW5nOiAwOy0tcGFkZGluZy1zdGFydDogMDstLXBhZGRpbmctZW5kOiAwOyAgICBtYXJnaW46IDAgM3B4O2Rpc3BsYXk6IGZsZXg7anVzdGlmeS1jb250ZW50OiBjZW50ZXI7YWxpZ24taXRlbXM6IGNlbnRlcjtiYWNrZ3JvdW5kOiAjZjdmN2Y3O2JvcmRlci1yYWRpdXM6IDRweDt9XHJcbi5udXRyaWltYWdlcy1saXN0IGlvbi1zZWdtZW50LWJ1dHRvbjpmaXJzdC1jaGlsZHttYXJnaW4tbGVmdDogMDt9XHJcbi5udXRyaWltYWdlcy1saXN0IGlvbi1zZWdtZW50LWJ1dHRvbiBpbWd7b2JqZWN0LWZpdDogY29udGFpbjttYXgtd2lkdGg6IDEwMCU7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCAuc2VnbWVudC1idXR0b24tY2hlY2tlZHtiYWNrZ3JvdW5kOiAjZWFlYWVhOy0tY29sb3ItY2hlY2tlZDogdHJhbnNwYXJlbnQ7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCAudGh1bWItY2hlY2tib3h7cG9zaXRpb246IGFic29sdXRlO3dpZHRoOiAxMDAlO2hlaWdodDogMTAwJTt9XHJcbi5udXRyaWltYWdlcy1saXN0IC50aHVtYi1jaGVja2JveCBpb24tY2hlY2tib3h7b3BhY2l0eTowO3dpZHRoOjEwMCU7aGVpZ2h0Ojc4cHg7cGFkZGluZzowIDB9XHJcbi8vIC5jaGVja2JveFRodW1ie2Rpc3BsYXk6IGNvbnRlbnRzO31cclxuLmNoZWNrYm94VGh1bWI6OmFmdGVye2NvbnRlbnQ6ICcnO3dpZHRoOiAxNnB4O2hlaWdodDogMTZweDtib3JkZXI6IDJweCBzb2xpZCAjN2Q3ZDdkO2Rpc3BsYXk6IGJsb2NrO2JvcmRlci1yYWRpdXM6IDUwJTtwb3NpdGlvbjogYWJzb2x1dGU7dG9wOiA1cHg7bGVmdDogNXB4O31cclxuLm51dHJpaW1hZ2VzLWxpc3QgLnRodW1iLWNoZWNrYm94IGlvbi1jaGVja2JveC5jaGVja2JveC1jaGVja2Vke29wYWNpdHk6MTstLWJhY2tncm91bmQtY2hlY2tlZDp0cmFuc3BhcmVudDstLWJvcmRlci1jb2xvci1jaGVja2VkOnRyYW5zcGFyZW50Oy0tc2l6ZTowOy0tY2hlY2ttYXJrLWNvbG9yOnRyYW5zcGFyZW50fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCAudGh1bWItY2hlY2tib3ggaW9uLWNoZWNrYm94LmNoZWNrYm94LWNoZWNrZWQ6YWZ0ZXJ7Y29udGVudDonJzt3aWR0aDoyMHB4O2hlaWdodDoyMHB4O2JhY2tncm91bmQ6IzI2YTY5YTtkaXNwbGF5OmJsb2NrO2JvcmRlci1yYWRpdXM6NTAlO3Bvc2l0aW9uOmFic29sdXRlO3RvcDo1cHg7bGVmdDo1cHh9XHJcbi5pdGVtLWxpc3QgaW9uLWxpc3QtaGVhZGVyIGlvbi1pY29ue2ZvbnQtc2l6ZTogMS4xNXJlbTt9XHJcblxyXG4udXNlcnMtbGlzdHstLW1pbi1oZWlnaHQ6IGF1dG87ZGlzcGxheTogZmxleDthbGlnbi1pdGVtczogY2VudGVyO21hcmdpbjogNnB4IDA7fVxyXG4udXNlcnMtbGlzdCBpbWd7d2lkdGg6IDM2cHg7aGVpZ2h0OiAzNnB4O29iamVjdC1maXQ6IGNvdmVyO2JvcmRlci1yYWRpdXM6IDUwJTttYXJnaW4tbGVmdDogLTEwcHg7fVxyXG4udXNlcnMtbGlzdCBpbWc6Zmlyc3QtY2hpbGR7bWFyZ2luLWxlZnQ6IDA7fVxyXG4udXNlcnMtbGlzdCBpb24tbGFiZWx7d2lkdGg6IDEwMHB4O31cclxuLnZpZXctYWxse3dpZHRoOjM2cHg7aGVpZ2h0OjM2cHg7bWF4LXdpZHRoOiAzNnB4O3RleHQtYWxpZ246Y2VudGVyO2JhY2tncm91bmQ6I2YxZjBmMDtib3JkZXItcmFkaXVzOjUwJTtkaXNwbGF5OmZsZXg7anVzdGlmeS1jb250ZW50OmNlbnRlcjthbGlnbi1pdGVtczpjZW50ZXI7bWFyZ2luOiAwO21hcmdpbi1sZWZ0OiAtMTBweDt9XHJcblxyXG5pb24tbGlzdHtcclxuICAgIC5kdXJhdGlvbkl0ZW17LS1wYWRkaW5nLWVuZDogMDtcclxuICAgICAgICBpb24taW5wdXR7cG9zaXRpb246IHJlbGF0aXZlO3RvcDogMnB4O3RleHQtYWxpZ246IHJpZ2h0O31cclxuICAgIH1cclxufVxyXG5cclxuLnByb2dyYW0tY2FyZHt3aWR0aDogMTAwJTt9XHJcbmlvbi1pdGVtIGlvbi1saXN0e3dpZHRoOiAxMDAlO31cclxuLml0ZW0tbGlzdCA+IGlvbi1pdGVtey0taW5uZXItcGFkZGluZy1lbmQ6IDA7fVxyXG4udGh1bWItbGlzdCB7XHJcbiAgICBpb24taXRlbXtcclxuICAgICAgICBpb24tbGFiZWx7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBib3R0b206IDA7XHJcbiAgICBtYXJnaW46IDA7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2JhKDM4LCAxNjYsIDE1NCwgMC41MCk7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGNvbG9yOiAjRkZGO1xyXG4gICAgcGFkZGluZzogNXB4O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcbn1cclxufVxyXG4uZml4ZWQge1xyXG4gICAgLy8gcG9zaXRpb246IGZpeGVkICFpbXBvcnRhbnQ7XHJcbiAgICAvLyB6LWluZGV4OiA5ICFpbXBvcnRhbnQ7XHJcbiAgICAvLyBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmICFpbXBvcnRhbnQ7XHJcbiAgICAvLyBtYXJnaW4tdG9wOiAtMnB4ICFpbXBvcnRhbnQ7XHJcbiAgICBwb3NpdGlvbjogLXdlYmtpdC1zdGlja3k7XHJcbiAgICBwb3NpdGlvbjogc3RpY2t5O1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICB0b3A6IDBweDtcclxuICAgIHBhZGRpbmctdG9wOiA1cHg7XHJcbiAgICB6LWluZGV4OiA5OTk7XHJcbiAgICBiYWNrZ3JvdW5kOiAjZmZmO1xyXG59XHJcbi5tYXJnaW50b3AtNDV7XHJcbiAgICBtYXJnaW4tdG9wOiA0NSU7XHJcbn1cclxuLm1hcmdpbi0xNXtcclxuICAgIG1hcmdpbjogMTVweCAwcHggIWltcG9ydGFudDtcclxufVxyXG4ubWItMHtcclxuICAgIG1hcmdpbi1ib3R0b206IDAgIWltcG9ydGFudDtcclxufVxyXG5pb24tbGlzdHtwYWRkaW5nLXRvcDogMCAhaW1wb3J0YW50O3BhZGRpbmctYm90dG9tOiAwICFpbXBvcnRhbnQ7XHJcbiAgICBpb24taXRlbXtmb250LXNpemU6IDAuODc1cmVtOy0tcGFkZGluZy1lbmQ6IDE2cHg7cGFkZGluZy1pbmxpbmUtZW5kOiAwOy0taW5uZXItcGFkZGluZy1lbmQ6IDA7LS1taW4taGVpZ2h0OiA0NHB4Oy0tYm9yZGVyLWNvbG9yOiB3aGl0ZXNtb2tlO31cclxuICAgIC5kZXNjcmlwdGlvbkl0ZW17XHJcbiAgICAgICAgaW9uLWl0ZW17cGFkZGluZzogMDt9XHJcbiAgICB9XHJcbn1cclxuLnJlcGVhdGVkSGVhZGluZ3tmb250LXdlaWdodDogNDAwO2ZvbnQtc2l6ZTogMTVweDttYXJnaW4tYm90dG9tOiAwO31cclxuLmluZm9JY29ue3Bvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMDtcclxuICAgIHJpZ2h0OiAwO1xyXG4gICAgLS1iYWNrZ3JvdW5kOiAjMjZhNjlhO1xyXG4gICAgLS1ib3gtc2hhZG93OiBub25lO1xyXG4gICAgY29sb3I6ICNGRkY7XHJcbiAgICAtLXBhZGRpbmctc3RhcnQ6IDA7XHJcbiAgICAtLXBhZGRpbmctZW5kOiAwO1xyXG4gICAgaGVpZ2h0OiBhdXRvO1xyXG4gICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgbWFyZ2luOiAzcHg7XHJcbiAgICB6LWluZGV4OiA5Oy0tYm9yZGVyLXJhZGl1czo1MCV9XHJcblxyXG4gICAgLmlvbi1ibG9ja3tcclxuICAgICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICB9XHJcbiAgICAuaW9uLWxlZnR7XHJcbiAgICAgICAgZmxleDogMTtcclxuICAgIH1cclxuICAgIC5pb24tcmlnaHR7XHJcbiAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgfVxyXG4gICAgLndpZHRoLTMwe1xyXG4gICAgICAgIHdpZHRoOiAzMHB4O1xyXG4gICAgfSJdfQ== */";
     /***/
   },
 
@@ -2850,6 +2850,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.storagePath = _config_config__WEBPACK_IMPORTED_MODULE_12__["Config"].storagePath;
         this.repetatedDateCopy = [];
         this.totalLiveAmt = 0;
+        this.sendAdvRequest = 0;
         var start_arr = [];
         var end_arr = [];
         this.calendarData = new Date(this.navParams.data.calendarData);
@@ -3315,6 +3316,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.programData.repetatedDateCopy = this.repetatedDateCopy;
           this.programData.programFees = fees.programFees;
           this.programData.non_live_component_fee = fees.non_live_component_fee;
+          this.programData.sendAdvRequest = this.sendAdvRequest;
           console.log(this.repetatedDateCopy);
           console.log(this.repetatedDate);
           console.log(this.programData);
@@ -3471,24 +3473,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "sendrequest",
         value: function sendrequest() {
-          var _this12 = this;
-
           this.commonService.presentLoader();
 
-          if (this.programData.type_id == 'video') {
-            // console.log('programId:'+this.programDetail.id);
-            this.programService.advertiseRequest({
-              'programId': this.programData.id
-            }).subscribe(function (data) {
-              _this12.adData = data.status;
-              _this12.request_approve_btn = true;
-
-              _this12.commonService.dismissLoader();
-
-              _this12.commonService.presentToast('Request Sent');
-
-              console.log(data);
-            });
+          if (this.programData.programType == '6') {
+            this.sendAdvRequest = 1;
+            this.commonService.dismissLoader();
+            this.commonService.presentToast('Request Sent'); // console.log('programId:'+this.programDetail.id);
+            // this.programService.advertiseRequest({'programId':this.programData.id}).subscribe(data=>{
+            //   this.adData = data.status;
+            //   this.request_approve_btn = true;
+            //   this.commonService.dismissLoader();
+            //   this.commonService.presentToast('Request Sent');
+            //   console.log(data);
+            // } );
           } else {
             this.commonService.dismissLoader();
             this.commonService.presentToast('Only Video Program are eligible');
@@ -3679,7 +3676,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "fSubmit",
         value: function fSubmit() {
-          var _this13 = this;
+          var _this12 = this;
 
           if (!this.mVol) {
             this.commonService.presentToast('select volume');
@@ -3694,20 +3691,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             "programId": this.progId,
             'musicVol': this.mVol
           }).subscribe(function (data) {
-            _this13.isUploading = false;
+            _this12.isUploading = false;
 
-            _this13.commonService.dismissModal();
+            _this12.commonService.dismissModal();
 
-            _this13.commonService.dismissLoader(); //  this.navCtrl.navigateForward('/add-program/program-details/' ,this.programDetail.id)
+            _this12.commonService.dismissLoader(); //  this.navCtrl.navigateForward('/add-program/program-details/' ,this.programDetail.id)
 
 
-            _this13.router.navigate(["tabs/program"]);
+            _this12.router.navigate(["tabs/program"]);
           }, function (err) {
-            _this13.isUploading = false;
+            _this12.isUploading = false;
 
-            _this13.commonService.dismissModal();
+            _this12.commonService.dismissModal();
 
-            _this13.commonService.dismissLoader();
+            _this12.commonService.dismissLoader();
           });
         }
       }]);
@@ -4157,7 +4154,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var UserModalComponent = /*#__PURE__*/function () {
       function UserModalComponent(commonService, navParams, peopleService, fb, searchService) {
-        var _this14 = this;
+        var _this13 = this;
 
         _classCallCheck(this, UserModalComponent);
 
@@ -4196,13 +4193,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             i++;
             return groups;
           }, {});
-          _this14.peopleList = Object.keys(grouped).map(function (key) {
+          _this13.peopleList = Object.keys(grouped).map(function (key) {
             return {
               key: key,
               contacts: grouped[key]
             };
           });
-          console.log(_this14.peopleList);
+          console.log(_this13.peopleList);
         });
         this.createForm();
       }
@@ -4277,7 +4274,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "searchChanged",
         value: function searchChanged(peopleName) {
-          var _this15 = this;
+          var _this14 = this;
 
           var searchTerm = peopleName.srcElement.value;
 
@@ -4293,8 +4290,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.searchService.searchQuery({
             "searchQuery": searchTerm
           }).subscribe(function (search) {
-            _this15.newSearchPersonList = search.searchList;
-            console.log(_this15.newSearchPersonList);
+            _this14.newSearchPersonList = search.searchList;
+            console.log(_this14.newSearchPersonList);
           });
         }
       }]);
@@ -4435,7 +4432,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this16 = this;
+          var _this15 = this;
 
           var userData = JSON.parse(localStorage.getItem('userData'));
           this.programDetail = this.navParams.data.programDetail;
@@ -4445,15 +4442,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             'postType': 2,
             'videoType': 3
           }).subscribe(function (data) {
-            _this16.commonService.dismissLoader();
+            _this15.commonService.dismissLoader();
 
-            _this16.videoList = data.posts.data;
-            _this16.videoFiltered = _this16.videoList;
-            console.log(_this16.videoList);
+            _this15.videoList = data.posts.data;
+            _this15.videoFiltered = _this15.videoList;
+            console.log(_this15.videoList);
           }, function (err) {
-            _this16.commonService.dismissLoader();
+            _this15.commonService.dismissLoader();
 
-            _this16.commonService.presentToast('something went wrong.');
+            _this15.commonService.presentToast('something went wrong.');
           });
         }
       }, {
@@ -4650,7 +4647,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ViewVideoDetailComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this17 = this;
+          var _this16 = this;
 
           this.postID = this.navParams.data.details;
           this.noImgData = true;
@@ -4658,21 +4655,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.postService.getPostById({
             'postId': this.postID
           }).subscribe(function (data) {
-            _this17.postData = data.postData;
+            _this16.postData = data.postData;
             console.log(data);
-            _this17.postUserId = data.postData.user_id;
-            _this17.disableComment = data.postData.disable_comment;
-            _this17.title = data.postData.video_post[0].title;
-            _this17.description = data.postData.video_post[0].description;
-            _this17.createdAt = data.postData.created_at;
-            _this17.commentCount = data.postData.total_comments.length;
-            _this17.postLikesCount = data.postData.post_likes.length;
-            _this17.likePost = data.postData.post_likes.user_id == _this17.postUserId ? 'true' : 'false';
-            _this17.videoDataPath = _this17.storagePath + data.postData.video_post[0].video_path;
-            _this17.videoThumbPath = _this17.storagePath + data.postData.video_post[0].thumb_path;
-            _this17.videoType = data.postData.video_post[0].video_type; // console.log("this.videoType: " + this.videoType);
+            _this16.postUserId = data.postData.user_id;
+            _this16.disableComment = data.postData.disable_comment;
+            _this16.title = data.postData.video_post[0].title;
+            _this16.description = data.postData.video_post[0].description;
+            _this16.createdAt = data.postData.created_at;
+            _this16.commentCount = data.postData.total_comments.length;
+            _this16.postLikesCount = data.postData.post_likes.length;
+            _this16.likePost = data.postData.post_likes.user_id == _this16.postUserId ? 'true' : 'false';
+            _this16.videoDataPath = _this16.storagePath + data.postData.video_post[0].video_path;
+            _this16.videoThumbPath = _this16.storagePath + data.postData.video_post[0].thumb_path;
+            _this16.videoType = data.postData.video_post[0].video_type; // console.log("this.videoType: " + this.videoType);
 
-            _this17.noImgData = false; // if(this.type != 'exclusive'){
+            _this16.noImgData = false; // if(this.type != 'exclusive'){
             //   this.commonService.presentLoader();
             //   this.peopleView.upNextPost('2', this.postUserId, this.videoType,this.postID).subscribe((data) => {
             //       this.upNext = data.postData;
@@ -4683,13 +4680,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             //   }); 
             // } 
 
-            _this17.postData.post_bookmarks.filter(function (f) {
-              if (f.user_id == _this17.loginUserData.id) {
-                _this17.bookmark = true;
+            _this16.postData.post_bookmarks.filter(function (f) {
+              if (f.user_id == _this16.loginUserData.id) {
+                _this16.bookmark = true;
               }
             });
 
-            console.log(_this17.postData);
+            console.log(_this16.postData);
           });
         }
       }, {
@@ -4881,7 +4878,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "uploadVideo",
         value: function uploadVideo() {
-          var _this18 = this;
+          var _this17 = this;
 
           // this.filePermission();
           var options = {
@@ -4906,48 +4903,48 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.isUploading = true;
           this.buttonDisable = true;
           this.videoFileUpload.upload(this.selectedVideo, this.furl, options).then(function (data) {
-            _this18.isUploading = false;
-            _this18.uploadPercent = 0;
+            _this17.isUploading = false;
+            _this17.uploadPercent = 0;
             return JSON.parse(data.response);
           }).then(function (data) {
-            _this18.uploadedVideo = JSON.stringify(data.postId);
+            _this17.uploadedVideo = JSON.stringify(data.postId);
 
-            _this18.commonService.dismissModal();
+            _this17.commonService.dismissModal();
 
-            _this18.postService.getVideoPostById({
-              'videoId': _this18.uploadedVideo
+            _this17.postService.getVideoPostById({
+              'videoId': _this17.uploadedVideo
             }).subscribe(function (data) {
               localStorage.setItem('videoPath', data.postData.video_path);
               localStorage.setItem('videoThumb', data.postData.thumb_path);
               localStorage.setItem('videoDescription', data.postData.description);
               localStorage.setItem('videoTitle', data.postData.title);
 
-              _this18.router.navigate([_this18.returnUrl, _this18.uploadedVideo]); // this.commonService.redirectUrlWithIdConfirm("Success", "Video Uploaded Successfully.",this.returnUrl,this.uploadedVideo);                
+              _this17.router.navigate([_this17.returnUrl, _this17.uploadedVideo]); // this.commonService.redirectUrlWithIdConfirm("Success", "Video Uploaded Successfully.",this.returnUrl,this.uploadedVideo);                
 
             });
           })["catch"](function (err) {
-            _this18.isUploading = false;
-            _this18.buttonDisable = false;
-            _this18.uploadPercent = 0;
+            _this17.isUploading = false;
+            _this17.buttonDisable = false;
+            _this17.uploadPercent = 0;
 
-            _this18.commonService.dismissModal();
+            _this17.commonService.dismissModal();
 
-            _this18.error = JSON.stringify(err);
-            console.log("this.error: " + _this18.error);
+            _this17.error = JSON.stringify(err);
+            console.log("this.error: " + _this17.error);
 
-            if (_this18.error) {
-              _this18.errorMessage = "Video not uploaded. Please try again";
+            if (_this17.error) {
+              _this17.errorMessage = "Video not uploaded. Please try again";
             } else {
-              _this18.errorMessage = 'Some thing wrong.Please try again';
+              _this17.errorMessage = 'Some thing wrong.Please try again';
             }
 
-            _this18.commonService.presentAlert("Error", _this18.errorMessage, ["Ok"], '');
+            _this17.commonService.presentAlert("Error", _this17.errorMessage, ["Ok"], '');
           });
           this.videoFileUpload.onProgress(function (data) {
-            _this18.disableButton = true;
+            _this17.disableButton = true;
 
-            _this18.ngZone.run(function () {
-              _this18.uploadPercent = Math.round(data.loaded / data.total * 100);
+            _this17.ngZone.run(function () {
+              _this17.uploadPercent = Math.round(data.loaded / data.total * 100);
             });
           });
         }
@@ -4963,17 +4960,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "filePermission",
         value: function filePermission() {
-          var _this19 = this;
+          var _this18 = this;
 
           this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE).then(function (result) {
             return console.log('Has permission?', result.hasPermission);
           }, function (err) {
-            return _this19.androidPermissions.requestPermission(_this19.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE);
+            return _this18.androidPermissions.requestPermission(_this18.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE);
           });
           this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE).then(function (result) {
             return console.log('Has permission?', result.hasPermission);
           }, function (err) {
-            return _this19.androidPermissions.requestPermission(_this19.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE);
+            return _this18.androidPermissions.requestPermission(_this18.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE);
           });
         }
       }, {
@@ -5887,7 +5884,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var AppComponent = /*#__PURE__*/function () {
       function AppComponent(platform, splashScreen, statusBar, router, screenOrientation, alertCtrl, loadingController, authService, androidPermissions, fcm, file, deeplinks, socket) {
-        var _this20 = this;
+        var _this19 = this;
 
         _classCallCheck(this, AppComponent);
 
@@ -5907,11 +5904,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         platform.ready().then(function () {
           // Okay, so the platform is ready and our plugins are available.
           // Here you can do any higher level native things you might need.
-          _this20.statusBar.styleDefault(); //this is the code who responds to the app deeplinks
+          _this19.statusBar.styleDefault(); //this is the code who responds to the app deeplinks
           //Deeplinks if from Ionic Native
 
 
-          _this20.deeplinks.routeWithNavController(_this20.navChild, {
+          _this19.deeplinks.routeWithNavController(_this19.navChild, {
             '/signin': _auth_signin_signin_page__WEBPACK_IMPORTED_MODULE_12__["SigninPage"]
           }).subscribe(function (match) {
             console.log('Successfully routed', match);
@@ -5932,12 +5929,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "initializeApp",
         value: function initializeApp() {
-          var _this21 = this;
+          var _this20 = this;
 
           this.platform.ready().then(function () {
-            _this21.statusBar.styleDefault();
+            _this20.statusBar.styleDefault();
 
-            _this21.splashScreen.hide(); // if (this.platform.is('android')) {
+            _this20.splashScreen.hide(); // if (this.platform.is('android')) {
             //     this.statusBar.overlaysWebView(false);
             //     this.statusBar.backgroundColorByHexString('#000000');
             //     this.splashScreen.hide();
@@ -5950,11 +5947,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             //---------FCM----------//
 
 
-            _this21.fcm.getToken().then(function (token) {
+            _this20.fcm.getToken().then(function (token) {
               localStorage.setItem('deviceToken', token);
             });
 
-            _this21.fcm.onTokenRefresh().subscribe(function (token) {// this.settingService.updateUserToken({'token':token}).subscribe((data: any) => {              
+            _this20.fcm.onTokenRefresh().subscribe(function (token) {// this.settingService.updateUserToken({'token':token}).subscribe((data: any) => {              
               //   if (data.message === true) {
               //     console.log('updateUserToken:success');                
               //   } else {
@@ -5965,21 +5962,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               // console.log('Bomrah:'+token);
             });
 
-            _this21.fcm.onNotification().subscribe(function (data) {
+            _this20.fcm.onNotification().subscribe(function (data) {
               console.log("fcm.onNotification : " + data);
 
               if (data.wasTapped) {
                 console.log('Received in background');
 
-                _this21.router.navigate([data.landing_page, data.price]);
+                _this20.router.navigate([data.landing_page, data.price]);
               } else {
                 console.log('Received in foreground');
 
-                _this21.router.navigate([data.landing_page, data.price]);
+                _this20.router.navigate([data.landing_page, data.price]);
               }
             });
 
-            _this21.fcm.subscribeToTopic('people'); // FCM.unsubscribeFromTopic('marketing');
+            _this20.fcm.subscribeToTopic('people'); // FCM.unsubscribeFromTopic('marketing');
             //---------FCM END------//
             // this.splashScreen.hide();     
             // if (this.platform.is('android')) {        
@@ -5991,15 +5988,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             // }
 
 
-            _this21.androidPermissions.requestPermissions([_this21.androidPermissions.PERMISSION.READ_STORAGE, _this21.androidPermissions.PERMISSION.GET_ACCOUNTS]).then(function (result) {
+            _this20.androidPermissions.requestPermissions([_this20.androidPermissions.PERMISSION.READ_STORAGE, _this20.androidPermissions.PERMISSION.GET_ACCOUNTS]).then(function (result) {
               console.log('User allowed access to camera'); // put your code here
             });
 
-            _this21.statusBar.styleDefault();
+            _this20.statusBar.styleDefault();
 
-            _this21.currentScreenOrientation = _this21.screenOrientation.type;
+            _this20.currentScreenOrientation = _this20.screenOrientation.type;
 
-            _this21.screenOrientation.lock(_this21.screenOrientation.ORIENTATIONS.PORTRAIT);
+            _this20.screenOrientation.lock(_this20.screenOrientation.ORIENTATIONS.PORTRAIT);
           });
         }
       }, {
@@ -6834,7 +6831,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var _this22 = this;
+          var _this21 = this;
 
           this.submitted = true;
 
@@ -6847,37 +6844,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.authService.userLogin(this.registerForm.value).subscribe(function (data) {
             // console.log(data);
             if (data.userToken) {
-              _this22.storage.set('userData', JSON.stringify(data.userData));
+              _this21.storage.set('userData', JSON.stringify(data.userData));
 
-              _this22.storage.set('userToken', data.userToken);
+              _this21.storage.set('userToken', data.userToken);
 
               localStorage.setItem('userData', JSON.stringify(data.userData));
               localStorage.setItem('userToken', data.userToken);
 
-              _this22.commonService.setUserData(data.userToken, data.userToken);
+              _this21.commonService.setUserData(data.userToken, data.userToken);
 
-              _this22.commonService.dismissLoader(); // send device token to server
+              _this21.commonService.dismissLoader(); // send device token to server
 
 
-              if (_this22.platform.is('android')) {
-                _this22.settingsService.addDeviceToken({
-                  'token': _this22.diviceToken
+              if (_this21.platform.is('android')) {
+                _this21.settingsService.addDeviceToken({
+                  'token': _this21.diviceToken
                 }).subscribe(function (data) {}, function (err) {});
-              } else if (_this22.platform.is('ios')) {
-                _this22.settingsService.addDeviceToken({
-                  'token': _this22.diviceToken,
+              } else if (_this21.platform.is('ios')) {
+                _this21.settingsService.addDeviceToken({
+                  'token': _this21.diviceToken,
                   'divice_type': 'ios'
                 }).subscribe(function (data) {}, function (err) {});
               }
 
-              _this22.socket.connect();
+              _this21.socket.connect();
 
-              _this22.socket.emit('set-name', data.userData.id, 'chatList');
+              _this21.socket.emit('set-name', data.userData.id, 'chatList');
 
               if (data.userData.user_type == "1") {
-                _this22.router.navigateByUrl('tabs/consultant-profile');
+                _this21.router.navigateByUrl('tabs/consultant-profile');
               } else if (data.userData.user_type == "0") {
-                _this22.router.navigateByUrl('/tabs/user-profile');
+                _this21.router.navigateByUrl('/tabs/user-profile');
               } //  this.registerForm.reset();
 
             } else if (data.message == '2') {
@@ -6887,36 +6884,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }, {
                 text: 'Okay',
                 handler: function handler() {
-                  _this22.commonService.presentLoader();
+                  _this21.commonService.presentLoader();
 
-                  _this22.authService.resendOtp({
+                  _this21.authService.resendOtp({
                     'uemail': data.uemail
                   }).subscribe(function (value) {
-                    _this22.commonService.dismissLoader();
+                    _this21.commonService.dismissLoader();
 
-                    _this22.router.navigate(["verify", data.uemail]).then(function (nav) {}, function (err) {});
+                    _this21.router.navigate(["verify", data.uemail]).then(function (nav) {}, function (err) {});
                   }, function (otperr) {
-                    _this22.commonService.dismissLoader();
+                    _this21.commonService.dismissLoader();
 
-                    _this22.router.navigateByUrl('verify');
+                    _this21.router.navigateByUrl('verify');
                   });
                 }
               }];
               var msg = 'Email is not verified please verify email first';
               var title = 'Login Failed';
 
-              _this22.commonService.presentAlert(title, msg, btns, '');
+              _this21.commonService.presentAlert(title, msg, btns, '');
 
-              _this22.commonService.dismissLoader();
+              _this21.commonService.dismissLoader();
             } else {
-              _this22.commonService.dismissLoader();
+              _this21.commonService.dismissLoader();
 
-              _this22.commonService.presentToast(data.message);
+              _this21.commonService.presentToast(data.message);
             }
 
-            _this22.registerForm.reset();
+            _this21.registerForm.reset();
           }, function (err) {
-            _this22.commonService.dismissLoader();
+            _this21.commonService.dismissLoader();
           });
         }
       }, {
@@ -6927,11 +6924,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ionViewWillEnter",
         value: function ionViewWillEnter() {
-          var _this23 = this;
+          var _this22 = this;
 
           console.log("ionViewWillEnter signin");
           this.subscribe = this.platform.backButton.subscribeWithPriority(10, function () {
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this23, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this22, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
               var header, buttons;
               return regeneratorRuntime.wrap(function _callee12$(_context12) {
                 while (1) {
@@ -7172,96 +7169,96 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngAfterViewInit",
         value: function ngAfterViewInit() {
-          var _this24 = this;
+          var _this23 = this;
 
           setTimeout(function () {
-            _this24.sendmessage.setFocus();
+            _this23.sendmessage.setFocus();
           }, 400);
         }
       }, {
         key: "groupChat",
         value: function groupChat() {
-          var _this25 = this;
+          var _this24 = this;
 
           this.socket.emit("newGroup", this.userData.id, this.receiverId, this.room);
           this.socket.emit('stormessagerequest', this.userData.id, this.receiverId);
           this.socket.fromEvent('receiveDate').subscribe(function (receiveDate) {// console.log('receiveDate:'+JSON.stringify(receiveDate));
           });
           this.socket.fromEvent('stormessage').subscribe(function (stormessage) {
-            _this25.storeMessages = stormessage;
+            _this24.storeMessages = stormessage;
             setTimeout(function () {
-              _this25.contentArea.scrollToBottom();
+              _this24.contentArea.scrollToBottom();
             }, 400);
           });
           this.socket.fromEvent('groupChatRequestData').subscribe(function (groupChatRequestData) {
             console.log("GROUP:" + JSON.stringify(groupChatRequestData));
-            _this25.groupName = groupChatRequestData[0].group_name;
-            _this25.adminId = groupChatRequestData[0].admin_id;
-            _this25.groupMember = groupChatRequestData[0].group_member;
-            _this25.acceptMember = groupChatRequestData[0].accept_member;
-            _this25.profile_pic = groupChatRequestData[0].group_image;
-            _this25.groupId = groupChatRequestData[0].id;
+            _this24.groupName = groupChatRequestData[0].group_name;
+            _this24.adminId = groupChatRequestData[0].admin_id;
+            _this24.groupMember = groupChatRequestData[0].group_member;
+            _this24.acceptMember = groupChatRequestData[0].accept_member;
+            _this24.profile_pic = groupChatRequestData[0].group_image;
+            _this24.groupId = groupChatRequestData[0].id;
           });
           this.socket.fromEvent('groupmessage').subscribe(function (message) {
-            _this25.groupMessages.push(message);
+            _this24.groupMessages.push(message);
 
-            _this25.contentArea.scrollToBottom();
+            _this24.contentArea.scrollToBottom();
           });
         }
       }, {
         key: "privateChat",
         value: function privateChat() {
-          var _this26 = this;
+          var _this25 = this;
 
           this.socket.fromEvent('message').subscribe(function (message) {
-            _this26.messages.push(message);
+            _this25.messages.push(message);
 
-            _this26.contentArea.scrollToBottom();
+            _this25.contentArea.scrollToBottom();
           });
           this.socket.fromEvent('lastChatId').subscribe(function (lastchatId) {
-            _this26.lastChatId = lastchatId;
-            console.log("this.lastChatId : " + _this26.lastChatId);
+            _this25.lastChatId = lastchatId;
+            console.log("this.lastChatId : " + _this25.lastChatId);
           });
           this.socket.fromEvent('blockStatusOfUser').subscribe(function (blockStatusOfUser) {
-            _this26.bSOUser = blockStatusOfUser['status'];
-            _this26.bidOUser = blockStatusOfUser['blockID'];
+            _this25.bSOUser = blockStatusOfUser['status'];
+            _this25.bidOUser = blockStatusOfUser['blockID'];
           });
           this.socket.fromEvent('blockStatusOfSelf').subscribe(function (blockStatusOfSelf) {
             if (blockStatusOfSelf['status'] === 'block') {
-              _this26.blockstatus = 1;
+              _this25.blockstatus = 1;
             } else {
-              _this26.blockstatus = 0;
+              _this25.blockstatus = 0;
             }
           });
           this.socket.fromEvent('storchatdate').subscribe(function (data) {// console.log("storchatdate : "+JSON.stringify(data));
           });
           this.socket.fromEvent('UserOnLineStatus').subscribe(function (UserOnLineStatus) {
-            _this26.UserOnLineStatus = UserOnLineStatus;
+            _this25.UserOnLineStatus = UserOnLineStatus;
           });
           this.socket.emit("addUser", this.userData.id, this.receiverId);
           this.socket.emit("privateUser", [this.userData.id, this.receiverId, this.room]);
           this.socket.emit("storemassagerequest", this.userData.id, this.receiverId);
           this.socket.fromEvent('stormessage').subscribe(function (storMessage) {
-            _this26.storeMessages = storMessage;
+            _this25.storeMessages = storMessage;
             setTimeout(function () {
-              _this26.contentArea.scrollToBottom();
+              _this25.contentArea.scrollToBottom();
             }, 400);
           });
           this.socket.fromEvent('userName').subscribe(function (data) {
             console.log("UserName");
-            _this26.user_name = data[0].user_name;
+            _this25.user_name = data[0].user_name;
           });
           this.socket.fromEvent('userBio').subscribe(function (data) {
             console.log("UserBio");
-            _this26.display_name = data[0].display_name;
-            _this26.profile_pic = data[0].profile_pic;
+            _this25.display_name = data[0].display_name;
+            _this25.profile_pic = data[0].profile_pic;
           });
         }
       }, {
         key: "blockStatusOfUser",
         value: function blockStatusOfUser(id) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
-            var _this27 = this;
+            var _this26 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee13$(_context13) {
@@ -7283,7 +7280,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         text: 'Ok',
                         handler: function handler() {
                           //--------unblock User through socket-------//
-                          _this27.socket.emit("blockevent", '0', id);
+                          _this26.socket.emit("blockevent", '0', id);
                         }
                       }]
                     });
@@ -7305,7 +7302,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "presentPopover",
         value: function presentPopover(ev) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
-            var _this28 = this;
+            var _this27 = this;
 
             var popover;
             return regeneratorRuntime.wrap(function _callee14$(_context14) {
@@ -7332,14 +7329,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     popover = _context14.sent;
                     popover.onDidDismiss().then(function (data) {
                       if (data.data == 'refresh') {
-                        _this28.doRefresh();
+                        _this27.doRefresh();
                       } else if (data.data == 'clear') {
-                        _this28.storeMessages = [];
-                        _this28.messages = [];
+                        _this27.storeMessages = [];
+                        _this27.messages = [];
                       } else {
-                        _this28.bSOUser = data['data'];
+                        _this27.bSOUser = data['data'];
 
-                        _this28.socket.emit('userBlockStatus', _this28.userData.id, _this28.receiverId);
+                        _this27.socket.emit('userBlockStatus', _this27.userData.id, _this27.receiverId);
                       }
                     });
                     _context14.next = 6;
@@ -7630,7 +7627,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var _this29 = this;
+          var _this28 = this;
 
           this.submitted = true;
 
@@ -7645,26 +7642,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             // console.log(this.chatGroupForm.value.groupName);
             this.formData.groupName = this.chatGroupForm.value.groupName;
             this.dataService.sendChatRequest(this.formData).subscribe(function (data) {
-              _this29.commonService.dismissLoader();
+              _this28.commonService.dismissLoader();
 
               if (data.status == 'success') {
                 var fileData = {
-                  returnUrl: _this29.returnUrl,
+                  returnUrl: _this28.returnUrl,
                   chatType: data.type,
                   room: data.room,
                   receiverId: parseInt(data.requestID)
                 };
 
-                _this29.chatRooms(fileData);
+                _this28.chatRooms(fileData);
 
-                _this29.commonService.dismissModal(); // this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
+                _this28.commonService.dismissModal(); // this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
 
               } else {
                 console.log('Somthing wrong');
                 return false;
               }
             }, function (err) {
-              _this29.commonService.presentLoader();
+              _this28.commonService.presentLoader();
             });
           }
         }
@@ -7844,18 +7841,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this30 = this;
+          var _this29 = this;
 
           this.dataService.chatGroup({
             'id': this.receiverId
           }).subscribe(function (data) {
-            _this30.adminId = data.admin_id;
+            _this29.adminId = data.admin_id;
           });
         }
       }, {
         key: "block",
         value: function block() {
-          var _this31 = this;
+          var _this30 = this;
 
           if (this.bSOUser == 'unblock') {
             this.returnStatus = 'block';
@@ -7869,9 +7866,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             'bidOUser': this.bidOUser,
             'status': this.status
           }).subscribe(function (data) {
-            _this31.DismissClick(_this31.returnStatus);
+            _this30.DismissClick(_this30.returnStatus);
 
-            _this31.commonService.dismissModal(); // if(this.status == 1){          
+            _this30.commonService.dismissModal(); // if(this.status == 1){          
             //   this.router.navigate(['/tabs/chats']);
             // }
 
@@ -7880,22 +7877,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "clear",
         value: function clear() {
-          var _this32 = this;
+          var _this31 = this;
 
           this.dataService.clearChatUser({
             'receiver_id': this.receiverId,
             'lastChatId': this.lastchatid
           }).subscribe(function (data) {
-            _this32.DismissClick('clear');
+            _this31.DismissClick('clear');
           });
         }
       }, {
         key: "delete",
         value: function _delete() {
-          var _this33 = this;
+          var _this32 = this;
 
           this.dataService.deleteChatUser({
             'room': this.room
+          }).subscribe(function (data) {
+            _this32.DismissClick('refresh');
+
+            _this32.commonService.dismissModal(); // this.router.navigate(['/tabs/chats']);
+
+          });
+        }
+      }, {
+        key: "deletegroup",
+        value: function deletegroup() {
+          var _this33 = this;
+
+          this.dataService.deleteGroup({
+            'id': this.receiverId
           }).subscribe(function (data) {
             _this33.DismissClick('refresh');
 
@@ -7904,23 +7915,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         }
       }, {
-        key: "deletegroup",
-        value: function deletegroup() {
-          var _this34 = this;
-
-          this.dataService.deleteGroup({
-            'id': this.receiverId
-          }).subscribe(function (data) {
-            _this34.DismissClick('refresh');
-
-            _this34.commonService.dismissModal(); // this.router.navigate(['/tabs/chats']);
-
-          });
-        }
-      }, {
         key: "cropUpload",
         value: function cropUpload() {
-          var _this35 = this;
+          var _this34 = this;
 
           this.imagePicker.getPictures({
             maximumImagesCount: 1,
@@ -7929,19 +7926,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             for (var i = 0; i < results.length; i++) {
               console.log('Image URI: ' + results[i]);
 
-              _this35.crop.crop(results[i], {
+              _this34.crop.crop(results[i], {
                 quality: 100
               }).then(function (newImage) {
                 console.log('new image path is: ' + newImage);
-                _this35.token = localStorage.getItem('userToken');
+                _this34.token = localStorage.getItem('userToken');
                 var headers = {
-                  'Authorization': 'Bearer ' + _this35.token
+                  'Authorization': 'Bearer ' + _this34.token
                 };
                 var parameters = {
-                  requestId: _this35.receiverId
+                  requestId: _this34.receiverId
                 };
 
-                var fileTransfer = _this35.transfer.create();
+                var fileTransfer = _this34.transfer.create();
 
                 var uploadOpts = {
                   fileKey: 'file',
@@ -7952,11 +7949,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 uploadOpts.headers = headers;
                 uploadOpts.params = parameters;
                 fileTransfer.upload(newImage, _config_config__WEBPACK_IMPORTED_MODULE_7__["Config"].ApiUrl + 'api/auth/uploadGroupPicture', uploadOpts).then(function (data) {
-                  _this35.respData = JSON.parse(data.response);
-                  _this35.profile_pic = _this35.respData.profile_pic;
-                  _this35.fileUrl = _this35.respData.fileUrl;
+                  _this34.respData = JSON.parse(data.response);
+                  _this34.profile_pic = _this34.respData.profile_pic;
+                  _this34.fileUrl = _this34.respData.fileUrl;
 
-                  _this35.DismissClick('refresh');
+                  _this34.DismissClick('refresh');
                 }, function (err) {
                   console.log(err);
                 });
@@ -7971,14 +7968,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "exitgroup",
         value: function exitgroup() {
-          var _this36 = this;
+          var _this35 = this;
 
           this.dataService.exitGroup({
             'id': this.receiverId
           }).subscribe(function (data) {
-            _this36.DismissClick('refresh');
+            _this35.DismissClick('refresh');
 
-            _this36.commonService.dismissModal(); // if(data.exit){
+            _this35.commonService.dismissModal(); // if(data.exit){
             //   this.router.navigate(['/tabs/chats']);
             // }
 
@@ -8120,14 +8117,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(RequestsModalComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this37 = this;
+          var _this36 = this;
 
           this.commonService.presentLoader(); //--------requests counter-----
 
           this.dataService.requestsUserList().subscribe(function (data) {
-            _this37.commonService.dismissLoader();
+            _this36.commonService.dismissLoader();
 
-            _this37.requestList = data.requestslist;
+            _this36.requestList = data.requestslist;
           });
         }
       }, {
@@ -8138,11 +8135,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "closeModal",
         value: function closeModal() {
-          var _this38 = this;
+          var _this37 = this;
 
           if (this.requestList && this.requestList != '') {
             this.requestList.forEach(function (element) {
-              _this38.allrequest.push({
+              _this37.allrequest.push({
                 'chatType': element.type,
                 'id': element.id
               });
@@ -8151,7 +8148,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               'allrequest': this.allrequest
             }).subscribe(function (data) {
               if (data.declienall) {
-                _this38.close();
+                _this37.close();
               }
             });
             this.allrequest = [];
@@ -8518,7 +8515,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".ml-30 {\n  margin-left: 30px; }\n\nion-radio {\n  position: absolute;\n  top: 5px; }\n\nion-list.radio-list {\n  margin-top: 50px; }\n\nion-list.radio-list ion-radio-group ion-list-header {\n    display: none; }\n\nion-list.radio-list + div + ion-button, ion-list.radio-list + ion-button {\n  height: 56px; }\n\n.uploading {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\n.upcomingCard {\n  border-radius: 0;\n  box-shadow: none;\n  border-bottom: 5px solid #f7f7f7; }\n\n.upcomingCard ion-avatar {\n    width: 65px;\n    height: 65px; }\n\n.upcomingCard ion-label {\n    line-height: 1.5; }\n\n.bottomModal .modal-wrapper {\n  height: 28vh !important;\n  top: auto; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kYWxDb250ZW50L2VxdWlwbWVudC1wYXltZW50L0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFxtb2RhbENvbnRlbnRcXGVxdWlwbWVudC1wYXltZW50XFxlcXVpcG1lbnQtcGF5bWVudC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUFPLGlCQUFpQixFQUFBOztBQUN4QjtFQUFVLGtCQUFrQjtFQUFDLFFBQU8sRUFBQTs7QUFDcEM7RUFBb0IsZ0JBQWdCLEVBQUE7O0FBQXBDO0lBRXdCLGFBQWEsRUFBQTs7QUFHckM7RUFBa0UsWUFBWSxFQUFBOztBQUM5RTtFQUFXLGFBQWE7RUFBQyxtQkFBbUI7RUFBQyx1QkFBdUIsRUFBQTs7QUFFcEU7RUFBYyxnQkFBZ0I7RUFBQyxnQkFBZ0I7RUFBQyxnQ0FBZ0MsRUFBQTs7QUFBaEY7SUFDZSxXQUFXO0lBQUMsWUFBWSxFQUFBOztBQUR2QztJQUVjLGdCQUFnQixFQUFBOztBQUU1QjtFQUNFLHVCQUF1QjtFQUN2QixTQUFTLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9tb2RhbENvbnRlbnQvZXF1aXBtZW50LXBheW1lbnQvZXF1aXBtZW50LXBheW1lbnQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubWwtMzB7bWFyZ2luLWxlZnQ6IDMwcHg7fVxyXG5pb24tcmFkaW97cG9zaXRpb246IGFic29sdXRlO3RvcDo1cHh9XHJcbmlvbi1saXN0LnJhZGlvLWxpc3R7bWFyZ2luLXRvcDogNTBweDtcclxuICAgIGlvbi1yYWRpby1ncm91cHtcclxuICAgICAgICBpb24tbGlzdC1oZWFkZXJ7ZGlzcGxheTogbm9uZX1cclxuICAgIH1cclxufVxyXG5pb24tbGlzdC5yYWRpby1saXN0K2Rpditpb24tYnV0dG9uLGlvbi1saXN0LnJhZGlvLWxpc3QraW9uLWJ1dHRvbntoZWlnaHQ6IDU2cHg7fVxyXG4udXBsb2FkaW5ne2Rpc3BsYXk6IGZsZXg7YWxpZ24taXRlbXM6IGNlbnRlcjtqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjt9XHJcblxyXG4udXBjb21pbmdDYXJke2JvcmRlci1yYWRpdXM6IDA7Ym94LXNoYWRvdzogbm9uZTtib3JkZXItYm90dG9tOiA1cHggc29saWQgI2Y3ZjdmNztcclxuICAgIGlvbi1hdmF0YXJ7d2lkdGg6IDY1cHg7aGVpZ2h0OiA2NXB4O31cclxuICAgIGlvbi1sYWJlbHtsaW5lLWhlaWdodDogMS41O31cclxuICB9XHJcbiAgLmJvdHRvbU1vZGFsIC5tb2RhbC13cmFwcGVyIHtcclxuICAgIGhlaWdodDogMjh2aCAhaW1wb3J0YW50O1xyXG4gICAgdG9wOiBhdXRvO1xyXG59Il19 */";
+    __webpack_exports__["default"] = ".ml-30 {\n  margin-left: 30px; }\n\nion-radio {\n  position: absolute;\n  top: 5px; }\n\nion-list.radio-list {\n  margin-top: 50px; }\n\nion-list.radio-list ion-radio-group ion-list-header {\n    display: none; }\n\nion-list.radio-list + div + ion-button, ion-list.radio-list + ion-button {\n  height: 56px; }\n\n.uploading {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\n.upcomingCard {\n  border-radius: 0;\n  box-shadow: none;\n  border-bottom: 5px solid #f7f7f7; }\n\n.upcomingCard ion-avatar {\n    width: 65px;\n    height: 65px; }\n\n.upcomingCard ion-label {\n    line-height: 1.5; }\n\n.bottomModal .modal-wrapper {\n  height: 28vh !important;\n  top: auto; }\n\n.mw-30 {\n  min-width: 30px !important; }\n\n.text-not-overflow {\n  text-overflow: initial;\n  white-space: initial; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kYWxDb250ZW50L2VxdWlwbWVudC1wYXltZW50L0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFxtb2RhbENvbnRlbnRcXGVxdWlwbWVudC1wYXltZW50XFxlcXVpcG1lbnQtcGF5bWVudC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUFPLGlCQUFpQixFQUFBOztBQUN4QjtFQUFVLGtCQUFrQjtFQUFDLFFBQU8sRUFBQTs7QUFDcEM7RUFBb0IsZ0JBQWdCLEVBQUE7O0FBQXBDO0lBRXdCLGFBQWEsRUFBQTs7QUFHckM7RUFBa0UsWUFBWSxFQUFBOztBQUM5RTtFQUFXLGFBQWE7RUFBQyxtQkFBbUI7RUFBQyx1QkFBdUIsRUFBQTs7QUFFcEU7RUFBYyxnQkFBZ0I7RUFBQyxnQkFBZ0I7RUFBQyxnQ0FBZ0MsRUFBQTs7QUFBaEY7SUFDZSxXQUFXO0lBQUMsWUFBWSxFQUFBOztBQUR2QztJQUVjLGdCQUFnQixFQUFBOztBQUU1QjtFQUNFLHVCQUF1QjtFQUN2QixTQUFTLEVBQUE7O0FBRWI7RUFDSSwwQkFBMEIsRUFBQTs7QUFFOUI7RUFDSSxzQkFBc0I7RUFDdEIsb0JBQW9CLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9tb2RhbENvbnRlbnQvZXF1aXBtZW50LXBheW1lbnQvZXF1aXBtZW50LXBheW1lbnQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubWwtMzB7bWFyZ2luLWxlZnQ6IDMwcHg7fVxyXG5pb24tcmFkaW97cG9zaXRpb246IGFic29sdXRlO3RvcDo1cHh9XHJcbmlvbi1saXN0LnJhZGlvLWxpc3R7bWFyZ2luLXRvcDogNTBweDtcclxuICAgIGlvbi1yYWRpby1ncm91cHtcclxuICAgICAgICBpb24tbGlzdC1oZWFkZXJ7ZGlzcGxheTogbm9uZX1cclxuICAgIH1cclxufVxyXG5pb24tbGlzdC5yYWRpby1saXN0K2Rpditpb24tYnV0dG9uLGlvbi1saXN0LnJhZGlvLWxpc3QraW9uLWJ1dHRvbntoZWlnaHQ6IDU2cHg7fVxyXG4udXBsb2FkaW5ne2Rpc3BsYXk6IGZsZXg7YWxpZ24taXRlbXM6IGNlbnRlcjtqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjt9XHJcblxyXG4udXBjb21pbmdDYXJke2JvcmRlci1yYWRpdXM6IDA7Ym94LXNoYWRvdzogbm9uZTtib3JkZXItYm90dG9tOiA1cHggc29saWQgI2Y3ZjdmNztcclxuICAgIGlvbi1hdmF0YXJ7d2lkdGg6IDY1cHg7aGVpZ2h0OiA2NXB4O31cclxuICAgIGlvbi1sYWJlbHtsaW5lLWhlaWdodDogMS41O31cclxuICB9XHJcbiAgLmJvdHRvbU1vZGFsIC5tb2RhbC13cmFwcGVyIHtcclxuICAgIGhlaWdodDogMjh2aCAhaW1wb3J0YW50O1xyXG4gICAgdG9wOiBhdXRvO1xyXG59XHJcbi5tdy0zMHtcclxuICAgIG1pbi13aWR0aDogMzBweCAhaW1wb3J0YW50O1xyXG59XHJcbi50ZXh0LW5vdC1vdmVyZmxvd3tcclxuICAgIHRleHQtb3ZlcmZsb3c6IGluaXRpYWw7XHJcbiAgICB3aGl0ZS1zcGFjZTogaW5pdGlhbDtcclxufSJdfQ== */";
     /***/
   },
 
@@ -8585,7 +8582,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "payment",
         value: function payment() {
-          var _this39 = this;
+          var _this38 = this;
 
           this.programService.insertEquipmentPaymentDetail({
             "program_id": this.pgamount,
@@ -8593,9 +8590,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this39.commonService.dismissModal(data);
+            _this38.commonService.dismissModal(data);
 
-            _this39.commonService.presentToast("Payment Done.");
+            _this38.commonService.presentToast("Payment Done.");
           });
         }
       }]);
@@ -8955,7 +8952,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".ml-30 {\n  margin-left: 30px; }\n\nion-radio {\n  position: absolute;\n  top: 5px; }\n\nion-list.radio-list {\n  margin-top: 50px; }\n\nion-list.radio-list ion-radio-group ion-list-header {\n    display: none; }\n\nion-list.radio-list + div + ion-button, ion-list.radio-list + ion-button {\n  height: 56px; }\n\n.uploading {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\n.upcomingCard {\n  border-radius: 0;\n  box-shadow: none;\n  border-bottom: 5px solid #f7f7f7; }\n\n.upcomingCard ion-avatar {\n    width: 65px;\n    height: 65px; }\n\n.upcomingCard ion-label {\n    line-height: 1.5; }\n\n.bottomModal .modal-wrapper {\n  height: 28vh !important;\n  top: auto; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kYWxDb250ZW50L3BheW1lbnQvQzpcXHhhbXBwXFxodGRvY3NcXGludG9hY3RpdmUvc3JjXFxhcHBcXG1vZGFsQ29udGVudFxccGF5bWVudFxccGF5bWVudC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUFPLGlCQUFpQixFQUFBOztBQUN4QjtFQUFVLGtCQUFrQjtFQUFDLFFBQU8sRUFBQTs7QUFDcEM7RUFBb0IsZ0JBQWdCLEVBQUE7O0FBQXBDO0lBRXdCLGFBQWEsRUFBQTs7QUFHckM7RUFBa0UsWUFBWSxFQUFBOztBQUM5RTtFQUFXLGFBQWE7RUFBQyxtQkFBbUI7RUFBQyx1QkFBdUIsRUFBQTs7QUFFcEU7RUFBYyxnQkFBZ0I7RUFBQyxnQkFBZ0I7RUFBQyxnQ0FBZ0MsRUFBQTs7QUFBaEY7SUFDZSxXQUFXO0lBQUMsWUFBWSxFQUFBOztBQUR2QztJQUVjLGdCQUFnQixFQUFBOztBQUU1QjtFQUNFLHVCQUF1QjtFQUN2QixTQUFTLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9tb2RhbENvbnRlbnQvcGF5bWVudC9wYXltZW50LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1sLTMwe21hcmdpbi1sZWZ0OiAzMHB4O31cclxuaW9uLXJhZGlve3Bvc2l0aW9uOiBhYnNvbHV0ZTt0b3A6NXB4fVxyXG5pb24tbGlzdC5yYWRpby1saXN0e21hcmdpbi10b3A6IDUwcHg7XHJcbiAgICBpb24tcmFkaW8tZ3JvdXB7XHJcbiAgICAgICAgaW9uLWxpc3QtaGVhZGVye2Rpc3BsYXk6IG5vbmV9XHJcbiAgICB9XHJcbn1cclxuaW9uLWxpc3QucmFkaW8tbGlzdCtkaXYraW9uLWJ1dHRvbixpb24tbGlzdC5yYWRpby1saXN0K2lvbi1idXR0b257aGVpZ2h0OiA1NnB4O31cclxuLnVwbG9hZGluZ3tkaXNwbGF5OiBmbGV4O2FsaWduLWl0ZW1zOiBjZW50ZXI7anVzdGlmeS1jb250ZW50OiBjZW50ZXI7fVxyXG5cclxuLnVwY29taW5nQ2FyZHtib3JkZXItcmFkaXVzOiAwO2JveC1zaGFkb3c6IG5vbmU7Ym9yZGVyLWJvdHRvbTogNXB4IHNvbGlkICNmN2Y3Zjc7XHJcbiAgICBpb24tYXZhdGFye3dpZHRoOiA2NXB4O2hlaWdodDogNjVweDt9XHJcbiAgICBpb24tbGFiZWx7bGluZS1oZWlnaHQ6IDEuNTt9XHJcbiAgfVxyXG4gIC5ib3R0b21Nb2RhbCAubW9kYWwtd3JhcHBlciB7XHJcbiAgICBoZWlnaHQ6IDI4dmggIWltcG9ydGFudDtcclxuICAgIHRvcDogYXV0bztcclxufSJdfQ== */";
+    __webpack_exports__["default"] = ".ml-30 {\n  margin-left: 30px; }\n\nion-radio {\n  position: absolute;\n  top: 5px; }\n\nion-list.radio-list {\n  margin-top: 50px; }\n\nion-list.radio-list ion-radio-group ion-list-header {\n    display: none; }\n\nion-list.radio-list + div + ion-button, ion-list.radio-list + ion-button {\n  height: 56px; }\n\n.uploading {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\n.upcomingCard {\n  border-radius: 0;\n  box-shadow: none;\n  border-bottom: 5px solid #f7f7f7; }\n\n.upcomingCard ion-avatar {\n    width: 65px;\n    height: 65px; }\n\n.upcomingCard ion-label {\n    line-height: 1.5; }\n\n.bottomModal .modal-wrapper {\n  height: 28vh !important;\n  top: auto; }\n\n.mw-30 {\n  min-width: 30px !important; }\n\n.text-not-overflow {\n  text-overflow: initial;\n  white-space: initial; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kYWxDb250ZW50L3BheW1lbnQvQzpcXHhhbXBwXFxodGRvY3NcXGludG9hY3RpdmUvc3JjXFxhcHBcXG1vZGFsQ29udGVudFxccGF5bWVudFxccGF5bWVudC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUFPLGlCQUFpQixFQUFBOztBQUN4QjtFQUFVLGtCQUFrQjtFQUFDLFFBQU8sRUFBQTs7QUFDcEM7RUFBb0IsZ0JBQWdCLEVBQUE7O0FBQXBDO0lBRXdCLGFBQWEsRUFBQTs7QUFHckM7RUFBa0UsWUFBWSxFQUFBOztBQUM5RTtFQUFXLGFBQWE7RUFBQyxtQkFBbUI7RUFBQyx1QkFBdUIsRUFBQTs7QUFFcEU7RUFBYyxnQkFBZ0I7RUFBQyxnQkFBZ0I7RUFBQyxnQ0FBZ0MsRUFBQTs7QUFBaEY7SUFDZSxXQUFXO0lBQUMsWUFBWSxFQUFBOztBQUR2QztJQUVjLGdCQUFnQixFQUFBOztBQUU1QjtFQUNFLHVCQUF1QjtFQUN2QixTQUFTLEVBQUE7O0FBRWI7RUFDSSwwQkFBMEIsRUFBQTs7QUFFOUI7RUFDSSxzQkFBc0I7RUFDdEIsb0JBQW9CLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9tb2RhbENvbnRlbnQvcGF5bWVudC9wYXltZW50LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1sLTMwe21hcmdpbi1sZWZ0OiAzMHB4O31cclxuaW9uLXJhZGlve3Bvc2l0aW9uOiBhYnNvbHV0ZTt0b3A6NXB4fVxyXG5pb24tbGlzdC5yYWRpby1saXN0e21hcmdpbi10b3A6IDUwcHg7XHJcbiAgICBpb24tcmFkaW8tZ3JvdXB7XHJcbiAgICAgICAgaW9uLWxpc3QtaGVhZGVye2Rpc3BsYXk6IG5vbmV9XHJcbiAgICB9XHJcbn1cclxuaW9uLWxpc3QucmFkaW8tbGlzdCtkaXYraW9uLWJ1dHRvbixpb24tbGlzdC5yYWRpby1saXN0K2lvbi1idXR0b257aGVpZ2h0OiA1NnB4O31cclxuLnVwbG9hZGluZ3tkaXNwbGF5OiBmbGV4O2FsaWduLWl0ZW1zOiBjZW50ZXI7anVzdGlmeS1jb250ZW50OiBjZW50ZXI7fVxyXG5cclxuLnVwY29taW5nQ2FyZHtib3JkZXItcmFkaXVzOiAwO2JveC1zaGFkb3c6IG5vbmU7Ym9yZGVyLWJvdHRvbTogNXB4IHNvbGlkICNmN2Y3Zjc7XHJcbiAgICBpb24tYXZhdGFye3dpZHRoOiA2NXB4O2hlaWdodDogNjVweDt9XHJcbiAgICBpb24tbGFiZWx7bGluZS1oZWlnaHQ6IDEuNTt9XHJcbiAgfVxyXG4gIC5ib3R0b21Nb2RhbCAubW9kYWwtd3JhcHBlciB7XHJcbiAgICBoZWlnaHQ6IDI4dmggIWltcG9ydGFudDtcclxuICAgIHRvcDogYXV0bztcclxufVxyXG4ubXctMzB7XHJcbiAgICBtaW4td2lkdGg6IDMwcHggIWltcG9ydGFudDtcclxufVxyXG4udGV4dC1ub3Qtb3ZlcmZsb3d7XHJcbiAgICB0ZXh0LW92ZXJmbG93OiBpbml0aWFsO1xyXG4gICAgd2hpdGUtc3BhY2U6IGluaXRpYWw7XHJcbn0iXX0= */";
     /***/
   },
 
@@ -9056,7 +9053,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "payment",
         value: function payment() {
-          var _this40 = this;
+          var _this39 = this;
 
           this.commonService.dismissModal();
 
@@ -9069,13 +9066,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               if (data) {
                 var fileData = {
-                  pgid: _this40.pgid,
-                  pgname: _this40.pgname,
-                  pgamount: _this40.pgamount,
-                  pgimg: _this40.pgimg
+                  pgid: _this39.pgid,
+                  pgname: _this39.pgname,
+                  pgamount: _this39.pgamount,
+                  pgimg: _this39.pgimg
                 };
 
-                _this40.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+                _this39.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
               }
             });
           } else if (this.type == 1) {
@@ -9087,13 +9084,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               if (data) {
                 var fileData = {
-                  pgid: _this40.pgid.toString(','),
-                  pgname: _this40.pgname,
-                  pgamount: _this40.pgamount,
-                  pgimg: _this40.pgimg
+                  pgid: _this39.pgid.toString(','),
+                  pgname: _this39.pgname,
+                  pgamount: _this39.pgamount,
+                  pgimg: _this39.pgimg
                 };
 
-                _this40.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+                _this39.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
               }
             });
           }
@@ -9309,7 +9306,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var SearchFoodComponent = /*#__PURE__*/function () {
       function SearchFoodComponent(commonService, nutritionService, barcodeScanner, navParams) {
-        var _this41 = this;
+        var _this40 = this;
 
         _classCallCheck(this, SearchFoodComponent);
 
@@ -9326,7 +9323,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (Array.isArray(element.data)) {
             element.data.forEach(function (el) {
               if (el.food_name !== null) {
-                _this41.selectedFoodList2.push(el.food_name);
+                _this40.selectedFoodList2.push(el.food_name);
               }
             });
           }
@@ -9343,10 +9340,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngAfterViewInit",
         value: function ngAfterViewInit() {
-          var _this42 = this;
+          var _this41 = this;
 
           setTimeout(function () {
-            _this42.search_food_name.setFocus();
+            _this41.search_food_name.setFocus();
           }, 400);
         }
       }, {
@@ -9364,22 +9361,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkFoodName",
         value: function checkFoodName(foodname) {
-          var _this43 = this;
+          var _this42 = this;
 
           if (foodname !== '') {
             this.nutritionService.ntnxfetchFood(foodname).subscribe(function (data) {
               data.common.forEach(function (el) {
-                if (_this43.selectedFoodList2.indexOf(el['food_name']) !== -1) {
+                if (_this42.selectedFoodList2.indexOf(el['food_name']) !== -1) {
                   el['selected'] = true;
                 } else {
                   el['selected'] = false;
                 }
               });
 
-              _this43.commonService.dismissLoader();
+              _this42.commonService.dismissLoader();
 
               console.log(data.common);
-              _this43.foodList = Array.of(data);
+              _this42.foodList = Array.of(data);
               console.log();
             }, function (err) {
               console.log(err);
@@ -9391,7 +9388,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getNutriDetails",
         value: function getNutriDetails(itemDetails) {
-          var _this44 = this;
+          var _this43 = this;
 
           var itemVal = itemDetails.target.value;
 
@@ -9405,9 +9402,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               // console.log(data['foods'])
               console.log(data);
 
-              _this44.selectedFoodList.push(data['foods'][0]);
+              _this43.selectedFoodList.push(data['foods'][0]);
 
-              console.log(_this44.selectedFoodList);
+              console.log(_this43.selectedFoodList);
             });
           } else {
             console.log('viraj');
@@ -9449,26 +9446,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "scanFood",
         value: function scanFood() {
-          var _this45 = this;
+          var _this44 = this;
 
           this.barcodeScanner.scan().then(function (barcodeData) {
             console.log('Barcode data', barcodeData);
 
             if (!barcodeData.cancelled) {
-              _this45.nutritionService.nutrtionBarcode(barcodeData.text).subscribe(function (data) {
+              _this44.nutritionService.nutrtionBarcode(barcodeData.text).subscribe(function (data) {
                 console.log('asadsad');
 
                 if (!data.status) {
-                  _this45.apiData = data;
+                  _this44.apiData = data;
                   console.log(data);
                 } else {
-                  _this45.apiData = null;
+                  _this44.apiData = null;
                   console.log('ssssssss', data.status);
 
-                  _this45.commonService.presentToast('Product not found in database');
+                  _this44.commonService.presentToast('Product not found in database');
                 }
 
-                _this45.commonService.dismissModal(_this45.apiData);
+                _this44.commonService.dismissModal(_this44.apiData);
               });
             }
           })["catch"](function (err) {
@@ -10125,7 +10122,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var _this46 = this;
+          var _this45 = this;
 
           // this.submitted = true;
           if (this.userIdentityVerifyForm.invalid) {
@@ -10135,25 +10132,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.commonService.presentLoader();
           this.settingsService.userIndentityVerify(this.userIdentityVerifyForm.value).subscribe(function (data) {
-            _this46.commonService.dismissLoader();
+            _this45.commonService.dismissLoader();
 
             if (data.Record.RecordStatus === 'match') {
-              _this46.settingsService.trilloRecordUpdate().subscribe(function (data) {
+              _this45.settingsService.trilloRecordUpdate().subscribe(function (data) {
                 var loginUserData = JSON.parse(localStorage.getItem('userData'));
                 loginUserData.trilloMatch = 1;
                 localStorage.setItem('userData', JSON.stringify(loginUserData));
               });
 
-              _this46.commonService.dismissModal();
+              _this45.commonService.dismissModal();
 
-              _this46.commonService.presentToast('Record Match');
+              _this45.commonService.presentToast('Record Match');
             } else if (data.Record.RecordStatus === 'undefined') {
-              _this46.commonService.presentToast(data);
+              _this45.commonService.presentToast(data);
             } else {
-              _this46.commonService.presentToast('Record Not Match');
+              _this45.commonService.presentToast('Record Not Match');
             }
           }, function (err) {
-            _this46.commonService.dismissLoader();
+            _this45.commonService.dismissLoader();
           });
         }
       }, {
@@ -10279,7 +10276,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "rename",
         value: function rename() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
-            var _this47 = this;
+            var _this46 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee16$(_context16) {
@@ -10303,20 +10300,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         handler: function handler(blah) {
                           console.log('Confirm Cancel: blah');
 
-                          _this47.commonService.dismissPopover("");
+                          _this46.commonService.dismissPopover("");
                         }
                       }, {
                         text: 'Okay',
                         handler: function handler(data) {
                           if (data.playlistName) {
-                            _this47.musicService.renamePlaylist({
+                            _this46.musicService.renamePlaylist({
                               'playlistName': data.playlistName,
-                              'playlistId': _this47.playlistData.id
+                              'playlistId': _this46.playlistData.id
                             }).subscribe(function (data) {
                               if (data) {
-                                _this47.commonService.presentToast("Playlist renamed.");
+                                _this46.commonService.presentToast("Playlist renamed.");
 
-                                _this47.commonService.dismissPopover(true);
+                                _this46.commonService.dismissPopover(true);
                               }
                             });
                           }
@@ -10339,15 +10336,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "remove",
         value: function remove() {
-          var _this48 = this;
+          var _this47 = this;
 
           this.musicService.removePlaylist({
             'playlistId': this.playlistData.id
           }).subscribe(function (data) {
             if (data) {
-              _this48.commonService.presentToast("Playlist removed.");
+              _this47.commonService.presentToast("Playlist removed.");
 
-              _this48.commonService.dismissPopover("");
+              _this47.commonService.dismissPopover("");
             }
           });
         }
@@ -10482,7 +10479,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "newPlaylist",
         value: function newPlaylist() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
-            var _this49 = this;
+            var _this48 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee18$(_context18) {
@@ -10510,12 +10507,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         text: 'Okay',
                         handler: function handler(data) {
                           if (data.playlistName) {
-                            _this49.musicService.createPlaylist({
+                            _this48.musicService.createPlaylist({
                               'pname': data.playlistName,
-                              'mid': _this49.mid
+                              'mid': _this48.mid
                             }).subscribe(function (data) {
                               if (data) {
-                                _this49.commonService.presentToast("Song added.");
+                                _this48.commonService.presentToast("Song added.");
                               }
                             });
                           }
@@ -10543,7 +10540,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addToList",
         value: function addToList(ev) {
-          var _this50 = this;
+          var _this49 = this;
 
           this.commonService.dismissPopover('');
           console.log(ev);
@@ -10553,12 +10550,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             if (data.status) {
               if (data.status.id) {
-                _this50.commonService.presentToast('Song added to playlist.');
+                _this49.commonService.presentToast('Song added to playlist.');
               } else {
-                _this50.commonService.presentToast(data.status);
+                _this49.commonService.presentToast(data.status);
               }
             } else {
-              _this50.commonService.presentToast('someting went wrong');
+              _this49.commonService.presentToast('someting went wrong');
             }
           });
         }
@@ -10950,29 +10947,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(NotificationModalComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this51 = this;
+          var _this50 = this;
 
           this.profileData = this.navParams.get('profileData');
           this.commonService.presentLoader();
           this.peopleService.getUserNotification({
             'cid': this.profileData.userData.id
           }).subscribe(function (data) {
-            _this51.commonService.dismissLoader();
+            _this50.commonService.dismissLoader();
 
             if (data.status) {
-              _this51.toggleDiscussion = data.status.discussion;
-              _this51.toggleImage = data.status.image;
-              _this51.toggleVideo = data.status.video;
-              _this51.toggleProgram = data.status.program;
+              _this50.toggleDiscussion = data.status.discussion;
+              _this50.toggleImage = data.status.image;
+              _this50.toggleVideo = data.status.video;
+              _this50.toggleProgram = data.status.program;
             }
           }, function (err) {
-            _this51.commonService.dismissLoader();
+            _this50.commonService.dismissLoader();
           });
         }
       }, {
         key: "disableNotification",
         value: function disableNotification(colName, value) {
-          var _this52 = this;
+          var _this51 = this;
 
           this.commonService.presentLoader();
           this.peopleService.userNotification({
@@ -10982,11 +10979,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this52.commonService.dismissLoader();
+            _this51.commonService.dismissLoader();
 
-            _this52.commonService.presentToast(data.toast + " " + _this52.profileData.userData.user_name);
+            _this51.commonService.presentToast(data.toast + " " + _this51.profileData.userData.user_name);
           }, function (err) {
-            _this52.commonService.dismissLoader();
+            _this51.commonService.dismissLoader();
           });
         }
       }, {
@@ -11113,7 +11110,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "removePost",
         value: function removePost() {
-          var _this53 = this;
+          var _this52 = this;
 
           this.commonService.presentLoader();
           this.postService.removePost({
@@ -11121,7 +11118,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this53.commonService.dismissLoader();
+            _this52.commonService.dismissLoader();
 
             if (data.postStatus == true) {}
           });
@@ -11133,7 +11130,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "commentDisable",
         value: function commentDisable() {
-          var _this54 = this;
+          var _this53 = this;
 
           this.commonService.presentLoader();
           this.postService.commentDisable({
@@ -11142,7 +11139,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this54.commonService.dismissLoader();
+            _this53.commonService.dismissLoader();
 
             if (data.postStatus == true) {}
           });
@@ -11497,19 +11494,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this55 = this;
+          var _this54 = this;
 
           this.viewUserId = this.navParamas.get('userId');
           var dataPromise = this.storage.get('userData');
           dataPromise.then(function (data) {
-            _this55.storageData = JSON.parse(data);
-            _this55.userId = _this55.storageData.id;
+            _this54.storageData = JSON.parse(data);
+            _this54.userId = _this54.storageData.id;
           });
           this.peopleViewService.getFollowers(this.viewUserId).subscribe(function (data) {
-            _this55.followers = data.result;
-            _this55.followerFilteredUsers = _this55.followers;
+            _this54.followers = data.result;
+            _this54.followerFilteredUsers = _this54.followers;
 
-            _this55.followers.forEach(function (element, i) {
+            _this54.followers.forEach(function (element, i) {
               if (element.following_user.follower_rel != null) {
                 element.following_user.follow = true;
                 element.following_user["class"] = '';
@@ -11521,7 +11518,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             });
 
-            console.log(_this55.followers);
+            console.log(_this54.followers);
             console.log('followersload');
           });
         }
@@ -11536,7 +11533,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "followUpPeople",
         value: function followUpPeople(folloUpId, status) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
-            var _this56 = this;
+            var _this55 = this;
 
             return regeneratorRuntime.wrap(function _callee19$(_context19) {
               while (1) {
@@ -11547,7 +11544,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       'status': status
                     }).subscribe(function (data) {
                       if (data.followStatus == 'true') {
-                        _this56.followers.forEach(function (element, i) {
+                        _this55.followers.forEach(function (element, i) {
                           if (element.following_user.id == folloUpId) {
                             element.following_user.follow = false;
                             element.following_user["class"] = 'green text-white';
@@ -11555,7 +11552,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                           }
                         });
                       } else if (data.followStatus == 'false') {
-                        _this56.followers.forEach(function (element, i) {
+                        _this55.followers.forEach(function (element, i) {
                           if (element.following_user.id == folloUpId) {
                             element.following_user.follow = true;
                             element.following_user["class"] = '';
@@ -11564,7 +11561,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         });
                       }
 
-                      console.log(_this56.followers);
+                      console.log(_this55.followers);
                       console.log(' this.followers');
                     });
 
@@ -11727,31 +11724,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ionViewWillEnter",
         value: function ionViewWillEnter() {
-          var _this57 = this;
+          var _this56 = this;
 
           this.commonService.presentLoader();
           this.programService.getAdCompanyDetails({
             'adReqId': this.adReqDetails.id
           }).subscribe(function (data) {
-            _this57.commonService.dismissLoader();
+            _this56.commonService.dismissLoader();
 
-            _this57.msgCount = data.data.count;
-            console.log(_this57.msgCount);
-            _this57.adCompanyDetail = data.data.details.filter(function (el, i) {
+            _this56.msgCount = data.data.count;
+            console.log(_this56.msgCount);
+            _this56.adCompanyDetail = data.data.details.filter(function (el, i) {
               if (el.consultant_approval) {
-                _this57.disabled = true;
+                _this56.disabled = true;
               }
 
               return el;
             });
           }, function (err) {
-            _this57.commonService.dismissLoader();
+            _this56.commonService.dismissLoader();
           });
         }
       }, {
         key: "acceptRequest",
         value: function acceptRequest(event) {
-          var _this58 = this;
+          var _this57 = this;
 
           var btn = [{
             text: 'Cancel',
@@ -11765,7 +11762,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             handler: function handler() {
               console.log('Confirm Okay');
 
-              _this58.sendRequest(event);
+              _this57.sendRequest(event);
             }
           }];
           this.commonService.presentAlert('Accept Request', 'Are you sure?', btn, '');
@@ -11773,15 +11770,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "sendRequest",
         value: function sendRequest(event) {
-          var _this59 = this;
+          var _this58 = this;
 
           this.programService.acceptSponsers({
             'acceptId': event,
             'adReqId': this.adReqDetails.id
           }).subscribe(function (data) {
-            _this59.disabled = data.data;
+            _this58.disabled = data.data;
 
-            _this59.closeModal();
+            _this58.closeModal();
           });
         }
       }, {
@@ -12039,7 +12036,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(SponserCommentComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this60 = this;
+          var _this59 = this;
 
           this.commonService.presentLoader();
           this.adDetail = this.navParams.data.adDetails;
@@ -12047,11 +12044,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.programService.getSponserComment({
             'adReqId': this.adDetail.id
           }).subscribe(function (data) {
-            _this60.comment = data.data;
+            _this59.comment = data.data;
 
-            _this60.commonService.dismissLoader();
+            _this59.commonService.dismissLoader();
           }, function (err) {
-            _this60.commonService.dismissLoader();
+            _this59.commonService.dismissLoader();
           });
           console.log(this.adDetail);
         }
@@ -12070,7 +12067,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onClickSubmit",
         value: function onClickSubmit() {
-          var _this61 = this;
+          var _this60 = this;
 
           this.submitted = true;
 
@@ -12082,11 +12079,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               'requestId': this.adDetail.id,
               'comment': this.commentForm.value.comment
             }).subscribe(function (data) {
-              _this61.ngOnInit();
+              _this60.ngOnInit();
 
-              _this61.commonService.dismissLoader();
+              _this60.commonService.dismissLoader();
             }, function (err) {
-              _this61.commonService.dismissLoader();
+              _this60.commonService.dismissLoader();
             });
           }
         }
@@ -12224,7 +12221,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       // },
       // ];
       function EquipmentsComponent(commonService, navParams, modalCtrl, programService) {
-        var _this62 = this;
+        var _this61 = this;
 
         _classCallCheck(this, EquipmentsComponent);
 
@@ -12242,12 +12239,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         console.log(this.equipment);
         this.programService.fetchEquipmentList().subscribe(function (data) {
-          _this62.equipments = data.equipmentList;
+          _this61.equipments = data.equipmentList;
 
-          _this62.equipments.filter(function (el) {
+          _this61.equipments.filter(function (el) {
             console.log(el.id);
 
-            if (_this62.equipment.includes(el.id.toString())) {
+            if (_this61.equipment.includes(el.id.toString())) {
               el.selected = true;
             }
 
@@ -12295,7 +12292,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "openEdit",
         value: function openEdit() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
-            var _this63 = this;
+            var _this62 = this;
 
             var modal;
             return regeneratorRuntime.wrap(function _callee20$(_context20) {
@@ -12319,25 +12316,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                       if (d.data.length > 0) {
                         // d.data.filter(Boolean);
-                        _this63.equipment = d.data.filter(Boolean);
-                        console.log(_this63.equipment);
+                        _this62.equipment = d.data.filter(Boolean);
+                        console.log(_this62.equipment);
 
-                        _this63.programService.updateEquipmentList({
+                        _this62.programService.updateEquipmentList({
                           "equipmentId": d.data.filter(Boolean),
-                          "programId": _this63.programDetails.id
+                          "programId": _this62.programDetails.id
                         }).subscribe(function (data) {
                           console.log('id update');
                         });
 
                         console.log(d.data.filter(Boolean));
 
-                        _this63.programService.fetchEquipmentList().subscribe(function (data) {
+                        _this62.programService.fetchEquipmentList().subscribe(function (data) {
                           console.log(data);
-                          _this63.equipments = data.equipmentList;
+                          _this62.equipments = data.equipmentList;
 
-                          _this63.equipments.filter(function (el) {
-                            if (_this63.equipment) {
-                              if (_this63.equipment.includes(el.id)) {
+                          _this62.equipments.filter(function (el) {
+                            if (_this62.equipment) {
+                              if (_this62.equipment.includes(el.id)) {
                                 el.selected = true;
                               }
 
@@ -12508,7 +12505,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "recieveUser",
         value: function recieveUser(data) {
+          var _this63 = this;
+
+          if (data != null) {
+            var uId = data.split(',');
+            console.log(uId);
+            uId.forEach(function (el) {
+              _this63.programService.getEachUserData({
+                el: el
+              }).subscribe(function (peoples) {
+                console.log(peoples);
+
+                _this63.acceptedData.push({
+                  'image': peoples[0].bios.profile_pic,
+                  'name': peoples[0].user_name,
+                  'id': peoples[0].id
+                });
+              });
+
+              console.log(_this63.acceptedData);
+            });
+          }
+        }
+      }, {
+        key: "reload",
+        value: function reload(data) {
           var _this64 = this;
+
+          this.commonService.presentLoader();
+          console.log(data);
 
           if (data != null) {
             var uId = data.split(',');
@@ -12519,35 +12544,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }).subscribe(function (peoples) {
                 console.log(peoples);
 
-                _this64.acceptedData.push({
-                  'image': peoples[0].bios.profile_pic,
-                  'name': peoples[0].user_name,
-                  'id': peoples[0].id
-                });
-              });
-
-              console.log(_this64.acceptedData);
-            });
-          }
-        }
-      }, {
-        key: "reload",
-        value: function reload(data) {
-          var _this65 = this;
-
-          this.commonService.presentLoader();
-          console.log(data);
-
-          if (data != null) {
-            var uId = data.split(',');
-            console.log(uId);
-            uId.forEach(function (el) {
-              _this65.programService.getEachUserData({
-                el: el
-              }).subscribe(function (peoples) {
-                console.log(peoples);
-
-                _this65.userData.push({
+                _this64.userData.push({
                   'image': peoples[0].bios.profile_pic,
                   'name': peoples[0].user_name,
                   'request_recive': data,
@@ -12556,36 +12553,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 });
               });
 
-              console.log(_this65.userData);
+              console.log(_this64.userData);
             });
           }
 
           this.programService.getProgramById({
             'programId': this.programDetail.id
           }).subscribe(function (data) {
-            _this65.programDetail = data;
-            console.log(_this65.programDetail);
-            _this65.participant = _this65.navParams.data.userList.filter(function (el) {
-              console.log(_this65.programDetail.programData.request_accepted);
+            _this64.programDetail = data;
+            console.log(_this64.programDetail);
+            _this64.participant = _this64.navParams.data.userList.filter(function (el) {
+              console.log(_this64.programDetail.programData.request_accepted);
 
-              if (_this65.programDetail.programData.request_accepted != null) {
+              if (_this64.programDetail.programData.request_accepted != null) {
                 console.log('innnn'); // var 
 
-                if (_this65.programDetail.programData.request_accepted.split(',').includes(el.id.toString())) {
+                if (_this64.programDetail.programData.request_accepted.split(',').includes(el.id.toString())) {
                   console.log('ttt');
                   el.request_accepted = true;
                 }
               }
 
-              console.log(_this65.participant);
+              console.log(_this64.participant);
               return el;
             });
 
-            _this65.commonService.dismissLoader();
+            _this64.commonService.dismissLoader();
           }, function (err) {
-            _this65.commonService.dismissLoader();
+            _this64.commonService.dismissLoader();
 
-            _this65.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this64.commonService.presentToast("Couldnt load data, Something went wrong.");
           });
         }
       }, {
@@ -12596,36 +12593,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "accept",
         value: function accept(event) {
-          var _this66 = this;
+          var _this65 = this;
 
           this.programService.acceptJoinRequest({
             'programId': this.prog_id,
             'userId': event
           }).subscribe(function (data) {
             console.log(data);
-            _this66.acceptedData = [];
+            _this65.acceptedData = [];
 
-            _this66.recieveUser(data.data.request_accepted);
+            _this65.recieveUser(data.data.request_accepted);
 
-            _this66.userData = [];
+            _this65.userData = [];
 
-            _this66.reload(data.data.request_recive); // this.ngOnInit();
+            _this65.reload(data.data.request_recive); // this.ngOnInit();
 
           });
         }
       }, {
         key: "deleteRequest",
         value: function deleteRequest(event) {
-          var _this67 = this;
+          var _this66 = this;
 
           this.programService.deleteJoinRequest({
             'programId': this.prog_id,
             'userId': event
           }).subscribe(function (data) {
             console.log(data);
-            _this67.userData = [];
+            _this66.userData = [];
 
-            _this67.reload(data.data.request_recive); // this.ngOnInit();
+            _this66.reload(data.data.request_recive); // this.ngOnInit();
 
           });
         }
@@ -12742,14 +12739,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "accept",
         value: function accept() {
-          var _this68 = this;
+          var _this67 = this;
 
           this.programService.acceptProgramRequest({
             'programId': this.programid
           }).subscribe(function (data) {
-            _this68.popOver.dismiss();
+            _this67.popOver.dismiss();
           }, function (err) {
-            _this68.popOver.dismiss();
+            _this67.popOver.dismiss();
           });
         }
       }, {
@@ -12918,7 +12915,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this69 = this;
+          var _this68 = this;
 
           this.programDetail = this.navParams.data.programDetail;
           console.log(this.programDetail);
@@ -12944,10 +12941,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
             console.log(data.cloneList[0].non_live_component_fee);
-            _this69.non_live_component_fee = data.cloneList[0].non_live_component_fee;
-            _this69.allProgram = data.cloneList;
+            _this68.non_live_component_fee = data.cloneList[0].non_live_component_fee;
+            _this68.allProgram = data.cloneList;
 
-            _this69.allProgram.filter(function (el) {
+            _this68.allProgram.filter(function (el) {
               el.convertedTime = new Date(el.program_date + 'Z');
               console.log(el.convertedTime);
               console.log(new Date());
@@ -12980,12 +12977,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             });
 
-            _this69.nutritionService.getNutritionById({
+            _this68.nutritionService.getNutritionById({
               'nutriId': nutriArr.toLocaleString()
             }).subscribe(function (ndata) {
-              _this69.nutritionList = ndata.nutritionList;
+              _this68.nutritionList = ndata.nutritionList;
 
-              _this69.nutritionList.forEach(function (el) {
+              _this68.nutritionList.forEach(function (el) {
                 console.log(el.image_path);
                 console.log(el.image_path.split(','));
                 var imgArr = el.image_path.split(','); //  console.log(this.nutritionList[el]);
@@ -12993,18 +12990,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 el.fImage = imgArr[0];
               });
 
-              console.log(_this69.nutritionList);
+              console.log(_this68.nutritionList);
 
-              _this69.commonService.dismissLoader();
+              _this68.commonService.dismissLoader();
             }, function (err) {
-              _this69.commonService.dismissLoader();
+              _this68.commonService.dismissLoader();
 
-              _this69.commonService.presentToast("Couldnt load data, Something went wrong.");
+              _this68.commonService.presentToast("Couldnt load data, Something went wrong.");
             });
           }, function (err) {
-            _this69.commonService.dismissLoader();
+            _this68.commonService.dismissLoader();
 
-            _this69.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this68.commonService.presentToast("Couldnt load data, Something went wrong.");
           });
         }
       }, {
@@ -13065,7 +13062,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "addEquipments2",
         value: function addEquipments2(event, item) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee22() {
-            var _this70 = this;
+            var _this69 = this;
 
             var modal;
             return regeneratorRuntime.wrap(function _callee22$(_context22) {
@@ -13094,7 +13091,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       if (d.data) {
                         console.log('asasd');
 
-                        _this70.ngOnInit();
+                        _this69.ngOnInit();
                       }
                     });
                     _context22.next = 6;
@@ -13244,7 +13241,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var AuthService = /*#__PURE__*/function () {
       function AuthService(http, httpErrorHandler, router, storage, platform, toastController, notify, commonService, socket) {
-        var _this71 = this;
+        var _this70 = this;
 
         _classCallCheck(this, AuthService);
 
@@ -13259,7 +13256,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.user = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"](null);
         this.authState = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"](false);
         this.platform.ready().then(function () {
-          _this71.ifLoggedIn();
+          _this70.ifLoggedIn();
         });
         this.handleError = httpErrorHandler.createHandleError('TasksService');
       }
@@ -13748,11 +13745,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(CheckTutorial, [{
         key: "canLoad",
         value: function canLoad() {
-          var _this72 = this;
+          var _this71 = this;
 
           return this.storage.get('ion_did_tutorial').then(function (res) {
             if (res) {
-              _this72.router.navigate(['/signin']);
+              _this71.router.navigate(['/signin']);
 
               return false;
             } else {
@@ -13942,7 +13939,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "presentPromptRedirect",
         value: function presentPromptRedirect(title, msg, sendData) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee25() {
-            var _this73 = this;
+            var _this72 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee25$(_context25) {
@@ -13968,14 +13965,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       }, {
                         text: 'request',
                         handler: function handler(data) {
-                          _this73.presentLoader();
+                          _this72.presentLoader();
 
                           if (sendData != null && sendData != '') {
                             if (data.groupName != '' && data.groupName != null) {
                               sendData.groupName = data.groupName;
 
-                              _this73.dataService.sendChatRequest(sendData).subscribe(function (data) {
-                                _this73.dismissLoader();
+                              _this72.dataService.sendChatRequest(sendData).subscribe(function (data) {
+                                _this72.dismissLoader();
 
                                 if (data.status == 'success') {
                                   var fileData = {
@@ -13985,20 +13982,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                                   }; // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
 
                                   // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
-                                  _this73.router.navigate(['/chat-room/' + data.requestID + '/' + data.room + '/' + data.type]);
+                                  _this72.router.navigate(['/chat-room/' + data.requestID + '/' + data.room + '/' + data.type]);
                                 } else {
                                   console.log('Somthing wrong');
                                   return false;
                                 }
                               });
                             } else {
-                              _this73.dismissLoader();
+                              _this72.dismissLoader();
 
                               console.log("please enter group name");
                               return false;
                             }
                           } else {
-                            _this73.dismissLoader();
+                            _this72.dismissLoader();
                           }
                         }
                       }]
@@ -14055,7 +14052,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "redirectUrlWithIdConfirm",
         value: function redirectUrlWithIdConfirm(title, msg, redirrectUrl, id) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee27() {
-            var _this74 = this;
+            var _this73 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee27$(_context27) {
@@ -14071,7 +14068,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       buttons: [{
                         text: 'Ok',
                         handler: function handler() {
-                          _this74.router.navigate([redirrectUrl, id]).then(function (e) {
+                          _this73.router.navigate([redirrectUrl, id]).then(function (e) {
                             if (e) {} else {}
                           });
                         }
@@ -14122,7 +14119,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "presentLoader",
         value: function presentLoader() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee29() {
-            var _this75 = this;
+            var _this74 = this;
 
             return regeneratorRuntime.wrap(function _callee29$(_context29) {
               while (1) {
@@ -14137,7 +14134,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       translucent: true
                     }).then(function (a) {
                       a.present().then(function () {
-                        if (!_this75.isLoading) {
+                        if (!_this74.isLoading) {
                           a.dismiss(); // a.dismiss().then(() => console.log('abort presenting loader'));
                         }
                       });
@@ -14180,11 +14177,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loggingout",
         value: function loggingout() {
-          var _this76 = this;
+          var _this75 = this;
 
           this.storage.get('userData').then(function (value) {
-            return _this76.settingsService.logout().subscribe(function (data) {
-              _this76.storage.clear();
+            return _this75.settingsService.logout().subscribe(function (data) {
+              _this75.storage.clear();
 
               localStorage.removeItem('userToken');
               localStorage.removeItem('userData');
@@ -14193,15 +14190,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               localStorage.removeItem('notification');
               localStorage.clear;
 
-              _this76.dismissLoader();
+              _this75.dismissLoader();
 
-              _this76.ngOnDestroy();
+              _this75.ngOnDestroy();
 
-              _this76.router.navigateByUrl('/signin');
+              _this75.router.navigateByUrl('/signin');
 
-              _this76.navCtrl.navigateRoot;
+              _this75.navCtrl.navigateRoot;
             }, function (err) {
-              _this76.storage.clear();
+              _this75.storage.clear();
 
               localStorage.removeItem('userToken');
               localStorage.removeItem('userData');
@@ -14222,7 +14219,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "presentModal",
         value: function presentModal(path, classcss, parameters) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee31() {
-            var _this77 = this;
+            var _this76 = this;
 
             return regeneratorRuntime.wrap(function _callee31$(_context31) {
               while (1) {
@@ -14239,8 +14236,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   case 2:
                     this.modal = _context31.sent;
                     this.modal.onDidDismiss().then(function (d) {
-                      _this77.modal = null;
-                      _this77.modaldata = d;
+                      _this76.modal = null;
+                      _this76.modaldata = d;
                     });
                     _context31.next = 6;
                     return this.modal.present();
@@ -14496,7 +14493,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var HttpErrorHandlerService = /*#__PURE__*/function () {
       function HttpErrorHandlerService(messageService) {
-        var _this78 = this;
+        var _this77 = this;
 
         _classCallCheck(this, HttpErrorHandlerService);
 
@@ -14507,7 +14504,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return function () {
             var operation = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "operation";
             var result = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-            return _this78.handleError(serviceName, operation, result);
+            return _this77.handleError(serviceName, operation, result);
           };
         };
       }
@@ -16271,7 +16268,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this79 = this;
+          var _this78 = this;
 
           console.log('viurja');
           var data = this.navParams.get('data');
@@ -16280,7 +16277,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             'nutriId': data.nutrition_id
           }).subscribe(function (data) {
             console.log(data);
-            _this79.nutritionItem = data.nutritionList.filter(function (el) {
+            _this78.nutritionItem = data.nutritionList.filter(function (el) {
               if (el.ingredients) {
                 el.ingredientsArr = el.ingredients.split(',');
               }
@@ -16291,7 +16288,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               return el;
             });
-            console.log(_this79.nutritionItem);
+            console.log(_this78.nutritionItem);
           });
         }
       }, {
@@ -16346,7 +16343,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".user-profile-bg {\n  height: 185px;\n  background: url('demo3.jpg') no-repeat;\n  background-size: cover;\n  background-position: center;\n  padding: 0 15px; }\n\n.profile-content {\n  position: relative;\n  top: -50px;\n  padding-top: 60px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  text-align: center; }\n\n.profile-content a {\n  color: #777777;\n  font-size: 0.85rem;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.profile-content ion-text {\n  position: relative;\n  top: 35px; }\n\n.user-img {\n  width: 90px;\n  height: 90px;\n  border-radius: 50%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  box-shadow: 0px 0px 15px 0px rgba(82, 82, 82, 0.55);\n  margin-bottom: 10px;\n  position: absolute;\n  top: 0; }\n\n.user-icon {\n  width: 25px;\n  height: 25px;\n  border-radius: 50%;\n  background: rgba(39, 166, 154, 0.07);\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.user-icon img {\n  width: 16px;\n  height: 16px; }\n\n.upcoming-block {\n  box-shadow: 0px 8px 24px rgba(34, 35, 58, 0.09);\n  border-bottom: none; }\n\nion-card {\n  box-shadow: 0px 8px 24px rgba(34, 35, 58, 0.09);\n  background: #FFF; }\n\nion-card.ios {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.upcomingProgram-list {\n  height: calc(100vh - 450px); }\n\n.user-info ion-card {\n  padding: 10px 0px; }\n\n.user-info ion-card a {\n  color: #737373; }\n\n.ml-0 {\n  margin-left: 0 !important; }\n\n.userDisplayName {\n  margin-left: 115px; }\n\n.user-profile-header {\n  display: flex;\n  align-items: center;\n  padding: 0px 20px; }\n\n.user-profile-header ion-text {\n  font-size: 0.8rem;\n  margin-left: 8px; }\n\n.user-profile-details {\n  padding: 10px 25px; }\n\n.user-details {\n  font-size: 0.9rem; }\n\n.primary-color {\n  color: #27a69a;\n  font-size: 1.5rem; }\n\n.ABS-info {\n  position: absolute;\n  right: 15px;\n  bottom: 22px; }\n\n.ABS-info .item-native .item-inner {\n  border-style: none !important;\n  border-color: #fff !important;\n  border: none !important; }\n\n.exclusive-text {\n  text-transform: capitalize;\n  position: absolute;\n  top: 26px;\n  right: -60px;\n  padding: 5px;\n  transform: rotate(45deg);\n  color: #fff;\n  text-align: center;\n  width: 200px;\n  background: #27A69A; }\n\n.item-card {\n  border-radius: 20px; }\n\n.item-header {\n  padding: 15px 15px 0px 15px; }\n\n.img-container {\n  padding: 15px 15px 0 15px; }\n\n.post-image, .post-video {\n  height: calc(100vw - 45px) !important;\n  position: relative;\n  overflow: hidden;\n  padding: 0 0 15px 0; }\n\n.post-slider {\n  height: 100%;\n  max-height: none !important;\n  border-radius: 20px; }\n\n.post-slider ion-slide {\n  height: 100% !important; }\n\n.post-content {\n  padding: 0px 15px 15px 15px; }\n\nitem-post[_ngcontent-wle-c3] {\n  margin-bottom: 10px; }\n\n.user-info {\n  border-top: 1px solid #cecece; }\n\n.pb-10 {\n  padding-bottom: 15px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlci1wcm9maWxlL0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFx1c2VyLXByb2ZpbGVcXHVzZXItcHJvZmlsZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBaUIsYUFBYTtFQUFDLHNDQUF3RDtFQUFDLHNCQUFzQjtFQUFDLDJCQUEyQjtFQUFDLGVBQWUsRUFBQTs7QUFDMUo7RUFBaUIsa0JBQWtCO0VBQUMsVUFBVTtFQUFDLGlCQUFnQjtFQUFDLGFBQWE7RUFBQyx1QkFBdUI7RUFBQyxtQkFBbUI7RUFBQyxzQkFBc0I7RUFBQyxrQkFBa0IsRUFBQTs7QUFDbks7RUFBbUIsY0FBYztFQUFDLGtCQUFrQjtFQUFDLGFBQWE7RUFBQyx1QkFBdUI7RUFBQyxtQkFBbUIsRUFBQTs7QUFDOUc7RUFBMEIsa0JBQWtCO0VBQUMsU0FBUyxFQUFBOztBQUN0RDtFQUFVLFdBQVc7RUFBQyxZQUFZO0VBQUMsa0JBQWtCO0VBQUMsb0JBQWlCO0tBQWpCLGlCQUFpQjtFQUFDLDBCQUF1QjtLQUF2Qix1QkFBdUI7RUFBc0gsbURBQW1EO0VBQUMsbUJBQW1CO0VBQUMsa0JBQWtCO0VBQUMsTUFBTSxFQUFBOztBQUV0VDtFQUFXLFdBQVc7RUFBQyxZQUFZO0VBQUMsa0JBQWtCO0VBQUMsb0NBQW9DO0VBQUMsYUFBYTtFQUFDLHVCQUF1QjtFQUFDLG1CQUFtQixFQUFBOztBQUNySjtFQUFlLFdBQVc7RUFBQyxZQUFZLEVBQUE7O0FBRXZDO0VBQWdCLCtDQUErQztFQUFDLG1CQUFtQixFQUFBOztBQUNuRjtFQUFTLCtDQUErQztFQUFDLGdCQUFnQixFQUFBOztBQUV6RTtFQUFhLGdCQUFnQjtFQUFDLG1CQUFtQixFQUFBOztBQUVqRDtFQUF1QiwyQkFBMkIsRUFBQTs7QUFDbEQ7RUFHSSxpQkFBaUIsRUFBQTs7QUFFckI7RUFBdUIsY0FBYyxFQUFBOztBQUdyQztFQUNJLHlCQUF5QixFQUFBOztBQUU3QjtFQUNJLGtCQUFrQixFQUFBOztBQUV0QjtFQUNJLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsaUJBQWlCLEVBQUE7O0FBRXJCO0VBQ0ksaUJBQWlCO0VBQ2pCLGdCQUFnQixFQUFBOztBQUVwQjtFQUNJLGtCQUFrQixFQUFBOztBQUV0QjtFQUNJLGlCQUFpQixFQUFBOztBQUVyQjtFQUNJLGNBQWM7RUFDZCxpQkFBaUIsRUFBQTs7QUFFckI7RUFDSSxrQkFBa0I7RUFDbEIsV0FBVztFQUNYLFlBQVksRUFBQTs7QUFFaEI7RUFDSSw2QkFBNkI7RUFDN0IsNkJBQTZCO0VBQzdCLHVCQUF1QixFQUFBOztBQUUzQjtFQUNJLDBCQUEwQjtFQUMxQixrQkFBa0I7RUFDbEIsU0FBUztFQUNULFlBQVk7RUFDWixZQUFZO0VBQ1osd0JBQXdCO0VBQ3hCLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsWUFBWTtFQUNaLG1CQUFtQixFQUFBOztBQUV2QjtFQUNJLG1CQUFtQixFQUFBOztBQUV2QjtFQUNJLDJCQUEyQixFQUFBOztBQUUvQjtFQUNJLHlCQUF5QixFQUFBOztBQUU3QjtFQUNJLHFDQUFxQztFQUNyQyxrQkFBa0I7RUFDbEIsZ0JBQWdCO0VBQ2hCLG1CQUFtQixFQUFBOztBQUV2QjtFQUNJLFlBQVk7RUFDWiwyQkFBMkI7RUFDM0IsbUJBQW1CLEVBQUE7O0FBRXZCO0VBQ0ksdUJBQXVCLEVBQUE7O0FBRTNCO0VBQ0ksMkJBQTJCLEVBQUE7O0FBRS9CO0VBQ0ksbUJBQW1CLEVBQUE7O0FBRXZCO0VBQ0ksNkJBQTZCLEVBQUE7O0FBRWpDO0VBQ0ksb0JBQW9CLEVBQUEiLCJmaWxlIjoic3JjL2FwcC91c2VyLXByb2ZpbGUvdXNlci1wcm9maWxlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi51c2VyLXByb2ZpbGUtYmd7aGVpZ2h0OiAxODVweDtiYWNrZ3JvdW5kOiB1cmwoLi4vLi4vYXNzZXRzL2ltYWdlcy9kZW1vMy5qcGcpIG5vLXJlcGVhdDtiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO2JhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtwYWRkaW5nOiAwIDE1cHg7fVxyXG4ucHJvZmlsZS1jb250ZW50e3Bvc2l0aW9uOiByZWxhdGl2ZTt0b3A6IC01MHB4O3BhZGRpbmctdG9wOjYwcHg7ZGlzcGxheTogZmxleDtqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjthbGlnbi1pdGVtczogY2VudGVyO2ZsZXgtZGlyZWN0aW9uOiBjb2x1bW47dGV4dC1hbGlnbjogY2VudGVyO31cclxuLnByb2ZpbGUtY29udGVudCBhe2NvbG9yOiAjNzc3Nzc3O2ZvbnQtc2l6ZTogMC44NXJlbTtkaXNwbGF5OiBmbGV4O2p1c3RpZnktY29udGVudDogY2VudGVyO2FsaWduLWl0ZW1zOiBjZW50ZXI7fVxyXG4ucHJvZmlsZS1jb250ZW50IGlvbi10ZXh0e3Bvc2l0aW9uOiByZWxhdGl2ZTt0b3A6IDM1cHg7fVxyXG4udXNlci1pbWd7d2lkdGg6IDkwcHg7aGVpZ2h0OiA5MHB4O2JvcmRlci1yYWRpdXM6IDUwJTtvYmplY3QtZml0OiBjb3ZlcjtvYmplY3QtcG9zaXRpb246IGNlbnRlcjstd2Via2l0LWJveC1zaGFkb3c6IDBweCAwcHggMTVweCAwcHggcmdiYSg4MiwgODIsIDgyLCAwLjU1KTstbW96LWJveC1zaGFkb3c6IDBweCAwcHggMTVweCAwcHggcmdiYSg4MiwgODIsIDgyLCAwLjU1KTtib3gtc2hhZG93OiAwcHggMHB4IDE1cHggMHB4IHJnYmEoODIsIDgyLCA4MiwgMC41NSk7bWFyZ2luLWJvdHRvbTogMTBweDtwb3NpdGlvbjogYWJzb2x1dGU7dG9wOiAwO31cclxuXHJcbi51c2VyLWljb257d2lkdGg6IDI1cHg7aGVpZ2h0OiAyNXB4O2JvcmRlci1yYWRpdXM6IDUwJTtiYWNrZ3JvdW5kOiByZ2JhKDM5LCAxNjYsIDE1NCwgMC4wNyk7ZGlzcGxheTogZmxleDtqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjthbGlnbi1pdGVtczogY2VudGVyO31cclxuLnVzZXItaWNvbiBpbWd7d2lkdGg6IDE2cHg7aGVpZ2h0OiAxNnB4O31cclxuXHJcbi51cGNvbWluZy1ibG9ja3tib3gtc2hhZG93OiAwcHggOHB4IDI0cHggcmdiYSgzNCwgMzUsIDU4LCAwLjA5KTtib3JkZXItYm90dG9tOiBub25lfVxyXG5pb24tY2FyZHtib3gtc2hhZG93OiAwcHggOHB4IDI0cHggcmdiYSgzNCwgMzUsIDU4LCAwLjA5KTtiYWNrZ3JvdW5kOiAjRkZGO31cclxuXHJcbmlvbi1jYXJkLmlvc3ttYXJnaW4tdG9wOiAxMHB4O21hcmdpbi1ib3R0b206IDEwcHg7fVxyXG4vLyBoaXRlc2ggY3NzYyBzdHJ0XHJcbi51cGNvbWluZ1Byb2dyYW0tbGlzdCB7aGVpZ2h0OiBjYWxjKDEwMHZoIC0gNDUwcHgpO31cclxuLnVzZXItaW5mbyBpb24tY2FyZCB7XHJcbiAgICAvLyBkaXNwbGF5OiBmbGV4O1xyXG4gICAgLy8gYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIHBhZGRpbmc6IDEwcHggMHB4O1xyXG59XHJcbi51c2VyLWluZm8gaW9uLWNhcmQgYSB7Y29sb3I6ICM3MzczNzM7fVxyXG4vLyBoaXRlc2ggY3NzIGVuZFxyXG5cclxuLm1sLTB7XHJcbiAgICBtYXJnaW4tbGVmdDogMCAhaW1wb3J0YW50O1xyXG59XHJcbi51c2VyRGlzcGxheU5hbWV7XHJcbiAgICBtYXJnaW4tbGVmdDogMTE1cHg7XHJcbn1cclxuLnVzZXItcHJvZmlsZS1oZWFkZXJ7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIHBhZGRpbmc6IDBweCAyMHB4O1xyXG59XHJcbi51c2VyLXByb2ZpbGUtaGVhZGVyIGlvbi10ZXh0e1xyXG4gICAgZm9udC1zaXplOiAwLjhyZW07XHJcbiAgICBtYXJnaW4tbGVmdDogOHB4O1xyXG59XHJcbi51c2VyLXByb2ZpbGUtZGV0YWlsc3tcclxuICAgIHBhZGRpbmc6IDEwcHggMjVweDtcclxufVxyXG4udXNlci1kZXRhaWxze1xyXG4gICAgZm9udC1zaXplOiAwLjlyZW07XHJcbn1cclxuLnByaW1hcnktY29sb3J7XHJcbiAgICBjb2xvcjogIzI3YTY5YTtcclxuICAgIGZvbnQtc2l6ZTogMS41cmVtO1xyXG59XHJcbi5BQlMtaW5mb3tcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHJpZ2h0OiAxNXB4O1xyXG4gICAgYm90dG9tOiAyMnB4O1xyXG59XHJcbi5BQlMtaW5mbyAuaXRlbS1uYXRpdmUgLml0ZW0taW5uZXJ7XHJcbiAgICBib3JkZXItc3R5bGU6IG5vbmUgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1jb2xvcjogI2ZmZiAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyOiBub25lICFpbXBvcnRhbnQ7XHJcbn1cclxuLmV4Y2x1c2l2ZS10ZXh0e1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IGNhcGl0YWxpemU7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6IDI2cHg7XHJcbiAgICByaWdodDogLTYwcHg7XHJcbiAgICBwYWRkaW5nOiA1cHg7XHJcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSg0NWRlZyk7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIHdpZHRoOiAyMDBweDtcclxuICAgIGJhY2tncm91bmQ6ICMyN0E2OUE7XHJcbn1cclxuLml0ZW0tY2FyZCB7XHJcbiAgICBib3JkZXItcmFkaXVzOiAyMHB4O1xyXG59XHJcbi5pdGVtLWhlYWRlcntcclxuICAgIHBhZGRpbmc6IDE1cHggMTVweCAwcHggMTVweDtcclxufVxyXG4uaW1nLWNvbnRhaW5lciB7XHJcbiAgICBwYWRkaW5nOiAxNXB4IDE1cHggMCAxNXB4O1xyXG59XHJcbi5wb3N0LWltYWdlLCAucG9zdC12aWRlbyB7XHJcbiAgICBoZWlnaHQ6IGNhbGMoMTAwdncgLSA0NXB4KSAhaW1wb3J0YW50O1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICAgIHBhZGRpbmc6IDAgMCAxNXB4IDA7XHJcbn1cclxuLnBvc3Qtc2xpZGVyIHtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIG1heC1oZWlnaHQ6IG5vbmUgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XHJcbn1cclxuLnBvc3Qtc2xpZGVyIGlvbi1zbGlkZSB7XHJcbiAgICBoZWlnaHQ6IDEwMCUgIWltcG9ydGFudDtcclxufVxyXG4ucG9zdC1jb250ZW50IHtcclxuICAgIHBhZGRpbmc6IDBweCAxNXB4IDE1cHggMTVweDtcclxufVxyXG5pdGVtLXBvc3RbX25nY29udGVudC13bGUtYzNdIHtcclxuICAgIG1hcmdpbi1ib3R0b206IDEwcHg7XHJcbn1cclxuLnVzZXItaW5mb3tcclxuICAgIGJvcmRlci10b3A6IDFweCBzb2xpZCAjY2VjZWNlO1xyXG59XHJcbi5wYi0xMHtcclxuICAgIHBhZGRpbmctYm90dG9tOiAxNXB4O1xyXG59Il19 */";
+    __webpack_exports__["default"] = ".user-profile-bg {\n  height: 185px;\n  background: url('demo3.jpg') no-repeat;\n  background-size: cover;\n  background-position: center;\n  padding: 0 15px; }\n\n.profile-content {\n  position: relative;\n  top: -50px;\n  padding-top: 60px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  text-align: center; }\n\n.profile-content a {\n  color: #777777;\n  font-size: 0.85rem;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.profile-content ion-text {\n  position: relative;\n  top: 35px; }\n\n.user-img {\n  width: 90px;\n  height: 90px;\n  border-radius: 50%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  box-shadow: 0px 0px 15px 0px rgba(82, 82, 82, 0.55);\n  margin-bottom: 10px;\n  position: absolute;\n  top: 0; }\n\n.user-icon {\n  width: 25px;\n  height: 25px;\n  border-radius: 50%;\n  background: rgba(39, 166, 154, 0.07);\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.user-icon img {\n  width: 16px;\n  height: 16px; }\n\n.upcoming-block {\n  box-shadow: 0px 8px 24px rgba(34, 35, 58, 0.09);\n  border-bottom: none; }\n\nion-card {\n  box-shadow: 0px 8px 24px rgba(34, 35, 58, 0.09);\n  background: #FFF; }\n\nion-card.ios {\n  margin-top: 10px;\n  margin-bottom: 10px; }\n\n.upcomingProgram-list {\n  height: calc(100vh - 450px); }\n\n.user-info ion-card {\n  padding: 10px 0px; }\n\n.user-info ion-card a {\n  color: #737373; }\n\n.ml-0 {\n  margin-left: 0 !important; }\n\n.userDisplayName {\n  margin-left: 115px; }\n\n.user-profile-header {\n  display: flex;\n  align-items: center;\n  padding: 0px 20px; }\n\n.user-profile-header ion-text {\n  font-size: 0.8rem;\n  margin-left: 8px; }\n\n.user-profile-details {\n  padding: 10px 25px; }\n\n.user-details {\n  font-size: 0.9rem; }\n\n.primary-color {\n  color: #27a69a;\n  font-size: 1.5rem; }\n\n.ABS-info {\n  position: absolute;\n  right: 15px;\n  bottom: 22px; }\n\n.ABS-info .item-native .item-inner {\n  border-style: none !important;\n  border-color: #fff !important;\n  border: none !important; }\n\n.exclusive-text {\n  text-transform: capitalize;\n  position: absolute;\n  top: 26px;\n  right: -60px;\n  padding: 5px;\n  transform: rotate(45deg);\n  color: #fff;\n  text-align: center;\n  width: 200px;\n  background: #27A69A; }\n\n.item-card {\n  border-radius: 20px; }\n\n.item-header {\n  padding: 15px 15px 0px 15px; }\n\n.img-container {\n  padding: 15px 15px 0 15px; }\n\n.post-image, .post-video {\n  height: calc(100vw - 45px) !important;\n  position: relative;\n  overflow: hidden;\n  padding: 0 0 15px 0; }\n\n.post-thumbnail {\n  border-radius: 20px; }\n\n.video-icon {\n  top: 25px;\n  left: 30px;\n  padding: 1px 4px;\n  border-radius: 5px;\n  background: #00000029;\n  font-size: 1.2rem !important; }\n\n.post-slider {\n  height: 100%;\n  max-height: none !important;\n  border-radius: 20px; }\n\n.post-slider ion-slide {\n  height: 100% !important; }\n\n.post-content {\n  padding: 0px 15px 15px 15px; }\n\nitem-post {\n  margin-bottom: 10px; }\n\n.user-info {\n  border-top: 1px solid #cecece; }\n\n.pb-10 {\n  padding-bottom: 15px; }\n\n.empty-block {\n  width: 90%;\n  margin: auto;\n  height: 200px;\n  border: dotted #cecece;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column; }\n\nh4.text-center {\n  text-align: center; }\n\n.btn-primary {\n  padding: 12px 20px;\n  color: #FFF;\n  border-radius: 4px;\n  background-color: #27a69a; }\n\n.flex-center {\n  height: 50vh;\n  display: flex;\n  align-items: center; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlci1wcm9maWxlL0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFx1c2VyLXByb2ZpbGVcXHVzZXItcHJvZmlsZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBaUIsYUFBYTtFQUFDLHNDQUF3RDtFQUFDLHNCQUFzQjtFQUFDLDJCQUEyQjtFQUFDLGVBQWUsRUFBQTs7QUFDMUo7RUFBaUIsa0JBQWtCO0VBQUMsVUFBVTtFQUFDLGlCQUFnQjtFQUFDLGFBQWE7RUFBQyx1QkFBdUI7RUFBQyxtQkFBbUI7RUFBQyxzQkFBc0I7RUFBQyxrQkFBa0IsRUFBQTs7QUFDbks7RUFBbUIsY0FBYztFQUFDLGtCQUFrQjtFQUFDLGFBQWE7RUFBQyx1QkFBdUI7RUFBQyxtQkFBbUIsRUFBQTs7QUFDOUc7RUFBMEIsa0JBQWtCO0VBQUMsU0FBUyxFQUFBOztBQUN0RDtFQUFVLFdBQVc7RUFBQyxZQUFZO0VBQUMsa0JBQWtCO0VBQUMsb0JBQWlCO0tBQWpCLGlCQUFpQjtFQUFDLDBCQUF1QjtLQUF2Qix1QkFBdUI7RUFBc0gsbURBQW1EO0VBQUMsbUJBQW1CO0VBQUMsa0JBQWtCO0VBQUMsTUFBTSxFQUFBOztBQUV0VDtFQUFXLFdBQVc7RUFBQyxZQUFZO0VBQUMsa0JBQWtCO0VBQUMsb0NBQW9DO0VBQUMsYUFBYTtFQUFDLHVCQUF1QjtFQUFDLG1CQUFtQixFQUFBOztBQUNySjtFQUFlLFdBQVc7RUFBQyxZQUFZLEVBQUE7O0FBRXZDO0VBQWdCLCtDQUErQztFQUFDLG1CQUFtQixFQUFBOztBQUNuRjtFQUFTLCtDQUErQztFQUFDLGdCQUFnQixFQUFBOztBQUV6RTtFQUFhLGdCQUFnQjtFQUFDLG1CQUFtQixFQUFBOztBQUVqRDtFQUF1QiwyQkFBMkIsRUFBQTs7QUFDbEQ7RUFHSSxpQkFBaUIsRUFBQTs7QUFFckI7RUFBdUIsY0FBYyxFQUFBOztBQUdyQztFQUNJLHlCQUF5QixFQUFBOztBQUU3QjtFQUNJLGtCQUFrQixFQUFBOztBQUV0QjtFQUNJLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsaUJBQWlCLEVBQUE7O0FBRXJCO0VBQ0ksaUJBQWlCO0VBQ2pCLGdCQUFnQixFQUFBOztBQUVwQjtFQUNJLGtCQUFrQixFQUFBOztBQUV0QjtFQUNJLGlCQUFpQixFQUFBOztBQUVyQjtFQUNJLGNBQWM7RUFDZCxpQkFBaUIsRUFBQTs7QUFFckI7RUFDSSxrQkFBa0I7RUFDbEIsV0FBVztFQUNYLFlBQVksRUFBQTs7QUFFaEI7RUFDSSw2QkFBNkI7RUFDN0IsNkJBQTZCO0VBQzdCLHVCQUF1QixFQUFBOztBQUUzQjtFQUNJLDBCQUEwQjtFQUMxQixrQkFBa0I7RUFDbEIsU0FBUztFQUNULFlBQVk7RUFDWixZQUFZO0VBQ1osd0JBQXdCO0VBQ3hCLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsWUFBWTtFQUNaLG1CQUFtQixFQUFBOztBQUV2QjtFQUNJLG1CQUFtQixFQUFBOztBQUV2QjtFQUNJLDJCQUEyQixFQUFBOztBQUUvQjtFQUNJLHlCQUF5QixFQUFBOztBQUU3QjtFQUNJLHFDQUFxQztFQUNyQyxrQkFBa0I7RUFDbEIsZ0JBQWdCO0VBQ2hCLG1CQUFtQixFQUFBOztBQUV2QjtFQUNJLG1CQUFtQixFQUFBOztBQUV2QjtFQUNJLFNBQVM7RUFDVCxVQUFVO0VBQ1YsZ0JBQWdCO0VBQ2hCLGtCQUFrQjtFQUNsQixxQkFBcUI7RUFDckIsNEJBQTRCLEVBQUE7O0FBRWhDO0VBQ0ksWUFBWTtFQUNaLDJCQUEyQjtFQUMzQixtQkFBbUIsRUFBQTs7QUFFdkI7RUFDSSx1QkFBdUIsRUFBQTs7QUFFM0I7RUFDSSwyQkFBMkIsRUFBQTs7QUFFL0I7RUFDSSxtQkFBbUIsRUFBQTs7QUFFdkI7RUFDSSw2QkFBNkIsRUFBQTs7QUFFakM7RUFDSSxvQkFBb0IsRUFBQTs7QUFFeEI7RUFDSSxVQUFVO0VBQ1YsWUFBWTtFQUNaLGFBQWE7RUFDYixzQkFBc0I7RUFDdEIsYUFBYTtFQUNiLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkIsc0JBQXNCLEVBQUE7O0FBRTFCO0VBQ0ksa0JBQWtCLEVBQUE7O0FBRXRCO0VBQ0ksa0JBQWtCO0VBQ2xCLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIseUJBQXlCLEVBQUE7O0FBRTdCO0VBQ0ksWUFBWTtFQUNaLGFBQWE7RUFDYixtQkFBbUIsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3VzZXItcHJvZmlsZS91c2VyLXByb2ZpbGUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnVzZXItcHJvZmlsZS1iZ3toZWlnaHQ6IDE4NXB4O2JhY2tncm91bmQ6IHVybCguLi8uLi9hc3NldHMvaW1hZ2VzL2RlbW8zLmpwZykgbm8tcmVwZWF0O2JhY2tncm91bmQtc2l6ZTogY292ZXI7YmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO3BhZGRpbmc6IDAgMTVweDt9XHJcbi5wcm9maWxlLWNvbnRlbnR7cG9zaXRpb246IHJlbGF0aXZlO3RvcDogLTUwcHg7cGFkZGluZy10b3A6NjBweDtkaXNwbGF5OiBmbGV4O2p1c3RpZnktY29udGVudDogY2VudGVyO2FsaWduLWl0ZW1zOiBjZW50ZXI7ZmxleC1kaXJlY3Rpb246IGNvbHVtbjt0ZXh0LWFsaWduOiBjZW50ZXI7fVxyXG4ucHJvZmlsZS1jb250ZW50IGF7Y29sb3I6ICM3Nzc3Nzc7Zm9udC1zaXplOiAwLjg1cmVtO2Rpc3BsYXk6IGZsZXg7anVzdGlmeS1jb250ZW50OiBjZW50ZXI7YWxpZ24taXRlbXM6IGNlbnRlcjt9XHJcbi5wcm9maWxlLWNvbnRlbnQgaW9uLXRleHR7cG9zaXRpb246IHJlbGF0aXZlO3RvcDogMzVweDt9XHJcbi51c2VyLWltZ3t3aWR0aDogOTBweDtoZWlnaHQ6IDkwcHg7Ym9yZGVyLXJhZGl1czogNTAlO29iamVjdC1maXQ6IGNvdmVyO29iamVjdC1wb3NpdGlvbjogY2VudGVyOy13ZWJraXQtYm94LXNoYWRvdzogMHB4IDBweCAxNXB4IDBweCByZ2JhKDgyLCA4MiwgODIsIDAuNTUpOy1tb3otYm94LXNoYWRvdzogMHB4IDBweCAxNXB4IDBweCByZ2JhKDgyLCA4MiwgODIsIDAuNTUpO2JveC1zaGFkb3c6IDBweCAwcHggMTVweCAwcHggcmdiYSg4MiwgODIsIDgyLCAwLjU1KTttYXJnaW4tYm90dG9tOiAxMHB4O3Bvc2l0aW9uOiBhYnNvbHV0ZTt0b3A6IDA7fVxyXG5cclxuLnVzZXItaWNvbnt3aWR0aDogMjVweDtoZWlnaHQ6IDI1cHg7Ym9yZGVyLXJhZGl1czogNTAlO2JhY2tncm91bmQ6IHJnYmEoMzksIDE2NiwgMTU0LCAwLjA3KTtkaXNwbGF5OiBmbGV4O2p1c3RpZnktY29udGVudDogY2VudGVyO2FsaWduLWl0ZW1zOiBjZW50ZXI7fVxyXG4udXNlci1pY29uIGltZ3t3aWR0aDogMTZweDtoZWlnaHQ6IDE2cHg7fVxyXG5cclxuLnVwY29taW5nLWJsb2Nre2JveC1zaGFkb3c6IDBweCA4cHggMjRweCByZ2JhKDM0LCAzNSwgNTgsIDAuMDkpO2JvcmRlci1ib3R0b206IG5vbmV9XHJcbmlvbi1jYXJke2JveC1zaGFkb3c6IDBweCA4cHggMjRweCByZ2JhKDM0LCAzNSwgNTgsIDAuMDkpO2JhY2tncm91bmQ6ICNGRkY7fVxyXG5cclxuaW9uLWNhcmQuaW9ze21hcmdpbi10b3A6IDEwcHg7bWFyZ2luLWJvdHRvbTogMTBweDt9XHJcbi8vIGhpdGVzaCBjc3NjIHN0cnRcclxuLnVwY29taW5nUHJvZ3JhbS1saXN0IHtoZWlnaHQ6IGNhbGMoMTAwdmggLSA0NTBweCk7fVxyXG4udXNlci1pbmZvIGlvbi1jYXJkIHtcclxuICAgIC8vIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAvLyBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgcGFkZGluZzogMTBweCAwcHg7XHJcbn1cclxuLnVzZXItaW5mbyBpb24tY2FyZCBhIHtjb2xvcjogIzczNzM3Mzt9XHJcbi8vIGhpdGVzaCBjc3MgZW5kXHJcblxyXG4ubWwtMHtcclxuICAgIG1hcmdpbi1sZWZ0OiAwICFpbXBvcnRhbnQ7XHJcbn1cclxuLnVzZXJEaXNwbGF5TmFtZXtcclxuICAgIG1hcmdpbi1sZWZ0OiAxMTVweDtcclxufVxyXG4udXNlci1wcm9maWxlLWhlYWRlcntcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgcGFkZGluZzogMHB4IDIwcHg7XHJcbn1cclxuLnVzZXItcHJvZmlsZS1oZWFkZXIgaW9uLXRleHR7XHJcbiAgICBmb250LXNpemU6IDAuOHJlbTtcclxuICAgIG1hcmdpbi1sZWZ0OiA4cHg7XHJcbn1cclxuLnVzZXItcHJvZmlsZS1kZXRhaWxze1xyXG4gICAgcGFkZGluZzogMTBweCAyNXB4O1xyXG59XHJcbi51c2VyLWRldGFpbHN7XHJcbiAgICBmb250LXNpemU6IDAuOXJlbTtcclxufVxyXG4ucHJpbWFyeS1jb2xvcntcclxuICAgIGNvbG9yOiAjMjdhNjlhO1xyXG4gICAgZm9udC1zaXplOiAxLjVyZW07XHJcbn1cclxuLkFCUy1pbmZve1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgcmlnaHQ6IDE1cHg7XHJcbiAgICBib3R0b206IDIycHg7XHJcbn1cclxuLkFCUy1pbmZvIC5pdGVtLW5hdGl2ZSAuaXRlbS1pbm5lcntcclxuICAgIGJvcmRlci1zdHlsZTogbm9uZSAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLWNvbG9yOiAjZmZmICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXI6IG5vbmUgIWltcG9ydGFudDtcclxufVxyXG4uZXhjbHVzaXZlLXRleHR7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogY2FwaXRhbGl6ZTtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMjZweDtcclxuICAgIHJpZ2h0OiAtNjBweDtcclxuICAgIHBhZGRpbmc6IDVweDtcclxuICAgIHRyYW5zZm9ybTogcm90YXRlKDQ1ZGVnKTtcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgd2lkdGg6IDIwMHB4O1xyXG4gICAgYmFja2dyb3VuZDogIzI3QTY5QTtcclxufVxyXG4uaXRlbS1jYXJkIHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XHJcbn1cclxuLml0ZW0taGVhZGVye1xyXG4gICAgcGFkZGluZzogMTVweCAxNXB4IDBweCAxNXB4O1xyXG59XHJcbi5pbWctY29udGFpbmVyIHtcclxuICAgIHBhZGRpbmc6IDE1cHggMTVweCAwIDE1cHg7XHJcbn1cclxuLnBvc3QtaW1hZ2UsIC5wb3N0LXZpZGVvIHtcclxuICAgIGhlaWdodDogY2FsYygxMDB2dyAtIDQ1cHgpICFpbXBvcnRhbnQ7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xyXG4gICAgcGFkZGluZzogMCAwIDE1cHggMDtcclxufVxyXG4ucG9zdC10aHVtYm5haWwge1xyXG4gICAgYm9yZGVyLXJhZGl1czogMjBweDtcclxufVxyXG4udmlkZW8taWNvbiB7XHJcbiAgICB0b3A6IDI1cHg7XHJcbiAgICBsZWZ0OiAzMHB4O1xyXG4gICAgcGFkZGluZzogMXB4IDRweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcclxuICAgIGJhY2tncm91bmQ6ICMwMDAwMDAyOTtcclxuICAgIGZvbnQtc2l6ZTogMS4ycmVtICFpbXBvcnRhbnQ7XHJcbn1cclxuLnBvc3Qtc2xpZGVyIHtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIG1heC1oZWlnaHQ6IG5vbmUgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XHJcbn1cclxuLnBvc3Qtc2xpZGVyIGlvbi1zbGlkZSB7XHJcbiAgICBoZWlnaHQ6IDEwMCUgIWltcG9ydGFudDtcclxufVxyXG4ucG9zdC1jb250ZW50IHtcclxuICAgIHBhZGRpbmc6IDBweCAxNXB4IDE1cHggMTVweDtcclxufVxyXG5pdGVtLXBvc3Qge1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMTBweDtcclxufVxyXG4udXNlci1pbmZve1xyXG4gICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNjZWNlY2U7XHJcbn1cclxuLnBiLTEwe1xyXG4gICAgcGFkZGluZy1ib3R0b206IDE1cHg7XHJcbn1cclxuLmVtcHR5LWJsb2NrIHtcclxuICAgIHdpZHRoOiA5MCU7XHJcbiAgICBtYXJnaW46IGF1dG87XHJcbiAgICBoZWlnaHQ6IDIwMHB4O1xyXG4gICAgYm9yZGVyOiBkb3R0ZWQgI2NlY2VjZTtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG59XHJcbmg0LnRleHQtY2VudGVyIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG4uYnRuLXByaW1hcnl7XHJcbiAgICBwYWRkaW5nOiAxMnB4IDIwcHg7XHJcbiAgICBjb2xvcjogI0ZGRjtcclxuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMyN2E2OWE7XHJcbn1cclxuLmZsZXgtY2VudGVye1xyXG4gICAgaGVpZ2h0OiA1MHZoO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbn0iXX0= */";
     /***/
   },
 

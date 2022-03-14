@@ -168,12 +168,12 @@
   <!-- <ion-button *ngIf="programDetail?.type_id == 'video'" [routerLink]="['/video-program-view',programDetail?.video_program,programDetail?.id]">Go Live Video</ion-button> -->
   <!-- <ion-button *ngIf="programDetail?.live" [routerLink]="['/broadcaster',broadcastId]">Go Live</ion-button> -->
   <!-- <ion-label *ngIf="programDetail?.ended" >This Program has been Ended </ion-label> -->
-  <div *ngIf="userData.trilloMatch == '1' && programDetail?.is_live_status == 1">
+  <div *ngIf="programDetail?.is_live_status == 1">
     <ion-button class="btnVerify" *ngIf="programDetail?.live" (click)="joinRoom()">Go Live</ion-button>
   </div>
-  <div *ngIf="userData.trilloMatch != '1' && programDetail?.is_live_status == 1">
+  <!-- <div *ngIf="userData.trilloMatch != '1' && programDetail?.is_live_status == 1">
     <ion-button class="btnVerify" (click)="verifyUser()">Verify to Go Live</ion-button>
-  </div>
+  </div> -->
   <div *ngIf="userData.trilloMatch != '1' && programDetail?.is_live_status == 0">
     <ion-button class="btnVerify" >No live program available</ion-button>
   </div>

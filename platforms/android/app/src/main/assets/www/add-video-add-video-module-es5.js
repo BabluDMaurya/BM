@@ -511,7 +511,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var options = {
             limit: 1,
             duration: 600,
-            quality: 0
+            quality: 100
           };
           this.mediaCapture.captureVideo(options).then(function (data) {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this3, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {

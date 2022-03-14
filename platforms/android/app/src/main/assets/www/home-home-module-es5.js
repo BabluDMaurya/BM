@@ -304,6 +304,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }).subscribe(function (data) {
             var postData = _this.like_bookmark(data.postData.data);
 
+            console.log(postData);
             _this.last_page = data.postData.last_page;
             _this.currentPage = data.postData.current_page;
 
