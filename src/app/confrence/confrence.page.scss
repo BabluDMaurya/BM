@@ -19,7 +19,7 @@
    
 // .chatList{position: fixed;bottom: 50px;left: 0;width: 100%;max-height: 40vh;}
 .bottom_link{background: #ccc;border-radius: 30px;width: 90%;margin: auto;height: 40px;margin-bottom: 5px;}
-.conferenceFooter{position: fixed;left: 0;bottom: 0;width: 100%;}
+.conferenceFooter{position: fixed;left: 0;bottom: 0;width: 100%; z-index: 9999;}
 
 .top-heading{display: flex}
 .icon-right-side ion-fab-button{ width: 36px;
@@ -48,3 +48,14 @@
 }
 ion-item.send-box{--background: #000;
   --padding-top: 10px;}
+
+  .icon-block{
+    width: 50px;
+    height: 50px;
+    padding: 20px;
+    border-radius: 50%;
+  }
+  .icon-block ion-icon{
+    height: 100%;
+    width: 100%;
+  }
