@@ -51,7 +51,7 @@ export class ResetPasswordPage implements OnInit {
     ],
     'newPassword': [
       { type: 'required', message: 'Password is required.' },
-      { type: 'pattern', message: 'Password must be at least 8 characters,  1Uppercase , 1number , 1Special char' },
+      { type: 'pattern', message: 'Password must be at least 8 characters,  1 Uppercase , 1 number , 1 Special character' },
       { type: 'mustMatch', message: 'Password do not match.'},
     ],
     'cPassword': [
