@@ -2203,6 +2203,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
 
           alert(this.roomID);
+          this.programService.getEnxData({
+            'program_id': this.programId
+          }).subscribe(function (data) {
+            console.log("EnxData User: " + JSON.stringify(data));
+            _this3.userName = _this3.userData.user_name;
+            _this3.roomID = data.room_id;
+          });
           var loginString = {
             "name": this.userName,
             "role": "participant",
