@@ -9,8 +9,12 @@
       </ion-label>
     </ion-item>
     <ion-item class="icon-right-side ion-text-end" slot="end">
-      <ion-fab-button  size="small" id="button1" (click)="muteUnMuteAudio()">
-        <ion-icon ios="ios-{{mic}}" md="md-{{mic}}"></ion-icon>
+
+      <ion-fab-button *ngIf="this.mic == mic" class="icon-block"  size="small" id="button1" (click)="muteUnMuteAudio()">
+        <ion-icon ios="ios-{{mic}}" md="md-mic"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button *ngIf="this.mic == mic-off" class="icon-block" size="small" id="button1" (click)="muteUnMuteAudio()">
+        <ion-icon ios="ios-{{mic}}" md="md-mic-off"></ion-icon>
       </ion-fab-button>
       <ion-fab-button  size="small" id="button5" (click)="cheangAudioMedia()">
         <ion-icon ios="ios-{{volume}}" md="md-{{volume}}"></ion-icon> 

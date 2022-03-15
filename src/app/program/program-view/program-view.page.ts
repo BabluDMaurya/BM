@@ -203,6 +203,11 @@ export class ProgramViewPage implements OnInit {
       return;
     }
     alert(this.roomID);
+    this.programService.getEnxData({'program_id':this.programId}).subscribe(data =>{ 
+      console.log("EnxData User: "+JSON.stringify(data));
+      this.userName = this.userData.user_name;
+      this.roomID = data.room_id;
+    });
     var loginString = {"name": this.userName, "role": "participant", "user_ref": "2236", "roomId": this.roomID };
     var hedare = (kTry) ? { "x-app-id" : kAppId , "x-app-key" : kAppkey, "Accept" : "application/json","Content-Type" :"application/json"} : {"Accept" : "application/json","Content-Type" :"application/json"};
      let url = kBasedURL+"createToken";
