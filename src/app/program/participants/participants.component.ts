@@ -40,7 +40,7 @@ export class ParticipantsComponent implements OnInit {
 
   recieveUser(data){
     if(data != null){
-      var uId = data.split(',');
+      var uId = data.toString().split(',');
       console.log(uId);
       uId.forEach(el => {
         this.programService.getEachUserData({el}).subscribe((peoples: any) => {

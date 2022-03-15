@@ -428,7 +428,8 @@ export class ProgramViewPage implements OnInit {
     }
   }
   goBack() {
-    this.navCtrl.back();
+    // this.navCtrl.back();
+    this.router.navigate(['/schedule-program']);
   }
   acceptRequest() {
     this.programService.acceptProgramRequest({ 'programId': this.programDetail.id }).subscribe(data => {

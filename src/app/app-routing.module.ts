@@ -279,6 +279,10 @@ const routes: Routes = [
     path: 'invitated-programs',
     loadChildren: () => import('./program/invitated-programs/invitated-programs.module').then( m => m.InvitatedProgramsPageModule)
   },
+  {
+    path: 'schedule-program',
+    loadChildren: () => import('./program/program/program.module').then( m => m.ProgramPageModule)
+  },
 
 
 ];

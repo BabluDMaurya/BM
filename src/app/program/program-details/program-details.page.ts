@@ -468,7 +468,8 @@ export class ProgramDetailsPage implements OnInit {
     }
   }
   goBack() {
-    this.navCtrl.back();
+    // this.navCtrl.back();
+    this.router.navigate(['/schedule-program']);
   }
 
   applyAdvertise()
