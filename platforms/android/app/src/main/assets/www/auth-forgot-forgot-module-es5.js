@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-content class=\"sec-login\" ion-padding>\r\n  <ion-row>\r\n    <ion-col class=\"ion-padding ion-text-center\">\r\n      <div class=\"login-logo ion-text-center\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\" [routerLink]=\"['/signin']\" class=\"back-icon\"></ion-icon>\r\n        <img src=\"../../../assets/images/logo.png\">\r\n      </div>\r\n      <ion-label class=\"text-white\">We will send you an unique code to reset your password</ion-label>\r\n      <form class=\"login-form mt-20\" [formGroup]=\"registerForm2\" (ngSubmit)=\"onSubmitted()\">\r\n        <ion-item class=\"ion-no-padding\">\r\n          <!-- <ion-label position=\"floating\">Email Address</ion-label> -->\r\n          <ion-input placeholder=\"Email Address\"  formControlName=\"uemail\"></ion-input>\r\n        </ion-item>\r\n        <ng-container *ngFor=\"let validation of validation_messages.uemail\">\r\n          <span class=\"error-message\" *ngIf=\"(submitted || registerForm2.get('uemail').touched ) && registerForm2.get('uemail').hasError(validation.type)\">{{ validation.message }}</span>\r\n        </ng-container>\r\n        <br>\r\n        <ion-button [disabled]=\"isLoading\" (click)=\"onSubmitted()\" expand=\"block\" class=\"green ion-text-uppercase mt-20\">Reset Password</ion-button>\r\n      </form>\r\n    </ion-col>\r\n  </ion-row>\r\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-content class=\"sec-login\" ion-padding>\r\n  <ion-row>\r\n    <ion-col class=\"ion-padding ion-text-center\">\r\n      <div class=\"login-logo ion-text-center\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\" [routerLink]=\"['/signin']\" class=\"back-icon fs-2\"></ion-icon>\r\n        <img src=\"../../../assets/images/logo.png\">\r\n      </div>\r\n      <ion-label class=\"text-white\">We will send you an unique code to reset your password</ion-label>\r\n      <form class=\"login-form mt-20\" [formGroup]=\"registerForm2\" (ngSubmit)=\"onSubmitted()\">\r\n        <ion-item class=\"ion-no-padding\">\r\n          <!-- <ion-label position=\"floating\">Email Address</ion-label> -->\r\n          <ion-input placeholder=\"Email Address\"  formControlName=\"uemail\"></ion-input>\r\n        </ion-item>\r\n        <ng-container *ngFor=\"let validation of validation_messages.uemail\">\r\n          <span class=\"error-message\" *ngIf=\"(submitted || registerForm2.get('uemail').touched ) && registerForm2.get('uemail').hasError(validation.type)\">{{ validation.message }}</span>\r\n        </ng-container>\r\n        <br>\r\n        <ion-button [disabled]=\"isLoading\" (click)=\"onSubmitted()\" expand=\"block\" class=\"green ion-text-uppercase mt-20\">Reset Password</ion-button>\r\n      </form>\r\n    </ion-col>\r\n  </ion-row>\r\n</ion-content>";
     /***/
   },
 
@@ -174,7 +174,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgvZm9yZ290L2ZvcmdvdC5wYWdlLnNjc3MifQ== */";
+    __webpack_exports__["default"] = ".fs-2 {\n  font-size: 2rem !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC9mb3Jnb3QvQzpcXHhhbXBwXFxodGRvY3NcXGludG9hY3RpdmUvc3JjXFxhcHBcXGF1dGhcXGZvcmdvdFxcZm9yZ290LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLDBCQUEwQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvYXV0aC9mb3Jnb3QvZm9yZ290LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mcy0ye1xyXG4gICAgZm9udC1zaXplOiAycmVtICFpbXBvcnRhbnQ7XHJcbn0iXX0= */";
     /***/
   },
 
@@ -259,7 +259,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             message: 'Email is required.'
           }, {
             type: 'pattern',
-            message: 'Enter a valid email Like: "example@domain.com" and allowed domains are  wdipl.com, gmail.com, yopmail.com, outlook.com, hotmail.com,live.com'
+            message: 'Enter a valid email Like: "example@domain.com" and allowed domains are  wdipl.com, gmail.com, yopmail.com, outlook.com, hotmail.com, live.com'
           }]
         };
       }

@@ -135,7 +135,7 @@ export class SignupPage implements OnInit {
     password: [
       { type: 'required', message: 'Password is required.' },
       { type: 'minlength', message: 'Password must be at least 8 characters long.' },
-      { type: 'pattern', message: 'Length should be 8(least one uppercase, one lowercase, one special charector and one number)' }
+      { type: 'pattern', message: 'Length should be 8(least one uppercase, one lowercase, one special character and one number)' }
 
     ],
     username: [

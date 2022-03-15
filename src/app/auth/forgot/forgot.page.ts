@@ -35,7 +35,7 @@ export class ForgotPage implements OnInit {
   validation_messages = {
     'uemail': [
       { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Enter a valid email Like: "example@domain.com" and allowed domains are  wdipl.com, gmail.com, yopmail.com, outlook.com, hotmail.com,live.com' }
+      { type: 'pattern', message: 'Enter a valid email Like: "example@domain.com" and allowed domains are  wdipl.com, gmail.com, yopmail.com, outlook.com, hotmail.com, live.com' }
     ],
     }
     get f() { return this.registerForm2.controls; }
