@@ -337,10 +337,13 @@ ion-icon.active{
     }
     .item-native {
         padding-inline-start: 0 !important;
-  
+    }
+    .event-detail-container ion-item{
+        --padding-end: 40px !important;
     }
     
 }
+
 // ANDROID CSS
 ion-list-header.ion-padding-horizontal.green.text-white.md.hydrated {
     padding-bottom: 12px;
