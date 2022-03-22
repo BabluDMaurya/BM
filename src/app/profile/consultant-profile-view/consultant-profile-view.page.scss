@@ -26,9 +26,12 @@
 .photoNodata{height: 70px;background: #f7f7f7;}
 
 
-
+.item-card{
+    margin-inline-end: 0px !important;
+    margin-inline-start: 0px !important;
+}
 .item-header{
-    padding: 15px 15px 0px 15px;
+    padding: 15px 15px 15px 15px;
 }
 .header-right{
     align-items: center;
@@ -36,19 +39,30 @@
 
 .post-image, 
 .post-video {
-    height: calc(100vw - 30px) !important;
-    padding: 15px;
+    height: calc(100vw - 25px) !important;
+    padding: 0px;
 }
 .post-image img{
-    border-radius: 20px;
+    border-radius: 0px;
+}
+.post-slider{
+    height: calc(100vw - 25px);
+    max-height: none !important;
+}
+.post-slider ion-slide{
+    height: 100% !important;
 }
 .video-icon{
-    top: 25px;
-    left: 30px;
+    top: 15px;
+    left: 15px;
     padding: 1px 4px;
     border-radius: 5px;
     background: #00000029;
 }
 .post-content {
-    padding: 0px 15px 15px 15px;
+    padding: 15px;
+}
+.sec-banner .top-banner img{
+    object-fit: cover;
+    object-position: center;
 }

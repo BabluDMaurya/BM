@@ -38,10 +38,10 @@ ion-item.floatingItem{
     align-items: center;
 }
 .img-container{
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 5px;
-    margin-right: 20px;
+    margin-right: 12px;
 }
 .img-container img{
     width: 100%;
@@ -73,7 +73,7 @@ ion-item.floatingItem{
 .nutrition-quantity{
     display: flex;
     align-items: center;
-    margin-right: 10px;
+    margin-right: 8px;
 }
 .nutrition-input{
     border: 0.5px solid #bbb;
@@ -90,9 +90,8 @@ ion-item.floatingItem{
     height: 30px;
     font-size: 13px;
     position: relative;
-}
-.nutrition-select button{
-
+    padding-inline-start: 8px !important;
+    margin-right: 8px;
 }
 .closeicon{
     color: rgb(46, 45, 45) !important;

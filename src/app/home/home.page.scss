@@ -59,29 +59,38 @@
 .white-background{
     background: #fff !important;
 }
-
+.item-card{
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+}
 .item-header{
-    padding: 15px 15px 0px 15px !important;
+    padding: 15px !important;
 }
 .header-right{
     align-items: center;
 }
-
+.post-slider{
+    height: calc(100vw - 25px);
+    max-height: none !important;
+}
+.post-slider ion-slide{
+    height: 100% !important;
+}
 .post-image, 
 .post-video {
-    height: calc(100vw - 30px) !important;
-    padding: 15px;
+    height: calc(100vw - 25px) !important;
+    padding: 0px;
 }
 .post-image img, .post-video img{
-    border-radius: 20px;
+    border-radius: 0px;
 }
 .video-icon{
-    top: 25px !important;
-    left: 30px !important;
+    top: 15px !important;
+    left: 15px !important;
     padding: 1px 4px ;
     border-radius: 5px;
     background: #00000029;
 }
 .post-content {
-    padding: 0px 15px 15px 15px !important;
+    padding: 15px !important;
 }
