@@ -69,26 +69,30 @@ ion-card.ios{margin-top: 10px;margin-bottom: 10px;}
     background: #27A69A;
 }
 .item-card {
-    border-radius: 20px;
+    border-radius: 0px;
 }
 .item-header{
-    padding: 15px 15px 0px 15px;
+    padding: 15px 15px 15px 15px;
 }
 .img-container {
-    padding: 15px 15px 0 15px;
+    padding: 0px;
+}
+.item-card{
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
 }
 .post-image, .post-video {
-    height: calc(100vw - 45px) !important;
+    height: calc(100vw - 25px) !important;
     position: relative;
     overflow: hidden;
-    padding: 0 0 15px 0;
+    padding: 0;
 }
 .post-thumbnail {
-    border-radius: 20px;
+    border-radius: 0px;
 }
 .video-icon {
-    top: 25px;
-    left: 30px;
+    top: 15px;
+    left: 15px;
     padding: 1px 4px;
     border-radius: 5px;
     background: #00000029;
@@ -97,13 +101,13 @@ ion-card.ios{margin-top: 10px;margin-bottom: 10px;}
 .post-slider {
     height: 100%;
     max-height: none !important;
-    border-radius: 20px;
+    border-radius: 0px;
 }
 .post-slider ion-slide {
     height: 100% !important;
 }
 .post-content {
-    padding: 0px 15px 15px 15px;
+    padding:15px;
 }
 item-post {
     margin-bottom: 10px;
