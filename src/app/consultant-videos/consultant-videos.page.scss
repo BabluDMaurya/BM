@@ -16,8 +16,12 @@ ion-segment-button.fs-small.ios.segment-button-layout-icon-top.ion-activatable.i
     padding-left: 5px;
     padding-right: 5px;
 }
+.video-card{
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
 .card-head{
-    padding: 15px 15px 0px 15px !important;
+    padding: 15px !important;
 }
 .upcoming-block{
     border-bottom: none;
@@ -26,18 +30,18 @@ ion-segment-button.fs-small.ios.segment-button-layout-icon-top.ion-activatable.i
 .post-image, 
 .post-video {
     height: calc(100vw - 30px) !important;
-    padding: 15px;
+    padding: 0;
 }
 .post-image img, .post-video img{
-    border-radius: 20px;
+    border-radius: 0px;
 }
 .video-icon{
-    top: 25px !important;
-    left: 30px !important;
+    top: 15px !important;
+    left: 15px !important;
     padding: 1px 4px ;
     border-radius: 5px;
     background: #00000029;
 }
 .post-content, .video-content {
-    padding: 0px 15px 15px 15px !important;
+    padding: 15px !important;
 }

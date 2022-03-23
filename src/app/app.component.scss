@@ -742,7 +742,7 @@ ion-button{--border-width: 1px;}
 .sec-login>ion-row{display:flex;justify-content:center;height:100%}
 .login-logo{height:120px;display:flex;justify-content:center;align-items:center}
 .login-form{position:relative}
-.login-form .error-message{left:0;color:#2bbbad;display:block;text-align:left}
+.login-form .error-message{left:0;color: #ee2c2c;display:block;text-align:left}
 .login-form ion-item{--border-color:rgba(255, 255, 255, 0.20);--background:transparent;margin-bottom:15px;--inner-padding-end:0;--highlight-background: rgba(255, 255, 255, 0.20);}
 .login-form ion-input{--placeholder-color:#d1d1d1;--placeholder-opacity:1;--color:#FFF;--highlight-background: rgba(255, 255, 255, 0.20);}
 .login-form ion-select{color:#fff}
