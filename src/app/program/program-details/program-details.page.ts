@@ -199,7 +199,7 @@ export class ProgramDetailsPage implements OnInit {
       alert ("Kindly Enter Room ID");
       return;
     }
-    alert(this.roomID);
+    // alert(this.roomID);
     console.log(this.roomID, 'room id');
     var loginString = {"name": this.userName, "role": "moderator", "user_ref": "2236", "roomId": this.roomID };
     var hedare = (kTry) ? { "x-app-id" : kAppId , "x-app-key" : kAppkey, "Accept" : "application/json","Content-Type" :"application/json"} : {"Accept" : "application/json","Content-Type" :"application/json"};

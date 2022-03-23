@@ -200,6 +200,11 @@ ion-slide.ios.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
 .program-slides video{
   height: 100%;
 }
+.program-slides img{
+  width: 100% ;
+  object-fit: cover;
+  object-position: center;
+}
 .nutri-slide{
   width: 47% !important;
 }

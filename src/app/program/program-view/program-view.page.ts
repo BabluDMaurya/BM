@@ -202,7 +202,7 @@ export class ProgramViewPage implements OnInit {
       alert ("Kindly Enter Room ID");
       return;
     }
-    alert(this.roomID);
+    // alert(this.roomID);
     this.programService.getEnxData({'program_id':this.programId}).subscribe(data =>{ 
       console.log("EnxData User: "+JSON.stringify(data));
       this.userName = this.userData.user_name;

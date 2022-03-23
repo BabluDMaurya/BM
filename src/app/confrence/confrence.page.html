@@ -31,11 +31,11 @@
     </ion-item>
   </ion-list>
 </ion-header>
-<ion-content [fullscreen]="true">
+<ion-content class="p-relative" [fullscreen]="true">
   <div class="myClass">
     
   </div>
-  <div [ngClass]="(chatbody =='on')?'chatblock':'chatnone'">
+  <div class="chat-screen" [ngClass]="(chatbody =='on')?'chatblock':'chatnone'">
     <div class="chatList">
         <ion-list id="history"></ion-list>
     </div>

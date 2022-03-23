@@ -54,3 +54,26 @@ ion-item.icon-right-side.ion-text-end.item.ios.in-list.ion-focusable.hydrated {
   p.text-green.text-center{
       left: 0 !important;
   }
+  .program-slides{
+    width: 95% !important;
+  }
+  .program-slide{
+    height: 300px;
+  }
+  .program-slides video{
+    height: 100%;
+  }
+  .program-slides img{
+    width: 100% ;
+    object-fit: cover;
+    object-position: center;
+  }
+  p.text-green.text-center {
+    width: auto;
+  }
+  ion-slide.md.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
+    flex-direction: column;
+    height: auto;
+    width: 47% ; 
+    margin-left: 10px;
+  }

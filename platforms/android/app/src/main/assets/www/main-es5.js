@@ -5743,6 +5743,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return m.InvitatedProgramsPageModule;
         });
       }
+    }, {
+      path: 'schedule-program',
+      loadChildren: function loadChildren() {
+        return Promise.all(
+        /*! import() | program-program-program-module */
+        [__webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~35dc278f"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~ec93f8e5"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~program-program-program-module"), __webpack_require__.e("program-program-program-module")]).then(__webpack_require__.bind(null,
+        /*! ./program/program/program.module */
+        "./src/app/program/program/program.module.ts")).then(function (m) {
+          return m.ProgramPageModule;
+        });
+      }
     }];
 
     var AppRoutingModule = function AppRoutingModule() {
@@ -12508,7 +12519,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _this63 = this;
 
           if (data != null) {
-            var uId = data.split(',');
+            var uId = data.toString().split(',');
             console.log(uId);
             uId.forEach(function (el) {
               _this63.programService.getEachUserData({

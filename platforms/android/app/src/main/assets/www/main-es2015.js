@@ -3815,6 +3815,10 @@ const routes = [
         path: 'invitated-programs',
         loadChildren: () => __webpack_require__.e(/*! import() | program-invitated-programs-invitated-programs-module */ "program-invitated-programs-invitated-programs-module").then(__webpack_require__.bind(null, /*! ./program/invitated-programs/invitated-programs.module */ "./src/app/program/invitated-programs/invitated-programs.module.ts")).then(m => m.InvitatedProgramsPageModule)
     },
+    {
+        path: 'schedule-program',
+        loadChildren: () => Promise.all(/*! import() | program-program-program-module */[__webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~35dc278f"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~ec93f8e5"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~program-program-program-module"), __webpack_require__.e("program-program-program-module")]).then(__webpack_require__.bind(null, /*! ./program/program/program.module */ "./src/app/program/program/program.module.ts")).then(m => m.ProgramPageModule)
+    },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -8023,7 +8027,7 @@ let ParticipantsComponent = class ParticipantsComponent {
     }
     recieveUser(data) {
         if (data != null) {
-            var uId = data.split(',');
+            var uId = data.toString().split(',');
             console.log(uId);
             uId.forEach(el => {
                 this.programService.getEachUserData({ el }).subscribe((peoples) => {
