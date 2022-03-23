@@ -145,3 +145,43 @@ ion-item-divider{
 .top-banner > img{
     object-fit: cover !important; 
 }
+.userNameBlock{
+    display: flex;
+    align-items: center;
+    .userDisplayName{
+        margin-bottom: 0px;
+        font-size: 20px;
+        margin-top: 12px;
+    }
+    ion-icon{
+        font-size: 18px;
+        margin-top: 12px;
+        margin-left: 5px;
+    }
+}
+.post-row{
+    background-color: #fff;
+    box-shadow: 0 0 3px #0000004a;
+    margin-bottom: 8px;
+    .post-col{
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        .post-avatar{
+            margin-right: 8px;
+        }
+        .post-text{
+            flex: 1;
+            margin-right: 8px;
+            border-radius: 6px;
+            border: 1px solid #a0a0a0;
+            padding: 5px 0 0 5px;
+        }
+        .post-btn{
+            background-color: #27A69A;
+            border-radius: 4px;
+            color: #fff;
+            padding: 10px 14px;
+        }
+    }
+}
