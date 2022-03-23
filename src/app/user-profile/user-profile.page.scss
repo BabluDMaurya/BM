@@ -142,3 +142,14 @@ h4.text-center {
     display: flex;
     align-items: center;
 }
+.sec-banner{
+    img{
+        object-fit: cover;
+        object-position: center;
+    }
+}
+.userDisplayName{
+    margin-bottom: 0px;
+    font-size: 20px;
+    margin-top: 12px;
+}

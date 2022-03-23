@@ -5,11 +5,10 @@
     </ion-item>
     <ion-item class="ion-text-end" slot="end">
       <div class="icon-right-side">
-        <a [routerLink]="['/all-list']" class="set-icon"> 
-          <!-- <ion-icon ios="ios-cash" md="md-cash"></ion-icon> -->  
+        <!-- <a [routerLink]="['/all-list']" class="set-icon"> 
           <ion-icon src="../../../assets/images/sponsor.svg"></ion-icon>
           <ion-badge slot="end" *ngIf="sponcerCount > 0">{{ sponcerCount }}</ion-badge> 
-        </a>
+        </a> -->
         <!-- <a [routerLink]="['/sponcer-chat']" class="set-icon">
           <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
           <ion-badge slot="end" *ngIf="sponcerCount > 0">{{ sponcerCount }}</ion-badge>          
@@ -21,7 +20,7 @@
           <ion-icon name="calendar"></ion-icon>
         </a>
         <a [routerLink]="['/notification']" id="notificationcount" class="noti-bell">
-          <ion-icon ios="ios-notifications-outline" md="md-notifications-outline"></ion-icon>
+          <ion-icon ios="ios-heart" md="md-heart"></ion-icon>
           <ion-badge slot="end" *ngIf="notificationCount > 0">{{ notificationCount }}</ion-badge>
         </a>
 
@@ -54,8 +53,11 @@
               <img [defaultImage] = "profileDefaultImage" [lazyLoad]="profileImage">              
             </div>
             <ion-text>
-              <h6 class="userDisplayName" *ngIf="profileData?.userData?.bios?.display_name">
-                {{profileData?.userData?.bios?.display_name}}</h6>
+              <div class="userNameBlock" *ngIf="profileData?.userData?.bios?.display_name">
+                <h6 class="userDisplayName" >
+                  {{profileData?.userData?.bios?.display_name}}</h6>
+                  <ion-icon ios="ios-arrow-dropdown-circle" md="md-arrow-dropdown-circle" ></ion-icon>
+              </div>
                 <h6 class="userDisplayName">
                   <a class="ion-no-margin clr-blk" *ngIf="!profileData?.userData?.bios?.display_name"
                   [routerLink]="['/tabs/edit-profile']">Add display name +</a>
@@ -125,7 +127,7 @@
 
  <!-- S T I C K Y  T A B -->
 
-  <ion-item-divider lines="none" sticky>
+  <ion-item-divider lines="none">
     <ion-col style="height: auto; padding: 0;" lines="none" no-border-top class="profile_tabs three-tabs">
       <ion-list lines="none" style="padding: 5px 0; margin: 0;" class="top-list" [(ngModel)]="consultantProfile">
         <!-- <ion-item style=" padding: 10px 0;" class="box-shadow-none" value="aboutInfo" (click)="notification1()">
@@ -151,6 +153,12 @@
             <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
           </div>
           <ion-label>Upcoming</ion-label>
+        </ion-item>
+        <ion-item  detail="false" style=" padding: 10px 0;" class="box-shadow-none" value="sponsor" [routerLink]="['/all-list']">
+          <div class="top-icon">
+            <ion-icon ios="logo-usd" md="logo-usd"></ion-icon>
+          </div>
+          <ion-label>Sponsor</ion-label>
         </ion-item>
       </ion-list>
     </ion-col>
@@ -195,6 +203,17 @@
       </ion-col>
       </div>
     </ion-row> 
+    <ion-item-divider class="post-row" sticky>
+      <ion-col class="post-col">
+        <ion-avatar class="post-avatar">
+          <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}"
+            *ngIf="profileData?.userData?.bios?.profile_pic">
+          <img src="../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
+        </ion-avatar>
+        <textarea placeholder="Write something..." class="post-text"></textarea>
+        <button class="post-btn">Post</button>
+      </ion-col>
+    </ion-item-divider>
     <ion-row>
       <ion-col class="ion-no-padding">
         <ion-list class="ion-no-padding">

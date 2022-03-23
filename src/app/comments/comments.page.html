@@ -21,7 +21,7 @@
         <ion-avatar slot="start" class="ion-no-margin" *ngIf="!data.user.bios.profile_pic">
           <img src="../../assets/images/user.jpg">
         </ion-avatar>
-        <ion-label>
+        <ion-label class="not-ellipsis">
           <h2>{{data.user.user_name}}</h2>
           <p>{{data.comment}}</p>
           <ion-label class="comment-links">
@@ -40,7 +40,7 @@
           <ion-avatar slot="start" *ngIf="!replyData.user.bios.profile_pic">
             <img src="../../assets/images/user.jpg">
           </ion-avatar>
-          <ion-label>
+          <ion-label class="not-ellipsis">
             <h2>{{replyData.user.user_name}}</h2>
             <p>{{replyData.comment}}</p>
             <ion-label class="comment-links">
@@ -135,7 +135,7 @@
     <ion-avatar slot="start" class="ion-no-margin" *ngIf="!profileImage">
       <img src="../../assets/images/user.jpg">
     </ion-avatar>
-    <textarea placeholder="Enter Input" #commentfield formControlName="comment" name="comment"   auto-grow="true" class="comment"></textarea>
+    <textarea placeholder="Enter Comments" #commentfield formControlName="comment" name="comment"   auto-grow="true" class="comment"></textarea>
     <img (click)="onClickSubmit()" src="../assets/images/send.svg" class="send-img">
   </ion-item>
 </form>
