@@ -15,6 +15,12 @@
   <div *ngIf='!otherUser'>
     <ion-list class="nofication-list">
       <ion-list-header>
+        <ion-label>Tagline</ion-label>
+      </ion-list-header>
+      <ion-item>{{profileData?.userData?.additional?.tag_line}} <div (click)="goToEdit()" *ngIf="!profileData?.userData?.additional?.tag_line">Add Tagline +</div> </ion-item>
+    </ion-list>
+    <ion-list class="nofication-list">
+      <ion-list-header>
         <ion-label>Bio</ion-label>
       </ion-list-header>
       <ion-item class="py-10">{{profileData?.userData?.bios?.about_me}} <div (click)="goToEdit()" *ngIf="!profileData?.userData?.bios?.about_me">Add Bio +</div> </ion-item>
@@ -55,22 +61,28 @@
   <div *ngIf='otherUser'>
     <ion-list class="nofication-list">
       <ion-list-header>
+        <ion-label>Tagline</ion-label>
+      </ion-list-header>
+      <ion-item>{{profileData?.userData?.additional?.tag_line}} <div *ngIf="!profileData?.userData?.additional?.tag_line">Not Mentioned.</div> </ion-item>
+    </ion-list>
+    <ion-list class="nofication-list">
+      <ion-list-header>
         <ion-label>Bio</ion-label>
       </ion-list-header>
-      <ion-item>{{profileData?.userData?.bios?.about_me}} <div (click)="goToEdit()" *ngIf="!profileData?.userData?.bios?.about_me">Not Mentioned.</div> </ion-item>
+      <ion-item>{{profileData?.userData?.bios?.about_me}} <div *ngIf="!profileData?.userData?.bios?.about_me">Not Mentioned.</div> </ion-item>
     </ion-list>
     <ion-list class="nofication-list">
       <ion-list-header>
         <ion-label>First Interests</ion-label>
       </ion-list-header>
-      <ion-item>{{profileData?.speciality?.primaryName?.name }} <div (click)="goToEdit()" *ngIf="!profileData?.speciality?.primaryName?.name">Not Mentioned.</div> </ion-item>
+      <ion-item>{{profileData?.speciality?.primaryName?.name }} <div *ngIf="!profileData?.speciality?.primaryName?.name">Not Mentioned.</div> </ion-item>
     </ion-list>
     <ion-list class="nofication-list">
       <ion-list-header>
         <ion-label>Second Interests</ion-label>
         
       </ion-list-header>
-      <ion-item>{{profileData?.speciality?.secondaryName?.name}} <div (click)="goToEdit()" *ngIf="!profileData?.speciality?.secondaryName?.name">Not Mentioned.</div> </ion-item>
+      <ion-item>{{profileData?.speciality?.secondaryName?.name}} <div *ngIf="!profileData?.speciality?.secondaryName?.name">Not Mentioned.</div> </ion-item>
     </ion-list>
     <ion-list class="nofication-list">
       <ion-list-header>
@@ -82,14 +94,14 @@
       <ion-list-header>
         <ion-label>Language Spoken</ion-label>
       </ion-list-header>
-      <ion-item>{{profileData?.lang?.lang}}<div (click)="goToEdit()" *ngIf="!profileData?.lang?.lang">Not Mentioned.</div></ion-item>
+      <ion-item>{{profileData?.lang?.lang}}<div *ngIf="!profileData?.lang?.lang">Not Mentioned.</div></ion-item>
     </ion-list>
 
     <ion-list class="nofication-list">
       <ion-list-header>
         <ion-label>Hometown</ion-label>
       </ion-list-header>
-      <ion-item>{{profileData.userData.bios.hometown}}<div (click)="goToEdit()" *ngIf="!profileData.userData.bios.hometown">Not Mentioned.</div></ion-item>
+      <ion-item>{{profileData.userData.bios.hometown}}<div *ngIf="!profileData.userData.bios.hometown">Not Mentioned.</div></ion-item>
     </ion-list>
   </div>
 </ion-content>

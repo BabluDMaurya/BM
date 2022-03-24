@@ -23,7 +23,6 @@ import { PreviewAnyFile } from '@ionic-native/preview-any-file/ngx';
 import { Media, MediaObject } from '@ionic-native/media/ngx';
 import { AddEquipmentsComponent } from './add-equipments/add-equipments.component';
 import { VideosThumbListComponent } from './videos-thumb-list/videos-thumb-list.component';
-
 // import { VideoEditor } from '@ionic-native/video-editor/ngx';
 const baseUrl = Config.ApiUrl;
 @Component({
@@ -117,7 +116,8 @@ export class AddProgramPage implements OnInit {
     private transfer: FileTransfer,
     // private videoEditor: VideoEditor,
     private camera: Camera,public modalController: ModalController,
-    private changeDetection: ChangeDetectorRef) {
+    private changeDetection: ChangeDetectorRef,
+    public toastController: ToastController) {
 
     let d = new Date();
     // this.currentHrs = d.getHours();
@@ -217,8 +217,6 @@ export class AddProgramPage implements OnInit {
       ])),
       feedStatus: new FormControl('', Validators.compose([
       ])),
-      
-
       userList: new FormControl(''),
     });
   }
@@ -244,7 +242,14 @@ export class AddProgramPage implements OnInit {
     ],
 
   };
-
+  async openToast() {  
+    const toast = await this.toastController.create({  
+      message: 'Please fill all the details',   
+      color: 'dark',
+      duration: 4000  
+    });  
+    toast.present();  
+  }  
 
   musicTypes: string = 'music';
   musicList(ev: any) {
@@ -1365,12 +1370,13 @@ export class AddProgramPage implements OnInit {
       this.showProgram = 3;
     } 
     if (event == 2) {
-      console.log(this.ProgramInserted);
+      console.log(this.ProgramInserted); 
       if (this.ProgramInserted == true) {
         this.showProgram = 3;
         return true;
       } 
       if (this.programForm.invalid) {
+        this.openToast();
         return false;
       }
       if (formControl.participantsType.value == 1 && !formControl.userList.value) {

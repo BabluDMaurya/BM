@@ -56,7 +56,7 @@
               <div class="userNameBlock" *ngIf="profileData?.userData?.bios?.display_name">
                 <h6 class="userDisplayName" >
                   {{profileData?.userData?.bios?.display_name}}</h6>
-                  <ion-icon ios="ios-arrow-dropdown-circle" md="md-arrow-dropdown-circle" ></ion-icon>
+                  <ion-icon (click)="notification1()" ios="ios-arrow-dropdown-circle" md="md-arrow-dropdown-circle" ></ion-icon>
               </div>
                 <h6 class="userDisplayName">
                   <a class="ion-no-margin clr-blk" *ngIf="!profileData?.userData?.bios?.display_name"
@@ -188,7 +188,23 @@
       <!-- <ion-col size="4" class="ion-no-padding">
           <ion-text><p class="count_time">{{dd | async}}</p> Days</ion-text>
       </ion-col> -->
-      <div class="user_time" *ngIf="!noData">
+      <div class="user_time">
+        <ion-text *ngIf="!programDetail?.ended">
+          <p>{{ upcomingList[0]?.hh |number }}</p>
+          <span>Hours</span>
+        </ion-text>
+        <ion-text>:</ion-text>
+        <ion-text *ngIf="!programDetail?.ended">
+          <p>{{ upcomingList[0]?.mm |number }}</p>
+          <span>Minutes</span>
+        </ion-text>
+        <ion-text>:</ion-text>
+        <ion-text *ngIf="!programDetail?.ended">
+          <p>{{ upcomingList[0]?.ss |number }}</p>
+          <span>Seconds</span>
+        </ion-text>
+      </div>
+      <!-- <div class="user_time" *ngIf="!noData">
       <ion-col size="4" class="ion-no-padding ho" *ngIf="!programDetail?.ended">
         <ion-text style="text-align: center;"><p class="count_time">{{ upcomingList[0]?.dd |number }} </p> Days</ion-text>
       </ion-col>
@@ -201,7 +217,7 @@
       <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
         <ion-text style="text-align: center;"><p class="count_time">{{ upcomingList[0]?.ss |number }} </p> Seconds</ion-text>
       </ion-col>
-      </div>
+      </div> -->
     </ion-row> 
     <ion-item-divider class="post-row" sticky>
       <ion-col class="post-col">
