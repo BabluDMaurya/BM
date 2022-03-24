@@ -38,18 +38,28 @@
             <div class="img-profile">
               <img [defaultImage] = "profileDefaultImage" [lazyLoad]="profilePicUrl+profileData?.userData?.bios?.profile_pic">              
             </div>
-            <div class="tagline">
-              <!-- <a>
+            <ion-text>
+              <div class="userNameBlock" *ngIf="profileData?.userData?.bios?.display_name">
+                <h6 class="userDisplayName" >
+                  {{profileData?.userData?.user_name}}</h6>
+                  <ion-icon (click)="notification1()" ios="ios-arrow-dropdown-circle" md="md-arrow-dropdown-circle" ></ion-icon>
+              </div>
+              <h6 class="userDisplayName">
+                <a class="ion-no-margin clr-blk" *ngIf="!profileData?.userData?.bios?.display_name"></a>
+              </h6>
+            </ion-text>
+            <!-- <div class="tagline">
+              <a>
                 <ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon> rushabh_parekh
-              </a> -->
-            </div>
+              </a>
+            </div> -->
           </div>
-          <div class="user-name">
+          <!-- <div class="user-name">
             <ion-text> 
               <h6>{{profileData?.userData?.user_name}}</h6>
               <p>{{profileData?.userData?.additional?.tag_line}}</p>
             </ion-text>
-          </div>
+          </div> -->
           <ion-fab class="share-btn">
             <ion-fab-button class="share-btn" color="primary" size="small" (click)="shareItem()">
               <ion-icon ios="ios-share" md="md-share"></ion-icon>
@@ -61,10 +71,10 @@
     <ion-row *ngIf="tabs">
       <ion-col size="12" class="ion-no-padding mb-10">
         <ion-list lines="none" class="top-list">
-          <ion-item (click)="notification1()">
+          <!-- <ion-item (click)="notification1()">
             <img src="../../assets/images/info.svg" />
             <ion-label>Info</ion-label>
-          </ion-item>
+          </ion-item> -->
           <ion-item (click)="followUp(followStatus)" id="followStatus">
             <img [src]="followStatus == 'UNFOLLOW' ? '../../assets/images/unfollow.svg':'../../assets/images/follow.svg'" />
             <!-- <ion-label>{{ follow ?'Following':'Follow' }}</ion-label> -->
