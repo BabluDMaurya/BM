@@ -185,3 +185,25 @@ ion-item-divider{
         }
     }
 }
+.user_details{
+    background: #e9f6f5;
+    .list-person{
+        color: #27A69A;
+    }
+    .user_time{
+        justify-content: space-around;
+        ion-text{
+            font-size: 1.3rem;
+            text-align: center;
+            line-height: 1;
+            p{
+                font-size: 1.3rem;
+                color: #27a69a;
+            }
+            span{
+                color: #999;
+                font-size: 0.75rem;
+            }
+        }
+    }
+}
