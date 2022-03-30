@@ -283,6 +283,11 @@ const routes: Routes = [
     path: 'schedule-program',
     loadChildren: () => import('./program/program/program.module').then( m => m.ProgramPageModule)
   },
+  {
+    path: 'new-schedule-program',
+    loadChildren: () => import('./new-schedule-program/new-schedule-program.module').then( m => m.NewScheduleProgramPageModule)
+  },
+
 
 
 ];

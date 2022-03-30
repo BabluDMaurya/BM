@@ -21,6 +21,11 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content no_footer">
+  <ion-list lines="none" class="item-list search-bar ion-no-padding">
+    <ion-toolbar class="searchbar">
+      <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+    </ion-toolbar>
+  </ion-list>
   <div *ngIf="nutritionList">
     <ion-card class="nutritionCard">
       <ion-card-header class="grey-header green text-white">Breakfast</ion-card-header>
@@ -32,7 +37,7 @@
                 <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
               </div>
-              <div class="item-label">
+              <div class="item-label-title">
                 <ion-label>{{item?.title}}</ion-label>
               </div>
               <div *ngIf="item.empty" class="no-data nutrition-no-data item-no-image">
@@ -55,7 +60,7 @@
                 <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
               </div>
-              <div class="item-label">
+              <div class="item-label-title">
                 <ion-label>{{item?.title}}</ion-label>
               </div>
               <div *ngIf="item.empty" class="no-data nutrition-no-data item-no-image">
@@ -78,7 +83,7 @@
                 <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
               </div>
-              <div class="item-label">
+              <div class="item-label-title">
                 <ion-label>{{item?.title}}</ion-label>
               </div>
               <div *ngIf="item.empty" class="no-data nutrition-no-data item-no-image">
@@ -101,7 +106,7 @@
                 <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
               </div>
-              <div class="item-label">
+              <div class="item-label-title">
                 <ion-label>{{item?.title}}</ion-label>
               </div>
               <div *ngIf="item.empty" class="no-data nutrition-no-data item-no-image">
@@ -124,7 +129,7 @@
                 <img src="{{url}}{{item?.img_array[0]}}" *ngIf="item?.image_path" />
                 <img src="../../assets/images/nutrition2.png" *ngIf="!item?.image_path" style="width:auto" />
               </div>
-              <div class="item-label">
+              <div class="item-label-title">
                 <ion-label>{{item?.title}}</ion-label>
               </div>
               <div *ngIf="item.empty" class="no-data nutrition-no-data item-no-image">
