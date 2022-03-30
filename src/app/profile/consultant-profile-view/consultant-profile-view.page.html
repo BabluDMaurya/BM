@@ -20,7 +20,7 @@
           <ion-icon ios="md-people" md="md-people"></ion-icon>
         </a>
         <a [routerLink]="['/settings']" class="set-icon">
-          <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+          <ion-icon class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
         </a>
       </div>
     </ion-item>
@@ -122,7 +122,7 @@
           <ion-item-group>
             <ion-item-divider lines="none" sticky>
               <ion-toolbar lines="none" no-border-top class="profile_tabs three-tabs">
-                <ion-segment class="ion-no-padding" [(ngModel)]="consultantProfile">
+                <ion-segment class="ion-no-padding" value="aboutInfo" [(ngModel)]="consultantProfile">
                   <ion-segment-button value="aboutInfo" (click)="videoTabsScroll()">
                     <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
                     <span>Videos</span>

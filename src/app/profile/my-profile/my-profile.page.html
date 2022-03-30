@@ -16,23 +16,23 @@
         <!-- <a [routerLink]="['/tabs/search']" class="set-icon">
           <ion-icon ios="ios-search" md="md-search"></ion-icon>
         </a> -->
-        <a class="set-icon" [routerLink]="['/invitated-programs']">
+        <!-- <a class="set-icon" [routerLink]="['/invitated-programs']">
           <ion-icon name="calendar"></ion-icon>
-        </a>
+        </a> -->
         <a [routerLink]="['/notification']" id="notificationcount" class="noti-bell">
           <ion-icon ios="ios-heart" md="md-heart"></ion-icon>
           <ion-badge slot="end" *ngIf="notificationCount > 0">{{ notificationCount }}</ion-badge>
         </a>
 
-        <a [routerLink]="['/tabs/bookmark']">
-          <!-- <a (click)="showbookmark()"> -->
+        <!-- <a [routerLink]="['/tabs/bookmark']">
+          <a (click)="showbookmark()">
           <ion-icon ios="ios-bookmark" md="md-bookmark"></ion-icon>
-        </a>
+        </a> -->
         <a [routerLink]="['/people']" class="foll-people">
           <ion-icon ios="md-people" md="md-people"></ion-icon>
         </a>
         <a [routerLink]="['/settings']" class="set-icon">
-          <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+          <ion-icon class="menu-icon" ios="ios-menu" md="md-menu"></ion-icon>
         </a>
       </div>
     </ion-item>
@@ -152,7 +152,7 @@
           <div class="top-icon">
             <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
           </div>
-          <ion-label>Upcoming</ion-label>
+          <ion-label>All Program</ion-label>
         </ion-item>
         <ion-item  detail="false" style=" padding: 10px 0;" class="box-shadow-none" value="sponsor" [routerLink]="['/all-list']">
           <div class="top-icon">

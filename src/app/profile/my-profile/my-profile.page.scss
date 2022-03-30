@@ -145,6 +145,10 @@ ion-item-divider{
 .top-banner > img{
     object-fit: cover !important; 
 }
+.menu-icon{
+    width: 30px !important;
+    height: 30px !important;
+}
 .userNameBlock{
     display: flex;
     align-items: center;
@@ -157,6 +161,7 @@ ion-item-divider{
         font-size: 18px;
         margin-top: 12px;
         margin-left: 5px;
+        color: #222;
     }
 }
 .post-row{
@@ -168,6 +173,8 @@ ion-item-divider{
         align-items: center;
         padding: 15px;
         .post-avatar{
+            width: 45px;
+            height: 45px;
             margin-right: 8px;
         }
         .post-text{

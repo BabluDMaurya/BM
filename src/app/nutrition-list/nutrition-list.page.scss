@@ -52,15 +52,18 @@ ion-segment-button{
 .item-no-image{
     height: 80%;
 }
-.item-label{
+.item-label-title{
     width: 100%;
     text-align: left;
     display: flex;
     align-items: center;
     padding: 10px;
 }
-.item-label ion-label{
+.item-label-title ion-label{
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+.search-bar{
+    margin-bottom: 0px;
 }

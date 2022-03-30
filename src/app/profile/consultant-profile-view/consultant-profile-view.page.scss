@@ -18,7 +18,7 @@
 }
 
 
-.share-btn{bottom:40px;position:absolute;right:0;--background:#27a69a;--background-activated:#27a69a;--background-focused:#27a69a;--background-hover:#27a69a;--ion-color-shade:#27a69a!important;--ion-color-tint:#27a69a!important;--ion-color-base:rgba(0, 0, 0, 0.35)!important}
+.share-btn{bottom:5px;position:absolute;right:0;--background:#27a69a;--background-activated:#27a69a;--background-focused:#27a69a;--background-hover:#27a69a;--ion-color-shade:#27a69a!important;--ion-color-tint:#27a69a!important;--ion-color-base:rgba(0, 0, 0, 0.35)!important}
 .profile_tabs ion-segment span{text-transform: capitalize;font-weight: 400;font-size: 0.625rem;}
 
 .ios.top-list{padding-top: 8px !important;padding-bottom: 8px !important;}
@@ -79,4 +79,8 @@
         margin-top: 12px;
         margin-left: 5px;
     }
+}
+.menu-icon{
+    width: 30px !important;
+    height: 30px !important;
 }

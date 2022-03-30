@@ -6,24 +6,24 @@
     </ion-item>
     <ion-item class="ion-text-end" slot="end">
       <div class="icon-right-side">
-        <a [routerLink]="['/tabs/search']" class="set-icon">
+        <!-- <a [routerLink]="['/tabs/search']" class="set-icon">
           <ion-icon ios="ios-search" md="md-search"></ion-icon>
         </a> 
         <a class="set-icon" [routerLink]="['/invitated-programs']">
           <ion-icon name="calendar"></ion-icon>
-        </a>
+        </a> -->
         <a [routerLink]="['/notification']" id="notificationcount" class="noti-bell">
           <ion-icon ios="ios-heart" md="md-heart"></ion-icon>
           <span class=""></span>
         </a>
-        <a [routerLink]="['/tabs/bookmark']" >
+        <!-- <a [routerLink]="['/tabs/bookmark']" >
           <ion-icon ios="ios-bookmark" md="md-bookmark"></ion-icon>
-        </a>
+        </a> -->
         <a [routerLink]="['/people/tabFollowers']" class="foll-people">
           <ion-icon ios="md-people" md="md-people"></ion-icon>
         </a>
         <a [routerLink]="['/settings']" class="set-icon">
-          <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+          <ion-icon  class="menu-icon" ios="ios-menu" md="md-menios-menu"></ion-icon>
         </a>
       </div>
     </ion-item>
@@ -51,9 +51,12 @@
           <img [defaultImage] = "profileDefaultImage" [lazyLoad]="profileImage">              
         </div>
         <ion-text>
-          <h6 class="userDisplayName" *ngIf="profileData?.userData?.user_name">
-            {{profileData?.userData?.user_name}}
-          </h6>
+          <div class="userNameBlock" *ngIf="profileData?.userData?.user_name">
+              <h6 class="userDisplayName" >
+                {{profileData?.userData?.user_name}}
+              </h6>
+              <ion-icon (click)="notification1()" ios="ios-arrow-dropdown-circle" md="md-arrow-dropdown-circle" ></ion-icon>
+            </div>
         </ion-text>
       </div>
       <!-- <ion-icon class="primary-color ABS-info" ios="ios-information-circle" md="md-information-circle" (click)="notification1()"></ion-icon> -->
