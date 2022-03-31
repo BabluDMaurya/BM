@@ -56,6 +56,7 @@ export class HomePage implements OnInit {
     this.searchService.getSpecialities(null).subscribe(data => {
       this.specialities = data.list;
     });
+
     this.homeService.getHomeContent({ 'page': (this.currentPage) }).subscribe(data => {
       let postData = this.like_bookmark(data.postData.data);
       console.log(postData);
@@ -79,6 +80,7 @@ export class HomePage implements OnInit {
     });
   }
 
+  
   // ------------ laod data event ----------
   /**
    *laod data event according userid

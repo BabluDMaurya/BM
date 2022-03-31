@@ -9,6 +9,9 @@ h2{font-weight: 500;color: #000;font-size: 0.90rem;}
 // css for footer
 .sticky-footer .send-img{width: 26px;}
 .comment {width: 100%; border: none;}
+.comment::placeholder {
+    font-size: 16px;
+}
 ion-list{margin-bottom: 56px;}
 ion-list>ion-list{margin-bottom: 0;}
 .sticky-footer{max-height: 100px;min-height: 56px;height: auto;
@@ -17,5 +20,23 @@ ion-list>ion-list{margin-bottom: 0;}
             ion-textarea{position: relative;height: 100%;margin: 0;--padding-top: 14px;}
             .send-img{width: 26px;margin-left: 10px;}
         }
+    }
+}
+.comment-item{
+    h2{
+        display: inline;
+    }
+    .comment-links{
+        margin-top: 5px;
+    }
+}
+.not-ellipsis{
+    text-overflow: initial;
+    white-space: normal;
+    p{
+        line-height: 1.2;
+        color: #3d3d3d;
+        display: inline;
+        margin-left: 5px;
     }
 }

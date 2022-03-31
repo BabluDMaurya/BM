@@ -172,7 +172,7 @@
             <ion-item class="mb-10">
               <ion-row>
                 <ion-list-header class="grey-header">
-                  <ion-label>Select Praticipants</ion-label>
+                  <ion-label>Select Participants</ion-label>
                 </ion-list-header>
                 <ion-col size="6" class="ion-no-padding">
                   <ion-radio-group lines="none" class="full-width radio-list" formControlName="participantsType">
@@ -331,6 +331,19 @@
           <ion-datetime display-format="h:mm A" #picker  picker-format="h:mm A"   id="dat" [(ngModel)]="myDate" (ngModelChange)="showdate()" ></ion-datetime>
         </div>
       </ion-list-header>   
+      <div class="live-event-addition">
+        <h5>Select Date to add Event</h5>
+      </div>
+      <div class="live-event-box">
+        <p class="live-event-head">Live Events</p>
+        <div class="live-event-info">
+          <div class="live-event-details">
+            <p>5:35 PM-5:50 PM</p>
+            <div class="small-divider"></div>
+            <p>Private</p>
+          </div>
+        </div>
+      </div>
       <div class="program__card" *ngFor="let date of repetatedDateCopy let i = index">
         <ion-list class="width-full"  >
           <!-- <div *ngIf="date.date == dateObj">  -->
@@ -353,14 +366,7 @@
             <!-- </div>
             
           </ion-list-header> -->
-          <ion-list-header class="ion-padding-horizontal green text-white">
-            <div class="toggleDiv"  (click)="toggleIcon(item)">
-              <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)" (click)="toggleIcon(item)" checked={{date.is_live}}  slot="end"></ion-toggle>
-              <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon> -->
-                <!-- <ion-label class="live"  (ionChange)="activatePopup(i)"   [ngClass]="{'active': item.active}"></ion-label> -->
-                <ion-label class="live" (click)="openStart(i)" (ionChange)="activatePopup(i)"   [ngClass]="{'active': date.is_live}"></ion-label>
-            </div>
-            <div class="divider"></div>
+          <ion-list-header class="ion-padding-horizontal green text-white live-ion-list-header">
             <div class="title">
               {{date.date | date :'mediumDate'}} 
             </div>
@@ -368,9 +374,14 @@
             <div class="calender_green_bottom">
               <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)"  checked={{date.is_live}}  slot="end"></ion-toggle> -->
               <!-- <ion-icon class="live-icon" (click)="picker.open()" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="activatePopup(i)" [ngClass]="{'active': date.is_live}"></ion-icon> -->
-              
+              <div class="toggleDiv"  (click)="toggleIcon(item)">
+                <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)" (click)="toggleIcon(item)" checked={{date.is_live}}  slot="end"></ion-toggle>
+                <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon> -->
+                  <!-- <ion-label class="live"  (ionChange)="activatePopup(i)"   [ngClass]="{'active': item.active}"></ion-label> -->
+                  <ion-label class="live" (click)="openStart(i)" (ionChange)="activatePopup(i)"   [ngClass]="{'active': date.is_live}"></ion-label>
+              </div>
               <ion-icon ios="ios-fitness" md="md-fitness" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
-              <ion-icon ios="ios-restaurant" md="md-restaurant" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
+              <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
               </ion-icon>
               <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
               <!-- <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon> -->
@@ -380,23 +391,25 @@
           </ion-list-header>
     
           <ion-item *ngIf="date?.equipments.length>0">
-            <ion-label style="overflow: initial;">Equipments :</ion-label>
+            <ion-icon class="live-event-icon" ios="ios-fitness" md="md-fitness"></ion-icon>
+            <!-- <ion-label style="overflow: initial;">Equipments :</ion-label> -->
             <div class="users-list" *ngIf="date?.equipments.length>0;else no_equipment">  
               <img src="../../assets/images/demo1.jpg" *ngFor="let item of date?.equipments" />
             </div>
             <!-- <ng-template #no_equipment>No Equipment Selected</ng-template> -->
-          </ion-item>
+          </ion-item> 
           <ion-item *ngIf="date.nutrition_id.length > 0">
-            <ion-label style="overflow: initial;">Nutritions :</ion-label>
+            <ion-icon class="live-event-icon" ios="ios-nutrition" md="md-nutrition"></ion-icon>
+            <!-- <ion-label style="overflow: initial;">Nutritions :</ion-label> -->
             <div class="users-list" *ngIf="date.nutrition_id.length>0;else no_nutrition">
               <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.nutrition_id" />
             </div>
             <!-- <ng-template #no_nutrition>No Nutrition Selected</ng-template> -->
           </ion-item>
           <ion-item *ngIf="date?.video">
-            <ion-label style="overflow: initial;">Videos :</ion-label>
+            <ion-icon class="live-event-icon" ios="ios-videocam" md="md-videoios-videocam"></ion-icon>
+            <!-- <ion-label style="overflow: initial;">Videos :</ion-label> -->
             <div class="users-list" *ngIf="date?.video;else no_videos">
-            
               <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.video" />
             </div>
             <!-- <ng-template #no_videos>No videos Selected</ng-template> -->

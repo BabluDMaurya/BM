@@ -1,7 +1,7 @@
 .upcoming-card{
     width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline-start: 5% !important;
+    margin-inline-end: 5% !important;
     border-radius: 15px;
     margin-top: 20px;
 }
@@ -10,4 +10,8 @@ span.list-name.d-block {
 }
 .action-links {
     margin-left: 10px;
+}
+.add-program{
+    justify-content: flex-end;
+    width: 100%;
 }

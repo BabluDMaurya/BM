@@ -1,1 +1,29 @@
 .component-refresher{top: -110px;}
+.item-card, .video-card {
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    .item-header, .card-head{
+        padding: 15px;
+        .header-right{
+            align-items: center;
+        }
+    }
+    .item-content{
+        ion-thumbnail{
+            height: calc(100vw - 30px);
+            .post-slider{
+                max-height: none;
+                height: 100%;
+                ion-slide{
+                    height: 100%;
+                }
+            }
+            img{
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+   
+}

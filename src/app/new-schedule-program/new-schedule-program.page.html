@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>new-schedule-program</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" startHour="0"
+  endHour="24" step="1"  class="calendar-table swiper-container"></calendar> -->
+  <ion-col class="ion-no-padding">
+    <ion-list class="ion-no-padding">
+      <ion-item-group>
+        <ion-item-divider class="ionic-divider" lines="none" sticky>
+          <ion-toolbar lines="none" no-border-top class="profile_tabs three-tabs">
+            <ion-segment class="ion-no-padding" [(ngModel)]="scheduleProgram">
+              <ion-segment-button class="ionic-segment-btn" value="program" checked>
+                <ion-icon class="ionic-icon" ios="ios-clipboard" md="md-clipboard"></ion-icon>
+              </ion-segment-button>
+              <ion-segment-button class="ionic-segment-btn" value="invitation">
+                <ion-icon class="ionic-icon" ios="ios-mail" md="md-mail"></ion-icon>
+              </ion-segment-button>
+              <ion-segment-button class="ionic-segment-btn" value="nutrition">
+                <ion-icon class="ionic-icon" ios="ios-nutrition" md="md-nutrition"></ion-icon>
+              </ion-segment-button>
+              <ion-segment-button class="ionic-segment-btn" value="videos">
+                <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+              </ion-segment-button>
+              <ion-segment-button class="ionic-segment-btn" value="live">
+                <div class="live-icon">
+                  <span>live</span>
+                </div>
+              </ion-segment-button>
+            </ion-segment>
+          </ion-toolbar>
+        </ion-item-divider>
+        <ion-item-sliding>
+          <div [ngSwitch]="scheduleProgram">
+            <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'program'">
+              <div class="program-card">
+                <ion-avatar>
+                  <img src="../../assets/images/bgimage.png" alt="">
+                </ion-avatar>
+                <div class="program-info">
+                  <h6>The BootCamp!</h6>
+                  <span>By: aliFitFreak</span>
+                  <p>Mar 13, 2022, 5:35 PM</p>
+                </div>
+                <span class="program-type">Group</span>
+                <ion-icon ios="ios-more" md="md-more"></ion-icon>
+              </div>
+            </ion-list>
+            <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'invitation'">
+                <ion-toolbar class="searchbar">
+                  <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+                </ion-toolbar>
+              <div class="program-card">
+                <ion-avatar>
+                  <img src="../../assets/images/bgimage.png" alt="">
+                </ion-avatar>
+                <div class="program-info">
+                  <h6>My Fav Meal</h6>
+                  <span>By: JimmyStone</span>
+                  <p>Mar 13, 2022, 5:35 PM</p>
+                </div>
+                <ion-icon class="ionic-icon" ios="ios-mail" md="md-mail"></ion-icon>
+                <!-- M A I L  O P E N -->
+                <!-- <ion-icon class="ionic-icon" ios="ios-mail-open" md="md-mail-open"></ion-icon> -->
+                <ion-icon ios="ios-more" md="md-more"></ion-icon>
+              </div>
+            </ion-list>
+            <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'nutrition'">
+                <ion-toolbar class="searchbar">
+                  <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+                </ion-toolbar>
+              <div class="program-card">
+                <ion-avatar>
+                  <img src="../../assets/images/bgimage.png" alt="">
+                </ion-avatar>
+                <div class="program-info">
+                  <h6>Beet Root Soup</h6>
+                  <span>By: aliFitFreak</span>
+                  <p>Mar 13, 2022, 5:35 PM</p>
+                </div>
+                <ion-icon ios="ios-more" md="md-more"></ion-icon>
+              </div>
+            </ion-list>
+            <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'videos'">
+              <ion-toolbar class="searchbar">
+                <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+              </ion-toolbar>
+              <div class="program-card">
+                <ion-avatar>
+                  <img src="../../assets/images/bgimage.png" alt="">
+                </ion-avatar>
+                <div class="program-info">
+                  <h6>Leg Day!</h6>
+                  <span>By: JimmyStone</span>
+                  <p>Mar 13, 2022, 5:35 PM</p>
+                </div>
+                <ion-icon ios="ios-more" md="md-more"></ion-icon>
+              </div>
+            </ion-list>
+            <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'live'">
+              <ion-toolbar class="searchbar">
+                <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+              </ion-toolbar>
+              <div class="program-card">
+                <ion-avatar>
+                  <img src="../../assets/images/bgimage.png" alt="">
+                </ion-avatar>
+                <div class="program-info">
+                  <h6>BootCamp!</h6>
+                  <span>By: aliFitFreak</span>
+                  <p>Mar 13, 2022, 5:35 PM</p>
+                </div>
+                <span class="program-type">Group</span>
+                <ion-icon ios="ios-more" md="md-more"></ion-icon>
+              </div>
+              <div class="program-live-box">
+                <!-- T I M E R   B L O C K -->
+                <!-- <div class="program-live-timer">
+                  <p>01 : 35 : 15</p>
+                </div> -->
+
+                  <!-- J O I N   B U T T O N -->
+                <!-- <div class="program-live-btn">
+                  <button>Join</button>
+                </div> -->
+              </div>
+            </ion-list>
+          </div>
+        </ion-item-sliding>
+      </ion-item-group>
+    </ion-list>
+  </ion-col>
+</ion-content>

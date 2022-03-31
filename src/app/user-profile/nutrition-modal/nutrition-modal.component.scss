@@ -23,3 +23,25 @@ p.note{color: #000;font-weight: 600;font-style: italic;}
     background-color: #27A69A;
     margin-bottom: 20px;
 }
+.nutrition-title{
+    text-transform: capitalize;
+}
+.nutrition-flex{
+    justify-content: center;
+}
+.nutrition-desc{
+    text-align: left;
+    color: #6c6c6c;
+}
+.nutrition-slide{
+    height: 210px;
+    .nutrition-image{
+        width: 100% !important;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    }
+}
+.nutrition-title{
+
+}

@@ -137,7 +137,8 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../program/program/program.module').then(m => m.ProgramPageModule)
+              // import('../program/program/program.module').then(m => m.ProgramPageModule)
+              import('../new-schedule-program/new-schedule-program.module').then(m => m.NewScheduleProgramPageModule)
           }
         ]
       },

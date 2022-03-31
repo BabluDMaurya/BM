@@ -142,3 +142,32 @@ h4.text-center {
     display: flex;
     align-items: center;
 }
+.sec-banner{
+    img{
+        object-fit: cover;
+        object-position: center;
+    }
+}
+// .userDisplayName{
+//     margin-bottom: 0px;
+//     font-size: 20px;
+//     margin-top: 12px;
+// }
+.menu-icon{
+    width: 30px !important;
+    height: 30px !important;
+}
+.userNameBlock{
+    display: flex;
+    align-items: center;
+    .userDisplayName{
+        margin-bottom: 0px;
+        font-size: 20px;
+        margin-top: 12px;
+    }
+    ion-icon{
+        font-size: 18px;
+        margin-top: 12px;
+        margin-left: 5px;
+    }
+}
