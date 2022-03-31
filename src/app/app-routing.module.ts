@@ -283,6 +283,11 @@ const routes: Routes = [
     path: 'schedule-program',
     loadChildren: () => import('./program/program/program.module').then( m => m.ProgramPageModule)
   },
+  {
+    path: 'video-editor',
+    loadChildren: () => import('./video-editor/video-editor.module').then( m => m.VideoEditorPageModule)
+  },
+
 
 
 ];

@@ -44,7 +44,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => Promise.all(/*! import() | user-profile-user-profile-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~1df314e5"), __webpack_require__.e("user-profile-user-profile-module")]).then(__webpack_require__.bind(null, /*! ../user-profile/user-profile.module */ "./src/app/user-profile/user-profile.module.ts")).then(m => m.UserProfilePageModule)
+                        loadChildren: () => Promise.all(/*! import() | user-profile-user-profile-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~1df314e5"), __webpack_require__.e("common"), __webpack_require__.e("user-profile-user-profile-module")]).then(__webpack_require__.bind(null, /*! ../user-profile/user-profile.module */ "./src/app/user-profile/user-profile.module.ts")).then(m => m.UserProfilePageModule)
                     }
                 ]
             },
