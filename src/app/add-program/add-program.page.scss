@@ -224,10 +224,27 @@ ion-title.ios.title-ios.title-default.hydrated {
         }
     }
 }
+.live-event-addition{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #cecece;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    h5{
+        color: #121212;
+        margin: 0;
+        font-weight: 500;
+    }
+}
 .live-event-box{
     width: 100%;
+    margin-bottom: 20px;
     .live-event-head{
         margin-bottom: 10px;
+        font-size: 14px;
+        color: #121212;
     }
     .live-event-info{
         padding: 12px 20px 2px 20px;

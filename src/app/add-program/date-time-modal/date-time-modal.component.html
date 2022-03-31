@@ -107,7 +107,52 @@
         </ion-item>
       </ion-list> 
     </div> -->
-    <ion-list *ngFor="let date of repetatedDateCopy let i = index">
+    <ion-list *ngFor="let date of repetatedDateCopy let i = index" >
+      <ion-list-header class="ion-padding-horizontal green text-white live-ion-list-header">
+        <div class="title" *ngIf="date.is_live">
+          {{date.date | date :'mediumDate'}} 
+        </div>
+        <div class="title" *ngIf="!date.is_live">
+          {{date.date | date :'mediumDate'}} 
+        </div>
+        <div class="divider"></div>
+        <div class="calender_green_bottom">
+          <div class="toggleDiv"  (click)="toggleIcon(item)">
+              <ion-label class="live" (click)="openStart(i)" (ionChange)="activatePopup(i)"   [ngClass]="{'active': date.is_live}"></ion-label>
+          </div>
+          <ion-icon ios="ios-fitness" md="md-fitness" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
+          <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
+          </ion-icon>
+          <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
+        </div>
+      </ion-list-header>
+      <ion-item>
+        <ion-icon class="live-event-icon" ios="ios-fitness" md="md-fitness"></ion-icon>
+        <div class="users-list" *ngIf="date?.equipments.length>0;else no_equipment">  
+          <img src="../../assets/images/demo1.jpg" *ngFor="let item of date?.equipments" />
+        </div>
+        <ng-template #no_equipment>No Equipment Selected</ng-template>
+      </ion-item> 
+      <ion-item>
+        <ion-icon class="live-event-icon" ios="ios-nutrition" md="md-nutrition"></ion-icon>
+        <div class="users-list" *ngIf="date.nutrition_id.length>0;else no_nutrition">
+          <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.nutrition_id" />
+        </div>
+        <ng-template #no_nutrition>No Nutrition Selected</ng-template>
+      </ion-item>
+      <ion-item>
+        <ion-icon class="live-event-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+        <div class="users-list" *ngIf="date?.video;else no_videos">
+          <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.video" />
+        </div>
+        <ng-template #no_videos>No videos Selected</ng-template>
+      </ion-item>  
+      <ion-item class="descriptionItem">
+        <ion-textarea placeholder="Enter Description" (ionChange)="detailsUpdate($event ,i)"
+            value="{{item?.description}}"></ion-textarea>
+      </ion-item>    
+      </ion-list>
+    <!-- <ion-list *ngFor="let date of repetatedDateCopy let i = index">
       <ion-list-header class="ion-padding-horizontal green text-white">
         <div *ngIf="date.is_live">
           {{date.date | date :'medium'}}
@@ -120,7 +165,6 @@
           <ion-icon ios="ios-restaurant" md="md-restaurant" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
           </ion-icon>
           <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
-          <!-- <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon> -->
         </div>
       </ion-list-header>
       <ion-item>
@@ -149,11 +193,16 @@
         <ion-textarea placeholder="Enter Description" (ionChange)="detailsUpdate($event ,i)"
             value="{{item?.description}}"></ion-textarea>
       </ion-item>
-    </ion-list>    
+    </ion-list>     -->
   </div>
 
 </ion-content>
 <ion-footer class="sticky-footer">
+  <div class="terms-footer">
+    <ion-checkbox></ion-checkbox>
+    <ion-label> I have read and agree to the Terms and Conditions. <ion-icon ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon></ion-label>
+    
+  </div>
   <ion-button [disabled]="isLoading" expand="full" (click)="onSubmit()"
     class="green ion-text-uppercase ion-no-margin full-height">Save</ion-button>
 </ion-footer>

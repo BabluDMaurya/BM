@@ -331,6 +331,9 @@
           <ion-datetime display-format="h:mm A" #picker  picker-format="h:mm A"   id="dat" [(ngModel)]="myDate" (ngModelChange)="showdate()" ></ion-datetime>
         </div>
       </ion-list-header>   
+      <div class="live-event-addition">
+        <h5>Select Date to add Event</h5>
+      </div>
       <div class="live-event-box">
         <p class="live-event-head">Live Events</p>
         <div class="live-event-info">
@@ -407,7 +410,6 @@
             <ion-icon class="live-event-icon" ios="ios-videocam" md="md-videoios-videocam"></ion-icon>
             <!-- <ion-label style="overflow: initial;">Videos :</ion-label> -->
             <div class="users-list" *ngIf="date?.video;else no_videos">
-            
               <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.video" />
             </div>
             <!-- <ng-template #no_videos>No videos Selected</ng-template> -->
