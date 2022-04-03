@@ -1,29 +1,31 @@
 .ionic-divider{
     padding-inline-start: 0px !important;
     padding-inline-end: 0px !important;
-}
-.three-tabs ion-segment ion-segment-button {
-    width: auto;
-}
-ion-segment-button{
-    min-height: 38px;
-    color: #000;
-    text-transform: capitalize;
-    letter-spacing: 0;
-    .ionic-icon{
-        font-size: 2rem !important;
+    .three-tabs ion-segment ion-segment-button {
+        width: auto;
     }
-    .live-icon{
-        padding: 5px 10px;
-        background: #555;
-        color: #fff;
-        border-radius: 20px;
-        span{
-            font-size: 10px;
+    ion-segment-button{
+        min-height: 38px;
+        color: #000;
+        text-transform: capitalize;
+        letter-spacing: 0;
+        .ionic-icon{
+            font-size: 2rem !important;
+        }
+        .live-icon{
+            padding: 5px 10px;
+            background: #555;
             color: #fff;
+            border-radius: 20px;
+            span{
+                font-size: 10px;
+                color: #fff;
+            }
         }
     }
 }
+
+
 ion-segment-button.segment-button-checked{
     background: #27a69a;
     --indicator-color-checked: #27a69a;
