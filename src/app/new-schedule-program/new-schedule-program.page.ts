@@ -26,8 +26,10 @@ export class NewScheduleProgramPage implements OnInit {
   handleCalendarView(){
     if(this.calendar.mode == 'month'){
       this.calendar.mode = 'week';
+ 
     } else{
       this.calendar.mode = 'month';
+
     }
   }
 }

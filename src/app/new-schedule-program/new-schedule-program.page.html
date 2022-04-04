@@ -20,8 +20,8 @@
   <calendar  [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" startHour="0"
   endHour="24" step="1" (onTitleChanged)="onViewTitleChanged($event)"  class="calendar-table swiper-container"></calendar>
   <ion-item style="position: relative;" class="ion-no-padding">
-    <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" (click)="handleCalendarView()"></ion-icon>
-    <!-- <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup"></ion-icon> -->
+    <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="calendar.mode == 'week'" (click)="handleCalendarView()"></ion-icon>
+    <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="calendar.mode == 'month'" (click)="handleCalendarView()"></ion-icon>
   </ion-item>
   <ion-col class="ion-no-padding">
     <ion-list class="ion-no-padding">
