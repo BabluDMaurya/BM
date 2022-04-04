@@ -560,6 +560,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "cordova.plugins.stripe"
       ]
+    },
+    {
+      "id": "cordova-plugin-videoeditorsdk.VESDK",
+      "file": "plugins/cordova-plugin-videoeditorsdk/www/videoeditorsdk.js",
+      "pluginId": "cordova-plugin-videoeditorsdk",
+      "clobbers": [
+        "VESDK"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -599,6 +607,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "card.io.cordova.mobilesdk": "2.1.0",
     "com.paypal.cordova.mobilesdk": "3.5.0",
     "com.moust.cordova.videoplayer": "1.0.1",
-    "cordova-plugin-stripe": "1.5.3"
+    "cordova-plugin-stripe": "1.5.3",
+    "cordova-plugin-videoeditorsdk": "1.1.0"
   };
 });

@@ -97,6 +97,15 @@ ext {
     cdvPluginPostBuildExtras = []
 }
 
+
+
+
+
+
+
+
+
+
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "../com-sarriaroman-photoviewer/ionicfcm-photoviewer.gradle"
 apply from: "../cordova-android-support-gradle-release/ionicfcm-cordova-android-support-gradle-release.gradle"

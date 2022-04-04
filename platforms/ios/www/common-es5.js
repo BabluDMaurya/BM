@@ -1485,6 +1485,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function getHomeContent(formData) {
           return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/getHomeContent', formData, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError('getHomeContent', formData)));
         }
+      }, {
+        key: "getUsersFollowingContent",
+        value: function getUsersFollowingContent(formData) {
+          return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/getUsersFollowingContent', formData, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError('getUsersFollowingContent', formData)));
+        }
       }]);
 
       return HomeService;

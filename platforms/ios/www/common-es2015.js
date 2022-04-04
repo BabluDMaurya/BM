@@ -860,6 +860,9 @@ let HomeService = class HomeService {
     getHomeContent(formData) {
         return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/getHomeContent', formData, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError('getHomeContent', formData)));
     }
+    getUsersFollowingContent(formData) {
+        return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/getUsersFollowingContent', formData, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError('getUsersFollowingContent', formData)));
+    }
 };
 HomeService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
