@@ -1,3 +1,13 @@
+.right-div{
+    display: flex;
+    align-items: center;
+    .min-width-none {
+        min-width: 0px !important;
+      }
+      .pl-8{
+        padding-left: 8px !important;
+      }
+  }
 .ionic-divider{
     padding-inline-start: 0px !important;
     padding-inline-end: 0px !important;
@@ -94,4 +104,103 @@ ion-segment-button.segment-button-checked{
         margin-right: 12px;
         margin-left: 12px;
     }
+}
+::ng-deep {
+    table{
+        border: 0 !important;
+    }
+    tr{
+        display: flex !important;
+        justify-content: space-around;
+    }
+    th{
+        flex: 1;
+    }
+    th, td{
+        border: 0 !important;
+    }
+    td{
+        display: inline-block;
+        margin: 0.2rem !important;
+        padding: 0 !important;
+        width: 37px;
+        height: 37px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    td.monthview-secondary-with-event.text-muted {
+        border-radius: 50% !important;
+    }
+    td.monthview-selected {
+        border-radius: 50% !important;
+    }
+    span.event-detail {
+        overflow: hidden !important;
+        max-width: 50vw;
+    }
+    span.monthview-eventdetail-timecolumn {
+        min-width: 100px !important;
+        width: 100px !important;
+    }
+    .item-native {
+        padding-inline-start: 0 !important;
+    }
+    .event-detail-container{
+        margin-bottom: 10px;
+    }
+    .event-detail-container ion-item{
+        --padding-end: 40px !important;
+        display: none;
+    }
+    .monthview-container {
+        height: auto !important;
+    }
+    .calendar-hour-column{
+        display: none !important;
+      }
+      .weekview-container{
+          height: auto !important;
+      }
+        .weekview-allday-table {
+            display: none !important;
+        }
+        ion-slides.slides-container.md.slides-md.swiper-container.hydrated.swiper-container-initialized.swiper-container-horizontal {
+          background: #27A69A !important;
+        }
+        td, th {
+          border: 0!important;
+        }
+        .table-bordered {
+          border: 0!important;
+      }
+      .slides-container {
+        color: #fff !important;
+        background: #27A69A !important;
+      }
+      .list-ios{
+        margin-bottom: 0 !important;
+      }
+      .table > thead > tr > th.weekview-header {
+        font-size: 13px !important;
+        font-weight: 500;
+        padding-top: 15px;
+        padding-bottom: 15px  ;
+      }
+      ion-title.ios.title-ios.title-default.hydrated {
+        padding-inline: 0px;
+      }
+      th.weekview-header.text-center.weekview-selected {
+        background: #fff;
+        color: #27a69a;
+      }
+}
+.toggle-cal{
+    color: #121212;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }

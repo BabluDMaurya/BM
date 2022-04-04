@@ -12,6 +12,7 @@ export class NewScheduleProgramPage implements OnInit {
     mode: 'month',
     currentDate: new Date(),
   };
+  viewTitle;
   constructor() { 
     this.scheduleProgram = "program";
   }
@@ -19,5 +20,16 @@ export class NewScheduleProgramPage implements OnInit {
   ngOnInit() {
     console.log(this.calendar.mode);
   }
+  onViewTitleChanged(title) {
+    this.viewTitle = title;
+  }
+  handleCalendarView(){
+    if(this.calendar.mode == 'month'){
+      this.calendar.mode = 'week';
+ 
+    } else{
+      this.calendar.mode = 'month';
 
+    }
+  }
 }
