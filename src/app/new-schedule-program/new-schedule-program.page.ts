@@ -17,6 +17,7 @@ export class NewScheduleProgramPage implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.calendar.mode);
   }
 
 }
