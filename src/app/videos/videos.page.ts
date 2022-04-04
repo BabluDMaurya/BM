@@ -8,6 +8,7 @@ import { NavController } from '@ionic/angular';
 import { PeopleViewService } from './../services/people-view.service';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { VideoPlayer } from '@ionic-native/video-player/ngx';
 const baseUrl = Config.ApiUrl;
 
 @Component({
@@ -48,6 +49,7 @@ export class VideosPage implements OnInit {
     private streamingMedia : StreamingMedia,
     private navCtrl: NavController,
     public socialSharing: SocialSharing,
+    private videoPlayer: VideoPlayer,
     ) {          
       this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
         this.postID = params.get('id');
