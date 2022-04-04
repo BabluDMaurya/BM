@@ -152,3 +152,17 @@
     }
    
 }
+.counter-box{
+    align-items: center;
+    .timer-block{
+        align-items: center;
+        background: #27a69a;
+        ion-text{
+            color: #fff;
+            p{
+                color: #fff;
+                font-size: 14px;
+            }
+        }
+    }
+}

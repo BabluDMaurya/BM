@@ -99,11 +99,28 @@
                     <h6 *ngIf="adData?.id && adData?.video_approve_status== null"> Your request for ad sponser is yet to verify. </h6>
                     <h6 *ngIf="adData?.id && adData?.video_approve_status== 0"> Your Video is Not Approved </h6>
                   </ion-col> -->
-                  <ion-col size="12" class="ion-no-padding mt-15 green-text">
+                  <ion-col size="12" style="position: static;" class="ion-no-padding mt-15 green-text">
                     <!-- <ion-text><p class="program-date">{{programDateTime|date:'medium'}}</p></ion-text> -->
                     <ion-text><p class="program-date">March 14, 2022, 5:35 PM</p></ion-text>
                   </ion-col>
                 </ion-row>
+                <ion-row class="counter-box "> 
+                  <ion-col size="3" class="ion-padding timer-block">
+                      <ion-text><p class="count_time">2</p> Days</ion-text>
+                  </ion-col>
+                  <ion-col size="3" class="ion-padding timer-block">
+                    <ion-text><p class="count_time">11 </p> Hours</ion-text>
+                  </ion-col>
+                  <ion-col size="3" class="ion-padding timer-block">
+                    <ion-text><p class="count_time">24</p> Minutes</ion-text>
+                  </ion-col>
+                  <ion-col size="3" class="ion-padding timer-block">
+                    <ion-text><p class="count_time">44</p> Seconds</ion-text>
+                  </ion-col>
+                  <!-- <ion-col size="12" class="ion-no-padding" *ngIf="programDetail?.ended">
+                    <ion-text>This Program has been Ended </ion-text>
+                  </ion-col> -->
+                </ion-row> 
               </ion-list>
               <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'videos'">
                 <div class="program-card">
