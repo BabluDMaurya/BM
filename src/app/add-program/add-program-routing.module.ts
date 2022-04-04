@@ -11,7 +11,8 @@ const routes: Routes = [
   {
     path: 'program-details/:programId',
     loadChildren: () => import('./program-details/program-details.module').then( m => m.ProgramDetailsPageModule)
-  }
+  },
+
 
 ];
 
