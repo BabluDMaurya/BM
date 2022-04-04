@@ -90,6 +90,7 @@ import { PaymentComponent } from './modalContent/payment/payment.component';
 import { EquipmentPaymentComponent } from 'src/app/modalContent/equipment-payment/equipment-payment.component';
 import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/view-video-detail.component';
 import {Stripe} from '@ionic-native/stripe/ngx';
+import { NgCalendarModule  } from 'ionic2-calendar';
 
 @NgModule({
   declarations: [AppComponent, UserDetailsComponent, FollowersComponent, FollowingComponent, SearchFoodComponent,
@@ -122,6 +123,7 @@ import {Stripe} from '@ionic-native/stripe/ngx';
   imports: [ 
     MbscModule,  
     BrowserModule,
+    NgCalendarModule,
     IonicModule.forRoot({
 
     }),

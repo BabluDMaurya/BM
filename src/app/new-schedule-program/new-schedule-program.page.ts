@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-// import { CalendarComponent } from 'ionic2-calendar/calendar';
+import { CalendarComponent } from 'ionic2-calendar/calendar';
 
 @Component({
   selector: 'app-new-schedule-program',
@@ -8,6 +8,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class NewScheduleProgramPage implements OnInit {
   scheduleProgram: string = "program";
+  calendar = {
+    mode: 'month',
+    currentDate: new Date(),
+  };
   constructor() { 
     this.scheduleProgram = "program";
   }
