@@ -91,6 +91,7 @@ import { EquipmentPaymentComponent } from 'src/app/modalContent/equipment-paymen
 import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/view-video-detail.component';
 import {Stripe} from '@ionic-native/stripe/ngx';
 import { NgCalendarModule  } from 'ionic2-calendar';
+import { VideoPlayer } from '@ionic-native/video-player/ngx';
 
 @NgModule({
   declarations: [AppComponent, UserDetailsComponent, FollowersComponent, FollowingComponent, SearchFoodComponent,
@@ -175,6 +176,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
     BarcodeScanner,
     Deeplinks,
     Stripe,
+    VideoPlayer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
     // {
