@@ -204,3 +204,8 @@ ion-segment-button.segment-button-checked{
     left: 50%;
     transform: translateX(-50%);
 }
+.segment-button-checked{
+    .live-icon{
+        background-color: #27a69a !important;
+    }
+}
