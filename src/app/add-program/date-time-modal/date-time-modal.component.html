@@ -110,15 +110,16 @@
     <ion-list *ngFor="let date of repetatedDateCopy let i = index" >
       <ion-list-header class="ion-padding-horizontal green text-white live-ion-list-header">
         <div class="title" *ngIf="date.is_live">
-          {{date.date | date :'mediumDate'}} 
+          {{date.date | date :'medium'}} 
         </div>
         <div class="title" *ngIf="!date.is_live">
           {{date.date | date :'mediumDate'}} 
         </div>
         <div class="divider"></div>
         <div class="calender_green_bottom">
-          <div class="toggleDiv"  (click)="toggleIcon(item)">
-              <ion-label class="live" (click)="openStart(i)" (ionChange)="activatePopup(i)"   [ngClass]="{'active': date.is_live}"></ion-label>
+          <div class="">
+            <div class="title" *ngIf="date.is_live">Live</div>
+            <div class="title" *ngIf="!date.is_live">Non-Live</div>
           </div>
           <ion-icon ios="ios-fitness" md="md-fitness" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
           <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">

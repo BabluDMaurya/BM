@@ -215,8 +215,8 @@ export class AddProgramPage implements OnInit {
       chatStatus: new FormControl('', Validators.compose([
         Validators.required,
       ])),
-      feedStatus: new FormControl('', Validators.compose([
-      ])),
+      // feedStatus: new FormControl('', Validators.compose([
+      // ])),
       userList: new FormControl(''),
     });
   }
@@ -666,6 +666,29 @@ export class AddProgramPage implements OnInit {
     this.newEvent = event;
     console.log(event);
     this.dateObj = event.selectedTime;
+    this.noEvent = true;
+    this.selectDate.forEach(el => {
+      console.log(el.getDate());
+      console.log(this.dateObj.getDate());
+      if(el.getDate() == this.dateObj.getDate() && el.getMonth() == this.dateObj.getMonth()){
+      console.log('same date');
+       this.noEvent = false;
+        return false;
+      }
+    });
+    if ((this.dateObj.getDate() < (new Date().getDate()) && this.dateObj.getMonth() <= (new Date().getMonth())) ){
+            this.commonService.presentToast('Sorry, this is past time');
+            this.noEvent = false;
+            return false;
+          }
+    console.log(this.dateObj);
+    if(this.noEvent){
+      this.selectDate.push(this.dateObj);
+      this.repetatedDateCopy.push({'date':this.dateObj ,'equipments':[], 'nutrition_id':[] , 'video': '','description':'','is_live':false});
+      this.repetatedDate.push(this.dateObj);
+      this.addEventData.push({'event':this.newEvent});
+      console.log(this.repetatedDateCopy);
+    }
   }
 
   selectTimeSlot(){
@@ -1225,7 +1248,7 @@ export class AddProgramPage implements OnInit {
         this.ProgramInserted = true;
         this.router.navigate(["tabs/program"])
       }
-      this.router.navigate(["tabs/program"])
+      // this.router.navigate(["tabs/program"])
     });
     return await modal.present();
   }
@@ -1242,7 +1265,7 @@ export class AddProgramPage implements OnInit {
   }
   pickImage(sourceType) {
     const options: CameraOptions = {
-      quality: 60,
+      quality: 100,
       sourceType: sourceType,
       destinationType: this.camera.DestinationType.DATA_URL,
       mediaType: this.camera.MediaType.ALLMEDIA,
@@ -1270,7 +1293,7 @@ export class AddProgramPage implements OnInit {
   // }
   pickImageFromGallery(sourceType) {
     const options: CameraOptions = {
-      quality: 60,
+      quality: 100,
       sourceType: sourceType,
       destinationType: this.camera.DestinationType.DATA_URL,
       mediaType: this.camera.MediaType.PICTURE,

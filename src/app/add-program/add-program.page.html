@@ -199,9 +199,18 @@
                   </ion-text>
                 </ion-item>
               </ion-col>
+              <ion-item class="mb-10" *ngIf="modalData?.length>0">
+                <ion-list lines="none" class="users-list">
+                  <ion-item  *ngFor="let user of modalData" >
+                    <img src="{{profileUrl}}{{user.bios.profile_pic}}"  *ngIf="user.bios.profile_pic" (click)="userList()"/>
+                    <img src="../../assets/images/user.png"  *ngIf="!user.bios.profile_pic" (click)="userList()"/>
+                     <!-- <ion-label class="view-all" (click)="userList()">+2</ion-label> -->
+                  </ion-item>
+                </ion-list>
+              </ion-item>
               </ion-row>
             </ion-item>
-            <ion-item class="mb-10" *ngIf="this.programForm.controls.participantsType.value == 2">
+            <!-- <ion-item class="mb-10" *ngIf="this.programForm.controls.participantsType.value == 2">
               <ion-row>
                 <ion-list-header class="grey-header">
                   <ion-label>Share Program On Feed</ion-label>
@@ -223,7 +232,7 @@
               <ion-col size="6" class="ion-no-padding">
               </ion-col>
               </ion-row>  
-            </ion-item>
+            </ion-item> -->
             <ion-item class="mb-10">
               <ion-row>
                 <ion-list-header class="grey-header">
@@ -256,20 +265,6 @@
                 </ion-item>
               </ion-col>
               </ion-row>  
-            </ion-item>
-            <!-- <ion-item>
-              <ion-label>Create Chat room for program</ion-label>
-              <ion-toggle [disabled]='false' formControlName="chatStatus"  [(ngModel)]="toggleValue"  slot="end"></ion-toggle>
-            </ion-item> -->
-            
-            <ion-item class="mb-10" *ngIf="modalData?.length>0">
-              <ion-list lines="none" class="users-list">
-                <ion-item  *ngFor="let user of modalData" >
-                  <img src="{{profileUrl}}{{user.bios.profile_pic}}"  *ngIf="user.bios.profile_pic" (click)="userList()"/>
-                  <img src="../../assets/images/user.png"  *ngIf="!user.bios.profile_pic" (click)="userList()"/>
-                   <!-- <ion-label class="view-all" (click)="userList()">+2</ion-label> -->
-                </ion-item>
-              </ion-list>
             </ion-item>
           </ion-list>
         </form>
@@ -322,9 +317,9 @@
       </ion-col>
 
       <!-- <ion-list-header  *ngIf="repetatedDateCopy.length <= 0" class=" green green-alram-icon text-white"> -->
-        <ion-list-header class="green-alram-icon">
+        <!-- <ion-list-header class="green-alram-icon">
           <ion-icon ios="ios-add" md="md-add" (click)="addLiveProgram()" style="width: 1.5rem; height: 1.5rem;"></ion-icon>
-        </ion-list-header>
+        </ion-list-header> -->
 
       <ion-list-header class=" dateTimePopUp green green-alram-icon text-white" style="display: none;">
         <div class='showDateTime'>
@@ -334,7 +329,7 @@
       <div class="live-event-addition">
         <h5>Select Date to add Event</h5>
       </div>
-      <div class="live-event-box">
+      <!-- <div class="live-event-box">
         <p class="live-event-head">Live Events</p>
         <div class="live-event-info">
           <div class="live-event-details">
@@ -343,7 +338,7 @@
             <p>Private</p>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="program__card" *ngFor="let date of repetatedDateCopy let i = index">
         <ion-list class="width-full"  >
           <!-- <div *ngIf="date.date == dateObj">  -->

@@ -263,11 +263,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! @ionic-native/social-sharing/ngx */
     "./node_modules/@ionic-native/social-sharing/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_video_player_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @ionic-native/video-player/ngx */
+    "./node_modules/@ionic-native/video-player/ngx/index.js");
 
     var baseUrl = _config_config__WEBPACK_IMPORTED_MODULE_5__["Config"].ApiUrl;
 
     var VideosPage = /*#__PURE__*/function () {
-      function VideosPage(commonService, actRoute, postService, peopleView, streamingMedia, navCtrl, socialSharing) {
+      function VideosPage(commonService, actRoute, postService, peopleView, streamingMedia, navCtrl, socialSharing, videoPlayer) {
         var _this = this;
 
         _classCallCheck(this, VideosPage);
@@ -279,6 +285,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.streamingMedia = streamingMedia;
         this.navCtrl = navCtrl;
         this.socialSharing = socialSharing;
+        this.videoPlayer = videoPlayer;
         this.info = false;
         this.disableComment = true;
         this.bookmark = false;
@@ -341,22 +348,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             console.log(_this2.postData);
           });
-        }
+        } // playVideo(){
+        //   let options: StreamingVideoOptions = {
+        //     successCallback: () => { console.log('Video played') },
+        //     errorCallback: (e) => { console.log('Error streaming') },
+        //     orientation: 'landscape',//protrait or landscape
+        //     shouldAutoClose: true,
+        //     controls: true
+        //   };
+        //   this.streamingMedia.playVideo(this.videoDataPath, options);
+        // }
+
       }, {
         key: "playVideo",
         value: function playVideo() {
-          var options = {
-            successCallback: function successCallback() {
-              console.log('Video played');
-            },
-            errorCallback: function errorCallback(e) {
-              console.log('Error streaming');
-            },
-            orientation: 'landscape',
-            shouldAutoClose: true,
-            controls: true
+          var videoOpts = {
+            volume: 1.0
           };
-          this.streamingMedia.playVideo(this.videoDataPath, options);
+          this.videoPlayer.play(this.videoDataPath).then(function () {
+            console.log('video completed');
+          })["catch"](function (err) {
+            console.log(err);
+          });
+        }
+      }, {
+        key: "stopPlayingVideo",
+        value: function stopPlayingVideo() {
+          this.videoPlayer.close();
         }
       }, {
         key: "liked",
@@ -437,6 +455,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["NavController"]
       }, {
         type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_10__["SocialSharing"]
+      }, {
+        type: _ionic_native_video_player_ngx__WEBPACK_IMPORTED_MODULE_11__["VideoPlayer"]
       }];
     };
 
@@ -453,7 +473,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       "./src/app/app.component.scss"))["default"], tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./videos.page.scss */
       "./src/app/videos/videos.page.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _services_post_service__WEBPACK_IMPORTED_MODULE_6__["PostService"], _services_people_view_service__WEBPACK_IMPORTED_MODULE_8__["PeopleViewService"], _ionic_native_streaming_media_ngx__WEBPACK_IMPORTED_MODULE_9__["StreamingMedia"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["NavController"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_10__["SocialSharing"]])], VideosPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _services_post_service__WEBPACK_IMPORTED_MODULE_6__["PostService"], _services_people_view_service__WEBPACK_IMPORTED_MODULE_8__["PeopleViewService"], _ionic_native_streaming_media_ngx__WEBPACK_IMPORTED_MODULE_9__["StreamingMedia"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["NavController"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_10__["SocialSharing"], _ionic_native_video_player_ngx__WEBPACK_IMPORTED_MODULE_11__["VideoPlayer"]])], VideosPage);
     /***/
   }
 }]);

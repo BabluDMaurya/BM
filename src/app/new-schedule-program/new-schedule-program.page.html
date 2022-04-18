@@ -1,7 +1,7 @@
 <ion-header>
   <ion-list class="top-heading three-block">
     <ion-item slot="start">
-      <ion-buttons class="ion-no-margin" (click)="goBack()">
+      <ion-buttons class="ion-no-margin" [routerLink]="['/tabs/consultant-profile']">
         <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
       </ion-buttons>
     </ion-item>
@@ -17,9 +17,9 @@
 </ion-header>
 
 <ion-content>
-  <calendar  [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" startHour="0"
-  endHour="24" step="1" (onTitleChanged)="onViewTitleChanged($event)"  class="calendar-table swiper-container"></calendar>
-  <ion-item style="position: relative;" class="ion-no-padding">
+  <calendar *ngIf="scheduleProgram == 'program'" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" startHour="0"
+  endHour="24" step="1" (onTitleChanged)="onViewTitleChanged($event)"  (onTimeSelected)="onTimeSelected($event)" class="calendar-table swiper-container"></calendar>
+  <ion-item *ngIf="scheduleProgram == 'program'" style="position: relative;" class="ion-no-padding">
     <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="calendar.mode == 'week'" (click)="handleCalendarView()"></ion-icon>
     <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="calendar.mode == 'month'" (click)="handleCalendarView()"></ion-icon>
   </ion-item>
@@ -52,17 +52,18 @@
         <ion-item-sliding>
           <div [ngSwitch]="scheduleProgram">
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'program'">
-              <div class="program-card">
-                <ion-avatar>
-                  <img src="../../assets/images/bgimage.png" alt="">
+              <div class="program-card" *ngFor="let program of allScheduleList; let i = index;">
+                <ion-avatar slot="start" [routerLink]="(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]">
+                  <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
+                  <img src="../../../assets/images/loading.jpg" *ngIf="!program?.image_path">
                 </ion-avatar>
                 <div class="program-info">
-                  <h6>The BootCamp!</h6>
-                  <span>By: aliFitFreak</span>
-                  <p>Mar 13, 2022, 5:35 PM</p>
+                  <h6>{{program?.title}}</h6>
+                  <span>By: {{program?.program_user?.user_name}}</span>
+                  <p>{{program?.converted |date:'medium'}}</p>
                 </div>
-                <span class="program-type">Group</span>
-                <ion-icon ios="ios-more" md="md-more"></ion-icon>
+                <span class="program-type">{{program?.type_id}}</span>
+                <ion-icon ios="ios-more" md="md-more" *ngIf="(program?.user_id == userData?.id)" (click)="hostingDropdown(program?.id)"></ion-icon>
               </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'invitation'">
