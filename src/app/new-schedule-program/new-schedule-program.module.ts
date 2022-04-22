@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { NewScheduleProgramPageRoutingModule } from './new-schedule-program-routing.module';
-import { HostingDropdownComponent } from '../program/hosting-dropdown/hosting-dropdown.component';
+// import { HostingDropdownComponent } from '../program/hosting-dropdown/hosting-dropdown.component';
 
 import { NewScheduleProgramPage } from './new-schedule-program.page';
 import { NgCalendarModule  } from 'ionic2-calendar';
@@ -18,7 +18,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
     NgCalendarModule,
     NewScheduleProgramPageRoutingModule
   ],
-  declarations: [NewScheduleProgramPage,HostingDropdownComponent],
-  entryComponents: [HostingDropdownComponent]
+  declarations: [NewScheduleProgramPage],
+  entryComponents: []
 })
 export class NewScheduleProgramPageModule {}

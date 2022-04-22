@@ -13,9 +13,9 @@
           <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
           <ion-badge slot="end" *ngIf="sponcerCount > 0">{{ sponcerCount }}</ion-badge>          
         </a> -->
-        <a [routerLink]="['/video-editor']" class="set-icon">
+        <!-- <a [routerLink]="['/video-editor']" class="set-icon">
           <ion-icon ios="ios-search" md="md-search"></ion-icon>
-        </a>
+        </a> -->
         <!-- <a class="set-icon" [routerLink]="['/invitated-programs']">
           <ion-icon name="calendar"></ion-icon>
         </a> -->
@@ -182,7 +182,7 @@
       </ion-col>
     </ion-row> -->
     <!-- <ion-row class="user_details" [routerLink]="(upcomingList[0]?.user_id == loginUserData?.id) ? ['/new-program-inner',upcomingList[0]?.id] : ['/program-view',upcomingList[0]?.id]">  -->
-      <ion-row class="user_details" [routerLink]="['/new-program-inner']" *ngIf="!noData"> 
+      <ion-row class="user_details" [routerLink]="(upcomingList[0]?.user_id == loginUserData?.id) ? ['/new-program-inner',upcomingList[0]?.id] : ['/program-view',upcomingList[0]?.id]" *ngIf="!noData"> 
       <h3 class="list-person">{{upcomingList[0]?.title}}</h3>
       <span class="list-name d-block">{{upcomingList[0]?.type_id}}</span>
       <!-- <span class="list-name d-block">By:{{upcoming?.program_user?.user_name}} {{upcoming?.convertedTime | date:'medium'}}</span> -->
@@ -190,6 +190,11 @@
           <ion-text><p class="count_time">{{dd | async}}</p> Days</ion-text>
       </ion-col> -->
       <div class="user_time" >
+        <ion-text *ngIf="!programDetail?.ended &&  upcomingList[0]?.dd > 0 ">
+          <p>{{ upcomingList[0]?.dd |number }}</p>
+          <span>Day</span>
+        </ion-text>
+        <ion-text *ngIf="!programDetail?.ended &&  upcomingList[0]?.dd > 0 ">:</ion-text>
         <ion-text *ngIf="!programDetail?.ended">
           <p>{{ upcomingList[0]?.hh |number }}</p>
           <span>Hours</span>

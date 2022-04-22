@@ -35,6 +35,7 @@ export class ViewVideoDetailComponent implements OnInit {
   bookmark:any=false;
   noData : boolean = false;
   noImgData : boolean = false;
+  videoIds: any;
   constructor(public commonService: CommonService,
     public navParams: NavParams,
     private postService : PostService,
@@ -45,9 +46,10 @@ export class ViewVideoDetailComponent implements OnInit {
 
   ngOnInit() {
     this.postID = this.navParams.data.details;
+    this.videoIds = this.navParams.data.videoIds;
     this.noImgData = true;
-      console.log(this.postID);
-      this.postService.getPostById({'postId':this.postID}).subscribe((data)=>{
+      console.log(this.navParams.data);
+      this.postService.getProgVideoPostById({'postId':this.postID,'videoId': this.videoIds}).subscribe((data)=>{
       this.postData = data.postData;
       console.log(data);
       this.postUserId = data.postData.user_id;

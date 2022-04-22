@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { NewProgramInnerPageRoutingModule } from './new-program-inner-routing.module';
 
 import { NewProgramInnerPage } from './new-program-inner.page';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NewProgramInnerPageRoutingModule
+    NewProgramInnerPageRoutingModule,
+    LazyLoadImageModule
   ],
   declarations: [NewProgramInnerPage]
 })

@@ -215,4 +215,16 @@ export class ProgramService {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/createStripeConnectAccount', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('createStripeConnectAccount', data)));
   }
 
+  getAllNutritionPrograms(formData){
+    return this.http.post<any>(Config.ApiUrl+'api/auth/getAllNutritionPrograms', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getAllNutritionPrograms', formData)));
+  }
+
+  getAllVideoPrograms(formData){
+    return this.http.post<any>(Config.ApiUrl+'api/auth/getAllVideoPrograms', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getAllVideoPrograms', formData)));
+  }
+
+  getAllLivePrograms(formData){
+    return this.http.post<any>(Config.ApiUrl+'api/auth/getAllLivePrograms', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getAllLivePrograms', formData)));
+  }
+
 }

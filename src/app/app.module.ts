@@ -91,6 +91,8 @@ import { EquipmentPaymentComponent } from 'src/app/modalContent/equipment-paymen
 import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/view-video-detail.component';
 import {Stripe} from '@ionic-native/stripe/ngx';
 import { NgCalendarModule  } from 'ionic2-calendar';
+import { HostingDropdownComponent } from '../app/program/hosting-dropdown/hosting-dropdown.component';
+
 
 @NgModule({
   declarations: [AppComponent, UserDetailsComponent, FollowersComponent, FollowingComponent, SearchFoodComponent,
@@ -104,7 +106,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
      DropdownComponent, PlaylistDropdownComponent,
     RequestsModalComponent, ParticipantsComponent, AdDetailsComponent,
     SponserCommentComponent,  MusicDropdownComponent,AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent,
-    ChatRoomsComponent,CreateGroupChatComponent,ThankyouComponent,PaymentComponent,EquipmentPaymentComponent
+    ChatRoomsComponent,CreateGroupChatComponent,ThankyouComponent,PaymentComponent,EquipmentPaymentComponent,HostingDropdownComponent
   ],
 
   entryComponents: [UserDetailsComponent, FollowersComponent, FollowingComponent,
@@ -114,7 +116,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
     MusicDropdownComponent, PlaylistDropdownComponent, MusicVolumeModalComponent, MusicVolComponent,
     PopoverComponent, DateTimeModalComponent, EquipmentsComponent, AddEquipmentsComponent
     , VideosThumbListComponent, ScheduleModalComponent, RequestedDropdownComponent,ThankyouComponent,
-    PaymentComponent,EquipmentPaymentComponent,ViewVideoDetailComponent,
+    PaymentComponent,EquipmentPaymentComponent,ViewVideoDetailComponent,HostingDropdownComponent,
     // GroupusersModalComponent,
     
     ParticipantsComponent, DropdownComponent, RequestsModalComponent,

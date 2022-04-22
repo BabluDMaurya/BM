@@ -47,6 +47,9 @@ export class PostService {
     return this.http.post<any>(Config.ApiUrl+'api/auth/getPostById', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getPostById', formData)));
   }
 
+  getProgVideoPostById(formData){
+    return this.http.post<any>(Config.ApiUrl+'api/auth/getProgVideoPostById', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getProgVideoPostById', formData)));
+  }
   removePost(formData){
     return this.http.post<any>(Config.ApiUrl+'api/auth/removePost', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('removePost', formData)));
   }

@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ProgramPageRoutingModule } from './program-routing.module';
 
 import { ProgramPage } from './program.page';
-import { HostingDropdownComponent } from '../hosting-dropdown/hosting-dropdown.component';
+// import { HostingDropdownComponent } from '../hosting-dropdown/hosting-dropdown.component';
 
 import { ComponentModule } from '../../profile/components.modules';
 import { InviteRequestComponent } from './../invite-request/invite-request.component';
@@ -28,8 +28,8 @@ import { NgCalendarModule  } from 'ionic2-calendar';
     // ProgramPageModule.forChild(ProgramPage),
     NgCalendarModule
   ],
-  declarations: [ProgramPage ,HostingDropdownComponent , 
+  declarations: [ProgramPage  , 
     InviteRequestComponent],
-  entryComponents: [HostingDropdownComponent,InviteRequestComponent]
+  entryComponents: [InviteRequestComponent]
 })
 export class ProgramPageModule {}

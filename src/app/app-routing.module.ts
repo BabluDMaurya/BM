@@ -292,7 +292,7 @@ const routes: Routes = [
     loadChildren: () => import('./new-schedule-program/new-schedule-program.module').then( m => m.NewScheduleProgramPageModule)
   },
   {
-    path: 'new-program-inner',
+    path: 'new-program-inner/:programId',
     loadChildren: () => import('./program/new-program-inner/new-program-inner.module').then( m => m.NewProgramInnerPageModule)
   },
 

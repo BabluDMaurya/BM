@@ -61,9 +61,10 @@ export class VideosPage implements OnInit {
       this.noImgData = true;
       console.log(this.postID);
       this.postService.getPostById({'postId':this.postID}).subscribe((data)=>{
+        console.log(data);
       this.postData = data.postData;
       this.postUserName = data.postData.post_user.user_name;
-      console.log(data);
+      
       this.postUserId = data.postData.post_user.id;
 
       this.disableComment = data.postData.disable_comment

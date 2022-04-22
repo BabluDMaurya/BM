@@ -53,7 +53,7 @@
           <div [ngSwitch]="scheduleProgram">
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'program'">
               <div class="program-card" *ngFor="let program of allScheduleList; let i = index;">
-                <ion-avatar slot="start" [routerLink]="(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]">
+                <ion-avatar slot="start" [routerLink]="(program?.user_id == userData?.id) ? ['/new-program-inner',program.id] : ['/program-view',program.id]">
                   <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
                   <img src="../../../assets/images/loading.jpg" *ngIf="!program?.image_path">
                 </ion-avatar>
@@ -65,73 +65,94 @@
                 <span class="program-type">{{program?.type_id}}</span>
                 <ion-icon ios="ios-more" md="md-more" *ngIf="(program?.user_id == userData?.id)" (click)="hostingDropdown(program?.id)"></ion-icon>
               </div>
+              <div *ngIf="dataLength == '0' " class="program-card">
+                <p>No Data Found</p>
+              </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'invitation'">
-                <ion-toolbar class="searchbar">
+                <ion-toolbar class="searchbar" *ngIf="!noReqProgramList">
                   <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
                 </ion-toolbar>
-              <div class="program-card">
+              <div class="program-card" *ngFor="let item of reqProgramList; let l = index;" >
                 <ion-avatar>
-                  <img src="../../assets/images/bgimage.png" alt="">
+                  <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
+                  <img src="../../../assets/images/loading.jpg" *ngIf="!item?.image_path">
                 </ion-avatar>
                 <div class="program-info">
-                  <h6>My Fav Meal</h6>
-                  <span>By: JimmyStone</span>
-                  <p>Mar 13, 2022, 5:35 PM</p>
+                  <h6>{{item.title}}</h6>
+                  <span>By: {{item?.program_user?.user_name}}</span>
+                  <p>{{item?.converted |date:'medium'}}</p>
                 </div>
                 <ion-icon class="ionic-icon" ios="ios-mail" md="md-mail"></ion-icon>
                 <!-- M A I L  O P E N -->
                 <!-- <ion-icon class="ionic-icon" ios="ios-mail-open" md="md-mail-open"></ion-icon> -->
-                <ion-icon ios="ios-more" md="md-more"></ion-icon>
+                <ion-icon ios="ios-more" md="md-more" (click)="requestDropdown(item.id)"></ion-icon>
+              </div>
+              <div *ngIf="noReqProgramList" class="no-data">
+                <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                <p>No Requested Program</p>
               </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'nutrition'">
-                <ion-toolbar class="searchbar">
+                <ion-toolbar class="searchbar" *ngIf="!noNutriProg">
                   <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
                 </ion-toolbar>
-              <div class="program-card">
+              <div class="program-card" *ngFor="let item of nutritionList">
                 <ion-avatar>
-                  <img src="../../assets/images/bgimage.png" alt="">
+                  <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
+                  <img src="../../../assets/images/loading.jpg" *ngIf="!item?.image_path">
                 </ion-avatar>
                 <div class="program-info">
-                  <h6>Beet Root Soup</h6>
-                  <span>By: aliFitFreak</span>
-                  <p>Mar 13, 2022, 5:35 PM</p>
+                  <h6>{{item.title}}</h6>
+                  <span>By: {{item?.program_user?.user_name}}</span>
+                  <p>{{item?.converted |date:'medium'}}</p>
                 </div>
-                <ion-icon ios="ios-more" md="md-more"></ion-icon>
+                <!-- <ion-icon ios="ios-more" md="md-more"></ion-icon> -->
+              </div>
+              <div *ngIf="noNutriProg" class="no-data">
+                <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                <p>No Program Available</p>
               </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'videos'">
-              <ion-toolbar class="searchbar">
+              <ion-toolbar class="searchbar" *ngIf="!noVideoProg">
                 <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
               </ion-toolbar>
-              <div class="program-card">
+              <div class="program-card" *ngFor="let item of videoProgList">
                 <ion-avatar>
-                  <img src="../../assets/images/bgimage.png" alt="">
+                  <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
+                  <img src="../../../assets/images/loading.jpg" *ngIf="!item?.image_path">
                 </ion-avatar>
                 <div class="program-info">
-                  <h6>Leg Day!</h6>
-                  <span>By: JimmyStone</span>
-                  <p>Mar 13, 2022, 5:35 PM</p>
+                  <h6>{{item.title}}</h6>
+                  <span>By: {{item?.program_user?.user_name}}</span>
+                  <p>{{item?.converted |date:'medium'}}</p>
                 </div>
-                <ion-icon ios="ios-more" md="md-more"></ion-icon>
+              </div>
+              <div *ngIf="noVideoProg" class="no-data">
+                <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                <p>No Program Available</p>
               </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'live'">
-              <ion-toolbar class="searchbar">
+              <ion-toolbar class="searchbar" *ngIf="!noLiveProg">
                 <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
               </ion-toolbar>
-              <div class="program-card">
+              <div class="program-card" *ngFor="let item of liveProgList">
                 <ion-avatar>
-                  <img src="../../assets/images/bgimage.png" alt="">
+                  <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
+                  <img src="../../../assets/images/loading.jpg" *ngIf="!item?.image_path">
                 </ion-avatar>
                 <div class="program-info">
-                  <h6>BootCamp!</h6>
-                  <span>By: aliFitFreak</span>
-                  <p>Mar 13, 2022, 5:35 PM</p>
+                  <h6>{{item.title}}</h6>
+                  <span>By: {{item?.program_user?.user_name}}</span>
+                  <p>{{item?.converted |date:'medium'}}</p>
                 </div>
-                <span class="program-type">Group</span>
-                <ion-icon ios="ios-more" md="md-more"></ion-icon>
+                <span class="program-type">{{item?.type_id}}</span>
+              </div>
+              <div *ngIf="noLiveProg" class="no-data">
+                <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                <p>No Program Available</p>
               </div>
               <div class="program-live-box">
                 <!-- T I M E R   B L O C K -->
