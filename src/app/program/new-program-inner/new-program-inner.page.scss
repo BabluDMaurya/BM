@@ -92,7 +92,7 @@
     }
     .programs-flex{
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
         .program-flex-child{
             width: 30%;
             height: 100px;
@@ -103,9 +103,13 @@
             border-radius: 10px;
             background: #27a69a;
             color: #fff;
+            margin-left: 5%;
             .ionic-icon{
                 font-size: 1.5rem !important;
             }
+        }
+        .program-flex-child:first-child{
+            margin-left: 0;
         }
     }
 }
