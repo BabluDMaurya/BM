@@ -3,7 +3,7 @@ import { CommonService } from '../services/common.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { UserModalComponent } from './user-modal/user-modal.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { FormControl, FormBuilder, Validators,FormGroup } from '@angular/forms';
+import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 // import { CalendarComponent } from '../calendar/calendar.component';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { formatDate, DatePipe } from '@angular/common';
@@ -16,7 +16,7 @@ import { ProgramService } from './../services/program.service';
 import { Router } from '@angular/router';
 import { MusicService } from '../services/music.service';
 import { NutritionDetailModalComponent } from '../nutrition-list/nutrition-detail-modal/nutrition-detail-modal.component';
-import{VerifyUserInfoComponent} from "./../modalContent/verify-user-info/verify-user-info.component";
+import { VerifyUserInfoComponent } from "./../modalContent/verify-user-info/verify-user-info.component";
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { PreviewAnyFile } from '@ionic-native/preview-any-file/ngx';
@@ -34,8 +34,8 @@ export class AddProgramPage implements OnInit {
   @ViewChild('picker', { static: false }) sTime;
   @ViewChild('mySlider', { static: false }) slides: IonSlides;
   // @ViewChild(CalendarComponent, { read: 'any', static: false }) myCal: CalendarComponent;
-  @ViewChild(CalendarComponent, {static: false }) myCal: CalendarComponent;
-  
+  @ViewChild(CalendarComponent, { static: false }) myCal: CalendarComponent;
+  scheduleProgram: string = "program";
   sliderOpts = {
     zoom: true,
     slidesPerView: 1,
@@ -43,14 +43,14 @@ export class AddProgramPage implements OnInit {
     spaceBetween: 5,
   }
   showProgram: any = 1;
-  repetatedDateCopy: any= [];
-  addEventData:any = [];
+  repetatedDateCopy: any = [];
+  addEventData: any = [];
   repetatedDate: any = [];
-  progDuration: any ;
+  progDuration: any;
   selectDate: any = [];
   dateObj: any;
-  progEndTime:any;
-  noEvent: any =  true;
+  progEndTime: any;
+  noEvent: any = true;
   timeSlot: any = false;
   ProgramInserted: any = false;
   newEvent
@@ -80,18 +80,18 @@ export class AddProgramPage implements OnInit {
   selected: any;
   allMusic: any;
   genres: any;
-  loginUserData:any;
+  loginUserData: any;
   approval_btn: any = false;
   request_approve_btn: any = false;
-  adData:any;
-  selectedVideo: string; 
-  uploadedVideo: string; 
-  videoFileSelected : boolean = false;
-  visibility : boolean = false;
-  isVideoSelected : boolean = false;
+  adData: any;
+  selectedVideo: string;
+  uploadedVideo: string;
+  videoFileSelected: boolean = false;
+  visibility: boolean = false;
+  isVideoSelected: boolean = false;
   liveToggleValue: boolean = true;
   finalForm: FormGroup;
-  videoFileUpload: FileTransferObject;  
+  videoFileUpload: FileTransferObject;
   myDate: any;
   indexForLive: any;
 
@@ -115,7 +115,7 @@ export class AddProgramPage implements OnInit {
     private previewAnyFile: PreviewAnyFile,
     private transfer: FileTransfer,
     // private videoEditor: VideoEditor,
-    private camera: Camera,public modalController: ModalController,
+    private camera: Camera, public modalController: ModalController,
     private changeDetection: ChangeDetectorRef,
     public toastController: ToastController) {
 
@@ -142,9 +142,18 @@ export class AddProgramPage implements OnInit {
 
   ngOnInit() {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
-  
+
     this.createForm();
 
+  }
+  handleCalendarView() {
+    if (this.calendar.mode == 'month') {
+      this.calendar.mode = 'week';
+
+    } else {
+      this.calendar.mode = 'month';
+
+    }
   }
 
   /**
@@ -174,26 +183,25 @@ export class AddProgramPage implements OnInit {
     this.eventSource = (events);
     return events;
   }
-  sponsar_prog(){
+  sponsar_prog() {
     this.approval_btn = true;
   }
-  unsponsar_prog(){
+  unsponsar_prog() {
     this.approval_btn = false;
   }
   /**
    * function to create add program form with validation.
    */
-   openStart(i)
-   {
+  openStart(i) {
     this.indexForLive = i;
     this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
-    if(this.repetatedDateCopy[this.indexForLive].is_live == true){
+    if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
       this.repetatedDateCopy[this.indexForLive].is_live = false
-    }else{     
+    } else {
       this.sTime.open();
     }
 
-   }
+  }
   createForm() {
     this.programForm = this.fb.group({
       programTitle: new FormControl('', Validators.compose([
@@ -242,14 +250,14 @@ export class AddProgramPage implements OnInit {
     ],
 
   };
-  async openToast() {  
-    const toast = await this.toastController.create({  
-      message: 'Please fill all the details',   
+  async openToast() {
+    const toast = await this.toastController.create({
+      message: 'Please fill all the details',
       color: 'dark',
-      duration: 4000  
-    });  
-    toast.present();  
-  }  
+      duration: 4000
+    });
+    toast.present();
+  }
 
   musicTypes: string = 'music';
   musicList(ev: any) {
@@ -271,7 +279,7 @@ export class AddProgramPage implements OnInit {
   slideNext() {
     this.slides.slideNext();
   }
-  
+
   async userModal() {
     const modal = await this.modalCtrl.create({
       component: UserModalComponent,
@@ -300,35 +308,34 @@ export class AddProgramPage implements OnInit {
     var fees = this.finalForm.value;
     this.commonService.presentLoader();
     // if(this.programDetail.type_id != 'video'){
-    this.programService.updateProgramFees({ "programFees": fees.programFees, "programId": this.programDetail.id}).subscribe(
+    this.programService.updateProgramFees({ "programFees": fees.programFees, "programId": this.programDetail.id }).subscribe(
       (data) => {
         // console.log(data);
         this.commonService.dismissLoader();
         this.router.navigate(["tabs/program"])
       }
     );
-  // }
+    // }
     // if (!this.musicId) {
     //   this.commonService.presentToast('Select Music ');
     //   return false;
     // }
     // this.commonService.presentModal(MusicVolComponent, 'bottomModal', { "musicId": this.musicId, "programId": this.programDetail.id });
   }
-  applyAdvertise()
-  {
+  applyAdvertise() {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
-    
-    let title ="Advertise Rule";
-    let msg ="<p>1. Your Video will send for verification.</p>"
-            +"<p class='mb-0'>2. Once approved Video Program will be locked</p>";
-    let btn=  [
+
+    let title = "Advertise Rule";
+    let msg = "<p>1. Your Video will send for verification.</p>"
+      + "<p class='mb-0'>2. Once approved Video Program will be locked</p>";
+    let btn = [
       {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
       }, {
         text: 'Okay',
         handler: () => {
@@ -337,32 +344,30 @@ export class AddProgramPage implements OnInit {
         }
       }
     ];
-    
-      if(this.loginUserData.trilloMatch != 1){
-        this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
-      }else{
-        this.commonService.presentAlert(title,msg,btn,'custom-alert advertiseAlert'); 
-      }
+
+    if (this.loginUserData.trilloMatch != 1) {
+      this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
+    } else {
+      this.commonService.presentAlert(title, msg, btn, 'custom-alert advertiseAlert');
+    }
   }
-  sendrequest()
-  {
+  sendrequest() {
     this.commonService.presentLoader();
 
-    if(this.programDetail.type_id == 'video')
-    {
+    if (this.programDetail.type_id == 'video') {
       // console.log('programId:'+this.programDetail.id);
-      this.programService.advertiseRequest({'programId':this.programDetail.id}).subscribe(data=>{
+      this.programService.advertiseRequest({ 'programId': this.programDetail.id }).subscribe(data => {
         this.adData = data.status;
         this.request_approve_btn = true;
         this.commonService.dismissLoader();
         this.commonService.presentToast('Request Sent');
         console.log(data);
-      } );
-    }else{
+      });
+    } else {
       this.commonService.dismissLoader();
       this.commonService.presentToast('Only Video Program are eligible');
     }
-    
+
   }
   resetEvent() {
     this.event = {
@@ -383,9 +388,9 @@ export class AddProgramPage implements OnInit {
         {
           text: 'Record Video',
           handler: () => {
-            if(this.isVideoSelected == false){
+            if (this.isVideoSelected == false) {
               this.recordVideo();
-            }else {
+            } else {
               this.commonService.presentToast('only one video can be selected');
             }
           }
@@ -411,12 +416,12 @@ export class AddProgramPage implements OnInit {
         {
           text: 'Select Video',
           handler: () => {
-            if(this.isVideoSelected == false){
+            if (this.isVideoSelected == false) {
               this.pickVideoFromGallery(this.camera.PictureSourceType.PHOTOLIBRARY);
-            }else {
+            } else {
               this.commonService.presentToast('only one video can be selected');
             }
-            
+
           }
         },
         {
@@ -428,79 +433,79 @@ export class AddProgramPage implements OnInit {
     await actionSheet.present();
   }
   recordVideo() {
-    let options: CaptureVideoOptions = { 
+    let options: CaptureVideoOptions = {
       limit: 1,
       duration: 30,
-      quality : 0
-     };
+      quality: 0
+    };
     this.mediaCapture.captureVideo(options).then(
       async (data: MediaFile[]) => {
         if (data.length > 0) {
           // this.copyFileToLocalDir(data[0].fullPath);
           // this.showLoader();
-          this.uploadedVideo = null; 
+          this.uploadedVideo = null;
           var filename = data[0].name;
           var dirpath = data[0].fullPath.substr(0, data[0].fullPath.lastIndexOf('/') + 1);
           var dur = this.media.create(dirpath);
           let duration = dur.getDuration();
           console.log(dur + 'dur');
           console.log(duration + 'duration');
-          dirpath = dirpath.includes("file://") ? dirpath : "file://" + dirpath;  
-        //   var durc = this.getvideoinfo(dirpath);
-        // console.log(durc + 'ddddddddddddddd');
-          this.selectedVideoFile(dirpath,filename);
+          dirpath = dirpath.includes("file://") ? dirpath : "file://" + dirpath;
+          //   var durc = this.getvideoinfo(dirpath);
+          // console.log(durc + 'ddddddddddddddd');
+          this.selectedVideoFile(dirpath, filename);
           this.visibility = true;
         }
       },
       (err: CaptureError) => console.error(err + 'yyyyerror')
     );
   }
-  async selectedVideoFile(dirpath,filename){
+  async selectedVideoFile(dirpath, filename) {
     try {
       var dirUrl = await this.file.resolveDirectoryUrl(dirpath);
-      var retrievedFile = await this.file.getFile(dirUrl, filename, {});           
-    } catch(err) {
+      var retrievedFile = await this.file.getFile(dirUrl, filename, {});
+    } catch (err) {
       console.log('vidoe error');
       this.dismissLoader();
-      this.commonService.presentAlert("Error","Something went wrong.",['Ok'],'');
+      this.commonService.presentAlert("Error", "Something went wrong.", ['Ok'], '');
     }
-    retrievedFile.file( data => {
+    retrievedFile.file(data => {
       this.selectedVideo = '';
-       console.log(data);
-       console.log(data.size);
-        this.dismissLoader();
-        // if (data.size > 500){ return this.commonService.presentAlert("Error", "You cannot upload more than 100 mb.",['Ok'],'');}
-        // if (data.type !== ALLOWED_MIME_TYPE) { return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"]);}
-        // if(ALLOWED_MIME_TYPE.indexOf(data.type) == -1){return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"],'');}
-        this.selectedVideo = retrievedFile.nativeURL;
-        var filename = this.selectedVideo.substr(this.selectedVideo.lastIndexOf('/') + 1);
-        localStorage.setItem('selectedVideo',JSON.stringify(this.selectedVideo));
-        console.log(filename + 'filename');
-        this.programForm.value.file = filename;
-        this.isVideoSelected = true;
-        this.videoFileSelected = !this.videoFileSelected; 
-        // this.videoFileSelected = https://www.dropbox.com/s/df2d2gf1dvnr5uj/Sample_1280x720_mp4.mp4';
+      console.log(data);
+      console.log(data.size);
+      this.dismissLoader();
+      // if (data.size > 500){ return this.commonService.presentAlert("Error", "You cannot upload more than 100 mb.",['Ok'],'');}
+      // if (data.type !== ALLOWED_MIME_TYPE) { return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"]);}
+      // if(ALLOWED_MIME_TYPE.indexOf(data.type) == -1){return this.commonService.presentAlert("Error", "Incorrect file type.",["OK"],'');}
+      this.selectedVideo = retrievedFile.nativeURL;
+      var filename = this.selectedVideo.substr(this.selectedVideo.lastIndexOf('/') + 1);
+      localStorage.setItem('selectedVideo', JSON.stringify(this.selectedVideo));
+      console.log(filename + 'filename');
+      this.programForm.value.file = filename;
+      this.isVideoSelected = true;
+      this.videoFileSelected = !this.videoFileSelected;
+      // this.videoFileSelected = https://www.dropbox.com/s/df2d2gf1dvnr5uj/Sample_1280x720_mp4.mp4';
     });
   }
   showLoader() {
-    this.commonService.presentLoader();   
+    this.commonService.presentLoader();
   }
 
   dismissLoader() {
     this.commonService.dismissLoader();
   }
-  filepreview(){
+  filepreview() {
     console.log(this.selectedVideo);
     this.previewAnyFile.preview(this.selectedVideo)
-    .then((res: any) => console.log(res))
-    .catch((error: any) => console.error(error));
+      .then((res: any) => console.log(res))
+      .catch((error: any) => console.error(error));
   }
 
-  removefilepreview(){    
+  removefilepreview() {
     this.visibility = false;
     this.selectedVideo = null;
-    this.videoFileSelected = false;    
-    this.isVideoSelected = false;   
+    this.videoFileSelected = false;
+    this.isVideoSelected = false;
     this.commonService.presentToast('Selected video remove');
     console.log('Selected video remove');
   }
@@ -519,17 +524,17 @@ export class AddProgramPage implements OnInit {
   }
 
   back() {
-    
+
     // let swiper = document.querySelector('.swiper-container')['swiper'];
     // swiper.slidePrev();
-    this.myCal.slidePrev();  
+    this.myCal.slidePrev();
   }
-  backToFirst(){
-    this.showProgram=1;
+  backToFirst() {
+    this.showProgram = 1;
     this.selected = [];
     this.selectDate = [];
     this.repetatedDateCopy = [];
-    this.repetatedDate= [];
+    this.repetatedDate = [];
     this.progDuration = [];
     this.noEvent = false;
     this.timeSlot = false;
@@ -561,7 +566,7 @@ export class AddProgramPage implements OnInit {
 
   //   if ((cEvent.getDate() < (new Date().getDate()) && cEvent.getMonth() <= (new Date().getMonth())) || cEvent.getMonth() < (new Date().getMonth())){
   //     this.commonService.presentToast('Sorry, this is past time');
-     
+
   //     return;
   //   }
 
@@ -577,7 +582,7 @@ export class AddProgramPage implements OnInit {
   //       return false;
   //     }
   //   });
-    
+
   //   if(this.timeSlot == true ){
   //     if(this.newEvent.events.length > 0){
   //       if( this.noEvent == true){
@@ -586,9 +591,9 @@ export class AddProgramPage implements OnInit {
   //         console.log(el.startTime.getHours());
   //         this.dateObj.setHours((this.hours),  parseInt(this.minutes));
   //         if (el.startTime.getHours() == this.hours || el.endTime.getHours() == this.hours) {
-            
+
   //           console.log(el.startTime.getTime() + 'event time');
-            
+
   //           this.noEvent = false;
   //           console.log(el.startTime.getTime());
   //           console.log(this.dateObj.getTime());
@@ -598,15 +603,15 @@ export class AddProgramPage implements OnInit {
   //           if ( (el.startTime.getTime() > this.dateObj.getTime() ) || (el.endTime.getTime() <= this.dateObj.getTime())) {
   //             this.noEvent = true;
   //             console.log('newww');
-             
+
   //           }else{
   //             this.noEvent = false;
   //             this.selectNewTime();
   //             console.log('exist');
   //             // return ;
-              
-              
-              
+
+
+
   //           }
   //       }
   //       // else{
@@ -614,7 +619,7 @@ export class AddProgramPage implements OnInit {
   //       // }
   //       });
   //     }
-    
+
   //   }
   //   // else {
   //   //     this.noEvent = true;
@@ -657,9 +662,9 @@ export class AddProgramPage implements OnInit {
     this.commonService.dismissModal();
     alert.present();
   }
-  
+
   programDetail: any;
-  minutes :any;
+  minutes: any;
   hours: any;
   // Time slot was clicked
   onTimeSelected(event) {
@@ -670,89 +675,89 @@ export class AddProgramPage implements OnInit {
     this.selectDate.forEach(el => {
       console.log(el.getDate());
       console.log(this.dateObj.getDate());
-      if(el.getDate() == this.dateObj.getDate() && el.getMonth() == this.dateObj.getMonth()){
-      console.log('same date');
-       this.noEvent = false;
+      if (el.getDate() == this.dateObj.getDate() && el.getMonth() == this.dateObj.getMonth()) {
+        console.log('same date');
+        this.noEvent = false;
         return false;
       }
     });
-    if ((this.dateObj.getDate() < (new Date().getDate()) && this.dateObj.getMonth() <= (new Date().getMonth())) ){
-            this.commonService.presentToast('Sorry, this is past time');
-            this.noEvent = false;
-            return false;
-          }
+    if ((this.dateObj.getDate() < (new Date().getDate()) && this.dateObj.getMonth() <= (new Date().getMonth()))) {
+      this.commonService.presentToast('Sorry, this is past time');
+      this.noEvent = false;
+      return false;
+    }
     console.log(this.dateObj);
-    if(this.noEvent){
+    if (this.noEvent) {
       this.selectDate.push(this.dateObj);
-      this.repetatedDateCopy.push({'date':this.dateObj ,'equipments':[], 'nutrition_id':[] , 'video': '','description':'','is_live':false});
+      this.repetatedDateCopy.push({ 'date': this.dateObj, 'equipments': [], 'nutrition_id': [], 'video': '', 'description': '', 'is_live': false });
       this.repetatedDate.push(this.dateObj);
-      this.addEventData.push({'event':this.newEvent});
+      this.addEventData.push({ 'event': this.newEvent });
       console.log(this.repetatedDateCopy);
     }
   }
 
-  selectTimeSlot(){
-    
-      let arr = [];
-      var mins = ['05','10','15','20','25','30','35','40','45','50','55','60'];
-      for (let i = 0; i <= 11; i++) {
-        
-        arr.push({ text: mins[i], value: mins[i] });
-      } 
-  
-      let hrsArr = [];
-      var hrs = ['05','10','15','20','25','30','35','40','45','50','55','60'];
-      for (let i = 1; i <= 23; i++) {
-        
-        hrsArr.push({ text: i, value: i });
-      } 
-  
-      this.selected = new Date(this.newEvent.selectedTime);
-      var hours = this.selected.getHours();
-      var AmOrPm = hours >= 12 ? 'pm' : 'am';
-      hours = (hours % 12) || 12;
-      const defaultColumnOptions = [
-        {
-          name: 'Hours',
-          options:hrsArr,
-          
-        },
-        {
-          name: 'Minutes',
-          options:arr,
-          
+  selectTimeSlot() {
+
+    let arr = [];
+    var mins = ['05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '60'];
+    for (let i = 0; i <= 11; i++) {
+
+      arr.push({ text: mins[i], value: mins[i] });
+    }
+
+    let hrsArr = [];
+    var hrs = ['05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '60'];
+    for (let i = 1; i <= 23; i++) {
+
+      hrsArr.push({ text: i, value: i });
+    }
+
+    this.selected = new Date(this.newEvent.selectedTime);
+    var hours = this.selected.getHours();
+    var AmOrPm = hours >= 12 ? 'pm' : 'am';
+    hours = (hours % 12) || 12;
+    const defaultColumnOptions = [
+      {
+        name: 'Hours',
+        options: hrsArr,
+
+      },
+      {
+        name: 'Minutes',
+        options: arr,
+
+      }
+    ];
+
+    const buttons = [
+      {
+        text: 'Select TimeSlot (HH:MM)',
+        cssClass: 'timeHeading'
+      },
+      {
+        text: 'Cancel',
+        role: 'cancel'
+      },
+
+      {
+        text: 'Confirm',
+        handler: (value) => {
+          this.minutes = value.Minutes.value;
+          this.hours = value.Hours.value;
+          this.presentPrompt();
+
+          // this.getModal();
         }
-      ];
-      
-      const buttons = [
-        {
-          text: 'Select TimeSlot (HH:MM)' ,
-          cssClass: 'timeHeading'
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel'
-        },
-        
-        {
-          text: 'Confirm',
-          handler: (value) => { 
-            this.minutes = value.Minutes.value;
-            this.hours = value.Hours.value;
-            this.presentPrompt();
-            
-            // this.getModal();
-          }
-        }
-      ]
-      this.commonService.presentItemPicker(defaultColumnOptions, buttons);
-     
+      }
+    ]
+    this.commonService.presentItemPicker(defaultColumnOptions, buttons);
+
   }
   async presentPrompt() {
 
     let alert = this.alertCtrl.create({
-     header: 'Duration',
-     message:'',
+      header: 'Duration',
+      message: '',
       inputs: [
         {
           name: 'duration',
@@ -766,7 +771,7 @@ export class AddProgramPage implements OnInit {
         // }
       ],
       buttons: [
-       
+
         {
           text: 'Confirm',
           handler: data => {
@@ -776,92 +781,92 @@ export class AddProgramPage implements OnInit {
             //   // invalid login
             //   return false;
             // }
-            console.log(this.indexForLive + 'indexForLive') ;
+            console.log(this.indexForLive + 'indexForLive');
             console.log(data.duration);
-            if(data.duration <= 0 ){
+            if (data.duration <= 0) {
               this.showErrorToast('Enter Valid Duration');
               return false;
-            }else if(data.duration > 60 ){
+            } else if (data.duration > 60) {
               this.showErrorToast('Enter Upto 60 minutes');
               return false;
-            }else{
+            } else {
               // this.dateObj = new Date(event.selectedTime + 'Z');
               // this.noEvent = true;
-              
+
               this.selectDate.forEach(el => {
                 // console.log(el.getDate());
                 // console.log(this.dateObj.getDate());
-                if(el.getDate() == this.dateObj.getDate() && el.getMonth() == this.dateObj.getMonth()){
-                console.log('same date');
-                //  this.noEvent = false;
-                //   return ;
+                if (el.getDate() == this.dateObj.getDate() && el.getMonth() == this.dateObj.getMonth()) {
+                  console.log('same date');
+                  //  this.noEvent = false;
+                  //   return ;
                 }
-              });  
-            this.progDuration = data.duration;
-            console.log(data);
-            this.dateObj.setHours((this.hours),  parseInt(this.minutes));
-            this.dateObj = this.dateObj;
-            if ((this.dateObj.getDate() == (new Date().getDate()) && this.dateObj.getMonth() <= (new Date().getMonth())) && this.dateObj.getHours() < (new Date().getHours())){
-              this.commonService.presentToast('Sorry, this is past time');
-              this.noEvent = false;
-              return ;
-            }
-            // alert(this.newEvent.events.length);
-            if(this.newEvent.events.length > 0){
-              this.newEvent.events.forEach(el => {
-                if (el.startTime.getHours() == this.hours || el.endTime.getHours() == this.hours) {
-                  
-                  console.log(el.startTime.getTime() + 'event time');
-                  var nd = new Date(this.newEvent.selectedTime + 'Z');
-                  nd.setHours((this.hours),  parseInt(this.minutes)+parseInt(this.progDuration));
-                  this.progEndTime = nd;
-                  console.log(this.progEndTime + 'endTime');
-                  this.noEvent = false;
-                  console.log(el.startTime.getTime());
-                  console.log(this.dateObj.getTime());
-                  console.log(el.endTime.getTime());
-                  console.log(nd.getTime());
-                  if ( (el.startTime.getTime() > this.dateObj.getTime() && el.startTime.getTime() >= nd.getTime()) || (el.endTime.getTime() <= this.dateObj.getTime())) {
-                    // if ( (el.startTime.getTime() > this.dateObj.getTime() ) || (el.endTime.getTime() <= this.dateObj.getTime())) {
-                    this.noEvent = true;
-                    // alert('tt');
-                  }else{
-                    this.noEvent = false;
-                    console.log('nn');
-                    this.selectNewTime();
-                    
-                  }
-              }
-              // else{
-              //   this.noEvent = true;
-              // }
               });
-            }else {
-              this.noEvent = true;
-            }
-            console.log(this.noEvent + ' event');
-            if(this.noEvent == true){
-              // this.repetatedDateCopy.splice(this.indexForLive, 1);
-              // // this.selectDate.push(this.dateObj);
-              // this.repetatedDateCopy.push({'date':this.dateObj ,'equipments':[], 'nutrition_id':[] , 'video': '','description':'','is_live':false});
-              // this.repetatedDate.push(this.dateObj);
-              var time = this.dateObj;
-              this.selectDate[this.indexForLive] = this.dateObj;
-              this.repetatedDateCopy[this.indexForLive].date = '';
-              this.repetatedDateCopy[this.indexForLive].date = time;
-              this.repetatedDate[this.indexForLive] = this.dateObj;
-              this.repetatedDate = this.repetatedDate;
-              if(this.repetatedDateCopy[this.indexForLive].is_live == true){
-                    this.repetatedDateCopy[this.indexForLive].is_live = false;
-                  }else{
-                    this.repetatedDateCopy[this.indexForLive].is_live = true;
+              this.progDuration = data.duration;
+              console.log(data);
+              this.dateObj.setHours((this.hours), parseInt(this.minutes));
+              this.dateObj = this.dateObj;
+              if ((this.dateObj.getDate() == (new Date().getDate()) && this.dateObj.getMonth() <= (new Date().getMonth())) && this.dateObj.getHours() < (new Date().getHours())) {
+                this.commonService.presentToast('Sorry, this is past time');
+                this.noEvent = false;
+                return;
+              }
+              // alert(this.newEvent.events.length);
+              if (this.newEvent.events.length > 0) {
+                this.newEvent.events.forEach(el => {
+                  if (el.startTime.getHours() == this.hours || el.endTime.getHours() == this.hours) {
+
+                    console.log(el.startTime.getTime() + 'event time');
+                    var nd = new Date(this.newEvent.selectedTime + 'Z');
+                    nd.setHours((this.hours), parseInt(this.minutes) + parseInt(this.progDuration));
+                    this.progEndTime = nd;
+                    console.log(this.progEndTime + 'endTime');
+                    this.noEvent = false;
+                    console.log(el.startTime.getTime());
+                    console.log(this.dateObj.getTime());
+                    console.log(el.endTime.getTime());
+                    console.log(nd.getTime());
+                    if ((el.startTime.getTime() > this.dateObj.getTime() && el.startTime.getTime() >= nd.getTime()) || (el.endTime.getTime() <= this.dateObj.getTime())) {
+                      // if ( (el.startTime.getTime() > this.dateObj.getTime() ) || (el.endTime.getTime() <= this.dateObj.getTime())) {
+                      this.noEvent = true;
+                      // alert('tt');
+                    } else {
+                      this.noEvent = false;
+                      console.log('nn');
+                      this.selectNewTime();
+
+                    }
                   }
-              console.log(this.repetatedDateCopy);
-              console.log(time , ' time');
-              this.changeDetection.detectChanges();
-              this.timeSlot = true;
+                  // else{
+                  //   this.noEvent = true;
+                  // }
+                });
+              } else {
+                this.noEvent = true;
+              }
+              console.log(this.noEvent + ' event');
+              if (this.noEvent == true) {
+                // this.repetatedDateCopy.splice(this.indexForLive, 1);
+                // // this.selectDate.push(this.dateObj);
+                // this.repetatedDateCopy.push({'date':this.dateObj ,'equipments':[], 'nutrition_id':[] , 'video': '','description':'','is_live':false});
+                // this.repetatedDate.push(this.dateObj);
+                var time = this.dateObj;
+                this.selectDate[this.indexForLive] = this.dateObj;
+                this.repetatedDateCopy[this.indexForLive].date = '';
+                this.repetatedDateCopy[this.indexForLive].date = time;
+                this.repetatedDate[this.indexForLive] = this.dateObj;
+                this.repetatedDate = this.repetatedDate;
+                if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
+                  this.repetatedDateCopy[this.indexForLive].is_live = false;
+                } else {
+                  this.repetatedDateCopy[this.indexForLive].is_live = true;
+                }
+                console.log(this.repetatedDateCopy);
+                console.log(time, ' time');
+                this.changeDetection.detectChanges();
+                this.timeSlot = true;
+              }
             }
-           }
           }
         }
       ]
@@ -875,28 +880,28 @@ export class AddProgramPage implements OnInit {
       position: 'bottom'
     });
 
-    
+
 
     toast.present();
   }
-  
-  addLiveProgram(){
+
+  addLiveProgram() {
     this.noEvent = true;
     this.selectDate.forEach(el => {
       console.log(el.getDate());
       console.log(this.dateObj.getDate());
-      if(el.getDate() == this.dateObj.getDate() && el.getMonth() == this.dateObj.getMonth()){
-      console.log('same date');
-       this.noEvent = false;
+      if (el.getDate() == this.dateObj.getDate() && el.getMonth() == this.dateObj.getMonth()) {
+        console.log('same date');
+        this.noEvent = false;
         return false;
       }
     });
     console.log(this.dateObj);
-    if(this.noEvent){
+    if (this.noEvent) {
       this.selectDate.push(this.dateObj);
-      this.repetatedDateCopy.push({'date':this.dateObj ,'equipments':[], 'nutrition_id':[] , 'video': '','description':'','is_live':false});
+      this.repetatedDateCopy.push({ 'date': this.dateObj, 'equipments': [], 'nutrition_id': [], 'video': '', 'description': '', 'is_live': false });
       this.repetatedDate.push(this.dateObj);
-      this.addEventData.push({'event':this.newEvent});
+      this.addEventData.push({ 'event': this.newEvent });
       console.log(this.repetatedDateCopy);
     }
   }
@@ -904,44 +909,44 @@ export class AddProgramPage implements OnInit {
     this.selectDate.forEach(el => {
       console.log(el.getDate());
       console.log(this.dateObj.getDate());
-      if(el.getDate() == this.dateObj.getDate() && el.getMonth() == this.dateObj.getMonth()){
-      console.log('same date');
-      //  this.noEvent = false;
-      //   return false;
+      if (el.getDate() == this.dateObj.getDate() && el.getMonth() == this.dateObj.getMonth()) {
+        console.log('same date');
+        //  this.noEvent = false;
+        //   return false;
       }
     });
-      this.minutes = '';
-      this.hours = '';
-      console.log("this.myDate");
-      console.log(this.myDate)
-      let d = this.myDate.split('T')[1];
-      let h = d.split(':')[0];
-      let m = d.split(':')[1];
-      this.minutes = m;
-      this.hours = h;
-      if(h != undefined || ' '){
-        this.presentPrompt();
-      }
-      console.log("test");
-      console.log("test");
+    this.minutes = '';
+    this.hours = '';
+    console.log("this.myDate");
+    console.log(this.myDate)
+    let d = this.myDate.split('T')[1];
+    let h = d.split(':')[0];
+    let m = d.split(':')[1];
+    this.minutes = m;
+    this.hours = h;
+    if (h != undefined || ' ') {
+      this.presentPrompt();
+    }
+    console.log("test");
+    console.log("test");
   }
 
-  click(date){
-      console.log('click..',date);
-      let hoursMinutes = date.split(':');
-      let time = this.formatAMPM(hoursMinutes);
-      console.log('time',time);
+  click(date) {
+    console.log('click..', date);
+    let hoursMinutes = date.split(':');
+    let time = this.formatAMPM(hoursMinutes);
+    console.log('time', time);
   }
-  
+
   formatAMPM(date) {
-      var hours = date[0];
-      var minutes = date[1];
-      var ampm = hours >= 12 ? 'pm' : 'am';
-      hours = hours % 12;
-      hours = hours ? hours : 12;
-      minutes = minutes < 10 ? '0'+minutes : minutes;
-      var strTime = hours + ':' + minutes + ' ' + ampm;
-      return strTime;
+    var hours = date[0];
+    var minutes = date[1];
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
   }
   preRemovedate(index) {
     this.repetatedDateCopy.splice(index, 1);
@@ -955,20 +960,20 @@ export class AddProgramPage implements OnInit {
     console.log(this.selectDate);
   }
   // selectNewTime() {
-    
-     
+
+
   //   let arr = [];
   //   var hrs = ['01','02','03','04','05','06','07','08','09','10','11','12','13','14'];
   //   for (let i = 1; i <= 60; i++) {
-      
+
   //     arr.push({ text: i, value: i });
   //   } 
-    
+
   //   const defaultColumnOptions = [
   //     {
   //       name: 'Hours',
   //       options:arr
-        
+
   //     }
   //   ];
   //   const buttons = [
@@ -980,14 +985,14 @@ export class AddProgramPage implements OnInit {
   //       text: 'Cancel',
   //       role: 'cancel'
   //     },
-      
+
   //     {
   //       text: 'Confirm',
   //       handler: (value) => { 
   //         this.noEvent = true;
   //         var hours = value.Hours.value;
   //         console.log(hours);
-          
+
   //         this.dateObj.setMinutes(hours);
   //         console.log(this.dateObj);
   //         console.log(this.durTime);
@@ -997,11 +1002,11 @@ export class AddProgramPage implements OnInit {
   //         console.log('fffffffffffffffffff');
   //         this.eventList.events.forEach(el => {
   //           if (el.startTime.getHours() == this.dateObj.getHours() || el.endTime.getHours() == this.dateObj.getHours()) {
-              
+
   //             console.log(el.startTime.getTime());
   //             console.log(el.endTime.getTime());
   //             console.log(this.dateObj.getTime());          
-       
+
   //           if ((el.startTime.getTime() > this.dateObj.getTime() && el.startTime.getTime() >= this.progEndTime.getTime()) || (el.endTime.getTime() <= this.dateObj.getTime())) {  
   //             this.noEvent == true;
   //           }
@@ -1011,7 +1016,7 @@ export class AddProgramPage implements OnInit {
   //           }
   //         }
   //         });
-        
+
   //         this.repetatedDateCopy.forEach(el => {
   //           if(el.getDate() == this.dateObj.getDate()){
   //             this.noEvent = false;
@@ -1023,25 +1028,25 @@ export class AddProgramPage implements OnInit {
   //         if(this.noEvent == true){
   //           this.repetatedDateCopy.push(this.dateObj);
   //         }
-          
+
   //         hours  = '';
-         
+
   //       }
   //     }
   //   ]
-    
+
   //     this.commonService.presentItemPicker(defaultColumnOptions, buttons);
-    
+
   // }
   async addVideo(event, i) {
     const modal = await this.modalCtrl.create({
       component: VideosThumbListComponent,
       cssClass: 'fullModal',
       componentProps: { 'programDetail': event }
-    }); 
+    });
     modal.onDidDismiss().then((d: any) => {
       if (d.data) {
-        this.repetatedDateCopy[i].video=d.data;
+        this.repetatedDateCopy[i].video = d.data;
         // this.repetatedDate[i].video=d.data;
       }
     });
@@ -1054,12 +1059,11 @@ export class AddProgramPage implements OnInit {
       componentProps: { "programData": item, "modelOpen": event }
     });
     modal.onDidDismiss().then((d: any) => {
-      if(event == 1)
-      {
-        this.repetatedDateCopy[i].equipments = d.data.filter(Boolean) ;
+      if (event == 1) {
+        this.repetatedDateCopy[i].equipments = d.data.filter(Boolean);
         // this.repetatedDate[i].equipments = d.data.filter(Boolean) ;
-      }else{
-        this.repetatedDateCopy[i].nutrition_id = d.data.filter(Boolean) ;
+      } else {
+        this.repetatedDateCopy[i].nutrition_id = d.data.filter(Boolean);
         // this.repetatedDate[i].nutrition_id = d.data.filter(Boolean) ;
       }
       console.log(this.repetatedDateCopy);
@@ -1068,7 +1072,7 @@ export class AddProgramPage implements OnInit {
     return await modal.present();
   }
   detailsUpdate($event, programId) {
-    $event.detail.programId = programId; 
+    $event.detail.programId = programId;
     console.log($event.detail);
   }
   // async onTimeSelected(ev) {
@@ -1079,43 +1083,43 @@ export class AddProgramPage implements OnInit {
   //   return modal.present();
   // }
   selectNewTime() {
-    
-     
+
+
     let arr = [];
     let min = [];
-    var hrs = ['01','02','03','04','05','06','07','08','09','10','11','12','13','14'];
+    var hrs = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14'];
     for (let i = 1; i <= 24; i++) {
       arr.push({ text: i, value: i });
-    } 
+    }
     for (let i = 1; i <= 60; i++) {
       min.push({ text: i, value: i });
-    } 
-    
+    }
+
     const defaultColumnOptions = [
       {
         name: 'Hours',
-        options:arr
-        
+        options: arr
+
       },
       {
         name: 'Minutes',
-        options:min
+        options: min
       }
-      
+
     ];
     const buttons = [
       {
-        text: 'Program is already assign for this time slot, Select new TimeSlot(HH:MM)' ,
+        text: 'Program is already assign for this time slot, Select new TimeSlot(HH:MM)',
         cssClass: 'timeHeading'
       },
       {
         text: 'Cancel',
         role: 'cancel'
       },
-      
+
       {
         text: 'Confirm',
-        handler: (value) => { 
+        handler: (value) => {
           this.noEvent = true;
           var minute = value.Minutes.value;
           var hours = value.Hours.value;
@@ -1127,106 +1131,107 @@ export class AddProgramPage implements OnInit {
           // var newEndTime = new Date(this.eventList.selectedTime + 'Z');
           var newDateTime = this.dateObj;
           // this.dateObj.setHours((this.hours),  parseInt(this.minutes));
-          var nd = newDateTime.setHours((hours),  parseInt(minute));
+          var nd = newDateTime.setHours((hours), parseInt(minute));
           this.progEndTime = nd;
           console.log(this.progEndTime);
           console.log(nd);
           this.newEvent.events.forEach(el => {
             if (el.startTime.getHours() == this.dateObj.getHours() || el.endTime.getHours() == this.dateObj.getHours()) {
-              
+
               console.log(el.startTime.getTime());
               console.log(el.endTime.getTime());
-              console.log(this.dateObj.getTime());          
-       
-            if ((el.startTime.getTime() > this.dateObj.getTime() && el.startTime.getTime() >= this.progEndTime) || (el.endTime.getTime() <= this.dateObj.getTime())) {  
-              this.noEvent = true;
-              this.timeSlot = true;
+              console.log(this.dateObj.getTime());
+
+              if ((el.startTime.getTime() > this.dateObj.getTime() && el.startTime.getTime() >= this.progEndTime) || (el.endTime.getTime() <= this.dateObj.getTime())) {
+                this.noEvent = true;
+                this.timeSlot = true;
+              }
+              else {
+                this.commonService.presentToast('this time slot already has event');
+                this.noEvent = false;
+              }
             }
-            else{
-              this.commonService.presentToast('this time slot already has event');
-              this.noEvent = false;
-            }
-          }
           });
-        
+
           this.repetatedDateCopy.forEach(el => {
-            if(el.date.getDate() == this.dateObj.getDate()){
+            if (el.date.getDate() == this.dateObj.getDate()) {
               this.noEvent = false;
-              return ;
-            }else{
+              return;
+            } else {
               // this.noEvent = true;
             }
           });
-          if(this.noEvent == true){
+          if (this.noEvent == true) {
             // this.repetatedDateCopy.push(this.dateObj);
             this.selectDate.push(this.dateObj);
             this.repetatedDate.push(this.dateObj);
-            this.repetatedDateCopy.push({'date':this.dateObj ,'equipments':[], 'nutrition_id':[] , 'video': '','description':'','is_live':false});
+            this.repetatedDateCopy.push({ 'date': this.dateObj, 'equipments': [], 'nutrition_id': [], 'video': '', 'description': '', 'is_live': false });
           }
-          
-          minute  = '';
-         console.log(this.repetatedDateCopy);
-        //  alert(this.noEvent)
-         
-          
+
+          minute = '';
+          console.log(this.repetatedDateCopy);
+          //  alert(this.noEvent)
+
+
         }
       }
     ]
-    
-      this.commonService.presentItemPicker(defaultColumnOptions, buttons);
-    
+
+    this.commonService.presentItemPicker(defaultColumnOptions, buttons);
+
   }
-  toPrevScreen(){
-    if(!this.ProgramInserted){
+  toPrevScreen() {
+    if (!this.ProgramInserted) {
       this.getModal();
-    }else{
+    } else {
       this.showProgram = 3;
     }
   }
-  async getModal(){ 
+  async getModal() {
     const modal = await this.modalCtrl.create({
       component: DateTimeModalComponent,
       cssClass: 'fullModal',
-      componentProps: { 
-        "calendarData": this.selected, 
-        "repetatedDateCopy":this.repetatedDateCopy,
-        "repetatedDate":this.repetatedDate,
+      componentProps: {
+        "calendarData": this.selected,
+        "repetatedDateCopy": this.repetatedDateCopy,
+        "repetatedDate": this.repetatedDate,
         "duration": this.progDuration,
-        "programData": this.programForm.value, 
-        'programList': this.eventSource, 
-        'minutes':  this.minutes }
+        "programData": this.programForm.value,
+        'programList': this.eventSource,
+        'minutes': this.minutes
+      }
     });
 
     modal.onDidDismiss().then((d: any) => {
       console.log(d);
       var progId = d.data;
       // console.log(progId.id + 'pppppidddd');
-      if(this.isVideoSelected == true){
-      var url = baseUrl +  "api/auth/uploadVideoForProgram";    
-      var filename = this.selectedVideo.substr(this.selectedVideo.lastIndexOf('/') + 1); 
-      var options: FileUploadOptions = {
-        fileName: filename,
-        fileKey: "video",
-        mimeType: "video/mp4",
-        httpMethod: "POST",
-        chunkedMode: false,   
-        headers : {"Authorization": "Bearer " + localStorage.getItem('userToken')},
-        params : {
-         'prog_id': progId.id
+      if (this.isVideoSelected == true) {
+        var url = baseUrl + "api/auth/uploadVideoForProgram";
+        var filename = this.selectedVideo.substr(this.selectedVideo.lastIndexOf('/') + 1);
+        var options: FileUploadOptions = {
+          fileName: filename,
+          fileKey: "video",
+          mimeType: "video/mp4",
+          httpMethod: "POST",
+          chunkedMode: false,
+          headers: { "Authorization": "Bearer " + localStorage.getItem('userToken') },
+          params: {
+            'prog_id': progId.id
+          }
         }
-      }
-      // const fileTransfer: FileTransferObject = this.transfer.create();
-      this.videoFileUpload = this.transfer.create();
-      
-      
-      this.videoFileUpload.upload(this.selectedVideo, url, options)
-        .then((data)=> {
-             console.log('gg');
-             console.log(data.response);          
-        }).then((data) => {
+        // const fileTransfer: FileTransferObject = this.transfer.create();
+        this.videoFileUpload = this.transfer.create();
 
-        });
-      }  
+
+        this.videoFileUpload.upload(this.selectedVideo, url, options)
+          .then((data) => {
+            console.log('gg');
+            console.log(data.response);
+          }).then((data) => {
+
+          });
+      }
       if (d.data.program_date) {
         let startTime;
         let endTime;
@@ -1316,18 +1321,18 @@ export class AddProgramPage implements OnInit {
       // correctOrientation: true
     }
     this.camera.getPicture(options).then((videoUrl) => {
-      var filename = videoUrl.substr(videoUrl.lastIndexOf('/') + 1);         
+      var filename = videoUrl.substr(videoUrl.lastIndexOf('/') + 1);
       var dirpath = videoUrl.substr(0, videoUrl.lastIndexOf('/') + 1);
       // var durc = this.getvideoinfo(dirpath);
       // console.log(durc + 'ddddddddddddddd');
       var dur = this.media.create(dirpath);
-          let duration = dur.getDuration();
-          console.log(dur);
-          console.log(JSON.stringify(dur));
-          console.log(duration + 'duration');
-          console.log(JSON.stringify(duration) + 'ation');
+      let duration = dur.getDuration();
+      console.log(dur);
+      console.log(JSON.stringify(dur));
+      console.log(duration + 'duration');
+      console.log(JSON.stringify(duration) + 'ation');
       dirpath = dirpath.includes("file://") ? dirpath : "file://" + dirpath;
-      this.selectedVideoFile(dirpath,filename);
+      this.selectedVideoFile(dirpath, filename);
       // this.gallaryImgPath.push('data:image/jpeg;base64,' + imageData);
     }, (err) => {
       // alert(err);
@@ -1343,7 +1348,7 @@ export class AddProgramPage implements OnInit {
   //     alert(error);
   //   });
   // }
-  
+
   musicId: any;
   async fsubmit() {
     if (!this.musicId || !this.programDetail.id) {
@@ -1354,7 +1359,7 @@ export class AddProgramPage implements OnInit {
     this.programService.updateProgramMusic({ "musicId": this.musicId, "programId": this.programDetail.id }).subscribe(
       (data) => {
         this.commonService.dismissLoader();
-        this.router.navigate(["/tabs/program" ])
+        this.router.navigate(["/tabs/program"])
       });
   }
 
@@ -1378,26 +1383,26 @@ export class AddProgramPage implements OnInit {
   get f() { return this.programForm.controls; }
 
   nextStep(event) {
-    
+
     this.selected = [];
-      this.repetatedDateCopy = [];
-      this.repetatedDate= [];
-      this.progDuration = [];
-      // this.programForm.value = [];
-      // this.eventSource = '';
-      this.minutes = '';
+    this.repetatedDateCopy = [];
+    this.repetatedDate = [];
+    this.progDuration = [];
+    // this.programForm.value = [];
+    // this.eventSource = '';
+    this.minutes = '';
     let formControl = this.programForm.controls;
     this.submitted = true;
     console.log(formControl.chatStatus.value);
     if (this.ProgramInserted) {
       this.showProgram = 3;
-    } 
+    }
     if (event == 2) {
-      console.log(this.ProgramInserted); 
+      console.log(this.ProgramInserted);
       if (this.ProgramInserted == true) {
         this.showProgram = 3;
         return true;
-      } 
+      }
       if (this.programForm.invalid) {
         this.openToast();
         return false;
@@ -1434,9 +1439,9 @@ export class AddProgramPage implements OnInit {
   toLastScreen() {
     console.log(this.programDetail);
     // if (this.programDetail && this.programForm.value.programType != 6) {
-      if (this.programDetail ) {
+    if (this.programDetail) {
       this.showProgram = 3;
-    } 
+    }
     // else {
     //   this.router.navigate(["/tabs/program" ])
     // }
@@ -1456,18 +1461,18 @@ export class AddProgramPage implements OnInit {
   ngOnDestroy() {
     this.programForm.reset();
   }
-  verifyUserInfoModal() {    
-    if(this.loginUserData.trilloMatch != 1){
-      this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', ''); 
-    }else{
+  verifyUserInfoModal() {
+    if (this.loginUserData.trilloMatch != 1) {
+      this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
+    } else {
 
-    }    
+    }
   }
 
   // TOGGLE LIVE ICON
-  item = {active:false};
+  item = { active: false };
 
-  toggleIcon(item,i){
+  toggleIcon(item, i) {
     item.active = !item.active;
   }
 

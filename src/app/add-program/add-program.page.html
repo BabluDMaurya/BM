@@ -313,7 +313,10 @@
           (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" startHour="0"
           endHour="24" step="1"  class="calendar-table swiper-container"></calendar>
           <!-- <ion-datetime #dateTime1 displayFormat="mm"></ion-datetime> -->
-
+          <ion-item *ngIf="scheduleProgram == 'program'" style="position: relative; --min-height: 30px;" class="ion-no-padding ion-text-center">
+            <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="calendar.mode == 'week'" (click)="handleCalendarView()"></ion-icon>
+            <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="calendar.mode == 'month'" (click)="handleCalendarView()"></ion-icon>
+          </ion-item>
       </ion-col>
 
       <!-- <ion-list-header  *ngIf="repetatedDateCopy.length <= 0" class=" green green-alram-icon text-white"> -->
