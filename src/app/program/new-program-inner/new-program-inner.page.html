@@ -168,7 +168,7 @@
                       <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
                       <p class="fs-14">Session</p>
                     </div>
-                    <div class="program-video program-flex-child" (click)="showVideoDetails(val.id,val.video_id)">
+                    <div class="program-video program-flex-child" *ngIf="val.video_id != '' "  (click)="showVideoDetails(val.id,val.video_id)">
                       <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
                       <p class="fs-14">Video</p>
                     </div>

@@ -21,6 +21,7 @@ export class ViewVideoDetailComponent implements OnInit {
   title : string;
   description : string;
   createdAt : any;
+  publishBy: any;
   commentCount : any;
   postLikesCount : any;
   disableComment : any;
@@ -36,6 +37,7 @@ export class ViewVideoDetailComponent implements OnInit {
   noData : boolean = false;
   noImgData : boolean = false;
   videoIds: any;
+  allPostData: any;
   constructor(public commonService: CommonService,
     public navParams: NavParams,
     private postService : PostService,
@@ -47,40 +49,37 @@ export class ViewVideoDetailComponent implements OnInit {
   ngOnInit() {
     this.postID = this.navParams.data.details;
     this.videoIds = this.navParams.data.videoIds;
+    var vId = this.videoIds.split(',');
+    console.log(vId[0]);
     this.noImgData = true;
       console.log(this.navParams.data);
-      this.postService.getProgVideoPostById({'postId':this.postID,'videoId': this.videoIds}).subscribe((data)=>{
-      this.postData = data.postData;
-      console.log(data);
-      this.postUserId = data.postData.user_id;
+      this.postService.getProgVideoPostById({'postId':vId[0],'videoId': this.videoIds}).subscribe((data)=>{
+      this.postData = data.postData.videoData;
+      this.allPostData = data.postData.allVideoData;
 
-      this.disableComment = data.postData.disable_comment
-      this.title = data.postData.video_post[0].title;
-      this.description = data.postData.video_post[0].description;
-      this.createdAt = data.postData.created_at;
-      this.commentCount = data.postData.total_comments.length;
-      this.postLikesCount = data.postData.post_likes.length;
-      this.likePost = (data.postData.post_likes.user_id == this.postUserId ? 'true' : 'false');      
-      this.videoDataPath =  this.storagePath + data.postData.video_post[0].video_path; 
-      this.videoThumbPath =  this.storagePath + data.postData.video_post[0].thumb_path; 
-      this.videoType = data.postData.video_post[0].video_type;
+      console.log(data);
+      this.postUserId = data.postData.videoData.user_id;
+
+      this.disableComment = data.postData.videoData.disable_comment
+      this.title = data.postData.videoData.video_post[0].title;
+      this.description = data.postData.videoData.video_post[0].description;
+      this.createdAt = data.postData.videoData.created_at;
+      this.publishBy = data.postData.videoData.post_user.user_name;
+      this.commentCount = data.postData.videoData.total_comments.length;
+      this.postLikesCount = data.postData.videoData.post_likes.length;
+      this.likePost = (data.postData.videoData.post_likes.user_id == this.postUserId ? 'true' : 'false');      
+      this.videoDataPath =  this.storagePath + data.postData.videoData.video_post[0].video_path; 
+      this.videoThumbPath =  this.storagePath + data.postData.videoData.video_post[0].thumb_path; 
+      this.videoType = data.postData.videoData.video_post[0].video_type;
       // console.log("this.videoType: " + this.videoType);
       this.noImgData = false;
-      // if(this.type != 'exclusive'){
-      //   this.commonService.presentLoader();
-      //   this.peopleView.upNextPost('2', this.postUserId, this.videoType,this.postID).subscribe((data) => {
-      //       this.upNext = data.postData;
-      //       this.commonService.dismissLoader();
-      //       if(this.upNext.length < 1){
-      //         this.noData = true;
-      //       }
-      //   }); 
-      // } 
-      this.postData.post_bookmarks.filter((f) => {
-        if (f.user_id == this.loginUserData.id) {
-          this.bookmark = true;
-        }
-      });     
+     
+
+      // this.postData.post_bookmarks.filter((f) => {
+      //   if (f.user_id == this.loginUserData.id) {
+      //     this.bookmark = true;
+      //   }
+      // });     
       console.log(this.postData);
     });
   }

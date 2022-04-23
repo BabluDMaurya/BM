@@ -5,6 +5,7 @@ import { CommonService } from 'src/app/services/common.service';
 import { HostingDropdownComponent } from '../program/hosting-dropdown/hosting-dropdown.component';
 import { IonSlides, PopoverController, NavController } from '@ionic/angular';
 import { RequestedDropdownComponent } from '../program/requested-dropdown/requested-dropdown.component';
+import { Config } from '../config/config'
 
 @Component({
   selector: 'app-new-schedule-program',
@@ -31,6 +32,49 @@ export class NewScheduleProgramPage implements OnInit {
   myDate: any = new Date().toISOString();
   videoProgList: any;
   liveProgList: any;
+  profileUrl = Config.profilePic;
+  url = Config.imgUrl;
+  vidUrl = Config.progVidUrl;
+  videoFiltered: [];
+  private _searchTerm: string;
+  get videoSearchTerm(): string  {
+    return this._searchTerm;
+  }
+  set videoSearchTerm(value: string) {
+    this._searchTerm = value;
+    this.videoFiltered = this.videoFilterUser(value);
+  }
+
+  nutriProgArray: [];
+  private _nutriProgSearchTerm: string;
+  get nutriProgSearchTerm(): string  {
+    return this._nutriProgSearchTerm;
+  }
+  set nutriProgSearchTerm(value: string) {
+    this._nutriProgSearchTerm = value;
+    this.nutriProgArray = this.nutriFilterProgram(value);
+  }
+ 
+  liveProgArray: [];
+  private _liveProgSearchTerm: string;
+  get liveProgSearchTerm(): string  {
+    return this._liveProgSearchTerm;
+  }
+  set liveProgSearchTerm(value: string) {
+    this._liveProgSearchTerm = value;
+    this.liveProgArray = this.liveFilterProgram(value);
+  }
+
+  reqProgArray: [];
+  private _reqProgSearchTerm: string;
+  get reqProgSearchTerm(): string  {
+    return this._reqProgSearchTerm;
+  }
+  set reqProgSearchTerm(value: string) {
+    this._reqProgSearchTerm = value;
+    this.reqProgArray = this.reqFilterProgram(value);
+  }
+
   constructor(private programService : ProgramService, private commonService : CommonService,public popoverController: PopoverController,
     public navCtrl: NavController ) { 
     this.scheduleProgram = "program";
@@ -49,6 +93,7 @@ export class NewScheduleProgramPage implements OnInit {
         el.expanded = false;
         return el;
       });
+      this.nutriProgArray = this.nutritionList;
       if(this.nutritionList.length < 1){
         this.noNutriProg = true;
       }
@@ -72,7 +117,8 @@ export class NewScheduleProgramPage implements OnInit {
         el.expanded = false;
         return el;
       });
-      if(this.videoProgList.length < 1){
+      this.videoFiltered = this.videoProgList;
+      if(this.videoFiltered.length < 1){
         this.noVideoProg = true;
       }
       console.log(this.videoProgList);
@@ -86,8 +132,48 @@ export class NewScheduleProgramPage implements OnInit {
     }
     );
 
+    this.programService.getAllLivePrograms(null).subscribe(data => {
+      this.liveProgList = data.programList.filter(el => {
+        if (el.image_path) {
+          el.img_arr = el.image_path.split(',');
+        }
+        el.converted = new Date(el.program_date + 'Z');
+        el.expanded = false;
+        return el;
+      });
+      this.liveProgArray = this.liveProgList;
+      if(this.liveProgList.length < 1){
+        this.noLiveProg = true;
+      }
+      console.log(this.liveProgList);
+      this.commonService.dismissLoader();
+      
+    },
+    err=> {
+      this.commonService.presentToast("Couldnt load data, Something went wrong.");
+      this.commonService.dismissLoader();
+      
+    }
+    );
+
    
 
+  }
+  videoFilterUser(searchString: string) {
+    return this.nutritionList.filter(employee =>
+      employee.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
+  }
+  nutriFilterProgram(searchString: string) {
+    return this.videoProgList.filter(employee =>
+      employee.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
+  }
+  liveFilterProgram(searchString: string) {
+    return this.liveProgList.filter(employee =>
+      employee.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
+  }
+  reqFilterProgram(searchString: string) {
+    return this.reqProgramList.filter(employee =>
+      employee.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
   }
   ionViewWillEnter() {
     this.programService.getSchedulePrograms(null).subscribe(data => {
@@ -109,29 +195,7 @@ export class NewScheduleProgramPage implements OnInit {
     }
     );
 
-    this.programService.getAllLivePrograms(null).subscribe(data => {
-      this.liveProgList = data.programList.filter(el => {
-        if (el.image_path) {
-          el.img_arr = el.image_path.split(',');
-        }
-        el.converted = new Date(el.program_date + 'Z');
-        el.expanded = false;
-        return el;
-      });
-      
-      if(this.liveProgList.length < 1){
-        this.noLiveProg = true;
-      }
-      console.log(this.liveProgList);
-      this.commonService.dismissLoader();
-      
-    },
-    err=> {
-      this.commonService.presentToast("Couldnt load data, Something went wrong.");
-      this.commonService.dismissLoader();
-      
-    }
-    );
+   
 
 
     this.commonService.presentLoader();
@@ -152,7 +216,8 @@ export class NewScheduleProgramPage implements OnInit {
       },
       err=> {
         this.commonService.presentToast("Couldnt load data, Something went wrong.")
-      });  
+      }); 
+      this.reqProgArray = this.reqProgramList; 
       this.commonService.dismissLoader();
       if(this.reqProgramList.length < 1){
         this.noReqProgramList = true;

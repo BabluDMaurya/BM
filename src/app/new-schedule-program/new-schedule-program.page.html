@@ -70,10 +70,10 @@
               </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'invitation'">
-                <ion-toolbar class="searchbar" *ngIf="!noReqProgramList">
-                  <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+                <ion-toolbar class="searchbar" >
+                  <ion-searchbar [(ngModel)]="reqProgSearchTerm" animated="true"></ion-searchbar>
                 </ion-toolbar>
-              <div class="program-card" *ngFor="let item of reqProgramList; let l = index;" >
+              <div class="program-card" *ngFor="let item of reqProgArray; let l = index;" >
                 <ion-avatar>
                   <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
                   <img src="../../../assets/images/loading.jpg" *ngIf="!item?.image_path">
@@ -95,9 +95,9 @@
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'nutrition'">
                 <ion-toolbar class="searchbar" *ngIf="!noNutriProg">
-                  <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+                  <ion-searchbar [(ngModel)]="nutriProgSearchTerm" animated="true"></ion-searchbar>
                 </ion-toolbar>
-              <div class="program-card" *ngFor="let item of nutritionList">
+              <div class="program-card" *ngFor="let item of nutriProgArray">
                 <ion-avatar>
                   <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
                   <img src="../../../assets/images/loading.jpg" *ngIf="!item?.image_path">
@@ -115,10 +115,10 @@
               </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'videos'">
-              <ion-toolbar class="searchbar" *ngIf="!noVideoProg">
-                <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+              <ion-toolbar class="searchbar" >
+                <ion-searchbar [(ngModel)]="videoSearchTerm" animated="true"></ion-searchbar>
               </ion-toolbar>
-              <div class="program-card" *ngFor="let item of videoProgList">
+              <div class="program-card" *ngFor="let item of videoFiltered">
                 <ion-avatar>
                   <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
                   <img src="../../../assets/images/loading.jpg" *ngIf="!item?.image_path">
@@ -136,12 +136,12 @@
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'live'">
               <ion-toolbar class="searchbar" *ngIf="!noLiveProg">
-                <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+                <ion-searchbar [(ngModel)]="liveProgSearchTerm" animated="true"></ion-searchbar>
               </ion-toolbar>
-              <div class="program-card" *ngFor="let item of liveProgList">
+              <div class="program-card" *ngFor="let item of liveProgArray">
                 <ion-avatar>
-                  <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
-                  <img src="../../../assets/images/loading.jpg" *ngIf="!item?.image_path">
+                  <img src="{{profileUrl}}{{item?.program_user?.bios?.profile_pic}}" *ngIf="item?.program_user?.bios?.profile_pic != '' ">
+                  <img src="../../../assets/images/loading.jpg" *ngIf="item?.program_user?.bios?.profile_pic == '' ">
                 </ion-avatar>
                 <div class="program-info">
                   <h6>{{item.title}}</h6>
@@ -149,6 +149,7 @@
                   <p>{{item?.converted |date:'medium'}}</p>
                 </div>
                 <span class="program-type">{{item?.type_id}}</span>
+                <ion-icon ios="ios-more" md="md-more" *ngIf="(item?.user_id == userData?.id)" (click)="hostingDropdown(item?.id)"></ion-icon>
               </div>
               <div *ngIf="noLiveProg" class="no-data">
                 <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
