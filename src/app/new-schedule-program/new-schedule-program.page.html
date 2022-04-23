@@ -19,7 +19,7 @@
 <ion-content>
   <calendar *ngIf="scheduleProgram == 'program'" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" startHour="0"
   endHour="24" step="1" (onTitleChanged)="onViewTitleChanged($event)"  (onTimeSelected)="onTimeSelected($event)" class="calendar-table swiper-container"></calendar>
-  <ion-item *ngIf="scheduleProgram == 'program'" style="position: relative;" class="ion-no-padding">
+  <ion-item *ngIf="scheduleProgram == 'program'" style="position: relative; --min-height: 30px;" class="ion-no-padding">
     <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="calendar.mode == 'week'" (click)="handleCalendarView()"></ion-icon>
     <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="calendar.mode == 'month'" (click)="handleCalendarView()"></ion-icon>
   </ion-item>
@@ -90,7 +90,7 @@
               </div>
               <div *ngIf="noReqProgramList" class="no-data">
                 <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
-                <p>No Requested Program</p>
+                <p>No Requested Program</p>             
               </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'nutrition'">
