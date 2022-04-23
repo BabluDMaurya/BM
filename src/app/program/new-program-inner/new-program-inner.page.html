@@ -78,7 +78,7 @@
             <div [ngSwitch]="scheduleProgram">
               <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'program'">
                 <ion-row>
-                  <ion-col size="12" class="ion-padding">
+                  <ion-col size="12" class="ion-no-padding">
                     <div class="programDesc">
                       <!-- <p>{{programDetail?.description }} &nbsp;</p>         -->
                       <p>{{programDetail?.description }}</p>
@@ -98,7 +98,7 @@
                     <h6 *ngIf="adData?.id && adData?.video_approve_status== null"> Your request for ad sponser is yet to verify. </h6>
                     <h6 *ngIf="adData?.id && adData?.video_approve_status== 0"> Your Video is Not Approved </h6>
                   </ion-col> -->
-                  <ion-col size="12" style="position: static;" class="ion-no-padding mt-15 green-text">
+                  <ion-col size="12" style="position: static;" class="ion-no-padding  green-text">
                     <!-- <ion-text><p class="program-date">{{programDateTime|date:'medium'}}</p></ion-text> -->
                     <ion-text><p class="program-date">{{programDateTime|date:'medium'}}</p></ion-text>
                   </ion-col>
@@ -151,12 +151,12 @@
                   <ion-button class="btnVerify" >No live program available</ion-button>
                 </div>
 
-                <ion-item class="list-items">
-                  <div class="icon-text">
+                <ion-item class="list-items ion-text-center">
+                  <div class="icon-text" style="width: 100%;">
                   <ion-label>Program: {{programDetail?.video_id.split(",").length}} Videos, {{programFee}}</ion-label>
                   </div>          
                 </ion-item>
-              </ion-list>
+              </ion-list> 
               
               <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'videos'">
                 <div class="program-card" *ngFor="let val of allProgramData; let i=index;">

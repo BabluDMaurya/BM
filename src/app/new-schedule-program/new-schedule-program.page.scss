@@ -148,7 +148,8 @@ ion-segment-button.segment-button-checked{
         padding-inline-start: 0 !important;
     }
     .event-detail-container{
-        margin-bottom: 10px;
+        // margin-bottom: 10px;
+        display: none;
     }
     .event-detail-container ion-item{
         --padding-end: 40px !important;
@@ -174,6 +175,7 @@ ion-segment-button.segment-button-checked{
         }
         .table-bordered {
           border: 0!important;
+          border-bottom: 1px solid #cecece !important;
       }
       .slides-container {
         color: #fff !important;
@@ -216,4 +218,10 @@ ion-segment-button.segment-button-checked{
     .live-icon{
         background-color: #27a69a !important;
     }
+}
+.event-detail-container.md.list-md.hydrated{
+    display: none !important;
+}
+.no-data{
+    height: 77vh;
 }
