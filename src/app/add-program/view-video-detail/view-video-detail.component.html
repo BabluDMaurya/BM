@@ -56,6 +56,25 @@
     <p>Published on {{createdAt}}</p>
     <p>Credits - {{publishBy}}</p>
   </ion-list>
+  <ion-list  lines="none" class="video-list">
+    <ion-list-header>Up Next</ion-list-header>
+    <div>      
+      <div *ngFor="let post of allPostData">            
+        <ion-item  [routerLink]="['/videos',post.id,'']">
+          <ion-avatar slot="start">
+            <img src="{{storagePath + nextpost.thumb_path}}">
+          </ion-avatar>
+          <ion-label>
+            <h3>{{nextpost.title}}</h3>
+            <p class="text-gray">{{nextpost.description}}</p>
+            <p class="text-gray">{{nextpost.created_at}} . {{nextpost.views > 0 ? nextpost.views : 0}} views</p>
+          </ion-label>
+        </ion-item>
+        
+      
+      </div>
+    </div> 
+  </ion-list>  
   
 </ion-content>
 
