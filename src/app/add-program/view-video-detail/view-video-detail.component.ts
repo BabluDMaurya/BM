@@ -94,6 +94,37 @@ export class ViewVideoDetailComponent implements OnInit {
     
     this.streamingMedia.playVideo(this.videoDataPath, options);
   }
+  playNextVideo(id){
+    this.postService.getProgVideoPostById({'postId':id,'videoId': this.videoIds}).subscribe((data)=>{
+      this.postData = data.postData.videoData;
+      this.allPostData = data.postData.allVideoData;
+
+      console.log(data);
+      this.postUserId = data.postData.videoData.user_id;
+
+      this.disableComment = data.postData.videoData.disable_comment
+      this.title = data.postData.videoData.video_post[0].title;
+      this.description = data.postData.videoData.video_post[0].description;
+      this.createdAt = data.postData.videoData.created_at;
+      this.publishBy = data.postData.videoData.post_user.user_name;
+      this.commentCount = data.postData.videoData.total_comments.length;
+      this.postLikesCount = data.postData.videoData.post_likes.length;
+      this.likePost = (data.postData.videoData.post_likes.user_id == this.postUserId ? 'true' : 'false');      
+      this.videoDataPath =  this.storagePath + data.postData.videoData.video_post[0].video_path; 
+      this.videoThumbPath =  this.storagePath + data.postData.videoData.video_post[0].thumb_path; 
+      this.videoType = data.postData.videoData.video_post[0].video_type;
+      // console.log("this.videoType: " + this.videoType);
+      this.noImgData = false;
+     
+
+      // this.postData.post_bookmarks.filter((f) => {
+      //   if (f.user_id == this.loginUserData.id) {
+      //     this.bookmark = true;
+      //   }
+      // });     
+      console.log(this.postData);
+    });
+  }
   closeModal() {
     this.commonService.dismissModal();
   }

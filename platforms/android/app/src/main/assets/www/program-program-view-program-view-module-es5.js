@@ -2468,8 +2468,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "goBack",
         value: function goBack() {
-          // this.navCtrl.back();
-          this.router.navigate(['/schedule-program']);
+          this.navCtrl.back(); // this.router.navigate(['/schedule-program']);
         }
       }, {
         key: "acceptRequest",

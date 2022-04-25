@@ -52,16 +52,16 @@
         </ion-toolbar>
         <div [ngSwitch]="nutritionInfo">
           <div *ngSwitchCase="'breakFast'">
-            <ion-slides>
+            <ion-slides [options]="sliderOpts">
               <ion-slide *ngFor="let item of nutritionItem  | filter:'BreakFast':'type' ; let i = index">
                 <div class="nutrition-map" >
                   <div *ngIf="item.type=='BreakFast'">
-                    <ion-slide class="nutrition-slide" *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
-                      <!-- <img src="{{url}}{{nImage}}"  *ngIf="nImage" /> -->
-                      <img class="nutrition-image" src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' "/>
-                      <!-- <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage"/> -->
-                      <!-- <ion-label>{{item?.title}}</ion-label> -->
-                    </ion-slide> 
+                    <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider pager="true" (ionSlidesDidLoad)="slidesDidLoad(slider)">
+                      <ion-slide (click)="showdetails()" *ngFor="let nImage of item.image_path.split(','); ">
+                        <img class="nutrition-image" src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' "/>
+                      <img src="{{url}}{{nImage}}"  *ngIf="item?.image_path != '' " />
+                      </ion-slide>
+                    </ion-slides> 
                     <!-- <img src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' "/> -->
                     <!-- <ion-list-header class="grey-header mb-0">{{item.title}}</ion-list-header> -->
                     <ion-grid>
@@ -159,11 +159,13 @@
               <ion-slide *ngFor="let item of nutritionItem  | filter:'Brunch':'type'">
                 <div>
                   <div *ngIf="item.type=='Brunch'">
-                    <ion-slide class="nutrition-slide" *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
-                      <img class="nutrition-image" src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' "/>
-                      <!-- <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage"/> -->
-                      <!-- <ion-label>{{item?.title}}</ion-label> -->
-                    </ion-slide> 
+
+                    <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider pager="true" (ionSlidesDidLoad)="slidesDidLoad(slider)">
+                      <ion-slide (click)="showdetails()" *ngFor="let nImage of item.image_path.split(','); ">
+                        <img class="nutrition-image" src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' "/>
+                      <img src="{{url}}{{nImage}}"  *ngIf="item?.image_path != '' " />
+                      </ion-slide>
+                    </ion-slides>
                     <ion-grid>
                       <ion-row>
                         <ion-col size="12">
@@ -254,15 +256,16 @@
             </ion-slides>          
           </div>
           <div *ngSwitchCase="'lunch'">
-            <ion-slides>
+            <ion-slides [options]="sliderOpts">
               <ion-slide *ngFor="let item of nutritionItem | filter:'Lunch':'type'" >
                 <div>
                   <div *ngIf="item.type=='Lunch'">
-                    <ion-slide class="nutrition-slide" *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
-                      <img class="nutrition-image" src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' "/>
-                      <!-- <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage"/> -->
-                      <!-- <ion-label>{{item?.title}}</ion-label> -->
-                    </ion-slide> 
+                    <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider pager="true" (ionSlidesDidLoad)="slidesDidLoad(slider)">
+                      <ion-slide (click)="showdetails()" *ngFor="let nImage of item.image_path.split(','); ">
+                        <img class="nutrition-image" src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' "/>
+                      <img src="{{url}}{{nImage}}"  *ngIf="item?.image_path != '' " />
+                      </ion-slide>
+                    </ion-slides>
                     <ion-grid>
                       <ion-row>
                         <ion-col size="12">
@@ -360,11 +363,12 @@
               <ion-slide *ngFor="let item of nutritionItem | filter:'Snacks':'type'">
                 <div>
                   <div *ngIf="item.type=='Snacks'">
-                    <ion-slide class="nutrition-slide" *ngFor="let nImage of item.image_path.split(','); "  (click)="nutritionModal(progItem)" >
-                      <img class="nutrition-image" src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' "/>
-                      <!-- <img src="../../assets/images/nutrition2.png" *ngIf="!item?.nImage"/> -->
-                      <!-- <ion-label>{{item?.title}}</ion-label> -->
-                    </ion-slide> 
+                    <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider pager="true" (ionSlidesDidLoad)="slidesDidLoad(slider)">
+                      <ion-slide (click)="showdetails()" *ngFor="let nImage of item.image_path.split(','); ">
+                        <img class="nutrition-image" src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' "/>
+                      <img src="{{url}}{{nImage}}"  *ngIf="item?.image_path != '' " />
+                      </ion-slide>
+                    </ion-slides>
                     <ion-grid>
                       <ion-row>
                         <ion-col size="12">
@@ -459,10 +463,12 @@
               <ion-slide *ngFor="let item of nutritionItem  | filter:'Dinner':'type'">
                 <div>
                   <div *ngIf="item.type=='Dinner'">
-                    <ion-slide class="nutrition-slide" *ngFor="let nImage of item.image_path.split(); "  (click)="nutritionModal(progItem)" >
-                      <img class="nutrition-image" src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' "/>
-                      <!-- <ion-label>{{item?.title}}</ion-label> -->
-                    </ion-slide> 
+                    <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider pager="true" (ionSlidesDidLoad)="slidesDidLoad(slider)">
+                      <ion-slide (click)="showdetails()" *ngFor="let nImage of item.image_path.split(','); ">
+                        <img class="nutrition-image" src="../../assets/images/nutrition2.png" *ngIf="item?.image_path == '' "/>
+                      <img src="{{url}}{{nImage}}"  *ngIf="item?.image_path != '' " />
+                      </ion-slide>
+                    </ion-slides> 
                     <ion-grid>
                       <ion-row>
                         <ion-col size="12">

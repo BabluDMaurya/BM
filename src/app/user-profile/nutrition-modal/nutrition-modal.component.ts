@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonService } from '../../services/common.service';
 import { NutritionService } from './../../services/nutrition.service'
-import { NavParams } from '@ionic/angular';
+import { NavParams, IonSlides } from '@ionic/angular';
 import {Config} from '../../config/config';
 @Component({
   selector: 'app-nutrition-modal',
@@ -9,13 +9,24 @@ import {Config} from '../../config/config';
   styleUrls: ['../../app.component.scss', '../user-profile.page.scss', './nutrition-modal.component.scss'],
 })
 export class NutritionModalComponent implements OnInit {
-
+  @ViewChild('mySlider', { static: true }) slides: IonSlides;
+  sliderOpts = {
+    initialSlide: 0,
+    speed: 400,
+    zoom: true,
+    slidesPerView: 1,
+    centeredSlides: true,
+    spaceBetween: 0
+  };
   nutritionItem:any;
   url=Config.imgUrl;
   constructor(public commonService: CommonService,
     public navParams: NavParams,
     private nutritionService:NutritionService ) { }
   nutritionInfo:string='breakFast';
+  slidesDidLoad(slides: IonSlides) {
+    // slides.startAutoplay();
+  }
   segmentChanged(ev: any) {
     this.nutritionInfo=ev.detail.value;   
   }

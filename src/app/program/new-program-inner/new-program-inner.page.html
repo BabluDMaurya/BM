@@ -172,7 +172,7 @@
                       <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
                       <p class="fs-14">Video</p>
                     </div>
-                    <div class="program-nutrition program-flex-child">
+                    <div class="program-nutrition program-flex-child" *ngIf="val.nutrition_id != '' " (click)="nutritionModal(val)">
                       <ion-icon class="ionic-icon" ios="ios-nutrition" md="md-nutrition"></ion-icon>
                       <p class="fs-14">Nutrition</p>
                     </div>
@@ -181,7 +181,7 @@
               </ion-list>
               <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'chat'">
                 <div class="program-chat">
-                  <ion-avatar>
+                  <!-- <ion-avatar>
                     <img src="../../assets/images/bgimage.png" alt="">
                   </ion-avatar>
                   <div class="program-chat-info">
@@ -192,8 +192,8 @@
                     <div class="chat-info">
                       <span>Good morning rock</span>
                     </div>
-                  </div>
-                 
+                  </div> -->
+                 <p>No Chat available</p>
                 </div>
               </ion-list>
               <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'programtype'">

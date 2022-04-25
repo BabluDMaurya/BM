@@ -76,10 +76,10 @@
 
     <ion-row *ngIf="postData.length > 0">
       <ion-col class="ion-no-padding">
-        <ion-segment lines="none" class="top-segment" [(ngModel)]="userProfile">
+        <!-- <ion-segment lines="none" class="top-segment" [(ngModel)]="userProfile">
           <ion-segment-button value="aboutInfo">Feed</ion-segment-button>
           <ion-segment-button value="upcomingProgram">Upcoming Program</ion-segment-button>
-        </ion-segment>
+        </ion-segment> -->
         <div [ngSwitch]="userProfile">
           <div *ngSwitchCase="'aboutInfo'" class="user-info">
 
@@ -181,9 +181,9 @@
                   </ion-card-header>
                   <ion-card-content class="ion-no-padding item-content">
                     <div class="img-container">
-                      <ion-thumbnail class="post-image" *ngIf="post['image_post']['0']['thumb_path']">
+                      <ion-thumbnail class="post-image" *ngIf="post['image_post']['0']['image_path']">
                         <ion-slides [options]="imageSlider" class="post-slider" [pager]="true">
-                          <ion-slide *ngFor="let imgpath of post['image_post']['0']['thumb_path']; let i =index;">
+                          <ion-slide *ngFor="let imgpath of post['image_post']['0']['image_path']; let i =index;">
                             <img (click)="openViewer(post['image_post']['0']['image_path'][i])" src="{{url}}{{imgpath}}" alt="{{imgpath}}" />
                           </ion-slide>
                         </ion-slides>

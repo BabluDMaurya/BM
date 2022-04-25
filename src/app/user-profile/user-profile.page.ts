@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PopoverController, Platform} from '@ionic/angular';
+import { PopoverController, Platform, ModalController} from '@ionic/angular';
 import { CommonService } from '../.././app/services/common.service';
 import { NutritionModalComponent } from '../../app/user-profile/nutrition-modal/nutrition-modal.component';
 import { PopOverComponent } from '../user-profile/pop-over/pop-over.component';
@@ -10,6 +10,7 @@ import { Config } from './../config/config';
 import { HomeService } from '../services/home.service';
 import { FollowersComponent } from '../modalContent/followers/followers.component';
 import { PeopleViewService } from './../services/people-view.service';
+import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 
 @Component({
   selector: 'app-user-profile',
@@ -42,6 +43,7 @@ export class UserProfilePage implements OnInit {
     private settingsService: SettingsService,
     private platform: Platform,
     private programService:ProgramService,
+    public modalController: ModalController,
     private peopleView: PeopleViewService,
     private router: Router) {
   
@@ -218,5 +220,19 @@ export class UserProfilePage implements OnInit {
         event.target.disabled = true;
       }
     }, 500);
+  }
+  async openViewer(path) {
+    const modal = await this.modalController.create({
+      component: ViewerModalComponent,
+      componentProps: {
+        src: this.url + path,
+        srcHighRes: this.url + path,
+        srcFallback: this.url + path
+      },
+      cssClass: 'ion-img-viewer',
+      keyboardClose: true,
+      showBackdrop: true
+    });
+    return await modal.present();
   }
 }

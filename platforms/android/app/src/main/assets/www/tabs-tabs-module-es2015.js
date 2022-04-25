@@ -44,7 +44,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => Promise.all(/*! import() | user-profile-user-profile-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~1df314e5"), __webpack_require__.e("common"), __webpack_require__.e("user-profile-user-profile-module")]).then(__webpack_require__.bind(null, /*! ../user-profile/user-profile.module */ "./src/app/user-profile/user-profile.module.ts")).then(m => m.UserProfilePageModule)
+                        loadChildren: () => Promise.all(/*! import() | user-profile-user-profile-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~ea0b00a1"), __webpack_require__.e("common"), __webpack_require__.e("user-profile-user-profile-module")]).then(__webpack_require__.bind(null, /*! ../user-profile/user-profile.module */ "./src/app/user-profile/user-profile.module.ts")).then(m => m.UserProfilePageModule)
                     }
                 ]
             },
@@ -62,7 +62,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~1df314e5"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ../home/home.module */ "./src/app/home/home.module.ts")).then(m => m.HomePageModule)
+                        loadChildren: () => Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~ea0b00a1"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ../home/home.module */ "./src/app/home/home.module.ts")).then(m => m.HomePageModule)
                     }
                 ]
             },
@@ -73,7 +73,7 @@ const routes = [
                         path: '',
                         // redirectTo: '/tabs/profile',
                         pathMatch: 'full',
-                        loadChildren: () => Promise.all(/*! import() | profile-consultant-profile-view-consultant-profile-view-module */[__webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~35dc278f"), __webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~1df314e5"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~ec93f8e5"), __webpack_require__.e("common"), __webpack_require__.e("profile-consultant-profile-view-consultant-profile-view-module")]).then(__webpack_require__.bind(null, /*! ../profile/consultant-profile-view/consultant-profile-view.module */ "./src/app/profile/consultant-profile-view/consultant-profile-view.module.ts")).then(m => m.ConsultantProfileViewPageModule)
+                        loadChildren: () => Promise.all(/*! import() | profile-consultant-profile-view-consultant-profile-view-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~ea0b00a1"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~35dc278f"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~ec93f8e5"), __webpack_require__.e("common"), __webpack_require__.e("profile-consultant-profile-view-consultant-profile-view-module")]).then(__webpack_require__.bind(null, /*! ../profile/consultant-profile-view/consultant-profile-view.module */ "./src/app/profile/consultant-profile-view/consultant-profile-view.module.ts")).then(m => m.ConsultantProfileViewPageModule)
                     }
                 ]
             },
@@ -84,7 +84,7 @@ const routes = [
                         path: '',
                         // redirectTo: '/tabs/profile',
                         pathMatch: 'full',
-                        loadChildren: () => Promise.all(/*! import() | profile-user-profile-view-user-profile-view-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~1df314e5"), __webpack_require__.e("profile-user-profile-view-user-profile-view-module")]).then(__webpack_require__.bind(null, /*! ../profile/user-profile-view/user-profile-view.module */ "./src/app/profile/user-profile-view/user-profile-view.module.ts")).then(m => m.UserProfileViewPageModule)
+                        loadChildren: () => Promise.all(/*! import() | profile-user-profile-view-user-profile-view-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~ea0b00a1"), __webpack_require__.e("profile-user-profile-view-user-profile-view-module")]).then(__webpack_require__.bind(null, /*! ../profile/user-profile-view/user-profile-view.module */ "./src/app/profile/user-profile-view/user-profile-view.module.ts")).then(m => m.UserProfileViewPageModule)
                     }
                 ]
             },
@@ -93,7 +93,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => Promise.all(/*! import() | profile-my-profile-my-profile-module */[__webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~35dc278f"), __webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~1df314e5"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~ec93f8e5"), __webpack_require__.e("profile-my-profile-my-profile-module")]).then(__webpack_require__.bind(null, /*! ../profile/my-profile/my-profile.module */ "./src/app/profile/my-profile/my-profile.module.ts")).then(m => m.MyProfilePageModule)
+                        loadChildren: () => Promise.all(/*! import() | profile-my-profile-my-profile-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~ea0b00a1"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~35dc278f"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~ec93f8e5"), __webpack_require__.e("profile-my-profile-my-profile-module")]).then(__webpack_require__.bind(null, /*! ../profile/my-profile/my-profile.module */ "./src/app/profile/my-profile/my-profile.module.ts")).then(m => m.MyProfilePageModule)
                     }
                 ]
             }, {
@@ -101,7 +101,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => Promise.all(/*! import() | bookmark-bookmark-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~1df314e5"), __webpack_require__.e("bookmark-bookmark-module")]).then(__webpack_require__.bind(null, /*! ../bookmark/bookmark.module */ "./src/app/bookmark/bookmark.module.ts")).then(m => m.BookmarkPageModule)
+                        loadChildren: () => Promise.all(/*! import() | bookmark-bookmark-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~ea0b00a1"), __webpack_require__.e("bookmark-bookmark-module")]).then(__webpack_require__.bind(null, /*! ../bookmark/bookmark.module */ "./src/app/bookmark/bookmark.module.ts")).then(m => m.BookmarkPageModule)
                     }
                 ]
             }, {
@@ -164,7 +164,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => Promise.all(/*! import() | chats-chat-list-chat-list-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~1df314e5"), __webpack_require__.e("common"), __webpack_require__.e("chats-chat-list-chat-list-module")]).then(__webpack_require__.bind(null, /*! ../chats/chat-list/chat-list.module */ "./src/app/chats/chat-list/chat-list.module.ts")).then(m => m.ChatListPageModule)
+                        loadChildren: () => Promise.all(/*! import() | chats-chat-list-chat-list-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~ea0b00a1"), __webpack_require__.e("common"), __webpack_require__.e("chats-chat-list-chat-list-module")]).then(__webpack_require__.bind(null, /*! ../chats/chat-list/chat-list.module */ "./src/app/chats/chat-list/chat-list.module.ts")).then(m => m.ChatListPageModule)
                     }
                 ]
             },
@@ -173,7 +173,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => Promise.all(/*! import() | chats-chat-list-chat-list-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~1df314e5"), __webpack_require__.e("common"), __webpack_require__.e("chats-chat-list-chat-list-module")]).then(__webpack_require__.bind(null, /*! ../chats/chat-list/chat-list.module */ "./src/app/chats/chat-list/chat-list.module.ts")).then(m => m.ChatListPageModule)
+                        loadChildren: () => Promise.all(/*! import() | chats-chat-list-chat-list-module */[__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~ea0b00a1"), __webpack_require__.e("common"), __webpack_require__.e("chats-chat-list-chat-list-module")]).then(__webpack_require__.bind(null, /*! ../chats/chat-list/chat-list.module */ "./src/app/chats/chat-list/chat-list.module.ts")).then(m => m.ChatListPageModule)
                     }
                 ]
             },

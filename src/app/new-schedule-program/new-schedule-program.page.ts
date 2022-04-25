@@ -6,6 +6,9 @@ import { HostingDropdownComponent } from '../program/hosting-dropdown/hosting-dr
 import { IonSlides, PopoverController, NavController } from '@ionic/angular';
 import { RequestedDropdownComponent } from '../program/requested-dropdown/requested-dropdown.component';
 import { Config } from '../config/config'
+import { NutritionModalComponent } from 'src/app/user-profile/nutrition-modal/nutrition-modal.component';
+import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/view-video-detail.component';
+
 
 @Component({
   selector: 'app-new-schedule-program',
@@ -118,7 +121,7 @@ export class NewScheduleProgramPage implements OnInit {
         return el;
       });
       this.videoFiltered = this.videoProgList;
-      if(this.videoFiltered.length < 1){
+      if(this.videoFiltered.length <= 0){
         this.noVideoProg = true;
       }
       console.log(this.videoProgList);
@@ -142,7 +145,7 @@ export class NewScheduleProgramPage implements OnInit {
         return el;
       });
       this.liveProgArray = this.liveProgList;
-      if(this.liveProgList.length < 1){
+      if(this.liveProgList.length == 0){
         this.noLiveProg = true;
       }
       console.log(this.liveProgList);
@@ -219,14 +222,14 @@ export class NewScheduleProgramPage implements OnInit {
       }); 
       this.reqProgArray = this.reqProgramList; 
       this.commonService.dismissLoader();
-      if(this.reqProgramList.length < 1){
+      if(this.reqProgramList.length == 0){
         this.noReqProgramList = true;
       }    
     },
     err=> {
       this.commonService.presentToast("Couldnt load data, Something went wrong.");
       this.commonService.dismissLoader();
-      if(this.reqProgramList.length < 1){
+      if(this.reqProgramList.length == 0){
         this.noReqProgramList = true;
       }  
     });
@@ -279,7 +282,7 @@ export class NewScheduleProgramPage implements OnInit {
     });
     popover.onDidDismiss().then((dataReturned) => {
       if (dataReturned !== null) {
-        this.ionViewWillEnter();
+        this.ngOnInit();
       }
     });
     return await popover.present();
@@ -296,10 +299,18 @@ export class NewScheduleProgramPage implements OnInit {
       cssClass: 'dropdown-menu'
     });
     popover.onDidDismiss().then((dataReturned) => {
+      this.ngOnInit();
       if (dataReturned !== null) {
-        this.ionViewWillEnter();
+        this.ngOnInit();
       }
     });
     return await popover.present();
+  }
+  async showVideoDetails(item,videoIDs){
+    this.commonService.presentModal(ViewVideoDetailComponent, 'fullModal', { 'details': item, 'videoIds': videoIDs });
+  }
+  nutritionModal(data) {
+    console.log(data);
+    this.commonService.presentModal(NutritionModalComponent, 'fullModal', { 'data': data });
   }
 }

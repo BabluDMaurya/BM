@@ -6,26 +6,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["program-program-program-module"], {
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/program/hosting-dropdown/hosting-dropdown.component.html":
-  /*!****************************************************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/program/hosting-dropdown/hosting-dropdown.component.html ***!
-    \****************************************************************************************************************/
-
-  /*! exports provided: default */
-
-  /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppProgramHostingDropdownHostingDropdownComponentHtml(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony default export */
-
-
-    __webpack_exports__["default"] = "<ion-list class=\"ion-padding\" lines=\"none\">\r\n  <ion-item *ngIf=\"user_type == 1\">\r\n    <ion-text  [routerLink]=\"['/edit-program',programId]\" (click)=\"closeModal()\">Edit Program</ion-text>\r\n  </ion-item>\r\n  <ion-item (click)=\"delete()\">\r\n    <ion-text>Delete Program</ion-text>\r\n  </ion-item>\r\n</ion-list>";
-    /***/
-  },
-
-  /***/
   "./node_modules/raw-loader/dist/cjs.js!./src/app/program/invite-request/invite-request.component.html":
   /*!************************************************************************************************************!*\
     !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/program/invite-request/invite-request.component.html ***!
@@ -62,148 +42,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
     __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" [routerLink]=\"['/tabs/consultant-profile']\">\r\n        <!-- <ion-buttons class=\"ion-no-margin\" (click)=\"goBack()\"></ion-buttons> -->\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label >Program List</ion-label>\r\n    </ion-item>\r\n    <!-- <ion-item slot=\"center\">\r\n      <ion-datetime displayFormat=\"MMM DD, YYYY\" [(ngModel)]=\"myDate\" value=\"{{myDate}}\" (ionChange)=\"sortDate(event)\">\r\n      </ion-datetime>\r\n    </ion-item> -->\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\">\r\n      <ion-toggle slot=\"end\" [(ngModel)]=\"showAll\" (ionChange)=\"onChange($event)\" *ngIf=\"programTabs == 'schedule'\">\r\n      </ion-toggle>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n<!------------- S K E L E T O N -------------- -->\r\n<div [ngSwitch]=\"programTabs\" *ngIf=\"!programList\">\r\n  <ion-list lines=\"none\" *ngSwitchCase=\"'hosting'\" class=\"ion-no-padding\">\r\n    <ion-card *ngFor=\"let itemSkeleton of [].constructor(10)\" class=\"ion-no-margin\">\r\n      <ion-item class=\"item-card\">\r\n        <ion-avatar slot=\"start\">\r\n          <ion-skeleton-text animated></ion-skeleton-text>\r\n        </ion-avatar>\r\n        <ion-label>\r\n          <ion-skeleton-text animated style=\"width: 80%;\"></ion-skeleton-text>\r\n          <ion-skeleton-text animated style=\"width: 60%;\"></ion-skeleton-text>\r\n          <ion-skeleton-text animated style=\"width: 30%;\"></ion-skeleton-text>\r\n        </ion-label>\r\n      </ion-item>\r\n    </ion-card>\r\n  </ion-list>\r\n</div>\r\n<!------------- E N D   S K E L E T O N ----------------->\r\n<div *ngIf=\"notShowAll\" class=\"programCalendar\">\r\n  <!-- <h4>{{myDate | date}}</h4> -->\r\n<ion-item lines=\"none\">  \r\n  <!-- <ion-label *ngFor=\"let week of dayDate; let i = index \" class=\"{{week.activeClass}}\" (click)=\"week.disableClass == 0 ? mySortDate(week.myDate,i) : tostmess()\">{{week.day}}<p>{{week.date}}</p></ion-label> -->\r\n  <ion-label *ngFor=\"let week of dayDate; let i = index \" class=\"{{week.activeClass}}\" (click)=\"mySortDate(week.myDate,i)\">{{week.day}}<p>{{week.date}}</p></ion-label>\r\n</ion-item>\r\n</div>\r\n  <ion-segment class=\"top-segment\" (ionChange)=\"tabs($event)\">\r\n    <ion-segment-button value=\"schedule\" *ngIf=\"userData?.user_type\" checked>\r\n      <div class=\"chatBadge\">\r\n        <span>Schedule</span> \r\n        <ion-badge class=\"ml-1\">{{pgCount || 0}}</ion-badge>\r\n      </div> \r\n    </ion-segment-button>\r\n    <!-- <ion-segment-button value=\"hosting\" *ngIf=\"userData?.user_type\" checked>\r\n      <div class=\"chatBadge\">\r\n        <span>Hosting</span> \r\n        <ion-badge class=\"ml-1\">{{programList?.length || 0}}</ion-badge>\r\n      </div> \r\n    </ion-segment-button>\r\n    <ion-segment-button value=\"attending\">\r\n      <div class=\"chatBadge\">\r\n        <span>Attending</span> \r\n        <ion-badge class=\"ml-1\">{{accProgramList?.length || 0}}</ion-badge>\r\n      </div>       \r\n    </ion-segment-button> -->\r\n\r\n<!-- comment by darshan -->\r\n    <!-- <ion-segment-button value=\"requested\">\r\n      <div class=\"chatBadge\">\r\n        <span>Invitation</span> \r\n        <ion-badge class=\"ml-1\">{{reqProgramList?.length || 0}}</ion-badge>\r\n      </div>     \r\n    </ion-segment-button> -->\r\n\r\n\r\n  </ion-segment>\r\n  <div [ngSwitch]=\"programTabs\">\r\n    <ion-list lines=\"none\" *ngSwitchCase=\"'schedule'\">\r\n      <div *ngIf=\"scheduleList &&  !showAll\">\r\n        <ion-card *ngFor=\"let program of scheduleList; let i = index;\" class=\"ion-no-margin upcomingCard\">\r\n          <ion-item lines=\"none\">\r\n            <ion-avatar slot=\"start\" [routerLink]=\"(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]\">\r\n              <img src=\"{{url}}{{program?.img_arr[0]}}\" *ngIf=\"program?.image_path\">\r\n              <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!program?.image_path\">\r\n            </ion-avatar>\r\n            <ion-label [routerLink]=\"(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]\">\r\n              <h3 class=\"list-person\">{{program?.title}}</h3>\r\n              <span class=\"list-name d-block\">{{program?.type_id}}</span>\r\n              <span class=\"list-name\">By: {{program?.program_user?.user_name}}</span>\r\n              <p class=\"text-green\">{{program?.converted |date:'medium'}}</p>\r\n            </ion-label>\r\n            <div class=\"action-links\" slot=\"end\">\r\n              <ion-icon ios=\"ios-more\" md=\"md-more\" *ngIf=\"(program?.user_id == userData?.id)\" (click)=\"hostingDropdown(program?.id)\"></ion-icon>\r\n              <ion-icon ios=\"ios-restaurant\" md=\"md-restaurant\" (click)=\"showSchedule(program)\"></ion-icon>\r\n             </div>\r\n          </ion-item>          \r\n        </ion-card>\r\n      </div>\r\n      <div *ngIf=\"showAll\">\r\n        <!-- <ion-card *ngFor=\"let program of allProgramList | programFilter; let j = index;\" class=\"ion-no-margin\"> -->\r\n          <ion-list style=\"display: flex;\" lines=\"none\" class=\"calendar-header\">\r\n            <ion-item class=\"ion-text-left\">\r\n              <ion-button class=\"calend_arrow\" fill=\"clear\" (click)=\"back()\">\r\n                <ion-icon name=\"arrow-back\" slot=\"icon-only\"></ion-icon>\r\n              </ion-button>\r\n            </ion-item>\r\n            <ion-item style=\"flex: 1;\">\r\n              <ion-title>{{ viewTitle }}</ion-title>\r\n            </ion-item>\r\n            <!-- Move forward one screen of the slides -->\r\n            <ion-item class=\"ion-text-right\">\r\n              <ion-button class=\"calend_arrow \" fill=\"clear\" (click)=\"next()\">\r\n                <ion-icon name=\"arrow-forward\" slot=\"icon-only\"></ion-icon>\r\n              </ion-button>\r\n            </ion-item>\r\n          </ion-list>\r\n          <calendar  [calendarMode]=\"calendar.mode\" [currentDate]=\"calendar.currentDate\"\r\n              scrollToHour=\"{{currentHrs}}\" (onTitleChanged)=\"onViewTitleChanged($event)\" (onTimeSelected)=\"onTimeSelected($event)\" startHour=\"6\"\r\n              endHour=\"20\"\r\n              step=\"30\"\r\n              startingDayWeek=\"1\"  class=\"calendar-table swiper-container\">\r\n          </calendar>\r\n        <!-- <ion-card *ngFor=\"let program of allProgramList ; let j = index;\" class=\"ion-no-margin\">\r\n          <ion-item class=\"item-card\">\r\n            <ion-avatar slot=\"start\" [routerLink]=\"(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]\">\r\n              <img src=\"{{url}}{{program?.img_arr[0]}}\" *ngIf=\"program?.image_path\">\r\n              <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!program?.image_path\">\r\n            </ion-avatar>\r\n            <ion-label [routerLink]=\"(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]\">\r\n              <h3 class=\"list-person\">{{program?.title}}</h3>\r\n              <span class=\"list-name d-block\">{{program?.type_id}}</span>\r\n              <span class=\"list-name\">By: {{program?.program_user?.user_name}}</span>\r\n              <p class=\"text-green\">{{program?.converted |date:'medium'}}</p>\r\n            </ion-label>\r\n            <div class=\"action-links\" slot=\"end\">\r\n              <ion-icon ios=\"ios-more\" md=\"md-more\" *ngIf=\"(program?.user_id == userData?.id)\" (click)=\"hostingDropdown(program?.id)\"></ion-icon>\r\n              <ion-icon ios=\"ios-restaurant\" md=\"md-restaurant\" (click)=\"showSchedule(program)\"></ion-icon>\r\n             </div>\r\n          </ion-item>          \r\n        </ion-card> -->\r\n        <ion-card *ngFor=\"let program of allScheduleList ; let j = index;\" [routerLink]=\"(program?.user_id == userData?.id) ? ['/program-details',program.id] : ['/program-view',program.id]\" class=\"ion-no-margin\">\r\n          <ion-item class=\"item-card\">\r\n            <ion-label class=\"flex-card\">\r\n              <div class=\"title__div\">\r\n                <span class=\"list-name d-block\">{{program?.type_id}}</span>\r\n              </div>\r\n              <div class=\"divider-line\"></div>\r\n              <div class=\"date__div\">\r\n                <h3 class=\"list-person\">{{program?.title}}</h3>\r\n                <p class=\"text-green\">{{program?.converted |date:'medium'}}</p>\r\n                <span class=\"list-name\">By: {{program?.program_user?.user_name}}</span>\r\n              </div>\r\n            </ion-label>\r\n             <ion-icon class=\"primary-color\" ios=\"ios-information-circle\" md=\"md-information-circle\" ></ion-icon>\r\n          </ion-item>          \r\n        </ion-card>\r\n      </div>\r\n      <div *ngIf=\"noAllScheduleList || noScheduleList\" class=\"no-data\">\r\n        <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n        <p>No Schedule Program</p>\r\n      </div>\r\n    </ion-list>\r\n    <!-- <ion-list lines=\"none\" *ngSwitchCase=\"'hosting'\">\r\n      <div *ngIf=\"programList &&  !showAll\">\r\n        <ion-card *ngFor=\"let program of programList; let i = index;\" class=\"ion-no-margin\">\r\n          <ion-item>\r\n            <ion-avatar slot=\"start\" [routerLink]=\"['/program-details',program.id]\">\r\n              <img src=\"{{url}}{{program?.img_arr[0]}}\" *ngIf=\"program?.image_path\">\r\n              <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!program?.image_path\">\r\n            </ion-avatar> -->\r\n            <!-- <ion-label [routerLink]=\"['/program-details', program.id]\">\r\n              <h3 class=\"list-person\">{{program?.title}}</h3>\r\n              <span class=\"list-name d-block\">{{program?.type_id}}</span>\r\n              <span class=\"list-name\">By: {{program?.program_user?.user_name}}</span>\r\n              <p class=\"text-green\">{{program?.converted |date:'medium'}}</p>\r\n            </ion-label>\r\n            <div class=\"action-links\" slot=\"end\">\r\n              <ion-icon ios=\"ios-more\" md=\"md-more\" (click)=\"hostingDropdown(program?.id)\"></ion-icon>\r\n              <ion-icon ios=\"ios-restaurant\" md=\"md-restaurant\" (click)=\"showSchedule(program)\"></ion-icon> -->\r\n              <!-- <ion-icon ios=\"ios-arrow-down\" md=\"ios-arrow-down\" (click)=\"expandItem(program,1,i)\"\r\n                *ngIf=\"program?.repeate_status!=2\" [ngClass]=\"classVariable == i ? 'active':'deactive'\">\r\n              </ion-icon> -->\r\n            <!-- </div>\r\n          </ion-item> -->\r\n          <!-- <app-expandable expandHeight=\"300px\" class=\"timeline-block\" [expanded]=\"program.expanded\">\r\n            <div class=\"lds-dual-ring\" *ngIf=\"!cloneProg\"></div>\r\n            <ion-list class=\"timeline-list\" lines=\"none\">\r\n              <ion-item *ngFor=\"let item of cloneProg\">\r\n                <ion-label>\r\n                  <h3 class=\"list-person\">{{item?.converted | date:'medium'}} <span class=\"ion-float-right d-flex\">\r\n                      <ion-icon class=\"text-green mr-1\" ios=\"ios-time\" md=\"md-time\"></ion-icon> {{item?.program_duration}}\r\n                      Min.\r\n                    </span> </h3>\r\n                  <p>{{item?.title}} - {{item?.description}}</p>\r\n                </ion-label>\r\n              </ion-item>\r\n            </ion-list>\r\n          </app-expandable> -->\r\n        <!-- </ion-card>\r\n      </div> -->\r\n      <!-- <div *ngIf=\"showAll\">\r\n        <ion-card *ngFor=\"let program of allProgramList | programFilter; let j = index;\" class=\"ion-no-margin\">\r\n          <ion-item class=\"item-card\">\r\n            <ion-avatar slot=\"start\" [routerLink]=\"['/program-details',program.id]\">\r\n              <img src=\"{{url}}{{program?.img_arr[0]}}\" *ngIf=\"program?.image_path\">\r\n              <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!program?.image_path\">\r\n            </ion-avatar>\r\n            <ion-label [routerLink]=\"['/program-details', program.id]\">\r\n              <h3 class=\"list-person\">{{program?.title}}</h3>\r\n              <span class=\"list-name d-block\">{{program?.type_id}}</span>\r\n              <span class=\"list-name\">By: {{program?.program_user?.user_name}}</span>\r\n              <p class=\"text-green\">{{program?.converted |date:'medium'}}</p>\r\n            </ion-label>\r\n            <div class=\"action-links\" slot=\"end\">\r\n              <ion-icon ios=\"ios-more\" md=\"md-more\" (click)=\"hostingDropdown(program?.id)\"></ion-icon>\r\n              <ion-icon ios=\"ios-restaurant\" md=\"md-restaurant\" (click)=\"showSchedule(program)\"></ion-icon> -->\r\n              <!-- <ion-icon ios=\"ios-arrow-down\" md=\"ios-arrow-down\" (click)=\"expandItem(program,4,j)\"\r\n                *ngIf=\"program?.repeate_status!=2\" [ngClass]=\"classVariable == j ? 'active':'deactive'\">\r\n              </ion-icon> -->\r\n            <!-- </div>\r\n\r\n          </ion-item> -->\r\n          <!-- <app-expandable expandHeight=\"300px\" class=\"timeline-block\" [expanded]=\"program.expanded\">\r\n            <div class=\"lds-dual-ring\" *ngIf=\"!cloneProg\"></div>\r\n            <ion-list class=\"timeline-list\" lines=\"none\">\r\n              <ion-item *ngFor=\"let item of cloneProg\">\r\n                <ion-label>\r\n                  <h3 class=\"list-person\">{{item?.converted | date:'medium'}} <span class=\"ion-float-right d-flex\">\r\n                      <ion-icon class=\"text-green\" ios=\"ios-time\" md=\"md-time\"></ion-icon> {{item?.program_duration}}\r\n                      Min.\r\n                    </span> </h3>\r\n                  <p>{{item?.title}} - {{item?.description}}</p>\r\n                </ion-label>\r\n              </ion-item>\r\n            </ion-list>\r\n          </app-expandable> -->\r\n        <!-- </ion-card>\r\n      </div>\r\n      <div *ngIf=\"programList?.length < 1 && allProgramList?.length<1\" class=\"no-data\">\r\n        <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n        <p>No Hosting Program</p>\r\n      </div>\r\n    </ion-list> -->\r\n    <!------------ A T T E N D I N G   P R O G R A M  -->\r\n    <!-- <ion-list lines=\"none\" *ngSwitchCase=\"'attending'\"> -->\r\n      <!-- <app-invite-request  [tabData]=\"accTabData\"></app-invite-request> -->\r\n      <!-- <ion-item class=\"item-card\" *ngFor=\"let item of accProgramList; let k = index;\">\r\n        <ion-avatar slot=\"start\" [routerLink]=\"['/program-view',item.id]\">\r\n          <img src=\"{{url}}{{item?.img_arr[0]}}\" *ngIf=\"item?.image_path\">\r\n          <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!item?.image_path\">\r\n        </ion-avatar>\r\n        <ion-label [routerLink]=\"['/program-view',item.id]\">\r\n          <h3 class=\"list-person\">{{item.title}}</h3>\r\n          <span class=\"list-name d-block\">{{item.type_id}}</span>\r\n          <span class=\"list-name\">By: {{item?.program_user?.user_name}}</span>\r\n          <p class=\"text-green\">{{item?.converted |date:'medium'}}</p>\r\n        </ion-label>\r\n        <div class=\"action-links\" slot=\"end\">\r\n          <ion-icon ios=\"ios-restaurant\" md=\"md-restaurant\" (click)=\"showSchedule(item)\"></ion-icon> -->\r\n          <!-- <ion-icon ios=\"ios-arrow-down\" md=\"ios-arrow-down\" (click)=\"expandItem(item,2,k)\" [ngClass]=\"classVariable == k ? 'active':'deactive'\"></ion-icon> -->\r\n        <!-- </div>\r\n      </ion-item> -->\r\n      <!-- <div *ngIf=\"accProgramList?.length < 1\" class=\"no-data\">\r\n        <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n        <p>No Attending Program</p>\r\n      </div> -->\r\n    <!-- </ion-list> -->\r\n    <!-- <app-expandable expandHeight=\"300px\" class=\"timeline-block\" [expanded]=\"item?.expanded\">\r\n      <div class=\"lds-dual-ring\" *ngIf=\"!cloneProg\"></div>\r\n      <ion-list class=\"timeline-list\" lines=\"none\">\r\n        <ion-item *ngFor=\"let item of cloneProg\">\r\n          <ion-label>\r\n            <h3 class=\"list-person\">{{item?.converted | date:'medium'}} <span class=\"ion-float-right d-flex\">\r\n                <ion-icon class=\"text-green\" ios=\"ios-time\" md=\"md-time\"></ion-icon> {{item?.program_duration}}\r\n                Min.\r\n              </span> </h3>\r\n            <p>{{item?.title}} - {{item?.description}}</p>\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-list>\r\n\r\n    </app-expandable> -->\r\n\r\n    <!----------- R E Q U E S T E D   P R O G R A M  -->\r\n    <ion-list lines=\"none\" *ngSwitchCase=\"'requested'\">\r\n     \r\n\r\n      <ion-card *ngFor=\"let item of reqProgramList; let l = index;\" class=\"ion-no-margin upcomingCard\">\r\n      <ion-item lines=\"none\">\r\n        <ion-avatar slot=\"start\" [routerLink]=\"['/program-view',item.id]\">\r\n          <img src=\"{{url}}{{item?.img_arr[0]}}\" *ngIf=\"item?.image_path\">\r\n          <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!item?.image_path\">\r\n        </ion-avatar>\r\n        <ion-label [routerLink]=\"['/program-view',item.id]\">\r\n          <h3 class=\"list-person\">{{item.title}}</h3>\r\n          <span class=\"list-name d-block\">{{item.type_id}}</span>\r\n          <span class=\"list-name\">By: {{item?.program_user?.user_name}}</span>\r\n          <p class=\"text-green\">{{item?.converted |date:'medium'}}</p>\r\n        </ion-label>\r\n        <div class=\"action-links\" slot=\"end\">\r\n          <ion-icon ios=\"ios-more\" md=\"md-more\" (click)=\"requestDropdown(item.id)\"></ion-icon>\r\n          <ion-icon ios=\"ios-restaurant\" md=\"md-restaurant\" (click)=\"showSchedule(item)\"></ion-icon>\r\n          <!-- <ion-icon ios=\"ios-arrow-down\" md=\"ios-arrow-down\" (click)=\"expandItem(item,3,l)\" *ngIf=\"item?.repeate_status!=2\" [ngClass]=\"classVariable == l ? 'active':'deactive'\">\r\n          </ion-icon> -->\r\n        </div>\r\n      </ion-item>\r\n      </ion-card>\r\n      <div *ngIf=\"noReqProgramList\" class=\"no-data\">\r\n        <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n        <p>No Requested Program</p>\r\n      </div>\r\n    </ion-list>\r\n    <!-- <app-expandable expandHeight=\"300px\" class=\"timeline-block\" [expanded]=\"item?.expanded\">\r\n      <div class=\"lds-dual-ring\" *ngIf=\"!cloneProg\"></div>\r\n      <ion-list class=\"timeline-list\" lines=\"none\">\r\n        <ion-item *ngFor=\"let item of cloneProg\">\r\n          <ion-label>\r\n            <h3 class=\"list-person\">{{item?.converted | date:'medium'}} <span class=\"ion-float-right d-flex\">\r\n                <ion-icon class=\"text-green\" ios=\"ios-time\" md=\"md-time\"></ion-icon> {{item?.program_duration}}\r\n                Min.\r\n              </span> </h3>\r\n            <p>{{item?.title}} - {{item?.description}}</p>\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-list>\r\n    </app-expandable> -->\r\n  </div>\r\n  \r\n</ion-content>";
-    /***/
-  },
-
-  /***/
-  "./src/app/program/hosting-dropdown/hosting-dropdown.component.scss":
-  /*!**************************************************************************!*\
-    !*** ./src/app/program/hosting-dropdown/hosting-dropdown.component.scss ***!
-    \**************************************************************************/
-
-  /*! exports provided: default */
-
-  /***/
-  function srcAppProgramHostingDropdownHostingDropdownComponentScss(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony default export */
-
-
-    __webpack_exports__["default"] = ".list-ios {\n  margin-bottom: 0; }\n\n.list-ios-lines-none .item {\n  --padding-start: 0; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJvZ3JhbS9ob3N0aW5nLWRyb3Bkb3duL0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFxwcm9ncmFtXFxob3N0aW5nLWRyb3Bkb3duXFxob3N0aW5nLWRyb3Bkb3duLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQVUsZ0JBQWdCLEVBQUE7O0FBQzFCO0VBQTJCLGtCQUFnQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvcHJvZ3JhbS9ob3N0aW5nLWRyb3Bkb3duL2hvc3RpbmctZHJvcGRvd24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGlzdC1pb3N7bWFyZ2luLWJvdHRvbTogMDt9XHJcbi5saXN0LWlvcy1saW5lcy1ub25lIC5pdGVtey0tcGFkZGluZy1zdGFydDogMDt9Il19 */";
-    /***/
-  },
-
-  /***/
-  "./src/app/program/hosting-dropdown/hosting-dropdown.component.ts":
-  /*!************************************************************************!*\
-    !*** ./src/app/program/hosting-dropdown/hosting-dropdown.component.ts ***!
-    \************************************************************************/
-
-  /*! exports provided: HostingDropdownComponent */
-
-  /***/
-  function srcAppProgramHostingDropdownHostingDropdownComponentTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "HostingDropdownComponent", function () {
-      return HostingDropdownComponent;
-    });
-    /* harmony import */
-
-
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @ionic/angular */
-    "./node_modules/@ionic/angular/dist/fesm5.js");
-    /* harmony import */
-
-
-    var _services_program_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ../../services/program.service */
-    "./src/app/services/program.service.ts");
-
-    var HostingDropdownComponent = /*#__PURE__*/function () {
-      function HostingDropdownComponent(modalController, navParams, programService, popOver) {
-        _classCallCheck(this, HostingDropdownComponent);
-
-        this.modalController = modalController;
-        this.navParams = navParams;
-        this.programService = programService;
-        this.popOver = popOver;
-      }
-
-      _createClass(HostingDropdownComponent, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {
-          this.programId = this.navParams.data.id;
-          this.user_type = this.navParams.data.user_type;
-        }
-      }, {
-        key: "delete",
-        value: function _delete() {
-          var _this = this;
-
-          this.programService.deleteProgram({
-            'programId': this.programId
-          }).subscribe(function (data) {
-            _this.popOver.dismiss();
-          }, function (error) {
-            _this.popOver.dismiss();
-          });
-        }
-      }, {
-        key: "closeModal",
-        value: function closeModal() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    this.popOver.dismiss();
-
-                  case 1:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _callee, this);
-          }));
-        }
-      }]);
-
-      return HostingDropdownComponent;
-    }();
-
-    HostingDropdownComponent.ctorParameters = function () {
-      return [{
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
-      }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"]
-      }, {
-        type: _services_program_service__WEBPACK_IMPORTED_MODULE_3__["ProgramService"]
-      }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"]
-      }];
-    };
-
-    HostingDropdownComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: 'app-hosting-dropdown',
-      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! raw-loader!./hosting-dropdown.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/program/hosting-dropdown/hosting-dropdown.component.html"))["default"],
-      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ../../app.component.scss */
-      "./src/app/app.component.scss"))["default"], tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ./hosting-dropdown.component.scss */
-      "./src/app/program/hosting-dropdown/hosting-dropdown.component.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _services_program_service__WEBPACK_IMPORTED_MODULE_3__["ProgramService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"]])], HostingDropdownComponent);
     /***/
   },
 
@@ -290,7 +128,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(InviteRequestComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this2 = this;
+          var _this = this;
 
           console.log(this.tabData);
           var params = null; // if (this.tabData.tab == 2) {
@@ -302,7 +140,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           };
           console.log(userZoneDate);
           this.programService.getRequestedPrograms(params).subscribe(function (data) {
-            _this2.programList = data.list.filter(function (el) {
+            _this.programList = data.list.filter(function (el) {
               el.converted = new Date(el.program_date + 'Z');
               return el;
             });
@@ -482,53 +320,48 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _hosting_dropdown_hosting_dropdown_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! ../hosting-dropdown/hosting-dropdown.component */
-    "./src/app/program/hosting-dropdown/hosting-dropdown.component.ts");
-    /* harmony import */
-
-
-    var _profile_components_modules__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _profile_components_modules__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! ../../profile/components.modules */
     "./src/app/profile/components.modules.ts");
     /* harmony import */
 
 
-    var _invite_request_invite_request_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _invite_request_invite_request_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ./../invite-request/invite-request.component */
     "./src/app/program/invite-request/invite-request.component.ts");
     /* harmony import */
 
 
-    var _nutrition_list_pipe_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _nutrition_list_pipe_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ../../nutrition-list/pipe.module */
     "./src/app/nutrition-list/pipe.module.ts");
     /* harmony import */
 
 
-    var ion2_calendar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var ion2_calendar__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ion2-calendar */
     "./node_modules/ion2-calendar/dist/index.js");
     /* harmony import */
 
 
-    var ion2_calendar__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(ion2_calendar__WEBPACK_IMPORTED_MODULE_11__);
+    var ion2_calendar__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(ion2_calendar__WEBPACK_IMPORTED_MODULE_10__);
     /* harmony import */
 
 
-    var ionic2_calendar__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var ionic2_calendar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ionic2-calendar */
-    "./node_modules/ionic2-calendar/index.js");
+    "./node_modules/ionic2-calendar/index.js"); // import { HostingDropdownComponent } from '../hosting-dropdown/hosting-dropdown.component';
+
 
     var ProgramPageModule = function ProgramPageModule() {
       _classCallCheck(this, ProgramPageModule);
     };
 
     ProgramPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _program_routing_module__WEBPACK_IMPORTED_MODULE_5__["ProgramPageRoutingModule"], _profile_components_modules__WEBPACK_IMPORTED_MODULE_8__["ComponentModule"], _nutrition_list_pipe_module__WEBPACK_IMPORTED_MODULE_10__["PipeModule"], ion2_calendar__WEBPACK_IMPORTED_MODULE_11__["CalendarModule"], // ProgramPageModule.forChild(ProgramPage),
-      ionic2_calendar__WEBPACK_IMPORTED_MODULE_12__["NgCalendarModule"]],
-      declarations: [_program_page__WEBPACK_IMPORTED_MODULE_6__["ProgramPage"], _hosting_dropdown_hosting_dropdown_component__WEBPACK_IMPORTED_MODULE_7__["HostingDropdownComponent"], _invite_request_invite_request_component__WEBPACK_IMPORTED_MODULE_9__["InviteRequestComponent"]],
-      entryComponents: [_hosting_dropdown_hosting_dropdown_component__WEBPACK_IMPORTED_MODULE_7__["HostingDropdownComponent"], _invite_request_invite_request_component__WEBPACK_IMPORTED_MODULE_9__["InviteRequestComponent"]]
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _program_routing_module__WEBPACK_IMPORTED_MODULE_5__["ProgramPageRoutingModule"], _profile_components_modules__WEBPACK_IMPORTED_MODULE_7__["ComponentModule"], _nutrition_list_pipe_module__WEBPACK_IMPORTED_MODULE_9__["PipeModule"], ion2_calendar__WEBPACK_IMPORTED_MODULE_10__["CalendarModule"], // ProgramPageModule.forChild(ProgramPage),
+      ionic2_calendar__WEBPACK_IMPORTED_MODULE_11__["NgCalendarModule"]],
+      declarations: [_program_page__WEBPACK_IMPORTED_MODULE_6__["ProgramPage"], _invite_request_invite_request_component__WEBPACK_IMPORTED_MODULE_8__["InviteRequestComponent"]],
+      entryComponents: [_invite_request_invite_request_component__WEBPACK_IMPORTED_MODULE_8__["InviteRequestComponent"]]
     })], ProgramPageModule);
     /***/
   },
@@ -736,14 +569,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onTimeSelected",
         value: function onTimeSelected(event) {
-          var _this3 = this;
+          var _this2 = this;
 
           console.log(event);
           this.programService.getAllSelectedUpcomingPrograms({
             'sortDate': event.selectedTime.toUTCString()
           }).subscribe(function (data) {
             console.log(data);
-            _this3.allScheduleList = data.data.filter(function (el) {
+            _this2.allScheduleList = data.data.filter(function (el) {
               if (el.image_path) {
                 el.img_arr = el.image_path.split(',');
               }
@@ -752,20 +585,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               el.converted = new Date(el.program_date + 'Z');
               return el;
             });
-            _this3.pgCount = _this3.allScheduleList.length;
+            _this2.pgCount = _this2.allScheduleList.length;
 
-            _this3.commonService.dismissLoader();
+            _this2.commonService.dismissLoader();
 
-            if (_this3.allScheduleList.length < 1) {
-              _this3.noAllScheduleList = true;
+            if (_this2.allScheduleList.length < 1) {
+              _this2.noAllScheduleList = true;
             }
           }, function (err) {
-            _this3.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this2.commonService.presentToast("Couldnt load data, Something went wrong.");
 
-            _this3.commonService.dismissLoader();
+            _this2.commonService.dismissLoader();
 
-            if (_this3.allScheduleList.length < 1) {
-              _this3.noAllScheduleList = true;
+            if (_this2.allScheduleList.length < 1) {
+              _this2.noAllScheduleList = true;
             }
           });
         }
@@ -858,7 +691,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onChange",
         value: function onChange(event) {
-          var _this4 = this;
+          var _this3 = this;
 
           this.noScheduleList = false;
 
@@ -866,7 +699,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.commonService.presentLoader();
             this.notShowAll = false;
             this.programService.getAllUpcomingPrograms(null).subscribe(function (data) {
-              _this4.allProgramList = data.data.filter(function (el) {
+              _this3.allProgramList = data.data.filter(function (el) {
                 if (el.image_path) {
                   el.img_arr = el.image_path.split(',');
                 }
@@ -878,7 +711,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               var resultArray = [];
               var progIdList = [];
 
-              _this4.allProgramList.forEach(function (item, i) {
+              _this3.allProgramList.forEach(function (item, i) {
                 if (item.repeate_status == 2) {
                   resultArray.push(item);
                 } else {
@@ -894,24 +727,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               });
 
-              console.log(_this4.allProgramList);
+              console.log(_this3.allProgramList);
 
-              _this4.commonService.dismissLoader();
+              _this3.commonService.dismissLoader();
 
-              _this4.pgCount = resultArray.length;
+              _this3.pgCount = resultArray.length;
 
-              _this4.commonService.presentToast("All upcoming programs listed");
+              _this3.commonService.presentToast("All upcoming programs listed");
 
-              if (_this4.pgCount < 1) {
-                _this4.noScheduleList = true;
+              if (_this3.pgCount < 1) {
+                _this3.noScheduleList = true;
               }
             }, function (err) {
-              _this4.commonService.dismissLoader();
+              _this3.commonService.dismissLoader();
 
-              _this4.commonService.presentToast("Couldnt load data, Something went wrong.");
+              _this3.commonService.presentToast("Couldnt load data, Something went wrong.");
 
-              if (_this4.pgCount < 1) {
-                _this4.noScheduleList = true;
+              if (_this3.pgCount < 1) {
+                _this3.noScheduleList = true;
               }
             });
           } else {
@@ -929,7 +762,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ionViewWillEnter",
         value: function ionViewWillEnter() {
-          var _this5 = this;
+          var _this4 = this;
 
           this.accTabData = {
             'tab': 1,
@@ -960,7 +793,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.commonService.presentLoader();
           this.programService.getRequestedPrograms(null).subscribe(function (data) {
-            _this5.reqProgramList = data.list.filter(function (el) {
+            _this4.reqProgramList = data.list.filter(function (el) {
               if (el.image_path) {
                 el.img_arr = el.image_path.split(',');
               }
@@ -969,25 +802,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               el.expanded = false;
               return el;
             }, function (err) {
-              _this5.commonService.presentToast("Couldnt load data, Something went wrong.");
+              _this4.commonService.presentToast("Couldnt load data, Something went wrong.");
             });
 
-            _this5.commonService.dismissLoader();
+            _this4.commonService.dismissLoader();
 
-            if (_this5.reqProgramList.length < 1) {
-              _this5.noReqProgramList = true;
+            if (_this4.reqProgramList.length < 1) {
+              _this4.noReqProgramList = true;
             }
           }, function (err) {
-            _this5.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this4.commonService.presentToast("Couldnt load data, Something went wrong.");
 
-            _this5.commonService.dismissLoader();
+            _this4.commonService.dismissLoader();
 
-            if (_this5.reqProgramList.length < 1) {
-              _this5.noReqProgramList = true;
+            if (_this4.reqProgramList.length < 1) {
+              _this4.noReqProgramList = true;
             }
           });
           this.programService.getSchedulePrograms(null).subscribe(function (data) {
-            _this5.scheduleList = data.programList.filter(function (el) {
+            _this4.scheduleList = data.programList.filter(function (el) {
               if (el.image_path) {
                 el.img_arr = el.image_path.split(',');
               }
@@ -996,20 +829,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               el.expanded = false;
               return el;
             });
-            _this5.pgCount = _this5.scheduleList.length;
+            _this4.pgCount = _this4.scheduleList.length;
 
-            _this5.commonService.dismissLoader();
+            _this4.commonService.dismissLoader();
 
-            if (_this5.pgCount < 1) {
-              _this5.noScheduleList = true;
+            if (_this4.pgCount < 1) {
+              _this4.noScheduleList = true;
             }
           }, function (err) {
-            _this5.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this4.commonService.presentToast("Couldnt load data, Something went wrong.");
 
-            _this5.commonService.dismissLoader();
+            _this4.commonService.dismissLoader();
 
-            if (_this5.pgCount < 1) {
-              _this5.noScheduleList = true;
+            if (_this4.pgCount < 1) {
+              _this4.noScheduleList = true;
             }
           }); // this.programService.getAcceptedPrograms(null).subscribe(data => {
           //   if(data.list != null){
@@ -1031,15 +864,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "hostingDropdown",
         value: function hostingDropdown(ev) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var _this6 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this5 = this;
 
             var popover;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
-                switch (_context2.prev = _context2.next) {
+                switch (_context.prev = _context.next) {
                   case 0:
-                    _context2.next = 2;
+                    _context.next = 2;
                     return this.popoverController.create({
                       component: _hosting_dropdown_hosting_dropdown_component__WEBPACK_IMPORTED_MODULE_3__["HostingDropdownComponent"],
                       componentProps: {
@@ -1051,24 +884,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    popover = _context2.sent;
+                    popover = _context.sent;
                     popover.onDidDismiss().then(function (dataReturned) {
                       if (dataReturned !== null) {
-                        _this6.ionViewWillEnter();
+                        _this5.ionViewWillEnter();
                       }
                     });
-                    _context2.next = 6;
+                    _context.next = 6;
                     return popover.present();
 
                   case 6:
-                    return _context2.abrupt("return", _context2.sent);
+                    return _context.abrupt("return", _context.sent);
 
                   case 7:
                   case "end":
-                    return _context2.stop();
+                    return _context.stop();
                 }
               }
-            }, _callee2, this);
+            }, _callee, this);
           }));
         }
       }, {
@@ -1088,7 +921,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "expandItem",
         value: function expandItem(item, type, index) {
-          var _this7 = this;
+          var _this6 = this;
 
           var id;
 
@@ -1105,7 +938,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.programService.getProgramById({
               'parentId': id
             }).subscribe(function (data) {
-              _this7.cloneProg = data.cloneList.filter(function (el) {
+              _this6.cloneProg = data.cloneList.filter(function (el) {
                 el.converted = new Date(el.program_date + 'Z');
                 return el;
               });
@@ -1115,10 +948,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               this.programList.map(function (listItem) {
                 if (item == listItem) {
                   listItem.expanded = !listItem.expanded;
-                  _this7.classVariable = index;
+                  _this6.classVariable = index;
                 } else {
                   listItem.expanded = false;
-                  _this7.classVariable = -index;
+                  _this6.classVariable = -index;
                 }
 
                 return listItem;
@@ -1127,10 +960,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               this.accProgramList.map(function (listItem) {
                 if (item == listItem) {
                   listItem.expanded = !listItem.expanded;
-                  _this7.classVariable = index;
+                  _this6.classVariable = index;
                 } else {
                   listItem.expanded = false;
-                  _this7.classVariable = -index;
+                  _this6.classVariable = -index;
                 }
 
                 return listItem;
@@ -1139,10 +972,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               this.reqProgramList.map(function (listItem) {
                 if (item == listItem) {
                   listItem.expanded = !listItem.expanded;
-                  _this7.classVariable = index;
+                  _this6.classVariable = index;
                 } else {
                   listItem.expanded = false;
-                  _this7.classVariable = -index;
+                  _this6.classVariable = -index;
                 }
 
                 return listItem;
@@ -1151,10 +984,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               this.allProgramList.map(function (listItem) {
                 if (item == listItem) {
                   listItem.expanded = !listItem.expanded;
-                  _this7.classVariable = index;
+                  _this6.classVariable = index;
                 } else {
                   listItem.expanded = false;
-                  _this7.classVariable = -index;
+                  _this6.classVariable = -index;
                 }
 
                 return listItem;
@@ -1165,7 +998,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "mySortDate",
         value: function mySortDate(selectedDate, index) {
-          var _this8 = this;
+          var _this7 = this;
 
           console.log(index + 'index val');
           this.dayDate.forEach(function (item, i) {
@@ -1188,7 +1021,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.programService.getSchedulePrograms({
             'sortDate': userZoneDate.toUTCString()
           }).subscribe(function (data) {
-            _this8.scheduleList = data.programList.filter(function (el) {
+            _this7.scheduleList = data.programList.filter(function (el) {
               if (el.image_path) {
                 el.img_arr = el.image_path.split(',');
               }
@@ -1197,23 +1030,71 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               el.converted = new Date(el.program_date + 'Z');
               return el;
             });
-            _this8.pgCount = _this8.scheduleList.length;
+            _this7.pgCount = _this7.scheduleList.length;
 
-            _this8.commonService.dismissLoader();
+            _this7.commonService.dismissLoader();
 
-            console.log(_this8.pgCount, 'count');
+            console.log(_this7.pgCount, 'count');
 
-            if (_this8.scheduleList.length < 1) {
-              _this8.noScheduleList = true; // this.noAllScheduleList = true;
+            if (_this7.scheduleList.length < 1) {
+              _this7.noScheduleList = true; // this.noAllScheduleList = true;
             }
           }, function (err) {
-            _this8.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this7.commonService.presentToast("Couldnt load data, Something went wrong.");
 
-            _this8.commonService.dismissLoader();
+            _this7.commonService.dismissLoader();
 
-            if (_this8.scheduleList.length < 1) {
-              _this8.noScheduleList = true;
+            if (_this7.scheduleList.length < 1) {
+              _this7.noScheduleList = true;
             }
+          });
+          this.programService.getRequestedPrograms({
+            'sortDate': userZoneDate.toUTCString()
+          }).subscribe(function (data) {
+            _this7.reqProgramList = data.list.filter(function (el) {
+              if (el.image_path) {
+                el.img_arr = el.image_path.split(',');
+              }
+
+              el.expanded = false;
+              el.converted = new Date(el.program_date + 'Z');
+              return el;
+            });
+
+            _this7.commonService.dismissLoader();
+
+            if (_this7.reqProgramList.length < 1) {
+              _this7.noReqProgramList = true;
+            }
+          }, function (err) {
+            _this7.commonService.presentToast("Couldnt load data, Something went wrong.");
+
+            _this7.commonService.dismissLoader();
+
+            if (_this7.reqProgramList.length < 1) {
+              _this7.noReqProgramList = true;
+            }
+          });
+        }
+      }, {
+        key: "sortDate",
+        value: function sortDate(ev) {
+          var _this8 = this;
+
+          var userZoneDate = new Date(this.myDate);
+          var temp = userZoneDate.setHours(0, 0, 0);
+          this.programService.getHostedPrograms({
+            'sortDate': userZoneDate.toUTCString()
+          }).subscribe(function (data) {
+            _this8.programList = data.programList.filter(function (el) {
+              if (el.image_path) {
+                el.img_arr = el.image_path.split(',');
+              }
+
+              el.expanded = false;
+              el.converted = new Date(el.program_date + 'Z');
+              return el;
+            });
           });
           this.programService.getRequestedPrograms({
             'sortDate': userZoneDate.toUTCString()
@@ -1227,59 +1108,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               el.converted = new Date(el.program_date + 'Z');
               return el;
             });
-
-            _this8.commonService.dismissLoader();
-
-            if (_this8.reqProgramList.length < 1) {
-              _this8.noReqProgramList = true;
-            }
-          }, function (err) {
-            _this8.commonService.presentToast("Couldnt load data, Something went wrong.");
-
-            _this8.commonService.dismissLoader();
-
-            if (_this8.reqProgramList.length < 1) {
-              _this8.noReqProgramList = true;
-            }
-          });
-        }
-      }, {
-        key: "sortDate",
-        value: function sortDate(ev) {
-          var _this9 = this;
-
-          var userZoneDate = new Date(this.myDate);
-          var temp = userZoneDate.setHours(0, 0, 0);
-          this.programService.getHostedPrograms({
-            'sortDate': userZoneDate.toUTCString()
-          }).subscribe(function (data) {
-            _this9.programList = data.programList.filter(function (el) {
-              if (el.image_path) {
-                el.img_arr = el.image_path.split(',');
-              }
-
-              el.expanded = false;
-              el.converted = new Date(el.program_date + 'Z');
-              return el;
-            });
-          });
-          this.programService.getRequestedPrograms({
-            'sortDate': userZoneDate.toUTCString()
-          }).subscribe(function (data) {
-            _this9.reqProgramList = data.list.filter(function (el) {
-              if (el.image_path) {
-                el.img_arr = el.image_path.split(',');
-              }
-
-              el.expanded = false;
-              el.converted = new Date(el.program_date + 'Z');
-              return el;
-            });
           });
           this.programService.getAcceptedPrograms({
             'sortDate': userZoneDate.toUTCString()
           }).subscribe(function (data) {
-            _this9.accProgramList = data.list.filter(function (el) {
+            _this8.accProgramList = data.list.filter(function (el) {
               if (el.image_path) {
                 el.img_arr = el.image_path.split(',');
               }
@@ -1293,15 +1126,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "requestDropdown",
         value: function requestDropdown(ev) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-            var _this10 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var _this9 = this;
 
             var popover;
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
-                switch (_context3.prev = _context3.next) {
+                switch (_context2.prev = _context2.next) {
                   case 0:
-                    _context3.next = 2;
+                    _context2.next = 2;
                     return this.popoverController.create({
                       component: _requested_dropdown_requested_dropdown_component__WEBPACK_IMPORTED_MODULE_4__["RequestedDropdownComponent"],
                       componentProps: {
@@ -1313,24 +1146,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    popover = _context3.sent;
+                    popover = _context2.sent;
                     popover.onDidDismiss().then(function (dataReturned) {
                       if (dataReturned !== null) {
-                        _this10.ionViewWillEnter();
+                        _this9.ionViewWillEnter();
                       }
                     });
-                    _context3.next = 6;
+                    _context2.next = 6;
                     return popover.present();
 
                   case 6:
-                    return _context3.abrupt("return", _context3.sent);
+                    return _context2.abrupt("return", _context2.sent);
 
                   case 7:
                   case "end":
-                    return _context3.stop();
+                    return _context2.stop();
                 }
               }
-            }, _callee3, this);
+            }, _callee2, this);
           }));
         }
       }, {

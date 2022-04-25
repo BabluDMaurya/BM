@@ -57,7 +57,7 @@
                   <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
                   <img src="../../../assets/images/loading.jpg" *ngIf="!program?.image_path">
                 </ion-avatar>
-                <div class="program-info">
+                <div class="program-info" [routerLink]="(program?.user_id == userData?.id) ? ['/new-program-inner',program.id] : ['/program-view',program.id]">
                   <h6>{{program?.title}}</h6>
                   <span>By: {{program?.program_user?.user_name}}</span>
                   <p>{{program?.converted |date:'medium'}}</p>
@@ -65,8 +65,9 @@
                 <span class="program-type">{{program?.type_id}}</span>
                 <ion-icon ios="ios-more" md="md-more" *ngIf="(program?.user_id == userData?.id)" (click)="hostingDropdown(program?.id)"></ion-icon>
               </div>
-              <div *ngIf="dataLength == '0' " class="program-card">
-                <p>No Data Found</p>
+              <div *ngIf="dataLength == '0' " class="no-data">
+                <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+                <p>No Program available</p>             
               </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'invitation'">
@@ -98,11 +99,11 @@
                   <ion-searchbar [(ngModel)]="nutriProgSearchTerm" animated="true"></ion-searchbar>
                 </ion-toolbar>
               <div class="program-card" *ngFor="let item of nutriProgArray">
-                <ion-avatar>
+                <ion-avatar (click)="nutritionModal(item)">
                   <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
                   <img src="../../../assets/images/loading.jpg" *ngIf="!item?.image_path">
                 </ion-avatar>
-                <div class="program-info">
+                <div class="program-info" (click)="nutritionModal(item)">
                   <h6>{{item.title}}</h6>
                   <span>By: {{item?.program_user?.user_name}}</span>
                   <p>{{item?.converted |date:'medium'}}</p>
@@ -119,11 +120,11 @@
                 <ion-searchbar [(ngModel)]="videoSearchTerm" animated="true"></ion-searchbar>
               </ion-toolbar>
               <div class="program-card" *ngFor="let item of videoFiltered">
-                <ion-avatar>
+                <ion-avatar (click)="showVideoDetails(item.id,item.video_id)">
                   <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
                   <img src="../../../assets/images/loading.jpg" *ngIf="!item?.image_path">
                 </ion-avatar>
-                <div class="program-info">
+                <div class="program-info" (click)="showVideoDetails(item.id,item.video_id)">
                   <h6>{{item.title}}</h6>
                   <span>By: {{item?.program_user?.user_name}}</span>
                   <p>{{item?.converted |date:'medium'}}</p>
@@ -139,11 +140,11 @@
                 <ion-searchbar [(ngModel)]="liveProgSearchTerm" animated="true"></ion-searchbar>
               </ion-toolbar>
               <div class="program-card" *ngFor="let item of liveProgArray">
-                <ion-avatar>
+                <ion-avatar [routerLink]="(item?.user_id == userData?.id) ? ['/new-program-inner',item.id] : ['/program-view',item.id]">
                   <img src="{{profileUrl}}{{item?.program_user?.bios?.profile_pic}}" *ngIf="item?.program_user?.bios?.profile_pic != '' ">
                   <img src="../../../assets/images/loading.jpg" *ngIf="item?.program_user?.bios?.profile_pic == '' ">
                 </ion-avatar>
-                <div class="program-info">
+                <div class="program-info" [routerLink]="(item?.user_id == userData?.id) ? ['/new-program-inner',item.id] : ['/program-view',item.id]">
                   <h6>{{item.title}}</h6>
                   <span>By: {{item?.program_user?.user_name}}</span>
                   <p>{{item?.converted |date:'medium'}}</p>
