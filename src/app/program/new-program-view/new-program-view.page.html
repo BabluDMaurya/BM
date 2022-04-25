@@ -124,7 +124,7 @@
                 </ion-row> 
                 <ion-button *ngIf="programDetail?.is_requested ==1 && !request_join && !programDetail?.ended" size="small"  class="green btnVerify" (click)="joinRequest()" >Request To Join</ion-button> 
                 <ion-button *ngIf="request_accs_pending && !programDetail?.ended" size="small" class="green btnVerify" (click)="acceptRequest()" >Accept Request</ion-button>      
-                <div class="users-list" *ngIf="programDetail?.is_live_status == 1">
+                <div class="users-list ion-text-center" *ngIf="programDetail?.is_live_status == 1">
                   <!-- <ion-button (click)="joinRoom()">Join Room</ion-button> -->
                   <ion-button *ngIf="request_accs && !programDetail?.live && !programDetail?.ended" size="small"  class="green btnVerify">Program will start sooon</ion-button>
                   <!-- <ion-button *ngIf="request_accs && !programDetail?.live" size="small"  class="green btnVerify" (click)="payment()">Payment</ion-button> -->

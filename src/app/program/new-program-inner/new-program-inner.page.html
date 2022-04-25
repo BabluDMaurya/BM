@@ -141,8 +141,8 @@
                   <h6 *ngIf="adData?.id && adData?.video_approve_status== 0"> Your Video is Not Approved </h6>
                 </ion-col>
 
-                <div *ngIf="programDetail?.is_live_status == 1" class="ion-text-center">
-                  <ion-button class="btnVerify primary-btn" *ngIf="programDetail?.live" (click)="joinRoom()">Go Live</ion-button>
+                <div  class="ion-text-center">
+                  <ion-button class="btnVerify green"  (click)="joinRoom()">Go Live</ion-button>
                 </div>
                 <!-- <div *ngIf="userData.trilloMatch != '1' && programDetail?.is_live_status == 1">
                   <ion-button class="btnVerify" (click)="verifyUser()">Verify to Go Live</ion-button>
