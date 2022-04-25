@@ -12,7 +12,7 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content">
-  <ion-card class="ion-no-margin">
+  <!-- <ion-card class="ion-no-margin">
     <ion-card-content class="ion-no-padding item-content">
   <ion-thumbnail>
     <img *ngIf="noImgData" width="100%" height="210px" src="../../../assets/images/loading.jpg">
@@ -20,10 +20,11 @@
   </ion-thumbnail>
   <ion-icon (click)="playVideo()" ios="ios-play" md="md-play" class="play-videoBtn"></ion-icon>
 </ion-card-content>
-</ion-card>
-  <!-- <video width="100%" height="210px" controls disablePictureInPicture controlsList="nodownload" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="mb-10 videoPlayer">
-    <source src="{videoDataPath}" type="video/mp4" />
-  </video> -->
+</ion-card> -->
+  <video width="100%" height="210px" controls disablePictureInPicture controlsList="nodownload" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" src="https://ionicinto.wdipl.com/storage/app/public/upload_videos/user_71/video/into_Bob_video_20200330054155_final.mp4" class="mb-10 videoPlayer">
+    <source src="https://ionicinto.wdipl.com/storage/app/public/upload_videos/user_71/video/into_Bob_video_20200330054155_final.mp4" type="video/mp4" />
+  </video>
+  
     <h6 class="ion-padding-horizontal">{{title}}</h6>
   <ion-list class="top-list">
     <ion-item (click)="liked(postID, likePost)" [ngClass]="likePost ? 'active' :''">
