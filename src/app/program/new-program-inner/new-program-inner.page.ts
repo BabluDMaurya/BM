@@ -255,13 +255,18 @@ ionViewWillEnter() {
   
   this.commonService.presentLoader();
   this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
-    console.log(data);
+    console.log(data,'pdata');
     console.log(data.programData.parent_program);
-    this.parentProgId = data.programData.parent_program;
+    if(data.programData.parent_program == null){
+      console.log('nullll');
+      this.parentProgId = data.programData.id;
+    }else {
+      this.parentProgId = data.programData.parent_program;
+    }
     this.programService.getProgramById({ "parentId": this.parentProgId }).subscribe(data => {
       this.allProgramData = data.cloneList;
-      console.log(data, 'programData');
-      console.log(this.parentProgId);
+      // console.log(data, 'programData');
+      // console.log(this.parentProgId);
     });
     this.programDetail = data.programData;
     

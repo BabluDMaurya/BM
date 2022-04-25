@@ -53,11 +53,11 @@
           <div [ngSwitch]="scheduleProgram">
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'program'">
               <div class="program-card" *ngFor="let program of allScheduleList; let i = index;">
-                <ion-avatar slot="start" [routerLink]="(program?.user_id == userData?.id) ? ['/new-program-inner',program.id] : ['/program-view',program.id]">
+                <ion-avatar slot="start" [routerLink]="(program?.user_id == userData?.id) ? ['/new-program-inner',program.id] : ['/new-program-view',program.id]">
                   <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
                   <img src="../../../assets/images/loading.jpg" *ngIf="!program?.image_path">
                 </ion-avatar>
-                <div class="program-info" [routerLink]="(program?.user_id == userData?.id) ? ['/new-program-inner',program.id] : ['/program-view',program.id]">
+                <div class="program-info" [routerLink]="(program?.user_id == userData?.id) ? ['/new-program-inner',program.id] : ['/new-program-view',program.id]">
                   <h6>{{program?.title}}</h6>
                   <span>By: {{program?.program_user?.user_name}}</span>
                   <p>{{program?.converted |date:'medium'}}</p>
@@ -140,11 +140,11 @@
                 <ion-searchbar [(ngModel)]="liveProgSearchTerm" animated="true"></ion-searchbar>
               </ion-toolbar>
               <div class="program-card" *ngFor="let item of liveProgArray">
-                <ion-avatar [routerLink]="(item?.user_id == userData?.id) ? ['/new-program-inner',item.id] : ['/program-view',item.id]">
+                <ion-avatar [routerLink]="(item?.user_id == userData?.id) ? ['/new-program-inner',item.id] : ['/new-program-view',item.id]">
                   <img src="{{profileUrl}}{{item?.program_user?.bios?.profile_pic}}" *ngIf="item?.program_user?.bios?.profile_pic != '' ">
                   <img src="../../../assets/images/loading.jpg" *ngIf="item?.program_user?.bios?.profile_pic == '' ">
                 </ion-avatar>
-                <div class="program-info" [routerLink]="(item?.user_id == userData?.id) ? ['/new-program-inner',item.id] : ['/program-view',item.id]">
+                <div class="program-info" [routerLink]="(item?.user_id == userData?.id) ? ['/new-program-inner',item.id] : ['/new-program-view',item.id]">
                   <h6>{{item.title}}</h6>
                   <span>By: {{item?.program_user?.user_name}}</span>
                   <p>{{item?.converted |date:'medium'}}</p>

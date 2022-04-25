@@ -1,0 +1,206 @@
+<ion-header class="top-header ion-no-padding">
+  <ion-list class="top-heading three-block">
+    <ion-item slot="start">
+      <ion-buttons class="ion-no-margin" (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item slot="center">
+      <!-- <ion-label>{{programDetail?.title}}</ion-label> -->
+      <ion-label>{{programDetail?.title}}</ion-label>
+    </ion-item>
+    <div class="right-div">
+      <ion-item *ngIf="programDetail?.is_requested == 1"  detail="false" class="icon-right-side ion-text-end min-width-none pl-8" slot="end" (click)="shareItem()">
+        <ion-icon ios="ios-share" md="md-share" slot="end"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-header>
+<ion-content class="main_content">
+  <ion-row>
+    <ion-col size="12" class="ion-no-padding">
+      <ion-card-content class="item-content ion-no-padding">
+        <ion-slides *ngIf="progImage && progVideo" pager="true" [options]="sliderOpts" class="full-slider program-slide" #mySlider>          
+          <ion-slide  *ngFor="let imgpath of programDetail?.image_path.split(','); let i=index;" class="program-slides"> 
+            <img *ngIf="progImage" src="{{url+imgpath}}" /> 
+          </ion-slide>
+        <ion-slide class="program-slides">
+          <video *ngIf="progVideo" width="100%" height="200px" controls="controls" preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer">
+            <source src="{{vidUrl+programDetail?.video_path}}" type="video/mp4" />
+          </video>
+        </ion-slide>
+        </ion-slides>
+    
+        <ion-slides *ngIf="progImage && !progVideo" pager="true" [options]="sliderOpts" class="full-slider program-slide" #mySlider>          
+          <ion-slide  *ngFor="let imgpath of programDetail?.image_path.split(','); let i=index;" class="program-slides"> 
+            <img *ngIf="progImage" src="{{url+imgpath}}" /> 
+          </ion-slide>
+        
+        </ion-slides>
+        <ion-slides *ngIf="!progImage && progVideo" pager="true" [options]="sliderOpts" class="full-slider program-slide" #mySlider>            
+        <ion-slide class="program-slides">
+          <video *ngIf="progVideo" width="100%" height="200px" controls="controls" preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer">
+            <source src="{{vidUrl+programDetail?.video_path}}" type="video/mp4" />
+          </video>
+        </ion-slide>
+        </ion-slides>
+
+        <ion-thumbnail *ngIf="!progImage && !progVideo ">
+          <img class="cover-img" [defaultImage] = "defaultPostImage" [lazyLoad]="url+programImage">         
+        </ion-thumbnail>
+      </ion-card-content>
+    </ion-col>
+    <ion-col size="12" class="ion-no-padding">
+      <ion-list class="ion-no-padding">
+        <ion-item-group>
+          <ion-item-divider class="ionic-divider" lines="none" sticky>
+            <ion-toolbar lines="none" no-border-top class="profile_tabs three-tabs">
+              <ion-segment class="ion-no-padding" [(ngModel)]="scheduleProgram">
+                <ion-segment-button class="ionic-segment-btn" value="program" checked>
+                  <ion-icon class="ionic-icon" ios="ios-clipboard" md="md-clipboard"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button class="ionic-segment-btn" value="videos">
+                  <ion-icon class="ionic-icon" ios="ios-calendar" md="md-calendar"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button class="ionic-segment-btn" value="chat">
+                  <ion-icon class="ionic-icon" ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button class="ionic-segment-btn" value="programtype">
+                  <img class="ionic-img" src="../../../assets/images/target.svg" />
+                </ion-segment-button>
+              </ion-segment>
+            </ion-toolbar>
+          </ion-item-divider>
+          <ion-item-sliding>
+            <div [ngSwitch]="scheduleProgram">
+              <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'program'">
+                <ion-row>
+                  <ion-col size="12" class="ion-no-padding">
+                    <div class="programDesc">
+                      <!-- <p>{{programDetail?.description }} &nbsp;</p>         -->
+                      <p>{{programDetail?.description }}</p>
+                    </div>
+                    <!-- <ion-list lines="none" class="users-list d-block" *ngIf="userList?.length>0">
+                      <ion-item class="d-flex">
+                          <span *ngFor="let user  of userList">
+                            <img src="../../assets/images/user.jpg" *ngIf="!user?.bios?.profile_pic" />
+                            <img src="{{profileUrl}}{{ user?.bios?.profile_pic }}" *ngIf="user?.bios?.profile_pic" />
+                          </span>
+                          <ion-label class="view-all" (click)="showParticipants()">+i</ion-label>
+                      </ion-item>
+                    </ion-list> -->
+                  </ion-col>
+                  <!-- <ion-col class="infoBox" *ngIf="programDetail?.type_id == 'video' && !programDetail?.ended && adData?.video_approve_status!= 1 && !programDetail?.live">
+                    <h6 *ngIf="programDetail?.is_requested ==1 && !programDetail?.request_recive"> No joining request recived yet</h6>
+                    <h6 *ngIf="adData?.id && adData?.video_approve_status== null"> Your request for ad sponser is yet to verify. </h6>
+                    <h6 *ngIf="adData?.id && adData?.video_approve_status== 0"> Your Video is Not Approved </h6>
+                  </ion-col> -->
+                  <ion-col size="12" style="position: static;" class="ion-no-padding  green-text">
+                    <!-- <ion-text><p class="program-date">{{programDateTime|date:'medium'}}</p></ion-text> -->
+                    <ion-text><p class="program-date">{{programDateTime|date:'medium'}}</p></ion-text>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="counter-box " *ngIf="programDetail?.is_live_status == 1"> 
+                  <ion-col size="3" class="ion-padding timer-block" *ngIf="!programDetail?.ended && dd > 0">
+                      <ion-text><p class="count_time">{{dd | async}}</p> Days</ion-text>
+                  </ion-col>
+                  <ion-col size="3" class="ion-padding timer-block" *ngIf="!programDetail?.ended">
+                    <ion-text><p class="count_time">{{hh | async }}  </p> Hours</ion-text>
+                  </ion-col>
+                  <ion-col size="3" class="ion-padding timer-block" *ngIf="!programDetail?.ended">
+                    <ion-text><p class="count_time">{{mm| async}}</p> Minutes</ion-text>
+                  </ion-col>
+                  <ion-col size="3" class="ion-padding timer-block" *ngIf="!programDetail?.ended"> 
+                    <ion-text><p class="count_time">{{ss | async}}</p> Seconds</ion-text>
+                  </ion-col>
+                  <ion-col size="12" class="ion-no-padding" *ngIf="programDetail?.ended">
+                    <ion-text>This Program has been Ended </ion-text>
+                  </ion-col>
+                </ion-row> 
+                <ion-row class="counter-box " *ngIf="programDetail?.is_live_status == 0"> 
+                  <ion-col size="6" class="ion-padding timer-block" >
+                      <ion-text>Non-Live Program</ion-text>
+                  </ion-col>
+                </ion-row> 
+                <ion-button *ngIf="programDetail?.is_requested ==1 && !request_join && !programDetail?.ended" size="small"  class="green btnVerify" (click)="joinRequest()" >Request To Join</ion-button> 
+                <ion-button *ngIf="request_accs_pending && !programDetail?.ended" size="small" class="green btnVerify" (click)="acceptRequest()" >Accept Request</ion-button>      
+                <div class="users-list" *ngIf="programDetail?.is_live_status == 1">
+                  <!-- <ion-button (click)="joinRoom()">Join Room</ion-button> -->
+                  <ion-button *ngIf="request_accs && !programDetail?.live && !programDetail?.ended" size="small"  class="green btnVerify">Program will start sooon</ion-button>
+                  <!-- <ion-button *ngIf="request_accs && !programDetail?.live" size="small"  class="green btnVerify" (click)="payment()">Payment</ion-button> -->
+                  <ion-button *ngIf="programDetail?.ready  " size="small"  class="green btnVerify" (click)="joinRoom()">Requested to join Program</ion-button>
+                  <!-- <ion-button *ngIf="programDetail?.ready && prePayment " size="small"  class="green btnVerify" (click)="joinRoom()">Requested to join Program</ion-button> -->
+                  
+                  <!-- <div *ngIf="request_accs && !programDetail?.live" size="medium"  >Program will start sooon   
+                  </div>
+                  <div *ngIf="programDetail?.is_requested ==1 && !request_join && !programDetail?.ended" size="medium"  (click)="joinRoom()" >Requested to join Program 
+                  </div> -->
+                </div>
+
+                <ion-item class="list-items ion-text-center">
+                  <div class="icon-text" style="width: 100%;">
+                  <ion-label>Program: {{programDetail?.video_id.split(",").length}} Videos, ${{programFee}}</ion-label>
+                  </div>          
+                </ion-item>
+              </ion-list> 
+              
+              <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'videos'">
+                <div class="program-card" *ngFor="let val of allProgramData; let i=index;">
+                  <div class="programs-date">
+                    <p class="fs-16 mb-10">{{val.program_date |date:'medium'}}</p>
+                  </div>
+                  <div class="programs-flex">
+                    <div class="program-session program-flex-child" *ngIf="val.is_live_status == 1">
+                      <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+                      <p class="fs-14">Session</p>
+                    </div>
+                    <div class="program-video program-flex-child" *ngIf="val.video_id != '' "  (click)="showVideoDetails(val.id,val.video_id)">
+                      <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+                      <p class="fs-14">Video</p>
+                    </div>
+                    <div class="program-nutrition program-flex-child" *ngIf="val.nutrition_id != '' " (click)="nutritionModal(val)">
+                      <ion-icon class="ionic-icon" ios="ios-nutrition" md="md-nutrition"></ion-icon>
+                      <p class="fs-14">Nutrition</p>
+                    </div>
+                  </div>
+                </div>
+              </ion-list>
+              <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'chat'">
+                <div class="program-chat">
+                  <!-- <ion-avatar>
+                    <img src="../../assets/images/bgimage.png" alt="">
+                  </ion-avatar>
+                  <div class="program-chat-info">
+                    <div class="chat-title">
+                      <h6>Rock Sam</h6>
+                      <p>11:09 AM</p>
+                    </div>
+                    <div class="chat-info">
+                      <span>Good morning rock</span>
+                    </div>
+                  </div> -->
+                 <p>No Chat available</p>
+                </div>
+              </ion-list>
+              <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'programtype'">
+                <div class="program-card">
+                  <ion-slides [pager]="true">
+                    <ion-slide class="nutrition-slide">
+                      <img class="nutrition-image" src="../../assets/images/nutrition2.png" />
+                    </ion-slide> 
+                    <ion-slide class="nutrition-slide">
+                      <img class="nutrition-image" src="../../assets/images/nutrition2.png" />
+                    </ion-slide> 
+                    <ion-slide class="nutrition-slide">
+                      <img class="nutrition-image" src="../../assets/images/nutrition2.png" />
+                    </ion-slide> 
+                  </ion-slides>
+                </div>
+              </ion-list>
+            </div>
+          </ion-item-sliding>
+        </ion-item-group>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -14,11 +14,14 @@
 <ion-content class="main_content">
   <ion-card class="ion-no-margin">
     <ion-card-content class="ion-no-padding item-content">
-  <ion-thumbnail>
-    <img *ngIf="noImgData" width="100%" height="210px" src="../../../assets/images/loading.jpg">
+   <!-- <ion-thumbnail>
+   <img *ngIf="noImgData" width="100%" height="210px" src="../../../assets/images/loading.jpg">
     <img *ngIf="!noImgData" (click)="playVideo()" width="100%" height="210px" src="{{videoThumbPath}}">
   </ion-thumbnail>
-  <ion-icon (click)="playVideo()" ios="ios-play" md="md-play" class="play-videoBtn"></ion-icon>
+  <ion-icon (click)="playVideo()" ios="ios-play" md="md-play" class="play-videoBtn"></ion-icon> -->
+  <video  width="100%" height="200px" controls disablePictureInPicture controlsList="nodownload" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="mb-10 videoPlayer">
+    <source src="{{videoDataPath}}" type="video/mp4" />
+  </video>
 </ion-card-content>
 </ion-card>
   <!-- <video width="100%" height="210px" controls disablePictureInPicture controlsList="nodownload" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="mb-10 videoPlayer">
