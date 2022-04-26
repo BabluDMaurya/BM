@@ -17,7 +17,7 @@ export class ViewVideoDetailComponent implements OnInit {
   likePost : any; 
   postID : any;   
   postData : any;
-  videoDataPath :any;
+  videoDataPath : any = '';
   title : string;
   description : string;
   createdAt : any;
@@ -50,14 +50,14 @@ export class ViewVideoDetailComponent implements OnInit {
     this.postID = this.navParams.data.details;
     this.videoIds = this.navParams.data.videoIds;
     var vId = this.videoIds.split(',');
-    console.log(vId[0]);
+    console.log(this.videoDataPath);
     this.noImgData = true;
       console.log(this.navParams.data);
       this.postService.getProgVideoPostById({'postId':vId[0],'videoId': this.videoIds}).subscribe((data)=>{
       this.postData = data.postData.videoData;
       this.allPostData = data.postData.allVideoData;
       this.videoDataPath =  this.storagePath + data.postData.videoData.video_post[0].video_path; 
-      console.log(data);
+      console.log(this.videoDataPath);
       this.postUserId = data.postData.videoData.user_id;
 
       this.disableComment = data.postData.videoData.disable_comment
