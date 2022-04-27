@@ -19,7 +19,7 @@
     <img *ngIf="!noImgData" (click)="playVideo()" width="100%" height="210px" src="{{videoThumbPath}}">
   </ion-thumbnail>
   <ion-icon (click)="playVideo()" ios="ios-play" md="md-play" class="play-videoBtn"></ion-icon> -->
-  <video  width="100%" height="200px" controls disablePictureInPicture controlsList="nodownload" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="mb-10 videoPlayer">
+  <video *ngIf="videoDataPath != '' "  width="100%" height="200px" controls disablePictureInPicture controlsList="nodownload" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="mb-10 videoPlayer">
     <source src="{{videoDataPath}}" type="video/mp4" />
   </video>
 </ion-card-content>

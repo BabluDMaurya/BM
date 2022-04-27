@@ -95,7 +95,7 @@
               </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'nutrition'">
-                <ion-toolbar class="searchbar" *ngIf="!noNutriProg">
+                <ion-toolbar class="searchbar" >
                   <ion-searchbar [(ngModel)]="nutriProgSearchTerm" animated="true"></ion-searchbar>
                 </ion-toolbar>
               <div class="program-card" *ngFor="let item of nutriProgArray">
@@ -136,7 +136,7 @@
               </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'live'">
-              <ion-toolbar class="searchbar" *ngIf="!noLiveProg">
+              <ion-toolbar class="searchbar" >
                 <ion-searchbar [(ngModel)]="liveProgSearchTerm" animated="true"></ion-searchbar>
               </ion-toolbar>
               <div class="program-card" *ngFor="let item of liveProgArray">

@@ -21,1725 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"goBack()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>{{programDetail?.title}}</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\">\r\n      <!-- <ion-icon ios=\"ios-create\" md=\"md-create\" slot=\"end\"></ion-icon> -->\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content no_footer\">\r\n  <ion-row>\r\n    <ion-col size=\"12\" class=\"ion-no-padding\">\r\n      <!-- <ion-card-content class=\"item-content ion-no-padding\">\r\n        \r\n        <ion-slides pager=\"true\" [options]=\"sliderOpts\" class=\"full-slider\" #mySlider>\r\n          <ion-slide  *ngFor=\"let imgpath of programDetail?.image_path.split(','); let i=index;\"> \r\n            <img src=\"{{url+imgpath}}\" /> \r\n          </ion-slide>\r\n        </ion-slides>\r\n      </ion-card-content> -->\r\n      <ion-card-content class=\"item-content ion-no-padding\">\r\n        <!-- <ion-thumbnail>\r\n          <img [defaultImage] = \"defaultPostImage\" [lazyLoad]=\"url+programImage\">         \r\n        </ion-thumbnail> -->\r\n        <!-- image/program/program_46_20210806150601_0.jpeg -->\r\n        <ion-slides *ngIf=\"progImage && progVideo\" pager=\"true\" [options]=\"sliderOpts\" class=\"full-slider program-slide\" #mySlider>          \r\n          <ion-slide  *ngFor=\"let imgpath of programDetail?.image_path.split(','); let i=index;\" class=\"program-slides\"> \r\n            <img *ngIf=\"progImage\" src=\"{{url+imgpath}}\" /> \r\n          </ion-slide>\r\n          <ion-slide class=\"program-slides\"> \r\n            <video *ngIf=\"progVideo\" width=\"100%\" height=\"200px\" controls=\"controls\" preload=\"metadata\"  webkit-playsinline=\"webkit-playsinline\" class=\"videoPlayer\">\r\n              <source src=\"{{vidUrl+programDetail?.video_path}}\" type=\"video/mp4\" />\r\n            </video>\r\n        </ion-slide>\r\n        </ion-slides>\r\n\r\n        <ion-slides *ngIf=\"progImage && !progVideo\" pager=\"true\" [options]=\"sliderOpts\" class=\"full-slider program-slide\" #mySlider>          \r\n          <ion-slide  *ngFor=\"let imgpath of programDetail?.image_path.split(','); let i=index;\" class=\"program-slides\"> \r\n            <img *ngIf=\"progImage\" src=\"{{url+imgpath}}\" /> \r\n          </ion-slide>\r\n        </ion-slides>\r\n\r\n        <ion-slides *ngIf=\"!progImage && progVideo\" pager=\"true\" [options]=\"sliderOpts\" class=\"full-slider program-slide\" #mySlider>            \r\n        <ion-slide class=\"program-slides\">\r\n          <video *ngIf=\"progVideo\" width=\"100%\" height=\"200px\" controls=\"controls\" preload=\"metadata\"  webkit-playsinline=\"webkit-playsinline\" class=\"videoPlayer\">\r\n            <source src=\"{{vidUrl+programDetail?.video_path}}\" type=\"video/mp4\" />\r\n          </video>\r\n        </ion-slide>\r\n        </ion-slides>\r\n\r\n        <ion-thumbnail *ngIf=\"!progImage && !progVideo \">\r\n          <img [defaultImage] = \"defaultPostImage\" [lazyLoad]=\"url+programImage\">         \r\n        </ion-thumbnail>\r\n      </ion-card-content>\r\n      <ion-list lines=\"none\" class=\"list-info\">\r\n        <ion-item class=\"list-items\">\r\n          <div class=\"icon-text\">\r\n          <img src=\"../../../assets/images/target.svg\" />\r\n          <ion-label>{{programDetail?.category_id}}</ion-label>\r\n          </div>\r\n        </ion-item>\r\n        <ion-item class=\"list-items\">\r\n          <div class=\"icon-text\">\r\n          <img src=\"../../../assets/images/doller.png\" />\r\n          <ion-label>{{programFee}}</ion-label>\r\n          </div>\r\n        </ion-item>\r\n        <ion-item class=\"list-items\">\r\n          <div class=\"icon-text\">\r\n          <img src=\"../../../assets/images/group.svg\" />\r\n          <ion-label>{{programDetail?.type_id}}</ion-label>\r\n          </div>\r\n        </ion-item>\r\n        <ion-item class=\"list-items\">\r\n          <div class=\"icon-text\">\r\n          <img src=\"../../../assets/images/clock.svg\" />\r\n          <ion-label>{{programDetail?.program_duration || 0}} Min</ion-label>\r\n          </div>\r\n        </ion-item>\r\n      </ion-list>\r\n    </ion-col>\r\n    <ion-col size=\"12\" class=\"ion-padding\">\r\n      <p class=\"mb-10\">{{programDetail?.description }} &nbsp;</p>      \r\n    </ion-col>\r\n  </ion-row>\r\n  <ion-row class=\"counter-box ion-padding\" *ngIf=\"programDetail?.is_live_status == 1\">        \r\n    <ion-col size=\"3\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">{{dd | async}}</p> Days</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"3\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">{{hh | async}}</p> Hours</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"3\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">{{mm| async}}</p> Minutes</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"3\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">{{ss | async}}</p> Seconds</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"12\" class=\"ion-no-padding\" *ngIf=\"programDetail?.ended\">\r\n      <ion-text>This Program has been Ended </ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"12\" class=\"ion-no-padding mt-15 text-green\">\r\n      <ion-text><p class=\"text-green text-center\">{{programDateTime|date:'medium'}}</p></ion-text>\r\n    </ion-col>\r\n  </ion-row>\r\n  <ion-row class=\"counter-box ion-padding\" *ngIf=\"programDetail?.is_live_status == 0\">        \r\n    <ion-col size=\"4\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">00</p> Hours</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"4\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">00</p> Minutes</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"4\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">00</p> Seconds</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"12\" class=\"ion-no-padding\" *ngIf=\"programDetail?.ended\">\r\n      <ion-text>This Program has been Ended </ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"12\" class=\"ion-no-padding mt-15\">\r\n      <ion-text><p class=\"text-green text-center\">{{programDateTime|date:'medium'}}</p></ion-text>\r\n    </ion-col>\r\n  </ion-row>\r\n  <!-- <ion-button *ngIf=\"programDetail?.live\" [routerLink]=\"['/broadcaster',broadcastId]\">Go Live</ion-button> -->\r\n  <!-- <ion-label *ngIf=\"programDetail?.ended\" >This Program has been Ended  </ion-label> -->\r\n  \r\n  <!-- <ion-button [routerLink]=\"['/broadcaster',broadcastId]\">Tmp Live</ion-button> -->\r\n\r\n         <ion-button *ngIf=\"programDetail?.is_requested ==1 && !request_join && !programDetail?.ended\" size=\"small\"  class=\"green btnVerify\" (click)=\"joinRequest()\" >Request To Join</ion-button> \r\n       <ion-button *ngIf=\"request_accs_pending && !programDetail?.ended\" size=\"small\" class=\"green btnVerify\" (click)=\"acceptRequest()\" >Accept Request</ion-button>      \r\n       <div class=\"users-list\" *ngIf=\"programDetail?.is_live_status == 1\">\r\n         <!-- <ion-button (click)=\"joinRoom()\">Join Room</ion-button> -->\r\n         <ion-button *ngIf=\"request_accs && !programDetail?.live && !programDetail?.ended\" size=\"small\"  class=\"green btnVerify\">Program will start sooon</ion-button>\r\n         <!-- <ion-button *ngIf=\"request_accs && !programDetail?.live\" size=\"small\"  class=\"green btnVerify\" (click)=\"payment()\">Payment</ion-button> -->\r\n         <ion-button *ngIf=\"programDetail?.ready  \" size=\"small\"  class=\"green btnVerify\" (click)=\"joinRoom()\">Requested to join Program</ion-button>\r\n         <!-- <ion-button *ngIf=\"programDetail?.ready && prePayment \" size=\"small\"  class=\"green btnVerify\" (click)=\"joinRoom()\">Requested to join Program</ion-button> -->\r\n        \r\n         <!-- <div *ngIf=\"request_accs && !programDetail?.live\" size=\"medium\"  >Program will start sooon   \r\n         </div>\r\n         <div *ngIf=\"programDetail?.is_requested ==1 && !request_join && !programDetail?.ended\" size=\"medium\"  (click)=\"joinRoom()\" >Requested to join Program \r\n        </div> -->\r\n      </div>\r\n  <ion-row>\r\n    <ion-col size=\"12\" class=\"ion-no-padding\">\r\n      <ion-list lines=\"none\" class=\"top-list three-block\">\r\n        <ion-item (click)=\"equipments()\">\r\n          <div class=\"top-icon\">\r\n            <ion-icon ios=\"ios-construct\" md=\"md-construct\"></ion-icon>\r\n          </div>\r\n          <ion-label>Equipments</ion-label>\r\n        </ion-item>\r\n        <!-- <ion-item [routerLink]=\"['/nutrition-list']\" detail=\"false\">\r\n          <div class=\"top-icon\">\r\n            <ion-icon ios=\"ios-nutrition\" md=\"md-nutrition\"></ion-icon>\r\n          </div>\r\n          <ion-label>Nutrition</ion-label>\r\n        </ion-item> -->\r\n        <ion-item *ngIf=\"programDetail?.chat_status == 1\" (click)=\"showChatUsers()\" detail=\"false\">\r\n          <div class=\"top-icon\">\r\n            <ion-icon ios=\"ios-text\" md=\"md-text\"></ion-icon>\r\n          </div>\r\n          <ion-label>Chat</ion-label>\r\n        </ion-item>\r\n        <ion-item detail=\"false\" (click)=\"showSchedule(programDetail)\">\r\n          <div class=\"top-icon\">\r\n            <ion-icon ios=\"ios-calendar\" md=\"md-calendar\"></ion-icon>\r\n          </div>\r\n          <ion-label>View Schedule</ion-label>\r\n        </ion-item>\r\n      </ion-list>\r\n    </ion-col>\r\n    <ion-col>\r\n      <ion-fab class=\"share-btn\" *ngIf=\"programDetail?.is_requested == 1\">\r\n        <ion-fab-button class=\"share-btn\" color=\"primary\" size=\"small\" (click)=\"shareItem()\">\r\n          <ion-icon ios=\"ios-share\" md=\"md-share\"></ion-icon>\r\n        </ion-fab-button>\r\n      </ion-fab>\r\n      </ion-col>\r\n  </ion-row>\r\n</ion-content>";
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/Observable.js":
-  /*!**************************************************!*\
-    !*** ./node_modules/rxjs/internal/Observable.js ***!
-    \**************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalObservableJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var canReportError_1 = __webpack_require__(
-    /*! ./util/canReportError */
-    "./node_modules/rxjs/internal/util/canReportError.js");
-
-    var toSubscriber_1 = __webpack_require__(
-    /*! ./util/toSubscriber */
-    "./node_modules/rxjs/internal/util/toSubscriber.js");
-
-    var observable_1 = __webpack_require__(
-    /*! ./symbol/observable */
-    "./node_modules/rxjs/internal/symbol/observable.js");
-
-    var pipe_1 = __webpack_require__(
-    /*! ./util/pipe */
-    "./node_modules/rxjs/internal/util/pipe.js");
-
-    var config_1 = __webpack_require__(
-    /*! ./config */
-    "./node_modules/rxjs/internal/config.js");
-
-    var Observable = function () {
-      function Observable(subscribe) {
-        this._isScalar = false;
-
-        if (subscribe) {
-          this._subscribe = subscribe;
-        }
-      }
-
-      Observable.prototype.lift = function (operator) {
-        var observable = new Observable();
-        observable.source = this;
-        observable.operator = operator;
-        return observable;
-      };
-
-      Observable.prototype.subscribe = function (observerOrNext, error, complete) {
-        var operator = this.operator;
-        var sink = toSubscriber_1.toSubscriber(observerOrNext, error, complete);
-
-        if (operator) {
-          sink.add(operator.call(sink, this.source));
-        } else {
-          sink.add(this.source || config_1.config.useDeprecatedSynchronousErrorHandling && !sink.syncErrorThrowable ? this._subscribe(sink) : this._trySubscribe(sink));
-        }
-
-        if (config_1.config.useDeprecatedSynchronousErrorHandling) {
-          if (sink.syncErrorThrowable) {
-            sink.syncErrorThrowable = false;
-
-            if (sink.syncErrorThrown) {
-              throw sink.syncErrorValue;
-            }
-          }
-        }
-
-        return sink;
-      };
-
-      Observable.prototype._trySubscribe = function (sink) {
-        try {
-          return this._subscribe(sink);
-        } catch (err) {
-          if (config_1.config.useDeprecatedSynchronousErrorHandling) {
-            sink.syncErrorThrown = true;
-            sink.syncErrorValue = err;
-          }
-
-          if (canReportError_1.canReportError(sink)) {
-            sink.error(err);
-          } else {
-            console.warn(err);
-          }
-        }
-      };
-
-      Observable.prototype.forEach = function (next, promiseCtor) {
-        var _this = this;
-
-        promiseCtor = getPromiseCtor(promiseCtor);
-        return new promiseCtor(function (resolve, reject) {
-          var subscription;
-          subscription = _this.subscribe(function (value) {
-            try {
-              next(value);
-            } catch (err) {
-              reject(err);
-
-              if (subscription) {
-                subscription.unsubscribe();
-              }
-            }
-          }, reject, resolve);
-        });
-      };
-
-      Observable.prototype._subscribe = function (subscriber) {
-        var source = this.source;
-        return source && source.subscribe(subscriber);
-      };
-
-      Observable.prototype[observable_1.observable] = function () {
-        return this;
-      };
-
-      Observable.prototype.pipe = function () {
-        var operations = [];
-
-        for (var _i = 0; _i < arguments.length; _i++) {
-          operations[_i] = arguments[_i];
-        }
-
-        if (operations.length === 0) {
-          return this;
-        }
-
-        return pipe_1.pipeFromArray(operations)(this);
-      };
-
-      Observable.prototype.toPromise = function (promiseCtor) {
-        var _this = this;
-
-        promiseCtor = getPromiseCtor(promiseCtor);
-        return new promiseCtor(function (resolve, reject) {
-          var value;
-
-          _this.subscribe(function (x) {
-            return value = x;
-          }, function (err) {
-            return reject(err);
-          }, function () {
-            return resolve(value);
-          });
-        });
-      };
-
-      Observable.create = function (subscribe) {
-        return new Observable(subscribe);
-      };
-
-      return Observable;
-    }();
-
-    exports.Observable = Observable;
-
-    function getPromiseCtor(promiseCtor) {
-      if (!promiseCtor) {
-        promiseCtor = config_1.config.Promise || Promise;
-      }
-
-      if (!promiseCtor) {
-        throw new Error('no Promise impl found');
-      }
-
-      return promiseCtor;
-    } //# sourceMappingURL=Observable.js.map
-
-    /***/
-
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/Observer.js":
-  /*!************************************************!*\
-    !*** ./node_modules/rxjs/internal/Observer.js ***!
-    \************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalObserverJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var config_1 = __webpack_require__(
-    /*! ./config */
-    "./node_modules/rxjs/internal/config.js");
-
-    var hostReportError_1 = __webpack_require__(
-    /*! ./util/hostReportError */
-    "./node_modules/rxjs/internal/util/hostReportError.js");
-
-    exports.empty = {
-      closed: true,
-      next: function next(value) {},
-      error: function error(err) {
-        if (config_1.config.useDeprecatedSynchronousErrorHandling) {
-          throw err;
-        } else {
-          hostReportError_1.hostReportError(err);
-        }
-      },
-      complete: function complete() {}
-    }; //# sourceMappingURL=Observer.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/Scheduler.js":
-  /*!*************************************************!*\
-    !*** ./node_modules/rxjs/internal/Scheduler.js ***!
-    \*************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalSchedulerJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var Scheduler = function () {
-      function Scheduler(SchedulerAction, now) {
-        if (now === void 0) {
-          now = Scheduler.now;
-        }
-
-        this.SchedulerAction = SchedulerAction;
-        this.now = now;
-      }
-
-      Scheduler.prototype.schedule = function (work, delay, state) {
-        if (delay === void 0) {
-          delay = 0;
-        }
-
-        return new this.SchedulerAction(this, work).schedule(state, delay);
-      };
-
-      Scheduler.now = function () {
-        return Date.now();
-      };
-
-      return Scheduler;
-    }();
-
-    exports.Scheduler = Scheduler; //# sourceMappingURL=Scheduler.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/Subscriber.js":
-  /*!**************************************************!*\
-    !*** ./node_modules/rxjs/internal/Subscriber.js ***!
-    \**************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalSubscriberJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    var __extends = this && this.__extends || function () {
-      var _extendStatics = function extendStatics(d, b) {
-        _extendStatics = Object.setPrototypeOf || {
-          __proto__: []
-        } instanceof Array && function (d, b) {
-          d.__proto__ = b;
-        } || function (d, b) {
-          for (var p in b) {
-            if (b.hasOwnProperty(p)) d[p] = b[p];
-          }
-        };
-
-        return _extendStatics(d, b);
-      };
-
-      return function (d, b) {
-        _extendStatics(d, b);
-
-        function __() {
-          this.constructor = d;
-        }
-
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-      };
-    }();
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var isFunction_1 = __webpack_require__(
-    /*! ./util/isFunction */
-    "./node_modules/rxjs/internal/util/isFunction.js");
-
-    var Observer_1 = __webpack_require__(
-    /*! ./Observer */
-    "./node_modules/rxjs/internal/Observer.js");
-
-    var Subscription_1 = __webpack_require__(
-    /*! ./Subscription */
-    "./node_modules/rxjs/internal/Subscription.js");
-
-    var rxSubscriber_1 = __webpack_require__(
-    /*! ../internal/symbol/rxSubscriber */
-    "./node_modules/rxjs/internal/symbol/rxSubscriber.js");
-
-    var config_1 = __webpack_require__(
-    /*! ./config */
-    "./node_modules/rxjs/internal/config.js");
-
-    var hostReportError_1 = __webpack_require__(
-    /*! ./util/hostReportError */
-    "./node_modules/rxjs/internal/util/hostReportError.js");
-
-    var Subscriber = function (_super) {
-      __extends(Subscriber, _super);
-
-      function Subscriber(destinationOrNext, error, complete) {
-        var _this = _super.call(this) || this;
-
-        _this.syncErrorValue = null;
-        _this.syncErrorThrown = false;
-        _this.syncErrorThrowable = false;
-        _this.isStopped = false;
-
-        switch (arguments.length) {
-          case 0:
-            _this.destination = Observer_1.empty;
-            break;
-
-          case 1:
-            if (!destinationOrNext) {
-              _this.destination = Observer_1.empty;
-              break;
-            }
-
-            if (typeof destinationOrNext === 'object') {
-              if (destinationOrNext instanceof Subscriber) {
-                _this.syncErrorThrowable = destinationOrNext.syncErrorThrowable;
-                _this.destination = destinationOrNext;
-                destinationOrNext.add(_this);
-              } else {
-                _this.syncErrorThrowable = true;
-                _this.destination = new SafeSubscriber(_this, destinationOrNext);
-              }
-
-              break;
-            }
-
-          default:
-            _this.syncErrorThrowable = true;
-            _this.destination = new SafeSubscriber(_this, destinationOrNext, error, complete);
-            break;
-        }
-
-        return _this;
-      }
-
-      Subscriber.prototype[rxSubscriber_1.rxSubscriber] = function () {
-        return this;
-      };
-
-      Subscriber.create = function (next, error, complete) {
-        var subscriber = new Subscriber(next, error, complete);
-        subscriber.syncErrorThrowable = false;
-        return subscriber;
-      };
-
-      Subscriber.prototype.next = function (value) {
-        if (!this.isStopped) {
-          this._next(value);
-        }
-      };
-
-      Subscriber.prototype.error = function (err) {
-        if (!this.isStopped) {
-          this.isStopped = true;
-
-          this._error(err);
-        }
-      };
-
-      Subscriber.prototype.complete = function () {
-        if (!this.isStopped) {
-          this.isStopped = true;
-
-          this._complete();
-        }
-      };
-
-      Subscriber.prototype.unsubscribe = function () {
-        if (this.closed) {
-          return;
-        }
-
-        this.isStopped = true;
-
-        _super.prototype.unsubscribe.call(this);
-      };
-
-      Subscriber.prototype._next = function (value) {
-        this.destination.next(value);
-      };
-
-      Subscriber.prototype._error = function (err) {
-        this.destination.error(err);
-        this.unsubscribe();
-      };
-
-      Subscriber.prototype._complete = function () {
-        this.destination.complete();
-        this.unsubscribe();
-      };
-
-      Subscriber.prototype._unsubscribeAndRecycle = function () {
-        var _parentOrParents = this._parentOrParents;
-        this._parentOrParents = null;
-        this.unsubscribe();
-        this.closed = false;
-        this.isStopped = false;
-        this._parentOrParents = _parentOrParents;
-        return this;
-      };
-
-      return Subscriber;
-    }(Subscription_1.Subscription);
-
-    exports.Subscriber = Subscriber;
-
-    var SafeSubscriber = function (_super) {
-      __extends(SafeSubscriber, _super);
-
-      function SafeSubscriber(_parentSubscriber, observerOrNext, error, complete) {
-        var _this = _super.call(this) || this;
-
-        _this._parentSubscriber = _parentSubscriber;
-        var next;
-        var context = _this;
-
-        if (isFunction_1.isFunction(observerOrNext)) {
-          next = observerOrNext;
-        } else if (observerOrNext) {
-          next = observerOrNext.next;
-          error = observerOrNext.error;
-          complete = observerOrNext.complete;
-
-          if (observerOrNext !== Observer_1.empty) {
-            context = Object.create(observerOrNext);
-
-            if (isFunction_1.isFunction(context.unsubscribe)) {
-              _this.add(context.unsubscribe.bind(context));
-            }
-
-            context.unsubscribe = _this.unsubscribe.bind(_this);
-          }
-        }
-
-        _this._context = context;
-        _this._next = next;
-        _this._error = error;
-        _this._complete = complete;
-        return _this;
-      }
-
-      SafeSubscriber.prototype.next = function (value) {
-        if (!this.isStopped && this._next) {
-          var _parentSubscriber = this._parentSubscriber;
-
-          if (!config_1.config.useDeprecatedSynchronousErrorHandling || !_parentSubscriber.syncErrorThrowable) {
-            this.__tryOrUnsub(this._next, value);
-          } else if (this.__tryOrSetError(_parentSubscriber, this._next, value)) {
-            this.unsubscribe();
-          }
-        }
-      };
-
-      SafeSubscriber.prototype.error = function (err) {
-        if (!this.isStopped) {
-          var _parentSubscriber = this._parentSubscriber;
-          var useDeprecatedSynchronousErrorHandling = config_1.config.useDeprecatedSynchronousErrorHandling;
-
-          if (this._error) {
-            if (!useDeprecatedSynchronousErrorHandling || !_parentSubscriber.syncErrorThrowable) {
-              this.__tryOrUnsub(this._error, err);
-
-              this.unsubscribe();
-            } else {
-              this.__tryOrSetError(_parentSubscriber, this._error, err);
-
-              this.unsubscribe();
-            }
-          } else if (!_parentSubscriber.syncErrorThrowable) {
-            this.unsubscribe();
-
-            if (useDeprecatedSynchronousErrorHandling) {
-              throw err;
-            }
-
-            hostReportError_1.hostReportError(err);
-          } else {
-            if (useDeprecatedSynchronousErrorHandling) {
-              _parentSubscriber.syncErrorValue = err;
-              _parentSubscriber.syncErrorThrown = true;
-            } else {
-              hostReportError_1.hostReportError(err);
-            }
-
-            this.unsubscribe();
-          }
-        }
-      };
-
-      SafeSubscriber.prototype.complete = function () {
-        var _this = this;
-
-        if (!this.isStopped) {
-          var _parentSubscriber = this._parentSubscriber;
-
-          if (this._complete) {
-            var wrappedComplete = function wrappedComplete() {
-              return _this._complete.call(_this._context);
-            };
-
-            if (!config_1.config.useDeprecatedSynchronousErrorHandling || !_parentSubscriber.syncErrorThrowable) {
-              this.__tryOrUnsub(wrappedComplete);
-
-              this.unsubscribe();
-            } else {
-              this.__tryOrSetError(_parentSubscriber, wrappedComplete);
-
-              this.unsubscribe();
-            }
-          } else {
-            this.unsubscribe();
-          }
-        }
-      };
-
-      SafeSubscriber.prototype.__tryOrUnsub = function (fn, value) {
-        try {
-          fn.call(this._context, value);
-        } catch (err) {
-          this.unsubscribe();
-
-          if (config_1.config.useDeprecatedSynchronousErrorHandling) {
-            throw err;
-          } else {
-            hostReportError_1.hostReportError(err);
-          }
-        }
-      };
-
-      SafeSubscriber.prototype.__tryOrSetError = function (parent, fn, value) {
-        if (!config_1.config.useDeprecatedSynchronousErrorHandling) {
-          throw new Error('bad call');
-        }
-
-        try {
-          fn.call(this._context, value);
-        } catch (err) {
-          if (config_1.config.useDeprecatedSynchronousErrorHandling) {
-            parent.syncErrorValue = err;
-            parent.syncErrorThrown = true;
-            return true;
-          } else {
-            hostReportError_1.hostReportError(err);
-            return true;
-          }
-        }
-
-        return false;
-      };
-
-      SafeSubscriber.prototype._unsubscribe = function () {
-        var _parentSubscriber = this._parentSubscriber;
-        this._context = null;
-        this._parentSubscriber = null;
-
-        _parentSubscriber.unsubscribe();
-      };
-
-      return SafeSubscriber;
-    }(Subscriber);
-
-    exports.SafeSubscriber = SafeSubscriber; //# sourceMappingURL=Subscriber.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/Subscription.js":
-  /*!****************************************************!*\
-    !*** ./node_modules/rxjs/internal/Subscription.js ***!
-    \****************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalSubscriptionJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var isArray_1 = __webpack_require__(
-    /*! ./util/isArray */
-    "./node_modules/rxjs/internal/util/isArray.js");
-
-    var isObject_1 = __webpack_require__(
-    /*! ./util/isObject */
-    "./node_modules/rxjs/internal/util/isObject.js");
-
-    var isFunction_1 = __webpack_require__(
-    /*! ./util/isFunction */
-    "./node_modules/rxjs/internal/util/isFunction.js");
-
-    var UnsubscriptionError_1 = __webpack_require__(
-    /*! ./util/UnsubscriptionError */
-    "./node_modules/rxjs/internal/util/UnsubscriptionError.js");
-
-    var Subscription = function () {
-      function Subscription(unsubscribe) {
-        this.closed = false;
-        this._parentOrParents = null;
-        this._subscriptions = null;
-
-        if (unsubscribe) {
-          this._ctorUnsubscribe = true;
-          this._unsubscribe = unsubscribe;
-        }
-      }
-
-      Subscription.prototype.unsubscribe = function () {
-        var errors;
-
-        if (this.closed) {
-          return;
-        }
-
-        var _a = this,
-            _parentOrParents = _a._parentOrParents,
-            _ctorUnsubscribe = _a._ctorUnsubscribe,
-            _unsubscribe = _a._unsubscribe,
-            _subscriptions = _a._subscriptions;
-
-        this.closed = true;
-        this._parentOrParents = null;
-        this._subscriptions = null;
-
-        if (_parentOrParents instanceof Subscription) {
-          _parentOrParents.remove(this);
-        } else if (_parentOrParents !== null) {
-          for (var index = 0; index < _parentOrParents.length; ++index) {
-            var parent_1 = _parentOrParents[index];
-            parent_1.remove(this);
-          }
-        }
-
-        if (isFunction_1.isFunction(_unsubscribe)) {
-          if (_ctorUnsubscribe) {
-            this._unsubscribe = undefined;
-          }
-
-          try {
-            _unsubscribe.call(this);
-          } catch (e) {
-            errors = e instanceof UnsubscriptionError_1.UnsubscriptionError ? flattenUnsubscriptionErrors(e.errors) : [e];
-          }
-        }
-
-        if (isArray_1.isArray(_subscriptions)) {
-          var index = -1;
-          var len = _subscriptions.length;
-
-          while (++index < len) {
-            var sub = _subscriptions[index];
-
-            if (isObject_1.isObject(sub)) {
-              try {
-                sub.unsubscribe();
-              } catch (e) {
-                errors = errors || [];
-
-                if (e instanceof UnsubscriptionError_1.UnsubscriptionError) {
-                  errors = errors.concat(flattenUnsubscriptionErrors(e.errors));
-                } else {
-                  errors.push(e);
-                }
-              }
-            }
-          }
-        }
-
-        if (errors) {
-          throw new UnsubscriptionError_1.UnsubscriptionError(errors);
-        }
-      };
-
-      Subscription.prototype.add = function (teardown) {
-        var subscription = teardown;
-
-        if (!teardown) {
-          return Subscription.EMPTY;
-        }
-
-        switch (typeof teardown) {
-          case 'function':
-            subscription = new Subscription(teardown);
-
-          case 'object':
-            if (subscription === this || subscription.closed || typeof subscription.unsubscribe !== 'function') {
-              return subscription;
-            } else if (this.closed) {
-              subscription.unsubscribe();
-              return subscription;
-            } else if (!(subscription instanceof Subscription)) {
-              var tmp = subscription;
-              subscription = new Subscription();
-              subscription._subscriptions = [tmp];
-            }
-
-            break;
-
-          default:
-            {
-              throw new Error('unrecognized teardown ' + teardown + ' added to Subscription.');
-            }
-        }
-
-        var _parentOrParents = subscription._parentOrParents;
-
-        if (_parentOrParents === null) {
-          subscription._parentOrParents = this;
-        } else if (_parentOrParents instanceof Subscription) {
-          if (_parentOrParents === this) {
-            return subscription;
-          }
-
-          subscription._parentOrParents = [_parentOrParents, this];
-        } else if (_parentOrParents.indexOf(this) === -1) {
-          _parentOrParents.push(this);
-        } else {
-          return subscription;
-        }
-
-        var subscriptions = this._subscriptions;
-
-        if (subscriptions === null) {
-          this._subscriptions = [subscription];
-        } else {
-          subscriptions.push(subscription);
-        }
-
-        return subscription;
-      };
-
-      Subscription.prototype.remove = function (subscription) {
-        var subscriptions = this._subscriptions;
-
-        if (subscriptions) {
-          var subscriptionIndex = subscriptions.indexOf(subscription);
-
-          if (subscriptionIndex !== -1) {
-            subscriptions.splice(subscriptionIndex, 1);
-          }
-        }
-      };
-
-      Subscription.EMPTY = function (empty) {
-        empty.closed = true;
-        return empty;
-      }(new Subscription());
-
-      return Subscription;
-    }();
-
-    exports.Subscription = Subscription;
-
-    function flattenUnsubscriptionErrors(errors) {
-      return errors.reduce(function (errs, err) {
-        return errs.concat(err instanceof UnsubscriptionError_1.UnsubscriptionError ? err.errors : err);
-      }, []);
-    } //# sourceMappingURL=Subscription.js.map
-
-    /***/
-
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/config.js":
-  /*!**********************************************!*\
-    !*** ./node_modules/rxjs/internal/config.js ***!
-    \**********************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalConfigJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    var _enable_super_gross_mode_that_will_cause_bad_things = false;
-    exports.config = {
-      Promise: undefined,
-
-      set useDeprecatedSynchronousErrorHandling(value) {
-        if (value) {
-          var error = new Error();
-          console.warn('DEPRECATED! RxJS was set to use deprecated synchronous error handling behavior by code at: \n' + error.stack);
-        } else if (_enable_super_gross_mode_that_will_cause_bad_things) {
-          console.log('RxJS: Back to a better error behavior. Thank you. <3');
-        }
-
-        _enable_super_gross_mode_that_will_cause_bad_things = value;
-      },
-
-      get useDeprecatedSynchronousErrorHandling() {
-        return _enable_super_gross_mode_that_will_cause_bad_things;
-      }
-
-    }; //# sourceMappingURL=config.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/observable/timer.js":
-  /*!********************************************************!*\
-    !*** ./node_modules/rxjs/internal/observable/timer.js ***!
-    \********************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalObservableTimerJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var Observable_1 = __webpack_require__(
-    /*! ../Observable */
-    "./node_modules/rxjs/internal/Observable.js");
-
-    var async_1 = __webpack_require__(
-    /*! ../scheduler/async */
-    "./node_modules/rxjs/internal/scheduler/async.js");
-
-    var isNumeric_1 = __webpack_require__(
-    /*! ../util/isNumeric */
-    "./node_modules/rxjs/internal/util/isNumeric.js");
-
-    var isScheduler_1 = __webpack_require__(
-    /*! ../util/isScheduler */
-    "./node_modules/rxjs/internal/util/isScheduler.js");
-
-    function timer(dueTime, periodOrScheduler, scheduler) {
-      if (dueTime === void 0) {
-        dueTime = 0;
-      }
-
-      var period = -1;
-
-      if (isNumeric_1.isNumeric(periodOrScheduler)) {
-        period = Number(periodOrScheduler) < 1 && 1 || Number(periodOrScheduler);
-      } else if (isScheduler_1.isScheduler(periodOrScheduler)) {
-        scheduler = periodOrScheduler;
-      }
-
-      if (!isScheduler_1.isScheduler(scheduler)) {
-        scheduler = async_1.async;
-      }
-
-      return new Observable_1.Observable(function (subscriber) {
-        var due = isNumeric_1.isNumeric(dueTime) ? dueTime : +dueTime - scheduler.now();
-        return scheduler.schedule(dispatch, due, {
-          index: 0,
-          period: period,
-          subscriber: subscriber
-        });
-      });
-    }
-
-    exports.timer = timer;
-
-    function dispatch(state) {
-      var index = state.index,
-          period = state.period,
-          subscriber = state.subscriber;
-      subscriber.next(index);
-
-      if (subscriber.closed) {
-        return;
-      } else if (period === -1) {
-        return subscriber.complete();
-      }
-
-      state.index = index + 1;
-      this.schedule(state, period);
-    } //# sourceMappingURL=timer.js.map
-
-    /***/
-
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/scheduler/Action.js":
-  /*!********************************************************!*\
-    !*** ./node_modules/rxjs/internal/scheduler/Action.js ***!
-    \********************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalSchedulerActionJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    var __extends = this && this.__extends || function () {
-      var _extendStatics2 = function extendStatics(d, b) {
-        _extendStatics2 = Object.setPrototypeOf || {
-          __proto__: []
-        } instanceof Array && function (d, b) {
-          d.__proto__ = b;
-        } || function (d, b) {
-          for (var p in b) {
-            if (b.hasOwnProperty(p)) d[p] = b[p];
-          }
-        };
-
-        return _extendStatics2(d, b);
-      };
-
-      return function (d, b) {
-        _extendStatics2(d, b);
-
-        function __() {
-          this.constructor = d;
-        }
-
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-      };
-    }();
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var Subscription_1 = __webpack_require__(
-    /*! ../Subscription */
-    "./node_modules/rxjs/internal/Subscription.js");
-
-    var Action = function (_super) {
-      __extends(Action, _super);
-
-      function Action(scheduler, work) {
-        return _super.call(this) || this;
-      }
-
-      Action.prototype.schedule = function (state, delay) {
-        if (delay === void 0) {
-          delay = 0;
-        }
-
-        return this;
-      };
-
-      return Action;
-    }(Subscription_1.Subscription);
-
-    exports.Action = Action; //# sourceMappingURL=Action.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/scheduler/AsyncAction.js":
-  /*!*************************************************************!*\
-    !*** ./node_modules/rxjs/internal/scheduler/AsyncAction.js ***!
-    \*************************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalSchedulerAsyncActionJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    var __extends = this && this.__extends || function () {
-      var _extendStatics3 = function extendStatics(d, b) {
-        _extendStatics3 = Object.setPrototypeOf || {
-          __proto__: []
-        } instanceof Array && function (d, b) {
-          d.__proto__ = b;
-        } || function (d, b) {
-          for (var p in b) {
-            if (b.hasOwnProperty(p)) d[p] = b[p];
-          }
-        };
-
-        return _extendStatics3(d, b);
-      };
-
-      return function (d, b) {
-        _extendStatics3(d, b);
-
-        function __() {
-          this.constructor = d;
-        }
-
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-      };
-    }();
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var Action_1 = __webpack_require__(
-    /*! ./Action */
-    "./node_modules/rxjs/internal/scheduler/Action.js");
-
-    var AsyncAction = function (_super) {
-      __extends(AsyncAction, _super);
-
-      function AsyncAction(scheduler, work) {
-        var _this = _super.call(this, scheduler, work) || this;
-
-        _this.scheduler = scheduler;
-        _this.work = work;
-        _this.pending = false;
-        return _this;
-      }
-
-      AsyncAction.prototype.schedule = function (state, delay) {
-        if (delay === void 0) {
-          delay = 0;
-        }
-
-        if (this.closed) {
-          return this;
-        }
-
-        this.state = state;
-        var id = this.id;
-        var scheduler = this.scheduler;
-
-        if (id != null) {
-          this.id = this.recycleAsyncId(scheduler, id, delay);
-        }
-
-        this.pending = true;
-        this.delay = delay;
-        this.id = this.id || this.requestAsyncId(scheduler, this.id, delay);
-        return this;
-      };
-
-      AsyncAction.prototype.requestAsyncId = function (scheduler, id, delay) {
-        if (delay === void 0) {
-          delay = 0;
-        }
-
-        return setInterval(scheduler.flush.bind(scheduler, this), delay);
-      };
-
-      AsyncAction.prototype.recycleAsyncId = function (scheduler, id, delay) {
-        if (delay === void 0) {
-          delay = 0;
-        }
-
-        if (delay !== null && this.delay === delay && this.pending === false) {
-          return id;
-        }
-
-        clearInterval(id);
-        return undefined;
-      };
-
-      AsyncAction.prototype.execute = function (state, delay) {
-        if (this.closed) {
-          return new Error('executing a cancelled action');
-        }
-
-        this.pending = false;
-
-        var error = this._execute(state, delay);
-
-        if (error) {
-          return error;
-        } else if (this.pending === false && this.id != null) {
-          this.id = this.recycleAsyncId(this.scheduler, this.id, null);
-        }
-      };
-
-      AsyncAction.prototype._execute = function (state, delay) {
-        var errored = false;
-        var errorValue = undefined;
-
-        try {
-          this.work(state);
-        } catch (e) {
-          errored = true;
-          errorValue = !!e && e || new Error(e);
-        }
-
-        if (errored) {
-          this.unsubscribe();
-          return errorValue;
-        }
-      };
-
-      AsyncAction.prototype._unsubscribe = function () {
-        var id = this.id;
-        var scheduler = this.scheduler;
-        var actions = scheduler.actions;
-        var index = actions.indexOf(this);
-        this.work = null;
-        this.state = null;
-        this.pending = false;
-        this.scheduler = null;
-
-        if (index !== -1) {
-          actions.splice(index, 1);
-        }
-
-        if (id != null) {
-          this.id = this.recycleAsyncId(scheduler, id, null);
-        }
-
-        this.delay = null;
-      };
-
-      return AsyncAction;
-    }(Action_1.Action);
-
-    exports.AsyncAction = AsyncAction; //# sourceMappingURL=AsyncAction.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/scheduler/AsyncScheduler.js":
-  /*!****************************************************************!*\
-    !*** ./node_modules/rxjs/internal/scheduler/AsyncScheduler.js ***!
-    \****************************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalSchedulerAsyncSchedulerJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    var __extends = this && this.__extends || function () {
-      var _extendStatics4 = function extendStatics(d, b) {
-        _extendStatics4 = Object.setPrototypeOf || {
-          __proto__: []
-        } instanceof Array && function (d, b) {
-          d.__proto__ = b;
-        } || function (d, b) {
-          for (var p in b) {
-            if (b.hasOwnProperty(p)) d[p] = b[p];
-          }
-        };
-
-        return _extendStatics4(d, b);
-      };
-
-      return function (d, b) {
-        _extendStatics4(d, b);
-
-        function __() {
-          this.constructor = d;
-        }
-
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-      };
-    }();
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var Scheduler_1 = __webpack_require__(
-    /*! ../Scheduler */
-    "./node_modules/rxjs/internal/Scheduler.js");
-
-    var AsyncScheduler = function (_super) {
-      __extends(AsyncScheduler, _super);
-
-      function AsyncScheduler(SchedulerAction, now) {
-        if (now === void 0) {
-          now = Scheduler_1.Scheduler.now;
-        }
-
-        var _this = _super.call(this, SchedulerAction, function () {
-          if (AsyncScheduler.delegate && AsyncScheduler.delegate !== _this) {
-            return AsyncScheduler.delegate.now();
-          } else {
-            return now();
-          }
-        }) || this;
-
-        _this.actions = [];
-        _this.active = false;
-        _this.scheduled = undefined;
-        return _this;
-      }
-
-      AsyncScheduler.prototype.schedule = function (work, delay, state) {
-        if (delay === void 0) {
-          delay = 0;
-        }
-
-        if (AsyncScheduler.delegate && AsyncScheduler.delegate !== this) {
-          return AsyncScheduler.delegate.schedule(work, delay, state);
-        } else {
-          return _super.prototype.schedule.call(this, work, delay, state);
-        }
-      };
-
-      AsyncScheduler.prototype.flush = function (action) {
-        var actions = this.actions;
-
-        if (this.active) {
-          actions.push(action);
-          return;
-        }
-
-        var error;
-        this.active = true;
-
-        do {
-          if (error = action.execute(action.state, action.delay)) {
-            break;
-          }
-        } while (action = actions.shift());
-
-        this.active = false;
-
-        if (error) {
-          while (action = actions.shift()) {
-            action.unsubscribe();
-          }
-
-          throw error;
-        }
-      };
-
-      return AsyncScheduler;
-    }(Scheduler_1.Scheduler);
-
-    exports.AsyncScheduler = AsyncScheduler; //# sourceMappingURL=AsyncScheduler.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/scheduler/async.js":
-  /*!*******************************************************!*\
-    !*** ./node_modules/rxjs/internal/scheduler/async.js ***!
-    \*******************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalSchedulerAsyncJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var AsyncAction_1 = __webpack_require__(
-    /*! ./AsyncAction */
-    "./node_modules/rxjs/internal/scheduler/AsyncAction.js");
-
-    var AsyncScheduler_1 = __webpack_require__(
-    /*! ./AsyncScheduler */
-    "./node_modules/rxjs/internal/scheduler/AsyncScheduler.js");
-
-    exports.asyncScheduler = new AsyncScheduler_1.AsyncScheduler(AsyncAction_1.AsyncAction);
-    exports.async = exports.asyncScheduler; //# sourceMappingURL=async.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/symbol/observable.js":
-  /*!*********************************************************!*\
-    !*** ./node_modules/rxjs/internal/symbol/observable.js ***!
-    \*********************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalSymbolObservableJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    exports.observable = function () {
-      return typeof Symbol === 'function' && Symbol.observable || '@@observable';
-    }(); //# sourceMappingURL=observable.js.map
-
-    /***/
-
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/symbol/rxSubscriber.js":
-  /*!***********************************************************!*\
-    !*** ./node_modules/rxjs/internal/symbol/rxSubscriber.js ***!
-    \***********************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalSymbolRxSubscriberJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    exports.rxSubscriber = function () {
-      return typeof Symbol === 'function' ? Symbol('rxSubscriber') : '@@rxSubscriber_' + Math.random();
-    }();
-
-    exports.$$rxSubscriber = exports.rxSubscriber; //# sourceMappingURL=rxSubscriber.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/util/UnsubscriptionError.js":
-  /*!****************************************************************!*\
-    !*** ./node_modules/rxjs/internal/util/UnsubscriptionError.js ***!
-    \****************************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalUtilUnsubscriptionErrorJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var UnsubscriptionErrorImpl = function () {
-      function UnsubscriptionErrorImpl(errors) {
-        Error.call(this);
-        this.message = errors ? errors.length + " errors occurred during unsubscription:\n" + errors.map(function (err, i) {
-          return i + 1 + ") " + err.toString();
-        }).join('\n  ') : '';
-        this.name = 'UnsubscriptionError';
-        this.errors = errors;
-        return this;
-      }
-
-      UnsubscriptionErrorImpl.prototype = Object.create(Error.prototype);
-      return UnsubscriptionErrorImpl;
-    }();
-
-    exports.UnsubscriptionError = UnsubscriptionErrorImpl; //# sourceMappingURL=UnsubscriptionError.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/util/canReportError.js":
-  /*!***********************************************************!*\
-    !*** ./node_modules/rxjs/internal/util/canReportError.js ***!
-    \***********************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalUtilCanReportErrorJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var Subscriber_1 = __webpack_require__(
-    /*! ../Subscriber */
-    "./node_modules/rxjs/internal/Subscriber.js");
-
-    function canReportError(observer) {
-      while (observer) {
-        var _a = observer,
-            closed_1 = _a.closed,
-            destination = _a.destination,
-            isStopped = _a.isStopped;
-
-        if (closed_1 || isStopped) {
-          return false;
-        } else if (destination && destination instanceof Subscriber_1.Subscriber) {
-          observer = destination;
-        } else {
-          observer = null;
-        }
-      }
-
-      return true;
-    }
-
-    exports.canReportError = canReportError; //# sourceMappingURL=canReportError.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/util/hostReportError.js":
-  /*!************************************************************!*\
-    !*** ./node_modules/rxjs/internal/util/hostReportError.js ***!
-    \************************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalUtilHostReportErrorJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    function hostReportError(err) {
-      setTimeout(function () {
-        throw err;
-      }, 0);
-    }
-
-    exports.hostReportError = hostReportError; //# sourceMappingURL=hostReportError.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/util/identity.js":
-  /*!*****************************************************!*\
-    !*** ./node_modules/rxjs/internal/util/identity.js ***!
-    \*****************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalUtilIdentityJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    function identity(x) {
-      return x;
-    }
-
-    exports.identity = identity; //# sourceMappingURL=identity.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/util/isArray.js":
-  /*!****************************************************!*\
-    !*** ./node_modules/rxjs/internal/util/isArray.js ***!
-    \****************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalUtilIsArrayJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    exports.isArray = function () {
-      return Array.isArray || function (x) {
-        return x && typeof x.length === 'number';
-      };
-    }(); //# sourceMappingURL=isArray.js.map
-
-    /***/
-
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/util/isFunction.js":
-  /*!*******************************************************!*\
-    !*** ./node_modules/rxjs/internal/util/isFunction.js ***!
-    \*******************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalUtilIsFunctionJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    function isFunction(x) {
-      return typeof x === 'function';
-    }
-
-    exports.isFunction = isFunction; //# sourceMappingURL=isFunction.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/util/isNumeric.js":
-  /*!******************************************************!*\
-    !*** ./node_modules/rxjs/internal/util/isNumeric.js ***!
-    \******************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalUtilIsNumericJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var isArray_1 = __webpack_require__(
-    /*! ./isArray */
-    "./node_modules/rxjs/internal/util/isArray.js");
-
-    function isNumeric(val) {
-      return !isArray_1.isArray(val) && val - parseFloat(val) + 1 >= 0;
-    }
-
-    exports.isNumeric = isNumeric; //# sourceMappingURL=isNumeric.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/util/isObject.js":
-  /*!*****************************************************!*\
-    !*** ./node_modules/rxjs/internal/util/isObject.js ***!
-    \*****************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalUtilIsObjectJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    function isObject(x) {
-      return x !== null && typeof x === 'object';
-    }
-
-    exports.isObject = isObject; //# sourceMappingURL=isObject.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/util/isScheduler.js":
-  /*!********************************************************!*\
-    !*** ./node_modules/rxjs/internal/util/isScheduler.js ***!
-    \********************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalUtilIsSchedulerJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    function isScheduler(value) {
-      return value && typeof value.schedule === 'function';
-    }
-
-    exports.isScheduler = isScheduler; //# sourceMappingURL=isScheduler.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/util/pipe.js":
-  /*!*************************************************!*\
-    !*** ./node_modules/rxjs/internal/util/pipe.js ***!
-    \*************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalUtilPipeJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var identity_1 = __webpack_require__(
-    /*! ./identity */
-    "./node_modules/rxjs/internal/util/identity.js");
-
-    function pipe() {
-      var fns = [];
-
-      for (var _i = 0; _i < arguments.length; _i++) {
-        fns[_i] = arguments[_i];
-      }
-
-      return pipeFromArray(fns);
-    }
-
-    exports.pipe = pipe;
-
-    function pipeFromArray(fns) {
-      if (fns.length === 0) {
-        return identity_1.identity;
-      }
-
-      if (fns.length === 1) {
-        return fns[0];
-      }
-
-      return function piped(input) {
-        return fns.reduce(function (prev, fn) {
-          return fn(prev);
-        }, input);
-      };
-    }
-
-    exports.pipeFromArray = pipeFromArray; //# sourceMappingURL=pipe.js.map
-
-    /***/
-  },
-
-  /***/
-  "./node_modules/rxjs/internal/util/toSubscriber.js":
-  /*!*********************************************************!*\
-    !*** ./node_modules/rxjs/internal/util/toSubscriber.js ***!
-    \*********************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesRxjsInternalUtilToSubscriberJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    var Subscriber_1 = __webpack_require__(
-    /*! ../Subscriber */
-    "./node_modules/rxjs/internal/Subscriber.js");
-
-    var rxSubscriber_1 = __webpack_require__(
-    /*! ../symbol/rxSubscriber */
-    "./node_modules/rxjs/internal/symbol/rxSubscriber.js");
-
-    var Observer_1 = __webpack_require__(
-    /*! ../Observer */
-    "./node_modules/rxjs/internal/Observer.js");
-
-    function toSubscriber(nextOrObserver, error, complete) {
-      if (nextOrObserver) {
-        if (nextOrObserver instanceof Subscriber_1.Subscriber) {
-          return nextOrObserver;
-        }
-
-        if (nextOrObserver[rxSubscriber_1.rxSubscriber]) {
-          return nextOrObserver[rxSubscriber_1.rxSubscriber]();
-        }
-      }
-
-      if (!nextOrObserver && !error && !complete) {
-        return new Subscriber_1.Subscriber(Observer_1.empty);
-      }
-
-      return new Subscriber_1.Subscriber(nextOrObserver, error, complete);
-    }
-
-    exports.toSubscriber = toSubscriber; //# sourceMappingURL=toSubscriber.js.map
-
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"goBack()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>{{programDetail?.title}}</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\">\r\n      <!-- <ion-icon ios=\"ios-create\" md=\"md-create\" slot=\"end\"></ion-icon> -->\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content no_footer\">\r\n  <ion-row>\r\n    <ion-col size=\"12\" class=\"ion-no-padding\">\r\n      <!-- <ion-card-content class=\"item-content ion-no-padding\">\r\n        \r\n        <ion-slides pager=\"true\" [options]=\"sliderOpts\" class=\"full-slider\" #mySlider>\r\n          <ion-slide  *ngFor=\"let imgpath of programDetail?.image_path.split(','); let i=index;\"> \r\n            <img src=\"{{url+imgpath}}\" /> \r\n          </ion-slide>\r\n        </ion-slides>\r\n      </ion-card-content> -->\r\n      <ion-card-content class=\"item-content ion-no-padding\">\r\n        <!-- <ion-thumbnail>\r\n          <img [defaultImage] = \"defaultPostImage\" [lazyLoad]=\"url+programImage\">         \r\n        </ion-thumbnail> -->\r\n        <!-- image/program/program_46_20210806150601_0.jpeg -->\r\n        <ion-slides *ngIf=\"progImage && progVideo\" pager=\"true\" [options]=\"sliderOpts\" class=\"full-slider program-slide\" #mySlider>          \r\n          <ion-slide  *ngFor=\"let imgpath of programDetail?.image_path.split(','); let i=index;\" class=\"program-slides\"> \r\n            <img *ngIf=\"progImage\" src=\"{{url+imgpath}}\" /> \r\n          </ion-slide>\r\n          <ion-slide class=\"program-slides\"> \r\n            <video *ngIf=\"progVideo\" width=\"100%\" height=\"200px\" controls=\"controls\" preload=\"metadata\"  webkit-playsinline=\"webkit-playsinline\" class=\"videoPlayer\">\r\n              <source src=\"{{vidUrl+programDetail?.video_path}}\" type=\"video/mp4\" />\r\n            </video>\r\n        </ion-slide>\r\n        </ion-slides>\r\n\r\n        <ion-slides *ngIf=\"progImage && !progVideo\" pager=\"true\" [options]=\"sliderOpts\" class=\"full-slider program-slide\" #mySlider>          \r\n          <ion-slide  *ngFor=\"let imgpath of programDetail?.image_path.split(','); let i=index;\" class=\"program-slides\"> \r\n            <img *ngIf=\"progImage\" src=\"{{url+imgpath}}\" /> \r\n          </ion-slide>\r\n        </ion-slides>\r\n\r\n        <ion-slides *ngIf=\"!progImage && progVideo\" pager=\"true\" [options]=\"sliderOpts\" class=\"full-slider program-slide\" #mySlider>            \r\n        <ion-slide class=\"program-slides\">\r\n          <video *ngIf=\"progVideo\" width=\"100%\" height=\"200px\" controls=\"controls\" preload=\"metadata\"  webkit-playsinline=\"webkit-playsinline\" class=\"videoPlayer\">\r\n            <source src=\"{{vidUrl+programDetail?.video_path}}\" type=\"video/mp4\" />\r\n          </video>\r\n        </ion-slide>\r\n        </ion-slides>\r\n\r\n        <ion-thumbnail *ngIf=\"!progImage && !progVideo \">\r\n          <img [defaultImage] = \"defaultPostImage\" [lazyLoad]=\"url+programImage\">         \r\n        </ion-thumbnail>\r\n      </ion-card-content>\r\n      <ion-list lines=\"none\" class=\"list-info\">\r\n        <ion-item class=\"list-items\">\r\n          <div class=\"icon-text\">\r\n          <img src=\"../../../assets/images/target.svg\" />\r\n          <ion-label>{{programDetail?.category_id}}</ion-label>\r\n          </div>\r\n        </ion-item>\r\n        <ion-item class=\"list-items\">\r\n          <div class=\"icon-text\">\r\n          <img src=\"../../../assets/images/doller.png\" />\r\n          <ion-label>{{programFee}}</ion-label>\r\n          </div>\r\n        </ion-item>\r\n        <ion-item class=\"list-items\">\r\n          <div class=\"icon-text\">\r\n          <img src=\"../../../assets/images/group.svg\" />\r\n          <ion-label>{{programDetail?.type_id}}</ion-label>\r\n          </div>\r\n        </ion-item>\r\n        <ion-item class=\"list-items\">\r\n          <div class=\"icon-text\">\r\n          <img src=\"../../../assets/images/clock.svg\" />\r\n          <ion-label>{{programDetail?.program_duration || 0}} Min</ion-label>\r\n          </div>\r\n        </ion-item>\r\n      </ion-list>\r\n    </ion-col>\r\n    <ion-col size=\"12\" class=\"ion-padding\">\r\n      <p class=\"mb-10\">{{programDetail?.description }} &nbsp;</p>      \r\n    </ion-col>\r\n  </ion-row>\r\n  <ion-row class=\"counter-box ion-padding\" *ngIf=\"programDetail?.is_live_status == 1\">        \r\n    <ion-col size=\"3\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">{{dd | async}}</p> Days</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"3\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">{{hh | async}}</p> Hours</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"3\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">{{mm| async}}</p> Minutes</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"3\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">{{ss | async}}</p> Seconds</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"12\" class=\"ion-no-padding\" *ngIf=\"programDetail?.ended\">\r\n      <ion-text>This Program has been Ended </ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"12\" class=\"ion-no-padding mt-15 text-green\">\r\n      <ion-text><p class=\"text-green text-center\">{{programDateTime|date:'medium'}}</p></ion-text>\r\n    </ion-col>\r\n  </ion-row>\r\n  <ion-row class=\"counter-box ion-padding\" *ngIf=\"programDetail?.is_live_status == 0\">        \r\n    <ion-col size=\"4\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">00</p> Hours</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"4\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">00</p> Minutes</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"4\" class=\"ion-no-padding\" *ngIf=\"!programDetail?.ended\">\r\n      <ion-text><p class=\"count_time\">00</p> Seconds</ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"12\" class=\"ion-no-padding\" *ngIf=\"programDetail?.ended\">\r\n      <ion-text>This Program has been Ended </ion-text>\r\n    </ion-col>\r\n    <ion-col size=\"12\" class=\"ion-no-padding mt-15\">\r\n      <ion-text><p class=\"text-green text-center\">{{programDateTime|date:'medium'}}</p></ion-text>\r\n    </ion-col>\r\n  </ion-row>\r\n  <!-- <ion-button *ngIf=\"programDetail?.live\" [routerLink]=\"['/broadcaster',broadcastId]\">Go Live</ion-button> -->\r\n  <!-- <ion-label *ngIf=\"programDetail?.ended\" >This Program has been Ended  </ion-label> -->\r\n  \r\n  <!-- <ion-button [routerLink]=\"['/broadcaster',broadcastId]\">Tmp Live</ion-button> -->\r\n\r\n         <ion-button *ngIf=\"programDetail?.is_requested ==1 && !request_join && !programDetail?.ended\" size=\"small\"  class=\"green btnVerify\" (click)=\"joinRequest()\" >Request To Join</ion-button> \r\n       <ion-button *ngIf=\"request_accs_pending && !programDetail?.ended\" size=\"small\" class=\"green btnVerify\" (click)=\"acceptRequest()\" >Accept Request</ion-button>      \r\n       <div class=\"users-list\" *ngIf=\"programDetail?.is_live_status == 1\">\r\n         <!-- <ion-button (click)=\"joinRoom()\">Join Room</ion-button> -->\r\n         <ion-button *ngIf=\"request_accs && !programDetail?.live && !programDetail?.ended\" size=\"small\"  class=\"green btnVerify\">Program will start sooon</ion-button>\r\n         <!-- <ion-button *ngIf=\"request_accs && !programDetail?.live\" size=\"small\"  class=\"green btnVerify\" (click)=\"payment()\">Payment</ion-button> -->\r\n         <ion-button *ngIf=\"programDetail?.ready  \" size=\"small\"  class=\"green btnVerify\" (click)=\"joinRoom()\">Requested to join Program</ion-button>\r\n         <!-- <ion-button *ngIf=\"programDetail?.ready && prePayment \" size=\"small\"  class=\"green btnVerify\" (click)=\"joinRoom()\">Requested to join Program</ion-button> -->\r\n        \r\n         <!-- <div *ngIf=\"request_accs && !programDetail?.live\" size=\"medium\"  >Program will start sooon   \r\n         </div>\r\n         <div *ngIf=\"programDetail?.is_requested ==1 && !request_join && !programDetail?.ended\" size=\"medium\"  (click)=\"joinRoom()\" >Requested to join Program \r\n        </div> -->\r\n      </div>\r\n  <ion-row>\r\n    <ion-col size=\"12\" class=\"ion-no-padding\">\r\n      <ion-list lines=\"none\" class=\"top-list three-block\">\r\n        <ion-item (click)=\"equipments()\">\r\n          <div class=\"top-icon\">\r\n            <ion-icon ios=\"ios-construct\" md=\"md-construct\"></ion-icon>\r\n          </div>\r\n          <ion-label>Equipments</ion-label>\r\n        </ion-item>\r\n        <!-- <ion-item [routerLink]=\"['/nutrition-list']\" detail=\"false\">\r\n          <div class=\"top-icon\">\r\n            <ion-icon ios=\"ios-nutrition\" md=\"md-nutrition\"></ion-icon>\r\n          </div>\r\n          <ion-label>Nutrition</ion-label>\r\n        </ion-item> -->\r\n        <ion-item *ngIf=\"programDetail?.chat_status == 1\" (click)=\"1()\" detail=\"false\">\r\n          <div class=\"top-icon\">\r\n            <ion-icon ios=\"ios-text\" md=\"md-text\"></ion-icon>\r\n          </div>\r\n          <ion-label>Chat</ion-label>\r\n        </ion-item>\r\n        <ion-item detail=\"false\" (click)=\"showSchedule(programDetail)\">\r\n          <div class=\"top-icon\">\r\n            <ion-icon ios=\"ios-calendar\" md=\"md-calendar\"></ion-icon>\r\n          </div>\r\n          <ion-label>View Schedule</ion-label>\r\n        </ion-item>\r\n      </ion-list>\r\n    </ion-col>\r\n    <ion-col>\r\n      <ion-fab class=\"share-btn\" *ngIf=\"programDetail?.is_requested == 1\">\r\n        <ion-fab-button class=\"share-btn\" color=\"primary\" size=\"small\" (click)=\"shareItem()\">\r\n          <ion-icon ios=\"ios-share\" md=\"md-share\"></ion-icon>\r\n        </ion-fab-button>\r\n      </ion-fab>\r\n      </ion-col>\r\n  </ion-row>\r\n</ion-content>";
     /***/
   },
 
@@ -2083,10 +365,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ProgramViewPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this2 = this;
+          var _this = this;
 
           this.actRoute.paramMap.subscribe(function (params) {
-            _this2.programId = params.get('programId');
+            _this.programId = params.get('programId');
           });
           this.userData = JSON.parse(localStorage.getItem('userData'));
           this.totalIntoFee = 0;
@@ -2094,23 +376,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.totalMin = 0;
           this.Mins = 0;
           this.programService.getIntoActivePendingPaymentStatus('').subscribe(function (data) {
-            _this2.intoActivePaid = data.data; // console.log(this.intoActivePaid);
+            _this.intoActivePaid = data.data; // console.log(this.intoActivePaid);
 
-            _this2.intoActivePaid.forEach(function (el) {
+            _this.intoActivePaid.forEach(function (el) {
               if (el.type_id == 3) {
-                _this2.minute = el.time / 60 * 0.008;
-                _this2.mms = el.time / 60;
+                _this.minute = el.time / 60 * 0.008;
+                _this.mms = el.time / 60;
               } else if (el.type_id == 4) {
-                _this2.minute = el.time / 60 * 0.0075;
-                _this2.mms = el.time / 60;
+                _this.minute = el.time / 60 * 0.0075;
+                _this.mms = el.time / 60;
               }
 
-              _this2.totalIntoFee = parseFloat(_this2.minute) + parseFloat(_this2.min);
-              _this2.totalMin = parseFloat(_this2.mms) + parseFloat(_this2.Mins);
-              _this2.min = _this2.totalIntoFee;
-              _this2.Mins = _this2.totalMin;
+              _this.totalIntoFee = parseFloat(_this.minute) + parseFloat(_this.min);
+              _this.totalMin = parseFloat(_this.mms) + parseFloat(_this.Mins);
+              _this.min = _this.totalIntoFee;
+              _this.Mins = _this.totalMin;
 
-              _this2.intoProg.push(el.prog_id);
+              _this.intoProg.push(el.prog_id);
 
               var img = '';
 
@@ -2119,18 +401,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 img = image[0];
               }
 
-              if (_this2.Mins > 140) {
-                console.log(_this2.intoProg);
+              if (_this.Mins > 140) {
+                console.log(_this.intoProg);
                 var fileData = {
-                  pgid: _this2.intoProg,
+                  pgid: _this.intoProg,
                   pgname: el.title,
-                  pgamount: _this2.totalIntoFee,
+                  pgamount: _this.totalIntoFee,
                   pgimg: img,
                   routeLink: 'progView',
                   type: '1'
                 };
 
-                _this2.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData);
+                _this.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData);
 
                 Object(process__WEBPACK_IMPORTED_MODULE_16__["exit"])();
                 return false;
@@ -2141,23 +423,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             // console.log(this.Mins);
 
 
-            console.log(_this2.Mins);
+            console.log(_this.Mins);
             console.log('getIntoActivePendingPaymentStatus');
           });
           this.programService.getPaymentStatus().subscribe(function (data) {
-            _this2.paymentPending = data;
+            _this.paymentPending = data;
 
-            if (_this2.paymentPending.data.length > 0) {
-              console.log(_this2.paymentPending);
+            if (_this.paymentPending.data.length > 0) {
+              console.log(_this.paymentPending);
               var i = 0;
 
-              _this2.paymentPending.data.forEach(function (el) {
-                _this2.programService.getPendingPaymentStatus({
+              _this.paymentPending.data.forEach(function (el) {
+                _this.programService.getPendingPaymentStatus({
                   'program_id': el.id
                 }).subscribe(function (data) {
                   if (i == 0) {
                     if (data.data == 0) {
-                      _this2.prePayment = false;
+                      _this.prePayment = false;
                       var img = '';
 
                       if (el.image_path != '') {
@@ -2174,7 +456,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         type: '2'
                       };
 
-                      _this2.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData); // this.pendingPayment();
+                      _this.commonService.presentModal(src_app_modalContent_payment_payment_component__WEBPACK_IMPORTED_MODULE_15__["PaymentComponent"], 'bottomModal', fileData); // this.pendingPayment();
 
 
                       i++;
@@ -2188,14 +470,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             'program_id': this.programId
           }).subscribe(function (data) {
             console.log("EnxData User: " + JSON.stringify(data));
-            _this2.userName = _this2.userData.user_name;
-            _this2.roomID = data.room_id;
+            _this.userName = _this.userData.user_name;
+            _this.roomID = data.room_id;
           });
         }
       }, {
         key: "joinRoom",
         value: function joinRoom() {
-          var _this3 = this;
+          var _this2 = this;
 
           if (this.roomID.length == 0) {
             alert("Kindly Enter Room ID");
@@ -2207,8 +489,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             'program_id': this.programId
           }).subscribe(function (data) {
             console.log("EnxData User: " + JSON.stringify(data));
-            _this3.userName = _this3.userData.user_name;
-            _this3.roomID = data.room_id;
+            _this2.userName = _this2.userData.user_name;
+            _this2.roomID = data.room_id;
           });
           var loginString = {
             "name": this.userName,
@@ -2234,22 +516,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var navigationExtras = {
               queryParams: {
                 token: data["token"],
-                name: _this3.userName,
+                name: _this2.userName,
                 role: "participant",
                 user_ref: "user_ref",
-                roomId: _this3.roomID,
-                description: _this3.programDescription,
-                programId: _this3.programId,
-                programTitle: _this3.pgtitle,
-                participants: _this3.participants,
-                duration: _this3.programDurations,
-                program_type: _this3.programType,
-                program_fee: _this3.programFee,
-                program_img: _this3.programImage
+                roomId: _this2.roomID,
+                description: _this2.programDescription,
+                programId: _this2.programId,
+                programTitle: _this2.pgtitle,
+                participants: _this2.participants,
+                duration: _this2.programDurations,
+                program_type: _this2.programType,
+                program_fee: _this2.programFee,
+                program_img: _this2.programImage
               }
             };
 
-            _this3.navCtrl.navigateForward(['confrence'], navigationExtras);
+            _this2.navCtrl.navigateForward(['confrence'], navigationExtras);
           }, function (error) {
             console.log("Hello service failed");
             console.log(error);
@@ -2259,141 +541,141 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ionViewWillEnter",
         value: function ionViewWillEnter() {
-          var _this4 = this;
+          var _this3 = this;
 
           this.programService.getProgramById({
             "programId": this.programId
           }).subscribe(function (data) {
-            _this4.programDetail = data.programData;
+            _this3.programDetail = data.programData;
             console.log('starttttttt');
-            console.log(_this4.programDetail);
-            console.log(_this4.programDetail.is_requested);
-            console.log(_this4.request_join);
-            console.log(_this4.prePayment);
+            console.log(_this3.programDetail);
+            console.log(_this3.programDetail.is_requested);
+            console.log(_this3.request_join);
+            console.log(_this3.prePayment);
             console.log('enddddddddd');
-            _this4.broadcastId = 'programId_' + data.programData.id;
-            _this4.programType = data.programData.type_id;
-            _this4.pgtitle = data.programData.title;
+            _this3.broadcastId = 'programId_' + data.programData.id;
+            _this3.programType = data.programData.type_id;
+            _this3.pgtitle = data.programData.title;
 
-            if (_this4.programDetail.payment_type == 'Paid') {
-              _this4.programFee = _this4.programDetail.program_fee;
-            } else if (_this4.programDetail.payment_type == 'Free') {
-              _this4.programFee = _this4.programDetail.payment_type;
+            if (_this3.programDetail.payment_type == 'Paid') {
+              _this3.programFee = _this3.programDetail.program_fee;
+            } else if (_this3.programDetail.payment_type == 'Free') {
+              _this3.programFee = _this3.programDetail.payment_type;
             }
 
-            if (_this4.programType == 'private oneway' || _this4.programType == 'private twoway') {
-              _this4.participants = 2;
-            } else if (_this4.programType == 'group oneway' || _this4.programType == 'group twoway') {
-              _this4.participants = 50;
+            if (_this3.programType == 'private oneway' || _this3.programType == 'private twoway') {
+              _this3.participants = 2;
+            } else if (_this3.programType == 'group oneway' || _this3.programType == 'group twoway') {
+              _this3.participants = 50;
             } else {
-              _this4.participants = 100;
+              _this3.participants = 100;
             }
 
-            _this4.programDurations = data.programData.program_duration;
-            _this4.programDescription = data.programData.description;
+            _this3.programDurations = data.programData.program_duration;
+            _this3.programDescription = data.programData.description;
 
             if (data.programData.image_path != '') {
               // this.progImage = data.programData.image_path;
-              _this4.progImage = true;
+              _this3.progImage = true;
             } else {
-              _this4.progImage = false;
+              _this3.progImage = false;
             }
 
             if (data.programData.video_path != null) {
               // this.progImage = data.programData.image_path;
-              _this4.progVideo = true;
+              _this3.progVideo = true;
             } else {
-              _this4.progVideo = false;
+              _this3.progVideo = false;
             }
 
             if (data.programData.image_path) {
-              _this4.programDetail.img_array = data.programData.image_path.split(',');
-              _this4.programImage = _this4.programDetail.img_array[0];
+              _this3.programDetail.img_array = data.programData.image_path.split(',');
+              _this3.programImage = _this3.programDetail.img_array[0];
             } //  ------------ C O U N T   D O W N   T I M E R ---------
 
 
-            var a = new Date(_this4.programDetail.program_date + 'Z');
-            _this4.programDateTime = a;
+            var a = new Date(_this3.programDetail.program_date + 'Z');
+            _this3.programDateTime = a;
             var b = new Date();
             var c;
 
             if (a > b) {
               c = Math.abs(a - b) / 1000;
-              _this4.programDetail.cd = c;
-              _this4.dd = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
-                if (_this4.programDetail.cd > 0) {
-                  --_this4.programDetail.cd;
+              _this3.programDetail.cd = c;
+              _this3.dd = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this3.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
+                if (_this3.programDetail.cd > 0) {
+                  --_this3.programDetail.cd;
                 }
 
-                return ~~(_this4.programDetail.cd / (60 * 60 * 24));
+                return ~~(_this3.programDetail.cd / (60 * 60 * 24));
               }));
-              _this4.ss = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
-                if (_this4.programDetail.cd > 0) {
-                  --_this4.programDetail.cd;
+              _this3.ss = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this3.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
+                if (_this3.programDetail.cd > 0) {
+                  --_this3.programDetail.cd;
                 }
 
-                return ~~(_this4.programDetail.cd % 3600 % 60);
+                return ~~(_this3.programDetail.cd % 3600 % 60);
               }));
-              _this4.mm = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
-                if (_this4.programDetail.cd > 0) {
-                  --_this4.programDetail.cd;
+              _this3.mm = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this3.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
+                if (_this3.programDetail.cd > 0) {
+                  --_this3.programDetail.cd;
                 }
 
-                return ~~(_this4.programDetail.cd % 3600 / 60);
+                return ~~(_this3.programDetail.cd % 3600 / 60);
               }));
-              _this4.hh = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this4.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
-                if (_this4.programDetail.cd <= 5) {
-                  _this4.programDetail.ready = true;
-                  _this4.programDetail.live = true;
-                  _this4.displayProgData = true;
+              _this3.hh = Object(rxjs_internal_observable_timer__WEBPACK_IMPORTED_MODULE_9__["timer"])(0, 1000).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(_this3.programDetail.cd), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["map"])(function () {
+                if (_this3.programDetail.cd <= 5) {
+                  _this3.programDetail.ready = true;
+                  _this3.programDetail.live = true;
+                  _this3.displayProgData = true;
 
-                  _this4.checkStreaming();
+                  _this3.checkStreaming();
 
-                  console.log(_this4.programDetail);
-                  console.log(_this4.programDetail.live, 'liveee');
+                  console.log(_this3.programDetail);
+                  console.log(_this3.programDetail.live, 'liveee');
                 }
 
-                if (_this4.programDetail.cd > 0) {
-                  --_this4.programDetail.cd;
+                if (_this3.programDetail.cd > 0) {
+                  --_this3.programDetail.cd;
                 } else {
-                  _this4.programDetail.cd = 0;
+                  _this3.programDetail.cd = 0;
                   return 0;
                 }
 
-                return ~~(_this4.programDetail.cd / (60 * 60) % 24);
+                return ~~(_this3.programDetail.cd / (60 * 60) % 24);
               }));
             } else {
               c = 0;
-              _this4.displayProgData = true;
+              _this3.displayProgData = true;
 
-              if (new Date(_this4.programDetail.program_end_time + 'Z') > new Date()) {
-                _this4.programDetail.ready = true;
-                _this4.programDetail.live = true;
-                console.log(_this4.programDetail.live + 'liveeeeeee');
+              if (new Date(_this3.programDetail.program_end_time + 'Z') > new Date()) {
+                _this3.programDetail.ready = true;
+                _this3.programDetail.live = true;
+                console.log(_this3.programDetail.live + 'liveeeeeee');
 
-                _this4.checkStreaming();
+                _this3.checkStreaming();
               } else {
-                console.log(_this4.programDetail.live + 'edddddd');
-                _this4.programDetail.ended = true;
+                console.log(_this3.programDetail.live + 'edddddd');
+                _this3.programDetail.ended = true;
               }
             } //-------------------------------------------------
 
 
-            if (_this4.programDetail.request_accepted != null) {
-              if (_this4.programDetail.request_accepted.split(',').includes(_this4.userData.id.toString())) {
-                _this4.request_accs = true;
-                _this4.request_join = true;
+            if (_this3.programDetail.request_accepted != null) {
+              if (_this3.programDetail.request_accepted.split(',').includes(_this3.userData.id.toString())) {
+                _this3.request_accs = true;
+                _this3.request_join = true;
               }
-            } else if (_this4.programDetail.request_sent != null) {
-              if (_this4.programDetail.request_sent.split(',').includes(_this4.userData.id.toString())) {
-                _this4.request_accs_pending = true;
+            } else if (_this3.programDetail.request_sent != null) {
+              if (_this3.programDetail.request_sent.split(',').includes(_this3.userData.id.toString())) {
+                _this3.request_accs_pending = true;
               }
             }
 
-            if (_this4.programDetail.request_recive != null) {
-              if (_this4.programDetail.request_recive.split(',').includes(_this4.userData.id.toString())) {
-                _this4.request_join = true;
-                console.log(_this4.request_join + 'this.request_joineeeeee');
+            if (_this3.programDetail.request_recive != null) {
+              if (_this3.programDetail.request_recive.split(',').includes(_this3.userData.id.toString())) {
+                _this3.request_join = true;
+                console.log(_this3.request_join + 'this.request_joineeeeee');
               }
             }
           });
@@ -2429,7 +711,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "showChatUsers",
         value: function showChatUsers() {
-          var _this5 = this;
+          var _this4 = this;
 
           if (this.programType != "public") {
             this.commonService.presentLoader();
@@ -2438,7 +720,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               'type': 3
             }).subscribe(function (data) {
               if (data.id > 0) {
-                _this5.commonService.dismissLoader();
+                _this4.commonService.dismissLoader();
 
                 var chatRoom = data.room_id;
                 var chatReceiverId = data.group_id;
@@ -2449,17 +731,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   receiverId: parseInt(chatReceiverId)
                 };
 
-                _this5.commonService.presentModal(_chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_14__["ChatRoomsComponent"], 'fullModal', fileData);
+                _this4.commonService.presentModal(_chats_chat_rooms_chat_rooms_component__WEBPACK_IMPORTED_MODULE_14__["ChatRoomsComponent"], 'fullModal', fileData);
               } else {
-                _this5.commonService.dismissLoader(); // chat_type = 1:consultant,2:user,3:program
+                _this4.commonService.dismissLoader(); // chat_type = 1:consultant,2:user,3:program
 
 
-                _this5.router.navigate(["/first-message/" + _this5.programId + "/3"]);
+                _this4.router.navigate(["/first-message/" + _this4.programId + "/3"]);
               }
             }, function (err) {
-              _this5.commonService.presentToast("Couldnt load data, Something went wrong.");
+              _this4.commonService.presentToast("Couldnt load data, Something went wrong.");
 
-              _this5.commonService.dismissLoader();
+              _this4.commonService.dismissLoader();
             });
           } else {
             this.commonService.presentToast("Chat Not Allow on Public Program");
@@ -2473,16 +755,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "acceptRequest",
         value: function acceptRequest() {
-          var _this6 = this;
+          var _this5 = this;
 
           this.programService.acceptProgramRequest({
             'programId': this.programDetail.id
           }).subscribe(function (data) {
-            var prog_date = new Date(_this6.programDetail.program_date + 'Z');
+            var prog_date = new Date(_this5.programDetail.program_date + 'Z');
 
-            _this6.localNotifications.schedule({
-              id: _this6.programId,
-              text: _this6.programDetail.title + " program will start at \n " + prog_date,
+            _this5.localNotifications.schedule({
+              id: _this5.programId,
+              text: _this5.programDetail.title + " program will start at \n " + prog_date,
               trigger: {
                 at: new Date(prog_date.getTime() - 60 * 60 * 500)
               },
@@ -2495,18 +777,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               foreground: true
             });
 
-            _this6.router.navigateByUrl('/tabs/consultant-profile');
+            _this5.router.navigateByUrl('/tabs/consultant-profile');
           });
         }
       }, {
         key: "joinRequest",
         value: function joinRequest() {
-          var _this7 = this;
+          var _this6 = this;
 
           this.programService.joinRequest({
             'programId': this.programDetail.id
           }).subscribe(function (data) {
-            _this7.request_join = true;
+            _this6.request_join = true;
           });
         }
       }, {
