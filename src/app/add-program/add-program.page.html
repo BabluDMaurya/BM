@@ -405,7 +405,7 @@
             <!-- <ng-template #no_nutrition>No Nutrition Selected</ng-template> -->
           </ion-item>
           <ion-item *ngIf="date?.video">
-            <ion-icon class="live-event-icon" ios="ios-videocam" md="md-videoios-videocam"></ion-icon>
+            <ion-icon class="live-event-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
             <!-- <ion-label style="overflow: initial;">Videos :</ion-label> -->
             <div class="users-list" *ngIf="date?.video;else no_videos">
               <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.video" />
