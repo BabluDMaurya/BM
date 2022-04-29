@@ -29,7 +29,7 @@
               <div class="ion-left">
                 <ion-label style="display: contents;">Total for {{totalLiveSession}} session:</ion-label>
               </div>
-              <div class="ion-right">
+              <div class="ion-right" *ngIf="totalLiveSession > 0">
                 <ion-label style="    margin-left: 40px;">$</ion-label>
                 <ion-label class="width-30">{{totalLiveAmt}}</ion-label>
               </div>
@@ -37,9 +37,12 @@
              </ion-item> 
             <ion-item lines="none" class="margin-15 ion-block">
               <div class="ion-left">
-                <ion-label style="display: contents;">Charge for Non-Live component:</ion-label>
+                <ion-label *ngIf="totalNutritionInSession > 0 && totalVideoInSession > 0" style="display: contents;">Price of Nutrition and Video Instruction:</ion-label>
+                <ion-label *ngIf="totalNutritionInSession > 0 && totalVideoInSession == 0" style="display: contents;">Price of Nutrition Instruction:</ion-label>
+                <ion-label *ngIf="totalNutritionInSession == 0 && totalVideoInSession > 0" style="display: contents;">Price of Video Instruction:</ion-label>
+
               </div>
-              <div class="ion-right">
+              <div class="ion-right" *ngIf="totalNutritionInSession > 0 || totalVideoInSession > 0">
                 <ion-label style="margin-left: 40px;">$</ion-label>
               <ion-input class="form-control width-30" type="number" formControlName="non_live_component_fee" value="0"></ion-input>
               </div>

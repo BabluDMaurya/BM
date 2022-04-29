@@ -1167,7 +1167,7 @@ export class AddProgramPage implements OnInit {
             // this.repetatedDateCopy.push(this.dateObj);
             this.selectDate.push(this.dateObj);
             this.repetatedDate.push(this.dateObj);
-            this.repetatedDateCopy.push({ 'date': this.dateObj, 'equipments': [], 'nutrition_id': [], 'video': '', 'description': '', 'is_live': false });
+            this.repetatedDateCopy.push({ 'date': this.dateObj, 'equipments': [], 'nutrition_id': [], 'video': '', 'description': '', 'is_live': true });
           }
 
           minute = '';

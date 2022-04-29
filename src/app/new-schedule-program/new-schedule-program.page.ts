@@ -86,7 +86,7 @@ export class NewScheduleProgramPage implements OnInit {
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     console.log(this.calendar.mode);
-
+    this.commonService.presentLoader();
     this.programService.getAllNutritionPrograms(null).subscribe(data => {
       this.nutritionList = data.programList.filter(el => {
         if (el.image_path) {
@@ -159,7 +159,37 @@ export class NewScheduleProgramPage implements OnInit {
     }
     );
 
-   
+    let params: any = null
+    let userZoneDate = new Date(this.myDate);
+    userZoneDate.setHours(0, 0, 0);
+    params = { 'sortDate': userZoneDate.toUTCString() };
+    console.log(userZoneDate.toUTCString());
+    this.programService.getAllRequestedPrograms(params).subscribe(data => {
+      console.log(data);
+      this.reqProgramList = data.list.filter(el => {
+        if (el.image_path) {
+          el.img_arr = el.image_path.split(',');
+        }
+        el.converted = new Date(el.program_date + 'Z');
+        el.expanded = false;
+        return el;
+      },
+      err=> {
+        this.commonService.presentToast("Couldnt load data, Something went wrong.")
+      }); 
+      this.reqProgArray = this.reqProgramList; 
+      this.commonService.dismissLoader();
+      if(this.reqProgramList.length == 0){
+        this.noReqProgramList = true;
+      }    
+    },
+    err=> {
+      this.commonService.presentToast("Couldnt load data, Something went wrong.");
+      this.commonService.dismissLoader();
+      if(this.reqProgramList.length == 0){
+        this.noReqProgramList = true;
+      }  
+    });
 
   }
   videoFilterUser(searchString: string) {
@@ -202,37 +232,7 @@ export class NewScheduleProgramPage implements OnInit {
 
 
     this.commonService.presentLoader();
-    let params: any = null
-    let userZoneDate = new Date(this.myDate);
-    userZoneDate.setHours(0, 0, 0);
-    params = { 'sortDate': userZoneDate.toUTCString() };
-    console.log(userZoneDate.toUTCString());
-    this.programService.getAllRequestedPrograms(params).subscribe(data => {
-      console.log(data);
-      this.reqProgramList = data.list.filter(el => {
-        if (el.image_path) {
-          el.img_arr = el.image_path.split(',');
-        }
-        el.converted = new Date(el.program_date + 'Z');
-        el.expanded = false;
-        return el;
-      },
-      err=> {
-        this.commonService.presentToast("Couldnt load data, Something went wrong.")
-      }); 
-      this.reqProgArray = this.reqProgramList; 
-      this.commonService.dismissLoader();
-      if(this.reqProgramList.length == 0){
-        this.noReqProgramList = true;
-      }    
-    },
-    err=> {
-      this.commonService.presentToast("Couldnt load data, Something went wrong.");
-      this.commonService.dismissLoader();
-      if(this.reqProgramList.length == 0){
-        this.noReqProgramList = true;
-      }  
-    });
+    
 
  
   }

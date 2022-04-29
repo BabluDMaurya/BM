@@ -62,6 +62,8 @@ export class DateTimeModalComponent implements OnInit {
   abDateSelect:any;
   selectedDateTime : any;
   totalLiveSession: any;
+  totalNutritionInSession: any;
+  totalVideoInSession: any;
   totalLiveAmt: any = 0;
   sendAdvRequest: any = 0;
   constructor(
@@ -85,12 +87,22 @@ export class DateTimeModalComponent implements OnInit {
     console.log(this.programData);
     console.log(this.repetatedDateCopy);
     var i = 0; 
+    var totalNutri = 0;
+    var totalVideo = 0;
     this.repetatedDateCopy.forEach(el => {
       if(el.is_live == true){
         i++;
       }
+      if(el.video != ''){
+        totalVideo++;
+      }
+      if(el.nutrition_id.length > 0){
+        totalNutri++;
+      }
     });
     this.totalLiveSession = i;
+    this.totalNutritionInSession = totalNutri;
+    this.totalVideoInSession = totalVideo;
     console.log(i,' total live session');
 
     //get days name

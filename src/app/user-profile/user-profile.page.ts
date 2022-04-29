@@ -1,17 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { PopoverController, Platform, ModalController} from '@ionic/angular';
 import { CommonService } from '../.././app/services/common.service';
 import { NutritionModalComponent } from '../../app/user-profile/nutrition-modal/nutrition-modal.component';
 import { PopOverComponent } from '../user-profile/pop-over/pop-over.component';
 import { SettingsService } from './../services/settings.service';
-import {Router} from '@angular/router';
 import { ProgramService } from './../services/program.service';
 import { Config } from './../config/config';
 import { HomeService } from '../services/home.service';
 import { FollowersComponent } from '../modalContent/followers/followers.component';
 import { PeopleViewService } from './../services/people-view.service';
 import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
-
+import { RouterOutlet, Router, ActivationStart } from '@angular/router';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.page.html',
@@ -19,6 +18,7 @@ import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 })
 
 export class UserProfilePage implements OnInit {
+  @ViewChild(RouterOutlet,{ static: false }) outlet: RouterOutlet;
   defaultPostImage : any = './../../../assets/images/loading.jpg';
   bannerDefaultImage = './../../../assets/images/editcoverpic.png';
   profileDefaultImage = './../../../assets/images/user.jpg';
@@ -37,6 +37,8 @@ export class UserProfilePage implements OnInit {
   backgroundPicUrl: any = Config.backgroundPic;
   currentPage: any = 0;
   postData: any = [];
+  noData: boolean;
+  upcomingList: any;
   constructor(private commonService: CommonService,
     private homeService: HomeService,
     public popoverController: PopoverController,
@@ -50,6 +52,10 @@ export class UserProfilePage implements OnInit {
    } 
 
   ngOnInit() {
+    this.router.events.subscribe(e => {
+      if (e instanceof ActivationStart && e.snapshot.outlet === "administration")
+        this.outlet.deactivate();
+    });
     this.userData =JSON.parse(localStorage.getItem('userData'));
     console.log(this.userData);
     this.settingsService.getProfileData().subscribe((data:any)=>{
@@ -70,6 +76,7 @@ export class UserProfilePage implements OnInit {
       }
       this.commonService.dismissLoader();
     });
+    this.getMyprog();
   }
   async settingsPopover(ev: any) {
     const popover = await this.popoverController.create({
@@ -84,6 +91,57 @@ export class UserProfilePage implements OnInit {
   }
   showmodal(){
     this.commonService.presentModal(NutritionModalComponent,'fullModal','');
+  }
+  getMyprog() {
+    this.programService.getUpcomingPrograms(null).subscribe(data => {
+      if(data.programList.length<1)
+      {
+        this.noData=true;
+      }
+      console.log(data);
+      console.log(this.noData + 'this.noData')
+      this.upcomingList = this.getCounter(data.programList);
+      this.upcomingList = data.programList.filter(el => {
+        if (el.image_path) {
+          el.img_arr = el.image_path.split(',');
+        }
+        el.converted = new Date(el.program_date + 'Z');
+        el.expanded = false;
+        console.log(this.upcomingList , 'fff');
+        return el;
+      });
+    });    
+  }
+  
+  getCounter(elementArr) {
+    elementArr.filter(el => {
+      el.convertedTime = new Date(el.program_date + 'Z');
+      let a: any = new Date(el.program_date + 'Z');
+      let b: any = new Date();
+      let c: any;
+
+      if (a > b) {
+        c = Math.abs(a - b) / 1000;
+
+      } else {
+        c = 0;
+        el.live = true;
+      }
+
+      el.cd = c;
+
+      setInterval(function () {
+        if (parseInt(el.cd) > 0)
+          el.cd = parseInt(el.cd) - 1;
+        el.dd = ~~(el.cd / (60 * 60 * 24))  
+        el.hh = ~~(el.cd / (60 * 60) % 24);
+        el.mm = ~~(el.cd % 3600 / 60);
+        el.ss = (el.cd % 3600 % 60);
+      }, 1000)
+      return el;
+    });
+
+    return elementArr;
   }
   
   ionViewWillEnter(){

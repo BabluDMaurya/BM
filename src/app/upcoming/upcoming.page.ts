@@ -13,6 +13,15 @@ import { parse } from 'querystring';
   styleUrls: ['./upcoming.page.scss', './../app.component.scss', '../profile/my-profile/my-profile.page.scss'],
 })
 export class UpcomingPage implements OnInit {
+  programFiltered: [];
+  private _searchTerm: string;
+  get programSearchTerm(): string  {
+    return this._searchTerm;
+  }
+  set programSearchTerm(value: string) {
+    this._searchTerm = value;
+    this.programFiltered = this.programFilter(value);
+  }
   consultID: any;
   upcomingList: any;
   profile_url = Config.profilePic;
@@ -48,13 +57,17 @@ export class UpcomingPage implements OnInit {
   nutritionModal(data) {
     this.commonService.presentModal(NutritionModalComponent, 'fullModal', { 'data': data });
   }
-
+  programFilter(searchString: string) {
+    return this.upcomingList.filter(employee =>
+      employee.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
+  }
   getMyprog() {
     this.programService.getUpcomingPrograms(null).subscribe(data => {
       if(data.programList.length<1)
       {
         this.noData=true;
       }
+      
       this.upcomingList = this.getCounter(data.programList);
       this.upcomingList = data.programList.filter(el => {
         if (el.image_path) {
@@ -64,6 +77,7 @@ export class UpcomingPage implements OnInit {
         el.expanded = false;
         return el;
       });
+      this.programFiltered = this.upcomingList;
     });    
   }  
   getConsultProg(id) {

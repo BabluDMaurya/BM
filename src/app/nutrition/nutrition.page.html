@@ -142,16 +142,87 @@
             <ion-segment-button value="create-food" (click)="foodTab=true" checked>
               <ion-label>Create Food</ion-label>
             </ion-segment-button>
-            <ion-segment-button value="search-food" (click)="foodTab=false" *ngIf="scanData.length > 0 && scanData[0].data.length > 0 ">
+            <!-- <ion-segment-button value="search-food" (click)="foodTab=false" *ngIf="scanData.length > 0 && scanData[0].data.length > 0 ">
               <ion-label>Search Food</ion-label>
             </ion-segment-button>
               <ion-segment-button value="search-food" (click)="searchFoodModal() && foodTab=false" *ngIf="scanData.length == 0 || scanData[0].data.length == 0  ">
                 <ion-label>Search Food</ion-label>
-              </ion-segment-button>
+              </ion-segment-button> -->
           </ion-segment>
-          <div [ngSwitch]="foodTab">
-            <div class="nutrition-form ingredientsBlock mt-20" *ngSwitchCase=true>
-              <ion-list-header class="ion-no-padding min-height-auto">Ingredients</ion-list-header>
+        </ion-col>
+        <ion-col size="12" class="ion-no-padding nutrition-form">
+          <div class="nutrition-form" >
+            <ion-item class="mb-10">
+              <ion-label for="ingredients">Ingredients</ion-label>
+              <ion-chip (click)="searchFoodModal()">
+                <ion-icon name="restaurant"></ion-icon>
+                <ion-label>Search Ingredients</ion-label>
+              </ion-chip>
+            </ion-item>
+            <!-- <ion-list lines="none" class="ingredients-list" *ngFor="let data of scanData let i= index">
+              <ion-item *ngIf="data.data.item_name;else typedata" class="roundedcorner">
+                {{data.data.item_name}} 
+                <div class="close-ingredients">
+                  <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,data.data.item_name)"></ion-icon>
+                </div>
+              </ion-item>
+              
+              <ng-template #typedata>
+                <ion-item *ngFor=" let typeData of data.data let i= index" class="roundedcorner">
+                  {{typeData.food_name}} <div class="close-ingredients">
+                    <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,typeData.food_name)"></ion-icon>
+                  </div>
+                </ion-item>
+              </ng-template>
+            </ion-list> -->
+          </div>
+        </ion-col>
+        <ion-col size="12" class="ion-no-padding nutrition-form">
+          <ion-list lines="none" class="ingredients-list " *ngFor="let data of scanData let i= index">
+            <!-- <ion-item *ngIf="data.data.item_name" class="roundedcorner">
+              {{data.data.item_name}} 
+              <div class="close-ingredients">
+                <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,data.data.item_name)"></ion-icon>
+              </div>
+            </ion-item> -->
+                <!-- <ion-item *ngFor=" let typeData of data.data let i= index" class="roundedcorner">
+            </ion-item> -->
+            <ol style="padding-inline-start: 20px">
+              <li *ngFor=" let typeData of data.data let f= index">
+                <ion-item  class="">
+                  <div class="img-container">
+                    <img src="{{typeData.photo.thumb}}" alt="">
+                  </div>
+                  <div class="nutrition-container" >
+                    <ion-label class="nutrition-title">{{typeData.food_name}}</ion-label>
+                    <div class="nutrition-details">
+                      <div class="nutrition-left">
+                        <div class="nutrition-quantity">
+                          <!-- <ion-icon class="closeicon" ios="ios-remmove" md="md-remove" (click)="decrement()"></ion-icon> -->
+                          <ion-input type="number" class="nutrition-input" aria-readonly="true" value="{{typeData?.newQty}}"></ion-input>
+                          <!-- <ion-icon class="closeicon" ios="ios-add" md="md-add" (click)="increment()"></ion-icon> -->
+                        </div>
+                        <ion-select class="nutrition-select" (ionChange)="detailsUpdate(f,typeData.food_name,$event)"  interface="popover" placeholder="Select Measure">
+                          <ion-select-option *ngFor=" let measures of typeData.alt_measures let i= index" [selected]="i == 0" value="{{measures.measure}}">{{measures.measure}}</ion-select-option>
+                        </ion-select>
+                        <div class="nutrition-quantity">
+                          <ion-label>{{typeData?.newCal.toFixed(2)}} Cal</ion-label>
+                        </div>
+                      </div>
+                      <div class="nutrition-right">
+                        <ion-icon class="closeicon" ios="ios-trash" md="md-trash" (click)="removeApiData(f,typeData.food_name)"></ion-icon>
+                      </div>
+                    </div>
+                  </div>
+                </ion-item>
+              </li>
+            </ol>
+          </ion-list>
+        </ion-col>
+        <ion-col size="12" class="ion-no-padding">
+          <div>
+            <div class="nutrition-form ingredientsBlock mt-20">
+              <ion-list-header class="ion-no-padding min-height-auto">Add Manual Ingredients</ion-list-header>
               <ion-list class="ion-no-padding mb-10" *ngFor="let item of tig.controls; let i = index">
                 <ion-item [formGroup]="item">
                   <ion-input formControlName="name" placeholder="Enter Ingredients"></ion-input>
@@ -164,68 +235,6 @@
               <ion-button class="btn-square btn-add green" (click)="addIngredients()">
                 <ion-icon ios="ios-add" md="md-add"></ion-icon>
               </ion-button>
-            </div>
-            <div class="nutrition-form" *ngSwitchCase="false">
-              <ion-item class="mb-10">
-                <ion-label for="ingredients">Ingredients</ion-label>
-                <ion-chip (click)="searchFoodModal()">
-                  <ion-icon name="restaurant"></ion-icon>
-                  <ion-label>Search Ingredients</ion-label>
-                </ion-chip>
-              </ion-item>
-              <!-- <ion-list lines="none" class="ingredients-list" *ngFor="let data of scanData let i= index">
-                <ion-item *ngIf="data.data.item_name;else typedata" class="roundedcorner">
-                  {{data.data.item_name}} 
-                  <div class="close-ingredients">
-                    <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,data.data.item_name)"></ion-icon>
-                  </div>
-                </ion-item>
-                
-                <ng-template #typedata>
-                  <ion-item *ngFor=" let typeData of data.data let i= index" class="roundedcorner">
-                    {{typeData.food_name}} <div class="close-ingredients">
-                      <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,typeData.food_name)"></ion-icon>
-                    </div>
-                  </ion-item>
-                </ng-template>
-              </ion-list> -->
-              
-              <ion-list lines="none" class="ingredients-list " *ngFor="let data of scanData let i= index">
-                <!-- <ion-item *ngIf="data.data.item_name" class="roundedcorner">
-                  {{data.data.item_name}} 
-                  <div class="close-ingredients">
-                    <ion-icon ios="ios-close" md="md-close" (click)="removeApiData(i,data.data.item_name)"></ion-icon>
-                  </div>
-                </ion-item> -->
-                    <!-- <ion-item *ngFor=" let typeData of data.data let i= index" class="roundedcorner">
-                </ion-item> -->
-                    <ion-item *ngFor=" let typeData of data.data let f= index" class="">
-                      <div class="img-container">
-                        <img src="{{typeData.photo.thumb}}" alt="">
-                      </div>
-                      <div class="nutrition-container" >
-                        <ion-label class="nutrition-title">{{typeData.food_name}}</ion-label>
-                        <div class="nutrition-details">
-                          <div class="nutrition-left">
-                            <div class="nutrition-quantity">
-                              <!-- <ion-icon class="closeicon" ios="ios-remmove" md="md-remove" (click)="decrement()"></ion-icon> -->
-                              <ion-input type="number" class="nutrition-input" aria-readonly="true" value="{{typeData?.newQty}}"></ion-input>
-                              <!-- <ion-icon class="closeicon" ios="ios-add" md="md-add" (click)="increment()"></ion-icon> -->
-                            </div>
-                            <ion-select class="nutrition-select" (ionChange)="detailsUpdate(f,typeData.food_name,$event)"  interface="popover" placeholder="Select Measure">
-                              <ion-select-option *ngFor=" let measures of typeData.alt_measures let i= index" [selected]="i == 0" value="{{measures.measure}}">{{measures.measure}}</ion-select-option>
-                            </ion-select>
-                            <div class="nutrition-quantity">
-                              <ion-label>{{typeData?.newCal.toFixed(2)}} Cal</ion-label>
-                            </div>
-                          </div>
-                          <div class="nutrition-right">
-                            <ion-icon class="closeicon" ios="ios-trash" md="md-trash" (click)="removeApiData(f,typeData.food_name)"></ion-icon>
-                          </div>
-                        </div>
-                      </div>
-                    </ion-item>
-              </ion-list>
             </div>
           </div>
         </ion-col>

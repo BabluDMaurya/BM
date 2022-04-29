@@ -171,3 +171,39 @@ h4.text-center {
         margin-left: 5px;
     }
 }
+.user_details {
+    display: block;
+    padding: 0 15px;
+  }
+  .user_time{
+    justify-content: space-around;
+    ion-text{
+        font-size: 1.3rem;
+        text-align: center;
+        line-height: 1;
+        p{
+            font-size: 1.3rem;
+            color: #27a69a;
+        }
+        span{
+            color: #999;
+            font-size: 0.75rem;
+        }
+    }
+}
+.user_time .ion-no-padding {
+    flex: 0 0 calc(calc(2.7 / var(--ion-grid-columns, 12)) * 100%) !important;
+    width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%) !important;
+    max-width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%) !important;
+    background: #27A69A;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    margin-right: 8px;
+    border-radius: 5px;
+}
+.user_time {
+    display: flex;
+    padding-top: 5px;
+}

@@ -13,6 +13,25 @@ import { ProgramService } from './../services/program.service';
   styleUrls: ['./../app.component.scss','./consultant-videos.page.scss'],
 })
 export class ConsultantVideosPage implements OnInit {
+  recVidFiltered: [];
+  private _searchTerm: string;
+  get recVidSearchTerm(): string  {
+    return this._searchTerm;
+  }
+  set recVidSearchTerm(value: string) {
+    this._searchTerm = value;
+    this.recVidFiltered = this.recVideoFilteredFilter(value);
+  }
+
+  saveVidFiltered: [];
+  private _saveVideosearchTerm: string;
+  get saveVidSearchTerm(): string  {
+    return this._saveVideosearchTerm;
+  }
+  set saveVidSearchTerm(value: string) {
+    this._saveVideosearchTerm = value;
+    this.saveVidFiltered = this.saveVideoFilteredFilter(value);
+  }
   bookmark = true;
   like = true;
   last_page: any;
@@ -78,7 +97,14 @@ export class ConsultantVideosPage implements OnInit {
     });
 
   }
-
+  recVideoFilteredFilter(searchString: string) {
+    return this.myPosts.filter(employee =>
+      employee.description.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
+  }
+  saveVideoFilteredFilter(searchString: string) {
+    return this.mySavedVideoPosts.filter(employee =>
+      employee.description.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
+  }
   getCounter(elementArr) {
     elementArr.filter(el => {
       el.convertedTime = new Date(el.program_date + 'Z');
@@ -127,6 +153,7 @@ export class ConsultantVideosPage implements OnInit {
   videoPostData() {       
     this.peopleView.getExclusiveVedioType('2', this.userId, 2, 1).subscribe((data: any) => {
       this.myPosts = data.posts.data;
+      
       console.log(this.myPosts);
       this.myPosts.forEach((element, i) => {
         this.myPosts[i].count = element.post_likes.length;
@@ -141,7 +168,8 @@ export class ConsultantVideosPage implements OnInit {
             this.myPosts[i].bookmarked = true;
           }
         });
-      });      
+      });   
+      this.recVidFiltered = this.myPosts;   
       this.last_page = data.posts.last_page;
       this.currentPage = data.posts.current_page;
       this.gotData = true;
@@ -168,6 +196,7 @@ export class ConsultantVideosPage implements OnInit {
           }
         });
       });
+      this.saveVidFiltered = this.mySavedVideoPosts;
       this.last_page = data.posts.last_page;
       this.currentPage = data.posts.current_page;
       this.gotData = true;

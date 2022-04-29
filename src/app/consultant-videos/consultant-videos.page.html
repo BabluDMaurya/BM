@@ -9,7 +9,7 @@
       <ion-label>My Videos</ion-label>
     </ion-item>  
     <ion-item class="icon-right-side ion-text-end" slot="end">
-      <ion-buttons class="add-video">
+      <ion-buttons class="add-video" [routerLink]="['/add-video']">
         <ion-icon ios="ios-add" md="md-add"></ion-icon>
       </ion-buttons>
     </ion-item>  
@@ -145,14 +145,14 @@
     <div *ngSwitchCase="'video'" lines="none"> 
       <ion-list lines="none" class="item-list search-bar ion-no-padding">
         <ion-toolbar class="searchbar">
-          <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+          <ion-searchbar [(ngModel)]="recVidSearchTerm" animated="true"></ion-searchbar>
         </ion-toolbar>
       </ion-list>
       <div class="no-data" *ngIf="!myPosts || myPosts.length === 0">
         <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
         <p>No post added yet.</p>
       </div>          
-      <ion-card class="video-card" *ngFor="let post of myPosts">
+      <ion-card class="video-card" *ngFor="let post of recVidFiltered">
         <ion-card-header class="card-head upcoming-block" [routerLink]="['/videos',post.posts_id,'exclusive']">
           <img src="{{profilePicUrl}}{{profileData?.userData?.bios?.profile_pic}}" *ngIf="profileData?.userData?.bios?.profile_pic">
           <img src="../../assets/images/user.jpg" *ngIf="!profileData?.userData?.bios?.profile_pic">
@@ -220,7 +220,7 @@
           <img  src="../../assets/images/user.jpg" *ngIf="!upcoming?.program_user?.bios?.profile_pic"  >
     
             </ion-avatar>
-        <ion-label     [routerLink]="userData?.id ==upcoming?.user_id ? ['/program-details/',upcoming.id] : ['/program-view/',upcoming.id]">
+        <ion-label     [routerLink]="userData?.id ==upcoming?.user_id ? ['/new-program-inner/',upcoming.id] : ['/new-program-view/',upcoming.id]">
           <div>
             <h3>{{upcoming?.title}}</h3>
             <p>{{upcoming?.type_id}}</p>
@@ -240,10 +240,10 @@
     <div *ngSwitchCase="'saved'">
       <ion-list lines="none" class="item-list search-bar ion-no-padding">
         <ion-toolbar class="searchbar">
-          <ion-searchbar [(ngModel)]="term" animated="true"></ion-searchbar>
+          <ion-searchbar [(ngModel)]="saveVidSearchTerm" animated="true"></ion-searchbar>
         </ion-toolbar>
       </ion-list>
-      <div  *ngFor="let post of mySavedVideoPosts" >
+      <div  *ngFor="let post of saveVidFiltered" >
       <ion-card class="item-card" *ngIf="post?.video_post['0']?.video_type == 3">
         <!-- <ion-col *ngIf="post['video_post']['0']['video_type'] != 3" size="12" class="ion-no-padding">
           <ion-slide class="no_imagedata">No post added yet 3!!!</ion-slide>
