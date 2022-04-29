@@ -78,6 +78,7 @@ defaultPostImage : any = './../../../assets/images/loading.jpg';
   this.androidPermissions.PERMISSION.RECORD_AUDIO,
   this.androidPermissions.PERMISSION.MODIFY_AUDIO_SETTINGS
 ];
+  upcomingList: any;
 constructor(public commonService: CommonService,
   public navCtrl: NavController,
   private actRoute: ActivatedRoute,
@@ -255,8 +256,8 @@ ionViewWillEnter() {
   
   this.commonService.presentLoader();
   this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
-    console.log(data,'pdata');
-    console.log(data.programData.parent_program);
+    // console.log(data,'pdata');
+    // console.log(data.programData.parent_program);
     if(data.programData.parent_program == null){
       console.log('nullll');
       this.parentProgId = data.programData.id;
@@ -264,9 +265,11 @@ ionViewWillEnter() {
       this.parentProgId = data.programData.parent_program;
     }
     this.programService.getProgramById({ "parentId": this.parentProgId }).subscribe(data => {
-      this.allProgramData = data.cloneList;
+      this.upcomingList = this.getCounter(data.cloneList);
+     
+      this.allProgramData = this.upcomingList;
       // console.log(data, 'programData');
-      // console.log(this.parentProgId);
+      console.log(this.allProgramData, 'allProgramData');
     });
     this.programDetail = data.programData;
     
@@ -437,6 +440,36 @@ showParticipants() {
 }
 disclass(){
   this.commonService.presentToast("Program is not live yet.")
+}
+getCounter(elementArr) {
+  console.log(elementArr , 'elementArr');
+  elementArr.filter(el => {
+    el.convertedTime = new Date(el.program_date + 'Z');
+    let a: any = new Date(el.program_date + 'Z');
+    let b: any = new Date();
+    let c: any;
+
+    if (a > b) {
+      c = Math.abs(a - b) / 1000;
+
+    } else {
+      c = 0;
+      el.live = true;
+    }
+
+    el.cd = c;
+
+    setInterval(function () {
+      if (parseInt(el.cd) > 0)
+        el.cd = parseInt(el.cd) - 1;
+      el.hh = ~~(el.cd / (60 * 60));
+      el.mm = ~~(el.cd % 3600 / 60);
+      el.ss = (el.cd % 3600 % 60);
+    }, 1000)
+    return el;
+  });
+
+  return elementArr;
 }
 async equipments() {
   // this.commonService.presentModal(EquipmentsComponent, 'halfModal', { 'programDetail': this.programDetail  });

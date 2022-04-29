@@ -78,6 +78,7 @@ export class UpcomingPage implements OnInit {
         return el;
       });
       this.programFiltered = this.upcomingList;
+      console.log(this.programFiltered);
     });    
   }  
   getConsultProg(id) {
@@ -99,6 +100,7 @@ export class UpcomingPage implements OnInit {
     });
   }
   getCounter(elementArr) {
+    console.log(elementArr , 'elementArr');
     elementArr.filter(el => {
       el.convertedTime = new Date(el.program_date + 'Z');
       let a: any = new Date(el.program_date + 'Z');
