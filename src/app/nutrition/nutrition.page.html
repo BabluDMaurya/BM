@@ -187,7 +187,7 @@
             </ion-item> -->
                 <!-- <ion-item *ngFor=" let typeData of data.data let i= index" class="roundedcorner">
             </ion-item> -->
-            <ol style="padding-inline-start: 20px">
+            <ol style="padding-inline-start: 20px" >
               <li *ngFor=" let typeData of data.data let f= index">
                 <ion-item  class="">
                   <div class="img-container">
@@ -216,11 +216,17 @@
                   </div>
                 </ion-item>
               </li>
-              <li>
-                Fenugreek
+              <li  *ngFor="let item of tig.value; let i = index">
+                <ion-item>
+                  <ion-label>
+                    {{item.name}}
+                  </ion-label>
+                  <ion-icon style="color: #121212;" (click)="removeIngredients(i)" ios="ios-trash" md="md-trash"></ion-icon>
+                </ion-item>
+               
               </li>
               <li>
-                Spinach
+                Fenugreek
               </li>
             </ol>
           </ion-list>
