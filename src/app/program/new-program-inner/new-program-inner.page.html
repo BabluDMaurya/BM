@@ -167,11 +167,11 @@
                     <div class="program-session program-flex-child" *ngIf="val.is_live_status == 1">
                       <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
                       <div class="session-timer">
-                        <p class="fs-14">HH</p>
+                        <p class="fs-14">{{val.hh}}</p>
                         <span>:</span>
-                        <p class="fs-14">MM</p>
+                        <p class="fs-14">{{val.mm}}</p>
                         <span>:</span>
-                        <p class="fs-14">SS</p>
+                        <p class="fs-14">{{val.ss}}</p>
                       </div>
                     </div>
                     <div class="program-video program-flex-child" *ngIf="val.video_id != '' "  (click)="showVideoDetails(val.id,val.video_id)">

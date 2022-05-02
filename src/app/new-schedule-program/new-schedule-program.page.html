@@ -71,11 +71,10 @@
               </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'invitation'">
-              <ion-item style="position: relative; --min-height: 30px;" class="ion-no-padding">
+              <!-- <ion-item style="position: relative; --min-height: 30px;" class="ion-no-padding">
                 <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="calendar.mode == 'week'" (click)="handleCalendarView()"></ion-icon>
                 <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="calendar.mode == 'month'" (click)="handleCalendarView()"></ion-icon>
-                <!-- <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup"></ion-icon> -->
-              </ion-item>
+              </ion-item> -->
                 <ion-toolbar class="searchbar" >
                   <ion-searchbar [(ngModel)]="reqProgSearchTerm" animated="true"></ion-searchbar>
                 </ion-toolbar>
@@ -101,8 +100,8 @@
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'nutrition'">
               <ion-item style="position: relative; --min-height: 30px;" class="ion-no-padding">
-                <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="calendar.mode == 'week'" (click)="handleCalendarView()"></ion-icon>
-    <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="calendar.mode == 'month'" (click)="handleCalendarView()"></ion-icon>
+                <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="nutriArrow == 'down' "  (click)="changeDataFlow('nutrition','prev')"></ion-icon>
+                <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="nutriArrow == 'up' "  (click)="changeDataFlow('nutrition','upcoming')"></ion-icon>
                 <!-- <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup"></ion-icon> -->
               </ion-item>
                 <ion-toolbar class="searchbar" >
@@ -127,8 +126,8 @@
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'videos'">
               <ion-item style="position: relative; --min-height: 30px;" class="ion-no-padding">
-                <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="calendar.mode == 'week'" (click)="handleCalendarView()"></ion-icon>
-    <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="calendar.mode == 'month'" (click)="handleCalendarView()"></ion-icon>
+                <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="videoArrow == 'down' "  (click)="changeDataFlow('videos','prev')">upcoming</ion-icon>
+                <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="videoArrow == 'up' "  (click)="changeDataFlow('videos','upcoming')">previos</ion-icon>
                 <!-- <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup"></ion-icon> -->
               </ion-item>
               <ion-toolbar class="searchbar" >
@@ -151,11 +150,11 @@
               </div>
             </ion-list>
             <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'live'">
-              <ion-item style="position: relative; --min-height: 30px;" class="ion-no-padding">
-                <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="calendar.mode == 'week'" (click)="handleCalendarView()"></ion-icon>
-    <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="calendar.mode == 'month'" (click)="handleCalendarView()"></ion-icon>
-                <!-- <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup"></ion-icon> -->
-              </ion-item>
+              <!-- <ion-item style="position: relative; --min-height: 30px;" class="ion-no-padding">
+                <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="liveArrow == 'down' "  (click)="changeDataFlow('live','prev')"></ion-icon>
+                <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="liveArrow == 'up' "  (click)="changeDataFlow('live','upcoming')"></ion-icon>
+                
+              </ion-item> -->
               <ion-toolbar class="searchbar" >
                 <ion-searchbar [(ngModel)]="liveProgSearchTerm" animated="true"></ion-searchbar>
               </ion-toolbar>

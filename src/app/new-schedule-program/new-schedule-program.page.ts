@@ -38,6 +38,9 @@ export class NewScheduleProgramPage implements OnInit {
   profileUrl = Config.profilePic;
   url = Config.imgUrl;
   vidUrl = Config.progVidUrl;
+  nutriArrow: string = 'down';
+  videoArrow: string = 'down';
+  liveArrow: string = 'down';
   videoFiltered: [];
   private _searchTerm: string;
   get videoSearchTerm(): string  {
@@ -87,7 +90,7 @@ export class NewScheduleProgramPage implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     console.log(this.calendar.mode);
     this.commonService.presentLoader();
-    this.programService.getAllNutritionPrograms(null).subscribe(data => {
+    this.programService.getAllNutritionPrograms({data : 'upcoming'}).subscribe(data => {
       this.nutritionList = data.programList.filter(el => {
         if (el.image_path) {
           el.img_arr = el.image_path.split(',');
@@ -111,7 +114,7 @@ export class NewScheduleProgramPage implements OnInit {
     }
     );
 
-    this.programService.getAllVideoPrograms(null).subscribe(data => {
+    this.programService.getAllVideoPrograms({data : 'upcoming'}).subscribe(data => {
       this.videoProgList = data.programList.filter(el => {
         if (el.image_path) {
           el.img_arr = el.image_path.split(',');
@@ -190,7 +193,7 @@ export class NewScheduleProgramPage implements OnInit {
         this.noReqProgramList = true;
       }  
     });
-
+    console.log(this.nutriArrow);
   }
   videoFilterUser(searchString: string) {
     return this.nutritionList.filter(employee =>
@@ -227,14 +230,7 @@ export class NewScheduleProgramPage implements OnInit {
       
     }
     );
-
-   
-
-
-    this.commonService.presentLoader();
     
-
- 
   }
   onTimeSelected(event) {
     console.log(event);
@@ -270,6 +266,86 @@ export class NewScheduleProgramPage implements OnInit {
 
     }
   }
+  changeDataFlow(catg,type){
+    if(catg == 'nutrition'){
+      this.getAllNutritionProgram(type);
+    }
+    if(catg == 'videos'){
+      this.getAllVideoProgram(type);
+    }
+  }
+
+  getAllVideoProgram(type){
+    console.log(type);
+    if(type == 'prev'){
+      this.videoArrow = 'up';
+    }else{
+      this.videoArrow = 'down';
+    }
+    this.commonService.presentLoader();
+    this.programService.getAllVideoPrograms({data : type}).subscribe(data => {
+      this.videoProgList = data.programList.filter(el => {
+        if (el.image_path) {
+          el.img_arr = el.image_path.split(',');
+        }
+        el.converted = new Date(el.program_date + 'Z');
+        el.expanded = false;
+        return el;
+      });
+      this.videoFiltered = this.videoProgList;
+      if(this.videoFiltered.length <= 0){
+        this.noVideoProg = true;
+      }else{
+        this.noVideoProg = false;
+      }
+      console.log(this.videoProgList);
+      this.commonService.dismissLoader();
+      
+    },
+    err=> {
+      this.commonService.presentToast("Couldnt load data, Something went wrong.");
+      this.commonService.dismissLoader();
+      
+    }
+    );
+  }
+
+  getAllNutritionProgram(type){
+    console.log(type);
+    if(type == 'prev'){
+      this.nutriArrow = 'up';
+    }else{
+      this.nutriArrow = 'down';
+    }
+    
+    this.commonService.presentLoader();
+    this.programService.getAllNutritionPrograms({data : type}).subscribe(data => {
+      this.nutritionList = data.programList.filter(el => {
+        if (el.image_path) {
+          el.img_arr = el.image_path.split(',');
+        }
+        el.converted = new Date(el.program_date + 'Z');
+        el.expanded = false;
+        return el;
+      });
+      this.nutriProgArray = this.nutritionList;
+      if(this.nutritionList.length < 1){
+        this.noNutriProg = true;
+      }else{
+        this.noNutriProg = false;
+      }
+      console.log(this.nutritionList);
+      this.commonService.dismissLoader();
+      
+    },
+    err=> {
+      this.commonService.presentToast("Couldnt load data, Something went wrong.");
+      this.commonService.dismissLoader();
+      
+    }
+    );
+  }
+
   async hostingDropdown(ev: any) {
     const popover = await this.popoverController.create({
       component: HostingDropdownComponent,
