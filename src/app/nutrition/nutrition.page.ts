@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, HostListener, OnDestroy,  } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener, OnDestroy, } from '@angular/core';
 import { ModalController, Platform, IonSlides, NavController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
@@ -11,7 +11,7 @@ import { NutritionService } from './../services/nutrition.service';
   templateUrl: './nutrition.page.html',
   styleUrls: ['./nutrition.page.scss', './../app.component.scss'],
 })
-export class NutritionPage implements OnInit , OnDestroy {
+export class NutritionPage implements OnInit, OnDestroy {
 
   quantity = 1;
   appendedValue = 1;
@@ -39,7 +39,6 @@ export class NutritionPage implements OnInit , OnDestroy {
   images: any;
   // nextVisible: boolean = false;
   nextVisible: boolean = true;
-
   constructor(
     public settingService: SettingsService,
     public commonService: CommonService,
@@ -51,16 +50,16 @@ export class NutritionPage implements OnInit , OnDestroy {
     public platform: Platform,
   ) {
 
-    
+
   }
-  
+
 
   ngOnInit() {
-    this.createForm(); 
+    this.createForm();
   }
 
-  ionViewWillInit(){
-    
+  ionViewWillInit() {
+
   }
   // Reactiveform create
   createForm() {
@@ -69,7 +68,7 @@ export class NutritionPage implements OnInit , OnDestroy {
         //UsernameValidator.validUsername,
         Validators.maxLength(40),
         Validators.required
-      ])), 
+      ])),
       nutriDescription: new FormControl('', Validators.compose([
         Validators.required,
       ])),
@@ -93,7 +92,7 @@ export class NutritionPage implements OnInit , OnDestroy {
       nutriBevrageType: new FormControl(''),
       bevragveQnty: new FormControl(''),
       bevragveOption: new FormControl(''),
-      unitQnty:new FormControl(''),
+      unitQnty: new FormControl(''),
       bevragveUnit: new FormControl(''),
       bevragveinclude: new FormControl(''),
       appendedValue: new FormControl(''),
@@ -121,7 +120,7 @@ export class NutritionPage implements OnInit , OnDestroy {
       { type: 'required', message: 'Ingredients are required.' },
     ],
     nutriBevrageType: [],
-    appendedValue:[]
+    appendedValue: []
   };
 
   get f() { return this.nutritionForm.controls; }
@@ -131,17 +130,16 @@ export class NutritionPage implements OnInit , OnDestroy {
   //called second component 
   toPreview() {
     console.log(this.nutritionService.confirmEvent)
-  
-    let test=[];
-    this.scanData.filter(el=>{
-      if(Array.isArray(el['data']))
-      {
-        test = [...test,...el['data']];
-      }else{
+
+    let test = [];
+    this.scanData.filter(el => {
+      if (Array.isArray(el['data'])) {
+        test = [...test, ...el['data']];
+      } else {
         test.push(el.data)
       }
-      
-    });   
+
+    });
     this.submitted = true;
     if (this.nutritionForm.invalid) {
       return;
@@ -176,7 +174,9 @@ export class NutritionPage implements OnInit , OnDestroy {
     this.tig.push(this.fb.group({
       name: ['']
     }));
+    console.log(this.tig);
   }
+
   removeIngredients(i) {
     console.log(i);
     const control = <FormArray>this.nutritionForm.controls['nutriIngredients'];
@@ -196,24 +196,24 @@ export class NutritionPage implements OnInit , OnDestroy {
 
     modal.onDidDismiss().then((d: any) => {
       // console.log(d);
-      if (d.data ) {
+      if (d.data) {
         this.scanData.push(d);
         this.scanData.forEach(element => {
           if (Array.isArray(element.data)) {
             element.data.forEach(el => {
-             el.newQty =  el.alt_measures[0].qty;
-            //  el.newCal =  el.nf_calories;
-             el.newCal = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_calories;
-             el.nf_total_carbohydrate = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_total_carbohydrate;
-             el.nf_protein = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_protein;
-             el.nf_total_fat = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_total_fat;
-             el.nf_sugars = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_sugars;
-             el.nf_cholesterol = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_cholesterol;
-            //   el.alt_measures.forEach(el => {
-            //   el.newQty = el.qty;
-            // });
-          });
-          } 
+              el.newQty = el.alt_measures[0].qty;
+              //  el.newCal =  el.nf_calories;
+              el.newCal = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_calories;
+              el.nf_total_carbohydrate = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_total_carbohydrate;
+              el.nf_protein = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_protein;
+              el.nf_total_fat = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_total_fat;
+              el.nf_sugars = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_sugars;
+              el.nf_cholesterol = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_cholesterol;
+              //   el.alt_measures.forEach(el => {
+              //   el.newQty = el.qty;
+              // });
+            });
+          }
         });
       }
       console.log(this.scanData);
@@ -240,28 +240,28 @@ export class NutritionPage implements OnInit , OnDestroy {
     });
     console.log(this.scanData);
   }
-  detailsUpdate(i,food,value) {
+  detailsUpdate(i, food, value) {
     let abc = value.target.value;
     this.scanData.forEach(element => {
       if (Array.isArray(element.data)) {
         element.data.forEach(el => {
-          
+
           element.data[i].alt_measures.forEach(el1 => {
             if (el1.measure == abc && element.data[i].food_name == food) {
               console.log(element.data[i]);
-                element.data[i].newQty  = el1.qty;
-                element.data[i].newCal                = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_calories;
-                element.data[i].nf_total_carbohydrate = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_total_carbohydrate;
-                element.data[i].nf_protein            = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_protein;
-                element.data[i].nf_total_fat          = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_total_fat;
-                element.data[i].nf_sugars             = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_sugars;
-                element.data[i].nf_cholesterol        = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_cholesterol;
+              element.data[i].newQty = el1.qty;
+              element.data[i].newCal = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_calories;
+              element.data[i].nf_total_carbohydrate = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_total_carbohydrate;
+              element.data[i].nf_protein = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_protein;
+              element.data[i].nf_total_fat = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_total_fat;
+              element.data[i].nf_sugars = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_sugars;
+              element.data[i].nf_cholesterol = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_cholesterol;
             }
           });
         });
       }
     });
-    
+
   }
   // ----------------------------- Open gallery  with multiple --------------//
   gallaryImgPath: any = [];
@@ -320,26 +320,26 @@ export class NutritionPage implements OnInit , OnDestroy {
   }
 
   confirm() {
-    
+
     this.nutritionService.confirmEvent.next(true);
   }
 
-  ionViewDidLeave(){
+  ionViewDidLeave() {
     console.log('ddd');
     this.nutritionForm.reset();
-  this.scanData = [];
-  this.currentImage='';
-  this.showPreview= false;
-  this.submitted = false;
-  this.selectedImage = [];
-  this.images='';
-  this.gallaryImgPath=[];
+    this.scanData = [];
+    this.currentImage = '';
+    this.showPreview = false;
+    this.submitted = false;
+    this.selectedImage = [];
+    this.images = '';
+    this.gallaryImgPath = [];
   }
- ngOnDestroy(){
-   console.log('destroy');
-  
- }
- removeImg(index) {
-  this.gallaryImgPath.splice(index, 1);
-}
+  ngOnDestroy() {
+    console.log('destroy');
+
+  }
+  removeImg(index) {
+    this.gallaryImgPath.splice(index, 1);
+  }
 }
