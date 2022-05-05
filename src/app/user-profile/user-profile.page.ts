@@ -18,7 +18,7 @@ import { RouterOutlet, Router, ActivationStart } from '@angular/router';
 })
 
 export class UserProfilePage implements OnInit {
-  @ViewChild(RouterOutlet,{ static: false }) outlet: RouterOutlet;
+  // @ViewChild(RouterOutlet,{ static: false }) outlet: RouterOutlet;
   defaultPostImage : any = './../../../assets/images/loading.jpg';
   bannerDefaultImage = './../../../assets/images/editcoverpic.png';
   profileDefaultImage = './../../../assets/images/user.jpg';
@@ -52,10 +52,10 @@ export class UserProfilePage implements OnInit {
    } 
 
   ngOnInit() {
-    this.router.events.subscribe(e => {
-      if (e instanceof ActivationStart && e.snapshot.outlet === "administration")
-        this.outlet.deactivate();
-    });
+    // this.router.events.subscribe(e => {
+    //   if (e instanceof ActivationStart && e.snapshot.outlet === "administration")
+    //     this.outlet.deactivate();
+    // });
     this.userData =JSON.parse(localStorage.getItem('userData'));
     console.log(this.userData);
     this.settingsService.getProfileData().subscribe((data:any)=>{

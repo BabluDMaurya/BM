@@ -164,11 +164,16 @@ export class ConsultantProfileViewPage implements OnInit {
   }
   videoPostData() {
     //postType,userId, videoType,page    
-    this.peopleView.getVedioType('2', this.consultID, 1, 1).subscribe((data: any) => {
+    this.peopleView.getMyPost('1,2,8', this.consultID, 1).subscribe((data: any) => {
+      console.log('data', data)
       this.myPosts = data.posts.data;
       this.myPosts.forEach((element, i) => {
         this.myPosts[i].count = element.post_likes.length;
 
+        if(element.post_type == 2){
+            var img = element.video_post[0].thumb_path.split(',');
+            element.video_post[0].single_thumb_path = img[0];
+        }
         element.post_likes.filter((f) => {
           if (f.user_id == this.userId) {
             this.myPosts[i].liked = true;
@@ -188,10 +193,16 @@ export class ConsultantProfileViewPage implements OnInit {
   loadVideoData(event) {
     setTimeout(() => {
       if (this.currentPage > 0) {
-        //postType,userId, videoType,page    
-        this.peopleView.getVedioType('2', this.consultID, 1, (this.currentPage + 1)).subscribe((data: any) => {
+        //postType,userId, videoType,page 
+        //getVedioType 
+          
+        this.peopleView.getMyPost('1,2,8', this.consultID, (this.currentPage + 1)).subscribe((data: any) => {
           data.posts.data.forEach((element, i) => {
             element.count = element.post_likes.length;
+            if(element.post_type == 2){
+              var img = element.video_post[0].thumb_path.split(',');
+              element.video_post[0].single_thumb_path = img[0];
+            }
             element.post_likes.filter((f) => {
               if (f.user_id == this.userId) {
                 data.posts.data[i].liked = true;

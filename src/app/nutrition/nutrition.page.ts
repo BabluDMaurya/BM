@@ -31,6 +31,7 @@ export class NutritionPage implements OnInit, OnDestroy {
   isFixed: boolean = false;
   foodTab: boolean = true;
   scanData = [];
+  manData : any;
   currentImage: any;
   showPreview: boolean = false;
   nutritionForm: FormGroup;
@@ -171,9 +172,13 @@ export class NutritionPage implements OnInit, OnDestroy {
   }
   addIngredients() {
     const numberOfTickets = 1;
-    this.tig.push(this.fb.group({
-      name: ['']
-    }));
+    // this.tig.push(this.fb.group({
+    //   name: ['']
+    // }));
+    let data= [];
+    data[0] = {mn: this.f.nutriIngredients.value[0].name};
+    this.scanData.push({data: data});
+    console.log(this.scanData);
     console.log(this.tig);
   }
 
@@ -195,12 +200,13 @@ export class NutritionPage implements OnInit, OnDestroy {
     });
 
     modal.onDidDismiss().then((d: any) => {
-      // console.log(d);
+      console.log(d);
       if (d.data) {
         this.scanData.push(d);
         this.scanData.forEach(element => {
           if (Array.isArray(element.data)) {
             element.data.forEach(el => {
+              if(el.food_name){
               el.newQty = el.alt_measures[0].qty;
               //  el.newCal =  el.nf_calories;
               el.newCal = (el.alt_measures[0].serving_weight / el.serving_weight_grams) * el.nf_calories;
@@ -212,6 +218,7 @@ export class NutritionPage implements OnInit, OnDestroy {
               //   el.alt_measures.forEach(el => {
               //   el.newQty = el.qty;
               // });
+              }
             });
           }
         });

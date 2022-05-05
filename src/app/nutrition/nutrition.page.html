@@ -178,7 +178,7 @@
           </div>
         </ion-col>
         <ion-col size="12" class="ion-no-padding nutrition-form">
-          <ion-list lines="none" class="ingredients-list " *ngFor="let data of scanData let i= index">
+          <ion-list lines="none" class="ingredients-list ">
             <!-- <ion-item *ngIf="data.data.item_name" class="roundedcorner">
               {{data.data.item_name}} 
               <div class="close-ingredients">
@@ -188,8 +188,12 @@
                 <!-- <ion-item *ngFor=" let typeData of data.data let i= index" class="roundedcorner">
             </ion-item> -->
             <ol style="padding-inline-start: 20px" >
-              <li *ngFor=" let typeData of data.data let f= index">
-                <ion-item  class="">
+              <div  *ngFor="let data of scanData let i= index">
+              <li *ngFor=" let typeData of data.data let f= index" >
+                <ion-item *ngIf="typeData?.mn" class="">
+                  <ion-label class="nutrition-title">{{typeData.mn}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="typeData?.food_name"  class="">
                   <div class="img-container">
                     <img src="{{typeData.photo.thumb}}" alt="">
                   </div>
@@ -216,18 +220,11 @@
                   </div>
                 </ion-item>
               </li>
-              <li  *ngFor="let item of tig.value; let i = index">
-                <ion-item>
-                  <ion-label>
-                    {{item.name}}
-                  </ion-label>
-                  <ion-icon style="color: #121212;" (click)="removeIngredients(i)" ios="ios-trash" md="md-trash"></ion-icon>
-                </ion-item>
-               
-              </li>
-              <li>
-                Fenugreek
-              </li>
+              <!-- <li *ngIf="data?.data">
+                <ion-label *ngIf="data?.data.length > 1" class="nutrition-title">{{data.data}} df</ion-label>
+                </li> -->
+             </div> 
+   
             </ol>
           </ion-list>
         </ion-col>
