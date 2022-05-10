@@ -25,7 +25,9 @@
       <ion-card-content class="item-content ion-no-padding">
         <ion-slides *ngIf="progImage && progVideo" pager="true" [options]="sliderOpts" class="full-slider program-slide" #mySlider>          
           <ion-slide  *ngFor="let imgpath of programDetail?.image_path.split(','); let i=index;" class="program-slides"> 
-            <img *ngIf="progImage" src="{{url+imgpath}}" /> 
+            <div class="program-cover">
+              <img *ngIf="progImage" src="{{url+imgpath}}" /> 
+            </div>
           </ion-slide>
         <ion-slide class="program-slides">
           <video *ngIf="progVideo" width="100%" height="200px" controls="controls" preload="metadata"  webkit-playsinline="webkit-playsinline" class="videoPlayer">
@@ -36,7 +38,9 @@
     
         <ion-slides *ngIf="progImage && !progVideo" pager="true" [options]="sliderOpts" class="full-slider program-slide" #mySlider>          
           <ion-slide  *ngFor="let imgpath of programDetail?.image_path.split(','); let i=index;" class="program-slides"> 
-            <img *ngIf="progImage" src="{{url+imgpath}}" /> 
+            <div class="program-cover">
+              <img *ngIf="progImage" src="{{url+imgpath}}" /> 
+            </div>
           </ion-slide>
         
         </ion-slides>
@@ -77,7 +81,7 @@
           <ion-item-sliding>
             <div [ngSwitch]="scheduleProgram">
               <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'program'">
-                <ion-row>
+                <ion-row class="ion-padding-vertical">
                   <ion-col size="12" class="ion-no-padding">
                     <div class="programDesc">
                       <!-- <p>{{programDetail?.description }} &nbsp;</p>         -->
@@ -151,11 +155,55 @@
                   <ion-button class="btnVerify" >No live program available</ion-button>
                 </div>
 
-                <ion-item class="list-items ion-text-center">
-                  <div class="icon-text" style="width: 100%;">
-                  <ion-label>Program: {{programDetail?.video_id.split(",").length}} Videos, {{programFee}}</ion-label>
+                <ion-item class="list-items" lines="">
+                  <div class="icon-text ion-margin-bottom" style="width: 100%;">
+                  <h5 class="">Program</h5>
+                  <div class="flex-with-partition">
+                    <p>{{programDetail?.video_id.split(",").length}} Videos </p>
+                    <p>3 Nutrition</p>
+                    <p>{{programFee}}</p>
+                  </div>
+                  <!-- <ion-chip>
+                    {{programDetail?.video_id.split(",").length}} Videos 
+                  </ion-chip>
+                  <ion-chip>
+                    {{programFee}}
+                  </ion-chip> -->
                   </div>          
                 </ion-item>
+                <ion-item class="ion-padding-top" lines="">
+                  <p class="ion-padding-bottom" style="font-size: 16px;">
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                  </p>
+                </ion-item>
+                <h5 class="ion-padding-horizontal">Equipments</h5>
+                <ion-slides [options]="slideOpts" class="ion-padding-vertical ion-margin-bottom">
+                  <ion-slide class="program-slides">
+                    <div class="container-flex">
+                      <div class="img-cont">
+                        <img src="../../../assets/images/upwork.png" alt="">
+                      </div>
+                      <ion-label class="">Upwork</ion-label>
+                    </div>
+                  </ion-slide>
+                  <ion-slide class="program-slides">
+                    <div class="container-flex">
+                      <div class="img-cont">
+                        <img src="../../../assets/images/flex-ball.png" alt="">
+                      </div>
+                      <ion-label class="">flex-ball</ion-label>
+                    </div>
+                  </ion-slide>
+                  <ion-slide class="program-slides">
+                    <div class="container-flex">
+                      <div class="img-cont">
+                        <img src="../../../assets/images/calf-raise.png" alt="">
+                      </div>
+                      <ion-label class="">calf-raise</ion-label>
+                    </div>
+                  </ion-slide>
+                </ion-slides>
+                <ion-item-divider></ion-item-divider>
               </ion-list> 
               
               <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'videos'">

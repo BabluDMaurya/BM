@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Platform,PopoverController, NavController, ModalController } from '@ionic/angular';
+import { Platform,PopoverController, NavController, ModalController, ActionSheetController  } from '@ionic/angular';
 import { CommonService } from '../../services/common.service';
 import { ChatPopupComponent } from '../consultant-profile-view/chat-popup/chat-popup.component';
 import { InfoModalComponent } from '../consultant-profile-view/info-modal/info-modal.component';
@@ -77,6 +77,7 @@ export class ConsultantProfileViewPage implements OnInit {
     private platform: Platform,
     public socialSharing: SocialSharing,
     public chatService : ChatService,
+    public actionSheetController: ActionSheetController,
   ) {
 
     platform.ready().then(() => {
@@ -399,5 +400,48 @@ export class ConsultantProfileViewPage implements OnInit {
     .catch(() => {
 
     });
+  }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'More Actions',
+      cssClass: 'my-custom-class',
+      buttons: [{
+        text: 'Unfollow',
+        icon: 'heart-circle',
+        handler: () => {
+          console.log('Delete clicked');
+        }
+      }, {
+        text: 'Chat',
+        icon: 'chatbox-ellipses',
+        handler: () => {
+          console.log('chat');
+        }
+      }, {
+        text: 'Report',
+        icon: 'alert-circle',
+        handler: () => {
+          console.log('report');
+        }
+      }, {
+        text: 'Block',
+        icon: 'ban',
+        handler: () => {
+          console.log('block');
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+
+    const { role, data } = await actionSheet.onDidDismiss();
+    console.log('onDidDismiss resolved with role and data', role, data);
   }
 }

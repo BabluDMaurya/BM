@@ -180,3 +180,50 @@
     // position: absolute;
     // bottom: 20px;
 }
+.container-flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 92%;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .097);
+    padding: 10px;
+}
+.img-cont{
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-cont > img{
+    // width: 100%;
+    height: 100%;
+}
+.flex-with-partition {
+    display: flex;
+    align-items: center;
+}
+.flex-with-partition > p {
+font-size: 16px;
+position: relative;
+padding-right: 30px;
+}
+.flex-with-partition > p::after{
+    content: '';
+    width: 2px;
+    height: 20px;
+    background-color: #cecece;
+    position: absolute;
+    top: -1px;
+    right: 14px;
+}
+.program-cover {
+    height: 260px;
+    width: 100%;
+}
+.program-cover > img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

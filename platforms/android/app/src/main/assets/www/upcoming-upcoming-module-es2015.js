@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" [routerLink]=\"['/tabs/consultant-profile']\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>Upcoming Program</ion-label>\r\n    </ion-item>\r\n    <ion-item slot=\"end\">\r\n      <ion-buttons class=\"add-program\">\r\n        <ion-icon ios=\"ios-add\" md=\"md-add\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list lines=\"none\" class=\"item-list ion-no-padding\">\r\n    <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar [(ngModel)]=\"term\" animated=\"true\"></ion-searchbar>\r\n    </ion-toolbar>\r\n  </ion-list>\r\n  <ion-card class=\"ion-no-margin upcomingCard upcoming-card\" *ngFor=\"let upcoming of upcomingList; let i=index;\">\r\n    <ion-item lines=\"none\">\r\n      <ion-avatar slot=\"start\">\r\n        <img src=\"{{url}}{{upcoming?.img_arr[0]}}\" *ngIf=\"upcomingList[i]?.image_path\">\r\n        <!-- <img src=\"{{profile_url}}{{upcoming?.program_user?.bios?.profile_pic}}\" *ngIf=\"upcoming?.program_user?.bios?.profile_pic\"> -->\r\n        <img  src=\"../../assets/images/loading.jpg\" *ngIf=\"!upcomingList[i]?.image_path\">\r\n      </ion-avatar>\r\n      <ion-label [routerLink]=\"userData?.id ==upcoming?.user_id ? ['/program-details/',upcoming.id] : ['/program-view/',upcoming.id]\">\r\n        <h3 class=\"list-person\">{{upcoming?.title}}</h3>\r\n        <span class=\"list-name d-block\">{{upcoming?.type_id}}</span>\r\n        <span class=\"list-name d-block\">Created by:{{upcoming?.program_user?.user_name}} {{upcoming?.convertedTime | date:'medium'}}</span>\r\n        <span class=\"list-name d-block\" *ngIf=\"upcoming?.cd>0\"> <b><span *ngIf=\"upcoming?.hh > 0\">{{ upcoming?.hh |number }} Hours</span> {{ upcoming?.mm |number  }} Minutes  {{ upcoming?.ss |number }} Seconds </b> </span>\r\n        <!-- <span class=\"list-name d-block\" *ngIf=\"upcoming?.cd>0\">Countdown: <b><span *ngIf=\"upcoming?.hh > 0\">{{ upcoming?.hh |number }} Hours</span> {{ upcoming?.mm |number  }} Minutes  {{ upcoming?.ss |number }} Seconds </b> </span> -->\r\n        <span class=\"list-name d-block\" *ngIf=\"upcoming?.cd==0\"> <b> L I V E</b></span>\r\n        <!-- <countdown [config]=\"{leftTime: 30}\"></countdown> -->\r\n      </ion-label>\r\n      <div class=\"action-links\" slot=\"end\" *ngIf=\"upcoming?.nutrition_id\">\r\n        <ion-icon (click)=\"nutritionModal(upcoming)\" ios=\"md-restaurant\" md=\"md-restaurant\"></ion-icon>\r\n      </div>\r\n    </ion-item>\r\n  </ion-card>\r\n  <!--------------- S K E L E T O N ------------>\r\n  <ion-list lines=\"none\" *ngIf=\"!upcomingList\">      \r\n    <ion-item *ngFor=\"let skeleton of [].constructor(20)\" class=\"item-card\">\r\n      <ion-avatar slot=\"start\">\r\n        <ion-skeleton-text></ion-skeleton-text>\r\n      </ion-avatar>\r\n      <ion-label>\r\n        <h3 class=\"list-person\"><ion-skeleton-text animated style=\"width: 80%\"></ion-skeleton-text></h3>\r\n        <span class=\"list-name\"><ion-skeleton-text animated style=\"width: 60%\"></ion-skeleton-text></span>\r\n      </ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n  <!---------------E n d s  S K E L E T O N ------------>\r\n  <div class=\"no-data\" *ngIf=\"noData\" style=\"height: calc(100vh - 175px)\">\r\n    <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n    <p>No upcoming program for next 24 Hrs.</p>\r\n  </div>\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" [routerLink]=\"['/tabs/consultant-profile']\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>Upcoming Program</ion-label>\r\n    </ion-item>\r\n    <ion-item slot=\"end\">\r\n      <ion-buttons class=\"add-program\" [routerLink]=\"['/add-program']\">\r\n        <ion-icon ios=\"ios-add\" md=\"md-add\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list lines=\"none\" class=\"item-list ion-no-padding\">\r\n    <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar [(ngModel)]=\"programSearchTerm\" animated=\"true\"></ion-searchbar>\r\n    </ion-toolbar>\r\n  </ion-list>\r\n  <ion-card class=\"ion-no-margin upcomingCard upcoming-card\" *ngFor=\"let upcoming of programFiltered; let i=index;\">\r\n    <ion-item lines=\"none\">\r\n      <ion-avatar slot=\"start\">\r\n        <img src=\"{{url}}{{upcoming?.img_arr[0]}}\" *ngIf=\"programFiltered[i]?.image_path\">\r\n        <!-- <img src=\"{{profile_url}}{{upcoming?.program_user?.bios?.profile_pic}}\" *ngIf=\"upcoming?.program_user?.bios?.profile_pic\"> -->\r\n        <img  src=\"../../assets/images/loading.jpg\" *ngIf=\"!programFiltered[i]?.image_path\">\r\n      </ion-avatar>\r\n      <ion-label [routerLink]=\"userData?.id ==upcoming?.user_id ? ['/program-details/',upcoming.id] : ['/program-view/',upcoming.id]\">\r\n        <h3 class=\"list-person\">{{upcoming?.title}}</h3>\r\n        <span class=\"list-name d-block\">{{upcoming?.type_id}}</span>\r\n        <span class=\"list-name d-block\">Created by:{{upcoming?.program_user?.user_name}} {{upcoming?.convertedTime | date:'medium'}}</span>\r\n        <span class=\"list-name d-block\" *ngIf=\"upcoming?.cd>0\"> <b><span *ngIf=\"upcoming?.hh > 0\">{{ upcoming?.hh |number }} Hours</span> {{ upcoming?.mm |number  }} Minutes  {{ upcoming?.ss |number }} Seconds </b> </span>\r\n        <!-- <span class=\"list-name d-block\" *ngIf=\"upcoming?.cd>0\">Countdown: <b><span *ngIf=\"upcoming?.hh > 0\">{{ upcoming?.hh |number }} Hours</span> {{ upcoming?.mm |number  }} Minutes  {{ upcoming?.ss |number }} Seconds </b> </span> -->\r\n        <span class=\"list-name d-block\" *ngIf=\"upcoming?.cd==0\"> <b> L I V E</b></span>\r\n        <!-- <countdown [config]=\"{leftTime: 30}\"></countdown> -->\r\n      </ion-label>\r\n      <div class=\"action-links\" slot=\"end\" *ngIf=\"upcoming?.nutrition_id\">\r\n        <ion-icon (click)=\"nutritionModal(upcoming)\" ios=\"md-restaurant\" md=\"md-restaurant\"></ion-icon>\r\n      </div>\r\n    </ion-item>\r\n  </ion-card>\r\n  <!--------------- S K E L E T O N ------------>\r\n  <ion-list lines=\"none\" *ngIf=\"!programFiltered\">      \r\n    <ion-item *ngFor=\"let skeleton of [].constructor(20)\" class=\"item-card\">\r\n      <ion-avatar slot=\"start\">\r\n        <ion-skeleton-text></ion-skeleton-text>\r\n      </ion-avatar>\r\n      <ion-label>\r\n        <h3 class=\"list-person\"><ion-skeleton-text animated style=\"width: 80%\"></ion-skeleton-text></h3>\r\n        <span class=\"list-name\"><ion-skeleton-text animated style=\"width: 60%\"></ion-skeleton-text></span>\r\n      </ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n  <!---------------E n d s  S K E L E T O N ------------>\r\n  <div class=\"no-data\" *ngIf=\"noData\" style=\"height: calc(100vh - 175px)\">\r\n    <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n    <p>No upcoming program for next 24 Hrs.</p>\r\n  </div>\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -145,6 +145,13 @@ let UpcomingPage = class UpcomingPage {
         this.userData = JSON.parse(localStorage.getItem('userData'));
         console.log("this.userData :" + this.userData);
     }
+    get programSearchTerm() {
+        return this._searchTerm;
+    }
+    set programSearchTerm(value) {
+        this._searchTerm = value;
+        this.programFiltered = this.programFilter(value);
+    }
     ngOnInit() {
         console.log(this.consultID);
         if (this.consultID) {
@@ -156,6 +163,9 @@ let UpcomingPage = class UpcomingPage {
     }
     nutritionModal(data) {
         this.commonService.presentModal(_user_profile_nutrition_modal_nutrition_modal_component__WEBPACK_IMPORTED_MODULE_2__["NutritionModalComponent"], 'fullModal', { 'data': data });
+    }
+    programFilter(searchString) {
+        return this.upcomingList.filter(employee => employee.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
     }
     getMyprog() {
         this.programService.getUpcomingPrograms(null).subscribe(data => {
@@ -171,6 +181,8 @@ let UpcomingPage = class UpcomingPage {
                 el.expanded = false;
                 return el;
             });
+            this.programFiltered = this.upcomingList;
+            console.log(this.programFiltered);
         });
     }
     getConsultProg(id) {
@@ -191,6 +203,7 @@ let UpcomingPage = class UpcomingPage {
         });
     }
     getCounter(elementArr) {
+        console.log(elementArr, 'elementArr');
         elementArr.filter(el => {
             el.convertedTime = new Date(el.program_date + 'Z');
             let a = new Date(el.program_date + 'Z');

@@ -65,6 +65,7 @@ export class MyProfilePage implements OnInit {
   //------
   @ViewChild('slideWithNav3', { static: false }) slideWithNav3: IonSlides;
   sliderThree: any;
+  scheduleProgram: string = "invitation";
   slideOptsThree = {
     initialSlide: 0,
     slidesPerView: 4,

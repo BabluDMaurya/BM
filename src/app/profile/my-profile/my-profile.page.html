@@ -54,9 +54,16 @@
             </div>
             <ion-text>
               <div class="userNameBlock" *ngIf="profileData?.userData?.bios?.display_name">
-                <h6 class="userDisplayName" >
-                  {{profileData?.userData?.bios?.display_name}}</h6>
-                  <ion-icon (click)="notification1()" ios="ios-arrow-dropdown-circle" md="md-arrow-dropdown-circle" ></ion-icon>
+               
+                <h6 class="userDisplayName" (click)="notification1()" >
+                  <ion-chip>
+                    <h3 class="no-mar">
+                      {{profileData?.userData?.bios?.display_name}}
+                    </h3>
+                    <!-- <ion-icon class="no-mar" name="information-circle"></ion-icon> -->
+                  </ion-chip>
+                 </h6>
+                  <!-- <ion-icon (click)="notification1()" ios="ios-arrow-dropdown-circle" md="md-arrow-dropdown-circle" ></ion-icon> -->
               </div>
                 <h6 class="userDisplayName">
                   <a class="ion-no-margin clr-blk" *ngIf="!profileData?.userData?.bios?.display_name"
@@ -70,11 +77,11 @@
               </a>              
             </div> -->
           </div>
-          <!-- <div class="user-name">
+          <div class="user-name">
             <ion-text>
               <p>{{profileData?.userData?.additional?.tag_line}}</p>
             </ion-text>
-          </div> -->
+          </div>
           
         </div>
       </ion-col>
@@ -225,6 +232,135 @@
       </ion-col>
       </div> -->
     </ion-row> 
+    <div class="border-top">
+      <ion-card>
+        <ion-item-sliding class="">
+          <div [ngSwitch]="scheduleProgram">
+            
+            <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'invitation'">
+              <ion-slides>
+                <ion-slide>
+                  <div class="program-card" >
+                    <ion-avatar>
+                      <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
+                      <img src="../../../assets/images/loading.jpg" >
+                    </ion-avatar>
+                    <div class="program-info">
+                      <h6>program title1</h6>
+                      <span>By: bablu222</span>
+                      <p>Mar 13, 2022</p>
+                    </div>
+                    <ion-icon class="ionic-icon" ios="ios-mail" md="md-mail"></ion-icon>
+                    <!-- M A I L  O P E N -->
+                    <!-- <ion-icon class="ionic-icon" ios="ios-mail-open" md="md-mail-open"></ion-icon> -->
+                    <ion-icon ios="ios-more" md="md-more" ></ion-icon>
+                  </div>
+                </ion-slide>
+                <ion-slide>
+                  <div class="program-card" >
+                    <ion-avatar>
+                      <img src="{{url}}{{item?.img_arr[0]}}" *ngIf="item?.image_path">
+                      <img src="../../../assets/images/loading.jpg" >
+                    </ion-avatar>
+                    <div class="program-info">
+                      <h6>program title2</h6>
+                      <span>By: bablu222</span>
+                      <p>Mar 13, 2022</p>
+                    </div>
+                    <ion-icon class="ionic-icon" ios="ios-mail" md="md-mail"></ion-icon>
+                    <!-- M A I L  O P E N -->
+                    <!-- <ion-icon class="ionic-icon" ios="ios-mail-open" md="md-mail-open"></ion-icon> -->
+                    <ion-icon ios="ios-more" md="md-more" ></ion-icon>
+                  </div>
+                </ion-slide>
+              </ion-slides>
+            </ion-list>
+            <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'nutrition'">
+              <ion-slides>
+                <ion-slide>
+                  <div class="program-card" >
+                    <ion-avatar slot="start">
+                      <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
+                      <img src="../../../assets/images/loading.jpg" >
+                    </ion-avatar>
+                    <div class="program-info">
+                      <h6>program title4</h6>
+                      <span>By: bablu222</span>
+                      <p>Mar 13, 2022</p>
+                    </div>
+                    <span class="program-type">{{program?.type_id}}</span>
+                    <ion-icon ios="ios-more" md="md-more" ></ion-icon>
+                  </div>
+                </ion-slide>
+              </ion-slides>
+            </ion-list>
+            <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'videos'">
+              <ion-slides>
+                <ion-slide>
+                  <div class="program-card" >
+                    <ion-avatar slot="start" >
+                      <img src="{{url}}{{program?.img_arr[0]}}" *ngIf="program?.image_path">
+                      <img src="../../../assets/images/loading.jpg" >
+                    </ion-avatar>
+                    <div class="program-info" >
+                      <h6>program title5</h6>
+                      <span>By: bablu222</span>
+                      <p>Mar 13, 2022</p>
+                    </div>
+                    <span class="program-type">{{program?.type_id}}</span>
+                    <ion-icon ios="ios-more" md="md-more" ></ion-icon>
+                  </div>
+                </ion-slide>
+              </ion-slides>
+            </ion-list>
+            <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'live'">
+              <ion-slides>
+                <ion-slide>
+                  <div class="program-card" >
+                    <ion-avatar >
+                      <img src="{{profileUrl}}{{item?.program_user?.bios?.profile_pic}}" *ngIf="item?.program_user?.bios?.profile_pic != '' ">
+                      <img src="../../../assets/images/loading.jpg" >
+                    </ion-avatar>
+                    <div class="program-info" >
+                      <h6>program title6</h6>
+                      <span>By: bablu222</span>
+                      <p>Mar 13, 2022</p>
+                    </div>
+                    <span class="program-type">{{item?.type_id}}</span>
+                    <ion-icon ios="ios-more" md="md-more" ></ion-icon>
+                  </div>
+                </ion-slide>
+              </ion-slides>
+            </ion-list>
+          </div>
+        </ion-item-sliding>
+      </ion-card>
+     
+      <ion-item-divider class="ionic-divider border-top" lines="none" sticky>
+        <ion-toolbar mode="ios" lines="none" no-border-top class="profile_tabs three-tabs">
+          <ion-segment mode="ios" class="ion-no-padding" [(ngModel)]="scheduleProgram">
+            <!-- <ion-segment-button mode="ios" class="ionic-segment-btn" value="program" checked>
+              <ion-icon class="ionic-icon" ios="ios-clipboard" md="md-clipboard"></ion-icon>
+            </ion-segment-button> -->
+            <ion-segment-button mode="ios" class="ionic-segment-btn" value="invitation">
+              <ion-icon class="ionic-icon" ios="ios-mail" md="md-mail"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button mode="ios" class="ionic-segment-btn" value="nutrition">
+              <ion-icon class="ionic-icon" ios="ios-nutrition" md="md-nutrition"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button mode="ios" class="ionic-segment-btn" value="videos">
+              <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button mode="ios" class="ionic-segment-btn" value="live">
+              <div class="live-icon">
+                <span>live</span>
+              </div>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-toolbar>
+      </ion-item-divider>
+    </div>
+   
     <ion-item-divider class="post-row" sticky>
       <ion-col class="post-col">
         <ion-avatar class="post-avatar">

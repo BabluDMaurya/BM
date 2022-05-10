@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PopoverController, Platform, ModalController} from '@ionic/angular';
 import { CommonService } from '../.././app/services/common.service';
 import { NutritionModalComponent } from '../../app/user-profile/nutrition-modal/nutrition-modal.component';
@@ -10,7 +10,8 @@ import { HomeService } from '../services/home.service';
 import { FollowersComponent } from '../modalContent/followers/followers.component';
 import { PeopleViewService } from './../services/people-view.service';
 import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
-import { RouterOutlet, Router, ActivationStart } from '@angular/router';
+// import { RouterOutlet, Router, ActivationStart } from '@angular/router';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.page.html',

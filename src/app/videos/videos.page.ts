@@ -22,7 +22,7 @@ export class VideosPage implements OnInit {
   postID : any;   
   postData : any;
   postUserName: any;
-  videoDataPath :any;
+  videoDataPath :any = '';
   title : string;
   description : string;
   createdAt : any;

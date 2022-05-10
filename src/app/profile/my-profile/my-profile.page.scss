@@ -214,3 +214,89 @@ ion-item-divider{
         }
     }
 }
+.ionic-divider{
+    padding-inline-start: 0px !important;
+    padding-inline-end: 0px !important;
+    .three-tabs ion-segment ion-segment-button {
+        width: auto;
+    }
+    ion-segment-button{
+        min-height: 38px;
+        color: #000;
+        text-transform: capitalize;
+        letter-spacing: 0;
+        .ionic-icon{
+            font-size: 2rem !important;
+        }
+        .live-icon{
+            padding: 5px 10px;
+            background: #555;
+            color: #fff;
+            border-radius: 20px;
+            span{
+                font-size: 10px;
+                color: #fff;
+            }
+        }
+    }
+}
+
+
+ion-segment-button.segment-button-checked{
+    background: #27a69a;
+    --indicator-color-checked: #27a69a;
+    color: #FFF;
+    .live-icon{
+        background: #27a69a;
+        span{
+            color: #fff !important;
+        }
+    }
+}
+
+.program-card {
+    display: flex;
+    align-items: center;
+    padding: 18px 12px;
+    width: 100%;
+    ion-avatar{
+        margin-right: 15px;
+    }
+    .program-info{
+        flex: 1;
+        text-align: left;
+        h6{
+            margin-bottom: 0px;
+            margin-top: 0px;
+            color: #121212;
+        }
+        span{
+            color: #555;
+        }
+        p{
+            font-size: 12px;
+            color: #27a69a;
+            margin-top: 3px;
+        }
+    }
+    .ionic-icon{
+        color: #555;
+        margin-right: 20px;
+        margin-left: 15px;
+        font-size: 24px;
+    }
+    .program-type{
+        margin-right: 12px;
+        margin-left: 12px;
+    }
+}
+.ios.profile_tabs ion-segment-button.segment-button-checked{
+    border-top: 2px solid #27a69a !important;
+}
+.border-top{
+    border-top: 1px solid #cecece;
+}
+.no-mar{
+    margin: 0 !important;
+    margin-left: 5px !important;
+}

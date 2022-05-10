@@ -80,7 +80,7 @@
             <!-- <ion-label>{{ follow ?'Following':'Follow' }}</ion-label> -->
             <ion-label>{{followStatus}}</ion-label>
           </ion-item>
-          <ion-item (click)="chatPopup()">
+          <ion-item (click)="chatPopup()">  
             <img src="../../assets/images/comment.svg" />
             <ion-label>Chat</ion-label>
           </ion-item>
@@ -93,6 +93,11 @@
             <ion-label>{{ block ?'Unblock':'Block' }}</ion-label>
           </ion-item>
         </ion-list>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="presentActionSheet()">
+          Action sheet
+        </ion-button>
       </ion-col>
     </ion-row>
     <!-- <ion-row class=" mb-10" *ngIf="tabs">

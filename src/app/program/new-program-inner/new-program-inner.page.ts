@@ -107,7 +107,11 @@ days: any;
 tick = 1000;
 allProgram: any;
 nutritionList: any;
-scheduleProgram = 'program'
+scheduleProgram = 'program';
+slideOpts = {
+  slidesPerView: 2,
+  zoom: false
+};
 ngOnInit() {
   this.actRoute.paramMap.subscribe((params: ParamMap) => {
     this.programId = params.get('programId');

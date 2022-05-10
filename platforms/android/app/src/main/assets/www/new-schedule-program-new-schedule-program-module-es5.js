@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" [routerLink]=\"['/tabs/consultant-profile']\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <!-- <ion-label>{{programDetail?.title}}</ion-label> -->\r\n      <ion-label>{{ viewTitle }}</ion-label>\r\n    </ion-item>\r\n    <ion-item slot=\"end\">\r\n      <!-- <ion-label>{{programDetail?.title}}</ion-label> -->\r\n      <!-- <ion-label>March 2022</ion-label> -->\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <calendar *ngIf=\"scheduleProgram == 'program'\" [calendarMode]=\"calendar.mode\" [currentDate]=\"calendar.currentDate\" startHour=\"0\"\r\n  endHour=\"24\" step=\"1\" (onTitleChanged)=\"onViewTitleChanged($event)\"  (onTimeSelected)=\"onTimeSelected($event)\" class=\"calendar-table swiper-container\"></calendar>\r\n  <ion-item *ngIf=\"scheduleProgram == 'program'\" style=\"position: relative; --min-height: 30px;\" class=\"ion-no-padding\">\r\n    <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropdown\" md=\"md-arrow-dropdown\" *ngIf=\"calendar.mode == 'week'\" (click)=\"handleCalendarView()\"></ion-icon>\r\n    <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropup\" md=\"md-arrow-dropup\" *ngIf=\"calendar.mode == 'month'\" (click)=\"handleCalendarView()\"></ion-icon>\r\n  </ion-item>\r\n  <ion-col class=\"ion-no-padding\">\r\n    <ion-list class=\"ion-no-padding\">\r\n      <ion-item-group>\r\n        <ion-item-divider class=\"ionic-divider\" lines=\"none\" sticky>\r\n          <ion-toolbar lines=\"none\" no-border-top class=\"profile_tabs three-tabs\">\r\n            <ion-segment class=\"ion-no-padding\" [(ngModel)]=\"scheduleProgram\">\r\n              <ion-segment-button class=\"ionic-segment-btn\" value=\"program\" checked>\r\n                <ion-icon class=\"ionic-icon\" ios=\"ios-clipboard\" md=\"md-clipboard\"></ion-icon>\r\n              </ion-segment-button>\r\n              <ion-segment-button class=\"ionic-segment-btn\" value=\"invitation\">\r\n                <ion-icon class=\"ionic-icon\" ios=\"ios-mail\" md=\"md-mail\"></ion-icon>\r\n              </ion-segment-button>\r\n              <ion-segment-button class=\"ionic-segment-btn\" value=\"nutrition\">\r\n                <ion-icon class=\"ionic-icon\" ios=\"ios-nutrition\" md=\"md-nutrition\"></ion-icon>\r\n              </ion-segment-button>\r\n              <ion-segment-button class=\"ionic-segment-btn\" value=\"videos\">\r\n                <ion-icon class=\"ionic-icon\" ios=\"ios-videocam\" md=\"md-videocam\"></ion-icon>\r\n              </ion-segment-button>\r\n              <ion-segment-button class=\"ionic-segment-btn\" value=\"live\">\r\n                <div class=\"live-icon\">\r\n                  <span>live</span>\r\n                </div>\r\n              </ion-segment-button>\r\n            </ion-segment>\r\n          </ion-toolbar>\r\n        </ion-item-divider>\r\n        <ion-item-sliding>\r\n          <div [ngSwitch]=\"scheduleProgram\">\r\n            <ion-list class=\"ion-no-padding border-bot\" *ngSwitchCase=\"'program'\">\r\n              <div class=\"program-card\" *ngFor=\"let program of allScheduleList; let i = index;\">\r\n                <ion-avatar slot=\"start\" [routerLink]=\"(program?.user_id == userData?.id) ? ['/new-program-inner',program.id] : ['/new-program-view',program.id]\">\r\n                  <img src=\"{{url}}{{program?.img_arr[0]}}\" *ngIf=\"program?.image_path\">\r\n                  <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!program?.image_path\">\r\n                </ion-avatar>\r\n                <div class=\"program-info\" [routerLink]=\"(program?.user_id == userData?.id) ? ['/new-program-inner',program.id] : ['/new-program-view',program.id]\">\r\n                  <h6>{{program?.title}}</h6>\r\n                  <span>By: {{program?.program_user?.user_name}}</span>\r\n                  <p>{{program?.converted |date:'medium'}}</p>\r\n                </div>\r\n                <span class=\"program-type\">{{program?.type_id}}</span>\r\n                <ion-icon ios=\"ios-more\" md=\"md-more\" *ngIf=\"(program?.user_id == userData?.id)\" (click)=\"hostingDropdown(program?.id)\"></ion-icon>\r\n              </div>\r\n              <div *ngIf=\"dataLength == '0' \" class=\"no-data\">\r\n                <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Program available</p>             \r\n              </div>\r\n            </ion-list>\r\n            <ion-list class=\"ion-no-padding border-bot\" *ngSwitchCase=\"'invitation'\">\r\n                <ion-toolbar class=\"searchbar\" >\r\n                  <ion-searchbar [(ngModel)]=\"reqProgSearchTerm\" animated=\"true\"></ion-searchbar>\r\n                </ion-toolbar>\r\n              <div class=\"program-card\" *ngFor=\"let item of reqProgArray; let l = index;\" >\r\n                <ion-avatar>\r\n                  <img src=\"{{url}}{{item?.img_arr[0]}}\" *ngIf=\"item?.image_path\">\r\n                  <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!item?.image_path\">\r\n                </ion-avatar>\r\n                <div class=\"program-info\">\r\n                  <h6>{{item.title}}</h6>\r\n                  <span>By: {{item?.program_user?.user_name}}</span>\r\n                  <p>{{item?.converted |date:'medium'}}</p>\r\n                </div>\r\n                <ion-icon class=\"ionic-icon\" ios=\"ios-mail\" md=\"md-mail\"></ion-icon>\r\n                <!-- M A I L  O P E N -->\r\n                <!-- <ion-icon class=\"ionic-icon\" ios=\"ios-mail-open\" md=\"md-mail-open\"></ion-icon> -->\r\n                <ion-icon ios=\"ios-more\" md=\"md-more\" (click)=\"requestDropdown(item.id)\"></ion-icon>\r\n              </div>\r\n              <div *ngIf=\"noReqProgramList\" class=\"no-data\">\r\n                <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Requested Program</p>             \r\n              </div>\r\n            </ion-list>\r\n            <ion-list class=\"ion-no-padding border-bot\" *ngSwitchCase=\"'nutrition'\">\r\n                <ion-toolbar class=\"searchbar\" >\r\n                  <ion-searchbar [(ngModel)]=\"nutriProgSearchTerm\" animated=\"true\"></ion-searchbar>\r\n                </ion-toolbar>\r\n              <div class=\"program-card\" *ngFor=\"let item of nutriProgArray\">\r\n                <ion-avatar (click)=\"nutritionModal(item)\">\r\n                  <img src=\"{{url}}{{item?.img_arr[0]}}\" *ngIf=\"item?.image_path\">\r\n                  <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!item?.image_path\">\r\n                </ion-avatar>\r\n                <div class=\"program-info\" (click)=\"nutritionModal(item)\">\r\n                  <h6>{{item.title}}</h6>\r\n                  <span>By: {{item?.program_user?.user_name}}</span>\r\n                  <p>{{item?.converted |date:'medium'}}</p>\r\n                </div>\r\n                <!-- <ion-icon ios=\"ios-more\" md=\"md-more\"></ion-icon> -->\r\n              </div>\r\n              <div *ngIf=\"noNutriProg\" class=\"no-data\">\r\n                <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Program Available</p>\r\n              </div>\r\n            </ion-list>\r\n            <ion-list class=\"ion-no-padding border-bot\" *ngSwitchCase=\"'videos'\">\r\n              <ion-toolbar class=\"searchbar\" >\r\n                <ion-searchbar [(ngModel)]=\"videoSearchTerm\" animated=\"true\"></ion-searchbar>\r\n              </ion-toolbar>\r\n              <div class=\"program-card\" *ngFor=\"let item of videoFiltered\">\r\n                <ion-avatar (click)=\"showVideoDetails(item.id,item.video_id)\">\r\n                  <img src=\"{{url}}{{item?.img_arr[0]}}\" *ngIf=\"item?.image_path\">\r\n                  <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!item?.image_path\">\r\n                </ion-avatar>\r\n                <div class=\"program-info\" (click)=\"showVideoDetails(item.id,item.video_id)\">\r\n                  <h6>{{item.title}}</h6>\r\n                  <span>By: {{item?.program_user?.user_name}}</span>\r\n                  <p>{{item?.converted |date:'medium'}}</p>\r\n                </div>\r\n              </div>\r\n              <div *ngIf=\"noVideoProg\" class=\"no-data\">\r\n                <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Program Available</p>\r\n              </div>\r\n            </ion-list>\r\n            <ion-list class=\"ion-no-padding border-bot\" *ngSwitchCase=\"'live'\">\r\n              <ion-toolbar class=\"searchbar\" >\r\n                <ion-searchbar [(ngModel)]=\"liveProgSearchTerm\" animated=\"true\"></ion-searchbar>\r\n              </ion-toolbar>\r\n              <div class=\"program-card\" *ngFor=\"let item of liveProgArray\">\r\n                <ion-avatar [routerLink]=\"(item?.user_id == userData?.id) ? ['/new-program-inner',item.id] : ['/new-program-view',item.id]\">\r\n                  <img src=\"{{profileUrl}}{{item?.program_user?.bios?.profile_pic}}\" *ngIf=\"item?.program_user?.bios?.profile_pic != '' \">\r\n                  <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"item?.program_user?.bios?.profile_pic == '' \">\r\n                </ion-avatar>\r\n                <div class=\"program-info\" [routerLink]=\"(item?.user_id == userData?.id) ? ['/new-program-inner',item.id] : ['/new-program-view',item.id]\">\r\n                  <h6>{{item.title}}</h6>\r\n                  <span>By: {{item?.program_user?.user_name}}</span>\r\n                  <p>{{item?.converted |date:'medium'}}</p>\r\n                </div>\r\n                <span class=\"program-type\">{{item?.type_id}}</span>\r\n                <ion-icon ios=\"ios-more\" md=\"md-more\" *ngIf=\"(item?.user_id == userData?.id)\" (click)=\"hostingDropdown(item?.id)\"></ion-icon>\r\n              </div>\r\n              <div *ngIf=\"noLiveProg\" class=\"no-data\">\r\n                <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Program Available</p>\r\n              </div>\r\n              <div class=\"program-live-box\">\r\n                <!-- T I M E R   B L O C K -->\r\n                <!-- <div class=\"program-live-timer\">\r\n                  <p>01 : 35 : 15</p>\r\n                </div> -->\r\n\r\n                  <!-- J O I N   B U T T O N -->\r\n                <!-- <div class=\"program-live-btn\">\r\n                  <button>Join</button>\r\n                </div> -->\r\n              </div>\r\n            </ion-list>\r\n          </div>\r\n        </ion-item-sliding>\r\n      </ion-item-group>\r\n    </ion-list>\r\n  </ion-col>\r\n</ion-content>\r\n";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" [routerLink]=\"['/tabs/consultant-profile']\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <!-- <ion-label>{{programDetail?.title}}</ion-label> -->\r\n      <ion-label>{{ viewTitle }}</ion-label>\r\n    </ion-item>\r\n    <ion-item slot=\"end\">\r\n      <!-- <ion-label>{{programDetail?.title}}</ion-label> -->\r\n      <!-- <ion-label>March 2022</ion-label> -->\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <calendar *ngIf=\"scheduleProgram == 'program'\" [calendarMode]=\"calendar.mode\" [currentDate]=\"calendar.currentDate\" startHour=\"0\"\r\n  endHour=\"24\" step=\"1\" (onTitleChanged)=\"onViewTitleChanged($event)\"  (onTimeSelected)=\"onTimeSelected($event)\" class=\"calendar-table swiper-container\"></calendar>\r\n  <ion-item *ngIf=\"scheduleProgram == 'program'\" style=\"position: relative; --min-height: 30px;\" class=\"ion-no-padding\">\r\n    <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropdown\" md=\"md-arrow-dropdown\" *ngIf=\"calendar.mode == 'week'\" (click)=\"handleCalendarView()\"></ion-icon>\r\n    <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropup\" md=\"md-arrow-dropup\" *ngIf=\"calendar.mode == 'month'\" (click)=\"handleCalendarView()\"></ion-icon>\r\n  </ion-item>\r\n  <ion-col class=\"ion-no-padding\">\r\n    <ion-list class=\"ion-no-padding\">\r\n      <ion-item-group>\r\n        <ion-item-divider class=\"ionic-divider\" lines=\"none\" sticky>\r\n          <ion-toolbar mode=\"ios\" lines=\"none\" no-border-top class=\"profile_tabs three-tabs\">\r\n            <ion-segment mode=\"ios\" class=\"ion-no-padding\" [(ngModel)]=\"scheduleProgram\">\r\n              <ion-segment-button mode=\"ios\" class=\"ionic-segment-btn\" value=\"program\" checked>\r\n                <ion-icon class=\"ionic-icon\" ios=\"ios-clipboard\" md=\"md-clipboard\"></ion-icon>\r\n              </ion-segment-button>\r\n              <ion-segment-button mode=\"ios\" class=\"ionic-segment-btn\" value=\"invitation\">\r\n                <ion-icon class=\"ionic-icon\" ios=\"ios-mail\" md=\"md-mail\"></ion-icon>\r\n              </ion-segment-button>\r\n              <ion-segment-button mode=\"ios\" class=\"ionic-segment-btn\" value=\"nutrition\">\r\n                <ion-icon class=\"ionic-icon\" ios=\"ios-nutrition\" md=\"md-nutrition\"></ion-icon>\r\n              </ion-segment-button>\r\n              <ion-segment-button mode=\"ios\" class=\"ionic-segment-btn\" value=\"videos\">\r\n                <ion-icon class=\"ionic-icon\" ios=\"ios-videocam\" md=\"md-videocam\"></ion-icon>\r\n              </ion-segment-button>\r\n              <ion-segment-button mode=\"ios\" class=\"ionic-segment-btn\" value=\"live\">\r\n                <div class=\"live-icon\">\r\n                  <span>live</span>\r\n                </div>\r\n              </ion-segment-button>\r\n            </ion-segment>\r\n          </ion-toolbar>\r\n        </ion-item-divider>\r\n        <ion-item-sliding>\r\n          <div [ngSwitch]=\"scheduleProgram\">\r\n            <ion-list class=\"ion-no-padding border-bot\" *ngSwitchCase=\"'program'\">\r\n              <div class=\"program-card\" *ngFor=\"let program of allScheduleList; let i = index;\">\r\n                <ion-avatar slot=\"start\" [routerLink]=\"(program?.user_id == userData?.id) ? ['/new-program-inner',program.id] : ['/new-program-view',program.id]\">\r\n                  <img src=\"{{url}}{{program?.img_arr[0]}}\" *ngIf=\"program?.image_path\">\r\n                  <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!program?.image_path\">\r\n                </ion-avatar>\r\n                <div class=\"program-info\" [routerLink]=\"(program?.user_id == userData?.id) ? ['/new-program-inner',program.id] : ['/new-program-view',program.id]\">\r\n                  <h6>{{program?.title}}</h6>\r\n                  <span>By: {{program?.program_user?.user_name}}</span>\r\n                  <p>{{program?.converted |date:'medium'}}</p>\r\n                </div>\r\n                <span class=\"program-type\">{{program?.type_id}}</span>\r\n                <ion-icon ios=\"ios-more\" md=\"md-more\" *ngIf=\"(program?.user_id == userData?.id)\" (click)=\"hostingDropdown(program?.id)\"></ion-icon>\r\n              </div>\r\n              <div *ngIf=\"dataLength == '0' \" class=\"no-data\">\r\n                <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Program available</p>             \r\n              </div>\r\n            </ion-list>\r\n            <ion-list class=\"ion-no-padding border-bot\" *ngSwitchCase=\"'invitation'\">\r\n              <!-- <ion-item style=\"position: relative; --min-height: 30px;\" class=\"ion-no-padding\">\r\n                <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropdown\" md=\"md-arrow-dropdown\" *ngIf=\"calendar.mode == 'week'\" (click)=\"handleCalendarView()\"></ion-icon>\r\n                <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropup\" md=\"md-arrow-dropup\" *ngIf=\"calendar.mode == 'month'\" (click)=\"handleCalendarView()\"></ion-icon>\r\n              </ion-item> -->\r\n                <ion-toolbar class=\"searchbar\" >\r\n                  <ion-searchbar [(ngModel)]=\"reqProgSearchTerm\" animated=\"true\"></ion-searchbar>\r\n                </ion-toolbar>\r\n              <div class=\"program-card\" *ngFor=\"let item of reqProgArray; let l = index;\" >\r\n                <ion-avatar>\r\n                  <img src=\"{{url}}{{item?.img_arr[0]}}\" *ngIf=\"item?.image_path\">\r\n                  <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!item?.image_path\">\r\n                </ion-avatar>\r\n                <div class=\"program-info\">\r\n                  <h6>{{item.title}}</h6>\r\n                  <span>By: {{item?.program_user?.user_name}}</span>\r\n                  <p>{{item?.converted |date:'medium'}}</p>\r\n                </div>\r\n                <ion-icon class=\"ionic-icon\" ios=\"ios-mail\" md=\"md-mail\"></ion-icon>\r\n                <!-- M A I L  O P E N -->\r\n                <!-- <ion-icon class=\"ionic-icon\" ios=\"ios-mail-open\" md=\"md-mail-open\"></ion-icon> -->\r\n                <ion-icon ios=\"ios-more\" md=\"md-more\" (click)=\"requestDropdown(item.id)\"></ion-icon>\r\n              </div>\r\n              <div *ngIf=\"noReqProgramList\" class=\"no-data\">\r\n                <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Requested Program</p>             \r\n              </div>\r\n            </ion-list>\r\n            <ion-list class=\"ion-no-padding border-bot\" *ngSwitchCase=\"'nutrition'\">\r\n              <ion-item style=\"position: relative; --min-height: 30px;\" class=\"ion-no-padding\">\r\n                <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropdown\" md=\"md-arrow-dropdown\" *ngIf=\"nutriArrow == 'down' \"  (click)=\"changeDataFlow('nutrition','prev')\"></ion-icon>\r\n                <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropup\" md=\"md-arrow-dropup\" *ngIf=\"nutriArrow == 'up' \"  (click)=\"changeDataFlow('nutrition','upcoming')\"></ion-icon>\r\n                <!-- <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropup\" md=\"md-arrow-dropup\"></ion-icon> -->\r\n              </ion-item>\r\n                <ion-toolbar class=\"searchbar\" >\r\n                  <ion-searchbar [(ngModel)]=\"nutriProgSearchTerm\" animated=\"true\"></ion-searchbar>\r\n                </ion-toolbar>\r\n              <div class=\"program-card\" *ngFor=\"let item of nutriProgArray\">\r\n                <ion-avatar (click)=\"nutritionModal(item)\">\r\n                  <img src=\"{{url}}{{item?.img_arr[0]}}\" *ngIf=\"item?.image_path\">\r\n                  <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!item?.image_path\">\r\n                </ion-avatar>\r\n                <div class=\"program-info\" (click)=\"nutritionModal(item)\">\r\n                  <h6>{{item.title}}</h6>\r\n                  <span>By: {{item?.program_user?.user_name}}</span>\r\n                  <p>{{item?.converted |date:'medium'}}</p>\r\n                </div>\r\n                <!-- <ion-icon ios=\"ios-more\" md=\"md-more\"></ion-icon> -->\r\n              </div>\r\n              <div *ngIf=\"noNutriProg\" class=\"no-data\">\r\n                <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Program Available</p>\r\n              </div>\r\n            </ion-list>\r\n            <ion-list class=\"ion-no-padding border-bot\" *ngSwitchCase=\"'videos'\">\r\n              <ion-item style=\"position: relative; --min-height: 30px;\" class=\"ion-no-padding\">\r\n                <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropdown\" md=\"md-arrow-dropdown\" *ngIf=\"videoArrow == 'down' \"  (click)=\"changeDataFlow('videos','prev')\">upcoming</ion-icon>\r\n                <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropup\" md=\"md-arrow-dropup\" *ngIf=\"videoArrow == 'up' \"  (click)=\"changeDataFlow('videos','upcoming')\">previos</ion-icon>\r\n                <!-- <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropup\" md=\"md-arrow-dropup\"></ion-icon> -->\r\n              </ion-item>\r\n              <ion-toolbar class=\"searchbar\" >\r\n                <ion-searchbar [(ngModel)]=\"videoSearchTerm\" animated=\"true\"></ion-searchbar>\r\n              </ion-toolbar>\r\n              <div class=\"program-card\" *ngFor=\"let item of videoFiltered\">\r\n                <ion-avatar (click)=\"showVideoDetails(item.id,item.video_id)\">\r\n                  <img src=\"{{url}}{{item?.img_arr[0]}}\" *ngIf=\"item?.image_path\">\r\n                  <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!item?.image_path\">\r\n                </ion-avatar>\r\n                <div class=\"program-info\" (click)=\"showVideoDetails(item.id,item.video_id)\">\r\n                  <h6>{{item.title}}</h6>\r\n                  <span>By: {{item?.program_user?.user_name}}</span>\r\n                  <p>{{item?.converted |date:'medium'}}</p>\r\n                </div>\r\n              </div>\r\n              <div *ngIf=\"noVideoProg\" class=\"no-data\">\r\n                <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Program Available</p>\r\n              </div>\r\n            </ion-list>\r\n            <ion-list class=\"ion-no-padding border-bot\" *ngSwitchCase=\"'live'\">\r\n              <!-- <ion-item style=\"position: relative; --min-height: 30px;\" class=\"ion-no-padding\">\r\n                <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropdown\" md=\"md-arrow-dropdown\" *ngIf=\"liveArrow == 'down' \"  (click)=\"changeDataFlow('live','prev')\"></ion-icon>\r\n                <ion-icon class=\"toggle-cal\" ios=\"ios-arrow-dropup\" md=\"md-arrow-dropup\" *ngIf=\"liveArrow == 'up' \"  (click)=\"changeDataFlow('live','upcoming')\"></ion-icon>\r\n                \r\n              </ion-item> -->\r\n              <ion-toolbar class=\"searchbar\" >\r\n                <ion-searchbar [(ngModel)]=\"liveProgSearchTerm\" animated=\"true\"></ion-searchbar>\r\n              </ion-toolbar>\r\n              <div class=\"program-card\" *ngFor=\"let item of liveProgArray\">\r\n                <ion-avatar [routerLink]=\"(item?.user_id == userData?.id) ? ['/new-program-inner',item.id] : ['/new-program-view',item.id]\">\r\n                  <img src=\"{{profileUrl}}{{item?.program_user?.bios?.profile_pic}}\" *ngIf=\"item?.program_user?.bios?.profile_pic != '' \">\r\n                  <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"item?.program_user?.bios?.profile_pic == '' \">\r\n                </ion-avatar>\r\n                <div class=\"program-info\" [routerLink]=\"(item?.user_id == userData?.id) ? ['/new-program-inner',item.id] : ['/new-program-view',item.id]\">\r\n                  <h6>{{item.title}}</h6>\r\n                  <span>By: {{item?.program_user?.user_name}}</span>\r\n                  <p>{{item?.converted |date:'medium'}}</p>\r\n                </div>\r\n                <span class=\"program-type\">{{item?.type_id}}</span>\r\n                <ion-icon ios=\"ios-more\" md=\"md-more\" *ngIf=\"(item?.user_id == userData?.id)\" (click)=\"hostingDropdown(item?.id)\"></ion-icon>\r\n              </div>\r\n              <div *ngIf=\"noLiveProg\" class=\"no-data\">\r\n                <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Program Available</p>\r\n              </div>\r\n              <div class=\"program-live-box\">\r\n                <!-- T I M E R   B L O C K -->\r\n                <!-- <div class=\"program-live-timer\">\r\n                  <p>01 : 35 : 15</p>\r\n                </div> -->\r\n\r\n                  <!-- J O I N   B U T T O N -->\r\n                <!-- <div class=\"program-live-btn\">\r\n                  <button>Join</button>\r\n                </div> -->\r\n              </div>\r\n            </ion-list>\r\n          </div>\r\n        </ion-item-sliding>\r\n      </ion-item-group>\r\n    </ion-list>\r\n  </ion-col>\r\n</ion-content>\r\n";
     /***/
   },
 
@@ -287,6 +287,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.profileUrl = _config_config__WEBPACK_IMPORTED_MODULE_7__["Config"].profilePic;
         this.url = _config_config__WEBPACK_IMPORTED_MODULE_7__["Config"].imgUrl;
         this.vidUrl = _config_config__WEBPACK_IMPORTED_MODULE_7__["Config"].progVidUrl;
+        this.nutriArrow = 'down';
+        this.videoArrow = 'down';
+        this.liveArrow = 'down';
         this.scheduleProgram = "program";
       }
 
@@ -333,7 +336,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.userData = JSON.parse(localStorage.getItem('userData'));
           console.log(this.calendar.mode);
-          this.programService.getAllNutritionPrograms(null).subscribe(function (data) {
+          this.commonService.presentLoader();
+          this.programService.getAllNutritionPrograms({
+            data: 'upcoming'
+          }).subscribe(function (data) {
             _this.nutritionList = data.programList.filter(function (el) {
               if (el.image_path) {
                 el.img_arr = el.image_path.split(',');
@@ -357,7 +363,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             _this.commonService.dismissLoader();
           });
-          this.programService.getAllVideoPrograms(null).subscribe(function (data) {
+          this.programService.getAllVideoPrograms({
+            data: 'upcoming'
+          }).subscribe(function (data) {
             _this.videoProgList = data.programList.filter(function (el) {
               if (el.image_path) {
                 el.img_arr = el.image_path.split(',');
@@ -405,6 +413,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             _this.commonService.dismissLoader();
           });
+          var params = null;
+          var userZoneDate = new Date(this.myDate);
+          userZoneDate.setHours(0, 0, 0);
+          params = {
+            'sortDate': userZoneDate.toUTCString()
+          };
+          console.log(userZoneDate.toUTCString());
+          this.programService.getAllRequestedPrograms(params).subscribe(function (data) {
+            console.log(data);
+            _this.reqProgramList = data.list.filter(function (el) {
+              if (el.image_path) {
+                el.img_arr = el.image_path.split(',');
+              }
+
+              el.converted = new Date(el.program_date + 'Z');
+              el.expanded = false;
+              return el;
+            }, function (err) {
+              _this.commonService.presentToast("Couldnt load data, Something went wrong.");
+            });
+            _this.reqProgArray = _this.reqProgramList;
+
+            _this.commonService.dismissLoader();
+
+            if (_this.reqProgramList.length == 0) {
+              _this.noReqProgramList = true;
+            }
+          }, function (err) {
+            _this.commonService.presentToast("Couldnt load data, Something went wrong.");
+
+            _this.commonService.dismissLoader();
+
+            if (_this.reqProgramList.length == 0) {
+              _this.noReqProgramList = true;
+            }
+          });
+          console.log(this.nutriArrow);
         }
       }, {
         key: "videoFilterUser",
@@ -456,43 +501,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             _this2.commonService.dismissLoader();
           });
-          this.commonService.presentLoader();
-          var params = null;
-          var userZoneDate = new Date(this.myDate);
-          userZoneDate.setHours(0, 0, 0);
-          params = {
-            'sortDate': userZoneDate.toUTCString()
-          };
-          console.log(userZoneDate.toUTCString());
-          this.programService.getAllRequestedPrograms(params).subscribe(function (data) {
-            console.log(data);
-            _this2.reqProgramList = data.list.filter(function (el) {
-              if (el.image_path) {
-                el.img_arr = el.image_path.split(',');
-              }
-
-              el.converted = new Date(el.program_date + 'Z');
-              el.expanded = false;
-              return el;
-            }, function (err) {
-              _this2.commonService.presentToast("Couldnt load data, Something went wrong.");
-            });
-            _this2.reqProgArray = _this2.reqProgramList;
-
-            _this2.commonService.dismissLoader();
-
-            if (_this2.reqProgramList.length == 0) {
-              _this2.noReqProgramList = true;
-            }
-          }, function (err) {
-            _this2.commonService.presentToast("Couldnt load data, Something went wrong.");
-
-            _this2.commonService.dismissLoader();
-
-            if (_this2.reqProgramList.length == 0) {
-              _this2.noReqProgramList = true;
-            }
-          });
         }
       }, {
         key: "onTimeSelected",
@@ -538,10 +546,107 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }
       }, {
+        key: "changeDataFlow",
+        value: function changeDataFlow(catg, type) {
+          if (catg == 'nutrition') {
+            this.getAllNutritionProgram(type);
+          }
+
+          if (catg == 'videos') {
+            this.getAllVideoProgram(type);
+          }
+        }
+      }, {
+        key: "getAllVideoProgram",
+        value: function getAllVideoProgram(type) {
+          var _this4 = this;
+
+          console.log(type);
+
+          if (type == 'prev') {
+            this.videoArrow = 'up';
+          } else {
+            this.videoArrow = 'down';
+          }
+
+          this.commonService.presentLoader();
+          this.programService.getAllVideoPrograms({
+            data: type
+          }).subscribe(function (data) {
+            _this4.videoProgList = data.programList.filter(function (el) {
+              if (el.image_path) {
+                el.img_arr = el.image_path.split(',');
+              }
+
+              el.converted = new Date(el.program_date + 'Z');
+              el.expanded = false;
+              return el;
+            });
+            _this4.videoFiltered = _this4.videoProgList;
+
+            if (_this4.videoFiltered.length <= 0) {
+              _this4.noVideoProg = true;
+            } else {
+              _this4.noVideoProg = false;
+            }
+
+            console.log(_this4.videoProgList);
+
+            _this4.commonService.dismissLoader();
+          }, function (err) {
+            _this4.commonService.presentToast("Couldnt load data, Something went wrong.");
+
+            _this4.commonService.dismissLoader();
+          });
+        }
+      }, {
+        key: "getAllNutritionProgram",
+        value: function getAllNutritionProgram(type) {
+          var _this5 = this;
+
+          console.log(type);
+
+          if (type == 'prev') {
+            this.nutriArrow = 'up';
+          } else {
+            this.nutriArrow = 'down';
+          }
+
+          this.commonService.presentLoader();
+          this.programService.getAllNutritionPrograms({
+            data: type
+          }).subscribe(function (data) {
+            _this5.nutritionList = data.programList.filter(function (el) {
+              if (el.image_path) {
+                el.img_arr = el.image_path.split(',');
+              }
+
+              el.converted = new Date(el.program_date + 'Z');
+              el.expanded = false;
+              return el;
+            });
+            _this5.nutriProgArray = _this5.nutritionList;
+
+            if (_this5.nutritionList.length < 1) {
+              _this5.noNutriProg = true;
+            } else {
+              _this5.noNutriProg = false;
+            }
+
+            console.log(_this5.nutritionList);
+
+            _this5.commonService.dismissLoader();
+          }, function (err) {
+            _this5.commonService.presentToast("Couldnt load data, Something went wrong.");
+
+            _this5.commonService.dismissLoader();
+          });
+        }
+      }, {
         key: "hostingDropdown",
         value: function hostingDropdown(ev) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var _this4 = this;
+            var _this6 = this;
 
             var popover;
             return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -563,7 +668,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     popover = _context.sent;
                     popover.onDidDismiss().then(function (dataReturned) {
                       if (dataReturned !== null) {
-                        _this4.ngOnInit();
+                        _this6.ngOnInit();
                       }
                     });
                     _context.next = 6;
@@ -584,7 +689,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "requestDropdown",
         value: function requestDropdown(ev) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var _this5 = this;
+            var _this7 = this;
 
             var popover;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -605,10 +710,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 2:
                     popover = _context2.sent;
                     popover.onDidDismiss().then(function (dataReturned) {
-                      _this5.ngOnInit();
+                      _this7.ngOnInit();
 
                       if (dataReturned !== null) {
-                        _this5.ngOnInit();
+                        _this7.ngOnInit();
                       }
                     });
                     _context2.next = 6;
