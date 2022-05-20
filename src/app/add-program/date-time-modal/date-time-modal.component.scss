@@ -226,12 +226,13 @@ ion-list{padding-top: 0 !important;padding-bottom: 0 !important;
     .terms-footer{
         display: flex;
         align-items: center;
-        padding: 0 10px;
+        padding: 5px 10px;
         ion-checkbox{
             margin-right: 8px;
         }
         ion-icon{
             color: #555;
+            font-size: 24px;
         }
     }
     .full-height{

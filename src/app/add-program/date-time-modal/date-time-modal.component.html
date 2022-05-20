@@ -199,13 +199,13 @@
       </ion-item>
     </ion-list>     -->
   </div>
-
+  
 </ion-content>
 <ion-footer class="sticky-footer">
   <div class="terms-footer">
     <ion-checkbox></ion-checkbox>
-    <ion-label> I have read and agree to the Terms and Conditions. <ion-icon ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon></ion-label>
-    
+    <ion-label> I have read and agree to the Terms and Conditions.</ion-label>
+    <ion-icon (click)="openModal()" ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
   </div>
   <ion-button [disabled]="isLoading" expand="full" (click)="onSubmit()"
     class="green ion-text-uppercase ion-no-margin full-height">Save</ion-button>

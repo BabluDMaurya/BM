@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from './../../services/common.service';
 import { SettingsService } from '../../services/settings.service';
 import { NavParams, ModalController } from '@ionic/angular';
+import { PeopleViewService } from '../../services/people-view.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -13,18 +14,32 @@ export class FollowersComponent implements OnInit {
 
   profileData: any;
   otherUser: any;
-
+  followers: any;
+  followings: any;
   constructor(
     public commonService: CommonService,
     private settingsService: SettingsService,
     public navParamas: NavParams,
-    private router:Router
+    private router:Router,
+    public peopleViewService: PeopleViewService,
   ) { }
 
   ngOnInit() {
     this.profileData = this.navParamas.get('profileData');
-
+    console.log(this.profileData);
     this.otherUser = this.navParamas.get('otherUser');
+
+    this.peopleViewService.getFollowers('').subscribe(
+      (data: any) => {
+        this.followers = data.result.length;
+      });
+      
+
+      this.peopleViewService.getFollowings('').subscribe(
+        (data: any) => {
+         this.followings = data.result.length;
+        });
+
   }
 
   dismiss() {

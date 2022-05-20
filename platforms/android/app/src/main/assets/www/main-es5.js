@@ -825,7 +825,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"dismiss()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>Information</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\"></ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <div *ngIf='!otherUser'>\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Tagline</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.userData?.additional?.tag_line}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.additional?.tag_line\">Add Tagline +</div> </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Bio</ion-label>\r\n      </ion-list-header>\r\n      <ion-item class=\"py-10\">{{profileData?.userData?.bios?.about_me}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.bios?.about_me\">Add Bio +</div> </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>First Interests</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.speciality?.primaryName?.name }} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.speciality?.primaryName?.name\">Add Primary Interest +</div> </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Second Interests</ion-label>\r\n        \r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.speciality?.secondaryName}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.speciality?.secondaryName\">Add Secondary Interest +</div> </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Location</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.address?.city?.name}} {{profileData?.address?.state?.name }}, {{profileData?.address?.country?.name}} <div [routerLink]=\"\" *ngIf=\"!profileData?.address?.country?.name && !profileData?.address?.state?.name \">Add Location +</div> </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Language Spoken</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.lang?.lang}}<div (click)=\"goToEdit()\" *ngIf=\"!profileData?.lang?.lang\">Add Language +</div></ion-item>\r\n    </ion-list>\r\n\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Hometown</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.userData?.bios?.hometown}}<div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.bios?.hometown\">Add Language +</div></ion-item>\r\n    </ion-list>\r\n  </div>\r\n  <div *ngIf='otherUser'>\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Tagline</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.userData?.additional?.tag_line}} <div *ngIf=\"!profileData?.userData?.additional?.tag_line\">Not Mentioned.</div> </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Bio</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.userData?.bios?.about_me}} <div *ngIf=\"!profileData?.userData?.bios?.about_me\">Not Mentioned.</div> </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>First Interests</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.speciality?.primaryName?.name }} <div *ngIf=\"!profileData?.speciality?.primaryName?.name\">Not Mentioned.</div> </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Second Interests</ion-label>\r\n        \r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.speciality?.secondaryName?.name}} <div *ngIf=\"!profileData?.speciality?.secondaryName?.name\">Not Mentioned.</div> </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Location</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.address?.city?.name}} {{profileData?.address?.state?.name }}, {{profileData?.address?.country?.name}} <div [routerLink]=\"\" *ngIf=\"!profileData?.address?.country?.name && !profileData?.address?.state?.name \">Not Mentioned.</div> </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Language Spoken</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.lang?.lang}}<div *ngIf=\"!profileData?.lang?.lang\">Not Mentioned.</div></ion-item>\r\n    </ion-list>\r\n\r\n    <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Hometown</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData.userData.bios.hometown}}<div *ngIf=\"!profileData.userData.bios.hometown\">Not Mentioned.</div></ion-item>\r\n    </ion-list>\r\n  </div>\r\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"dismiss()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>Information</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\"></ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <div *ngIf='!otherUser' class=\"ion-padding-vertical\">\r\n    <!-- <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Tagline</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.userData?.additional?.tag_line}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.additional?.tag_line\">Add Tagline +</div> </ion-item>\r\n    </ion-list> -->\r\n    <ion-item>\r\n      <ion-label class=\"info-head\">Followers</ion-label>\r\n      <ion-text class=\"info-ans\">23</ion-text>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-label class=\"info-head\">Followers</ion-label>\r\n      <ion-text class=\"info-ans\">23</ion-text>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-label class=\"info-head\">Personal Info</ion-label>\r\n    </ion-item>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n      <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Tagline</h6>\r\n    <ion-item>\r\n      <ion-label class=\"info-ans\">{{profileData?.userData?.additional?.tag_line}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.additional?.tag_line\">Add Tagline +</div> </ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Bio</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.userData?.bios?.about_me}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.bios?.about_me\">Add Bio +</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> First Interests</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.speciality?.primaryName?.name }} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.speciality?.primaryName?.name\">Add Primary Interest +</div>  </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Second Interests</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.speciality?.secondaryName}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.speciality?.secondaryName\">Add Secondary Interest +</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"compass\" color=\"\"></ion-icon> Location</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.address?.city?.name}} {{profileData?.address?.state?.name }}, {{profileData?.address?.country?.name}} <div [routerLink]=\"\" *ngIf=\"!profileData?.address?.country?.name && !profileData?.address?.state?.name \">Add Location +</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"globe\" color=\"\"></ion-icon> Language Spoken</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.lang?.lang}}<div (click)=\"goToEdit()\" *ngIf=\"!profileData?.lang?.lang\">Add Language +</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"home\" color=\"\"></ion-icon> Hometown</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.userData?.bios?.hometown}}<div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.bios?.hometown\">Add Hometown +</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n  </div>\r\n  <div *ngIf='otherUser'>\r\n    <!-- <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label class=\"info-ans\">Tagline</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.userData?.additional?.tag_line}} <div *ngIf=\"!profileData?.userData?.additional?.tag_line\">Not Mentioned.</div> </ion-item>\r\n    </ion-list> -->\r\n    <ion-item>\r\n      <ion-label>Followers</ion-label>\r\n      <ion-label>23</ion-label>\r\n    </ion-item>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n      <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Tagline</h6>\r\n    <ion-item>\r\n      <ion-label class=\"info-ans\">{{profileData?.userData?.additional?.tag_line}} <div *ngIf=\"!profileData?.userData?.additional?.tag_line\">Not Mentioned.</div> </ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Bio</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.userData?.bios?.about_me}} <div *ngIf=\"!profileData?.userData?.bios?.about_me\">Not Mentioned.</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> First Interests</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.speciality?.primaryName?.name }} <div *ngIf=\"!profileData?.speciality?.primaryName?.name\">Not Mentioned.</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Second Interests</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.speciality?.secondaryName?.name}} <div *ngIf=\"!profileData?.speciality?.secondaryName?.name\">Not Mentioned.</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon>Location</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.address?.city?.name}} {{profileData?.address?.state?.name }}, {{profileData?.address?.country?.name}} <div [routerLink]=\"\" *ngIf=\"!profileData?.address?.country?.name && !profileData?.address?.state?.name \">Not Mentioned.</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon>Language Spken</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.lang?.lang}}<div *ngIf=\"!profileData?.lang?.lang\">Not Mentioned.</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon>Hometown</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData.userData.bios.hometown}}<div *ngIf=\"!profileData.userData.bios.hometown\">Not Mentioned.</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n  </div>\r\n</ion-content>";
     /***/
   },
 
@@ -6001,7 +6001,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/ngx-socket-io/fesm2015/ngx-socket-io.js");
 
     var AppComponent = /*#__PURE__*/function () {
-      function AppComponent(platform, splashScreen, statusBar, router, screenOrientation, alertCtrl, loadingController, authService, androidPermissions, fcm, file, deeplinks, socket) {
+      function AppComponent(platform, splashScreen, statusBar, router, screenOrientation, alertCtrl, loadingController, authService, androidPermissions, fcm, file, deeplinks, socket, navCtrl) {
         var _this20 = this;
 
         _classCallCheck(this, AppComponent);
@@ -6019,6 +6019,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.file = file;
         this.deeplinks = deeplinks;
         this.socket = socket;
+        this.navCtrl = navCtrl;
         platform.ready().then(function () {
           // Okay, so the platform is ready and our plugins are available.
           // Here you can do any higher level native things you might need.
@@ -6042,18 +6043,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(AppComponent, [{
         key: "backButtonEvent",
         value: function backButtonEvent() {
-          this.platform.backButton.subscribe(function () {});
+          var _this21 = this;
+
+          this.platform.backButton.subscribe(function () {
+            _this21.navCtrl.back();
+          });
         }
       }, {
         key: "initializeApp",
         value: function initializeApp() {
-          var _this21 = this;
+          var _this22 = this;
 
           console.log(this.platform.is('ios'));
           this.platform.ready().then(function () {
-            _this21.statusBar.styleDefault();
+            _this22.statusBar.styleDefault();
 
-            _this21.splashScreen.hide(); // if (this.platform.is('android')) {
+            _this22.splashScreen.hide(); // if (this.platform.is('android')) {
             //     this.statusBar.overlaysWebView(false);
             //     this.statusBar.backgroundColorByHexString('#000000');
             //     this.splashScreen.hide();
@@ -6066,11 +6071,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             //---------FCM----------//
 
 
-            _this21.fcm.getToken().then(function (token) {
+            _this22.fcm.getToken().then(function (token) {
               localStorage.setItem('deviceToken', token);
             });
 
-            _this21.fcm.onTokenRefresh().subscribe(function (token) {// this.settingService.updateUserToken({'token':token}).subscribe((data: any) => {              
+            _this22.fcm.onTokenRefresh().subscribe(function (token) {// this.settingService.updateUserToken({'token':token}).subscribe((data: any) => {              
               //   if (data.message === true) {
               //     console.log('updateUserToken:success');                
               //   } else {
@@ -6081,21 +6086,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               // console.log('Bomrah:'+token);
             });
 
-            _this21.fcm.onNotification().subscribe(function (data) {
+            _this22.fcm.onNotification().subscribe(function (data) {
               console.log("fcm.onNotification : " + data);
 
               if (data.wasTapped) {
                 console.log('Received in background');
 
-                _this21.router.navigate([data.landing_page, data.price]);
+                _this22.router.navigate([data.landing_page, data.price]);
               } else {
                 console.log('Received in foreground');
 
-                _this21.router.navigate([data.landing_page, data.price]);
+                _this22.router.navigate([data.landing_page, data.price]);
               }
             });
 
-            _this21.fcm.subscribeToTopic('people'); // FCM.unsubscribeFromTopic('marketing');
+            _this22.fcm.subscribeToTopic('people'); // FCM.unsubscribeFromTopic('marketing');
             //---------FCM END------//
             // this.splashScreen.hide();     
             // if (this.platform.is('android')) {        
@@ -6107,15 +6112,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             // }
 
 
-            _this21.androidPermissions.requestPermissions([_this21.androidPermissions.PERMISSION.READ_STORAGE, _this21.androidPermissions.PERMISSION.GET_ACCOUNTS]).then(function (result) {
+            _this22.androidPermissions.requestPermissions([_this22.androidPermissions.PERMISSION.READ_STORAGE, _this22.androidPermissions.PERMISSION.GET_ACCOUNTS]).then(function (result) {
               console.log('User allowed access to camera'); // put your code here
             });
 
-            _this21.statusBar.styleDefault();
+            _this22.statusBar.styleDefault();
 
-            _this21.currentScreenOrientation = _this21.screenOrientation.type;
+            _this22.currentScreenOrientation = _this22.screenOrientation.type;
 
-            _this21.screenOrientation.lock(_this21.screenOrientation.ORIENTATIONS.PORTRAIT);
+            _this22.screenOrientation.lock(_this22.screenOrientation.ORIENTATIONS.PORTRAIT);
           });
         }
       }, {
@@ -6155,6 +6160,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _ionic_native_deeplinks_ngx__WEBPACK_IMPORTED_MODULE_11__["Deeplinks"]
       }, {
         type: ngx_socket_io__WEBPACK_IMPORTED_MODULE_13__["Socket"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"]
       }];
     };
 
@@ -6169,7 +6176,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./app.component.scss */
       "./src/app/app.component.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_4__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_9__["ScreenOrientation"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"], _services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"], _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_8__["AndroidPermissions"], _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_7__["FCM"], _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_10__["File"], _ionic_native_deeplinks_ngx__WEBPACK_IMPORTED_MODULE_11__["Deeplinks"], ngx_socket_io__WEBPACK_IMPORTED_MODULE_13__["Socket"]])], AppComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_4__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_9__["ScreenOrientation"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"], _services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"], _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_8__["AndroidPermissions"], _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_7__["FCM"], _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_10__["File"], _ionic_native_deeplinks_ngx__WEBPACK_IMPORTED_MODULE_11__["Deeplinks"], ngx_socket_io__WEBPACK_IMPORTED_MODULE_13__["Socket"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"]])], AppComponent);
     /***/
   },
 
@@ -6962,7 +6969,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var _this22 = this;
+          var _this23 = this;
 
           this.submitted = true;
 
@@ -6975,37 +6982,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.authService.userLogin(this.registerForm.value).subscribe(function (data) {
             // console.log(data);
             if (data.userToken) {
-              _this22.storage.set('userData', JSON.stringify(data.userData));
+              _this23.storage.set('userData', JSON.stringify(data.userData));
 
-              _this22.storage.set('userToken', data.userToken);
+              _this23.storage.set('userToken', data.userToken);
 
               localStorage.setItem('userData', JSON.stringify(data.userData));
               localStorage.setItem('userToken', data.userToken);
 
-              _this22.commonService.setUserData(data.userToken, data.userToken);
+              _this23.commonService.setUserData(data.userToken, data.userToken);
 
-              _this22.commonService.dismissLoader(); // send device token to server
+              _this23.commonService.dismissLoader(); // send device token to server
 
 
-              if (_this22.platform.is('android')) {
-                _this22.settingsService.addDeviceToken({
-                  'token': _this22.diviceToken
+              if (_this23.platform.is('android')) {
+                _this23.settingsService.addDeviceToken({
+                  'token': _this23.diviceToken
                 }).subscribe(function (data) {}, function (err) {});
-              } else if (_this22.platform.is('ios')) {
-                _this22.settingsService.addDeviceToken({
-                  'token': _this22.diviceToken,
+              } else if (_this23.platform.is('ios')) {
+                _this23.settingsService.addDeviceToken({
+                  'token': _this23.diviceToken,
                   'divice_type': 'ios'
                 }).subscribe(function (data) {}, function (err) {});
               }
 
-              _this22.socket.connect();
+              _this23.socket.connect();
 
-              _this22.socket.emit('set-name', data.userData.id, 'chatList');
+              _this23.socket.emit('set-name', data.userData.id, 'chatList');
 
               if (data.userData.user_type == "1") {
-                _this22.router.navigateByUrl('tabs/consultant-profile');
+                _this23.router.navigateByUrl('tabs/consultant-profile');
               } else if (data.userData.user_type == "0") {
-                _this22.router.navigateByUrl('/tabs/user-profile');
+                _this23.router.navigateByUrl('/tabs/user-profile');
               } //  this.registerForm.reset();
 
             } else if (data.message == '2') {
@@ -7015,36 +7022,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }, {
                 text: 'Okay',
                 handler: function handler() {
-                  _this22.commonService.presentLoader();
+                  _this23.commonService.presentLoader();
 
-                  _this22.authService.resendOtp({
+                  _this23.authService.resendOtp({
                     'uemail': data.uemail
                   }).subscribe(function (value) {
-                    _this22.commonService.dismissLoader();
+                    _this23.commonService.dismissLoader();
 
-                    _this22.router.navigate(["verify", data.uemail]).then(function (nav) {}, function (err) {});
+                    _this23.router.navigate(["verify", data.uemail]).then(function (nav) {}, function (err) {});
                   }, function (otperr) {
-                    _this22.commonService.dismissLoader();
+                    _this23.commonService.dismissLoader();
 
-                    _this22.router.navigateByUrl('verify');
+                    _this23.router.navigateByUrl('verify');
                   });
                 }
               }];
               var msg = 'Email is not verified please verify email first';
               var title = 'Login Failed';
 
-              _this22.commonService.presentAlert(title, msg, btns, '');
+              _this23.commonService.presentAlert(title, msg, btns, '');
 
-              _this22.commonService.dismissLoader();
+              _this23.commonService.dismissLoader();
             } else {
-              _this22.commonService.dismissLoader();
+              _this23.commonService.dismissLoader();
 
-              _this22.commonService.presentToast(data.message);
+              _this23.commonService.presentToast(data.message);
             }
 
-            _this22.registerForm.reset();
+            _this23.registerForm.reset();
           }, function (err) {
-            _this22.commonService.dismissLoader();
+            _this23.commonService.dismissLoader();
           });
         }
       }, {
@@ -7055,11 +7062,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ionViewWillEnter",
         value: function ionViewWillEnter() {
-          var _this23 = this;
+          var _this24 = this;
 
           console.log("ionViewWillEnter signin");
           this.subscribe = this.platform.backButton.subscribeWithPriority(10, function () {
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this23, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this24, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
               var header, buttons;
               return regeneratorRuntime.wrap(function _callee12$(_context12) {
                 while (1) {
@@ -7300,96 +7307,96 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngAfterViewInit",
         value: function ngAfterViewInit() {
-          var _this24 = this;
+          var _this25 = this;
 
           setTimeout(function () {
-            _this24.sendmessage.setFocus();
+            _this25.sendmessage.setFocus();
           }, 400);
         }
       }, {
         key: "groupChat",
         value: function groupChat() {
-          var _this25 = this;
+          var _this26 = this;
 
           this.socket.emit("newGroup", this.userData.id, this.receiverId, this.room);
           this.socket.emit('stormessagerequest', this.userData.id, this.receiverId);
           this.socket.fromEvent('receiveDate').subscribe(function (receiveDate) {// console.log('receiveDate:'+JSON.stringify(receiveDate));
           });
           this.socket.fromEvent('stormessage').subscribe(function (stormessage) {
-            _this25.storeMessages = stormessage;
+            _this26.storeMessages = stormessage;
             setTimeout(function () {
-              _this25.contentArea.scrollToBottom();
+              _this26.contentArea.scrollToBottom();
             }, 400);
           });
           this.socket.fromEvent('groupChatRequestData').subscribe(function (groupChatRequestData) {
             console.log("GROUP:" + JSON.stringify(groupChatRequestData));
-            _this25.groupName = groupChatRequestData[0].group_name;
-            _this25.adminId = groupChatRequestData[0].admin_id;
-            _this25.groupMember = groupChatRequestData[0].group_member;
-            _this25.acceptMember = groupChatRequestData[0].accept_member;
-            _this25.profile_pic = groupChatRequestData[0].group_image;
-            _this25.groupId = groupChatRequestData[0].id;
+            _this26.groupName = groupChatRequestData[0].group_name;
+            _this26.adminId = groupChatRequestData[0].admin_id;
+            _this26.groupMember = groupChatRequestData[0].group_member;
+            _this26.acceptMember = groupChatRequestData[0].accept_member;
+            _this26.profile_pic = groupChatRequestData[0].group_image;
+            _this26.groupId = groupChatRequestData[0].id;
           });
           this.socket.fromEvent('groupmessage').subscribe(function (message) {
-            _this25.groupMessages.push(message);
+            _this26.groupMessages.push(message);
 
-            _this25.contentArea.scrollToBottom();
+            _this26.contentArea.scrollToBottom();
           });
         }
       }, {
         key: "privateChat",
         value: function privateChat() {
-          var _this26 = this;
+          var _this27 = this;
 
           this.socket.fromEvent('message').subscribe(function (message) {
-            _this26.messages.push(message);
+            _this27.messages.push(message);
 
-            _this26.contentArea.scrollToBottom();
+            _this27.contentArea.scrollToBottom();
           });
           this.socket.fromEvent('lastChatId').subscribe(function (lastchatId) {
-            _this26.lastChatId = lastchatId;
-            console.log("this.lastChatId : " + _this26.lastChatId);
+            _this27.lastChatId = lastchatId;
+            console.log("this.lastChatId : " + _this27.lastChatId);
           });
           this.socket.fromEvent('blockStatusOfUser').subscribe(function (blockStatusOfUser) {
-            _this26.bSOUser = blockStatusOfUser['status'];
-            _this26.bidOUser = blockStatusOfUser['blockID'];
+            _this27.bSOUser = blockStatusOfUser['status'];
+            _this27.bidOUser = blockStatusOfUser['blockID'];
           });
           this.socket.fromEvent('blockStatusOfSelf').subscribe(function (blockStatusOfSelf) {
             if (blockStatusOfSelf['status'] === 'block') {
-              _this26.blockstatus = 1;
+              _this27.blockstatus = 1;
             } else {
-              _this26.blockstatus = 0;
+              _this27.blockstatus = 0;
             }
           });
           this.socket.fromEvent('storchatdate').subscribe(function (data) {// console.log("storchatdate : "+JSON.stringify(data));
           });
           this.socket.fromEvent('UserOnLineStatus').subscribe(function (UserOnLineStatus) {
-            _this26.UserOnLineStatus = UserOnLineStatus;
+            _this27.UserOnLineStatus = UserOnLineStatus;
           });
           this.socket.emit("addUser", this.userData.id, this.receiverId);
           this.socket.emit("privateUser", [this.userData.id, this.receiverId, this.room]);
           this.socket.emit("storemassagerequest", this.userData.id, this.receiverId);
           this.socket.fromEvent('stormessage').subscribe(function (storMessage) {
-            _this26.storeMessages = storMessage;
+            _this27.storeMessages = storMessage;
             setTimeout(function () {
-              _this26.contentArea.scrollToBottom();
+              _this27.contentArea.scrollToBottom();
             }, 400);
           });
           this.socket.fromEvent('userName').subscribe(function (data) {
             console.log("UserName");
-            _this26.user_name = data[0].user_name;
+            _this27.user_name = data[0].user_name;
           });
           this.socket.fromEvent('userBio').subscribe(function (data) {
             console.log("UserBio");
-            _this26.display_name = data[0].display_name;
-            _this26.profile_pic = data[0].profile_pic;
+            _this27.display_name = data[0].display_name;
+            _this27.profile_pic = data[0].profile_pic;
           });
         }
       }, {
         key: "blockStatusOfUser",
         value: function blockStatusOfUser(id) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
-            var _this27 = this;
+            var _this28 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee13$(_context13) {
@@ -7411,7 +7418,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         text: 'Ok',
                         handler: function handler() {
                           //--------unblock User through socket-------//
-                          _this27.socket.emit("blockevent", '0', id);
+                          _this28.socket.emit("blockevent", '0', id);
                         }
                       }]
                     });
@@ -7433,7 +7440,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "presentPopover",
         value: function presentPopover(ev) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
-            var _this28 = this;
+            var _this29 = this;
 
             var popover;
             return regeneratorRuntime.wrap(function _callee14$(_context14) {
@@ -7460,14 +7467,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     popover = _context14.sent;
                     popover.onDidDismiss().then(function (data) {
                       if (data.data == 'refresh') {
-                        _this28.doRefresh();
+                        _this29.doRefresh();
                       } else if (data.data == 'clear') {
-                        _this28.storeMessages = [];
-                        _this28.messages = [];
+                        _this29.storeMessages = [];
+                        _this29.messages = [];
                       } else {
-                        _this28.bSOUser = data['data'];
+                        _this29.bSOUser = data['data'];
 
-                        _this28.socket.emit('userBlockStatus', _this28.userData.id, _this28.receiverId);
+                        _this29.socket.emit('userBlockStatus', _this29.userData.id, _this29.receiverId);
                       }
                     });
                     _context14.next = 6;
@@ -7758,7 +7765,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var _this29 = this;
+          var _this30 = this;
 
           this.submitted = true;
 
@@ -7773,26 +7780,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             // console.log(this.chatGroupForm.value.groupName);
             this.formData.groupName = this.chatGroupForm.value.groupName;
             this.dataService.sendChatRequest(this.formData).subscribe(function (data) {
-              _this29.commonService.dismissLoader();
+              _this30.commonService.dismissLoader();
 
               if (data.status == 'success') {
                 var fileData = {
-                  returnUrl: _this29.returnUrl,
+                  returnUrl: _this30.returnUrl,
                   chatType: data.type,
                   room: data.room,
                   receiverId: parseInt(data.requestID)
                 };
 
-                _this29.chatRooms(fileData);
+                _this30.chatRooms(fileData);
 
-                _this29.commonService.dismissModal(); // this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
+                _this30.commonService.dismissModal(); // this.commonService.presentModal(ChatRoomsComponent,'fullModal',fileData);
 
               } else {
                 console.log('Somthing wrong');
                 return false;
               }
             }, function (err) {
-              _this29.commonService.presentLoader();
+              _this30.commonService.presentLoader();
             });
           }
         }
@@ -7972,18 +7979,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this30 = this;
+          var _this31 = this;
 
           this.dataService.chatGroup({
             'id': this.receiverId
           }).subscribe(function (data) {
-            _this30.adminId = data.admin_id;
+            _this31.adminId = data.admin_id;
           });
         }
       }, {
         key: "block",
         value: function block() {
-          var _this31 = this;
+          var _this32 = this;
 
           if (this.bSOUser == 'unblock') {
             this.returnStatus = 'block';
@@ -7997,9 +8004,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             'bidOUser': this.bidOUser,
             'status': this.status
           }).subscribe(function (data) {
-            _this31.DismissClick(_this31.returnStatus);
+            _this32.DismissClick(_this32.returnStatus);
 
-            _this31.commonService.dismissModal(); // if(this.status == 1){          
+            _this32.commonService.dismissModal(); // if(this.status == 1){          
             //   this.router.navigate(['/tabs/chats']);
             // }
 
@@ -8008,36 +8015,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "clear",
         value: function clear() {
-          var _this32 = this;
+          var _this33 = this;
 
           this.dataService.clearChatUser({
             'receiver_id': this.receiverId,
             'lastChatId': this.lastchatid
           }).subscribe(function (data) {
-            _this32.DismissClick('clear');
+            _this33.DismissClick('clear');
           });
         }
       }, {
         key: "delete",
         value: function _delete() {
-          var _this33 = this;
+          var _this34 = this;
 
           this.dataService.deleteChatUser({
             'room': this.room
-          }).subscribe(function (data) {
-            _this33.DismissClick('refresh');
-
-            _this33.commonService.dismissModal(); // this.router.navigate(['/tabs/chats']);
-
-          });
-        }
-      }, {
-        key: "deletegroup",
-        value: function deletegroup() {
-          var _this34 = this;
-
-          this.dataService.deleteGroup({
-            'id': this.receiverId
           }).subscribe(function (data) {
             _this34.DismissClick('refresh');
 
@@ -8046,9 +8039,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         }
       }, {
+        key: "deletegroup",
+        value: function deletegroup() {
+          var _this35 = this;
+
+          this.dataService.deleteGroup({
+            'id': this.receiverId
+          }).subscribe(function (data) {
+            _this35.DismissClick('refresh');
+
+            _this35.commonService.dismissModal(); // this.router.navigate(['/tabs/chats']);
+
+          });
+        }
+      }, {
         key: "cropUpload",
         value: function cropUpload() {
-          var _this35 = this;
+          var _this36 = this;
 
           this.imagePicker.getPictures({
             maximumImagesCount: 1,
@@ -8057,19 +8064,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             for (var i = 0; i < results.length; i++) {
               console.log('Image URI: ' + results[i]);
 
-              _this35.crop.crop(results[i], {
+              _this36.crop.crop(results[i], {
                 quality: 100
               }).then(function (newImage) {
                 console.log('new image path is: ' + newImage);
-                _this35.token = localStorage.getItem('userToken');
+                _this36.token = localStorage.getItem('userToken');
                 var headers = {
-                  'Authorization': 'Bearer ' + _this35.token
+                  'Authorization': 'Bearer ' + _this36.token
                 };
                 var parameters = {
-                  requestId: _this35.receiverId
+                  requestId: _this36.receiverId
                 };
 
-                var fileTransfer = _this35.transfer.create();
+                var fileTransfer = _this36.transfer.create();
 
                 var uploadOpts = {
                   fileKey: 'file',
@@ -8080,11 +8087,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 uploadOpts.headers = headers;
                 uploadOpts.params = parameters;
                 fileTransfer.upload(newImage, _config_config__WEBPACK_IMPORTED_MODULE_7__["Config"].ApiUrl + 'api/auth/uploadGroupPicture', uploadOpts).then(function (data) {
-                  _this35.respData = JSON.parse(data.response);
-                  _this35.profile_pic = _this35.respData.profile_pic;
-                  _this35.fileUrl = _this35.respData.fileUrl;
+                  _this36.respData = JSON.parse(data.response);
+                  _this36.profile_pic = _this36.respData.profile_pic;
+                  _this36.fileUrl = _this36.respData.fileUrl;
 
-                  _this35.DismissClick('refresh');
+                  _this36.DismissClick('refresh');
                 }, function (err) {
                   console.log(err);
                 });
@@ -8099,14 +8106,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "exitgroup",
         value: function exitgroup() {
-          var _this36 = this;
+          var _this37 = this;
 
           this.dataService.exitGroup({
             'id': this.receiverId
           }).subscribe(function (data) {
-            _this36.DismissClick('refresh');
+            _this37.DismissClick('refresh');
 
-            _this36.commonService.dismissModal(); // if(data.exit){
+            _this37.commonService.dismissModal(); // if(data.exit){
             //   this.router.navigate(['/tabs/chats']);
             // }
 
@@ -8248,14 +8255,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(RequestsModalComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this37 = this;
+          var _this38 = this;
 
           this.commonService.presentLoader(); //--------requests counter-----
 
           this.dataService.requestsUserList().subscribe(function (data) {
-            _this37.commonService.dismissLoader();
+            _this38.commonService.dismissLoader();
 
-            _this37.requestList = data.requestslist;
+            _this38.requestList = data.requestslist;
           });
         }
       }, {
@@ -8266,11 +8273,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "closeModal",
         value: function closeModal() {
-          var _this38 = this;
+          var _this39 = this;
 
           if (this.requestList && this.requestList != '') {
             this.requestList.forEach(function (element) {
-              _this38.allrequest.push({
+              _this39.allrequest.push({
                 'chatType': element.type,
                 'id': element.id
               });
@@ -8279,7 +8286,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               'allrequest': this.allrequest
             }).subscribe(function (data) {
               if (data.declienall) {
-                _this38.close();
+                _this39.close();
               }
             });
             this.allrequest = [];
@@ -8713,7 +8720,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "payment",
         value: function payment() {
-          var _this39 = this;
+          var _this40 = this;
 
           this.programService.insertEquipmentPaymentDetail({
             "program_id": this.pgamount,
@@ -8721,9 +8728,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this39.commonService.dismissModal(data);
+            _this40.commonService.dismissModal(data);
 
-            _this39.commonService.presentToast("Payment Done.");
+            _this40.commonService.presentToast("Payment Done.");
           });
         }
       }]);
@@ -8768,7 +8775,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".nofication-list {\n  margin-bottom: 0;\n  padding-top: 0;\n  padding-bottom: 0; }\n\nion-list-header {\n  background-color: #26a69a; }\n\nion-label {\n  color: #FFF; }\n\nion-item {\n  --inner-border-width:0;\n  font-size: 0.8125rem;\n  line-height: 1.5; }\n\n.modal-close {\n  --background: #FFF;\n  --color:#26a69a;\n  position: absolute;\n  right: 7px;\n  top: 7px;\n  margin: 0;\n  --padding-start: 0;\n  --padding-end: 0;\n  height: auto; }\n\n.py-10 {\n  padding-top: 10px;\n  padding-bottom: 10px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kYWxDb250ZW50L2ZvbGxvd2Vycy9DOlxceGFtcHBcXGh0ZG9jc1xcaW50b2FjdGl2ZS9zcmNcXGFwcFxcbW9kYWxDb250ZW50XFxmb2xsb3dlcnNcXGZvbGxvd2Vycy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUFpQixnQkFBZ0I7RUFBQyxjQUFjO0VBQUMsaUJBQWlCLEVBQUE7O0FBQ2xFO0VBQWdCLHlCQUF5QixFQUFBOztBQUN6QztFQUFVLFdBQVcsRUFBQTs7QUFDckI7RUFBUyxzQkFBcUI7RUFBRSxvQkFBb0I7RUFBQyxnQkFBZ0IsRUFBQTs7QUFDckU7RUFBYSxrQkFBYTtFQUFNLGVBQVE7RUFBUSxrQkFBa0I7RUFBQyxVQUFVO0VBQUMsUUFBUTtFQUFDLFNBQVM7RUFBQyxrQkFBZ0I7RUFBRyxnQkFBYztFQUFHLFlBQVksRUFBQTs7QUFDako7RUFBTyxpQkFBaUI7RUFBQyxvQkFBb0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL21vZGFsQ29udGVudC9mb2xsb3dlcnMvZm9sbG93ZXJzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5vZmljYXRpb24tbGlzdHttYXJnaW4tYm90dG9tOiAwO3BhZGRpbmctdG9wOiAwO3BhZGRpbmctYm90dG9tOiAwO31cclxuaW9uLWxpc3QtaGVhZGVye2JhY2tncm91bmQtY29sb3I6ICMyNmE2OWE7fVxyXG5pb24tbGFiZWx7Y29sb3I6ICNGRkY7fVxyXG5pb24taXRlbXstLWlubmVyLWJvcmRlci13aWR0aDowO2ZvbnQtc2l6ZTogMC44MTI1cmVtO2xpbmUtaGVpZ2h0OiAxLjU7fVxyXG4ubW9kYWwtY2xvc2V7LS1iYWNrZ3JvdW5kOiAjRkZGOy0tY29sb3I6IzI2YTY5YTtwb3NpdGlvbjogYWJzb2x1dGU7cmlnaHQ6IDdweDt0b3A6IDdweDttYXJnaW46IDA7LS1wYWRkaW5nLXN0YXJ0OiAwOy0tcGFkZGluZy1lbmQ6IDA7aGVpZ2h0OiBhdXRvO31cclxuLnB5LTEwe3BhZGRpbmctdG9wOiAxMHB4O3BhZGRpbmctYm90dG9tOiAxMHB4O30iXX0= */";
+    __webpack_exports__["default"] = ".nofication-list {\n  margin-bottom: 0;\n  padding-top: 0;\n  padding-bottom: 0;\n  border-bottom: 1px solid #cecece; }\n\nion-list-header {\n  background-color: #26a69a; }\n\nion-label {\n  color: #FFF; }\n\nion-item {\n  --inner-border-width:0;\n  font-size: 0.8125rem;\n  line-height: 1.5; }\n\n.modal-close {\n  --background: #FFF;\n  --color:#26a69a;\n  position: absolute;\n  right: 7px;\n  top: 7px;\n  margin: 0;\n  --padding-start: 0;\n  --padding-end: 0;\n  height: auto; }\n\n.py-10 {\n  padding-top: 10px;\n  padding-bottom: 10px; }\n\n.info-title {\n  color: #989aa2;\n  font-weight: 400; }\n\n.info-ans {\n  font-size: 16px;\n  text-transform: capitalize;\n  color: #121212; }\n\n.info-head {\n  font-size: 20px;\n  font-weight: 500; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kYWxDb250ZW50L2ZvbGxvd2Vycy9DOlxceGFtcHBcXGh0ZG9jc1xcaW50b2FjdGl2ZS9zcmNcXGFwcFxcbW9kYWxDb250ZW50XFxmb2xsb3dlcnNcXGZvbGxvd2Vycy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUFpQixnQkFBZ0I7RUFBQyxjQUFjO0VBQUMsaUJBQWlCO0VBQUMsZ0NBQWdDLEVBQUE7O0FBQ25HO0VBQWdCLHlCQUF5QixFQUFBOztBQUN6QztFQUFVLFdBQVcsRUFBQTs7QUFDckI7RUFBUyxzQkFBcUI7RUFBRSxvQkFBb0I7RUFBQyxnQkFBZ0IsRUFBQTs7QUFDckU7RUFBYSxrQkFBYTtFQUFNLGVBQVE7RUFBUSxrQkFBa0I7RUFBQyxVQUFVO0VBQUMsUUFBUTtFQUFDLFNBQVM7RUFBQyxrQkFBZ0I7RUFBRyxnQkFBYztFQUFHLFlBQVksRUFBQTs7QUFDako7RUFBTyxpQkFBaUI7RUFBQyxvQkFBb0IsRUFBQTs7QUFDN0M7RUFDSSxjQUFjO0VBQ2QsZ0JBQWdCLEVBQUE7O0FBRXBCO0VBQ0ksZUFBZTtFQUNmLDBCQUEwQjtFQUMxQixjQUFjLEVBQUE7O0FBRWxCO0VBQ0ksZUFBZTtFQUNmLGdCQUFnQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvbW9kYWxDb250ZW50L2ZvbGxvd2Vycy9mb2xsb3dlcnMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubm9maWNhdGlvbi1saXN0e21hcmdpbi1ib3R0b206IDA7cGFkZGluZy10b3A6IDA7cGFkZGluZy1ib3R0b206IDA7Ym9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNjZWNlY2U7fVxyXG5pb24tbGlzdC1oZWFkZXJ7YmFja2dyb3VuZC1jb2xvcjogIzI2YTY5YTt9XHJcbmlvbi1sYWJlbHtjb2xvcjogI0ZGRjt9XHJcbmlvbi1pdGVtey0taW5uZXItYm9yZGVyLXdpZHRoOjA7Zm9udC1zaXplOiAwLjgxMjVyZW07bGluZS1oZWlnaHQ6IDEuNTt9XHJcbi5tb2RhbC1jbG9zZXstLWJhY2tncm91bmQ6ICNGRkY7LS1jb2xvcjojMjZhNjlhO3Bvc2l0aW9uOiBhYnNvbHV0ZTtyaWdodDogN3B4O3RvcDogN3B4O21hcmdpbjogMDstLXBhZGRpbmctc3RhcnQ6IDA7LS1wYWRkaW5nLWVuZDogMDtoZWlnaHQ6IGF1dG87fVxyXG4ucHktMTB7cGFkZGluZy10b3A6IDEwcHg7cGFkZGluZy1ib3R0b206IDEwcHg7fVxyXG4uaW5mby10aXRsZXtcclxuICAgIGNvbG9yOiAjOTg5YWEyO1xyXG4gICAgZm9udC13ZWlnaHQ6IDQwMDtcclxufVxyXG4uaW5mby1hbnN7XHJcbiAgICBmb250LXNpemU6IDE2cHg7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogY2FwaXRhbGl6ZTtcclxuICAgIGNvbG9yOiAjMTIxMjEyO1xyXG59XHJcbi5pbmZvLWhlYWR7XHJcbiAgICBmb250LXNpemU6IDIwcHg7XHJcbiAgICBmb250LXdlaWdodDogNTAwO1xyXG59Il19 */";
     /***/
   },
 
@@ -9184,7 +9191,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "payment",
         value: function payment() {
-          var _this40 = this;
+          var _this41 = this;
 
           this.commonService.dismissModal();
 
@@ -9197,13 +9204,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               if (data) {
                 var fileData = {
-                  pgid: _this40.pgid,
-                  pgname: _this40.pgname,
-                  pgamount: _this40.pgamount,
-                  pgimg: _this40.pgimg
+                  pgid: _this41.pgid,
+                  pgname: _this41.pgname,
+                  pgamount: _this41.pgamount,
+                  pgimg: _this41.pgimg
                 };
 
-                _this40.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+                _this41.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
               }
             });
           } else if (this.type == 1) {
@@ -9215,13 +9222,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               if (data) {
                 var fileData = {
-                  pgid: _this40.pgid.toString(','),
-                  pgname: _this40.pgname,
-                  pgamount: _this40.pgamount,
-                  pgimg: _this40.pgimg
+                  pgid: _this41.pgid.toString(','),
+                  pgname: _this41.pgname,
+                  pgamount: _this41.pgamount,
+                  pgimg: _this41.pgimg
                 };
 
-                _this40.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+                _this41.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
               }
             });
           }
@@ -9437,7 +9444,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var SearchFoodComponent = /*#__PURE__*/function () {
       function SearchFoodComponent(commonService, nutritionService, barcodeScanner, navParams) {
-        var _this41 = this;
+        var _this42 = this;
 
         _classCallCheck(this, SearchFoodComponent);
 
@@ -9454,7 +9461,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (Array.isArray(element.data)) {
             element.data.forEach(function (el) {
               if (el.food_name !== null) {
-                _this41.selectedFoodList2.push(el.food_name);
+                _this42.selectedFoodList2.push(el.food_name);
               }
             });
           }
@@ -9471,10 +9478,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngAfterViewInit",
         value: function ngAfterViewInit() {
-          var _this42 = this;
+          var _this43 = this;
 
           setTimeout(function () {
-            _this42.search_food_name.setFocus();
+            _this43.search_food_name.setFocus();
           }, 400);
         }
       }, {
@@ -9492,22 +9499,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkFoodName",
         value: function checkFoodName(foodname) {
-          var _this43 = this;
+          var _this44 = this;
 
           if (foodname !== '') {
             this.nutritionService.ntnxfetchFood(foodname).subscribe(function (data) {
               data.common.forEach(function (el) {
-                if (_this43.selectedFoodList2.indexOf(el['food_name']) !== -1) {
+                if (_this44.selectedFoodList2.indexOf(el['food_name']) !== -1) {
                   el['selected'] = true;
                 } else {
                   el['selected'] = false;
                 }
               });
 
-              _this43.commonService.dismissLoader();
+              _this44.commonService.dismissLoader();
 
               console.log(data.common);
-              _this43.foodList = Array.of(data);
+              _this44.foodList = Array.of(data);
               console.log();
             }, function (err) {
               console.log(err);
@@ -9519,7 +9526,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getNutriDetails",
         value: function getNutriDetails(itemDetails) {
-          var _this44 = this;
+          var _this45 = this;
 
           var itemVal = itemDetails.target.value;
 
@@ -9533,9 +9540,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               // console.log(data['foods'])
               console.log(data);
 
-              _this44.selectedFoodList.push(data['foods'][0]);
+              _this45.selectedFoodList.push(data['foods'][0]);
 
-              console.log(_this44.selectedFoodList);
+              console.log(_this45.selectedFoodList);
             });
           } else {
             console.log('viraj');
@@ -9577,26 +9584,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "scanFood",
         value: function scanFood() {
-          var _this45 = this;
+          var _this46 = this;
 
           this.barcodeScanner.scan().then(function (barcodeData) {
             console.log('Barcode data', barcodeData);
 
             if (!barcodeData.cancelled) {
-              _this45.nutritionService.nutrtionBarcode(barcodeData.text).subscribe(function (data) {
+              _this46.nutritionService.nutrtionBarcode(barcodeData.text).subscribe(function (data) {
                 console.log('asadsad');
 
                 if (!data.status) {
-                  _this45.apiData = data;
+                  _this46.apiData = data;
                   console.log(data);
                 } else {
-                  _this45.apiData = null;
+                  _this46.apiData = null;
                   console.log('ssssssss', data.status);
 
-                  _this45.commonService.presentToast('Product not found in database');
+                  _this46.commonService.presentToast('Product not found in database');
                 }
 
-                _this45.commonService.dismissModal(_this45.apiData);
+                _this46.commonService.dismissModal(_this46.apiData);
               });
             }
           })["catch"](function (err) {
@@ -10253,7 +10260,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var _this46 = this;
+          var _this47 = this;
 
           // this.submitted = true;
           if (this.userIdentityVerifyForm.invalid) {
@@ -10263,25 +10270,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.commonService.presentLoader();
           this.settingsService.userIndentityVerify(this.userIdentityVerifyForm.value).subscribe(function (data) {
-            _this46.commonService.dismissLoader();
+            _this47.commonService.dismissLoader();
 
             if (data.Record.RecordStatus === 'match') {
-              _this46.settingsService.trilloRecordUpdate().subscribe(function (data) {
+              _this47.settingsService.trilloRecordUpdate().subscribe(function (data) {
                 var loginUserData = JSON.parse(localStorage.getItem('userData'));
                 loginUserData.trilloMatch = 1;
                 localStorage.setItem('userData', JSON.stringify(loginUserData));
               });
 
-              _this46.commonService.dismissModal();
+              _this47.commonService.dismissModal();
 
-              _this46.commonService.presentToast('Record Match');
+              _this47.commonService.presentToast('Record Match');
             } else if (data.Record.RecordStatus === 'undefined') {
-              _this46.commonService.presentToast(data);
+              _this47.commonService.presentToast(data);
             } else {
-              _this46.commonService.presentToast('Record Not Match');
+              _this47.commonService.presentToast('Record Not Match');
             }
           }, function (err) {
-            _this46.commonService.dismissLoader();
+            _this47.commonService.dismissLoader();
           });
         }
       }, {
@@ -10407,7 +10414,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "rename",
         value: function rename() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
-            var _this47 = this;
+            var _this48 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee16$(_context16) {
@@ -10431,20 +10438,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         handler: function handler(blah) {
                           console.log('Confirm Cancel: blah');
 
-                          _this47.commonService.dismissPopover("");
+                          _this48.commonService.dismissPopover("");
                         }
                       }, {
                         text: 'Okay',
                         handler: function handler(data) {
                           if (data.playlistName) {
-                            _this47.musicService.renamePlaylist({
+                            _this48.musicService.renamePlaylist({
                               'playlistName': data.playlistName,
-                              'playlistId': _this47.playlistData.id
+                              'playlistId': _this48.playlistData.id
                             }).subscribe(function (data) {
                               if (data) {
-                                _this47.commonService.presentToast("Playlist renamed.");
+                                _this48.commonService.presentToast("Playlist renamed.");
 
-                                _this47.commonService.dismissPopover(true);
+                                _this48.commonService.dismissPopover(true);
                               }
                             });
                           }
@@ -10467,15 +10474,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "remove",
         value: function remove() {
-          var _this48 = this;
+          var _this49 = this;
 
           this.musicService.removePlaylist({
             'playlistId': this.playlistData.id
           }).subscribe(function (data) {
             if (data) {
-              _this48.commonService.presentToast("Playlist removed.");
+              _this49.commonService.presentToast("Playlist removed.");
 
-              _this48.commonService.dismissPopover("");
+              _this49.commonService.dismissPopover("");
             }
           });
         }
@@ -10610,7 +10617,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "newPlaylist",
         value: function newPlaylist() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
-            var _this49 = this;
+            var _this50 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee18$(_context18) {
@@ -10638,12 +10645,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         text: 'Okay',
                         handler: function handler(data) {
                           if (data.playlistName) {
-                            _this49.musicService.createPlaylist({
+                            _this50.musicService.createPlaylist({
                               'pname': data.playlistName,
-                              'mid': _this49.mid
+                              'mid': _this50.mid
                             }).subscribe(function (data) {
                               if (data) {
-                                _this49.commonService.presentToast("Song added.");
+                                _this50.commonService.presentToast("Song added.");
                               }
                             });
                           }
@@ -10671,7 +10678,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addToList",
         value: function addToList(ev) {
-          var _this50 = this;
+          var _this51 = this;
 
           this.commonService.dismissPopover('');
           console.log(ev);
@@ -10681,12 +10688,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             if (data.status) {
               if (data.status.id) {
-                _this50.commonService.presentToast('Song added to playlist.');
+                _this51.commonService.presentToast('Song added to playlist.');
               } else {
-                _this50.commonService.presentToast(data.status);
+                _this51.commonService.presentToast(data.status);
               }
             } else {
-              _this50.commonService.presentToast('someting went wrong');
+              _this51.commonService.presentToast('someting went wrong');
             }
           });
         }
@@ -11078,29 +11085,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(NotificationModalComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this51 = this;
+          var _this52 = this;
 
           this.profileData = this.navParams.get('profileData');
           this.commonService.presentLoader();
           this.peopleService.getUserNotification({
             'cid': this.profileData.userData.id
           }).subscribe(function (data) {
-            _this51.commonService.dismissLoader();
+            _this52.commonService.dismissLoader();
 
             if (data.status) {
-              _this51.toggleDiscussion = data.status.discussion;
-              _this51.toggleImage = data.status.image;
-              _this51.toggleVideo = data.status.video;
-              _this51.toggleProgram = data.status.program;
+              _this52.toggleDiscussion = data.status.discussion;
+              _this52.toggleImage = data.status.image;
+              _this52.toggleVideo = data.status.video;
+              _this52.toggleProgram = data.status.program;
             }
           }, function (err) {
-            _this51.commonService.dismissLoader();
+            _this52.commonService.dismissLoader();
           });
         }
       }, {
         key: "disableNotification",
         value: function disableNotification(colName, value) {
-          var _this52 = this;
+          var _this53 = this;
 
           this.commonService.presentLoader();
           this.peopleService.userNotification({
@@ -11110,11 +11117,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this52.commonService.dismissLoader();
+            _this53.commonService.dismissLoader();
 
-            _this52.commonService.presentToast(data.toast + " " + _this52.profileData.userData.user_name);
+            _this53.commonService.presentToast(data.toast + " " + _this53.profileData.userData.user_name);
           }, function (err) {
-            _this52.commonService.dismissLoader();
+            _this53.commonService.dismissLoader();
           });
         }
       }, {
@@ -11241,7 +11248,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "removePost",
         value: function removePost() {
-          var _this53 = this;
+          var _this54 = this;
 
           this.commonService.presentLoader();
           this.postService.removePost({
@@ -11249,7 +11256,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this53.commonService.dismissLoader();
+            _this54.commonService.dismissLoader();
 
             if (data.postStatus == true) {}
           });
@@ -11261,7 +11268,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "commentDisable",
         value: function commentDisable() {
-          var _this54 = this;
+          var _this55 = this;
 
           this.commonService.presentLoader();
           this.postService.commentDisable({
@@ -11270,7 +11277,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this54.commonService.dismissLoader();
+            _this55.commonService.dismissLoader();
 
             if (data.postStatus == true) {}
           });
@@ -11625,19 +11632,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this55 = this;
+          var _this56 = this;
 
           this.viewUserId = this.navParamas.get('userId');
           var dataPromise = this.storage.get('userData');
           dataPromise.then(function (data) {
-            _this55.storageData = JSON.parse(data);
-            _this55.userId = _this55.storageData.id;
+            _this56.storageData = JSON.parse(data);
+            _this56.userId = _this56.storageData.id;
           });
           this.peopleViewService.getFollowers(this.viewUserId).subscribe(function (data) {
-            _this55.followers = data.result;
-            _this55.followerFilteredUsers = _this55.followers;
+            _this56.followers = data.result;
+            _this56.followerFilteredUsers = _this56.followers;
 
-            _this55.followers.forEach(function (element, i) {
+            _this56.followers.forEach(function (element, i) {
               if (element.following_user.follower_rel != null) {
                 element.following_user.follow = true;
                 element.following_user["class"] = '';
@@ -11649,7 +11656,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             });
 
-            console.log(_this55.followers);
+            console.log(_this56.followers);
             console.log('followersload');
           });
         }
@@ -11664,7 +11671,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "followUpPeople",
         value: function followUpPeople(folloUpId, status) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
-            var _this56 = this;
+            var _this57 = this;
 
             return regeneratorRuntime.wrap(function _callee19$(_context19) {
               while (1) {
@@ -11675,7 +11682,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       'status': status
                     }).subscribe(function (data) {
                       if (data.followStatus == 'true') {
-                        _this56.followers.forEach(function (element, i) {
+                        _this57.followers.forEach(function (element, i) {
                           if (element.following_user.id == folloUpId) {
                             element.following_user.follow = false;
                             element.following_user["class"] = 'green text-white';
@@ -11683,7 +11690,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                           }
                         });
                       } else if (data.followStatus == 'false') {
-                        _this56.followers.forEach(function (element, i) {
+                        _this57.followers.forEach(function (element, i) {
                           if (element.following_user.id == folloUpId) {
                             element.following_user.follow = true;
                             element.following_user["class"] = '';
@@ -11692,7 +11699,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         });
                       }
 
-                      console.log(_this56.followers);
+                      console.log(_this57.followers);
                       console.log(' this.followers');
                     });
 
@@ -11855,31 +11862,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ionViewWillEnter",
         value: function ionViewWillEnter() {
-          var _this57 = this;
+          var _this58 = this;
 
           this.commonService.presentLoader();
           this.programService.getAdCompanyDetails({
             'adReqId': this.adReqDetails.id
           }).subscribe(function (data) {
-            _this57.commonService.dismissLoader();
+            _this58.commonService.dismissLoader();
 
-            _this57.msgCount = data.data.count;
-            console.log(_this57.msgCount);
-            _this57.adCompanyDetail = data.data.details.filter(function (el, i) {
+            _this58.msgCount = data.data.count;
+            console.log(_this58.msgCount);
+            _this58.adCompanyDetail = data.data.details.filter(function (el, i) {
               if (el.consultant_approval) {
-                _this57.disabled = true;
+                _this58.disabled = true;
               }
 
               return el;
             });
           }, function (err) {
-            _this57.commonService.dismissLoader();
+            _this58.commonService.dismissLoader();
           });
         }
       }, {
         key: "acceptRequest",
         value: function acceptRequest(event) {
-          var _this58 = this;
+          var _this59 = this;
 
           var btn = [{
             text: 'Cancel',
@@ -11893,7 +11900,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             handler: function handler() {
               console.log('Confirm Okay');
 
-              _this58.sendRequest(event);
+              _this59.sendRequest(event);
             }
           }];
           this.commonService.presentAlert('Accept Request', 'Are you sure?', btn, '');
@@ -11901,15 +11908,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "sendRequest",
         value: function sendRequest(event) {
-          var _this59 = this;
+          var _this60 = this;
 
           this.programService.acceptSponsers({
             'acceptId': event,
             'adReqId': this.adReqDetails.id
           }).subscribe(function (data) {
-            _this59.disabled = data.data;
+            _this60.disabled = data.data;
 
-            _this59.closeModal();
+            _this60.closeModal();
           });
         }
       }, {
@@ -12167,7 +12174,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(SponserCommentComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this60 = this;
+          var _this61 = this;
 
           this.commonService.presentLoader();
           this.adDetail = this.navParams.data.adDetails;
@@ -12175,11 +12182,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.programService.getSponserComment({
             'adReqId': this.adDetail.id
           }).subscribe(function (data) {
-            _this60.comment = data.data;
+            _this61.comment = data.data;
 
-            _this60.commonService.dismissLoader();
+            _this61.commonService.dismissLoader();
           }, function (err) {
-            _this60.commonService.dismissLoader();
+            _this61.commonService.dismissLoader();
           });
           console.log(this.adDetail);
         }
@@ -12198,7 +12205,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onClickSubmit",
         value: function onClickSubmit() {
-          var _this61 = this;
+          var _this62 = this;
 
           this.submitted = true;
 
@@ -12210,11 +12217,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               'requestId': this.adDetail.id,
               'comment': this.commentForm.value.comment
             }).subscribe(function (data) {
-              _this61.ngOnInit();
+              _this62.ngOnInit();
 
-              _this61.commonService.dismissLoader();
+              _this62.commonService.dismissLoader();
             }, function (err) {
-              _this61.commonService.dismissLoader();
+              _this62.commonService.dismissLoader();
             });
           }
         }
@@ -12352,7 +12359,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       // },
       // ];
       function EquipmentsComponent(commonService, navParams, modalCtrl, programService) {
-        var _this62 = this;
+        var _this63 = this;
 
         _classCallCheck(this, EquipmentsComponent);
 
@@ -12370,12 +12377,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         console.log(this.equipment);
         this.programService.fetchEquipmentList().subscribe(function (data) {
-          _this62.equipments = data.equipmentList;
+          _this63.equipments = data.equipmentList;
 
-          _this62.equipments.filter(function (el) {
+          _this63.equipments.filter(function (el) {
             console.log(el.id);
 
-            if (_this62.equipment.includes(el.id.toString())) {
+            if (_this63.equipment.includes(el.id.toString())) {
               el.selected = true;
             }
 
@@ -12423,7 +12430,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "openEdit",
         value: function openEdit() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
-            var _this63 = this;
+            var _this64 = this;
 
             var modal;
             return regeneratorRuntime.wrap(function _callee20$(_context20) {
@@ -12447,25 +12454,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                       if (d.data.length > 0) {
                         // d.data.filter(Boolean);
-                        _this63.equipment = d.data.filter(Boolean);
-                        console.log(_this63.equipment);
+                        _this64.equipment = d.data.filter(Boolean);
+                        console.log(_this64.equipment);
 
-                        _this63.programService.updateEquipmentList({
+                        _this64.programService.updateEquipmentList({
                           "equipmentId": d.data.filter(Boolean),
-                          "programId": _this63.programDetails.id
+                          "programId": _this64.programDetails.id
                         }).subscribe(function (data) {
                           console.log('id update');
                         });
 
                         console.log(d.data.filter(Boolean));
 
-                        _this63.programService.fetchEquipmentList().subscribe(function (data) {
+                        _this64.programService.fetchEquipmentList().subscribe(function (data) {
                           console.log(data);
-                          _this63.equipments = data.equipmentList;
+                          _this64.equipments = data.equipmentList;
 
-                          _this63.equipments.filter(function (el) {
-                            if (_this63.equipment) {
-                              if (_this63.equipment.includes(el.id)) {
+                          _this64.equipments.filter(function (el) {
+                            if (_this64.equipment) {
+                              if (_this64.equipment.includes(el.id)) {
                                 el.selected = true;
                               }
 
@@ -12609,14 +12616,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "delete",
         value: function _delete() {
-          var _this64 = this;
+          var _this65 = this;
 
           this.programService.deleteProgram({
             'programId': this.programId
           }).subscribe(function (data) {
-            _this64.popOver.dismiss();
+            _this65.popOver.dismiss();
           }, function (error) {
-            _this64.popOver.dismiss();
+            _this65.popOver.dismiss();
           });
         }
       }, {
@@ -12778,32 +12785,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "recieveUser",
         value: function recieveUser(data) {
-          var _this65 = this;
+          var _this66 = this;
 
           if (data != null) {
             var uId = data.toString().split(',');
             console.log(uId);
             uId.forEach(function (el) {
-              _this65.programService.getEachUserData({
+              _this66.programService.getEachUserData({
                 el: el
               }).subscribe(function (peoples) {
                 console.log(peoples);
 
-                _this65.acceptedData.push({
+                _this66.acceptedData.push({
                   'image': peoples[0].bios.profile_pic,
                   'name': peoples[0].user_name,
                   'id': peoples[0].id
                 });
               });
 
-              console.log(_this65.acceptedData);
+              console.log(_this66.acceptedData);
             });
           }
         }
       }, {
         key: "reload",
         value: function reload(data) {
-          var _this66 = this;
+          var _this67 = this;
 
           this.commonService.presentLoader();
           console.log(data);
@@ -12812,12 +12819,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             var uId = data.split(',');
             console.log(uId);
             uId.forEach(function (el) {
-              _this66.programService.getEachUserData({
+              _this67.programService.getEachUserData({
                 el: el
               }).subscribe(function (peoples) {
                 console.log(peoples);
 
-                _this66.userData.push({
+                _this67.userData.push({
                   'image': peoples[0].bios.profile_pic,
                   'name': peoples[0].user_name,
                   'request_recive': data,
@@ -12826,36 +12833,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 });
               });
 
-              console.log(_this66.userData);
+              console.log(_this67.userData);
             });
           }
 
           this.programService.getProgramById({
             'programId': this.programDetail.id
           }).subscribe(function (data) {
-            _this66.programDetail = data;
-            console.log(_this66.programDetail);
-            _this66.participant = _this66.navParams.data.userList.filter(function (el) {
-              console.log(_this66.programDetail.programData.request_accepted);
+            _this67.programDetail = data;
+            console.log(_this67.programDetail);
+            _this67.participant = _this67.navParams.data.userList.filter(function (el) {
+              console.log(_this67.programDetail.programData.request_accepted);
 
-              if (_this66.programDetail.programData.request_accepted != null) {
+              if (_this67.programDetail.programData.request_accepted != null) {
                 console.log('innnn'); // var 
 
-                if (_this66.programDetail.programData.request_accepted.split(',').includes(el.id.toString())) {
+                if (_this67.programDetail.programData.request_accepted.split(',').includes(el.id.toString())) {
                   console.log('ttt');
                   el.request_accepted = true;
                 }
               }
 
-              console.log(_this66.participant);
+              console.log(_this67.participant);
               return el;
             });
 
-            _this66.commonService.dismissLoader();
+            _this67.commonService.dismissLoader();
           }, function (err) {
-            _this66.commonService.dismissLoader();
+            _this67.commonService.dismissLoader();
 
-            _this66.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this67.commonService.presentToast("Couldnt load data, Something went wrong.");
           });
         }
       }, {
@@ -12866,36 +12873,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "accept",
         value: function accept(event) {
-          var _this67 = this;
+          var _this68 = this;
 
           this.programService.acceptJoinRequest({
             'programId': this.prog_id,
             'userId': event
           }).subscribe(function (data) {
             console.log(data);
-            _this67.acceptedData = [];
+            _this68.acceptedData = [];
 
-            _this67.recieveUser(data.data.request_accepted);
+            _this68.recieveUser(data.data.request_accepted);
 
-            _this67.userData = [];
+            _this68.userData = [];
 
-            _this67.reload(data.data.request_recive); // this.ngOnInit();
+            _this68.reload(data.data.request_recive); // this.ngOnInit();
 
           });
         }
       }, {
         key: "deleteRequest",
         value: function deleteRequest(event) {
-          var _this68 = this;
+          var _this69 = this;
 
           this.programService.deleteJoinRequest({
             'programId': this.prog_id,
             'userId': event
           }).subscribe(function (data) {
             console.log(data);
-            _this68.userData = [];
+            _this69.userData = [];
 
-            _this68.reload(data.data.request_recive); // this.ngOnInit();
+            _this69.reload(data.data.request_recive); // this.ngOnInit();
 
           });
         }
@@ -13012,14 +13019,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "accept",
         value: function accept() {
-          var _this69 = this;
+          var _this70 = this;
 
           this.programService.acceptProgramRequest({
             'programId': this.programid
           }).subscribe(function (data) {
-            _this69.popOver.dismiss();
+            _this70.popOver.dismiss();
           }, function (err) {
-            _this69.popOver.dismiss();
+            _this70.popOver.dismiss();
           });
         }
       }, {
@@ -13188,7 +13195,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this70 = this;
+          var _this71 = this;
 
           this.programDetail = this.navParams.data.programDetail;
           console.log(this.programDetail);
@@ -13214,10 +13221,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
             console.log(data.cloneList[0].non_live_component_fee);
-            _this70.non_live_component_fee = data.cloneList[0].non_live_component_fee;
-            _this70.allProgram = data.cloneList;
+            _this71.non_live_component_fee = data.cloneList[0].non_live_component_fee;
+            _this71.allProgram = data.cloneList;
 
-            _this70.allProgram.filter(function (el) {
+            _this71.allProgram.filter(function (el) {
               el.convertedTime = new Date(el.program_date + 'Z');
               console.log(el.convertedTime);
               console.log(new Date());
@@ -13250,12 +13257,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             });
 
-            _this70.nutritionService.getNutritionById({
+            _this71.nutritionService.getNutritionById({
               'nutriId': nutriArr.toLocaleString()
             }).subscribe(function (ndata) {
-              _this70.nutritionList = ndata.nutritionList;
+              _this71.nutritionList = ndata.nutritionList;
 
-              _this70.nutritionList.forEach(function (el) {
+              _this71.nutritionList.forEach(function (el) {
                 console.log(el.image_path);
                 console.log(el.image_path.split(','));
                 var imgArr = el.image_path.split(','); //  console.log(this.nutritionList[el]);
@@ -13263,18 +13270,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 el.fImage = imgArr[0];
               });
 
-              console.log(_this70.nutritionList);
+              console.log(_this71.nutritionList);
 
-              _this70.commonService.dismissLoader();
+              _this71.commonService.dismissLoader();
             }, function (err) {
-              _this70.commonService.dismissLoader();
+              _this71.commonService.dismissLoader();
 
-              _this70.commonService.presentToast("Couldnt load data, Something went wrong.");
+              _this71.commonService.presentToast("Couldnt load data, Something went wrong.");
             });
           }, function (err) {
-            _this70.commonService.dismissLoader();
+            _this71.commonService.dismissLoader();
 
-            _this70.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this71.commonService.presentToast("Couldnt load data, Something went wrong.");
           });
         }
       }, {
@@ -13335,7 +13342,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "addEquipments2",
         value: function addEquipments2(event, item) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
-            var _this71 = this;
+            var _this72 = this;
 
             var modal;
             return regeneratorRuntime.wrap(function _callee23$(_context23) {
@@ -13364,7 +13371,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       if (d.data) {
                         console.log('asasd');
 
-                        _this71.ngOnInit();
+                        _this72.ngOnInit();
                       }
                     });
                     _context23.next = 6;
@@ -13514,7 +13521,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var AuthService = /*#__PURE__*/function () {
       function AuthService(http, httpErrorHandler, router, storage, platform, toastController, notify, commonService, socket) {
-        var _this72 = this;
+        var _this73 = this;
 
         _classCallCheck(this, AuthService);
 
@@ -13529,7 +13536,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.user = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"](null);
         this.authState = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"](false);
         this.platform.ready().then(function () {
-          _this72.ifLoggedIn();
+          _this73.ifLoggedIn();
         });
         this.handleError = httpErrorHandler.createHandleError('TasksService');
       }
@@ -14018,11 +14025,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(CheckTutorial, [{
         key: "canLoad",
         value: function canLoad() {
-          var _this73 = this;
+          var _this74 = this;
 
           return this.storage.get('ion_did_tutorial').then(function (res) {
             if (res) {
-              _this73.router.navigate(['/signin']);
+              _this74.router.navigate(['/signin']);
 
               return false;
             } else {
@@ -14212,7 +14219,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "presentPromptRedirect",
         value: function presentPromptRedirect(title, msg, sendData) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
-            var _this74 = this;
+            var _this75 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee26$(_context26) {
@@ -14238,14 +14245,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       }, {
                         text: 'request',
                         handler: function handler(data) {
-                          _this74.presentLoader();
+                          _this75.presentLoader();
 
                           if (sendData != null && sendData != '') {
                             if (data.groupName != '' && data.groupName != null) {
                               sendData.groupName = data.groupName;
 
-                              _this74.dataService.sendChatRequest(sendData).subscribe(function (data) {
-                                _this74.dismissLoader();
+                              _this75.dataService.sendChatRequest(sendData).subscribe(function (data) {
+                                _this75.dismissLoader();
 
                                 if (data.status == 'success') {
                                   var fileData = {
@@ -14255,20 +14262,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                                   }; // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
 
                                   // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
-                                  _this74.router.navigate(['/chat-room/' + data.requestID + '/' + data.room + '/' + data.type]);
+                                  _this75.router.navigate(['/chat-room/' + data.requestID + '/' + data.room + '/' + data.type]);
                                 } else {
                                   console.log('Somthing wrong');
                                   return false;
                                 }
                               });
                             } else {
-                              _this74.dismissLoader();
+                              _this75.dismissLoader();
 
                               console.log("please enter group name");
                               return false;
                             }
                           } else {
-                            _this74.dismissLoader();
+                            _this75.dismissLoader();
                           }
                         }
                       }]
@@ -14325,7 +14332,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "redirectUrlWithIdConfirm",
         value: function redirectUrlWithIdConfirm(title, msg, redirrectUrl, id) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee28() {
-            var _this75 = this;
+            var _this76 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee28$(_context28) {
@@ -14341,7 +14348,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       buttons: [{
                         text: 'Ok',
                         handler: function handler() {
-                          _this75.router.navigate([redirrectUrl, id]).then(function (e) {
+                          _this76.router.navigate([redirrectUrl, id]).then(function (e) {
                             if (e) {} else {}
                           });
                         }
@@ -14392,7 +14399,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "presentLoader",
         value: function presentLoader() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee30() {
-            var _this76 = this;
+            var _this77 = this;
 
             return regeneratorRuntime.wrap(function _callee30$(_context30) {
               while (1) {
@@ -14407,7 +14414,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       translucent: true
                     }).then(function (a) {
                       a.present().then(function () {
-                        if (!_this76.isLoading) {
+                        if (!_this77.isLoading) {
                           a.dismiss(); // a.dismiss().then(() => console.log('abort presenting loader'));
                         }
                       });
@@ -14450,11 +14457,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loggingout",
         value: function loggingout() {
-          var _this77 = this;
+          var _this78 = this;
 
           this.storage.get('userData').then(function (value) {
-            return _this77.settingsService.logout().subscribe(function (data) {
-              _this77.storage.clear();
+            return _this78.settingsService.logout().subscribe(function (data) {
+              _this78.storage.clear();
 
               localStorage.removeItem('userToken');
               localStorage.removeItem('userData');
@@ -14463,15 +14470,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               localStorage.removeItem('notification');
               localStorage.clear;
 
-              _this77.dismissLoader();
+              _this78.dismissLoader();
 
-              _this77.ngOnDestroy();
+              _this78.ngOnDestroy();
 
-              _this77.router.navigateByUrl('/signin');
+              _this78.router.navigateByUrl('/signin');
 
-              _this77.navCtrl.navigateRoot;
+              _this78.navCtrl.navigateRoot;
             }, function (err) {
-              _this77.storage.clear();
+              _this78.storage.clear();
 
               localStorage.removeItem('userToken');
               localStorage.removeItem('userData');
@@ -14492,7 +14499,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "presentModal",
         value: function presentModal(path, classcss, parameters) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee32() {
-            var _this78 = this;
+            var _this79 = this;
 
             return regeneratorRuntime.wrap(function _callee32$(_context32) {
               while (1) {
@@ -14509,8 +14516,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   case 2:
                     this.modal = _context32.sent;
                     this.modal.onDidDismiss().then(function (d) {
-                      _this78.modal = null;
-                      _this78.modaldata = d;
+                      _this79.modal = null;
+                      _this79.modaldata = d;
                     });
                     _context32.next = 6;
                     return this.modal.present();
@@ -14766,7 +14773,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var HttpErrorHandlerService = /*#__PURE__*/function () {
       function HttpErrorHandlerService(messageService) {
-        var _this79 = this;
+        var _this80 = this;
 
         _classCallCheck(this, HttpErrorHandlerService);
 
@@ -14777,7 +14784,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return function () {
             var operation = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "operation";
             var result = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-            return _this79.handleError(serviceName, operation, result);
+            return _this80.handleError(serviceName, operation, result);
           };
         };
       }
@@ -16573,7 +16580,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this80 = this;
+          var _this81 = this;
 
           console.log('viurja');
           var data = this.navParams.get('data');
@@ -16582,7 +16589,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             'nutriId': data.nutrition_id
           }).subscribe(function (data) {
             console.log(data);
-            _this80.nutritionItem = data.nutritionList.filter(function (el) {
+            _this81.nutritionItem = data.nutritionList.filter(function (el) {
               if (el.ingredients) {
                 el.ingredientsArr = el.ingredients.split(',');
               }
@@ -16593,7 +16600,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               return el;
             });
-            console.log(_this80.nutritionItem);
+            console.log(_this81.nutritionItem);
           });
         }
       }, {

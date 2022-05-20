@@ -38,6 +38,8 @@ export class AppComponent implements OnInit
      private file: File,
      public deeplinks: Deeplinks,
      private socket: Socket,
+    public navCtrl: NavController,
+
     
   ){
     platform.ready().then(() => {
@@ -63,7 +65,7 @@ export class AppComponent implements OnInit
   }    
   backButtonEvent() {
     this.platform.backButton.subscribe(() => {
-      
+      this.navCtrl.back();
     });
   }
   initializeApp() {

@@ -404,40 +404,38 @@ export class ConsultantProfileViewPage implements OnInit {
 
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
-      header: 'More Actions',
       cssClass: 'my-custom-class',
-      buttons: [{
-        text: 'Unfollow',
-        icon: 'heart-circle',
-        handler: () => {
-          console.log('Delete clicked');
-        }
-      }, {
-        text: 'Chat',
-        icon: 'chatbox-ellipses',
-        handler: () => {
-          console.log('chat');
-        }
-      }, {
+      buttons: [
+        {
+          text: 'Share this profile',
+          // icon: 'share',
+          handler: () => {
+            this.shareItem();
+          }
+        },
+      {
         text: 'Report',
-        icon: 'alert-circle',
+        // icon: 'alert',
         handler: () => {
+          this.reportPopup('');
           console.log('report');
         }
       }, {
-        text: 'Block',
-        icon: 'ban',
+        text: this.block ?'Unblock':'Block',
+        // icon: 'warning',
         handler: () => {
+          this.blockUser(this.block);
           console.log('block');
         }
-      }, {
+      },{
         text: 'Cancel',
-        icon: 'close',
+        // icon: 'close',
         role: 'cancel',
         handler: () => {
           console.log('Cancel clicked');
         }
-      }]
+      }
+    ]
     });
     await actionSheet.present();
 

@@ -64,14 +64,11 @@
       </ion-col>
     </ion-row>
     <!-- <ion-row class="user_details" [routerLink]="(upcomingList[0]?.user_id == loginUserData?.id) ? ['/new-program-inner',upcomingList[0]?.id] : ['/program-view',upcomingList[0]?.id]" *ngIf="!noData">  -->
-    <ion-row class="user_details" *ngIf="!noData"> 
+    <!-- <ion-row class="user_details" *ngIf="!noData"> 
      
       <h3 class="list-person">{{upcomingList[0]?.title}}</h3>
       <span class="list-name d-block">{{upcomingList[0]?.type_id}}</span>
-      <!-- <span class="list-name d-block">By:{{upcoming?.program_user?.user_name}} {{upcoming?.convertedTime | date:'medium'}}</span> -->
-      <!-- <ion-col size="4" class="ion-no-padding">
-          <ion-text><p class="count_time">{{dd | async}}</p> Days</ion-text>
-      </ion-col> -->
+    
       <div class="user_time" >
         <ion-text *ngIf="!programDetail?.ended &&  upcomingList[0]?.dd > 0 ">
           <p>{{ upcomingList[0]?.dd |number }}</p>
@@ -93,21 +90,8 @@
           <span>Seconds</span>
         </ion-text>
       </div>
-      <!-- <div class="user_time" *ngIf="!noData">
-      <ion-col size="4" class="ion-no-padding ho" *ngIf="!programDetail?.ended">
-        <ion-text style="text-align: center;"><p class="count_time">{{ upcomingList[0]?.dd |number }} </p> Days</ion-text>
-      </ion-col>
-      <ion-col size="4" class="ion-no-padding ho" *ngIf="!programDetail?.ended">
-        <ion-text style="text-align: center;"><p class="count_time">{{ upcomingList[0]?.hh |number }} </p> Hours</ion-text>
-      </ion-col>
-      <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
-        <ion-text style="text-align: center;"><p class="count_time">{{ upcomingList[0]?.mm |number }} </p> Minutes</ion-text>
-      </ion-col>
-      <ion-col size="4" class="ion-no-padding" *ngIf="!programDetail?.ended">
-        <ion-text style="text-align: center;"><p class="count_time">{{ upcomingList[0]?.ss |number }} </p> Seconds</ion-text>
-      </ion-col>
-      </div> -->
-    </ion-row> 
+  
+    </ion-row>  -->
     <ion-row *ngIf="postData.length == 0">
       <ion-col class="flex-center">
         <div class="empty-block">

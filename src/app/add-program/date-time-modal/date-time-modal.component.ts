@@ -17,6 +17,7 @@ import {
 } from 'ion2-calendar';
 import { Config } from './../../config/config';
 import { exit } from 'process';
+import { TermsConditionComponent } from 'src/app/modalContent/terms-condition/terms-condition.component';
 @Component({
   selector: 'app-date-time-modal',
   templateUrl: './date-time-modal.component.html',
@@ -68,7 +69,6 @@ export class DateTimeModalComponent implements OnInit {
   sendAdvRequest: any = 0;
   constructor(
     public commonService: CommonService,
-    public modalCtrl: ModalController,
     private programService: ProgramService,
     private navParams: NavParams,
     public modalController: ModalController,
@@ -146,6 +146,14 @@ export class DateTimeModalComponent implements OnInit {
       non_live_component_fee: new FormControl('0'),
     });
   }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: TermsConditionComponent
+    });
+    return await modal.present();
+  }
+
   //------------------ 
   convert(str) {
     var date = new Date(str),
@@ -182,7 +190,7 @@ export class DateTimeModalComponent implements OnInit {
       closeIcon: true
     };
 
-    const myCalendar = await this.modalCtrl.create({
+    const myCalendar = await this.modalController.create({
       component: CalendarModal,
       componentProps: { options },
       cssClass: 'mbg'
@@ -199,7 +207,7 @@ export class DateTimeModalComponent implements OnInit {
     this.repetative = 2;
     const options: CalendarModalOptions = { 
     };
-    const myCalendar = await this.modalCtrl.create({
+    const myCalendar = await this.modalController.create({
       component: CalendarModal,
       componentProps: { options }
 
@@ -233,7 +241,7 @@ export class DateTimeModalComponent implements OnInit {
       pickMode: 'multi',
       title: 'Custom Selection',
     };
-    const myCalendar = await this.modalCtrl.create({
+    const myCalendar = await this.modalController.create({
       component: CalendarModal,
       componentProps: { options },
       cssClass: 'mbg'
@@ -391,7 +399,7 @@ export class DateTimeModalComponent implements OnInit {
   }
 
   async addEquipments2(event, item, i) {
-    const modal = await this.modalCtrl.create({
+    const modal = await this.modalController.create({
       component: AddEquipmentsComponent,
       cssClass: 'fullModal',
       componentProps: { "programData": item, "modelOpen": event }
@@ -412,7 +420,7 @@ export class DateTimeModalComponent implements OnInit {
   }
 
   async addVideo(event, i) {
-    const modal = await this.modalCtrl.create({
+    const modal = await this.modalController.create({
       component: VideosThumbListComponent,
       cssClass: 'fullModal',
       componentProps: { 'programDetail': event }
@@ -501,7 +509,7 @@ export class DateTimeModalComponent implements OnInit {
   }
   async showVideoDetails(item){
 
-    const modal = await this.modalCtrl.create({
+    const modal = await this.modalController.create({
      component: ViewVideoDetailComponent,
      cssClass: 'fullModal',
      componentProps: { 'details':item}

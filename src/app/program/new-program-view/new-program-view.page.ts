@@ -20,7 +20,7 @@ import { exit } from 'process';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { NutritionModalComponent } from 'src/app/user-profile/nutrition-modal/nutrition-modal.component';
 import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/view-video-detail.component';
-
+import { EquipmentPaymentComponent } from 'src/app/modalContent/equipment-payment/equipment-payment.component';
 /* To try the app with Enablex hosted service you need to set the kTry = true */
 var kTry      = true;
 /*Your webservice host URL, Keet the defined host when kTry = true */
@@ -70,7 +70,7 @@ export class NewProgramViewPage implements OnInit {
   participants : any;
   pgtitle: any;
   //
-
+  non_live_component_fee: any = 0;
   userName: string = "Bablu";
   roomID : string = "";
   enxData : any;
@@ -260,6 +260,8 @@ export class NewProgramViewPage implements OnInit {
       }
       this.programService.getProgramById({ "parentId": this.parentProgId }).subscribe(data => {
         this.allProgramData = data.cloneList;
+        this.non_live_component_fee = data.cloneList[0].non_live_component_fee;
+
         console.log(data, 'programData');
         console.log(this.parentProgId);
       });
@@ -464,7 +466,12 @@ export class NewProgramViewPage implements OnInit {
     });
   }
   joinRequest() {
-    this.programService.joinRequest({ 'programId': this.programDetail.id }).subscribe(data => {
+    var type_id = '0';
+    console.log(this.programType);
+    if(this.programType == 'Private'){
+      type_id = '1';
+    }
+    this.programService.joinRequest({ 'programId': this.programDetail.id, 'type_id': type_id }).subscribe(data => {
       this.request_join = true;
     });
   }
@@ -498,11 +505,33 @@ export class NewProgramViewPage implements OnInit {
   }
 
   nutritionModal(data) {
-    console.log(data);
-    this.commonService.presentModal(NutritionModalComponent, 'fullModal', { 'data': data });
+    if(this.non_live_component_fee > '0'){
+      var fileData = {
+        pgamount : this.non_live_component_fee,
+      } 
+      this.commonService.presentModal(EquipmentPaymentComponent, 'bottomModal', fileData);
+      // this.commonService.presentToast("Program is Paid.")
+    }else if(!this.displayProgData){
+      this.commonService.presentToast("Program is not live yet.");
+    }else{
+      this.commonService.presentModal(NutritionModalComponent, 'fullModal', { 'data': data });
+    }
+    
   }
   async showVideoDetails(item,videoIDs){
-    this.commonService.presentModal(ViewVideoDetailComponent, 'fullModal', { 'details': item, 'videoIds': videoIDs });
+
+    if(this.non_live_component_fee > '0'){
+      var fileData = {
+        pgamount : this.non_live_component_fee,
+      } 
+      this.commonService.presentModal(EquipmentPaymentComponent, 'bottomModal', fileData);
+      // this.commonService.presentToast("Program is Paid.")
+    }else if(!this.displayProgData){
+      this.commonService.presentToast("Program is not live yet.");
+    }else{
+      this.commonService.presentModal(ViewVideoDetailComponent, 'fullModal', { 'details': item, 'videoIds': videoIDs });
+    }
   }
+
 
 }

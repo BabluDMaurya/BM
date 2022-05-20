@@ -234,7 +234,7 @@ export class NutritionPage implements OnInit, OnDestroy {
     this.scanData.forEach(element => {
       if (Array.isArray(element.data)) {
         element.data.forEach(el => {
-          if (el.food_name == fName) {
+          if (el.food_name == fName || el.mn == fName) {
             element.data.splice(i, 1);
           }
         });
@@ -257,7 +257,7 @@ export class NutritionPage implements OnInit, OnDestroy {
             if (el1.measure == abc && element.data[i].food_name == food) {
               console.log(element.data[i]);
               element.data[i].newQty = el1.qty;
-              element.data[i].newCal = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_calories;
+              element.data[i].newCal = ((el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_calories) * el.newQty;
               element.data[i].nf_total_carbohydrate = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_total_carbohydrate;
               element.data[i].nf_protein = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_protein;
               element.data[i].nf_total_fat = (el1.serving_weight / element.data[i].serving_weight_grams) * element.data[i].nf_total_fat;
@@ -269,6 +269,30 @@ export class NutritionPage implements OnInit, OnDestroy {
       }
     });
 
+  }
+  onQtyChange(i, food,val){
+    let qty = val.target.value;
+    console.log(this.scanData);
+    this.scanData.forEach(element => {
+      if (Array.isArray(element.data)) {
+        element.data.forEach(el => {
+
+          // element.data[i].alt_measures.forEach(el1 => {
+            if (el.food_name == food) {
+              // console.log(element.data[i]);
+              console.log(element.data[i].food_name, food );
+              element.data[i].newQty = qty;
+              element.data[i].newCal = element.data[i].newCal * qty;
+              element.data[i].nf_total_carbohydrate = element.data[i].nf_total_carbohydrate * qty;
+              element.data[i].nf_protein = element.data[i].nf_protein * qty;
+              element.data[i].nf_total_fat = element.data[i].nf_total_fat * qty;
+              element.data[i].nf_sugars = element.data[i].nf_sugars * qty;
+              element.data[i].nf_cholesterol = element.data[i].nf_cholesterol * qty;
+            }
+          // });
+        });
+      }
+    });
   }
   // ----------------------------- Open gallery  with multiple --------------//
   gallaryImgPath: any = [];

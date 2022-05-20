@@ -65,9 +65,9 @@
 </ion-card>
 <ion-list lines="none" class="ingredient-list">
   <ion-list-header>Ingredients</ion-list-header>
-  <div class="ingredientItems" *ngIf = "nutritionData.form.nutriIngredients[0].name != '' ">
+  <!-- <div class="ingredientItems" *ngIf = "nutritionData.form.nutriIngredients[0].name != '' ">
     <p *ngFor="let Ingredient of nutritionData.form.nutriIngredients"><span>{{Ingredient.name}}</span></p>
-  </div>
+  </div> -->
   <div class="ingredientItems">
   <p *ngFor="let item of nutritionData.minerals let i=index;">
     <!-- <ion-list class="ingredient-list full-width" *ngIf="item?.length > 0">
@@ -76,6 +76,7 @@
       </ion-item>
     </ion-list> -->
     <span *ngIf="item.item_name">{{item?.item_name}}</span>
+    <span *ngIf="item.mn">{{item?.mn}}</span>
     <span *ngIf="item.food_name">{{item?.food_name}}</span>
   </p></div>
 </ion-list>

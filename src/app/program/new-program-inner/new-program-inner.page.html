@@ -108,7 +108,7 @@
                   </ion-col>
                 </ion-row>
                 <ion-row class="counter-box " *ngIf="programDetail?.is_live_status == 1"> 
-                  <ion-col size="3" class="ion-padding timer-block" *ngIf="!programDetail?.ended && dd > 0">
+                  <ion-col size="3" class="ion-padding timer-block" *ngIf="!programDetail?.ended ">
                       <ion-text><p class="count_time">{{dd | async}}</p> Days</ion-text>
                   </ion-col>
                   <ion-col size="3" class="ion-padding timer-block" *ngIf="!programDetail?.ended">
@@ -131,10 +131,11 @@
                 </ion-row> 
                 <ion-list lines="none" class="users-list d-block" *ngIf="userList?.length>0">
                   <ion-item class="d-flex">
-                      <span *ngFor="let user  of userList">
+                      <ion-avatar *ngFor="let user  of userList">
+
                         <img src="../../assets/images/user.jpg" *ngIf="!user?.bios?.profile_pic" />
                         <img src="{{profileUrl}}{{ user?.bios?.profile_pic }}" *ngIf="user?.bios?.profile_pic" />
-                      </span>
+                      </ion-avatar>
                       <ion-label class="view-all" (click)="showParticipants()">+i</ion-label>
                   </ion-item>
                 </ion-list>
@@ -160,8 +161,10 @@
                   <h5 class="">Program</h5>
                   <div class="flex-with-partition">
                     <p>{{programDetail?.video_id.split(",").length}} Videos </p>
-                    <p>3 Nutrition</p>
-                    <p>{{programFee}}</p>
+                    <p>{{programDetail?.nutrition_id.split(",").length}} Nutrition</p>
+                    <p *ngIf="programDetail?.payment_type == 'Paid' ">${{programFee}}</p>
+                    <p *ngIf="programDetail?.payment_type == 'Free' ">{{programFee}}</p>
+
                   </div>
                   <!-- <ion-chip>
                     {{programDetail?.video_id.split(",").length}} Videos 
@@ -173,11 +176,32 @@
                 </ion-item>
                 <ion-item class="ion-padding-top" lines="">
                   <p class="ion-padding-bottom" style="font-size: 16px;">
-                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                    {{programDetail?.nutri_desc}}
                   </p>
                 </ion-item>
                 <h5 class="ion-padding-horizontal">Equipments</h5>
-                <ion-slides [options]="slideOpts" class="ion-padding-vertical ion-margin-bottom">
+                <ion-item>
+                  <ion-slides [options]="slideOpts" class="ion-padding-vertical ion-margin-bottom">
+                    <ion-slide class="program-slides" *ngFor="let equp of equipmentsList">
+                      <div class="container-flex" *ngIf="equp.selected">
+                        <div class="img-cont">
+                          <img src="{{equipmentPicPath}}{{equp.equipment_pic}}" alt="">
+                        </div>
+                        <span class="equipment-label">{{equp.equipment_name}}</span>
+                      </div>
+                     
+                    </ion-slide>
+                    <!-- <div class="container-flex" style="height: 100%;">
+                      <ion-label class="">see more</ion-label>
+                    </div> -->
+                  </ion-slides>
+                  
+                
+                  <!-- <div class="container-flex" style="height: 100%;">
+                    <ion-label class="">see more</ion-label>
+                  </div> -->
+                </ion-item>
+                <!-- <ion-slides [options]="slideOpts" class="ion-padding-vertical ion-margin-bottom">
                   <ion-slide class="program-slides">
                     <div class="container-flex">
                       <div class="img-cont">
@@ -202,7 +226,7 @@
                       <ion-label class="">calf-raise</ion-label>
                     </div>
                   </ion-slide>
-                </ion-slides>
+                </ion-slides> -->
                 <ion-item-divider></ion-item-divider>
               </ion-list> 
               

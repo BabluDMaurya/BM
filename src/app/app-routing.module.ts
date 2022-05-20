@@ -188,14 +188,14 @@ const routes: Routes = [
   path: 'video-preview/:userData',
   loadChildren: () => import('./add-video/video-preview/video-preview.module').then( m => m.VideoPreviewPageModule)
  },
-  {
-    path: 'program-view/:programId',
-    loadChildren: () => import('./program/program-view/program-view.module').then( m => m.ProgramViewPageModule)
-  },
-  {
-    path: 'program-details/:programId',
-    loadChildren: () => import('./program/program-details/program-details.module').then( m => m.ProgramDetailsPageModule)
-  },
+  // {
+  //   path: 'program-view/:programId',
+  //   loadChildren: () => import('./program/program-view/program-view.module').then( m => m.ProgramViewPageModule)
+  // },
+  // {
+  //   path: 'program-details/:programId',
+  //   loadChildren: () => import('./program/program-details/program-details.module').then( m => m.ProgramDetailsPageModule)
+  // },
   // {
   //   path: 'chat',
   //   loadChildren: () => import('./chats/chat/chat.module').then( m => m.ChatPageModule)
@@ -292,11 +292,11 @@ const routes: Routes = [
     loadChildren: () => import('./new-schedule-program/new-schedule-program.module').then( m => m.NewScheduleProgramPageModule)
   },
   {
-    path: 'new-program-inner/:programId',
+    path: 'program-details/:programId',
     loadChildren: () => import('./program/new-program-inner/new-program-inner.module').then( m => m.NewProgramInnerPageModule)
   },
   {
-    path: 'new-program-view/:programId',
+    path: 'program-view/:programId',
     loadChildren: () => import('./program/new-program-view/new-program-view.module').then( m => m.NewProgramViewPageModule)
   }
 

@@ -36,10 +36,11 @@ export class NutritionPreviewComponent implements OnInit, OnDestroy {
     ];
     this.nutritionService.currentNutritionData.subscribe(data => {
       this.nutritionData = data;
+      console.log(this.nutritionData);
       this.images = data['form'].file;
     });
     console.log(this.nutritionData.form.nutriBevrageType);
-    console.log(this.nutritionData['minerals'] , 'mmm');
+    console.log(this.nutritionData.minerals, 'mmm');
     let cal = 0;
     let carbo = 0;
     let prot = 0;
@@ -47,21 +48,21 @@ export class NutritionPreviewComponent implements OnInit, OnDestroy {
     let sug = 0;
     let chol = 0;
     this.nutritionData.minerals.filter(value => {
-      
-      if(value.food_name)
-      {
-        this.apiIngredients += value['food_name'] + ',';
-      } 
-      if(value.item_name)
-      { this.apiIngredients += value['item_name'] + ',';}
-      
-        cal   = cal + value['newCal'];
-        carbo = carbo + value['nf_total_carbohydrate'];
-        prot  = prot + value['nf_protein'];
-        fat   = fat + value['nf_total_fat'];
-        sug   = sug + value['nf_sugars'];
-        chol  = chol + value['nf_cholesterol'];
-      
+      if(value.food_name){
+        if(value.food_name)
+        {
+          this.apiIngredients += value['food_name'] + ',';
+        } 
+        if(value.item_name)
+        { this.apiIngredients += value['item_name'] + ',';}
+        
+          cal   = cal + value['newCal'];
+          carbo = carbo + value['nf_total_carbohydrate'];
+          prot  = prot + value['nf_protein'];
+          fat   = fat + value['nf_total_fat'];
+          sug   = sug + value['nf_sugars'];
+          chol  = chol + value['nf_cholesterol'];
+      }
 
     });
 

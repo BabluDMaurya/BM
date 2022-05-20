@@ -23,7 +23,7 @@
     </ion-toolbar> -->
     <ion-item *ngFor="let equip of equipmentFiltered" class="pX-15">
       <div class="users-list" >
-        <img src="../../assets/images/{{equip.equipment_pic}}" />
+        <img src="{{equipmentPicPath}}{{equip.equipment_pic}}" />
       </div>
       <ion-label class="ion-padding-horizontal">
         <h3 class="list-person"> {{equip.equipment_name}} </h3>

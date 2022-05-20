@@ -12,7 +12,7 @@ import { AddProgramPage } from './add-program.page';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { ComponentModule } from '../profile/components.modules';
 import { CalenderMonthWeekTimeComponent } from './../add-program/calender-month-week-time/calender-month-week-time.component';
-
+import { TermsConditionComponent } from 'src/app/modalContent/terms-condition/terms-condition.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +24,7 @@ import { CalenderMonthWeekTimeComponent } from './../add-program/calender-month-
     ComponentModule
   ],
   declarations: [AddProgramPage ,
-    AudioPlayerProgramComponent,ProgramNutritionDetailModalComponent,CalenderMonthWeekTimeComponent],
-    entryComponents: [ProgramNutritionDetailModalComponent,CalenderMonthWeekTimeComponent]
+    AudioPlayerProgramComponent,ProgramNutritionDetailModalComponent,CalenderMonthWeekTimeComponent, TermsConditionComponent],
+    entryComponents: [ProgramNutritionDetailModalComponent,CalenderMonthWeekTimeComponent, TermsConditionComponent]
 })
 export class AddProgramPageModule {}

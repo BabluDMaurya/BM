@@ -34,6 +34,9 @@ export class UpcomingPage implements OnInit {
     private actRoute: ActivatedRoute,
     private programService: ProgramService) {
       this.actRoute.paramMap.subscribe((params: ParamMap) => {
+        console.log(params);
+        console.log(params.get('userData'));
+
         if (params.get('userData')) {
           this.consultID = params.get('userData');
         }

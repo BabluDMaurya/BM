@@ -5,6 +5,7 @@ import { NutritionService } from './../../services/nutrition.service' ;
 import { ProgramService } from './../../services/program.service';
 import { Config } from '../../config/config';
 import { ProgramNutritionDetailModalComponent } from '../../add-program/program-nutrition-detail-modal/program-nutrition-detail-modal.component';
+
 @Component({
   selector: 'app-add-equipments',
   templateUrl: './add-equipments.component.html',
@@ -12,6 +13,7 @@ import { ProgramNutritionDetailModalComponent } from '../../add-program/program-
 })
 export class AddEquipmentsComponent implements OnInit {
   equipmentFiltered: any;
+  equipmentPicPath = Config.equipmentPic;
   nutritionFiltered: [];
   private _searchTerm: string;
   private _followingSearchTrem: string;

@@ -192,6 +192,9 @@
               <li *ngFor=" let typeData of data.data let f= index" >
                 <ion-item *ngIf="typeData?.mn" class="">
                   <ion-label class="nutrition-title">{{typeData.mn}}</ion-label>
+                  <div class="nutrition-right">
+                    <ion-icon class="closeicon" ios="ios-trash" md="md-trash" (click)="removeApiData(f,typeData.mn)"></ion-icon>
+                  </div>
                 </ion-item>
                 <ion-item *ngIf="typeData?.food_name"  class="">
                   <div class="img-container">
@@ -203,7 +206,7 @@
                       <div class="nutrition-left">
                         <div class="nutrition-quantity">
                           <!-- <ion-icon class="closeicon" ios="ios-remmove" md="md-remove" (click)="decrement()"></ion-icon> -->
-                          <ion-input type="number" class="nutrition-input" aria-readonly="true" value="{{typeData?.newQty}}"></ion-input>
+                          <ion-input type="number" class="nutrition-input" (change)="onQtyChange(f,typeData.food_name,$event)"  aria-readonly="true" value="{{typeData?.newQty}}"></ion-input>
                           <!-- <ion-icon class="closeicon" ios="ios-add" md="md-add" (click)="increment()"></ion-icon> -->
                         </div>
                         <ion-select class="nutrition-select" (ionChange)="detailsUpdate(f,typeData.food_name,$event)"  interface="popover" placeholder="Select Measure">
