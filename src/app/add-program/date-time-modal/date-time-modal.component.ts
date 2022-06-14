@@ -6,8 +6,8 @@ import { AddEquipmentsComponent } from '../add-equipments/add-equipments.compone
 import { VideosThumbListComponent } from '../videos-thumb-list/videos-thumb-list.component';
 import { ViewVideoDetailComponent } from '../../add-program/view-video-detail/view-video-detail.component';
 import { CalenderMonthWeekTimeComponent } from '../../add-program/calender-month-week-time/calender-month-week-time.component';
-import{VerifyUserInfoComponent} from "../../modalContent/verify-user-info/verify-user-info.component";
-import { FormControl, FormBuilder, Validators,FormGroup } from '@angular/forms';
+import { VerifyUserInfoComponent } from "../../modalContent/verify-user-info/verify-user-info.component";
+import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import {
   CalendarComponentOptions,
@@ -25,6 +25,8 @@ import { TermsConditionComponent } from 'src/app/modalContent/terms-condition/te
 })
 export class DateTimeModalComponent implements OnInit {
 
+  // public isDisabled = ''
+
   dates: Date[] = [
     new Date(),
     new Date(Date.now() + 24 * 60 * 60 * 1000),
@@ -34,9 +36,9 @@ export class DateTimeModalComponent implements OnInit {
   calendarData: any;
   optionsMulti: CalendarComponentOptions = {
     pickMode: 'multi'
-  }; 
-  
-  loginUserData:any;
+  };
+
+  loginUserData: any;
   finalForm: FormGroup;
   approval_btn: any = false;
   hours: any;
@@ -44,7 +46,7 @@ export class DateTimeModalComponent implements OnInit {
   duration: any;
   minutes: any = 0;
   repetative: any = '';
-  dupliEntry: any ='';
+  dupliEntry: any = '';
   programList: any;
   repetatedDate: any = [];
   bonusDates: any = [];
@@ -56,17 +58,19 @@ export class DateTimeModalComponent implements OnInit {
     spaceBetween: 1.5
   }
   // vsd = [].constructor(60);
-  adData:any;
+  adData: any;
   request_approve_btn: any = false;
   storagePath: any = Config.storagePath;
-  repetatedDateCopy: any= []; 
-  abDateSelect:any;
-  selectedDateTime : any;
+  repetatedDateCopy: any = [];
+  abDateSelect: any;
+  selectedDateTime: any;
   totalLiveSession: any;
   totalNutritionInSession: any;
   totalVideoInSession: any;
   totalLiveAmt: any = 0;
   sendAdvRequest: any = 0;
+  isDisabled: boolean = true;
+
   constructor(
     public commonService: CommonService,
     private programService: ProgramService,
@@ -86,27 +90,27 @@ export class DateTimeModalComponent implements OnInit {
     this.programData = this.navParams.data.programData;
     console.log(this.programData);
     console.log(this.repetatedDateCopy);
-    var i = 0; 
+    var i = 0;
     var totalNutri = 0;
     var totalVideo = 0;
     this.repetatedDateCopy.forEach(el => {
-      if(el.is_live == true){
+      if (el.is_live == true) {
         i++;
       }
-      if(el.video != ''){
+      if (el.video != '') {
         totalVideo++;
       }
-      if(el.nutrition_id.length > 0){
+      if (el.nutrition_id.length > 0) {
         totalNutri++;
       }
     });
     this.totalLiveSession = i;
     this.totalNutritionInSession = totalNutri;
     this.totalVideoInSession = totalVideo;
-    console.log(i,' total live session');
+    console.log(i, ' total live session');
 
     //get days name
-    this.programList = this.navParams.data.programList; 
+    this.programList = this.navParams.data.programList;
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     var dayName = new Date(this.calendarData);
     var curr_day = days[dayName.getDay()];
@@ -117,17 +121,17 @@ export class DateTimeModalComponent implements OnInit {
     ];
     var curr_month = monthNames[this.calendarData.getMonth()];
     // this.selectedDateTime = this.convert(new Date(this.calendarData))+' '+this.calendarData.getHours()+':'+this.minutes;
-     let suffix = 'th',
-        day = curr_date;
+    let suffix = 'th',
+      day = curr_date;
 
-        if (day === 1 || day === 21 || day === 31) {
-            suffix = 'st'
-        } else if (day === 2 || day === 22) {
-            suffix = 'nd';
-        } else if (day === 3 || day === 23) {
-           suffix = 'rd';
-        }
-    this.selectedDateTime = curr_day+', '+curr_date+suffix+' '+curr_month+' '+curr_year+' '+this.calendarData.getHours()+':'+this.minutes;
+    if (day === 1 || day === 21 || day === 31) {
+      suffix = 'st'
+    } else if (day === 2 || day === 22) {
+      suffix = 'nd';
+    } else if (day === 3 || day === 23) {
+      suffix = 'rd';
+    }
+    this.selectedDateTime = curr_day + ', ' + curr_date + suffix + ' ' + curr_month + ' ' + curr_year + ' ' + this.calendarData.getHours() + ':' + this.minutes;
     console.log(this.selectedDateTime);
     // ------------ S O R T I N G ---------------
     this.programList.forEach(el => {
@@ -140,7 +144,7 @@ export class DateTimeModalComponent implements OnInit {
           end_arr.push(el);
         }
       }
-    }); 
+    });
     this.finalForm = this.fb.group({
       programFees: new FormControl('0'),
       non_live_component_fee: new FormControl('0'),
@@ -159,17 +163,17 @@ export class DateTimeModalComponent implements OnInit {
     var date = new Date(str),
       mnth = ("0" + (date.getMonth() + 1)).slice(-2),
       day = ("0" + date.getDate()).slice(-2);
-    return [day,mnth,date.getFullYear()].join("-");
+    return [day, mnth, date.getFullYear()].join("-");
   }
-  ngOnInit() { 
+  ngOnInit() {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
 
   }
   //------------------ 
   ionViewWillEnter() {
     let userData = JSON.parse(localStorage.getItem('userData'));
-    
-    
+
+
     if (this.programData.programType == '6') {
       this.commonService.loadVideoType({ 'userId': userData.id, 'postType': 2, 'videoType': 3 }).subscribe(data => {
         this.videoList = data.posts.data;
@@ -202,10 +206,10 @@ export class DateTimeModalComponent implements OnInit {
 
   async basic() {
 
-    this.repetatedDateCopy=[];
+    this.repetatedDateCopy = [];
     this.repetatedDate = [];
     this.repetative = 2;
-    const options: CalendarModalOptions = { 
+    const options: CalendarModalOptions = {
     };
     const myCalendar = await this.modalController.create({
       component: CalendarModal,
@@ -218,15 +222,15 @@ export class DateTimeModalComponent implements OnInit {
     if (date == null) {
       this.repetative = '';
       this.repetatedDate = [];
-      this.repetatedDateCopy=[];
+      this.repetatedDateCopy = [];
       this.commonService.presentToast('For Clone Program select Date otherwise it will create single program ');
     } else {
       var endDate = new Date(date.dateObj);
       var dateMove = new Date(this.calendarData);
-      var currentDate = new Date(this.calendarData); 
+      var currentDate = new Date(this.calendarData);
       // console.log("'date':new Date(currentDate)"+new Date(currentDate));
       while (currentDate.getTime() <= endDate.getTime()) {
-        this.repetatedDateCopy.push({'date':new Date(currentDate) ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
+        this.repetatedDateCopy.push({ 'date': new Date(currentDate), 'equipments': [], 'nutrition_id': [], 'video': '', 'description': '' });
         this.repetatedDate.push(new Date(currentDate));
         currentDate.setDate(currentDate.getDate() + 7);
       }
@@ -234,8 +238,8 @@ export class DateTimeModalComponent implements OnInit {
   }
 
   async multiple() {
-    this.repetatedDate = []; 
-    this.repetatedDateCopy=[];
+    this.repetatedDate = [];
+    this.repetatedDateCopy = [];
     this.repetative = 1;
     const options = {
       pickMode: 'multi',
@@ -255,78 +259,78 @@ export class DateTimeModalComponent implements OnInit {
     if (date == null) {
       this.repetative = '';
       this.repetatedDate = [];
-      this.repetatedDateCopy=[]
+      this.repetatedDateCopy = []
       this.commonService.presentToast('For Repeate Program select Date otherwise it will create single program ');
     } else {
-      this.repetatedDateCopy.push({'date':this.calendarData ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''})
+      this.repetatedDateCopy.push({ 'date': this.calendarData, 'equipments': [], 'nutrition_id': [], 'video': '', 'description': '' })
       date.sort((a, b) => a.time - b.time).forEach(el => {
         console.log(el);
-        this.repetatedDateCopy.push({'date':el.dateObj ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
+        this.repetatedDateCopy.push({ 'date': el.dateObj, 'equipments': [], 'nutrition_id': [], 'video': '', 'description': '' });
         let dateObj = new Date(el.dateObj + 'Z');
         dateObj.setHours((hourspan.getHours()), hourspan.getMinutes());
         this.repetatedDate.push(dateObj);
         // console.log(this.repetatedDate);
         console.log(this.repetatedDate);
       });
-      
+
     }
   }
-  async newtest(){
-    if(!this.duration && this.programData.programType !== '6'){
+  async newtest() {
+    if (!this.duration && this.programData.programType !== '6') {
       this.commonService.presentToast('Please select Duration');
       return;
-    }else {
-    this.repetatedDate = []; 
-    this.repetatedDateCopy=[];
-    this.repetative = 1;
-    const options: CalendarModalOptions = {
-      pickMode: 'multi',
-     
-    };
-    const modal = await this.modalController.create({
-      component: CalenderMonthWeekTimeComponent,
-      cssClass: 'fullModal',
-      
-      componentProps: { 'minutes':this.minutes,'programList':this.programList,'calendarData':this.calendarData,options: options,'progDuration':this.duration,'preCalendarData':this.calendarData }
-    });
-    modal.onDidDismiss().then((data: any) => {
-      console.log(data);
-      if (data == null) {
-        this.repetative = '';
-        this.repetatedDate = [];
-        this.repetatedDateCopy=[]
-        this.commonService.presentToast('For Repeate Program select Date otherwise it will create single program ');
-      }else{
-        let i = 0;
-        data.data.forEach(el => {
-          
-          if(el.getDate() == this.calendarData.getDate() && el.getMonth() == this.calendarData.getMonth()){
-            i++;
-          }
-        });  
-        console.log(i + 'fgfgf');
-        if(i == 0){
-          this.repetatedDateCopy.push({'date':this.calendarData ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''})
-        }
-      
-      data.data.forEach(el => {
-        console.log(el);
-        console.log('el');
-        this.repetatedDateCopy.push({'date':el ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
-        this.repetatedDate.push(el);
-        // this.repetatedDate.push({'date':el ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
+    } else {
+      this.repetatedDate = [];
+      this.repetatedDateCopy = [];
+      this.repetative = 1;
+      const options: CalendarModalOptions = {
+        pickMode: 'multi',
+
+      };
+      const modal = await this.modalController.create({
+        component: CalenderMonthWeekTimeComponent,
+        cssClass: 'fullModal',
+
+        componentProps: { 'minutes': this.minutes, 'programList': this.programList, 'calendarData': this.calendarData, options: options, 'progDuration': this.duration, 'preCalendarData': this.calendarData }
       });
-      console.log(this.repetatedDate);
-      }
-    
-  });
-    return await modal.present();
-  } 
+      modal.onDidDismiss().then((data: any) => {
+        console.log(data);
+        if (data == null) {
+          this.repetative = '';
+          this.repetatedDate = [];
+          this.repetatedDateCopy = []
+          this.commonService.presentToast('For Repeate Program select Date otherwise it will create single program ');
+        } else {
+          let i = 0;
+          data.data.forEach(el => {
+
+            if (el.getDate() == this.calendarData.getDate() && el.getMonth() == this.calendarData.getMonth()) {
+              i++;
+            }
+          });
+          console.log(i + 'fgfgf');
+          if (i == 0) {
+            this.repetatedDateCopy.push({ 'date': this.calendarData, 'equipments': [], 'nutrition_id': [], 'video': '', 'description': '' })
+          }
+
+          data.data.forEach(el => {
+            console.log(el);
+            console.log('el');
+            this.repetatedDateCopy.push({ 'date': el, 'equipments': [], 'nutrition_id': [], 'video': '', 'description': '' });
+            this.repetatedDate.push(el);
+            // this.repetatedDate.push({'date':el ,'equipments':[], 'nutrition_id':[] , 'video': '','description':''});
+          });
+          console.log(this.repetatedDate);
+        }
+
+      });
+      return await modal.present();
+    }
   }
   addExtraDay(event) {
-    let val =new Date(event.detail.value);
-    
-    this.repetatedDateCopy.push({'date':val,'equipments':[], 'nutrition_id':[] , 'video': '','description':''}); 
+    let val = new Date(event.detail.value);
+
+    this.repetatedDateCopy.push({ 'date': val, 'equipments': [], 'nutrition_id': [], 'video': '', 'description': '' });
     this.abDateSelect = ''
   }
   onSubmit() {
@@ -356,45 +360,45 @@ export class DateTimeModalComponent implements OnInit {
       console.log(this.repetatedDate);
       console.log(this.repetatedDate[0].getDate());
       this.repetatedDateCopy.filter(el => {
-        if(this.repetatedDate[0].getDate() !=  el.date.getDate()){
-          if(el.video == ''){
-            this.commonService.presentToast('Please select video for repetitive program'); 
+        if (this.repetatedDate[0].getDate() != el.date.getDate()) {
+          if (el.video == '') {
+            this.commonService.presentToast('Please select video for repetitive program');
             exit();
             return;
           }
         }
       });
-      
+
 
     }
     let hourspan = this.calendarData;
     console.log(hourspan);
     // hourspan.setMinutes(hourspan.getMinutes() + parseInt(this.minutes));
     this.commonService.presentLoader();
-   
+
     // this.repetatedDate.filter(el => {
     //   el = el.setHours((hourspan.getHours()), hourspan.getMinutes());
     // });
     var fees = this.finalForm.value;
     this.repetative = 1;
-    this.programData.progDateTime      = this.repetatedDate[0];
-    this.programData.progDuration      = this.duration;
-    this.programData.progRepetation    = this.repetative;
-    this.programData.repetatedDate     = this.repetatedDate;
+    this.programData.progDateTime = this.repetatedDate[0];
+    this.programData.progDuration = this.duration;
+    this.programData.progRepetation = this.repetative;
+    this.programData.repetatedDate = this.repetatedDate;
     this.programData.repetatedDateCopy = this.repetatedDateCopy;
-    this.programData.programFees       = fees.programFees;
-    this.programData.non_live_component_fee       = fees.non_live_component_fee;
-    this.programData.sendAdvRequest    = this.sendAdvRequest;
+    this.programData.programFees = fees.programFees;
+    this.programData.non_live_component_fee = fees.non_live_component_fee;
+    this.programData.sendAdvRequest = this.sendAdvRequest;
 
-    
+
     console.log(this.repetatedDateCopy);
     console.log(this.repetatedDate);
     console.log(this.programData);
     console.log('this.programData');
-    
+
     this.programService.insertProgram(this.programData).subscribe((data) => {
       this.commonService.dismissLoader();
-    this.closeModal(data.statusDetails);
+      this.closeModal(data.statusDetails);
     });
   }
 
@@ -405,12 +409,11 @@ export class DateTimeModalComponent implements OnInit {
       componentProps: { "programData": item, "modelOpen": event }
     });
     modal.onDidDismiss().then((d: any) => {
-      if(event == 1)
-      {
-        this.repetatedDateCopy[i].equipments = d.data.filter(Boolean) ;
+      if (event == 1) {
+        this.repetatedDateCopy[i].equipments = d.data.filter(Boolean);
         // this.repetatedDate[i].equipments = d.data.filter(Boolean) ;
-      }else{
-        this.repetatedDateCopy[i].nutrition_id = d.data.filter(Boolean) ;
+      } else {
+        this.repetatedDateCopy[i].nutrition_id = d.data.filter(Boolean);
         // this.repetatedDate[i].nutrition_id = d.data.filter(Boolean) ;
       }
       console.log(this.repetatedDateCopy);
@@ -424,19 +427,19 @@ export class DateTimeModalComponent implements OnInit {
       component: VideosThumbListComponent,
       cssClass: 'fullModal',
       componentProps: { 'programDetail': event }
-    }); 
+    });
     modal.onDidDismiss().then((d: any) => {
       if (d.data) {
-        this.repetatedDateCopy[i].video=d.data;
+        this.repetatedDateCopy[i].video = d.data;
         // this.repetatedDate[i].video=d.data;
       }
     });
     return await modal.present();
   }
-  sponsar_prog(){
+  sponsar_prog() {
     this.approval_btn = true;
   }
-  unsponsar_prog(){
+  unsponsar_prog() {
     this.approval_btn = false;
   }
   detailsUpdate($event, i) {
@@ -445,29 +448,28 @@ export class DateTimeModalComponent implements OnInit {
     console.log(i);
     this.repetatedDateCopy[i].description = $event.detail;
   }
-  verifyUserInfoModal() {    
-    if(this.loginUserData.trilloMatch != 1){
-      this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', ''); 
-    }else{
+  verifyUserInfoModal() {
+    if (this.loginUserData.trilloMatch != 1) {
+      this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
+    } else {
 
-    }    
+    }
   }
 
-  applyAdvertise()
-  {
+  applyAdvertise() {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
-    
-    let title ="Advertise Rule";
-    let msg ="<p>1. Your Video will send for verification.</p>"
-            +"<p class='mb-0'>2. Once approved Video Program will be locked</p>";
-    let btn=  [
+
+    let title = "Advertise Rule";
+    let msg = "<p>1. Your Video will send for verification.</p>"
+      + "<p class='mb-0'>2. Once approved Video Program will be locked</p>";
+    let btn = [
       {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
       }, {
         text: 'Okay',
         handler: () => {
@@ -476,19 +478,17 @@ export class DateTimeModalComponent implements OnInit {
         }
       }
     ];
-    
-      if(this.loginUserData.trilloMatch != 1){
-        this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
-      }else{
-        this.commonService.presentAlert(title,msg,btn,'custom-alert advertiseAlert'); 
-      }
+
+    if (this.loginUserData.trilloMatch != 1) {
+      this.commonService.presentModal(VerifyUserInfoComponent, 'fullpage', '');
+    } else {
+      this.commonService.presentAlert(title, msg, btn, 'custom-alert advertiseAlert');
+    }
   }
-  sendrequest()
-  {
+  sendrequest() {
     this.commonService.presentLoader();
 
-    if(this.programData.programType == '6')
-    {
+    if (this.programData.programType == '6') {
       this.sendAdvRequest = 1;
       this.commonService.dismissLoader();
       this.commonService.presentToast('Request Sent');
@@ -501,29 +501,37 @@ export class DateTimeModalComponent implements OnInit {
       //   this.commonService.presentToast('Request Sent');
       //   console.log(data);
       // } );
-    }else{
+    } else {
       this.commonService.dismissLoader();
       this.commonService.presentToast('Only Video Program are eligible');
     }
-    
+
   }
-  async showVideoDetails(item){
+  async showVideoDetails(item) {
 
     const modal = await this.modalController.create({
-     component: ViewVideoDetailComponent,
-     cssClass: 'fullModal',
-     componentProps: { 'details':item}
+      component: ViewVideoDetailComponent,
+      cssClass: 'fullModal',
+      componentProps: { 'details': item }
 
-   });
-   return await modal.present();
-}
+    });
+    return await modal.present();
+  }
 
-updateTotalPrice(event){
-  
-        let price     = event.target.value;
-        // let amtPerMin = (price) / 60;
-        this.totalLiveAmt =  price * this.totalLiveSession; 
-        console.log(this.totalLiveAmt);
-}
+  updateTotalPrice(event) {
+
+    let price = event.target.value;
+    // let amtPerMin = (price) / 60;
+    this.totalLiveAmt = price * this.totalLiveSession;
+    console.log(this.totalLiveAmt);
+  }
+
+  termsChecked(event) {
+    if (event.target.checked == true) {
+      this.isDisabled = false;
+    } else {
+      this.isDisabled = true;
+    }
+  }
 
 }

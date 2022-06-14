@@ -1,21 +1,22 @@
-
-.right-div{
+.right-div {
     display: flex;
     align-items: center;
+
     .min-width-none {
         min-width: 0px !important;
-      }
-      .pl-8{
-        padding-left: 8px !important;
-      }
-  }
+    }
 
-.main_content{
-    ion-row{
-        ion-col{
-            .item-content{
-                ion-thumbnail{
-                    .cover-img{
+    .pl-8 {
+        padding-left: 8px !important;
+    }
+}
+
+.main_content {
+    ion-row {
+        ion-col {
+            .item-content {
+                ion-thumbnail {
+                    .cover-img {
                         object-fit: cover;
                         object-position: center;
                     }
@@ -24,63 +25,86 @@
         }
     }
 }
-.ionic-divider{
+
+.ionic-divider {
     padding-inline-start: 0px !important;
     padding-inline-end: 0px !important;
+
     .three-tabs ion-segment ion-segment-button {
         width: auto;
     }
 }
-.ionic-divider{
+
+.ionic-divider {
     padding-inline-start: 0px !important;
     padding-inline-end: 0px !important;
+
     .three-tabs ion-segment ion-segment-button {
         width: auto;
     }
-    ion-segment-button{
+
+    ion-segment-button {
         min-height: 38px;
         color: #000;
         text-transform: capitalize;
         letter-spacing: 0;
-        .ionic-icon{
+
+        .ionic-icon {
             font-size: 2rem !important;
         }
-        .ionic-img{
+
+        .ionic-img {
             width: 2rem;
             height: 2rem;
         }
-        .live-icon{
+
+        .live-icon {
             padding: 5px 10px;
             background: #555;
             color: #fff;
             border-radius: 20px;
-            span{
+
+            span {
                 font-size: 10px;
                 color: #fff;
             }
         }
     }
 }
-.programDesc{
-    p{line-height: 1.5; text-align: center; font-size: 14px;}
+
+.programDesc {
+    p {
+        line-height: 1.5;
+        text-align: center;
+        font-size: 14px;
+    }
 }
-.program-date{
-    color: #27a69a; line-height: 1.5; text-align: center; font-size: 14px;
+
+.program-date {
+    color: #27a69a;
+    line-height: 1.5;
+    text-align: center;
+    font-size: 14px;
 }
-.fs-16{
+
+.fs-16 {
     font-size: 16px;
     line-height: 1.5;
 }
-.fs-14{
+
+.fs-14 {
     font-size: 16px;
     line-height: 1.5;
 }
-.program-card{
+
+.program-card {
     padding: 10px 15px;
-    ion-slides{
+
+    ion-slides {
         height: 200px;
-        ion-slide{
-            img{
+
+        ion-slide {
+            img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -88,12 +112,14 @@
             }
         }
     }
-    .programs-date{
-    }
-    .programs-flex{
+
+    .programs-date {}
+
+    .programs-flex {
         display: flex;
+
         // justify-content: space-between;
-        .program-flex-child{
+        .program-flex-child {
             width: 30%;
             height: 100px;
             display: flex;
@@ -104,31 +130,38 @@
             background: #27a69a;
             color: #fff;
             margin-left: 5%;
-            .ionic-icon{
+
+            .ionic-icon {
                 font-size: 1.5rem !important;
             }
         }
-        .program-flex-child:first-child{
+
+        .program-flex-child:first-child {
             margin-left: 0;
         }
     }
 }
-.program-chat{
+
+.program-chat {
     display: flex;
     padding: 10px 15px;
     align-items: center;
-    ion-avatar{
+
+    ion-avatar {
         margin-right: 15px;
         min-width: 50px;
         min-height: 50px;
     }
-    .program-chat-info{
+
+    .program-chat-info {
         flex: 1;
         width: 80%;
-        .chat-title{
+
+        .chat-title {
             display: flex;
             justify-content: space-between;
-            h6{
+
+            h6 {
                 font-size: 16px;
                 margin-top: 0;
                 margin-bottom: 0;
@@ -139,48 +172,57 @@
                 white-space: nowrap;
                 flex: 1;
             }
-            p{
+
+            p {
                 color: #cecece;
                 margin-left: 15px;
             }
         }
-        .chat-info{
-            span{
+
+        .chat-info {
+            span {
                 font-size: 14px;
                 color: #555;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 overflow: hidden;
             }
-        }  
+        }
     }
-   
+
 }
-.counter-box{
+
+.counter-box {
     align-items: center;
-    .timer-block{
+
+    .timer-block {
         align-items: center;
         background: #27a69a;
-        ion-text{
+
+        ion-text {
             color: #fff;
-            p{
+
+            p {
                 color: #fff;
                 font-size: 14px;
             }
         }
     }
 }
-.primary-btn{
+
+.primary-btn {
     --background: #27a69a;
     // color: #27a69a;
 }
-.session-timer{
+
+.session-timer {
     display: flex;
     align-items: center;
     // position: absolute;
     // bottom: 20px;
 }
-.container-flex{
+
+.container-flex {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -191,26 +233,31 @@
     box-shadow: 0px 0px 5px rgba(0, 0, 0, .097);
     padding: 10px;
 }
-.img-cont{
+
+.img-cont {
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.img-cont > img{
+
+.img-cont>img {
     // width: 100%;
     height: 100%;
 }
+
 .flex-with-partition {
     display: flex;
     align-items: center;
 }
-.flex-with-partition > p {
-font-size: 16px;
-position: relative;
-padding-right: 30px;
+
+.flex-with-partition>p {
+    font-size: 16px;
+    position: relative;
+    padding-right: 30px;
 }
-.flex-with-partition > p::after{
+
+.flex-with-partition>p::after {
     content: '';
     width: 2px;
     height: 20px;
@@ -219,15 +266,23 @@ padding-right: 30px;
     top: -1px;
     right: 14px;
 }
+
 .program-cover {
     height: 260px;
     width: 100%;
 }
-.program-cover > img{
+
+.program-cover>img {
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
-.equipment-label{
+
+.equipment-label {
     font-size: 14px !important;
+}
+
+ion-button.green.hydrated {
+    margin-bottom: 10px;
+    height: 40px;
 }

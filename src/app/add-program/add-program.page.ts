@@ -915,7 +915,7 @@ export class AddProgramPage implements OnInit {
         //   return false;
       }
     });
-    
+
     this.minutes = '';
     this.hours = '';
     console.log("this.myDate");
@@ -939,7 +939,7 @@ export class AddProgramPage implements OnInit {
     console.log('time', time);
   }
 
-  
+
   formatAMPM(date) {
     var hours = date[0];
     var minutes = date[1];

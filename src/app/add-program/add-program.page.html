@@ -49,15 +49,17 @@
         <ion-button (click)="slidePrev()" class="slidebtns slideBack">
           <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
         </ion-button>
-        
+
         <ion-slides pager="true" [options]="sliderOpts" class="full-slider mb-10" #mySlider>
           <ion-slide (click)="showdetails()" *ngFor="let imgpath of gallaryImgPath; let i=index;">
             <img src="{{imgpath}}" />
             <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="removeImg(i)"></ion-icon>
           </ion-slide>
           <ion-slide *ngIf="isVideoSelected">
-            <img *ngIf="videoFileSelected" (click)="filepreview()" class="mb-10" height="250px" src="../../assets/images/demo3.jpg">
-            <ion-icon *ngIf="videoFileSelected" ios="ios-close-circle" md="md-close-circle" (click)="removefilepreview()" color="danger" class="btn-close"></ion-icon>
+            <img *ngIf="videoFileSelected" (click)="filepreview()" class="mb-10" height="250px"
+              src="../../assets/images/demo3.jpg">
+            <ion-icon *ngIf="videoFileSelected" ios="ios-close-circle" md="md-close-circle"
+              (click)="removefilepreview()" color="danger" class="btn-close"></ion-icon>
           </ion-slide>
         </ion-slides>
         <ion-button (click)="slideNext()" class="slidebtns slideNext">
@@ -101,13 +103,15 @@
           <ion-list>
             <ion-item class="floatingItem">
               <ion-label position="floating">Title <span>*</span></ion-label>
-              <ion-input class="form-control" formControlName="programTitle" [ngClass]="{ 'is-invalid': submitted && f.programTitle.errors }">
+              <ion-input class="form-control" formControlName="programTitle"
+                [ngClass]="{ 'is-invalid': submitted && f.programTitle.errors }">
               </ion-input>
             </ion-item>
-            
+
             <ng-container *ngFor="let validation of validation_messages.programTitle">
               <span class="error-message"
-                *ngIf="(submitted || programForm.get('programTitle').touched) && programForm.get('programTitle').hasError(validation.type)">{{ validation.message }}</span>
+                *ngIf="(submitted || programForm.get('programTitle').touched) && programForm.get('programTitle').hasError(validation.type)">{{
+                validation.message }}</span>
             </ng-container>
             <ion-item class="mb-10 floatingItem">
               <ion-label position="floating">Description </ion-label>
@@ -156,7 +160,8 @@
                   </ion-radio-group>
                   <ng-container *ngFor="let validation of validation_messages.programType">
                     <span class="error-message"
-                      *ngIf="(submitted || programForm.get('programType').touched) && programForm.get('programType').hasError(validation.type)">{{ validation.message }}</span>
+                      *ngIf="(submitted || programForm.get('programType').touched) && programForm.get('programType').hasError(validation.type)">{{
+                      validation.message }}</span>
                   </ng-container>
                 </ion-col>
                 <ion-col size="6" class="ion-no-padding">
@@ -187,27 +192,29 @@
                     </ion-item>
                     <ng-container *ngFor="let validation of validation_messages.participantsType">
                       <span class="error-message"
-                        *ngIf="(submitted || programForm.get('participantsType').touched) && programForm.get('participantsType').hasError(validation.type)">{{ validation.message }}</span>
+                        *ngIf="(submitted || programForm.get('participantsType').touched) && programForm.get('participantsType').hasError(validation.type)">{{
+                        validation.message }}</span>
                     </ng-container>
                   </ion-radio-group>
                 </ion-col>
-              <ion-col size="6" class="ion-no-padding">
-                <ion-item lines="none">
-                  <ion-text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua.
-                  </ion-text>
-                </ion-item>
-              </ion-col>
-              <ion-item class="mb-10" *ngIf="modalData?.length>0">
-                <ion-list lines="none" class="users-list">
-                  <ion-item  *ngFor="let user of modalData" >
-                    <img src="{{profileUrl}}{{user.bios.profile_pic}}"  *ngIf="user.bios.profile_pic" (click)="userList()"/>
-                    <img src="../../assets/images/user.png"  *ngIf="!user.bios.profile_pic" (click)="userList()"/>
-                     <!-- <ion-label class="view-all" (click)="userList()">+2</ion-label> -->
+                <ion-col size="6" class="ion-no-padding">
+                  <ion-item lines="none">
+                    <ion-text>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                      ut labore et dolore magna aliqua.
+                    </ion-text>
                   </ion-item>
-                </ion-list>
-              </ion-item>
+                </ion-col>
+                <ion-item class="mb-10" *ngIf="modalData?.length>0">
+                  <ion-list lines="none" class="users-list">
+                    <ion-item *ngFor="let user of modalData">
+                      <img src="{{profileUrl}}{{user.bios.profile_pic}}" *ngIf="user.bios.profile_pic"
+                        (click)="userList()" />
+                      <img src="../../assets/images/user.png" *ngIf="!user.bios.profile_pic" (click)="userList()" />
+                      <!-- <ion-label class="view-all" (click)="userList()">+2</ion-label> -->
+                    </ion-item>
+                  </ion-list>
+                </ion-item>
               </ion-row>
             </ion-item>
             <!-- <ion-item class="mb-10" *ngIf="this.programForm.controls.participantsType.value == 2">
@@ -241,34 +248,34 @@
                 <ion-col size="6" class="ion-no-padding">
                   <ion-radio-group lines="none" class="full-width radio-list" formControlName="chatStatus">
 
-                    <ion-item lines="none" >
+                    <ion-item lines="none">
                       <ion-label>Enable</ion-label>
-                      <ion-radio slot="start" value="1" checked formControlName="chatStatus"
-                        ></ion-radio>
+                      <ion-radio slot="start" value="1" checked formControlName="chatStatus"></ion-radio>
                     </ion-item>
                     <ion-item lines="none" class="mb-10 sel-parti-open-item">
                       <ion-label>Disable</ion-label>
-                      <ion-radio slot="start" value="2"  formControlName="chatStatus"></ion-radio>
+                      <ion-radio slot="start" value="2" formControlName="chatStatus"></ion-radio>
                     </ion-item>
                     <ng-container *ngFor="let validation of validation_messages.chatStatus">
                       <span class="error-message"
-                        *ngIf="(submitted || programForm.get('chatStatus').touched) && programForm.get('chatStatus').hasError(validation.type)">{{ validation.message }}</span>
+                        *ngIf="(submitted || programForm.get('chatStatus').touched) && programForm.get('chatStatus').hasError(validation.type)">{{
+                        validation.message }}</span>
                     </ng-container>
                   </ion-radio-group>
                 </ion-col>
-              <ion-col size="6" class="ion-no-padding">
-                <ion-item lines="none">
-                  <ion-text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua.
-                  </ion-text>
-                </ion-item>
-              </ion-col>
-              </ion-row>  
+                <ion-col size="6" class="ion-no-padding">
+                  <ion-item lines="none">
+                    <ion-text>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                      ut labore et dolore magna aliqua.
+                    </ion-text>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
             </ion-item>
           </ion-list>
         </form>
-        
+
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -309,26 +316,30 @@
           </ion-item>
         </ion-list>
         <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
-          scrollToHour="{{currentHrs}}"  (onEventSelected)="onEventSelected($event)"
+          scrollToHour="{{currentHrs}}" (onEventSelected)="onEventSelected($event)"
           (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" startHour="0"
-          endHour="24" step="1"  class="calendar-table swiper-container"></calendar>
-          <!-- <ion-datetime #dateTime1 displayFormat="mm"></ion-datetime> -->
-          <ion-item *ngIf="scheduleProgram == 'program'" style="position: relative; --min-height: 30px;" class="ion-no-padding ion-text-center">
-            <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="calendar.mode == 'week'" (click)="handleCalendarView()"></ion-icon>
-            <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="calendar.mode == 'month'" (click)="handleCalendarView()"></ion-icon>
-          </ion-item>
+          endHour="24" step="1" class="calendar-table swiper-container"></calendar>
+        <!-- <ion-datetime #dateTime1 displayFormat="mm"></ion-datetime> -->
+        <ion-item *ngIf="scheduleProgram == 'program'" style="position: relative; --min-height: 30px;"
+          class="ion-no-padding ion-text-center">
+          <ion-icon class="toggle-cal" ios="ios-arrow-dropdown" md="md-arrow-dropdown" *ngIf="calendar.mode == 'week'"
+            (click)="handleCalendarView()"></ion-icon>
+          <ion-icon class="toggle-cal" ios="ios-arrow-dropup" md="md-arrow-dropup" *ngIf="calendar.mode == 'month'"
+            (click)="handleCalendarView()"></ion-icon>
+        </ion-item>
       </ion-col>
 
       <!-- <ion-list-header  *ngIf="repetatedDateCopy.length <= 0" class=" green green-alram-icon text-white"> -->
-        <!-- <ion-list-header class="green-alram-icon">
+      <!-- <ion-list-header class="green-alram-icon">
           <ion-icon ios="ios-add" md="md-add" (click)="addLiveProgram()" style="width: 1.5rem; height: 1.5rem;"></ion-icon>
         </ion-list-header> -->
 
       <ion-list-header class=" dateTimePopUp green green-alram-icon text-white" style="display: none;">
         <div class='showDateTime'>
-          <ion-datetime display-format="h:mm A" #picker  picker-format="h:mm A"   id="dat" [(ngModel)]="myDate" (ngModelChange)="showdate()" ></ion-datetime>
+          <ion-datetime display-format="h:mm A" #picker picker-format="h:mm A" id="dat" [(ngModel)]="myDate"
+            (ngModelChange)="showdate()"></ion-datetime>
         </div>
-      </ion-list-header>   
+      </ion-list-header>
       <div class="live-event-addition">
         <h5>Select Date to add Event</h5>
       </div>
@@ -343,59 +354,63 @@
         </div>
       </div> -->
       <div class="program__card" *ngFor="let date of repetatedDateCopy let i = index">
-        <ion-list class="width-full"  >
+        <ion-list class="width-full">
           <!-- <div *ngIf="date.date == dateObj">  -->
           <!-- <ion-list-header class="ion-padding-horizontal green text-white">
             {{date.date | date :'medium'}}
             <div class="toggleDiv"  (click)="toggleIcon(item)"> -->
-              <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)" (click)="toggleIcon(item)" checked={{date.is_live}}  slot="end"></ion-toggle>
+          <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)" (click)="toggleIcon(item)" checked={{date.is_live}}  slot="end"></ion-toggle>
               <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon> -->
-                <!-- <ion-label class="live"  (ionChange)="activatePopup(i)"   [ngClass]="{'active': item.active}">LIVE</ion-label>
+          <!-- <ion-label class="live"  (ionChange)="activatePopup(i)"   [ngClass]="{'active': item.active}">LIVE</ion-label>
             </div>
             <div class="calender_green_bottom"> -->
-              <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)"  checked={{date.is_live}}  slot="end"></ion-toggle> -->
-              <!-- <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="activatePopup(i)" [ngClass]="{'active': date.is_live}"></ion-icon>
+          <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)"  checked={{date.is_live}}  slot="end"></ion-toggle> -->
+          <!-- <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="activatePopup(i)" [ngClass]="{'active': date.is_live}"></ion-icon>
               <ion-icon ios="ios-construct" md="md-construct" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
               <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
               </ion-icon>
               <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon> -->
-              <!-- <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon> -->
-              <!-- <ion-icon ios="ios-close" md="md-close-circle" class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon> -->
-            <!-- </div>
+          <!-- <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon> -->
+          <!-- <ion-icon ios="ios-close" md="md-close-circle" class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon> -->
+          <!-- </div>
             
           </ion-list-header> -->
           <ion-list-header class="ion-padding-horizontal green text-white live-ion-list-header">
             <div class="title">
-              {{date.date | date :'mediumDate'}} 
+              {{date.date | date :'mediumDate'}}
             </div>
             <div class="divider"></div>
             <div class="calender_green_bottom">
               <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)"  checked={{date.is_live}}  slot="end"></ion-toggle> -->
               <!-- <ion-icon class="live-icon" (click)="picker.open()" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="activatePopup(i)" [ngClass]="{'active': date.is_live}"></ion-icon> -->
-              <div class="toggleDiv"  (click)="toggleIcon(item)">
+              <div class="toggleDiv" (click)="toggleIcon(item)">
                 <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)" (click)="toggleIcon(item)" checked={{date.is_live}}  slot="end"></ion-toggle>
                 <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon> -->
-                  <!-- <ion-label class="live"  (ionChange)="activatePopup(i)"   [ngClass]="{'active': item.active}"></ion-label> -->
-                  <ion-label class="live" (click)="openStart(i)" (ionChange)="activatePopup(i)"   [ngClass]="{'active': date.is_live}"></ion-label>
+                <!-- <ion-label class="live"  (ionChange)="activatePopup(i)"   [ngClass]="{'active': item.active}"></ion-label> -->
+                <ion-label class="live" (click)="openStart(i)" (ionChange)="activatePopup(i)"
+                  [ngClass]="{'active': date.is_live}"></ion-label>
               </div>
-              <ion-icon ios="ios-fitness" md="md-fitness" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
-              <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
+              <ion-icon ios="ios-fitness" md="md-fitness" class="ion-margin-start"
+                (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
+              <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start"
+                (click)="addEquipments2(2,date.nutrition_id,i)">
               </ion-icon>
-              <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
+              <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)">
+              </ion-icon>
               <!-- <ion-icon ios="ios-create" md="md-create" class="ion-margin-start" [routerLink]="['/add-program']"></ion-icon> -->
               <!-- <ion-icon ios="ios-close" md="md-close-circle" class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon> -->
             </div>
-            
+
           </ion-list-header>
-    
+
           <ion-item *ngIf="date?.equipments.length>0">
             <ion-icon class="live-event-icon" ios="ios-fitness" md="md-fitness"></ion-icon>
             <!-- <ion-label style="overflow: initial;">Equipments :</ion-label> -->
-            <div class="users-list" *ngIf="date?.equipments.length>0;else no_equipment">  
+            <div class="users-list" *ngIf="date?.equipments.length>0;else no_equipment">
               <img src="../../assets/images/demo1.jpg" *ngFor="let item of date?.equipments" />
             </div>
             <!-- <ng-template #no_equipment>No Equipment Selected</ng-template> -->
-          </ion-item> 
+          </ion-item>
           <ion-item *ngIf="date.nutrition_id.length > 0">
             <ion-icon class="live-event-icon" ios="ios-nutrition" md="md-nutrition"></ion-icon>
             <!-- <ion-label style="overflow: initial;">Nutritions :</ion-label> -->
@@ -411,19 +426,20 @@
               <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.video" />
             </div>
             <!-- <ng-template #no_videos>No videos Selected</ng-template> -->
-          </ion-item>      
+          </ion-item>
           <!-- <ion-item class="descriptionItem">
             <ion-textarea placeholder="Enter Description" (ionChange)="detailsUpdate($event ,item?.id)"
                 value="{{item?.description}}"></ion-textarea>
           </ion-item> -->
-        <!-- </div> -->
-        
-          </ion-list>
-          <div class="closeIcon">
-            <ion-icon ios="ios-close" md="md-close"  class="ion-margin-start close-icon" (click)="preSelectedDate(i)"></ion-icon>
-          </div>
+          <!-- </div> -->
+
+        </ion-list>
+        <div class="closeIcon">
+          <ion-icon ios="ios-close" md="md-close" class="ion-margin-start close-icon" (click)="preSelectedDate(i)">
+          </ion-icon>
+        </div>
       </div>
-     
+
       <!-- <ion-item class="date_items" *ngFor="let dates of repetatedDateCopy; let i =index"> 
         <h6 >{{dates.date | date :'medium'}} </h6>
         <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="preRemovedate(i)"></ion-icon>
@@ -442,7 +458,7 @@
           <ion-label>Payment</ion-label>
         </ion-item>
         <ion-item class="icon-right-side ion-text-end" slot="end" (click)="selectVolume()">
-          <ion-label class="text-green" >Save</ion-label>
+          <ion-label class="text-green">Save</ion-label>
         </ion-item>
       </ion-list>
     </ion-header>
@@ -455,36 +471,38 @@
           <ion-input class="form-control" type="number" formControlName="programFees" value="0"></ion-input>
         </ion-item>
         <div *ngIf="programDetail.type_id == 'video'" class="margin-top-md">
-        <ion-label style="display: block;margin-top: 15px; padding-left: 15px;">Would you like to request Sponsors:</ion-label>
-      <ion-item lines="none">
-        <ion-radio-group value="sponsors_group" class="radio-group radioPreview">
-          <ion-item>
-            <ion-label>Yes</ion-label>
-            <ion-radio slot="start" value="1" (click)="sponsar_prog()" ></ion-radio>
+          <ion-label style="display: block;margin-top: 15px; padding-left: 15px;">Would you like to request Sponsors:
+          </ion-label>
+          <ion-item lines="none">
+            <ion-radio-group value="sponsors_group" class="radio-group radioPreview">
+              <ion-item>
+                <ion-label>Yes</ion-label>
+                <ion-radio slot="start" value="1" (click)="sponsar_prog()"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio slot="start" value="2" (click)="unsponsar_prog()"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
           </ion-item>
-          <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio slot="start" value="2" (click)="unsponsar_prog()" ></ion-radio>
+        </div>
+
+        <ion-list class="prog_btn_list">
+          <ion-item lines="none" (click)="verifyUserInfoModal()"
+            *ngIf="loginUserData.trilloMatch != '1' && programDetail.type_id != 'video' ">
+            <ion-button class="green btn button-medium">Earn with Intoactive</ion-button>
           </ion-item>
-        </ion-radio-group>      
-      </ion-item>
-      </div>
-     
-      <ion-list class="prog_btn_list">
-      <ion-item  lines="none" (click)="verifyUserInfoModal()" *ngIf="loginUserData.trilloMatch != '1' && programDetail.type_id != 'video' ">
-        <ion-button class="green btn button-medium">Earn with Intoactive</ion-button>
-      </ion-item>
-      <!-- <ion-item lines="none" (click)="verifyUserInfoModal() ">
+          <!-- <ion-item lines="none" (click)="verifyUserInfoModal() ">
         <ion-button class="green btn button-medium">Earn with Intoative</ion-button>
       </ion-item> -->
-      <ion-item class="" *ngIf="approval_btn && !request_approve_btn ">
-        <ion-button (click)="applyAdvertise()" class="green btn button-medium">Request Approval</ion-button> 
-      </ion-item>
-      <!-- <ion-item class="" *ngIf="request_approve_btn">
+          <ion-item class="" *ngIf="approval_btn && !request_approve_btn ">
+            <ion-button (click)="applyAdvertise()" class="green btn button-medium">Request Approval</ion-button>
+          </ion-item>
+          <!-- <ion-item class="" *ngIf="request_approve_btn">
         <ion-button class="green btn button-medium">Request Sent</ion-button> 
       </ion-item> -->
-      </ion-list>
-    </form>
+        </ion-list>
+      </form>
     </div>
   </ion-grid>
 </ion-content>
