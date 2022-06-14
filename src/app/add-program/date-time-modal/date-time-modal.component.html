@@ -14,92 +14,101 @@
 </ion-header>
 <ion-content class="main_content">
   <div class="fixed">
-      <form [formGroup]="finalForm" class="">
-            <ion-item lines="none" class="margin-15 ion-block" *ngIf="totalLiveSession > 0">
-              <div class="ion-left">
-                <ion-label style="display: contents;">How much would you like to charge:</ion-label>
-              </div>
-              <div class="ion-right">
-                <ion-label style="    margin-left: 40px;">$</ion-label>
-                <ion-input class="form-control width-30" type="number" (change)="updateTotalPrice($event)" formControlName="programFees" value="0"></ion-input>
-              </div>
-             
-            </ion-item>
-            <ion-item lines="none" class="margin-15 ion-block" *ngIf="totalLiveSession > 0">
-              <div class="ion-left">
-                <ion-label style="display: contents;">Total for {{totalLiveSession}} session:</ion-label>
-              </div>
-              <div class="ion-right" *ngIf="totalLiveSession > 0">
-                <ion-label style="    margin-left: 40px;">$</ion-label>
-                <ion-label class="width-30">{{totalLiveAmt}}</ion-label>
-              </div>
-
-             </ion-item> 
-            <ion-item lines="none" class="margin-15 ion-block">
-              <div class="ion-left">
-                <ion-label *ngIf="totalNutritionInSession > 0 && totalVideoInSession > 0" style="display: contents;">Price of Nutrition and Video Instruction:</ion-label>
-                <ion-label *ngIf="totalNutritionInSession > 0 && totalVideoInSession == 0" style="display: contents;">Price of Nutrition Instruction:</ion-label>
-                <ion-label *ngIf="totalNutritionInSession == 0 && totalVideoInSession > 0" style="display: contents;">Price of Video Instruction:</ion-label>
-
-              </div>
-              <div class="ion-right" *ngIf="totalNutritionInSession > 0 || totalVideoInSession > 0">
-                <ion-label style="margin-left: 40px;">$</ion-label>
-              <ion-input class="form-control width-30" type="number" formControlName="non_live_component_fee" value="0"></ion-input>
-              </div>
-              
-            </ion-item>
-          <div *ngIf="programData.programType == '6' ">
-            <ion-label style="display: block;margin-top: 15px; padding-left: 15px;">Would you like to request Sponsors:</ion-label>
-            <ion-item lines="none">
-              <ion-radio-group value="sponsors_group" class="radio-group radioPreview">
-                <ion-item>
-                  <ion-label>Yes</ion-label>
-                  <ion-radio slot="start" value="1" (click)="sponsar_prog()" ></ion-radio>
-                </ion-item>
-                <ion-item>
-                  <ion-label>No</ion-label>
-                  <ion-radio slot="start" value="2" (click)="unsponsar_prog()" ></ion-radio>
-                </ion-item>
-              </ion-radio-group>      
-            </ion-item>
-          </div>
-        
-          <ion-list class="prog_btn_list mb-0" >
-            <ion-item  lines="none" (click)="verifyUserInfoModal()" *ngIf="loginUserData.trilloMatch != '1' && programData.programType != '6' ">
-              <ion-button class="green btn button-medium">Earn with Intoative</ion-button>
-            </ion-item>
-            <ion-item class="" *ngIf="approval_btn && !request_approve_btn ">
-              <ion-button (click)="applyAdvertise()" class="green btn button-medium">Request Approval</ion-button> 
-            </ion-item>
-          </ion-list>
-        </form>
-      <form class="nutrition-form ion-padding-horizontal">
-        <div *ngIf="programData?.programType==6">
-          <h6 class="repeatedHeading mb-10">Select Video</h6>
-          <ion-col size="12" class="ion-no-padding">
-            <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
-              <ion-segment-button *ngFor="let preview of videoList">
-                <div class="checkboxThumb">
-                  <div class="thumb-checkbox">
-                    <ion-checkbox [(ngModel)]="preview.sele" name="preview.id" value="preview.id" slot="start">
-                    </ion-checkbox>
-                  </div>
-                  <img *ngIf="preview?.thumb_path" src="{{storagePath}}{{preview?.thumb_path}}" alt="path" />
-                  <img *ngIf="!preview?.thumb_path" src="../../../assets/images/video.png" />
-                  <ion-label>{{preview.title}}</ion-label>
-                  <ion-button class="infoIcon" (click)="showVideoDetails(preview.posts_id)"><ion-icon name="information-circle"></ion-icon></ion-button>
-                </div>
-              </ion-segment-button>
-            </ion-segment>
-
-          </ion-col>
-          <div *ngIf="videoList.length==0" class="no-data">
-            <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
-            <p>No post added yet!!!</p>
-          </div>
+    <form [formGroup]="finalForm" class="">
+      <ion-item lines="none" class="margin-15 ion-block" *ngIf="totalLiveSession > 0">
+        <div class="ion-left">
+          <ion-label style="display: contents;">How much would you like to charge:</ion-label>
+        </div>
+        <div class="ion-right">
+          <ion-label style="    margin-left: 40px;">$</ion-label>
+          <ion-input class="form-control width-30" type="number" (change)="updateTotalPrice($event)"
+            formControlName="programFees" value="0"></ion-input>
         </div>
 
-      </form>
+      </ion-item>
+      <ion-item lines="none" class="margin-15 ion-block" *ngIf="totalLiveSession > 0">
+        <div class="ion-left">
+          <ion-label style="display: contents;">Total for {{totalLiveSession}} session:</ion-label>
+        </div>
+        <div class="ion-right" *ngIf="totalLiveSession > 0">
+          <ion-label style="    margin-left: 40px;">$</ion-label>
+          <ion-label class="width-30">{{totalLiveAmt}}</ion-label>
+        </div>
+
+      </ion-item>
+      <ion-item lines="none" class="margin-15 ion-block">
+        <div class="ion-left">
+          <ion-label *ngIf="totalNutritionInSession > 0 && totalVideoInSession > 0" style="display: contents;">Price of
+            Nutrition and Video Instruction:</ion-label>
+          <ion-label *ngIf="totalNutritionInSession > 0 && totalVideoInSession == 0" style="display: contents;">Price of
+            Nutrition Instruction:</ion-label>
+          <ion-label *ngIf="totalNutritionInSession == 0 && totalVideoInSession > 0" style="display: contents;">Price of
+            Video Instruction:</ion-label>
+
+        </div>
+        <div class="ion-right" *ngIf="totalNutritionInSession > 0 || totalVideoInSession > 0">
+          <ion-label style="margin-left: 40px;">$</ion-label>
+          <ion-input class="form-control width-30" type="number" formControlName="non_live_component_fee" value="0">
+          </ion-input>
+        </div>
+
+      </ion-item>
+      <div *ngIf="programData.programType == '6' ">
+        <ion-label style="display: block;margin-top: 15px; padding-left: 15px;">Would you like to request Sponsors:
+        </ion-label>
+        <ion-item lines="none">
+          <ion-radio-group value="sponsors_group" class="radio-group radioPreview">
+            <ion-item>
+              <ion-label>Yes</ion-label>
+              <ion-radio slot="start" value="1" (click)="sponsar_prog()"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>No</ion-label>
+              <ion-radio slot="start" value="2" (click)="unsponsar_prog()"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-item>
+      </div>
+
+      <ion-list class="prog_btn_list mb-0">
+        <ion-item lines="none" (click)="verifyUserInfoModal()"
+          *ngIf="loginUserData.trilloMatch != '1' && programData.programType != '6' ">
+          <ion-button class="green btn button-medium">Earn with Intoative</ion-button>
+        </ion-item>
+        <ion-item class="" *ngIf="approval_btn && !request_approve_btn ">
+          <ion-button (click)="applyAdvertise()" class="green btn button-medium">Request Approval</ion-button>
+        </ion-item>
+      </ion-list>
+    </form>
+    <form class="nutrition-form ion-padding-horizontal">
+      <div *ngIf="programData?.programType==6">
+        <h6 class="repeatedHeading mb-10">Select Video</h6>
+        <ion-col size="12" class="ion-no-padding">
+          <ion-segment scrollable="true" class="ion-no-padding nutriimages-list">
+            <ion-segment-button *ngFor="let preview of videoList">
+              <div class="checkboxThumb">
+                <div class="thumb-checkbox">
+                  <ion-checkbox [(ngModel)]="preview.sele" name="preview.id" value="preview.id" slot="start">
+                  </ion-checkbox>
+                </div>
+                <img *ngIf="preview?.thumb_path" src="{{storagePath}}{{preview?.thumb_path}}" alt="path" />
+                <img *ngIf="!preview?.thumb_path" src="../../../assets/images/video.png" />
+                <ion-label>{{preview.title}}</ion-label>
+                <ion-button class="infoIcon" (click)="showVideoDetails(preview.posts_id)">
+                  <ion-icon name="information-circle"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-segment-button>
+          </ion-segment>
+
+        </ion-col>
+        <div *ngIf="videoList.length==0" class="no-data">
+          <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />
+          <p>No post added yet!!!</p>
+        </div>
+      </div>
+
+    </form>
   </div>
   <div *ngIf="repetatedDateCopy.length>0" class="margin-top-md">
     <!-- <div class="ion-padding-horizontal">
@@ -110,13 +119,13 @@
         </ion-item>
       </ion-list> 
     </div> -->
-    <ion-list *ngFor="let date of repetatedDateCopy let i = index" >
+    <ion-list *ngFor="let date of repetatedDateCopy let i = index">
       <ion-list-header class="ion-padding-horizontal green text-white live-ion-list-header">
         <div class="title" *ngIf="date.is_live">
-          {{date.date | date :'medium'}} 
+          {{date.date | date :'medium'}}
         </div>
         <div class="title" *ngIf="!date.is_live">
-          {{date.date | date :'mediumDate'}} 
+          {{date.date | date :'mediumDate'}}
         </div>
         <div class="divider"></div>
         <div class="calender_green_bottom">
@@ -124,19 +133,21 @@
             <div class="title" *ngIf="date.is_live">Live</div>
             <div class="title" *ngIf="!date.is_live">Non-Live</div>
           </div>
-          <ion-icon ios="ios-fitness" md="md-fitness" class="ion-margin-start" (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
-          <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start" (click)="addEquipments2(2,date.nutrition_id,i)">
+          <ion-icon ios="ios-fitness" md="md-fitness" class="ion-margin-start"
+            (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
+          <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start"
+            (click)="addEquipments2(2,date.nutrition_id,i)">
           </ion-icon>
           <ion-icon ios="ios-videocam" md="md-videocam" class="ion-margin-start" (click)="addVideo(item,i)"></ion-icon>
         </div>
       </ion-list-header>
       <ion-item>
         <ion-icon class="live-event-icon" ios="ios-fitness" md="md-fitness"></ion-icon>
-        <div class="users-list" *ngIf="date?.equipments.length>0;else no_equipment">  
+        <div class="users-list" *ngIf="date?.equipments.length>0;else no_equipment">
           <img src="../../assets/images/demo1.jpg" *ngFor="let item of date?.equipments" />
         </div>
         <ng-template #no_equipment>No Equipment Selected</ng-template>
-      </ion-item> 
+      </ion-item>
       <ion-item>
         <ion-icon class="live-event-icon" ios="ios-nutrition" md="md-nutrition"></ion-icon>
         <div class="users-list" *ngIf="date.nutrition_id.length>0;else no_nutrition">
@@ -150,12 +161,12 @@
           <img src="../../assets/images/demo2.jpg" *ngFor="let item of date.video" />
         </div>
         <ng-template #no_videos>No videos Selected</ng-template>
-      </ion-item>  
+      </ion-item>
       <ion-item class="descriptionItem">
         <ion-textarea placeholder="Enter Description" (ionChange)="detailsUpdate($event ,i)"
-            value="{{item?.description}}"></ion-textarea>
-      </ion-item>    
-      </ion-list>
+          value="{{item?.description}}"></ion-textarea>
+      </ion-item>
+    </ion-list>
     <!-- <ion-list *ngFor="let date of repetatedDateCopy let i = index">
       <ion-list-header class="ion-padding-horizontal green text-white">
         <div *ngIf="date.is_live">
@@ -199,14 +210,14 @@
       </ion-item>
     </ion-list>     -->
   </div>
-  
+
 </ion-content>
 <ion-footer class="sticky-footer">
   <div class="terms-footer">
-    <ion-checkbox></ion-checkbox>
+    <ion-checkbox (ionChange)="termsChecked($event)"></ion-checkbox>
     <ion-label> I have read and agree to the Terms and Conditions.</ion-label>
     <ion-icon (click)="openModal()" ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
   </div>
-  <ion-button [disabled]="isLoading" expand="full" (click)="onSubmit()"
+  <ion-button [disabled]="isDisabled" expand="full" (click)="onSubmit()"
     class="green ion-text-uppercase ion-no-margin full-height">Save</ion-button>
 </ion-footer>
