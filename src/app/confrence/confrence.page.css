@@ -96,4 +96,22 @@ ion-item.send-box {
   --background: #000;
   --padding-top: 10px;
 }
+
+.chat-screen {
+  max-height: 300px;
+  background-color: rgba(0, 0, 0, 0.048);
+  z-index: 9999999;
+  position: absolute;
+  bottom: 80px;
+  overflow-y: scroll;
+}
+
+.myClass {
+  position: absolute;
+  z-index: 9;
+}
+
+.p-relative {
+  position: relative;
+}
 /*# sourceMappingURL=confrence.page.css.map */

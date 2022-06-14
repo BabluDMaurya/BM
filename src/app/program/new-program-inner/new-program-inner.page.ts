@@ -439,11 +439,15 @@ export class NewProgramInnerPage implements OnInit {
 
       this.programService.fetchEquipmentList().subscribe((data) => {
         console.log(this.equipmentsData);
+        console.log(data.equipmentList)
         this.equipmentsList = data.equipmentList;
   
         this.equipmentsList.filter(el => {
+
           if (this.equipmentsList) {
             if ((this.equipmentsData).includes(el.id)) {
+              console.log('success');
+              console.log(this.selesctedEquipment);
               el.selected = true;
               this.selesctedEquipment = el;
             }
@@ -453,8 +457,6 @@ export class NewProgramInnerPage implements OnInit {
           console.log(this.equipmentsData);
         })
       });
-
-
   }
   showSchedule(event) {
     this.commonService.presentModal(ScheduleModalComponent, 'fullModal', { 'programDetail': event, 'user_type': this.userData.user_type });

@@ -32,4 +32,29 @@ ion-tab-button .floating-btn ion-icon {
   color: #FFF;
   font-size: 1.75em;
 }
+
+.circular-menu.active .menu-item:nth-child(1) {
+  -webkit-transform: translate3d(-5.5em, -1.5em, 0) !important;
+          transform: translate3d(-5.5em, -1.5em, 0) !important;
+}
+
+.circular-menu.active .menu-item:nth-child(2) {
+  -webkit-transform: translate3d(-3.3em, -6.2em, 0) !important;
+          transform: translate3d(-3.3em, -6.2em, 0) !important;
+}
+
+.circular-menu.active .menu-item:nth-child(3) {
+  -webkit-transform: translate3d(1.6em, -8.5em, 0) !important;
+          transform: translate3d(1.6em, -8.5em, 0) !important;
+}
+
+.circular-menu.active .menu-item:nth-child(4) {
+  -webkit-transform: translate3d(6.2em, -6.2em, 0) !important;
+          transform: translate3d(6.2em, -6.2em, 0) !important;
+}
+
+.circular-menu.active .menu-item:nth-child(5) {
+  -webkit-transform: translate3d(8.2em, -1.5em, 0) !important;
+          transform: translate3d(8.2em, -1.5em, 0) !important;
+}
 /*# sourceMappingURL=tabs.page.css.map */

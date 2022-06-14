@@ -206,7 +206,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _add_program_calender_month_week_time_calender_month_week_time_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ./../add-program/calender-month-week-time/calender-month-week-time.component */
-    "./src/app/add-program/calender-month-week-time/calender-month-week-time.component.ts"); // import { ViewVideoDetailComponent } from './../add-program/view-video-detail/view-video-detail.component';
+    "./src/app/add-program/calender-month-week-time/calender-month-week-time.component.ts");
+    /* harmony import */
+
+
+    var src_app_modalContent_terms_condition_terms_condition_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! src/app/modalContent/terms-condition/terms-condition.component */
+    "./src/app/modalContent/terms-condition/terms-condition.component.ts"); // import { ViewVideoDetailComponent } from './../add-program/view-video-detail/view-video-detail.component';
 
 
     var AddProgramPageModule = function AddProgramPageModule() {
@@ -215,8 +221,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     AddProgramPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"], _add_program_routing_module__WEBPACK_IMPORTED_MODULE_5__["AddProgramPageRoutingModule"], ionic2_calendar__WEBPACK_IMPORTED_MODULE_9__["NgCalendarModule"], _profile_components_modules__WEBPACK_IMPORTED_MODULE_10__["ComponentModule"]],
-      declarations: [_add_program_page__WEBPACK_IMPORTED_MODULE_8__["AddProgramPage"], _audio_player_program_audio_player_program_component__WEBPACK_IMPORTED_MODULE_6__["AudioPlayerProgramComponent"], _add_program_program_nutrition_detail_modal_program_nutrition_detail_modal_component__WEBPACK_IMPORTED_MODULE_7__["ProgramNutritionDetailModalComponent"], _add_program_calender_month_week_time_calender_month_week_time_component__WEBPACK_IMPORTED_MODULE_11__["CalenderMonthWeekTimeComponent"]],
-      entryComponents: [_add_program_program_nutrition_detail_modal_program_nutrition_detail_modal_component__WEBPACK_IMPORTED_MODULE_7__["ProgramNutritionDetailModalComponent"], _add_program_calender_month_week_time_calender_month_week_time_component__WEBPACK_IMPORTED_MODULE_11__["CalenderMonthWeekTimeComponent"]]
+      declarations: [_add_program_page__WEBPACK_IMPORTED_MODULE_8__["AddProgramPage"], _audio_player_program_audio_player_program_component__WEBPACK_IMPORTED_MODULE_6__["AudioPlayerProgramComponent"], _add_program_program_nutrition_detail_modal_program_nutrition_detail_modal_component__WEBPACK_IMPORTED_MODULE_7__["ProgramNutritionDetailModalComponent"], _add_program_calender_month_week_time_calender_month_week_time_component__WEBPACK_IMPORTED_MODULE_11__["CalenderMonthWeekTimeComponent"], src_app_modalContent_terms_condition_terms_condition_component__WEBPACK_IMPORTED_MODULE_12__["TermsConditionComponent"]],
+      entryComponents: [_add_program_program_nutrition_detail_modal_program_nutrition_detail_modal_component__WEBPACK_IMPORTED_MODULE_7__["ProgramNutritionDetailModalComponent"], _add_program_calender_month_week_time_calender_month_week_time_component__WEBPACK_IMPORTED_MODULE_11__["CalenderMonthWeekTimeComponent"], src_app_modalContent_terms_condition_terms_condition_component__WEBPACK_IMPORTED_MODULE_12__["TermsConditionComponent"]]
     })], AddProgramPageModule);
     /***/
   },
@@ -587,6 +593,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openStart",
         value: function openStart(i) {
+          // this.sTime.setValue(null);
           this.indexForLive = i;
           this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
 

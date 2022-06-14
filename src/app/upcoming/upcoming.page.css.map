@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAA;EACV,KAAK,EAAE,GAAG;EACV,mBAAmB,EAAE,aAAa;EAClC,iBAAiB,EAAE,aAAa;EAChC,aAAa,EAAE,IAAI;EACnB,UAAU,EAAE,IAAI;CACnB;;AACD,AAAA,IAAI,AAAA,UAAU,AAAA,QAAQ,CAAC;EACnB,aAAa,EAAE,GAAG;CACrB;;AACD,AAAA,aAAa,CAAC;EACV,WAAW,EAAE,IAAI;CACpB;;AACD,AAAA,YAAY,CAAA;EACR,eAAe,EAAE,QAAQ;EACzB,KAAK,EAAE,IAAI;CACd",
+    "sources": [
+        "upcoming.page.scss"
+    ],
+    "names": [],
+    "file": "upcoming.page.css"
+}

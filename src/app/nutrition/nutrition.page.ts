@@ -40,6 +40,7 @@ export class NutritionPage implements OnInit, OnDestroy {
   images: any;
   // nextVisible: boolean = false;
   nextVisible: boolean = true;
+  ingredientInput:string;
   constructor(
     public settingService: SettingsService,
     public commonService: CommonService,
@@ -170,7 +171,7 @@ export class NutritionPage implements OnInit, OnDestroy {
     const control = <FormArray>this.nutritionForm.controls['nutriInstruction'];
     control.removeAt(i);
   }
-  addIngredients() {
+  addIngredients(inputNew) {
     const numberOfTickets = 1;
     // this.tig.push(this.fb.group({
     //   name: ['']
@@ -180,6 +181,7 @@ export class NutritionPage implements OnInit, OnDestroy {
     this.scanData.push({data: data});
     console.log(this.scanData);
     console.log(this.tig);
+    this.ingredientInput = '';
   }
 
   removeIngredients(i) {

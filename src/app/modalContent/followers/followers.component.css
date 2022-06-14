@@ -2,6 +2,7 @@
   margin-bottom: 0;
   padding-top: 0;
   padding-bottom: 0;
+  border-bottom: 1px solid #cecece;
 }
 
 ion-list-header {
@@ -33,5 +34,21 @@ ion-item {
 .py-10 {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.info-title {
+  color: #989aa2;
+  font-weight: 400;
+}
+
+.info-ans {
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #121212;
+}
+
+.info-head {
+  font-size: 20px;
+  font-weight: 500;
 }
 /*# sourceMappingURL=followers.component.css.map */

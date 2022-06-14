@@ -1,0 +1,231 @@
+.right-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.right-div .min-width-none {
+  min-width: 0px !important;
+}
+
+.right-div .pl-8 {
+  padding-left: 8px !important;
+}
+
+.main_content ion-row ion-col .item-content ion-thumbnail .cover-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.ionic-divider {
+  -webkit-padding-start: 0px !important;
+          padding-inline-start: 0px !important;
+  -webkit-padding-end: 0px !important;
+          padding-inline-end: 0px !important;
+}
+
+.ionic-divider .three-tabs ion-segment ion-segment-button {
+  width: auto;
+}
+
+.ionic-divider {
+  -webkit-padding-start: 0px !important;
+          padding-inline-start: 0px !important;
+  -webkit-padding-end: 0px !important;
+          padding-inline-end: 0px !important;
+}
+
+.ionic-divider .three-tabs ion-segment ion-segment-button {
+  width: auto;
+}
+
+.ionic-divider ion-segment-button {
+  min-height: 38px;
+  color: #000;
+  text-transform: capitalize;
+  letter-spacing: 0;
+}
+
+.ionic-divider ion-segment-button .ionic-icon {
+  font-size: 2rem !important;
+}
+
+.ionic-divider ion-segment-button .ionic-img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.ionic-divider ion-segment-button .live-icon {
+  padding: 5px 10px;
+  background: #555;
+  color: #fff;
+  border-radius: 20px;
+}
+
+.ionic-divider ion-segment-button .live-icon span {
+  font-size: 10px;
+  color: #fff;
+}
+
+.programDesc p {
+  line-height: 1.5;
+  text-align: center;
+  font-size: 14px;
+}
+
+.program-date {
+  color: #27a69a;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 14px;
+}
+
+.fs-16 {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.fs-14 {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.program-card {
+  padding: 10px 15px;
+}
+
+.program-card ion-slides {
+  height: 200px;
+}
+
+.program-card ion-slides ion-slide img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.program-card .programs-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.program-card .programs-flex .program-flex-child {
+  width: 30%;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  background: #27a69a;
+  color: #fff;
+  margin-left: 5%;
+}
+
+.program-card .programs-flex .program-flex-child .ionic-icon {
+  font-size: 1.5rem !important;
+}
+
+.program-card .programs-flex .program-flex-child:first-child {
+  margin-left: 0;
+}
+
+.program-chat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.program-chat ion-avatar {
+  margin-right: 15px;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.program-chat .program-chat-info {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 80%;
+}
+
+.program-chat .program-chat-info .chat-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.program-chat .program-chat-info .chat-title h6 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 400;
+  color: #121212;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.program-chat .program-chat-info .chat-title p {
+  color: #cecece;
+  margin-left: 15px;
+}
+
+.program-chat .program-chat-info .chat-info span {
+  font-size: 14px;
+  color: #555;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.counter-box {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.counter-box .timer-block {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #27a69a;
+}
+
+.counter-box .timer-block ion-text {
+  color: #fff;
+}
+
+.counter-box .timer-block ion-text p {
+  color: #fff;
+  font-size: 14px;
+}
+/*# sourceMappingURL=new-program-view.page.css.map */

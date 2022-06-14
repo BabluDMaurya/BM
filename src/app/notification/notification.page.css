@@ -41,4 +41,12 @@ ion-card ion-item span.notifi-right {
 ion-content .no-data {
   height: calc(100vh - 100px);
 }
+
+.list-person span {
+  display: block;
+}
+
+.mt-1 {
+  margin-top: 4px;
+}
 /*# sourceMappingURL=notification.page.css.map */

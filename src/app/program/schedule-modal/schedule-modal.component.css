@@ -50,7 +50,7 @@ ion-card:first-child {
 }
 
 .inner-slider ion-slide {
-  height: auto;
+  height: 140px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -59,7 +59,7 @@ ion-card:first-child {
 }
 
 .inner-slider ion-slide ion-label {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 
 .video-card {
@@ -79,6 +79,63 @@ ion-slides {
 }
 
 .no-data {
-  height: 50vh;
+  height: auto;
+}
+
+.top-segment ion-segment-button {
+  min-width: 100vw !important;
+}
+
+.program-item:first-child {
+  margin-left: 5px;
+}
+
+.program-item {
+  width: 48% !important;
+  height: auto !important;
+  margin-right: 12px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background: #fff;
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.24);
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.24);
+  border-radius: 10px;
+}
+
+.program-item:last-child {
+  margin-right: 0;
+}
+
+.progImage {
+  width: 100%;
+  height: 170px;
+  border-radius: 10px;
+}
+
+.progLabel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.progLabel ion-label {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #444444;
+}
+
+.inner-slider {
+  padding-right: 15px;
+  margin-right: 20px;
 }
 /*# sourceMappingURL=schedule-modal.component.css.map */

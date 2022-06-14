@@ -485,7 +485,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\" class=\"min-width-none\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <!-- <ion-item slot=\"center\">\r\n      <ion-label *ngIf=\"modelOpen==1\">Select Equipments</ion-label>\r\n      <ion-label *ngIf=\"modelOpen==2\">Select Nutrition</ion-label>\r\n    </ion-item> -->\r\n    <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar *ngIf=\"modelOpen==1\" [(ngModel)]=\"equipmentSearchTerm\" placeholder=\"Search and Select Equipments\"></ion-searchbar>\r\n      <ion-searchbar *ngIf=\"modelOpen==2\" [(ngModel)]=\"equipmentSearchTerm\" placeholder=\"Search and Select Nutrition\"></ion-searchbar>\r\n    </ion-toolbar>\r\n    <!-- <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\"></ion-item> -->\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <ion-list class=\"user-list ion-no-padding\" *ngIf=\"modelOpen==1\">\r\n    <!-- <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar [(ngModel)]=\"equipmentSearchTerm\"></ion-searchbar>\r\n    </ion-toolbar> -->\r\n    <ion-item *ngFor=\"let equip of equipmentFiltered\" class=\"pX-15\">\r\n      <div class=\"users-list\" >\r\n        <img src=\"../../assets/images/{{equip.equipment_pic}}\" />\r\n      </div>\r\n      <ion-label class=\"ion-padding-horizontal\">\r\n        <h3 class=\"list-person\"> {{equip.equipment_name}} </h3>\r\n      </ion-label>\r\n      <ion-checkbox slot=\"end\" [(ngModel)]=\"equip.selected\" name=\"equip.equipment_name\"></ion-checkbox>\r\n    </ion-item>\r\n  </ion-list>\r\n  <div class=\"user-list ion-no-padding\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n    <!-- <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar [(ngModel)]=\"nutritionSearchTerm\"></ion-searchbar>\r\n    </ion-toolbar> -->\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Breakfast</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n          <!-- P r e v i o u s C a r d -->\r\n\r\n          <!-- <ion-segment-button (click)=\"showdetails(nutri)\" *ngFor=\"let nutri of nutritionFiltered  | filter:'BreakFast':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"galleryRadio video_button\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Breakfast </p>                \r\n              </div>\r\n            </div> -->\r\n            <!-- <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button> -->\r\n          <!-- </ion-segment-button> -->\r\n\r\n          <!-- N e w  C a r d -->\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n              <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'BreakFast':'type'\">  \r\n              <ion-item>\r\n                <div class=\"galleryRadio video_button\">\r\n                  <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n                </div>\r\n                <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n                <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n                <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              </ion-item>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No BreakFast</p> \r\n              </div>\r\n              </ion-radio-group>\r\n          </ion-list>\r\n        </ion-segment>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Brunch</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n          <!-- P r e v i o u s C a r d -->\r\n\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered  | filter:'Brunch':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Brunch </p>\r\n              </div>\r\n            </div>\r\n            <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n\r\n          <!-- N e w  C a r d -->\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Brunch':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Brunch</p> \r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n\r\n\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Lunch</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered  | filter:'Lunch':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n            <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n              <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n            </div>\r\n            <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n            <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n            <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\">\r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Lunch </p> \r\n            </div>\r\n            </div>\r\n            <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n\r\n\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Lunch':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Lunch</p> \r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Snacks</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered | filter:'Snacks':'type' \">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Snacks </p>\r\n              </div>\r\n            </div>\r\n            <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Snacks':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Snacks </p>\r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Dinner</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered  | filter:'Dinner':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Dinner</p> \r\n              </div>\r\n            </div>\r\n            <ion-button *ngIf=\"!nutri.empty\" (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Dinner':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Dinner</p> \r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered == '' \">\r\n      <ion-card-content>\r\n        <div  class=\"no-data nutrition-no-data\"> \r\n          <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n          <p>No Data Found</p> \r\n        </div>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <div *ngIf=\"!nutritionList\">\r\n      <ion-card class=\"item-card\" *ngFor=\"let skeleton of [].constructor(5)\">\r\n        <ion-skeleton-text class=\"grey-header green\" animated></ion-skeleton-text>\r\n        <ion-card-content class=\"ion-no-padding\">\r\n          <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n          </ion-segment>\r\n        </ion-card-content>\r\n      </ion-card>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n<ion-footer class=\"sticky-footer\">\r\n  <ion-button expand=\"full\" class=\"green ion-no-margin full-height\" (click)=\"submit()\">Ok</ion-button>\r\n</ion-footer>";
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\" class=\"min-width-none\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <!-- <ion-item slot=\"center\">\r\n      <ion-label *ngIf=\"modelOpen==1\">Select Equipments</ion-label>\r\n      <ion-label *ngIf=\"modelOpen==2\">Select Nutrition</ion-label>\r\n    </ion-item> -->\r\n    <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar *ngIf=\"modelOpen==1\" [(ngModel)]=\"equipmentSearchTerm\" placeholder=\"Search and Select Equipments\"></ion-searchbar>\r\n      <ion-searchbar *ngIf=\"modelOpen==2\" [(ngModel)]=\"equipmentSearchTerm\" placeholder=\"Search and Select Nutrition\"></ion-searchbar>\r\n    </ion-toolbar>\r\n    <!-- <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\"></ion-item> -->\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <ion-list class=\"user-list ion-no-padding\" *ngIf=\"modelOpen==1\">\r\n    <!-- <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar [(ngModel)]=\"equipmentSearchTerm\"></ion-searchbar>\r\n    </ion-toolbar> -->\r\n    <ion-item *ngFor=\"let equip of equipmentFiltered\" class=\"pX-15\">\r\n      <div class=\"users-list\" >\r\n        <img src=\"{{equipmentPicPath}}{{equip.equipment_pic}}\" />\r\n      </div>\r\n      <ion-label class=\"ion-padding-horizontal\">\r\n        <h3 class=\"list-person\"> {{equip.equipment_name}} </h3>\r\n      </ion-label>\r\n      <ion-checkbox slot=\"end\" [(ngModel)]=\"equip.selected\" name=\"equip.equipment_name\"></ion-checkbox>\r\n    </ion-item>\r\n  </ion-list>\r\n  <div class=\"user-list ion-no-padding\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n    <!-- <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar [(ngModel)]=\"nutritionSearchTerm\"></ion-searchbar>\r\n    </ion-toolbar> -->\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Breakfast</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n          <!-- P r e v i o u s C a r d -->\r\n\r\n          <!-- <ion-segment-button (click)=\"showdetails(nutri)\" *ngFor=\"let nutri of nutritionFiltered  | filter:'BreakFast':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"galleryRadio video_button\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Breakfast </p>                \r\n              </div>\r\n            </div> -->\r\n            <!-- <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button> -->\r\n          <!-- </ion-segment-button> -->\r\n\r\n          <!-- N e w  C a r d -->\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n              <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'BreakFast':'type'\">  \r\n              <ion-item>\r\n                <div class=\"galleryRadio video_button\">\r\n                  <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n                </div>\r\n                <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n                <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n                <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              </ion-item>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No BreakFast</p> \r\n              </div>\r\n              </ion-radio-group>\r\n          </ion-list>\r\n        </ion-segment>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Brunch</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n          <!-- P r e v i o u s C a r d -->\r\n\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered  | filter:'Brunch':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Brunch </p>\r\n              </div>\r\n            </div>\r\n            <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n\r\n          <!-- N e w  C a r d -->\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Brunch':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Brunch</p> \r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n\r\n\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Lunch</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered  | filter:'Lunch':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n            <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n              <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n            </div>\r\n            <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n            <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n            <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\">\r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Lunch </p> \r\n            </div>\r\n            </div>\r\n            <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n\r\n\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Lunch':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Lunch</p> \r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Snacks</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered | filter:'Snacks':'type' \">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Snacks </p>\r\n              </div>\r\n            </div>\r\n            <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Snacks':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Snacks </p>\r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Dinner</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered  | filter:'Dinner':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Dinner</p> \r\n              </div>\r\n            </div>\r\n            <ion-button *ngIf=\"!nutri.empty\" (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Dinner':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Dinner</p> \r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered == '' \">\r\n      <ion-card-content>\r\n        <div  class=\"no-data nutrition-no-data\"> \r\n          <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n          <p>No Data Found</p> \r\n        </div>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <div *ngIf=\"!nutritionList\">\r\n      <ion-card class=\"item-card\" *ngFor=\"let skeleton of [].constructor(5)\">\r\n        <ion-skeleton-text class=\"grey-header green\" animated></ion-skeleton-text>\r\n        <ion-card-content class=\"ion-no-padding\">\r\n          <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n          </ion-segment>\r\n        </ion-card-content>\r\n      </ion-card>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n<ion-footer class=\"sticky-footer\">\r\n  <ion-button expand=\"full\" class=\"green ion-no-margin full-height\" (click)=\"submit()\">Ok</ion-button>\r\n</ion-footer>";
     /***/
   },
 
@@ -525,7 +525,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal('')\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>{{programData?.programTitle}}</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\">\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <div class=\"fixed\">\r\n      <form [formGroup]=\"finalForm\" class=\"\">\r\n            <ion-item lines=\"none\" class=\"margin-15 ion-block\" *ngIf=\"totalLiveSession > 0\">\r\n              <div class=\"ion-left\">\r\n                <ion-label style=\"display: contents;\">How much would you like to charge:</ion-label>\r\n              </div>\r\n              <div class=\"ion-right\">\r\n                <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n                <ion-input class=\"form-control width-30\" type=\"number\" (change)=\"updateTotalPrice($event)\" formControlName=\"programFees\" value=\"0\"></ion-input>\r\n              </div>\r\n             \r\n            </ion-item>\r\n            <ion-item lines=\"none\" class=\"margin-15 ion-block\" *ngIf=\"totalLiveSession > 0\">\r\n              <div class=\"ion-left\">\r\n                <ion-label style=\"display: contents;\">Total for {{totalLiveSession}} session:</ion-label>\r\n              </div>\r\n              <div class=\"ion-right\" *ngIf=\"totalLiveSession > 0\">\r\n                <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n                <ion-label class=\"width-30\">{{totalLiveAmt}}</ion-label>\r\n              </div>\r\n\r\n             </ion-item> \r\n            <ion-item lines=\"none\" class=\"margin-15 ion-block\">\r\n              <div class=\"ion-left\">\r\n                <ion-label *ngIf=\"totalNutritionInSession > 0 && totalVideoInSession > 0\" style=\"display: contents;\">Price of Nutrition and Video Instruction:</ion-label>\r\n                <ion-label *ngIf=\"totalNutritionInSession > 0 && totalVideoInSession == 0\" style=\"display: contents;\">Price of Nutrition Instruction:</ion-label>\r\n                <ion-label *ngIf=\"totalNutritionInSession == 0 && totalVideoInSession > 0\" style=\"display: contents;\">Price of Video Instruction:</ion-label>\r\n\r\n              </div>\r\n              <div class=\"ion-right\" *ngIf=\"totalNutritionInSession > 0 || totalVideoInSession > 0\">\r\n                <ion-label style=\"margin-left: 40px;\">$</ion-label>\r\n              <ion-input class=\"form-control width-30\" type=\"number\" formControlName=\"non_live_component_fee\" value=\"0\"></ion-input>\r\n              </div>\r\n              \r\n            </ion-item>\r\n          <div *ngIf=\"programData.programType == '6' \">\r\n            <ion-label style=\"display: block;margin-top: 15px; padding-left: 15px;\">Would you like to request Sponsors:</ion-label>\r\n            <ion-item lines=\"none\">\r\n              <ion-radio-group value=\"sponsors_group\" class=\"radio-group radioPreview\">\r\n                <ion-item>\r\n                  <ion-label>Yes</ion-label>\r\n                  <ion-radio slot=\"start\" value=\"1\" (click)=\"sponsar_prog()\" ></ion-radio>\r\n                </ion-item>\r\n                <ion-item>\r\n                  <ion-label>No</ion-label>\r\n                  <ion-radio slot=\"start\" value=\"2\" (click)=\"unsponsar_prog()\" ></ion-radio>\r\n                </ion-item>\r\n              </ion-radio-group>      \r\n            </ion-item>\r\n          </div>\r\n        \r\n          <ion-list class=\"prog_btn_list mb-0\" >\r\n            <ion-item  lines=\"none\" (click)=\"verifyUserInfoModal()\" *ngIf=\"loginUserData.trilloMatch != '1' && programData.programType != '6' \">\r\n              <ion-button class=\"green btn button-medium\">Earn with Intoative</ion-button>\r\n            </ion-item>\r\n            <ion-item class=\"\" *ngIf=\"approval_btn && !request_approve_btn \">\r\n              <ion-button (click)=\"applyAdvertise()\" class=\"green btn button-medium\">Request Approval</ion-button> \r\n            </ion-item>\r\n          </ion-list>\r\n        </form>\r\n      <form class=\"nutrition-form ion-padding-horizontal\">\r\n        <div *ngIf=\"programData?.programType==6\">\r\n          <h6 class=\"repeatedHeading mb-10\">Select Video</h6>\r\n          <ion-col size=\"12\" class=\"ion-no-padding\">\r\n            <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n              <ion-segment-button *ngFor=\"let preview of videoList\">\r\n                <div class=\"checkboxThumb\">\r\n                  <div class=\"thumb-checkbox\">\r\n                    <ion-checkbox [(ngModel)]=\"preview.sele\" name=\"preview.id\" value=\"preview.id\" slot=\"start\">\r\n                    </ion-checkbox>\r\n                  </div>\r\n                  <img *ngIf=\"preview?.thumb_path\" src=\"{{storagePath}}{{preview?.thumb_path}}\" alt=\"path\" />\r\n                  <img *ngIf=\"!preview?.thumb_path\" src=\"../../../assets/images/video.png\" />\r\n                  <ion-label>{{preview.title}}</ion-label>\r\n                  <ion-button class=\"infoIcon\" (click)=\"showVideoDetails(preview.posts_id)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n                </div>\r\n              </ion-segment-button>\r\n            </ion-segment>\r\n\r\n          </ion-col>\r\n          <div *ngIf=\"videoList.length==0\" class=\"no-data\">\r\n            <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n            <p>No post added yet!!!</p>\r\n          </div>\r\n        </div>\r\n\r\n      </form>\r\n  </div>\r\n  <div *ngIf=\"repetatedDateCopy.length>0\" class=\"margin-top-md\">\r\n    <!-- <div class=\"ion-padding-horizontal\">\r\n    <ion-list>            \r\n        <ion-item class=\"ion-no-padding ion-margin-vertical\">\r\n          <ion-label>Add Bonus Video, Nutrition</ion-label>\r\n          <ion-datetime value=\"\" display-timezone=\"utc\"  (ionChange)=\"addExtraDay($event)\"></ion-datetime>\r\n        </ion-item>\r\n      </ion-list> \r\n    </div> -->\r\n    <ion-list *ngFor=\"let date of repetatedDateCopy let i = index\" >\r\n      <ion-list-header class=\"ion-padding-horizontal green text-white live-ion-list-header\">\r\n        <div class=\"title\" *ngIf=\"date.is_live\">\r\n          {{date.date | date :'medium'}} \r\n        </div>\r\n        <div class=\"title\" *ngIf=\"!date.is_live\">\r\n          {{date.date | date :'mediumDate'}} \r\n        </div>\r\n        <div class=\"divider\"></div>\r\n        <div class=\"calender_green_bottom\">\r\n          <div class=\"\">\r\n            <div class=\"title\" *ngIf=\"date.is_live\">Live</div>\r\n            <div class=\"title\" *ngIf=\"!date.is_live\">Non-Live</div>\r\n          </div>\r\n          <ion-icon ios=\"ios-fitness\" md=\"md-fitness\" class=\"ion-margin-start\" (click)=\"addEquipments2(1,date.equipments,i)\"></ion-icon>\r\n          <ion-icon ios=\"ios-nutrition\" md=\"md-nutrition\" class=\"ion-margin-start\" (click)=\"addEquipments2(2,date.nutrition_id,i)\">\r\n          </ion-icon>\r\n          <ion-icon ios=\"ios-videocam\" md=\"md-videocam\" class=\"ion-margin-start\" (click)=\"addVideo(item,i)\"></ion-icon>\r\n        </div>\r\n      </ion-list-header>\r\n      <ion-item>\r\n        <ion-icon class=\"live-event-icon\" ios=\"ios-fitness\" md=\"md-fitness\"></ion-icon>\r\n        <div class=\"users-list\" *ngIf=\"date?.equipments.length>0;else no_equipment\">  \r\n          <img src=\"../../assets/images/demo1.jpg\" *ngFor=\"let item of date?.equipments\" />\r\n        </div>\r\n        <ng-template #no_equipment>No Equipment Selected</ng-template>\r\n      </ion-item> \r\n      <ion-item>\r\n        <ion-icon class=\"live-event-icon\" ios=\"ios-nutrition\" md=\"md-nutrition\"></ion-icon>\r\n        <div class=\"users-list\" *ngIf=\"date.nutrition_id.length>0;else no_nutrition\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.nutrition_id\" />\r\n        </div>\r\n        <ng-template #no_nutrition>No Nutrition Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-icon class=\"live-event-icon\" ios=\"ios-videocam\" md=\"md-videocam\"></ion-icon>\r\n        <div class=\"users-list\" *ngIf=\"date?.video;else no_videos\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.video\" />\r\n        </div>\r\n        <ng-template #no_videos>No videos Selected</ng-template>\r\n      </ion-item>  \r\n      <ion-item class=\"descriptionItem\">\r\n        <ion-textarea placeholder=\"Enter Description\" (ionChange)=\"detailsUpdate($event ,i)\"\r\n            value=\"{{item?.description}}\"></ion-textarea>\r\n      </ion-item>    \r\n      </ion-list>\r\n    <!-- <ion-list *ngFor=\"let date of repetatedDateCopy let i = index\">\r\n      <ion-list-header class=\"ion-padding-horizontal green text-white\">\r\n        <div *ngIf=\"date.is_live\">\r\n          {{date.date | date :'medium'}}\r\n        </div>\r\n        <div *ngIf=\"!date.is_live\">\r\n          {{date.date | date :'mediumDate'}}\r\n        </div>\r\n        <div>\r\n          <ion-icon ios=\"ios-fitness\" md=\"md-fitness\" (click)=\"addEquipments2(1,date.equipments,i)\"></ion-icon>\r\n          <ion-icon ios=\"ios-restaurant\" md=\"md-restaurant\" class=\"ion-margin-start\" (click)=\"addEquipments2(2,date.nutrition_id,i)\">\r\n          </ion-icon>\r\n          <ion-icon ios=\"ios-videocam\" md=\"md-videocam\" class=\"ion-margin-start\" (click)=\"addVideo(item,i)\"></ion-icon>\r\n        </div>\r\n      </ion-list-header>\r\n      <ion-item>\r\n        <ion-label>Equipments :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date?.equipments.length>0;else no_equipment\">\r\n          <img src=\"../../assets/images/demo1.jpg\" *ngFor=\"let item of date?.equipments\" />\r\n        </div>\r\n        <ng-template #no_equipment>No Equipment Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Nutritions :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date.nutrition_id.length>0;else no_nutrition\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.nutrition_id\" />\r\n        </div>\r\n        <ng-template #no_nutrition>No Nutrition Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Videos :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date?.video;else no_videos\">\r\n        \r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.video\" />\r\n        </div>\r\n        <ng-template #no_videos>No videos Selected</ng-template>\r\n      </ion-item>      \r\n      <ion-item class=\"descriptionItem\">\r\n        <ion-textarea placeholder=\"Enter Description\" (ionChange)=\"detailsUpdate($event ,i)\"\r\n            value=\"{{item?.description}}\"></ion-textarea>\r\n      </ion-item>\r\n    </ion-list>     -->\r\n  </div>\r\n\r\n</ion-content>\r\n<ion-footer class=\"sticky-footer\">\r\n  <div class=\"terms-footer\">\r\n    <ion-checkbox></ion-checkbox>\r\n    <ion-label> I have read and agree to the Terms and Conditions. <ion-icon ios=\"ios-arrow-dropdown\" md=\"md-arrow-dropdown\"></ion-icon></ion-label>\r\n    \r\n  </div>\r\n  <ion-button [disabled]=\"isLoading\" expand=\"full\" (click)=\"onSubmit()\"\r\n    class=\"green ion-text-uppercase ion-no-margin full-height\">Save</ion-button>\r\n</ion-footer>";
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal('')\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>{{programData?.programTitle}}</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\">\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <div class=\"fixed\"> \r\n      <form [formGroup]=\"finalForm\" class=\"\">\r\n            <ion-item lines=\"none\" class=\"margin-15 ion-block\" *ngIf=\"totalLiveSession > 0\">\r\n              <div class=\"ion-left\">\r\n                <ion-label style=\"display: contents;\">How much would you like to charge:</ion-label>\r\n              </div>\r\n            </ion-item>\r\n            <ion-item>  \r\n              <div class=\"\">\r\n                <ion-item>\r\n                 \r\n                  <ion-select placeholder=\"Select\" formControlName=\"nutriMealType\">\r\n                    <ion-select-option value=\"1\">$0(Free) </ion-select-option>\r\n                    <ion-select-option value=\"0.99\">$0.99</ion-select-option>\r\n                    <ion-select-option value=\"1.99\">$1.99</ion-select-option>\r\n                    <ion-select-option value=\"2.99\">$2.99</ion-select-option>\r\n                    <ion-select-option value=\"3.99\">$3.99</ion-select-option>\r\n                  </ion-select>\r\n                </ion-item>\r\n                <!-- <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n                <ion-input class=\"form-control width-30\" type=\"number\" (change)=\"updateTotalPrice($event)\" formControlName=\"programFees\" value=\"0\"></ion-input> -->\r\n              </div>\r\n             \r\n            </ion-item>\r\n            <ion-item lines=\"none\" class=\"margin-15 ion-block\" *ngIf=\"totalLiveSession > 0\">\r\n              <div class=\"ion-left\">\r\n                <ion-label style=\"display: contents;\">Total for {{totalLiveSession}} session:</ion-label>\r\n              </div>\r\n              <div class=\"ion-right\" *ngIf=\"totalLiveSession > 0\">\r\n                <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n                <ion-label class=\"width-30\">{{totalLiveAmt}}</ion-label>\r\n              </div>\r\n\r\n             </ion-item> \r\n            <ion-item lines=\"none\" class=\"margin-15 ion-block\">\r\n              <div class=\"ion-left\">\r\n                <ion-label *ngIf=\"totalNutritionInSession > 0 && totalVideoInSession > 0\" style=\"display: contents;\">Price of Nutrition and Video Instruction:</ion-label>\r\n                <ion-label *ngIf=\"totalNutritionInSession > 0 && totalVideoInSession == 0\" style=\"display: contents;\">Price of Nutrition Instruction:</ion-label>\r\n                <ion-label *ngIf=\"totalNutritionInSession == 0 && totalVideoInSession > 0\" style=\"display: contents;\">Price of Video Instruction:</ion-label>\r\n\r\n              </div>\r\n              <div class=\"ion-right\" *ngIf=\"totalNutritionInSession > 0 || totalVideoInSession > 0\">\r\n                <ion-label style=\"margin-left: 40px;\">$</ion-label>\r\n              <ion-input class=\"form-control width-30\" type=\"number\" formControlName=\"non_live_component_fee\" value=\"0\"></ion-input>\r\n              </div>  \r\n              \r\n            </ion-item>\r\n          <div *ngIf=\"programData.programType == '6' \">\r\n            <ion-label style=\"display: block;margin-top: 15px; padding-left: 15px;\">Would you like to request Sponsors:</ion-label>\r\n            <ion-item lines=\"none\">\r\n              <ion-radio-group value=\"sponsors_group\" class=\"radio-group radioPreview\">\r\n                <ion-item>\r\n                  <ion-label>Yes</ion-label>\r\n                  <ion-radio slot=\"start\" value=\"1\" (click)=\"sponsar_prog()\" ></ion-radio>\r\n                </ion-item>\r\n                <ion-item>\r\n                  <ion-label>No</ion-label>\r\n                  <ion-radio slot=\"start\" value=\"2\" (click)=\"unsponsar_prog()\" ></ion-radio>\r\n                </ion-item>\r\n              </ion-radio-group>      \r\n            </ion-item>\r\n          </div>\r\n        \r\n          <ion-list class=\"prog_btn_list mb-0\" >\r\n            <ion-item  lines=\"none\" (click)=\"verifyUserInfoModal()\" *ngIf=\"loginUserData.trilloMatch != '1' && programData.programType != '6' \">\r\n              <ion-button class=\"green btn button-medium\">Earn with Intoative</ion-button>\r\n            </ion-item>\r\n            <ion-item class=\"\" *ngIf=\"approval_btn && !request_approve_btn \">\r\n              <ion-button (click)=\"applyAdvertise()\" class=\"green btn button-medium\">Request Approval</ion-button> \r\n            </ion-item>\r\n          </ion-list>\r\n        </form>\r\n      <form class=\"nutrition-form ion-padding-horizontal\">\r\n        <div *ngIf=\"programData?.programType==6\">\r\n          <h6 class=\"repeatedHeading mb-10\">Select Video</h6>\r\n          <ion-col size=\"12\" class=\"ion-no-padding\">\r\n            <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n              <ion-segment-button *ngFor=\"let preview of videoList\">\r\n                <div class=\"checkboxThumb\">\r\n                  <div class=\"thumb-checkbox\">\r\n                    <ion-checkbox [(ngModel)]=\"preview.sele\" name=\"preview.id\" value=\"preview.id\" slot=\"start\">\r\n                    </ion-checkbox>\r\n                  </div>\r\n                  <img *ngIf=\"preview?.thumb_path\" src=\"{{storagePath}}{{preview?.thumb_path}}\" alt=\"path\" />\r\n                  <img *ngIf=\"!preview?.thumb_path\" src=\"../../../assets/images/video.png\" />\r\n                  <ion-label>{{preview.title}}</ion-label>\r\n                  <ion-button class=\"infoIcon\" (click)=\"showVideoDetails(preview.posts_id)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n                </div>\r\n              </ion-segment-button>\r\n            </ion-segment>\r\n\r\n          </ion-col>\r\n          <div *ngIf=\"videoList.length==0\" class=\"no-data\">\r\n            <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n            <p>No post added yet!!!</p>\r\n          </div>\r\n        </div>\r\n\r\n      </form>\r\n  </div>\r\n  <div *ngIf=\"repetatedDateCopy.length>0\" class=\"margin-top-md\">\r\n    <!-- <div class=\"ion-padding-horizontal\">\r\n    <ion-list>            \r\n        <ion-item class=\"ion-no-padding ion-margin-vertical\">\r\n          <ion-label>Add Bonus Video, Nutrition</ion-label>\r\n          <ion-datetime value=\"\" display-timezone=\"utc\"  (ionChange)=\"addExtraDay($event)\"></ion-datetime>\r\n        </ion-item>\r\n      </ion-list> \r\n    </div> -->\r\n    <ion-list *ngFor=\"let date of repetatedDateCopy let i = index\" >\r\n      <ion-list-header class=\"ion-padding-horizontal green text-white live-ion-list-header\">\r\n        <div class=\"title\" *ngIf=\"date.is_live\">\r\n          {{date.date | date :'medium'}} \r\n        </div>\r\n        <div class=\"title\" *ngIf=\"!date.is_live\">\r\n          {{date.date | date :'mediumDate'}} \r\n        </div>\r\n        <div class=\"divider\"></div>\r\n        <div class=\"calender_green_bottom\">\r\n          <div class=\"\">\r\n            <div class=\"title\" *ngIf=\"date.is_live\">Live</div>\r\n            <div class=\"title\" *ngIf=\"!date.is_live\">Non-Live</div>\r\n          </div>\r\n          <ion-icon ios=\"ios-fitness\" md=\"md-fitness\" class=\"ion-margin-start\" (click)=\"addEquipments2(1,date.equipments,i)\"></ion-icon>\r\n          <ion-icon ios=\"ios-nutrition\" md=\"md-nutrition\" class=\"ion-margin-start\" (click)=\"addEquipments2(2,date.nutrition_id,i)\">\r\n          </ion-icon>\r\n          <ion-icon ios=\"ios-videocam\" md=\"md-videocam\" class=\"ion-margin-start\" (click)=\"addVideo(item,i)\"></ion-icon>\r\n        </div>\r\n      </ion-list-header>\r\n      <ion-item>\r\n        <ion-icon class=\"live-event-icon\" ios=\"ios-fitness\" md=\"md-fitness\"></ion-icon>\r\n        <div class=\"users-list\" *ngIf=\"date?.equipments.length>0;else no_equipment\">  \r\n          <img src=\"../../assets/images/demo1.jpg\" *ngFor=\"let item of date?.equipments\" />\r\n        </div>\r\n        <ng-template #no_equipment>No Equipment Selected</ng-template>\r\n      </ion-item> \r\n      <ion-item>\r\n        <ion-icon class=\"live-event-icon\" ios=\"ios-nutrition\" md=\"md-nutrition\"></ion-icon>\r\n        <div class=\"users-list\" *ngIf=\"date.nutrition_id.length>0;else no_nutrition\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.nutrition_id\" />\r\n        </div>\r\n        <ng-template #no_nutrition>No Nutrition Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-icon class=\"live-event-icon\" ios=\"ios-videocam\" md=\"md-videocam\"></ion-icon>\r\n        <div class=\"users-list\" *ngIf=\"date?.video;else no_videos\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.video\" />\r\n        </div>\r\n        <ng-template #no_videos>No videos Selected</ng-template>\r\n      </ion-item>  \r\n      <ion-item class=\"descriptionItem\">\r\n        <ion-textarea placeholder=\"Enter Description\" (ionChange)=\"detailsUpdate($event ,i)\"\r\n            value=\"{{item?.description}}\"></ion-textarea>\r\n      </ion-item>    \r\n      </ion-list>\r\n    <!-- <ion-list *ngFor=\"let date of repetatedDateCopy let i = index\">\r\n      <ion-list-header class=\"ion-padding-horizontal green text-white\">\r\n        <div *ngIf=\"date.is_live\">\r\n          {{date.date | date :'medium'}}\r\n        </div>\r\n        <div *ngIf=\"!date.is_live\">\r\n          {{date.date | date :'mediumDate'}}\r\n        </div>\r\n        <div>\r\n          <ion-icon ios=\"ios-fitness\" md=\"md-fitness\" (click)=\"addEquipments2(1,date.equipments,i)\"></ion-icon>\r\n          <ion-icon ios=\"ios-restaurant\" md=\"md-restaurant\" class=\"ion-margin-start\" (click)=\"addEquipments2(2,date.nutrition_id,i)\">\r\n          </ion-icon>\r\n          <ion-icon ios=\"ios-videocam\" md=\"md-videocam\" class=\"ion-margin-start\" (click)=\"addVideo(item,i)\"></ion-icon>\r\n        </div>\r\n      </ion-list-header>\r\n      <ion-item>\r\n        <ion-label>Equipments :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date?.equipments.length>0;else no_equipment\">\r\n          <img src=\"../../assets/images/demo1.jpg\" *ngFor=\"let item of date?.equipments\" />\r\n        </div>\r\n        <ng-template #no_equipment>No Equipment Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Nutritions :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date.nutrition_id.length>0;else no_nutrition\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.nutrition_id\" />\r\n        </div>\r\n        <ng-template #no_nutrition>No Nutrition Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Videos :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date?.video;else no_videos\">\r\n        \r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.video\" />\r\n        </div>\r\n        <ng-template #no_videos>No videos Selected</ng-template>\r\n      </ion-item>      \r\n      <ion-item class=\"descriptionItem\">\r\n        <ion-textarea placeholder=\"Enter Description\" (ionChange)=\"detailsUpdate($event ,i)\"\r\n            value=\"{{item?.description}}\"></ion-textarea>\r\n      </ion-item>\r\n    </ion-list>     -->\r\n  </div>\r\n  \r\n</ion-content>\r\n<ion-footer class=\"sticky-footer\">\r\n  <div class=\"terms-footer\">\r\n    <ion-checkbox></ion-checkbox>\r\n    <ion-label> I have read and agree to the Terms and Conditions.</ion-label>\r\n    <ion-icon (click)=\"openModal()\" ios=\"ios-arrow-dropdown\" md=\"md-arrow-dropdown\"></ion-icon>\r\n  </div>\r\n  <ion-button [disabled]=\"isLoading\" expand=\"full\" (click)=\"onSubmit()\"\r\n    class=\"green ion-text-uppercase ion-no-margin full-height\">Save</ion-button>\r\n</ion-footer>\r\n";
     /***/
   },
 
@@ -825,7 +825,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"dismiss()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>Information</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\"></ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <div *ngIf='!otherUser' class=\"ion-padding-vertical\">\r\n    <!-- <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Tagline</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.userData?.additional?.tag_line}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.additional?.tag_line\">Add Tagline +</div> </ion-item>\r\n    </ion-list> -->\r\n    <ion-item>\r\n      <ion-label class=\"info-head\">Followers</ion-label>\r\n      <ion-text class=\"info-ans\">23</ion-text>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-label class=\"info-head\">Followers</ion-label>\r\n      <ion-text class=\"info-ans\">23</ion-text>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-label class=\"info-head\">Personal Info</ion-label>\r\n    </ion-item>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n      <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Tagline</h6>\r\n    <ion-item>\r\n      <ion-label class=\"info-ans\">{{profileData?.userData?.additional?.tag_line}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.additional?.tag_line\">Add Tagline +</div> </ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Bio</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.userData?.bios?.about_me}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.bios?.about_me\">Add Bio +</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> First Interests</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.speciality?.primaryName?.name }} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.speciality?.primaryName?.name\">Add Primary Interest +</div>  </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Second Interests</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.speciality?.secondaryName}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.speciality?.secondaryName\">Add Secondary Interest +</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"compass\" color=\"\"></ion-icon> Location</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.address?.city?.name}} {{profileData?.address?.state?.name }}, {{profileData?.address?.country?.name}} <div [routerLink]=\"\" *ngIf=\"!profileData?.address?.country?.name && !profileData?.address?.state?.name \">Add Location +</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"globe\" color=\"\"></ion-icon> Language Spoken</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.lang?.lang}}<div (click)=\"goToEdit()\" *ngIf=\"!profileData?.lang?.lang\">Add Language +</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"home\" color=\"\"></ion-icon> Hometown</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.userData?.bios?.hometown}}<div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.bios?.hometown\">Add Hometown +</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n  </div>\r\n  <div *ngIf='otherUser'>\r\n    <!-- <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label class=\"info-ans\">Tagline</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.userData?.additional?.tag_line}} <div *ngIf=\"!profileData?.userData?.additional?.tag_line\">Not Mentioned.</div> </ion-item>\r\n    </ion-list> -->\r\n    <ion-item>\r\n      <ion-label>Followers</ion-label>\r\n      <ion-label>23</ion-label>\r\n    </ion-item>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n      <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Tagline</h6>\r\n    <ion-item>\r\n      <ion-label class=\"info-ans\">{{profileData?.userData?.additional?.tag_line}} <div *ngIf=\"!profileData?.userData?.additional?.tag_line\">Not Mentioned.</div> </ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Bio</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.userData?.bios?.about_me}} <div *ngIf=\"!profileData?.userData?.bios?.about_me\">Not Mentioned.</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> First Interests</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.speciality?.primaryName?.name }} <div *ngIf=\"!profileData?.speciality?.primaryName?.name\">Not Mentioned.</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Second Interests</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.speciality?.secondaryName?.name}} <div *ngIf=\"!profileData?.speciality?.secondaryName?.name\">Not Mentioned.</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon>Location</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.address?.city?.name}} {{profileData?.address?.state?.name }}, {{profileData?.address?.country?.name}} <div [routerLink]=\"\" *ngIf=\"!profileData?.address?.country?.name && !profileData?.address?.state?.name \">Not Mentioned.</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon>Language Spken</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.lang?.lang}}<div *ngIf=\"!profileData?.lang?.lang\">Not Mentioned.</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon>Hometown</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData.userData.bios.hometown}}<div *ngIf=\"!profileData.userData.bios.hometown\">Not Mentioned.</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n  </div>\r\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"dismiss()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>Information</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\"></ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <div *ngIf='!otherUser' class=\"ion-padding-vertical\">\r\n    <!-- <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label>Tagline</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.userData?.additional?.tag_line}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.additional?.tag_line\">Add Tagline +</div> </ion-item>\r\n    </ion-list> -->\r\n    <ion-item lines=\"full\">\r\n      <ion-label class=\"info-head\">Followers</ion-label>\r\n      <ion-text class=\"info-ans\">{{followers}}</ion-text>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label class=\"info-head\">Followings</ion-label>\r\n      <ion-text class=\"info-ans\">{{followings}}</ion-text>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-label class=\"info-head\">Personal Info</ion-label>\r\n    </ion-item>\r\n    <ion-list class=\"nofication-list\">\r\n      <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Tagline</h6>\r\n    <ion-item>\r\n      <ion-label class=\"info-ans\">{{profileData?.userData?.additional?.tag_line}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.additional?.tag_line\">Add Tagline +</div> </ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Bio</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.userData?.bios?.about_me}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.bios?.about_me\">Add Bio +</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n      <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"globe\" color=\"\"></ion-icon> Language Spoken</h6>\r\n    <ion-item>\r\n      <ion-label class=\"info-ans\">{{profileData?.lang?.lang}}<div (click)=\"goToEdit()\" *ngIf=\"!profileData?.lang?.lang\">Add Language +</div></ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n    <ion-item>\r\n      <ion-label class=\"info-head\">Interests</ion-label>\r\n    </ion-item>\r\n    <ion-list class=\"nofication-list\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> First Interests</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.speciality?.primaryName?.name }} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.speciality?.primaryName?.name\">Add Primary Interest +</div>  </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Second Interests</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.speciality?.secondaryName}} <div (click)=\"goToEdit()\" *ngIf=\"!profileData?.speciality?.secondaryName\">Add Secondary Interest +</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-item>\r\n      <ion-label class=\"info-head\">Location</ion-label>\r\n    </ion-item>\r\n    <ion-list class=\"nofication-list\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"compass\" color=\"\"></ion-icon> Location</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.address?.city?.name}} {{profileData?.address?.state?.name }}, {{profileData?.address?.country?.name}} <div [routerLink]=\"\" *ngIf=\"!profileData?.address?.country?.name && !profileData?.address?.state?.name \">Add Location +</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n  \r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"home\" color=\"\"></ion-icon> Hometown</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.userData?.bios?.hometown}}<div (click)=\"goToEdit()\" *ngIf=\"!profileData?.userData?.bios?.hometown\">Add Hometown +</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n  </div>\r\n  <div *ngIf='otherUser'>\r\n    <!-- <ion-list class=\"nofication-list\">\r\n      <ion-list-header>\r\n        <ion-label class=\"info-ans\">Tagline</ion-label>\r\n      </ion-list-header>\r\n      <ion-item>{{profileData?.userData?.additional?.tag_line}} <div *ngIf=\"!profileData?.userData?.additional?.tag_line\">Not Mentioned.</div> </ion-item>\r\n    </ion-list> -->\r\n    <ion-item lines=\"full\">\r\n      <ion-label class=\"info-head\">Followers</ion-label>\r\n      <ion-text class=\"info-ans\">23</ion-text>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label class=\"info-head\">Followings</ion-label>\r\n      <ion-text class=\"info-ans\">20</ion-text>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-label class=\"info-head\">Personal Info</ion-label>\r\n    </ion-item>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n      <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Tagline</h6>\r\n    <ion-item>\r\n      <ion-label class=\"info-ans\">{{profileData?.userData?.additional?.tag_line}} <div *ngIf=\"!profileData?.userData?.additional?.tag_line\">Not Mentioned.</div> </ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Bio</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.userData?.bios?.about_me}} <div *ngIf=\"!profileData?.userData?.bios?.about_me\">Not Mentioned.</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n      <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon>Language Spken</h6>\r\n    <ion-item>\r\n      <ion-label class=\"info-ans\">{{profileData?.lang?.lang}}<div *ngIf=\"!profileData?.lang?.lang\">Not Mentioned.</div></ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n    <ion-item>\r\n      <ion-label class=\"info-head\">Interests</ion-label>\r\n    </ion-item>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> First Interests</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.speciality?.primaryName?.name }} <div *ngIf=\"!profileData?.speciality?.primaryName?.name\">Not Mentioned.</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon> Second Interests</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.speciality?.secondaryName?.name}} <div *ngIf=\"!profileData?.speciality?.secondaryName?.name\">Not Mentioned.</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-item>\r\n      <ion-label class=\"info-head\">Location</ion-label>\r\n    </ion-item>\r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon>Location</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData?.address?.city?.name}} {{profileData?.address?.state?.name }}, {{profileData?.address?.country?.name}} <div [routerLink]=\"\" *ngIf=\"!profileData?.address?.country?.name && !profileData?.address?.state?.name \">Not Mentioned.</div> </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    \r\n    <ion-list class=\"nofication-list ion-margin-vertical\">\r\n        <h6 class=\"ion-padding-horizontal ion-no-margin info-title\"><ion-icon color=\"medium\" name=\"person\" color=\"\"></ion-icon>Hometown</h6>\r\n      <ion-item>\r\n        <ion-label class=\"info-ans\">{{profileData.userData.bios.hometown}}<div *ngIf=\"!profileData.userData.bios.hometown\">Not Mentioned.</div></ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n  </div>\r\n</ion-content>";
     /***/
   },
 
@@ -946,6 +946,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
     __webpack_exports__["default"] = "<ion-content fullscreen>\r\n  <ion-item class=\"close-fake\" lines=\"none\">\r\n    <ion-button (click)=\"close()\" fill=\"clear\" color=\"light\">\r\n      <ion-icon name=\"close\" slot=\"start\"></ion-icon> \r\n    </ion-button>\r\n    <!-- <ion-button (click)=\"zoom(true)\" fill=\"clear\" color=\"light\">\r\n      <ion-icon name=\"add\" slot=\"start\"></ion-icon> In\r\n    </ion-button>\r\n\r\n    <ion-button (click)=\"zoom(false)\" fill=\"clear\" color=\"light\">\r\n      <ion-icon name=\"remove\" slot=\"start\"></ion-icon> Out\r\n    </ion-button> -->\r\n  </ion-item>\r\n\r\n  <ion-slides [options]=\"sliderOpts\" #slider>\r\n    <ion-slide>\r\n      <div  class=\"swiper-zoom-container\">\r\n        <img src=\"../../../assets/images/{{ img }}.jpg\" >\r\n      </div>\r\n    </ion-slide>\r\n  </ion-slides>\r\n</ion-content>";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/modalContent/terms-condition/terms-condition.component.html":
+  /*!*******************************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/modalContent/terms-condition/terms-condition.component.html ***!
+    \*******************************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppModalContentTermsConditionTermsConditionComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\n  <ion-list class=\"top-heading three-block\">\n    <ion-item slot=\"start\">\n      <ion-buttons class=\"ion-no-margin\"  (click)=\"closeModal()\">\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\n      </ion-buttons>\n    </ion-item>\n    <ion-item slot=\"center\">\n      <ion-label>Terms And Conditions</ion-label>\n    </ion-item>\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\"></ion-item>\n  </ion-list>\n</ion-header>\n<ion-content fullscreen  class=\"ion-padding\">\n  <h3>Terms of use</h3>\n  <p>\n    Terms and conditions are not required by law, but are extremely important to the long-term success and viability of your website. Having website terms and conditions is considered standard business practice in the US, Canada, the UK, and just about everywhere else — from South Africa to Australia. \n   </p>\n\n\n  <h3>Conditions</h3>\n  <p>\n    If you plan to grow your business or expand your user base, a simple terms and conditions agreement will provide your website with an additional layer of legal protection, and allow you to maintain your rights.\n  </p>\n</ion-content>\n";
     /***/
   },
 
@@ -1365,7 +1385,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>Schedule</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\"></ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content no_footer\">\r\n  <ion-segment class=\"top-segment\" (ionChange)=\"scheduleChanged($event)\">    \r\n    <ion-segment-button value=\"programs\" checked>\r\n      <span>Programs</span>\r\n    </ion-segment-button>\r\n    <!-- <ion-segment-button value=\"nutrition\" >\r\n      <span>Nutrition & Video</span>\r\n    </ion-segment-button> -->\r\n  </ion-segment>\r\n  <div [ngSwitch]=\"scheduleTabs\">    \r\n    <ion-list lines=\"none\" class=\"item-list ion-no-padding\" *ngSwitchCase=\"'programs'\">     \r\n      <div *ngFor=\"let progItem of allProgram\">        \r\n        <ion-list-header class=\"ion-padding-horizontal green text-white\">{{progItem?.convertedTime | date:'medium'}}\r\n          <ion-icon *ngIf=\"user_type == 1\"\r\n            ios=\"ios-create\" md=\"md-create\" (click)=\"closeModal()\"  [routerLink]=\"['/edit-program',progItem?.id]\">\r\n          </ion-icon>\r\n        </ion-list-header>\r\n        <ion-item class=\"ion-padding-horizontal\">\r\n          <p>{{progItem?.description}}</p>\r\n        </ion-item>\r\n        <ion-card class=\"video-card\"  *ngIf=\"progItem?.nutrition_id || progItem?.video_program\">\r\n          <ion-card-content class=\"ion-no-padding\" *ngIf=\"programDetail.displayData\">\r\n            <ion-slides [options]=\"sliderOpts\" class=\"inner-slider mb-10\">\r\n              <!-- <ion-slide *ngIf=\"progItem?.video_program\" (click)=\"showVideoDetails(item.posts_id)\" > -->\r\n                <ion-slide class=\"program-item\" *ngFor=\"let item of progItem?.videoProg_array \" (click)=\"showVideoDetails(item)\" >\r\n                  <div class=\"progImage\">\r\n                    <img src=\"../../../assets/images/video.png\"  />\r\n                  </div>\r\n                  <div class=\"progLabel\">\r\n                    <ion-label>Video</ion-label>\r\n                  </div>\r\n              </ion-slide>  \r\n              <ion-slide class=\"program-item\" *ngFor=\"let item of progItem?.videoId_array\" (click)=\"showVideoDetails(item)\" >\r\n                <div class=\"progImage\">\r\n                <img src=\"../../../assets/images/video.png\"  />\r\n                </div>\r\n                <div class=\"progLabel\">\r\n                  <ion-label>Video</ion-label>\r\n                </div>\r\n             </ion-slide> \r\n              <ion-slide class=\"program-item\" *ngFor=\"let item of nutritionList | inArray:'id':progItem?.nutrition_array \"  (click)=\"nutritionModal(progItem)\" >\r\n                <div class=\"progImage\">\r\n                <img src=\"{{url}}{{item?.fImage}}\" *ngIf=\"item?.fImage\" />\r\n                <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!item?.fImage\" />\r\n                </div>\r\n                <div class=\"progLabel\">\r\n                  <ion-label>{{item?.title}}</ion-label>\r\n                </div>\r\n              </ion-slide>  \r\n            </ion-slides>\r\n          </ion-card-content>\r\n        </ion-card>  \r\n        <ion-card class=\"video-card\"  *ngIf=\"progItem?.nutrition_id || progItem?.video_program\">\r\n          <ion-card-content class=\"ion-no-padding\" *ngIf=\"!programDetail.displayData\">\r\n            <ion-slides [options]=\"sliderOpts\" class=\"inner-slider mb-10\">\r\n              <!-- <ion-slide *ngIf=\"progItem?.video_program\" (click)=\"showVideoDetails(item.posts_id)\" > -->\r\n                <ion-slide *ngFor=\"let item of progItem?.videoProg_array \" (click)=\"disclass(progItem.id)\" >\r\n                 <img src=\"../../../assets/images/video.png\" style=\"width:auto !important\" />\r\n                <ion-label>Video</ion-label>\r\n              </ion-slide>  \r\n              <ion-slide *ngFor=\"let item of progItem?.videoId_array\" (click)=\"disclass(progItem.id)\" >\r\n                <img src=\"../../../assets/images/video.png\" style=\"width:auto !important\" />\r\n               <ion-label>Video</ion-label>\r\n             </ion-slide> \r\n              <ion-slide *ngFor=\"let item of nutritionList | inArray:'id':progItem?.nutrition_array \"  (click)=\"disclass(progItem.id)\" >\r\n                <img src=\"{{url}}{{item?.fImage}}\" *ngIf=\"item?.fImage\" />\r\n                <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!item?.fImage\" style=\"width:70% !important; height: auto;\"/>\r\n                <ion-label>{{item?.title}}</ion-label>\r\n              </ion-slide>  \r\n            </ion-slides>\r\n          </ion-card-content>\r\n        </ion-card>\r\n        <div class=\"no-data\" *ngIf=\"!progItem?.nutrition_id\">\r\n          <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n          <p>No Nutrition Found</p>\r\n          <ion-item class=\"ion-padding-horizontal\">\r\n          </ion-item>\r\n        </div>\r\n      </div>\r\n      \r\n    </ion-list>\r\n    <ion-list lines=\"none\" class=\"item-list ion-no-padding\" *ngSwitchCase=\"'nutrition'\">     \r\n      <div *ngFor=\"let progItem of allProgram\">\r\n        <ion-list-header class=\"ion-padding-horizontal green text-white\">{{progItem?.convertedTime| date:'medium'}}\r\n          <ion-icon *ngIf=\"user_type == 1\"\r\n            ios=\"ios-add\" md=\"md-add\" (click)=\"addEquipments2(2,progItem.id)\">\r\n          </ion-icon>\r\n        </ion-list-header> \r\n          <ion-card class=\"video-card\"  *ngIf=\"progItem?.nutrition_id || progItem?.video_program\">\r\n            <ion-card-content class=\"ion-no-padding\" *ngIf=\"programDetail.displayData\">\r\n              <ion-slides [options]=\"sliderOpts\" class=\"inner-slider mb-10\">\r\n                <!-- <ion-slide *ngIf=\"progItem?.video_program\" (click)=\"showVideoDetails(item.posts_id)\" > -->\r\n                  <ion-slide *ngFor=\"let item of progItem?.videoProg_array \" (click)=\"showVideoDetails(item)\" >\r\n                   <img src=\"../../../assets/images/video.png\" style=\"width:auto !important\" />\r\n                  <ion-label>Video</ion-label>\r\n                </ion-slide>  \r\n                <ion-slide *ngFor=\"let item of progItem?.videoId_array\" (click)=\"showVideoDetails(item)\" >\r\n                  <img src=\"../../../assets/images/video.png\" style=\"width:auto !important\" />\r\n                 <ion-label>Video</ion-label>\r\n               </ion-slide> \r\n                <ion-slide *ngFor=\"let item of nutritionList | inArray:'id':progItem?.nutrition_array \"  (click)=\"nutritionModal(progItem)\" >\r\n                  <img style=\"flex: 1\" src=\"{{url}}{{item?.fImage}}\" *ngIf=\"item?.fImage\" />\r\n                  <img style=\"flex: 1\" src=\"../../assets/images/nutrition2.png\" *ngIf=\"!item?.fImage\" style=\"width:70% !important; height: auto;\"/>\r\n                  <ion-label>{{item?.title}}</ion-label>\r\n                </ion-slide>  \r\n              </ion-slides>\r\n            </ion-card-content>\r\n          </ion-card>  \r\n          <ion-card class=\"video-card\"  *ngIf=\"progItem?.nutrition_id || progItem?.video_program\">\r\n            <ion-card-content class=\"ion-no-padding\" *ngIf=\"!programDetail.displayData\">\r\n              <ion-slides [options]=\"sliderOpts\" class=\"inner-slider mb-10\">\r\n                <!-- <ion-slide *ngIf=\"progItem?.video_program\" (click)=\"showVideoDetails(item.posts_id)\" > -->\r\n                  <ion-slide *ngFor=\"let item of progItem?.videoProg_array \" (click)=\"disclass()\" >\r\n                   <img src=\"../../../assets/images/video.png\" style=\"width:auto !important\" />\r\n                  <ion-label>Video</ion-label>\r\n                </ion-slide>  \r\n                <ion-slide *ngFor=\"let item of progItem?.videoId_array\" (click)=\"disclass()\" >\r\n                  <img src=\"../../../assets/images/video.png\" style=\"width:auto !important\" />\r\n                 <ion-label>Video</ion-label>\r\n               </ion-slide> \r\n                <ion-slide *ngFor=\"let item of nutritionList | inArray:'id':progItem?.nutrition_array \"  (click)=\"disclass()\" >\r\n                  <img src=\"{{url}}{{item?.fImage}}\" *ngIf=\"item?.fImage\" />\r\n                  <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!item?.fImage\" style=\"width:70% !important; height: auto;\"/>\r\n                  <ion-label>{{item?.title}}</ion-label>\r\n                </ion-slide>  \r\n              </ion-slides>\r\n            </ion-card-content>\r\n          </ion-card>\r\n          <div class=\"no-data\" *ngIf=\"!progItem?.nutrition_id\">\r\n            <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n            <p>No Nutrition Found</p>\r\n          </div>\r\n      </div>\r\n    </ion-list>\r\n  </div>\r\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>Schedule</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\"></ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content no_footer\">\r\n  <ion-segment class=\"top-segment\" (ionChange)=\"scheduleChanged($event)\">    \r\n    <ion-segment-button value=\"programs\" checked>\r\n      <span>Programs</span>\r\n    </ion-segment-button>\r\n    <!-- <ion-segment-button value=\"nutrition\" >\r\n      <span>Nutrition & Video</span>\r\n    </ion-segment-button> -->\r\n  </ion-segment>\r\n  <div [ngSwitch]=\"scheduleTabs\">    \r\n    <ion-list lines=\"none\" class=\"item-list ion-no-padding\" *ngSwitchCase=\"'programs'\">     \r\n      <div *ngFor=\"let progItem of allProgram\">        \r\n        <ion-list-header class=\"ion-padding-horizontal green text-white\">{{progItem?.convertedTime | date:'medium'}}\r\n          <ion-icon *ngIf=\"user_type == 1\"\r\n            ios=\"ios-create\" md=\"md-create\" (click)=\"closeModal()\"  [routerLink]=\"['/edit-program',progItem?.id]\">\r\n          </ion-icon>\r\n        </ion-list-header>\r\n        <ion-item class=\"ion-padding-horizontal\">\r\n          <p>{{progItem?.description}}</p>\r\n        </ion-item>\r\n        <ion-card class=\"video-card\"  *ngIf=\"progItem?.nutrition_id || progItem?.video_program\">\r\n          <ion-card-content class=\"ion-no-padding\" *ngIf=\"programDetail.displayData\">\r\n            <ion-slides [options]=\"sliderOpts\" class=\"inner-slider mb-10\">\r\n              <!-- <ion-slide *ngIf=\"progItem?.video_program\" (click)=\"showVideoDetails(item.posts_id)\" > -->\r\n                <ion-slide class=\"program-item\" *ngFor=\"let item of progItem?.videoProg_array \" (click)=\"showVideoDetails(item)\" >\r\n                  <div class=\"progImage\">\r\n                    <img src=\"../../../assets/images/video.png\"  />\r\n                  </div>\r\n                  <div class=\"progLabel\">\r\n                    <ion-label>Video</ion-label>\r\n                  </div>\r\n              </ion-slide>  \r\n              <ion-slide class=\"program-item\" *ngFor=\"let item of progItem?.videoId_array\" (click)=\"showVideoDetails(item)\" >\r\n                <div class=\"progImage\">\r\n                <img src=\"../../../assets/images/video.png\"  />\r\n                </div>\r\n                <div class=\"progLabel\">\r\n                  <ion-label>Video</ion-label>\r\n                </div>\r\n             </ion-slide> \r\n              <ion-slide class=\"program-item\" *ngFor=\"let item of nutritionList | inArray:'id':progItem?.nutrition_array \"  (click)=\"nutritionModal(progItem)\" >\r\n                <div class=\"progImage\">\r\n                <img src=\"{{url}}{{item?.fImage}}\" *ngIf=\"item?.fImage\" />\r\n                <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!item?.fImage\" />\r\n                </div>\r\n                <div class=\"progLabel\">\r\n                  <ion-label>{{item?.title}}</ion-label>\r\n                </div>\r\n              </ion-slide>  \r\n            </ion-slides>\r\n          </ion-card-content>\r\n        </ion-card>  \r\n        <ion-card class=\"video-card\"  >\r\n          <ion-card-content class=\"ion-no-padding\" *ngIf=\"!programDetail.displayData\">\r\n            <ion-slides [options]=\"sliderOpts\" class=\"inner-slider mb-10\">\r\n              <!-- <ion-slide *ngIf=\"progItem?.video_program\" (click)=\"showVideoDetails(item.posts_id)\" > -->\r\n                <ion-slide *ngFor=\"let item of progItem?.videoProg_array \" (click)=\"disclass(progItem.id)\" >\r\n                 <img src=\"../../../assets/images/video.png\" style=\"width:auto !important\" />\r\n                <ion-label>Video</ion-label>\r\n              </ion-slide>  \r\n              <ion-slide *ngFor=\"let item of progItem?.videoId_array\" (click)=\"disclass(progItem.id)\" >\r\n                <img src=\"../../../assets/images/video.png\" style=\"width:auto !important\" />\r\n               <ion-label>Video</ion-label>\r\n             </ion-slide> \r\n              <ion-slide *ngFor=\"let item of nutritionList | inArray:'id':progItem?.nutrition_array \"  (click)=\"disclass(progItem.id)\" >\r\n                <img src=\"{{url}}{{item?.fImage}}\" *ngIf=\"item?.fImage\" />\r\n                <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!item?.fImage\" style=\"width:70% !important; height: auto;\"/>\r\n                <ion-label>{{item?.title}}</ion-label>\r\n              </ion-slide>  \r\n            </ion-slides>\r\n          </ion-card-content>\r\n        </ion-card>\r\n        <div class=\"no-data\" *ngIf=\"!progItem?.nutrition_id\">\r\n          <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n          <p>No Nutrition Found</p>\r\n          <ion-item class=\"ion-padding-horizontal\">\r\n          </ion-item>\r\n        </div>\r\n      </div>\r\n      \r\n    </ion-list>\r\n    <ion-list lines=\"none\" class=\"item-list ion-no-padding\" *ngSwitchCase=\"'nutrition'\">     \r\n      <div *ngFor=\"let progItem of allProgram\">\r\n        <ion-list-header class=\"ion-padding-horizontal green text-white\">{{progItem?.convertedTime| date:'medium'}}\r\n          <ion-icon *ngIf=\"user_type == 1\"\r\n            ios=\"ios-add\" md=\"md-add\" (click)=\"addEquipments2(2,progItem.id)\">\r\n          </ion-icon>\r\n        </ion-list-header> \r\n          <ion-card class=\"video-card\"  *ngIf=\"progItem?.nutrition_id || progItem?.video_program\">\r\n            <ion-card-content class=\"ion-no-padding\" *ngIf=\"programDetail.displayData\">\r\n              <ion-slides [options]=\"sliderOpts\" class=\"inner-slider mb-10\">\r\n                <!-- <ion-slide *ngIf=\"progItem?.video_program\" (click)=\"showVideoDetails(item.posts_id)\" > -->\r\n                  <ion-slide *ngFor=\"let item of progItem?.videoProg_array \" (click)=\"showVideoDetails(item)\" >\r\n                   <img src=\"../../../assets/images/video.png\" style=\"width:auto !important\" />\r\n                  <ion-label>Video</ion-label>\r\n                </ion-slide>  \r\n                <ion-slide *ngFor=\"let item of progItem?.videoId_array\" (click)=\"showVideoDetails(item)\" >\r\n                  <img src=\"../../../assets/images/video.png\" style=\"width:auto !important\" />\r\n                 <ion-label>Video</ion-label>\r\n               </ion-slide> \r\n                <ion-slide *ngFor=\"let item of nutritionList | inArray:'id':progItem?.nutrition_array \"  (click)=\"nutritionModal(progItem)\" >\r\n                  <img style=\"flex: 1\" src=\"{{url}}{{item?.fImage}}\" *ngIf=\"item?.fImage\" />\r\n                  <img style=\"flex: 1\" src=\"../../assets/images/nutrition2.png\" *ngIf=\"!item?.fImage\" style=\"width:70% !important; height: auto;\"/>\r\n                  <ion-label>{{item?.title}}</ion-label>\r\n                </ion-slide>  \r\n              </ion-slides>\r\n            </ion-card-content>\r\n          </ion-card>  \r\n          <ion-card class=\"video-card\"  *ngIf=\"progItem?.nutrition_id || progItem?.video_program\">\r\n            <ion-card-content class=\"ion-no-padding\" *ngIf=\"!programDetail.displayData\">\r\n              <ion-slides [options]=\"sliderOpts\" class=\"inner-slider mb-10\">\r\n                <!-- <ion-slide *ngIf=\"progItem?.video_program\" (click)=\"showVideoDetails(item.posts_id)\" > -->\r\n                  <ion-slide *ngFor=\"let item of progItem?.videoProg_array \" (click)=\"disclass()\" >\r\n                   <img src=\"../../../assets/images/video.png\" style=\"width:auto !important\" />\r\n                  <ion-label>Video</ion-label>\r\n                </ion-slide>  \r\n                <ion-slide *ngFor=\"let item of progItem?.videoId_array\" (click)=\"disclass()\" >\r\n                  <img src=\"../../../assets/images/video.png\" style=\"width:auto !important\" />\r\n                 <ion-label>Video</ion-label>\r\n               </ion-slide> \r\n                <ion-slide *ngFor=\"let item of nutritionList | inArray:'id':progItem?.nutrition_array \"  (click)=\"disclass()\" >\r\n                  <img src=\"{{url}}{{item?.fImage}}\" *ngIf=\"item?.fImage\" />\r\n                  <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!item?.fImage\" style=\"width:70% !important; height: auto;\"/>\r\n                  <ion-label>{{item?.title}}</ion-label>\r\n                </ion-slide>  \r\n              </ion-slides>\r\n            </ion-card-content>\r\n          </ion-card>\r\n          <div class=\"no-data\" *ngIf=\"!progItem?.nutrition_id\">\r\n            <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n            <p>No Nutrition Found</p>\r\n          </div>\r\n      </div>\r\n    </ion-list>\r\n  </div>\r\n</ion-content>";
     /***/
   },
 
@@ -2092,6 +2112,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.nutritionService = nutritionService;
         this.modalCtrl = modalCtrl;
         this.programService = programService;
+        this.equipmentPicPath = _config_config__WEBPACK_IMPORTED_MODULE_6__["Config"].equipmentPic;
         this.url = _config_config__WEBPACK_IMPORTED_MODULE_6__["Config"].imgUrl;
         this.sliderOpts = {
           zoom: false,
@@ -2722,7 +2743,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".inline-flex ion-datetime {\n  padding-left: 1px;\n  padding-right: 5px; }\n\n.radio-group {\n  display: flex; }\n\n.radio-group ion-item {\n  --background: transparent;\n  --inner-border-width: 0 0 0 0; }\n\n.radio-group ion-item ion-radio {\n  margin-right: 10px; }\n\n.nutriimages-list ion-label {\n  font-size: 0.75rem;\n  margin: 3px 0;\n  text-transform: capitalize;\n  letter-spacing: 0;\n  font-weight: 400;\n  display: block;\n  color: #444; }\n\n.video-card {\n  box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09); }\n\nion-slides {\n  background: transparent;\n  padding: 0 5px; }\n\n.nutriimages-list ion-segment-button {\n  width: 32%;\n  border: none;\n  padding: 0;\n  --padding-start: 0;\n  --padding-end: 0;\n  margin: 0 3px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: #f7f7f7;\n  border-radius: 4px; }\n\n.nutriimages-list ion-segment-button:first-child {\n  margin-left: 0; }\n\n.nutriimages-list ion-segment-button img {\n  -o-object-fit: contain;\n     object-fit: contain;\n  max-width: 100%; }\n\n.nutriimages-list .segment-button-checked {\n  background: #eaeaea;\n  --color-checked: transparent; }\n\n.nutriimages-list .thumb-checkbox {\n  position: absolute;\n  width: 100%;\n  height: 100%; }\n\n.nutriimages-list .thumb-checkbox ion-checkbox {\n  opacity: 0;\n  width: 100%;\n  height: 78px;\n  padding: 0 0; }\n\n.checkboxThumb::after {\n  content: '';\n  width: 16px;\n  height: 16px;\n  border: 2px solid #7d7d7d;\n  display: block;\n  border-radius: 50%;\n  position: absolute;\n  top: 5px;\n  left: 5px; }\n\n.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked {\n  opacity: 1;\n  --background-checked:transparent;\n  --border-color-checked:transparent;\n  --size:0;\n  --checkmark-color:transparent; }\n\n.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked:after {\n  content: '';\n  width: 20px;\n  height: 20px;\n  background: #26a69a;\n  display: block;\n  border-radius: 50%;\n  position: absolute;\n  top: 5px;\n  left: 5px; }\n\n.item-list ion-list-header ion-icon {\n  font-size: 1.15rem; }\n\n.users-list {\n  --min-height: auto;\n  display: flex;\n  align-items: center;\n  margin: 6px 0; }\n\n.users-list img {\n  width: 36px;\n  height: 36px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 50%;\n  margin-left: -10px; }\n\n.users-list img:first-child {\n  margin-left: 0; }\n\n.users-list ion-label {\n  width: 100px; }\n\n.view-all {\n  width: 36px;\n  height: 36px;\n  max-width: 36px;\n  text-align: center;\n  background: #f1f0f0;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 0;\n  margin-left: -10px; }\n\nion-list .durationItem {\n  --padding-end: 0; }\n\nion-list .durationItem ion-input {\n    position: relative;\n    top: 2px;\n    text-align: right; }\n\n.program-card {\n  width: 100%; }\n\nion-item ion-list {\n  width: 100%; }\n\n.item-list > ion-item {\n  --inner-padding-end: 0; }\n\n.thumb-list ion-item ion-label {\n  position: absolute;\n  bottom: 0;\n  margin: 0;\n  background: rgba(38, 166, 154, 0.5);\n  width: 100%;\n  color: #FFF;\n  padding: 5px;\n  text-align: center; }\n\n.fixed {\n  position: -webkit-sticky;\n  position: sticky;\n  width: 100%;\n  top: 0px;\n  padding-top: 5px;\n  z-index: 999;\n  background: #fff; }\n\n.margintop-45 {\n  margin-top: 45%; }\n\n.margin-15 {\n  margin: 15px 0px !important; }\n\n.mb-0 {\n  margin-bottom: 0 !important; }\n\nion-list {\n  padding-top: 0 !important;\n  padding-bottom: 0 !important; }\n\nion-list ion-item {\n    font-size: 0.875rem;\n    --padding-end: 16px;\n    -webkit-padding-end: 0;\n            padding-inline-end: 0;\n    --inner-padding-end: 0;\n    --min-height: 44px;\n    --border-color: whitesmoke; }\n\nion-list .descriptionItem ion-item {\n    padding: 0; }\n\n.repeatedHeading {\n  font-weight: 400;\n  font-size: 15px;\n  margin-bottom: 0; }\n\n.infoIcon {\n  position: absolute;\n  top: 0;\n  right: 0;\n  --background: #26a69a;\n  --box-shadow: none;\n  color: #FFF;\n  --padding-start: 0;\n  --padding-end: 0;\n  height: auto;\n  font-size: 16px;\n  margin: 3px;\n  z-index: 9;\n  --border-radius:50%; }\n\n.ion-block {\n  display: flex;\n  align-items: center; }\n\n.ion-left {\n  flex: 1; }\n\n.ion-right {\n  display: flex;\n  align-items: center; }\n\n.width-30 {\n  width: 30px; }\n\n.live-ion-list-header {\n  justify-content: initial; }\n\n.live-ion-list-header .divider {\n    margin-left: 20px;\n    margin-right: 20px; }\n\n.live-ion-list-header .calender_green_bottom {\n    display: flex;\n    flex: 1;\n    justify-content: space-around;\n    align-items: center; }\n\n.live-ion-list-header .calender_green_bottom ion-icon {\n      font-size: 1.7rem; }\n\n.live-event-addition {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  background: #cecece;\n  padding: 15px;\n  border-radius: 12px;\n  margin-bottom: 12px; }\n\n.live-event-addition h5 {\n    color: #121212;\n    margin: 0;\n    font-weight: 500; }\n\n.live-event-box {\n  width: 100%;\n  margin-bottom: 20px; }\n\n.live-event-box .live-event-head {\n    margin-bottom: 10px;\n    font-size: 14px;\n    color: #121212; }\n\n.live-event-box .live-event-info {\n    padding: 12px 20px 2px 20px;\n    border: 1px solid #cecece;\n    border-radius: 12px;\n    max-height: 100px;\n    overflow-y: scroll; }\n\n.live-event-box .live-event-info .live-event-details {\n      display: flex;\n      align-items: center;\n      margin-bottom: 10px; }\n\n.live-event-box .live-event-info .live-event-details p {\n        font-size: 16px;\n        color: #121212; }\n\n.live-event-box .live-event-info .live-event-details .small-divider {\n        width: 1.5px;\n        height: 20px;\n        background-color: #555;\n        margin-right: 14px;\n        margin-left: 14px; }\n\n.live-event-icon {\n  font-size: 28px;\n  min-width: 80px;\n  color: #555;\n  margin-right: 20px; }\n\n.live-icon {\n  color: transparent; }\n\n.toggleDiv {\n  margin-bottom: 2px;\n  width: 50px; }\n\n.live::after {\n  content: 'Go Live';\n  color: #26a69a;\n  font-size: 11px;\n  font-weight: 500;\n  padding: 6px 5px;\n  background: #fff;\n  border-radius: 3px;\n  margin-bottom: 2px; }\n\n.title {\n  font-size: 13px; }\n\n.title span {\n  font-size: 11px;\n  display: block;\n  color: #E7E7E7;\n  margin-bottom: 3px; }\n\n.live.active::after {\n  content: 'Live';\n  padding: 6px 7px;\n  font-size: 11px;\n  letter-spacing: 2px;\n  color: #fff;\n  text-transform: uppercase;\n  background: #FF3A3A; }\n\nion-icon.active {\n  display: block;\n  color: #ff1111; }\n\n.width-full {\n  width: 100% !important; }\n\n.divider {\n  width: 1.5px;\n  height: 35px;\n  background: #fff; }\n\n.terms-footer {\n  display: flex;\n  align-items: center;\n  padding: 0 10px; }\n\n.terms-footer ion-checkbox {\n    margin-right: 8px; }\n\n.terms-footer ion-icon {\n    color: #555; }\n\n.full-height {\n  height: 56px; }\n\n.sticky-footer {\n  height: auto; }\n\nion-list-header.ion-padding-horizontal.green.text-white.md.hydrated {\n  padding-bottom: 12px;\n  padding-top: 12px; }\n\nion-list.width-full.md.list-md.hydrated {\n  border-radius: 4px; }\n\nion-list-header.ion-padding-horizontal.green.text-white.ios.hydrated {\n  padding-bottom: 12px;\n  padding-top: 12px;\n  text-transform: initial;\n  letter-spacing: 0px; }\n\nion-list.width-full.ios.list-ios.hydrated {\n  border-radius: 4px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWRkLXByb2dyYW0vZGF0ZS10aW1lLW1vZGFsL0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFxhZGQtcHJvZ3JhbVxcZGF0ZS10aW1lLW1vZGFsXFxkYXRlLXRpbWUtbW9kYWwuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBMEIsaUJBQWlCO0VBQUMsa0JBQWtCLEVBQUE7O0FBQzlEO0VBQWEsYUFBYSxFQUFBOztBQUMxQjtFQUFzQix5QkFBYTtFQUFhLDZCQUFxQixFQUFBOztBQUNyRTtFQUFnQyxrQkFBa0IsRUFBQTs7QUFFbEQ7RUFBNEIsa0JBQWtCO0VBQUMsYUFBYTtFQUFDLDBCQUEwQjtFQUFDLGlCQUFpQjtFQUFDLGdCQUFnQjtFQUFDLGNBQWM7RUFBQyxXQUFXLEVBQUE7O0FBQ3JKO0VBQVksK0NBQStDLEVBQUE7O0FBQzNEO0VBQVcsdUJBQXVCO0VBQUMsY0FBYyxFQUFBOztBQUNqRDtFQUFxQyxVQUFVO0VBQUMsWUFBWTtFQUFDLFVBQVU7RUFBQyxrQkFBZ0I7RUFBRyxnQkFBYztFQUFPLGFBQWE7RUFBQyxhQUFhO0VBQUMsdUJBQXVCO0VBQUMsbUJBQW1CO0VBQUMsbUJBQW1CO0VBQUMsa0JBQWtCLEVBQUE7O0FBQzlOO0VBQWlELGNBQWMsRUFBQTs7QUFDL0Q7RUFBeUMsc0JBQW1CO0tBQW5CLG1CQUFtQjtFQUFDLGVBQWUsRUFBQTs7QUFDNUU7RUFBMEMsbUJBQW1CO0VBQUMsNEJBQWdCLEVBQUE7O0FBQzlFO0VBQWtDLGtCQUFrQjtFQUFDLFdBQVc7RUFBQyxZQUFZLEVBQUE7O0FBQzdFO0VBQStDLFVBQVM7RUFBQyxXQUFVO0VBQUMsWUFBVztFQUFDLFlBQVcsRUFBQTs7QUFFM0Y7RUFBc0IsV0FBVztFQUFDLFdBQVc7RUFBQyxZQUFZO0VBQUMseUJBQXlCO0VBQUMsY0FBYztFQUFDLGtCQUFrQjtFQUFDLGtCQUFrQjtFQUFDLFFBQVE7RUFBQyxTQUFTLEVBQUE7O0FBQzVKO0VBQWdFLFVBQVM7RUFBQyxnQ0FBcUI7RUFBWSxrQ0FBdUI7RUFBWSxRQUFPO0VBQUUsNkJBQWtCLEVBQUE7O0FBQ3pLO0VBQXNFLFdBQVU7RUFBQyxXQUFVO0VBQUMsWUFBVztFQUFDLG1CQUFrQjtFQUFDLGNBQWE7RUFBQyxrQkFBaUI7RUFBQyxrQkFBaUI7RUFBQyxRQUFPO0VBQUMsU0FBUSxFQUFBOztBQUM3TDtFQUFvQyxrQkFBa0IsRUFBQTs7QUFFdEQ7RUFBWSxrQkFBYTtFQUFNLGFBQWE7RUFBQyxtQkFBbUI7RUFBQyxhQUFhLEVBQUE7O0FBQzlFO0VBQWdCLFdBQVc7RUFBQyxZQUFZO0VBQUMsb0JBQWlCO0tBQWpCLGlCQUFpQjtFQUFDLGtCQUFrQjtFQUFDLGtCQUFrQixFQUFBOztBQUNoRztFQUE0QixjQUFjLEVBQUE7O0FBQzFDO0VBQXNCLFlBQVksRUFBQTs7QUFDbEM7RUFBVSxXQUFVO0VBQUMsWUFBVztFQUFDLGVBQWU7RUFBQyxrQkFBaUI7RUFBQyxtQkFBa0I7RUFBQyxrQkFBaUI7RUFBQyxhQUFZO0VBQUMsdUJBQXNCO0VBQUMsbUJBQWtCO0VBQUMsU0FBUztFQUFDLGtCQUFrQixFQUFBOztBQUUzTDtFQUNrQixnQkFBYyxFQUFBOztBQURoQztJQUVrQixrQkFBa0I7SUFBQyxRQUFRO0lBQUMsaUJBQWlCLEVBQUE7O0FBSS9EO0VBQWMsV0FBVyxFQUFBOztBQUN6QjtFQUFrQixXQUFXLEVBQUE7O0FBQzdCO0VBQXNCLHNCQUFvQixFQUFBOztBQUMxQztFQUdJLGtCQUFrQjtFQUNsQixTQUFTO0VBQ1QsU0FBUztFQUNULG1DQUFvQztFQUNwQyxXQUFXO0VBQ1gsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0IsRUFBQTs7QUFJdEI7RUFLSSx3QkFBd0I7RUFDeEIsZ0JBQWdCO0VBQ2hCLFdBQVc7RUFDWCxRQUFRO0VBQ1IsZ0JBQWdCO0VBQ2hCLFlBQVk7RUFDWixnQkFBZ0IsRUFBQTs7QUFFcEI7RUFDSSxlQUFlLEVBQUE7O0FBRW5CO0VBQ0ksMkJBQTJCLEVBQUE7O0FBRS9CO0VBQ0ksMkJBQTJCLEVBQUE7O0FBRS9CO0VBQVMseUJBQXlCO0VBQUMsNEJBQTRCLEVBQUE7O0FBQS9EO0lBQ2EsbUJBQW1CO0lBQUMsbUJBQWM7SUFBTSxzQkFBcUI7WUFBckIscUJBQXFCO0lBQUMsc0JBQW9CO0lBQUcsa0JBQWE7SUFBTSwwQkFBZSxFQUFBOztBQURwSTtJQUdpQixVQUFVLEVBQUE7O0FBRzNCO0VBQWlCLGdCQUFnQjtFQUFDLGVBQWU7RUFBQyxnQkFBZ0IsRUFBQTs7QUFDbEU7RUFBVSxrQkFBa0I7RUFDeEIsTUFBTTtFQUNOLFFBQVE7RUFDUixxQkFBYTtFQUNiLGtCQUFhO0VBQ2IsV0FBVztFQUNYLGtCQUFnQjtFQUNoQixnQkFBYztFQUNkLFlBQVk7RUFDWixlQUFlO0VBQ2YsV0FBVztFQUNYLFVBQVU7RUFBQyxtQkFBZ0IsRUFBQTs7QUFFM0I7RUFDSSxhQUFhO0VBQ2IsbUJBQW1CLEVBQUE7O0FBRXZCO0VBQ0ksT0FBTyxFQUFBOztBQUVYO0VBQ0ksYUFBYTtFQUNiLG1CQUFtQixFQUFBOztBQUV2QjtFQUNJLFdBQVcsRUFBQTs7QUFJZjtFQUNJLHdCQUF3QixFQUFBOztBQUQ1QjtJQUdRLGlCQUFpQjtJQUNqQixrQkFBa0IsRUFBQTs7QUFKMUI7SUFPUSxhQUFhO0lBQ2IsT0FBTztJQUNQLDZCQUE2QjtJQUM3QixtQkFBbUIsRUFBQTs7QUFWM0I7TUFZWSxpQkFBaUIsRUFBQTs7QUFJN0I7RUFDSSxXQUFXO0VBQ1gsYUFBYTtFQUNiLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkIsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQixtQkFBbUIsRUFBQTs7QUFQdkI7SUFTUSxjQUFjO0lBQ2QsU0FBUztJQUNULGdCQUFnQixFQUFBOztBQUd4QjtFQUNJLFdBQVc7RUFDWCxtQkFBbUIsRUFBQTs7QUFGdkI7SUFJUSxtQkFBbUI7SUFDbkIsZUFBZTtJQUNmLGNBQWMsRUFBQTs7QUFOdEI7SUFTUSwyQkFBMkI7SUFDM0IseUJBQXlCO0lBQ3pCLG1CQUFtQjtJQUNuQixpQkFBaUI7SUFDakIsa0JBQWtCLEVBQUE7O0FBYjFCO01BZVksYUFBYTtNQUNiLG1CQUFtQjtNQUNuQixtQkFBbUIsRUFBQTs7QUFqQi9CO1FBbUJnQixlQUFlO1FBQ2YsY0FBYyxFQUFBOztBQXBCOUI7UUF1QmdCLFlBQVk7UUFDWixZQUFZO1FBQ1osc0JBQXNCO1FBQ3RCLGtCQUFrQjtRQUNsQixpQkFDSixFQUFBOztBQUlaO0VBQ0ksZUFBZTtFQUNmLGVBQWU7RUFDZixXQUFXO0VBQ1gsa0JBQWtCLEVBQUE7O0FBRXRCO0VBRUksa0JBQWtCLEVBQUE7O0FBRXRCO0VBQ0ksa0JBQWtCO0VBQ2xCLFdBQVcsRUFBQTs7QUFFZjtFQUNJLGtCQUFrQjtFQUNsQixjQUFjO0VBQ2QsZUFBZTtFQUNmLGdCQUFnQjtFQUNoQixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0VBRWhCLGtCQUFrQjtFQUNsQixrQkFBa0IsRUFBQTs7QUFFdEI7RUFDSSxlQUFlLEVBQUE7O0FBRW5CO0VBQ0ksZUFBZTtFQUNmLGNBQWM7RUFDZCxjQUFjO0VBQ2Qsa0JBQWtCLEVBQUE7O0FBRXRCO0VBQ0ksZUFBZTtFQUNmLGdCQUFnQjtFQUNoQixlQUFlO0VBQ2YsbUJBQW1CO0VBQ25CLFdBQVc7RUFDWCx5QkFBeUI7RUFDekIsbUJBQW1CLEVBQUE7O0FBR3ZCO0VBQ0ksY0FBYztFQUNkLGNBQXVCLEVBQUE7O0FBRTNCO0VBQ0ksc0JBQXNCLEVBQUE7O0FBRTFCO0VBQ0ksWUFBWTtFQUNaLFlBQVk7RUFDWixnQkFBZ0IsRUFBQTs7QUFFcEI7RUFDSSxhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLGVBQWUsRUFBQTs7QUFIbkI7SUFLUSxpQkFBaUIsRUFBQTs7QUFMekI7SUFRUSxXQUFXLEVBQUE7O0FBR25CO0VBQ0ksWUFBWSxFQUFBOztBQUVoQjtFQUNJLFlBQVksRUFBQTs7QUFHcEI7RUFDSSxvQkFBb0I7RUFDcEIsaUJBQWlCLEVBQUE7O0FBRXJCO0VBQ0ksa0JBQWtCLEVBQUE7O0FBR3RCO0VBQ0ksb0JBQW9CO0VBQ3BCLGlCQUFpQjtFQUNqQix1QkFBdUI7RUFDdkIsbUJBQW1CLEVBQUE7O0FBRXZCO0VBQ0ksa0JBQWtCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9hZGQtcHJvZ3JhbS9kYXRlLXRpbWUtbW9kYWwvZGF0ZS10aW1lLW1vZGFsLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmlubGluZS1mbGV4IGlvbi1kYXRldGltZXtwYWRkaW5nLWxlZnQ6IDFweDtwYWRkaW5nLXJpZ2h0OiA1cHg7fVxyXG4ucmFkaW8tZ3JvdXB7ZGlzcGxheTogZmxleDt9XHJcbi5yYWRpby1ncm91cCBpb24taXRlbXstLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50Oy0taW5uZXItYm9yZGVyLXdpZHRoOiAwIDAgMCAwO31cclxuLnJhZGlvLWdyb3VwIGlvbi1pdGVtIGlvbi1yYWRpb3ttYXJnaW4tcmlnaHQ6IDEwcHg7fVxyXG5cclxuLm51dHJpaW1hZ2VzLWxpc3QgaW9uLWxhYmVse2ZvbnQtc2l6ZTogMC43NXJlbTttYXJnaW46IDNweCAwO3RleHQtdHJhbnNmb3JtOiBjYXBpdGFsaXplO2xldHRlci1zcGFjaW5nOiAwO2ZvbnQtd2VpZ2h0OiA0MDA7ZGlzcGxheTogYmxvY2s7Y29sb3I6ICM0NDQ7fVxyXG4udmlkZW8tY2FyZHtib3gtc2hhZG93OiAwcHggNHB4IDEwcHggcmdiYSgzNCwgMzUsIDU4LCAwLjA5KTt9XHJcbmlvbi1zbGlkZXN7YmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7cGFkZGluZzogMCA1cHg7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tc2VnbWVudC1idXR0b257d2lkdGg6IDMyJTtib3JkZXI6IG5vbmU7cGFkZGluZzogMDstLXBhZGRpbmctc3RhcnQ6IDA7LS1wYWRkaW5nLWVuZDogMDsgICAgbWFyZ2luOiAwIDNweDtkaXNwbGF5OiBmbGV4O2p1c3RpZnktY29udGVudDogY2VudGVyO2FsaWduLWl0ZW1zOiBjZW50ZXI7YmFja2dyb3VuZDogI2Y3ZjdmNztib3JkZXItcmFkaXVzOiA0cHg7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tc2VnbWVudC1idXR0b246Zmlyc3QtY2hpbGR7bWFyZ2luLWxlZnQ6IDA7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tc2VnbWVudC1idXR0b24gaW1ne29iamVjdC1maXQ6IGNvbnRhaW47bWF4LXdpZHRoOiAxMDAlO31cclxuLm51dHJpaW1hZ2VzLWxpc3QgLnNlZ21lbnQtYnV0dG9uLWNoZWNrZWR7YmFja2dyb3VuZDogI2VhZWFlYTstLWNvbG9yLWNoZWNrZWQ6IHRyYW5zcGFyZW50O31cclxuLm51dHJpaW1hZ2VzLWxpc3QgLnRodW1iLWNoZWNrYm94e3Bvc2l0aW9uOiBhYnNvbHV0ZTt3aWR0aDogMTAwJTtoZWlnaHQ6IDEwMCU7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCAudGh1bWItY2hlY2tib3ggaW9uLWNoZWNrYm94e29wYWNpdHk6MDt3aWR0aDoxMDAlO2hlaWdodDo3OHB4O3BhZGRpbmc6MCAwfVxyXG4vLyAuY2hlY2tib3hUaHVtYntkaXNwbGF5OiBjb250ZW50czt9XHJcbi5jaGVja2JveFRodW1iOjphZnRlcntjb250ZW50OiAnJzt3aWR0aDogMTZweDtoZWlnaHQ6IDE2cHg7Ym9yZGVyOiAycHggc29saWQgIzdkN2Q3ZDtkaXNwbGF5OiBibG9jaztib3JkZXItcmFkaXVzOiA1MCU7cG9zaXRpb246IGFic29sdXRlO3RvcDogNXB4O2xlZnQ6IDVweDt9XHJcbi5udXRyaWltYWdlcy1saXN0IC50aHVtYi1jaGVja2JveCBpb24tY2hlY2tib3guY2hlY2tib3gtY2hlY2tlZHtvcGFjaXR5OjE7LS1iYWNrZ3JvdW5kLWNoZWNrZWQ6dHJhbnNwYXJlbnQ7LS1ib3JkZXItY29sb3ItY2hlY2tlZDp0cmFuc3BhcmVudDstLXNpemU6MDstLWNoZWNrbWFyay1jb2xvcjp0cmFuc3BhcmVudH1cclxuLm51dHJpaW1hZ2VzLWxpc3QgLnRodW1iLWNoZWNrYm94IGlvbi1jaGVja2JveC5jaGVja2JveC1jaGVja2VkOmFmdGVye2NvbnRlbnQ6Jyc7d2lkdGg6MjBweDtoZWlnaHQ6MjBweDtiYWNrZ3JvdW5kOiMyNmE2OWE7ZGlzcGxheTpibG9jaztib3JkZXItcmFkaXVzOjUwJTtwb3NpdGlvbjphYnNvbHV0ZTt0b3A6NXB4O2xlZnQ6NXB4fVxyXG4uaXRlbS1saXN0IGlvbi1saXN0LWhlYWRlciBpb24taWNvbntmb250LXNpemU6IDEuMTVyZW07fVxyXG5cclxuLnVzZXJzLWxpc3R7LS1taW4taGVpZ2h0OiBhdXRvO2Rpc3BsYXk6IGZsZXg7YWxpZ24taXRlbXM6IGNlbnRlcjttYXJnaW46IDZweCAwO31cclxuLnVzZXJzLWxpc3QgaW1ne3dpZHRoOiAzNnB4O2hlaWdodDogMzZweDtvYmplY3QtZml0OiBjb3Zlcjtib3JkZXItcmFkaXVzOiA1MCU7bWFyZ2luLWxlZnQ6IC0xMHB4O31cclxuLnVzZXJzLWxpc3QgaW1nOmZpcnN0LWNoaWxke21hcmdpbi1sZWZ0OiAwO31cclxuLnVzZXJzLWxpc3QgaW9uLWxhYmVse3dpZHRoOiAxMDBweDt9XHJcbi52aWV3LWFsbHt3aWR0aDozNnB4O2hlaWdodDozNnB4O21heC13aWR0aDogMzZweDt0ZXh0LWFsaWduOmNlbnRlcjtiYWNrZ3JvdW5kOiNmMWYwZjA7Ym9yZGVyLXJhZGl1czo1MCU7ZGlzcGxheTpmbGV4O2p1c3RpZnktY29udGVudDpjZW50ZXI7YWxpZ24taXRlbXM6Y2VudGVyO21hcmdpbjogMDttYXJnaW4tbGVmdDogLTEwcHg7fVxyXG5cclxuaW9uLWxpc3R7XHJcbiAgICAuZHVyYXRpb25JdGVtey0tcGFkZGluZy1lbmQ6IDA7XHJcbiAgICAgICAgaW9uLWlucHV0e3Bvc2l0aW9uOiByZWxhdGl2ZTt0b3A6IDJweDt0ZXh0LWFsaWduOiByaWdodDt9XHJcbiAgICB9XHJcbn1cclxuXHJcbi5wcm9ncmFtLWNhcmR7d2lkdGg6IDEwMCU7fVxyXG5pb24taXRlbSBpb24tbGlzdHt3aWR0aDogMTAwJTt9XHJcbi5pdGVtLWxpc3QgPiBpb24taXRlbXstLWlubmVyLXBhZGRpbmctZW5kOiAwO31cclxuLnRodW1iLWxpc3Qge1xyXG4gICAgaW9uLWl0ZW17XHJcbiAgICAgICAgaW9uLWxhYmVse1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgYm90dG9tOiAwO1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgYmFja2dyb3VuZDogcmdiYSgzOCwgMTY2LCAxNTQsIDAuNTApO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBjb2xvcjogI0ZGRjtcclxuICAgIHBhZGRpbmc6IDVweDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG59XHJcbn1cclxuLmZpeGVkIHtcclxuICAgIC8vIHBvc2l0aW9uOiBmaXhlZCAhaW1wb3J0YW50O1xyXG4gICAgLy8gei1pbmRleDogOSAhaW1wb3J0YW50O1xyXG4gICAgLy8gYmFja2dyb3VuZC1jb2xvcjogI2ZmZiAhaW1wb3J0YW50O1xyXG4gICAgLy8gbWFyZ2luLXRvcDogLTJweCAhaW1wb3J0YW50O1xyXG4gICAgcG9zaXRpb246IC13ZWJraXQtc3RpY2t5O1xyXG4gICAgcG9zaXRpb246IHN0aWNreTtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgdG9wOiAwcHg7XHJcbiAgICBwYWRkaW5nLXRvcDogNXB4O1xyXG4gICAgei1pbmRleDogOTk5O1xyXG4gICAgYmFja2dyb3VuZDogI2ZmZjtcclxufVxyXG4ubWFyZ2ludG9wLTQ1e1xyXG4gICAgbWFyZ2luLXRvcDogNDUlO1xyXG59XHJcbi5tYXJnaW4tMTV7XHJcbiAgICBtYXJnaW46IDE1cHggMHB4ICFpbXBvcnRhbnQ7XHJcbn1cclxuLm1iLTB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAwICFpbXBvcnRhbnQ7XHJcbn1cclxuaW9uLWxpc3R7cGFkZGluZy10b3A6IDAgIWltcG9ydGFudDtwYWRkaW5nLWJvdHRvbTogMCAhaW1wb3J0YW50O1xyXG4gICAgaW9uLWl0ZW17Zm9udC1zaXplOiAwLjg3NXJlbTstLXBhZGRpbmctZW5kOiAxNnB4O3BhZGRpbmctaW5saW5lLWVuZDogMDstLWlubmVyLXBhZGRpbmctZW5kOiAwOy0tbWluLWhlaWdodDogNDRweDstLWJvcmRlci1jb2xvcjogd2hpdGVzbW9rZTt9XHJcbiAgICAuZGVzY3JpcHRpb25JdGVte1xyXG4gICAgICAgIGlvbi1pdGVte3BhZGRpbmc6IDA7fVxyXG4gICAgfVxyXG59XHJcbi5yZXBlYXRlZEhlYWRpbmd7Zm9udC13ZWlnaHQ6IDQwMDtmb250LXNpemU6IDE1cHg7bWFyZ2luLWJvdHRvbTogMDt9XHJcbi5pbmZvSWNvbntwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6IDA7XHJcbiAgICByaWdodDogMDtcclxuICAgIC0tYmFja2dyb3VuZDogIzI2YTY5YTtcclxuICAgIC0tYm94LXNoYWRvdzogbm9uZTtcclxuICAgIGNvbG9yOiAjRkZGO1xyXG4gICAgLS1wYWRkaW5nLXN0YXJ0OiAwO1xyXG4gICAgLS1wYWRkaW5nLWVuZDogMDtcclxuICAgIGhlaWdodDogYXV0bztcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgIG1hcmdpbjogM3B4O1xyXG4gICAgei1pbmRleDogOTstLWJvcmRlci1yYWRpdXM6NTAlfVxyXG5cclxuICAgIC5pb24tYmxvY2t7XHJcbiAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgfVxyXG4gICAgLmlvbi1sZWZ0e1xyXG4gICAgICAgIGZsZXg6IDE7XHJcbiAgICB9XHJcbiAgICAuaW9uLXJpZ2h0e1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIH1cclxuICAgIC53aWR0aC0zMHtcclxuICAgICAgICB3aWR0aDogMzBweDtcclxuICAgIH1cclxuXHJcblxyXG4gICAgLmxpdmUtaW9uLWxpc3QtaGVhZGVye1xyXG4gICAgICAgIGp1c3RpZnktY29udGVudDogaW5pdGlhbDtcclxuICAgICAgICAuZGl2aWRlcntcclxuICAgICAgICAgICAgbWFyZ2luLWxlZnQ6IDIwcHg7XHJcbiAgICAgICAgICAgIG1hcmdpbi1yaWdodDogMjBweDtcclxuICAgICAgICB9XHJcbiAgICAgICAgLmNhbGVuZGVyX2dyZWVuX2JvdHRvbXtcclxuICAgICAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICAgICAgZmxleDogMTtcclxuICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XHJcbiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICAgICAgICAgIGlvbi1pY29ue1xyXG4gICAgICAgICAgICAgICAgZm9udC1zaXplOiAxLjdyZW07XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICB9XHJcbiAgICB9XHJcbiAgICAubGl2ZS1ldmVudC1hZGRpdGlvbntcclxuICAgICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICNjZWNlY2U7XHJcbiAgICAgICAgcGFkZGluZzogMTVweDtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiAxMnB4O1xyXG4gICAgICAgIG1hcmdpbi1ib3R0b206IDEycHg7XHJcbiAgICAgICAgaDV7XHJcbiAgICAgICAgICAgIGNvbG9yOiAjMTIxMjEyO1xyXG4gICAgICAgICAgICBtYXJnaW46IDA7XHJcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbiAgICAgICAgfVxyXG4gICAgfVxyXG4gICAgLmxpdmUtZXZlbnQtYm94e1xyXG4gICAgICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgICAgIG1hcmdpbi1ib3R0b206IDIwcHg7XHJcbiAgICAgICAgLmxpdmUtZXZlbnQtaGVhZHtcclxuICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTBweDtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xyXG4gICAgICAgICAgICBjb2xvcjogIzEyMTIxMjtcclxuICAgICAgICB9XHJcbiAgICAgICAgLmxpdmUtZXZlbnQtaW5mb3tcclxuICAgICAgICAgICAgcGFkZGluZzogMTJweCAyMHB4IDJweCAyMHB4O1xyXG4gICAgICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjY2VjZWNlO1xyXG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiAxMnB4OyBcclxuICAgICAgICAgICAgbWF4LWhlaWdodDogMTAwcHg7XHJcbiAgICAgICAgICAgIG92ZXJmbG93LXk6IHNjcm9sbDtcclxuICAgICAgICAgICAgLmxpdmUtZXZlbnQtZGV0YWlsc3tcclxuICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTBweDtcclxuICAgICAgICAgICAgICAgIHB7XHJcbiAgICAgICAgICAgICAgICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICAgICAgICAgICAgICAgIGNvbG9yOiAjMTIxMjEyO1xyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgLnNtYWxsLWRpdmlkZXJ7XHJcbiAgICAgICAgICAgICAgICAgICAgd2lkdGg6IDEuNXB4O1xyXG4gICAgICAgICAgICAgICAgICAgIGhlaWdodDogMjBweDtcclxuICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNTU1O1xyXG4gICAgICAgICAgICAgICAgICAgIG1hcmdpbi1yaWdodDogMTRweDtcclxuICAgICAgICAgICAgICAgICAgICBtYXJnaW4tbGVmdDogMTRweFxyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG4gICAgfVxyXG4gICAgLmxpdmUtZXZlbnQtaWNvbntcclxuICAgICAgICBmb250LXNpemU6IDI4cHg7XHJcbiAgICAgICAgbWluLXdpZHRoOiA4MHB4O1xyXG4gICAgICAgIGNvbG9yOiAjNTU1O1xyXG4gICAgICAgIG1hcmdpbi1yaWdodDogMjBweDtcclxuICAgIH1cclxuICAgIC5saXZlLWljb257XHJcbiAgICAgICAgLy8gY29sb3I6ICNmZmY7XHJcbiAgICAgICAgY29sb3I6IHRyYW5zcGFyZW50O1xyXG4gICAgfVxyXG4gICAgLnRvZ2dsZURpdiB7XHJcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogMnB4O1xyXG4gICAgICAgIHdpZHRoOiA1MHB4O1xyXG4gICAgfVxyXG4gICAgLmxpdmU6OmFmdGVye1xyXG4gICAgICAgIGNvbnRlbnQ6ICdHbyBMaXZlJztcclxuICAgICAgICBjb2xvcjogIzI2YTY5YTtcclxuICAgICAgICBmb250LXNpemU6IDExcHg7XHJcbiAgICAgICAgZm9udC13ZWlnaHQ6IDUwMDtcclxuICAgICAgICBwYWRkaW5nOiA2cHggNXB4O1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICNmZmY7XHJcbiAgICAgICAgLy8gdHJhbnNpdGlvbjogYWxsIC4ycyBlYXNlLWluLW91dDtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiAzcHg7XHJcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogMnB4O1xyXG4gICAgfVxyXG4gICAgLnRpdGxle1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTNweDtcclxuICAgIH1cclxuICAgIC50aXRsZSBzcGFue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTFweDtcclxuICAgICAgICBkaXNwbGF5OiBibG9jaztcclxuICAgICAgICBjb2xvcjogI0U3RTdFNztcclxuICAgICAgICBtYXJnaW4tYm90dG9tOiAzcHg7XHJcbiAgICB9XHJcbiAgICAubGl2ZS5hY3RpdmU6OmFmdGVye1xyXG4gICAgICAgIGNvbnRlbnQ6ICdMaXZlJztcclxuICAgICAgICBwYWRkaW5nOiA2cHggN3B4O1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTFweDtcclxuICAgICAgICBsZXR0ZXItc3BhY2luZzogMnB4O1xyXG4gICAgICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XHJcbiAgICAgICAgYmFja2dyb3VuZDogI0ZGM0EzQTtcclxuICAgICAgICAvLyB0cmFuc2l0aW9uOiBhbGwgLjJzIGVhc2UtaW4tb3V0O1xyXG4gICAgfVxyXG4gICAgaW9uLWljb24uYWN0aXZle1xyXG4gICAgICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgICAgIGNvbG9yOiByZ2IoMjU1LCAxNywgMTcpO1xyXG4gICAgfVxyXG4gICAgLndpZHRoLWZ1bGx7XHJcbiAgICAgICAgd2lkdGg6IDEwMCUgIWltcG9ydGFudDtcclxuICAgIH1cclxuICAgIC5kaXZpZGVyIHtcclxuICAgICAgICB3aWR0aDogMS41cHg7XHJcbiAgICAgICAgaGVpZ2h0OiAzNXB4O1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICNmZmY7XHJcbiAgICB9XHJcbiAgICAudGVybXMtZm9vdGVye1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgICAgICBwYWRkaW5nOiAwIDEwcHg7XHJcbiAgICAgICAgaW9uLWNoZWNrYm94e1xyXG4gICAgICAgICAgICBtYXJnaW4tcmlnaHQ6IDhweDtcclxuICAgICAgICB9XHJcbiAgICAgICAgaW9uLWljb257XHJcbiAgICAgICAgICAgIGNvbG9yOiAjNTU1O1xyXG4gICAgICAgIH1cclxuICAgIH1cclxuICAgIC5mdWxsLWhlaWdodHtcclxuICAgICAgICBoZWlnaHQ6IDU2cHg7XHJcbiAgICB9XHJcbiAgICAuc3RpY2t5LWZvb3RlcntcclxuICAgICAgICBoZWlnaHQ6IGF1dG87XHJcbiAgICB9XHJcbiAgICAvLyBBTkRST0lEIENTU1xyXG5pb24tbGlzdC1oZWFkZXIuaW9uLXBhZGRpbmctaG9yaXpvbnRhbC5ncmVlbi50ZXh0LXdoaXRlLm1kLmh5ZHJhdGVkIHtcclxuICAgIHBhZGRpbmctYm90dG9tOiAxMnB4O1xyXG4gICAgcGFkZGluZy10b3A6IDEycHg7XHJcbn1cclxuaW9uLWxpc3Qud2lkdGgtZnVsbC5tZC5saXN0LW1kLmh5ZHJhdGVkIHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxufVxyXG4vLyBJT1MgQ1NTXHJcbmlvbi1saXN0LWhlYWRlci5pb24tcGFkZGluZy1ob3Jpem9udGFsLmdyZWVuLnRleHQtd2hpdGUuaW9zLmh5ZHJhdGVkIHtcclxuICAgIHBhZGRpbmctYm90dG9tOiAxMnB4O1xyXG4gICAgcGFkZGluZy10b3A6IDEycHg7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogaW5pdGlhbDtcclxuICAgIGxldHRlci1zcGFjaW5nOiAwcHg7XHJcbn1cclxuaW9uLWxpc3Qud2lkdGgtZnVsbC5pb3MubGlzdC1pb3MuaHlkcmF0ZWQge1xyXG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG59Il19 */";
+    __webpack_exports__["default"] = ".inline-flex ion-datetime {\n  padding-left: 1px;\n  padding-right: 5px; }\n\n.radio-group {\n  display: flex; }\n\n.radio-group ion-item {\n  --background: transparent;\n  --inner-border-width: 0 0 0 0; }\n\n.radio-group ion-item ion-radio {\n  margin-right: 10px; }\n\n.nutriimages-list ion-label {\n  font-size: 0.75rem;\n  margin: 3px 0;\n  text-transform: capitalize;\n  letter-spacing: 0;\n  font-weight: 400;\n  display: block;\n  color: #444; }\n\n.video-card {\n  box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09); }\n\nion-slides {\n  background: transparent;\n  padding: 0 5px; }\n\n.nutriimages-list ion-segment-button {\n  width: 32%;\n  border: none;\n  padding: 0;\n  --padding-start: 0;\n  --padding-end: 0;\n  margin: 0 3px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: #f7f7f7;\n  border-radius: 4px; }\n\n.nutriimages-list ion-segment-button:first-child {\n  margin-left: 0; }\n\n.nutriimages-list ion-segment-button img {\n  -o-object-fit: contain;\n     object-fit: contain;\n  max-width: 100%; }\n\n.nutriimages-list .segment-button-checked {\n  background: #eaeaea;\n  --color-checked: transparent; }\n\n.nutriimages-list .thumb-checkbox {\n  position: absolute;\n  width: 100%;\n  height: 100%; }\n\n.nutriimages-list .thumb-checkbox ion-checkbox {\n  opacity: 0;\n  width: 100%;\n  height: 78px;\n  padding: 0 0; }\n\n.checkboxThumb::after {\n  content: '';\n  width: 16px;\n  height: 16px;\n  border: 2px solid #7d7d7d;\n  display: block;\n  border-radius: 50%;\n  position: absolute;\n  top: 5px;\n  left: 5px; }\n\n.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked {\n  opacity: 1;\n  --background-checked:transparent;\n  --border-color-checked:transparent;\n  --size:0;\n  --checkmark-color:transparent; }\n\n.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked:after {\n  content: '';\n  width: 20px;\n  height: 20px;\n  background: #26a69a;\n  display: block;\n  border-radius: 50%;\n  position: absolute;\n  top: 5px;\n  left: 5px; }\n\n.item-list ion-list-header ion-icon {\n  font-size: 1.15rem; }\n\n.users-list {\n  --min-height: auto;\n  display: flex;\n  align-items: center;\n  margin: 6px 0; }\n\n.users-list img {\n  width: 36px;\n  height: 36px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 50%;\n  margin-left: -10px; }\n\n.users-list img:first-child {\n  margin-left: 0; }\n\n.users-list ion-label {\n  width: 100px; }\n\n.view-all {\n  width: 36px;\n  height: 36px;\n  max-width: 36px;\n  text-align: center;\n  background: #f1f0f0;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 0;\n  margin-left: -10px; }\n\nion-list .durationItem {\n  --padding-end: 0; }\n\nion-list .durationItem ion-input {\n    position: relative;\n    top: 2px;\n    text-align: right; }\n\n.program-card {\n  width: 100%; }\n\nion-item ion-list {\n  width: 100%; }\n\n.item-list > ion-item {\n  --inner-padding-end: 0; }\n\n.thumb-list ion-item ion-label {\n  position: absolute;\n  bottom: 0;\n  margin: 0;\n  background: rgba(38, 166, 154, 0.5);\n  width: 100%;\n  color: #FFF;\n  padding: 5px;\n  text-align: center; }\n\n.fixed {\n  position: -webkit-sticky;\n  position: sticky;\n  width: 100%;\n  top: 0px;\n  padding-top: 5px;\n  z-index: 999;\n  background: #fff; }\n\n.margintop-45 {\n  margin-top: 45%; }\n\n.margin-15 {\n  margin: 15px 0px !important; }\n\n.mb-0 {\n  margin-bottom: 0 !important; }\n\nion-list {\n  padding-top: 0 !important;\n  padding-bottom: 0 !important; }\n\nion-list ion-item {\n    font-size: 0.875rem;\n    --padding-end: 16px;\n    -webkit-padding-end: 0;\n            padding-inline-end: 0;\n    --inner-padding-end: 0;\n    --min-height: 44px;\n    --border-color: whitesmoke; }\n\nion-list .descriptionItem ion-item {\n    padding: 0; }\n\n.repeatedHeading {\n  font-weight: 400;\n  font-size: 15px;\n  margin-bottom: 0; }\n\n.infoIcon {\n  position: absolute;\n  top: 0;\n  right: 0;\n  --background: #26a69a;\n  --box-shadow: none;\n  color: #FFF;\n  --padding-start: 0;\n  --padding-end: 0;\n  height: auto;\n  font-size: 16px;\n  margin: 3px;\n  z-index: 9;\n  --border-radius:50%; }\n\n.ion-block {\n  display: flex;\n  align-items: center; }\n\n.ion-left {\n  flex: 1; }\n\n.ion-right {\n  display: flex;\n  align-items: center; }\n\n.width-30 {\n  width: 30px; }\n\n.live-ion-list-header {\n  justify-content: initial; }\n\n.live-ion-list-header .divider {\n    margin-left: 20px;\n    margin-right: 20px; }\n\n.live-ion-list-header .calender_green_bottom {\n    display: flex;\n    flex: 1;\n    justify-content: space-around;\n    align-items: center; }\n\n.live-ion-list-header .calender_green_bottom ion-icon {\n      font-size: 1.7rem; }\n\n.live-event-addition {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  background: #cecece;\n  padding: 15px;\n  border-radius: 12px;\n  margin-bottom: 12px; }\n\n.live-event-addition h5 {\n    color: #121212;\n    margin: 0;\n    font-weight: 500; }\n\n.live-event-box {\n  width: 100%;\n  margin-bottom: 20px; }\n\n.live-event-box .live-event-head {\n    margin-bottom: 10px;\n    font-size: 14px;\n    color: #121212; }\n\n.live-event-box .live-event-info {\n    padding: 12px 20px 2px 20px;\n    border: 1px solid #cecece;\n    border-radius: 12px;\n    max-height: 100px;\n    overflow-y: scroll; }\n\n.live-event-box .live-event-info .live-event-details {\n      display: flex;\n      align-items: center;\n      margin-bottom: 10px; }\n\n.live-event-box .live-event-info .live-event-details p {\n        font-size: 16px;\n        color: #121212; }\n\n.live-event-box .live-event-info .live-event-details .small-divider {\n        width: 1.5px;\n        height: 20px;\n        background-color: #555;\n        margin-right: 14px;\n        margin-left: 14px; }\n\n.live-event-icon {\n  font-size: 28px;\n  min-width: 80px;\n  color: #555;\n  margin-right: 20px; }\n\n.live-icon {\n  color: transparent; }\n\n.toggleDiv {\n  margin-bottom: 2px;\n  width: 50px; }\n\n.live::after {\n  content: 'Go Live';\n  color: #26a69a;\n  font-size: 11px;\n  font-weight: 500;\n  padding: 6px 5px;\n  background: #fff;\n  border-radius: 3px;\n  margin-bottom: 2px; }\n\n.title {\n  font-size: 13px; }\n\n.title span {\n  font-size: 11px;\n  display: block;\n  color: #E7E7E7;\n  margin-bottom: 3px; }\n\n.live.active::after {\n  content: 'Live';\n  padding: 6px 7px;\n  font-size: 11px;\n  letter-spacing: 2px;\n  color: #fff;\n  text-transform: uppercase;\n  background: #FF3A3A; }\n\nion-icon.active {\n  display: block;\n  color: #ff1111; }\n\n.width-full {\n  width: 100% !important; }\n\n.divider {\n  width: 1.5px;\n  height: 35px;\n  background: #fff; }\n\n.terms-footer {\n  display: flex;\n  align-items: center;\n  padding: 5px 10px; }\n\n.terms-footer ion-checkbox {\n    margin-right: 8px; }\n\n.terms-footer ion-icon {\n    color: #555;\n    font-size: 24px; }\n\n.full-height {\n  height: 56px; }\n\n.sticky-footer {\n  height: auto; }\n\nion-list-header.ion-padding-horizontal.green.text-white.md.hydrated {\n  padding-bottom: 12px;\n  padding-top: 12px; }\n\nion-list.width-full.md.list-md.hydrated {\n  border-radius: 4px; }\n\nion-list-header.ion-padding-horizontal.green.text-white.ios.hydrated {\n  padding-bottom: 12px;\n  padding-top: 12px;\n  text-transform: initial;\n  letter-spacing: 0px; }\n\nion-list.width-full.ios.list-ios.hydrated {\n  border-radius: 4px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWRkLXByb2dyYW0vZGF0ZS10aW1lLW1vZGFsL0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFxhZGQtcHJvZ3JhbVxcZGF0ZS10aW1lLW1vZGFsXFxkYXRlLXRpbWUtbW9kYWwuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBMEIsaUJBQWlCO0VBQUMsa0JBQWtCLEVBQUE7O0FBQzlEO0VBQWEsYUFBYSxFQUFBOztBQUMxQjtFQUFzQix5QkFBYTtFQUFhLDZCQUFxQixFQUFBOztBQUNyRTtFQUFnQyxrQkFBa0IsRUFBQTs7QUFFbEQ7RUFBNEIsa0JBQWtCO0VBQUMsYUFBYTtFQUFDLDBCQUEwQjtFQUFDLGlCQUFpQjtFQUFDLGdCQUFnQjtFQUFDLGNBQWM7RUFBQyxXQUFXLEVBQUE7O0FBQ3JKO0VBQVksK0NBQStDLEVBQUE7O0FBQzNEO0VBQVcsdUJBQXVCO0VBQUMsY0FBYyxFQUFBOztBQUNqRDtFQUFxQyxVQUFVO0VBQUMsWUFBWTtFQUFDLFVBQVU7RUFBQyxrQkFBZ0I7RUFBRyxnQkFBYztFQUFPLGFBQWE7RUFBQyxhQUFhO0VBQUMsdUJBQXVCO0VBQUMsbUJBQW1CO0VBQUMsbUJBQW1CO0VBQUMsa0JBQWtCLEVBQUE7O0FBQzlOO0VBQWlELGNBQWMsRUFBQTs7QUFDL0Q7RUFBeUMsc0JBQW1CO0tBQW5CLG1CQUFtQjtFQUFDLGVBQWUsRUFBQTs7QUFDNUU7RUFBMEMsbUJBQW1CO0VBQUMsNEJBQWdCLEVBQUE7O0FBQzlFO0VBQWtDLGtCQUFrQjtFQUFDLFdBQVc7RUFBQyxZQUFZLEVBQUE7O0FBQzdFO0VBQStDLFVBQVM7RUFBQyxXQUFVO0VBQUMsWUFBVztFQUFDLFlBQVcsRUFBQTs7QUFFM0Y7RUFBc0IsV0FBVztFQUFDLFdBQVc7RUFBQyxZQUFZO0VBQUMseUJBQXlCO0VBQUMsY0FBYztFQUFDLGtCQUFrQjtFQUFDLGtCQUFrQjtFQUFDLFFBQVE7RUFBQyxTQUFTLEVBQUE7O0FBQzVKO0VBQWdFLFVBQVM7RUFBQyxnQ0FBcUI7RUFBWSxrQ0FBdUI7RUFBWSxRQUFPO0VBQUUsNkJBQWtCLEVBQUE7O0FBQ3pLO0VBQXNFLFdBQVU7RUFBQyxXQUFVO0VBQUMsWUFBVztFQUFDLG1CQUFrQjtFQUFDLGNBQWE7RUFBQyxrQkFBaUI7RUFBQyxrQkFBaUI7RUFBQyxRQUFPO0VBQUMsU0FBUSxFQUFBOztBQUM3TDtFQUFvQyxrQkFBa0IsRUFBQTs7QUFFdEQ7RUFBWSxrQkFBYTtFQUFNLGFBQWE7RUFBQyxtQkFBbUI7RUFBQyxhQUFhLEVBQUE7O0FBQzlFO0VBQWdCLFdBQVc7RUFBQyxZQUFZO0VBQUMsb0JBQWlCO0tBQWpCLGlCQUFpQjtFQUFDLGtCQUFrQjtFQUFDLGtCQUFrQixFQUFBOztBQUNoRztFQUE0QixjQUFjLEVBQUE7O0FBQzFDO0VBQXNCLFlBQVksRUFBQTs7QUFDbEM7RUFBVSxXQUFVO0VBQUMsWUFBVztFQUFDLGVBQWU7RUFBQyxrQkFBaUI7RUFBQyxtQkFBa0I7RUFBQyxrQkFBaUI7RUFBQyxhQUFZO0VBQUMsdUJBQXNCO0VBQUMsbUJBQWtCO0VBQUMsU0FBUztFQUFDLGtCQUFrQixFQUFBOztBQUUzTDtFQUNrQixnQkFBYyxFQUFBOztBQURoQztJQUVrQixrQkFBa0I7SUFBQyxRQUFRO0lBQUMsaUJBQWlCLEVBQUE7O0FBSS9EO0VBQWMsV0FBVyxFQUFBOztBQUN6QjtFQUFrQixXQUFXLEVBQUE7O0FBQzdCO0VBQXNCLHNCQUFvQixFQUFBOztBQUMxQztFQUdJLGtCQUFrQjtFQUNsQixTQUFTO0VBQ1QsU0FBUztFQUNULG1DQUFvQztFQUNwQyxXQUFXO0VBQ1gsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0IsRUFBQTs7QUFJdEI7RUFLSSx3QkFBd0I7RUFDeEIsZ0JBQWdCO0VBQ2hCLFdBQVc7RUFDWCxRQUFRO0VBQ1IsZ0JBQWdCO0VBQ2hCLFlBQVk7RUFDWixnQkFBZ0IsRUFBQTs7QUFFcEI7RUFDSSxlQUFlLEVBQUE7O0FBRW5CO0VBQ0ksMkJBQTJCLEVBQUE7O0FBRS9CO0VBQ0ksMkJBQTJCLEVBQUE7O0FBRS9CO0VBQVMseUJBQXlCO0VBQUMsNEJBQTRCLEVBQUE7O0FBQS9EO0lBQ2EsbUJBQW1CO0lBQUMsbUJBQWM7SUFBTSxzQkFBcUI7WUFBckIscUJBQXFCO0lBQUMsc0JBQW9CO0lBQUcsa0JBQWE7SUFBTSwwQkFBZSxFQUFBOztBQURwSTtJQUdpQixVQUFVLEVBQUE7O0FBRzNCO0VBQWlCLGdCQUFnQjtFQUFDLGVBQWU7RUFBQyxnQkFBZ0IsRUFBQTs7QUFDbEU7RUFBVSxrQkFBa0I7RUFDeEIsTUFBTTtFQUNOLFFBQVE7RUFDUixxQkFBYTtFQUNiLGtCQUFhO0VBQ2IsV0FBVztFQUNYLGtCQUFnQjtFQUNoQixnQkFBYztFQUNkLFlBQVk7RUFDWixlQUFlO0VBQ2YsV0FBVztFQUNYLFVBQVU7RUFBQyxtQkFBZ0IsRUFBQTs7QUFFM0I7RUFDSSxhQUFhO0VBQ2IsbUJBQW1CLEVBQUE7O0FBRXZCO0VBQ0ksT0FBTyxFQUFBOztBQUVYO0VBQ0ksYUFBYTtFQUNiLG1CQUFtQixFQUFBOztBQUV2QjtFQUNJLFdBQVcsRUFBQTs7QUFJZjtFQUNJLHdCQUF3QixFQUFBOztBQUQ1QjtJQUdRLGlCQUFpQjtJQUNqQixrQkFBa0IsRUFBQTs7QUFKMUI7SUFPUSxhQUFhO0lBQ2IsT0FBTztJQUNQLDZCQUE2QjtJQUM3QixtQkFBbUIsRUFBQTs7QUFWM0I7TUFZWSxpQkFBaUIsRUFBQTs7QUFJN0I7RUFDSSxXQUFXO0VBQ1gsYUFBYTtFQUNiLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkIsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQixtQkFBbUIsRUFBQTs7QUFQdkI7SUFTUSxjQUFjO0lBQ2QsU0FBUztJQUNULGdCQUFnQixFQUFBOztBQUd4QjtFQUNJLFdBQVc7RUFDWCxtQkFBbUIsRUFBQTs7QUFGdkI7SUFJUSxtQkFBbUI7SUFDbkIsZUFBZTtJQUNmLGNBQWMsRUFBQTs7QUFOdEI7SUFTUSwyQkFBMkI7SUFDM0IseUJBQXlCO0lBQ3pCLG1CQUFtQjtJQUNuQixpQkFBaUI7SUFDakIsa0JBQWtCLEVBQUE7O0FBYjFCO01BZVksYUFBYTtNQUNiLG1CQUFtQjtNQUNuQixtQkFBbUIsRUFBQTs7QUFqQi9CO1FBbUJnQixlQUFlO1FBQ2YsY0FBYyxFQUFBOztBQXBCOUI7UUF1QmdCLFlBQVk7UUFDWixZQUFZO1FBQ1osc0JBQXNCO1FBQ3RCLGtCQUFrQjtRQUNsQixpQkFDSixFQUFBOztBQUlaO0VBQ0ksZUFBZTtFQUNmLGVBQWU7RUFDZixXQUFXO0VBQ1gsa0JBQWtCLEVBQUE7O0FBRXRCO0VBRUksa0JBQWtCLEVBQUE7O0FBRXRCO0VBQ0ksa0JBQWtCO0VBQ2xCLFdBQVcsRUFBQTs7QUFFZjtFQUNJLGtCQUFrQjtFQUNsQixjQUFjO0VBQ2QsZUFBZTtFQUNmLGdCQUFnQjtFQUNoQixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0VBRWhCLGtCQUFrQjtFQUNsQixrQkFBa0IsRUFBQTs7QUFFdEI7RUFDSSxlQUFlLEVBQUE7O0FBRW5CO0VBQ0ksZUFBZTtFQUNmLGNBQWM7RUFDZCxjQUFjO0VBQ2Qsa0JBQWtCLEVBQUE7O0FBRXRCO0VBQ0ksZUFBZTtFQUNmLGdCQUFnQjtFQUNoQixlQUFlO0VBQ2YsbUJBQW1CO0VBQ25CLFdBQVc7RUFDWCx5QkFBeUI7RUFDekIsbUJBQW1CLEVBQUE7O0FBR3ZCO0VBQ0ksY0FBYztFQUNkLGNBQXVCLEVBQUE7O0FBRTNCO0VBQ0ksc0JBQXNCLEVBQUE7O0FBRTFCO0VBQ0ksWUFBWTtFQUNaLFlBQVk7RUFDWixnQkFBZ0IsRUFBQTs7QUFFcEI7RUFDSSxhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLGlCQUFpQixFQUFBOztBQUhyQjtJQUtRLGlCQUFpQixFQUFBOztBQUx6QjtJQVFRLFdBQVc7SUFDWCxlQUFlLEVBQUE7O0FBR3ZCO0VBQ0ksWUFBWSxFQUFBOztBQUVoQjtFQUNJLFlBQVksRUFBQTs7QUFHcEI7RUFDSSxvQkFBb0I7RUFDcEIsaUJBQWlCLEVBQUE7O0FBRXJCO0VBQ0ksa0JBQWtCLEVBQUE7O0FBR3RCO0VBQ0ksb0JBQW9CO0VBQ3BCLGlCQUFpQjtFQUNqQix1QkFBdUI7RUFDdkIsbUJBQW1CLEVBQUE7O0FBRXZCO0VBQ0ksa0JBQWtCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9hZGQtcHJvZ3JhbS9kYXRlLXRpbWUtbW9kYWwvZGF0ZS10aW1lLW1vZGFsLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmlubGluZS1mbGV4IGlvbi1kYXRldGltZXtwYWRkaW5nLWxlZnQ6IDFweDtwYWRkaW5nLXJpZ2h0OiA1cHg7fVxyXG4ucmFkaW8tZ3JvdXB7ZGlzcGxheTogZmxleDt9XHJcbi5yYWRpby1ncm91cCBpb24taXRlbXstLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50Oy0taW5uZXItYm9yZGVyLXdpZHRoOiAwIDAgMCAwO31cclxuLnJhZGlvLWdyb3VwIGlvbi1pdGVtIGlvbi1yYWRpb3ttYXJnaW4tcmlnaHQ6IDEwcHg7fVxyXG5cclxuLm51dHJpaW1hZ2VzLWxpc3QgaW9uLWxhYmVse2ZvbnQtc2l6ZTogMC43NXJlbTttYXJnaW46IDNweCAwO3RleHQtdHJhbnNmb3JtOiBjYXBpdGFsaXplO2xldHRlci1zcGFjaW5nOiAwO2ZvbnQtd2VpZ2h0OiA0MDA7ZGlzcGxheTogYmxvY2s7Y29sb3I6ICM0NDQ7fVxyXG4udmlkZW8tY2FyZHtib3gtc2hhZG93OiAwcHggNHB4IDEwcHggcmdiYSgzNCwgMzUsIDU4LCAwLjA5KTt9XHJcbmlvbi1zbGlkZXN7YmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7cGFkZGluZzogMCA1cHg7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tc2VnbWVudC1idXR0b257d2lkdGg6IDMyJTtib3JkZXI6IG5vbmU7cGFkZGluZzogMDstLXBhZGRpbmctc3RhcnQ6IDA7LS1wYWRkaW5nLWVuZDogMDsgICAgbWFyZ2luOiAwIDNweDtkaXNwbGF5OiBmbGV4O2p1c3RpZnktY29udGVudDogY2VudGVyO2FsaWduLWl0ZW1zOiBjZW50ZXI7YmFja2dyb3VuZDogI2Y3ZjdmNztib3JkZXItcmFkaXVzOiA0cHg7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tc2VnbWVudC1idXR0b246Zmlyc3QtY2hpbGR7bWFyZ2luLWxlZnQ6IDA7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tc2VnbWVudC1idXR0b24gaW1ne29iamVjdC1maXQ6IGNvbnRhaW47bWF4LXdpZHRoOiAxMDAlO31cclxuLm51dHJpaW1hZ2VzLWxpc3QgLnNlZ21lbnQtYnV0dG9uLWNoZWNrZWR7YmFja2dyb3VuZDogI2VhZWFlYTstLWNvbG9yLWNoZWNrZWQ6IHRyYW5zcGFyZW50O31cclxuLm51dHJpaW1hZ2VzLWxpc3QgLnRodW1iLWNoZWNrYm94e3Bvc2l0aW9uOiBhYnNvbHV0ZTt3aWR0aDogMTAwJTtoZWlnaHQ6IDEwMCU7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCAudGh1bWItY2hlY2tib3ggaW9uLWNoZWNrYm94e29wYWNpdHk6MDt3aWR0aDoxMDAlO2hlaWdodDo3OHB4O3BhZGRpbmc6MCAwfVxyXG4vLyAuY2hlY2tib3hUaHVtYntkaXNwbGF5OiBjb250ZW50czt9XHJcbi5jaGVja2JveFRodW1iOjphZnRlcntjb250ZW50OiAnJzt3aWR0aDogMTZweDtoZWlnaHQ6IDE2cHg7Ym9yZGVyOiAycHggc29saWQgIzdkN2Q3ZDtkaXNwbGF5OiBibG9jaztib3JkZXItcmFkaXVzOiA1MCU7cG9zaXRpb246IGFic29sdXRlO3RvcDogNXB4O2xlZnQ6IDVweDt9XHJcbi5udXRyaWltYWdlcy1saXN0IC50aHVtYi1jaGVja2JveCBpb24tY2hlY2tib3guY2hlY2tib3gtY2hlY2tlZHtvcGFjaXR5OjE7LS1iYWNrZ3JvdW5kLWNoZWNrZWQ6dHJhbnNwYXJlbnQ7LS1ib3JkZXItY29sb3ItY2hlY2tlZDp0cmFuc3BhcmVudDstLXNpemU6MDstLWNoZWNrbWFyay1jb2xvcjp0cmFuc3BhcmVudH1cclxuLm51dHJpaW1hZ2VzLWxpc3QgLnRodW1iLWNoZWNrYm94IGlvbi1jaGVja2JveC5jaGVja2JveC1jaGVja2VkOmFmdGVye2NvbnRlbnQ6Jyc7d2lkdGg6MjBweDtoZWlnaHQ6MjBweDtiYWNrZ3JvdW5kOiMyNmE2OWE7ZGlzcGxheTpibG9jaztib3JkZXItcmFkaXVzOjUwJTtwb3NpdGlvbjphYnNvbHV0ZTt0b3A6NXB4O2xlZnQ6NXB4fVxyXG4uaXRlbS1saXN0IGlvbi1saXN0LWhlYWRlciBpb24taWNvbntmb250LXNpemU6IDEuMTVyZW07fVxyXG5cclxuLnVzZXJzLWxpc3R7LS1taW4taGVpZ2h0OiBhdXRvO2Rpc3BsYXk6IGZsZXg7YWxpZ24taXRlbXM6IGNlbnRlcjttYXJnaW46IDZweCAwO31cclxuLnVzZXJzLWxpc3QgaW1ne3dpZHRoOiAzNnB4O2hlaWdodDogMzZweDtvYmplY3QtZml0OiBjb3Zlcjtib3JkZXItcmFkaXVzOiA1MCU7bWFyZ2luLWxlZnQ6IC0xMHB4O31cclxuLnVzZXJzLWxpc3QgaW1nOmZpcnN0LWNoaWxke21hcmdpbi1sZWZ0OiAwO31cclxuLnVzZXJzLWxpc3QgaW9uLWxhYmVse3dpZHRoOiAxMDBweDt9XHJcbi52aWV3LWFsbHt3aWR0aDozNnB4O2hlaWdodDozNnB4O21heC13aWR0aDogMzZweDt0ZXh0LWFsaWduOmNlbnRlcjtiYWNrZ3JvdW5kOiNmMWYwZjA7Ym9yZGVyLXJhZGl1czo1MCU7ZGlzcGxheTpmbGV4O2p1c3RpZnktY29udGVudDpjZW50ZXI7YWxpZ24taXRlbXM6Y2VudGVyO21hcmdpbjogMDttYXJnaW4tbGVmdDogLTEwcHg7fVxyXG5cclxuaW9uLWxpc3R7XHJcbiAgICAuZHVyYXRpb25JdGVtey0tcGFkZGluZy1lbmQ6IDA7XHJcbiAgICAgICAgaW9uLWlucHV0e3Bvc2l0aW9uOiByZWxhdGl2ZTt0b3A6IDJweDt0ZXh0LWFsaWduOiByaWdodDt9XHJcbiAgICB9XHJcbn1cclxuXHJcbi5wcm9ncmFtLWNhcmR7d2lkdGg6IDEwMCU7fVxyXG5pb24taXRlbSBpb24tbGlzdHt3aWR0aDogMTAwJTt9XHJcbi5pdGVtLWxpc3QgPiBpb24taXRlbXstLWlubmVyLXBhZGRpbmctZW5kOiAwO31cclxuLnRodW1iLWxpc3Qge1xyXG4gICAgaW9uLWl0ZW17XHJcbiAgICAgICAgaW9uLWxhYmVse1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgYm90dG9tOiAwO1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgYmFja2dyb3VuZDogcmdiYSgzOCwgMTY2LCAxNTQsIDAuNTApO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBjb2xvcjogI0ZGRjtcclxuICAgIHBhZGRpbmc6IDVweDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG59XHJcbn1cclxuLmZpeGVkIHtcclxuICAgIC8vIHBvc2l0aW9uOiBmaXhlZCAhaW1wb3J0YW50O1xyXG4gICAgLy8gei1pbmRleDogOSAhaW1wb3J0YW50O1xyXG4gICAgLy8gYmFja2dyb3VuZC1jb2xvcjogI2ZmZiAhaW1wb3J0YW50O1xyXG4gICAgLy8gbWFyZ2luLXRvcDogLTJweCAhaW1wb3J0YW50O1xyXG4gICAgcG9zaXRpb246IC13ZWJraXQtc3RpY2t5O1xyXG4gICAgcG9zaXRpb246IHN0aWNreTtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgdG9wOiAwcHg7XHJcbiAgICBwYWRkaW5nLXRvcDogNXB4O1xyXG4gICAgei1pbmRleDogOTk5O1xyXG4gICAgYmFja2dyb3VuZDogI2ZmZjtcclxufVxyXG4ubWFyZ2ludG9wLTQ1e1xyXG4gICAgbWFyZ2luLXRvcDogNDUlO1xyXG59XHJcbi5tYXJnaW4tMTV7XHJcbiAgICBtYXJnaW46IDE1cHggMHB4ICFpbXBvcnRhbnQ7XHJcbn1cclxuLm1iLTB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAwICFpbXBvcnRhbnQ7XHJcbn1cclxuaW9uLWxpc3R7cGFkZGluZy10b3A6IDAgIWltcG9ydGFudDtwYWRkaW5nLWJvdHRvbTogMCAhaW1wb3J0YW50O1xyXG4gICAgaW9uLWl0ZW17Zm9udC1zaXplOiAwLjg3NXJlbTstLXBhZGRpbmctZW5kOiAxNnB4O3BhZGRpbmctaW5saW5lLWVuZDogMDstLWlubmVyLXBhZGRpbmctZW5kOiAwOy0tbWluLWhlaWdodDogNDRweDstLWJvcmRlci1jb2xvcjogd2hpdGVzbW9rZTt9XHJcbiAgICAuZGVzY3JpcHRpb25JdGVte1xyXG4gICAgICAgIGlvbi1pdGVte3BhZGRpbmc6IDA7fVxyXG4gICAgfVxyXG59XHJcbi5yZXBlYXRlZEhlYWRpbmd7Zm9udC13ZWlnaHQ6IDQwMDtmb250LXNpemU6IDE1cHg7bWFyZ2luLWJvdHRvbTogMDt9XHJcbi5pbmZvSWNvbntwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6IDA7XHJcbiAgICByaWdodDogMDtcclxuICAgIC0tYmFja2dyb3VuZDogIzI2YTY5YTtcclxuICAgIC0tYm94LXNoYWRvdzogbm9uZTtcclxuICAgIGNvbG9yOiAjRkZGO1xyXG4gICAgLS1wYWRkaW5nLXN0YXJ0OiAwO1xyXG4gICAgLS1wYWRkaW5nLWVuZDogMDtcclxuICAgIGhlaWdodDogYXV0bztcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgIG1hcmdpbjogM3B4O1xyXG4gICAgei1pbmRleDogOTstLWJvcmRlci1yYWRpdXM6NTAlfVxyXG5cclxuICAgIC5pb24tYmxvY2t7XHJcbiAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgfVxyXG4gICAgLmlvbi1sZWZ0e1xyXG4gICAgICAgIGZsZXg6IDE7XHJcbiAgICB9XHJcbiAgICAuaW9uLXJpZ2h0e1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIH1cclxuICAgIC53aWR0aC0zMHtcclxuICAgICAgICB3aWR0aDogMzBweDtcclxuICAgIH1cclxuXHJcblxyXG4gICAgLmxpdmUtaW9uLWxpc3QtaGVhZGVye1xyXG4gICAgICAgIGp1c3RpZnktY29udGVudDogaW5pdGlhbDtcclxuICAgICAgICAuZGl2aWRlcntcclxuICAgICAgICAgICAgbWFyZ2luLWxlZnQ6IDIwcHg7XHJcbiAgICAgICAgICAgIG1hcmdpbi1yaWdodDogMjBweDtcclxuICAgICAgICB9XHJcbiAgICAgICAgLmNhbGVuZGVyX2dyZWVuX2JvdHRvbXtcclxuICAgICAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICAgICAgZmxleDogMTtcclxuICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XHJcbiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICAgICAgICAgIGlvbi1pY29ue1xyXG4gICAgICAgICAgICAgICAgZm9udC1zaXplOiAxLjdyZW07XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICB9XHJcbiAgICB9XHJcbiAgICAubGl2ZS1ldmVudC1hZGRpdGlvbntcclxuICAgICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICNjZWNlY2U7XHJcbiAgICAgICAgcGFkZGluZzogMTVweDtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiAxMnB4O1xyXG4gICAgICAgIG1hcmdpbi1ib3R0b206IDEycHg7XHJcbiAgICAgICAgaDV7XHJcbiAgICAgICAgICAgIGNvbG9yOiAjMTIxMjEyO1xyXG4gICAgICAgICAgICBtYXJnaW46IDA7XHJcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbiAgICAgICAgfVxyXG4gICAgfVxyXG4gICAgLmxpdmUtZXZlbnQtYm94e1xyXG4gICAgICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgICAgIG1hcmdpbi1ib3R0b206IDIwcHg7XHJcbiAgICAgICAgLmxpdmUtZXZlbnQtaGVhZHtcclxuICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTBweDtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xyXG4gICAgICAgICAgICBjb2xvcjogIzEyMTIxMjtcclxuICAgICAgICB9XHJcbiAgICAgICAgLmxpdmUtZXZlbnQtaW5mb3tcclxuICAgICAgICAgICAgcGFkZGluZzogMTJweCAyMHB4IDJweCAyMHB4O1xyXG4gICAgICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjY2VjZWNlO1xyXG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiAxMnB4OyBcclxuICAgICAgICAgICAgbWF4LWhlaWdodDogMTAwcHg7XHJcbiAgICAgICAgICAgIG92ZXJmbG93LXk6IHNjcm9sbDtcclxuICAgICAgICAgICAgLmxpdmUtZXZlbnQtZGV0YWlsc3tcclxuICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTBweDtcclxuICAgICAgICAgICAgICAgIHB7XHJcbiAgICAgICAgICAgICAgICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICAgICAgICAgICAgICAgIGNvbG9yOiAjMTIxMjEyO1xyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgLnNtYWxsLWRpdmlkZXJ7XHJcbiAgICAgICAgICAgICAgICAgICAgd2lkdGg6IDEuNXB4O1xyXG4gICAgICAgICAgICAgICAgICAgIGhlaWdodDogMjBweDtcclxuICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNTU1O1xyXG4gICAgICAgICAgICAgICAgICAgIG1hcmdpbi1yaWdodDogMTRweDtcclxuICAgICAgICAgICAgICAgICAgICBtYXJnaW4tbGVmdDogMTRweFxyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG4gICAgfVxyXG4gICAgLmxpdmUtZXZlbnQtaWNvbntcclxuICAgICAgICBmb250LXNpemU6IDI4cHg7XHJcbiAgICAgICAgbWluLXdpZHRoOiA4MHB4O1xyXG4gICAgICAgIGNvbG9yOiAjNTU1O1xyXG4gICAgICAgIG1hcmdpbi1yaWdodDogMjBweDtcclxuICAgIH1cclxuICAgIC5saXZlLWljb257XHJcbiAgICAgICAgLy8gY29sb3I6ICNmZmY7XHJcbiAgICAgICAgY29sb3I6IHRyYW5zcGFyZW50O1xyXG4gICAgfVxyXG4gICAgLnRvZ2dsZURpdiB7XHJcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogMnB4O1xyXG4gICAgICAgIHdpZHRoOiA1MHB4O1xyXG4gICAgfVxyXG4gICAgLmxpdmU6OmFmdGVye1xyXG4gICAgICAgIGNvbnRlbnQ6ICdHbyBMaXZlJztcclxuICAgICAgICBjb2xvcjogIzI2YTY5YTtcclxuICAgICAgICBmb250LXNpemU6IDExcHg7XHJcbiAgICAgICAgZm9udC13ZWlnaHQ6IDUwMDtcclxuICAgICAgICBwYWRkaW5nOiA2cHggNXB4O1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICNmZmY7XHJcbiAgICAgICAgLy8gdHJhbnNpdGlvbjogYWxsIC4ycyBlYXNlLWluLW91dDtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiAzcHg7XHJcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogMnB4O1xyXG4gICAgfVxyXG4gICAgLnRpdGxle1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTNweDtcclxuICAgIH1cclxuICAgIC50aXRsZSBzcGFue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTFweDtcclxuICAgICAgICBkaXNwbGF5OiBibG9jaztcclxuICAgICAgICBjb2xvcjogI0U3RTdFNztcclxuICAgICAgICBtYXJnaW4tYm90dG9tOiAzcHg7XHJcbiAgICB9XHJcbiAgICAubGl2ZS5hY3RpdmU6OmFmdGVye1xyXG4gICAgICAgIGNvbnRlbnQ6ICdMaXZlJztcclxuICAgICAgICBwYWRkaW5nOiA2cHggN3B4O1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTFweDtcclxuICAgICAgICBsZXR0ZXItc3BhY2luZzogMnB4O1xyXG4gICAgICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XHJcbiAgICAgICAgYmFja2dyb3VuZDogI0ZGM0EzQTtcclxuICAgICAgICAvLyB0cmFuc2l0aW9uOiBhbGwgLjJzIGVhc2UtaW4tb3V0O1xyXG4gICAgfVxyXG4gICAgaW9uLWljb24uYWN0aXZle1xyXG4gICAgICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgICAgIGNvbG9yOiByZ2IoMjU1LCAxNywgMTcpO1xyXG4gICAgfVxyXG4gICAgLndpZHRoLWZ1bGx7XHJcbiAgICAgICAgd2lkdGg6IDEwMCUgIWltcG9ydGFudDtcclxuICAgIH1cclxuICAgIC5kaXZpZGVyIHtcclxuICAgICAgICB3aWR0aDogMS41cHg7XHJcbiAgICAgICAgaGVpZ2h0OiAzNXB4O1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICNmZmY7XHJcbiAgICB9XHJcbiAgICAudGVybXMtZm9vdGVye1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgICAgICBwYWRkaW5nOiA1cHggMTBweDtcclxuICAgICAgICBpb24tY2hlY2tib3h7XHJcbiAgICAgICAgICAgIG1hcmdpbi1yaWdodDogOHB4O1xyXG4gICAgICAgIH1cclxuICAgICAgICBpb24taWNvbntcclxuICAgICAgICAgICAgY29sb3I6ICM1NTU7XHJcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMjRweDtcclxuICAgICAgICB9XHJcbiAgICB9XHJcbiAgICAuZnVsbC1oZWlnaHR7XHJcbiAgICAgICAgaGVpZ2h0OiA1NnB4O1xyXG4gICAgfVxyXG4gICAgLnN0aWNreS1mb290ZXJ7XHJcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xyXG4gICAgfVxyXG4gICAgLy8gQU5EUk9JRCBDU1NcclxuaW9uLWxpc3QtaGVhZGVyLmlvbi1wYWRkaW5nLWhvcml6b250YWwuZ3JlZW4udGV4dC13aGl0ZS5tZC5oeWRyYXRlZCB7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMTJweDtcclxuICAgIHBhZGRpbmctdG9wOiAxMnB4O1xyXG59XHJcbmlvbi1saXN0LndpZHRoLWZ1bGwubWQubGlzdC1tZC5oeWRyYXRlZCB7XHJcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XHJcbn1cclxuLy8gSU9TIENTU1xyXG5pb24tbGlzdC1oZWFkZXIuaW9uLXBhZGRpbmctaG9yaXpvbnRhbC5ncmVlbi50ZXh0LXdoaXRlLmlvcy5oeWRyYXRlZCB7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMTJweDtcclxuICAgIHBhZGRpbmctdG9wOiAxMnB4O1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IGluaXRpYWw7XHJcbiAgICBsZXR0ZXItc3BhY2luZzogMHB4O1xyXG59XHJcbmlvbi1saXN0LndpZHRoLWZ1bGwuaW9zLmxpc3QtaW9zLmh5ZHJhdGVkIHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxufSJdfQ== */";
     /***/
   },
 
@@ -2837,15 +2858,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
     var process__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(process__WEBPACK_IMPORTED_MODULE_13__);
+    /* harmony import */
+
+
+    var src_app_modalContent_terms_condition_terms_condition_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! src/app/modalContent/terms-condition/terms-condition.component */
+    "./src/app/modalContent/terms-condition/terms-condition.component.ts");
 
     var DateTimeModalComponent = /*#__PURE__*/function () {
-      function DateTimeModalComponent(commonService, modalCtrl, programService, navParams, modalController, fb) {
+      function DateTimeModalComponent(commonService, programService, navParams, modalController, fb) {
         var _this4 = this;
 
         _classCallCheck(this, DateTimeModalComponent);
 
         this.commonService = commonService;
-        this.modalCtrl = modalCtrl;
         this.programService = programService;
         this.navParams = navParams;
         this.modalController = modalController;
@@ -2943,10 +2969,40 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           programFees: new _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormControl"]('0'),
           non_live_component_fee: new _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormControl"]('0')
         });
-      } //------------------ 
-
+      }
 
       _createClass(DateTimeModalComponent, [{
+        key: "openModal",
+        value: function openModal() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            var modal;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    _context4.next = 2;
+                    return this.modalController.create({
+                      component: src_app_modalContent_terms_condition_terms_condition_component__WEBPACK_IMPORTED_MODULE_14__["TermsConditionComponent"]
+                    });
+
+                  case 2:
+                    modal = _context4.sent;
+                    _context4.next = 5;
+                    return modal.present();
+
+                  case 5:
+                    return _context4.abrupt("return", _context4.sent);
+
+                  case 6:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4, this);
+          }));
+        } //------------------ 
+
+      }, {
         key: "convert",
         value: function convert(str) {
           var date = new Date(str),
@@ -2988,11 +3044,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "openCalendar",
         value: function openCalendar() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
             var options, myCalendar, event, date;
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
               while (1) {
-                switch (_context4.prev = _context4.next) {
+                switch (_context5.prev = _context5.next) {
                   case 0:
                     options = {
                       pickMode: 'multi',
@@ -3000,8 +3056,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       doneIcon: true,
                       closeIcon: true
                     };
-                    _context4.next = 3;
-                    return this.modalCtrl.create({
+                    _context5.next = 3;
+                    return this.modalController.create({
                       component: ion2_calendar__WEBPACK_IMPORTED_MODULE_11__["CalendarModal"],
                       componentProps: {
                         options: options
@@ -3010,38 +3066,38 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 3:
-                    myCalendar = _context4.sent;
+                    myCalendar = _context5.sent;
                     myCalendar.present();
-                    _context4.next = 7;
+                    _context5.next = 7;
                     return myCalendar.onDidDismiss();
 
                   case 7:
-                    event = _context4.sent;
+                    event = _context5.sent;
                     date = event.data;
 
                   case 9:
                   case "end":
-                    return _context4.stop();
+                    return _context5.stop();
                 }
               }
-            }, _callee4, this);
+            }, _callee5, this);
           }));
         }
       }, {
         key: "basic",
         value: function basic() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
             var options, myCalendar, event, date, endDate, dateMove, currentDate;
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
               while (1) {
-                switch (_context5.prev = _context5.next) {
+                switch (_context6.prev = _context6.next) {
                   case 0:
                     this.repetatedDateCopy = [];
                     this.repetatedDate = [];
                     this.repetative = 2;
                     options = {};
-                    _context5.next = 6;
-                    return this.modalCtrl.create({
+                    _context6.next = 6;
+                    return this.modalController.create({
                       component: ion2_calendar__WEBPACK_IMPORTED_MODULE_11__["CalendarModal"],
                       componentProps: {
                         options: options
@@ -3049,13 +3105,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 6:
-                    myCalendar = _context5.sent;
+                    myCalendar = _context6.sent;
                     myCalendar.present();
-                    _context5.next = 10;
+                    _context6.next = 10;
                     return myCalendar.onDidDismiss();
 
                   case 10:
-                    event = _context5.sent;
+                    event = _context6.sent;
                     date = event.data;
 
                     if (date == null) {
@@ -3083,22 +3139,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 13:
                   case "end":
-                    return _context5.stop();
+                    return _context6.stop();
                 }
               }
-            }, _callee5, this);
+            }, _callee6, this);
           }));
         }
       }, {
         key: "multiple",
         value: function multiple() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
             var _this6 = this;
 
             var options, myCalendar, event, date, hourspan;
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
               while (1) {
-                switch (_context6.prev = _context6.next) {
+                switch (_context7.prev = _context7.next) {
                   case 0:
                     this.repetatedDate = [];
                     this.repetatedDateCopy = [];
@@ -3107,8 +3163,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       pickMode: 'multi',
                       title: 'Custom Selection'
                     };
-                    _context6.next = 6;
-                    return this.modalCtrl.create({
+                    _context7.next = 6;
+                    return this.modalController.create({
                       component: ion2_calendar__WEBPACK_IMPORTED_MODULE_11__["CalendarModal"],
                       componentProps: {
                         options: options
@@ -3117,13 +3173,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 6:
-                    myCalendar = _context6.sent;
+                    myCalendar = _context7.sent;
                     myCalendar.present();
-                    _context6.next = 10;
+                    _context7.next = 10;
                     return myCalendar.onDidDismiss();
 
                   case 10:
-                    event = _context6.sent;
+                    event = _context7.sent;
                     console.log(event);
                     date = event.data;
                     hourspan = this.calendarData;
@@ -3167,30 +3223,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 16:
                   case "end":
-                    return _context6.stop();
+                    return _context7.stop();
                 }
               }
-            }, _callee6, this);
+            }, _callee7, this);
           }));
         }
       }, {
         key: "newtest",
         value: function newtest() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
             var _this7 = this;
 
             var options, modal;
-            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+            return regeneratorRuntime.wrap(function _callee8$(_context8) {
               while (1) {
-                switch (_context7.prev = _context7.next) {
+                switch (_context8.prev = _context8.next) {
                   case 0:
                     if (!(!this.duration && this.programData.programType !== '6')) {
-                      _context7.next = 5;
+                      _context8.next = 5;
                       break;
                     }
 
                     this.commonService.presentToast('Please select Duration');
-                    return _context7.abrupt("return");
+                    return _context8.abrupt("return");
 
                   case 5:
                     this.repetatedDate = [];
@@ -3199,7 +3255,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     options = {
                       pickMode: 'multi'
                     };
-                    _context7.next = 11;
+                    _context8.next = 11;
                     return this.modalController.create({
                       component: _add_program_calender_month_week_time_calender_month_week_time_component__WEBPACK_IMPORTED_MODULE_8__["CalenderMonthWeekTimeComponent"],
                       cssClass: 'fullModal',
@@ -3214,7 +3270,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 11:
-                    modal = _context7.sent;
+                    modal = _context8.sent;
                     modal.onDidDismiss().then(function (data) {
                       console.log(data);
 
@@ -3261,18 +3317,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         console.log(_this7.repetatedDate);
                       }
                     });
-                    _context7.next = 15;
+                    _context8.next = 15;
                     return modal.present();
 
                   case 15:
-                    return _context7.abrupt("return", _context7.sent);
+                    return _context8.abrupt("return", _context8.sent);
 
                   case 16:
                   case "end":
-                    return _context7.stop();
+                    return _context8.stop();
                 }
               }
-            }, _callee7, this);
+            }, _callee8, this);
           }));
         }
       }, {
@@ -3362,16 +3418,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addEquipments2",
         value: function addEquipments2(event, item, i) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
             var _this9 = this;
 
             var modal;
-            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            return regeneratorRuntime.wrap(function _callee9$(_context9) {
               while (1) {
-                switch (_context8.prev = _context8.next) {
+                switch (_context9.prev = _context9.next) {
                   case 0:
-                    _context8.next = 2;
-                    return this.modalCtrl.create({
+                    _context9.next = 2;
+                    return this.modalController.create({
                       component: _add_equipments_add_equipments_component__WEBPACK_IMPORTED_MODULE_5__["AddEquipmentsComponent"],
                       cssClass: 'fullModal',
                       componentProps: {
@@ -3381,7 +3437,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    modal = _context8.sent;
+                    modal = _context9.sent;
                     modal.onDidDismiss().then(function (d) {
                       if (event == 1) {
                         _this9.repetatedDateCopy[i].equipments = d.data.filter(Boolean); // this.repetatedDate[i].equipments = d.data.filter(Boolean) ;
@@ -3391,47 +3447,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                       console.log(_this9.repetatedDateCopy);
                       console.log(_this9.repetatedDate);
-                    });
-                    _context8.next = 6;
-                    return modal.present();
-
-                  case 6:
-                    return _context8.abrupt("return", _context8.sent);
-
-                  case 7:
-                  case "end":
-                    return _context8.stop();
-                }
-              }
-            }, _callee8, this);
-          }));
-        }
-      }, {
-        key: "addVideo",
-        value: function addVideo(event, i) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
-            var _this10 = this;
-
-            var modal;
-            return regeneratorRuntime.wrap(function _callee9$(_context9) {
-              while (1) {
-                switch (_context9.prev = _context9.next) {
-                  case 0:
-                    _context9.next = 2;
-                    return this.modalCtrl.create({
-                      component: _videos_thumb_list_videos_thumb_list_component__WEBPACK_IMPORTED_MODULE_6__["VideosThumbListComponent"],
-                      cssClass: 'fullModal',
-                      componentProps: {
-                        'programDetail': event
-                      }
-                    });
-
-                  case 2:
-                    modal = _context9.sent;
-                    modal.onDidDismiss().then(function (d) {
-                      if (d.data) {
-                        _this10.repetatedDateCopy[i].video = d.data; // this.repetatedDate[i].video=d.data;
-                      }
                     });
                     _context9.next = 6;
                     return modal.present();
@@ -3445,6 +3460,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             }, _callee9, this);
+          }));
+        }
+      }, {
+        key: "addVideo",
+        value: function addVideo(event, i) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+            var _this10 = this;
+
+            var modal;
+            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+              while (1) {
+                switch (_context10.prev = _context10.next) {
+                  case 0:
+                    _context10.next = 2;
+                    return this.modalController.create({
+                      component: _videos_thumb_list_videos_thumb_list_component__WEBPACK_IMPORTED_MODULE_6__["VideosThumbListComponent"],
+                      cssClass: 'fullModal',
+                      componentProps: {
+                        'programDetail': event
+                      }
+                    });
+
+                  case 2:
+                    modal = _context10.sent;
+                    modal.onDidDismiss().then(function (d) {
+                      if (d.data) {
+                        _this10.repetatedDateCopy[i].video = d.data; // this.repetatedDate[i].video=d.data;
+                      }
+                    });
+                    _context10.next = 6;
+                    return modal.present();
+
+                  case 6:
+                    return _context10.abrupt("return", _context10.sent);
+
+                  case 7:
+                  case "end":
+                    return _context10.stop();
+                }
+              }
+            }, _callee10, this);
           }));
         }
       }, {
@@ -3526,14 +3582,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "showVideoDetails",
         value: function showVideoDetails(item) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
             var modal;
-            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+            return regeneratorRuntime.wrap(function _callee11$(_context11) {
               while (1) {
-                switch (_context10.prev = _context10.next) {
+                switch (_context11.prev = _context11.next) {
                   case 0:
-                    _context10.next = 2;
-                    return this.modalCtrl.create({
+                    _context11.next = 2;
+                    return this.modalController.create({
                       component: _add_program_view_video_detail_view_video_detail_component__WEBPACK_IMPORTED_MODULE_7__["ViewVideoDetailComponent"],
                       cssClass: 'fullModal',
                       componentProps: {
@@ -3542,19 +3598,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    modal = _context10.sent;
-                    _context10.next = 5;
+                    modal = _context11.sent;
+                    _context11.next = 5;
                     return modal.present();
 
                   case 5:
-                    return _context10.abrupt("return", _context10.sent);
+                    return _context11.abrupt("return", _context11.sent);
 
                   case 6:
                   case "end":
-                    return _context10.stop();
+                    return _context11.stop();
                 }
               }
-            }, _callee10, this);
+            }, _callee11, this);
           }));
         }
       }, {
@@ -3573,8 +3629,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     DateTimeModalComponent.ctorParameters = function () {
       return [{
         type: src_app_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"]
-      }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]
       }, {
         type: _services_program_service__WEBPACK_IMPORTED_MODULE_4__["ProgramService"]
       }, {
@@ -3596,7 +3650,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       "./src/app/app.component.scss"))["default"], tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./date-time-modal.component.scss */
       "./src/app/add-program/date-time-modal/date-time-modal.component.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _services_program_service__WEBPACK_IMPORTED_MODULE_4__["ProgramService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormBuilder"]])], DateTimeModalComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"], _services_program_service__WEBPACK_IMPORTED_MODULE_4__["ProgramService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormBuilder"]])], DateTimeModalComponent);
     /***/
   },
 
@@ -4514,13 +4568,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "showVideoDetails",
         value: function showVideoDetails(item) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
             var modal;
-            return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            return regeneratorRuntime.wrap(function _callee12$(_context12) {
               while (1) {
-                switch (_context11.prev = _context11.next) {
+                switch (_context12.prev = _context12.next) {
                   case 0:
-                    _context11.next = 2;
+                    _context12.next = 2;
                     return this.modalCtrl.create({
                       component: _add_program_view_video_detail_view_video_detail_component__WEBPACK_IMPORTED_MODULE_6__["ViewVideoDetailComponent"],
                       cssClass: 'fullModal',
@@ -4530,19 +4584,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    modal = _context11.sent;
-                    _context11.next = 5;
+                    modal = _context12.sent;
+                    _context12.next = 5;
                     return modal.present();
 
                   case 5:
-                    return _context11.abrupt("return", _context11.sent);
+                    return _context12.abrupt("return", _context12.sent);
 
                   case 6:
                   case "end":
-                    return _context11.stop();
+                    return _context12.stop();
                 }
               }
-            }, _callee11, this);
+            }, _callee12, this);
           }));
         }
       }]);
@@ -5298,7 +5352,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | user-profile-user-profile-module */
-        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~8690c7bc"), __webpack_require__.e("common"), __webpack_require__.e("user-profile-user-profile-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~f9f9e540"), __webpack_require__.e("common"), __webpack_require__.e("user-profile-user-profile-module")]).then(__webpack_require__.bind(null,
         /*! ./user-profile/user-profile.module */
         "./src/app/user-profile/user-profile.module.ts")).then(function (m) {
           return m.UserProfilePageModule;
@@ -5320,7 +5374,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | profile-consultant-profile-view-consultant-profile-view-module */
-        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~8690c7bc"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~35dc278f"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~ec93f8e5"), __webpack_require__.e("common"), __webpack_require__.e("profile-consultant-profile-view-consultant-profile-view-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~35dc278f"), __webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~f9f9e540"), __webpack_require__.e("default~add-program-add-program-module~edit-program-edit-program-module~faq-faq-module~music-music-m~ec93f8e5"), __webpack_require__.e("common"), __webpack_require__.e("profile-consultant-profile-view-consultant-profile-view-module")]).then(__webpack_require__.bind(null,
         /*! ./profile/consultant-profile-view/consultant-profile-view.module */
         "./src/app/profile/consultant-profile-view/consultant-profile-view.module.ts")).then(function (m) {
           return m.ConsultantProfileViewPageModule;
@@ -5364,7 +5418,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | consultant-videos-consultant-videos-module */
-        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~8690c7bc"), __webpack_require__.e("consultant-videos-consultant-videos-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~f9f9e540"), __webpack_require__.e("consultant-videos-consultant-videos-module")]).then(__webpack_require__.bind(null,
         /*! ./consultant-videos/consultant-videos.module */
         "./src/app/consultant-videos/consultant-videos.module.ts")).then(function (m) {
           return m.ConsultantVideosPageModule;
@@ -5509,7 +5563,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | bookmark-bookmark-module */
-        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~8690c7bc"), __webpack_require__.e("bookmark-bookmark-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~f9f9e540"), __webpack_require__.e("bookmark-bookmark-module")]).then(__webpack_require__.bind(null,
         /*! ./bookmark/bookmark.module */
         "./src/app/bookmark/bookmark.module.ts")).then(function (m) {
           return m.BookmarkPageModule;
@@ -5570,29 +5624,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return m.VideoPreviewPageModule;
         });
       }
-    }, {
-      path: 'program-view/:programId',
-      loadChildren: function loadChildren() {
-        return Promise.all(
-        /*! import() | program-program-view-program-view-module */
-        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~8690c7bc"), __webpack_require__.e("default~program-new-program-view-new-program-view-module~program-program-view-program-view-module"), __webpack_require__.e("program-program-view-program-view-module")]).then(__webpack_require__.bind(null,
-        /*! ./program/program-view/program-view.module */
-        "./src/app/program/program-view/program-view.module.ts")).then(function (m) {
-          return m.ProgramViewPageModule;
-        });
-      }
-    }, {
-      path: 'program-details/:programId',
-      loadChildren: function loadChildren() {
-        return Promise.all(
-        /*! import() | program-program-details-program-details-module */
-        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~8690c7bc"), __webpack_require__.e("program-program-details-program-details-module")]).then(__webpack_require__.bind(null,
-        /*! ./program/program-details/program-details.module */
-        "./src/app/program/program-details/program-details.module.ts")).then(function (m) {
-          return m.ProgramDetailsPageModule;
-        });
-      }
     }, // {
+    //   path: 'program-view/:programId',
+    //   loadChildren: () => import('./program/program-view/program-view.module').then( m => m.ProgramViewPageModule)
+    // },
+    // {
+    //   path: 'program-details/:programId',
+    //   loadChildren: () => import('./program/program-details/program-details.module').then( m => m.ProgramDetailsPageModule)
+    // },
+    // {
     //   path: 'chat',
     //   loadChildren: () => import('./chats/chat/chat.module').then( m => m.ChatPageModule)
     // },
@@ -5734,7 +5774,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | chats-first-message-first-message-module */
-        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~8690c7bc"), __webpack_require__.e("chats-first-message-first-message-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~f9f9e540"), __webpack_require__.e("chats-first-message-first-message-module")]).then(__webpack_require__.bind(null,
         /*! ./chats/first-message/first-message.module */
         "./src/app/chats/first-message/first-message.module.ts")).then(function (m) {
           return m.FirstMessagePageModule;
@@ -5840,22 +5880,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         });
       }
     }, {
-      path: 'new-program-inner/:programId',
+      path: 'program-details/:programId',
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | program-new-program-inner-new-program-inner-module */
-        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~8690c7bc"), __webpack_require__.e("program-new-program-inner-new-program-inner-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~f9f9e540"), __webpack_require__.e("program-new-program-inner-new-program-inner-module")]).then(__webpack_require__.bind(null,
         /*! ./program/new-program-inner/new-program-inner.module */
         "./src/app/program/new-program-inner/new-program-inner.module.ts")).then(function (m) {
           return m.NewProgramInnerPageModule;
         });
       }
     }, {
-      path: 'new-program-view/:programId',
+      path: 'program-view/:programId',
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | program-new-program-view-new-program-view-module */
-        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~8690c7bc"), __webpack_require__.e("default~program-new-program-view-new-program-view-module~program-program-view-program-view-module"), __webpack_require__.e("program-new-program-view-new-program-view-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~bookmark-bookmark-module~chats-chat-list-chat-list-module~chats-first-message-first-message-~f9f9e540"), __webpack_require__.e("program-new-program-view-new-program-view-module")]).then(__webpack_require__.bind(null,
         /*! ./program/new-program-view/new-program-view.module */
         "./src/app/program/new-program-view/new-program-view.module.ts")).then(function (m) {
           return m.NewProgramViewPageModule;
@@ -7066,11 +7106,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           console.log("ionViewWillEnter signin");
           this.subscribe = this.platform.backButton.subscribeWithPriority(10, function () {
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this24, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this24, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
               var header, buttons;
-              return regeneratorRuntime.wrap(function _callee12$(_context12) {
+              return regeneratorRuntime.wrap(function _callee13$(_context13) {
                 while (1) {
-                  switch (_context12.prev = _context12.next) {
+                  switch (_context13.prev = _context13.next) {
                     case 0:
                       if (this.router.isActive('/signin', true) && this.router.url === '/signin') {
                         buttons = [{
@@ -7087,10 +7127,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                     case 1:
                     case "end":
-                      return _context12.stop();
+                      return _context13.stop();
                   }
                 }
-              }, _callee12, this);
+              }, _callee13, this);
             }));
           });
         }
@@ -7395,15 +7435,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "blockStatusOfUser",
         value: function blockStatusOfUser(id) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
             var _this28 = this;
 
             var alert;
-            return regeneratorRuntime.wrap(function _callee13$(_context13) {
+            return regeneratorRuntime.wrap(function _callee14$(_context14) {
               while (1) {
-                switch (_context13.prev = _context13.next) {
+                switch (_context14.prev = _context14.next) {
                   case 0:
-                    _context13.next = 2;
+                    _context14.next = 2;
                     return this.alertController.create({
                       // cssClass: 'my-custom-class',
                       // header: 'Confirm!',
@@ -7424,30 +7464,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    alert = _context13.sent;
-                    _context13.next = 5;
+                    alert = _context14.sent;
+                    _context14.next = 5;
                     return alert.present();
 
                   case 5:
                   case "end":
-                    return _context13.stop();
+                    return _context14.stop();
                 }
               }
-            }, _callee13, this);
+            }, _callee14, this);
           }));
         }
       }, {
         key: "presentPopover",
         value: function presentPopover(ev) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
             var _this29 = this;
 
             var popover;
-            return regeneratorRuntime.wrap(function _callee14$(_context14) {
+            return regeneratorRuntime.wrap(function _callee15$(_context15) {
               while (1) {
-                switch (_context14.prev = _context14.next) {
+                switch (_context15.prev = _context15.next) {
                   case 0:
-                    _context14.next = 2;
+                    _context15.next = 2;
                     return this.popoverController.create({
                       component: _dropdown_dropdown_component__WEBPACK_IMPORTED_MODULE_3__["DropdownComponent"],
                       event: ev,
@@ -7464,7 +7504,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    popover = _context14.sent;
+                    popover = _context15.sent;
                     popover.onDidDismiss().then(function (data) {
                       if (data.data == 'refresh') {
                         _this29.doRefresh();
@@ -7477,18 +7517,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         _this29.socket.emit('userBlockStatus', _this29.userData.id, _this29.receiverId);
                       }
                     });
-                    _context14.next = 6;
+                    _context15.next = 6;
                     return popover.present();
 
                   case 6:
-                    return _context14.abrupt("return", _context14.sent);
+                    return _context15.abrupt("return", _context15.sent);
 
                   case 7:
                   case "end":
-                    return _context14.stop();
+                    return _context15.stop();
                 }
               }
-            }, _callee14, this);
+            }, _callee15, this);
           }));
         }
       }, {
@@ -7530,13 +7570,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "showToast",
         value: function showToast(msg) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
             var toast;
-            return regeneratorRuntime.wrap(function _callee15$(_context15) {
+            return regeneratorRuntime.wrap(function _callee16$(_context16) {
               while (1) {
-                switch (_context15.prev = _context15.next) {
+                switch (_context16.prev = _context16.next) {
                   case 0:
-                    _context15.next = 2;
+                    _context16.next = 2;
                     return this.toastCtrl.create({
                       message: msg,
                       position: 'top',
@@ -7544,15 +7584,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    toast = _context15.sent;
+                    toast = _context16.sent;
                     toast.present();
 
                   case 4:
                   case "end":
-                    return _context15.stop();
+                    return _context16.stop();
                 }
               }
-            }, _callee15, this);
+            }, _callee16, this);
           }));
         }
       }, {
@@ -8369,6 +8409,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     Config.storagePath = "https://ionicinto.wdipl.com/storage/";
     Config.musicPath = "https://ionicinto.wdipl.com/public/storage/audio/";
     Config.admanager = "https://ionicinto.wdipl.com/admanager/user/";
+    Config.equipmentPic = "https://ionicinto.wdipl.com/storage/app/public/equipment_images/";
     Config.stripePublishKey = "pk_test_51KO87nAP43uk3CaTrUFIEuhw98Ux1fa0U7absrdFsrlC8VeIQeUlkl3oNqcIFQNIQ0tcQbhQokm2icOn78WMGxJY00cSFjevjE";
     Config.stripeSecretKey = "sk_test_51KO87nAP43uk3CaToPSpdYoLuvmAvHDknMoE7pTBYNgwuxJkOWorgjiH6YUWzAY4WpRBCfHojKydJneUJuhZRXuR00skzGPslD";
     /***/
@@ -8831,25 +8872,41 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _services_people_view_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../../services/people-view.service */
+    "./src/app/services/people-view.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
     var FollowersComponent = /*#__PURE__*/function () {
-      function FollowersComponent(commonService, settingsService, navParamas, router) {
+      function FollowersComponent(commonService, settingsService, navParamas, router, peopleViewService) {
         _classCallCheck(this, FollowersComponent);
 
         this.commonService = commonService;
         this.settingsService = settingsService;
         this.navParamas = navParamas;
         this.router = router;
+        this.peopleViewService = peopleViewService;
       }
 
       _createClass(FollowersComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
+          var _this41 = this;
+
           this.profileData = this.navParamas.get('profileData');
+          console.log(this.profileData);
           this.otherUser = this.navParamas.get('otherUser');
+          this.peopleViewService.getFollowers('').subscribe(function (data) {
+            _this41.followers = data.result.length;
+          });
+          this.peopleViewService.getFollowings('').subscribe(function (data) {
+            _this41.followings = data.result.length;
+          });
         }
       }, {
         key: "dismiss",
@@ -8881,7 +8938,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"]
       }, {
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
+      }, {
+        type: _services_people_view_service__WEBPACK_IMPORTED_MODULE_5__["PeopleViewService"]
       }];
     };
 
@@ -8895,7 +8954,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       "./src/app/app.component.scss"))["default"], tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./followers.component.scss */
       "./src/app/modalContent/followers/followers.component.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"], _services_settings_service__WEBPACK_IMPORTED_MODULE_3__["SettingsService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])], FollowersComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"], _services_settings_service__WEBPACK_IMPORTED_MODULE_3__["SettingsService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], _services_people_view_service__WEBPACK_IMPORTED_MODULE_5__["PeopleViewService"]])], FollowersComponent);
     /***/
   },
 
@@ -9191,7 +9250,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "payment",
         value: function payment() {
-          var _this41 = this;
+          var _this42 = this;
 
           this.commonService.dismissModal();
 
@@ -9204,13 +9263,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               if (data) {
                 var fileData = {
-                  pgid: _this41.pgid,
-                  pgname: _this41.pgname,
-                  pgamount: _this41.pgamount,
-                  pgimg: _this41.pgimg
+                  pgid: _this42.pgid,
+                  pgname: _this42.pgname,
+                  pgamount: _this42.pgamount,
+                  pgimg: _this42.pgimg
                 };
 
-                _this41.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+                _this42.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
               }
             });
           } else if (this.type == 1) {
@@ -9222,13 +9281,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               if (data) {
                 var fileData = {
-                  pgid: _this41.pgid.toString(','),
-                  pgname: _this41.pgname,
-                  pgamount: _this41.pgamount,
-                  pgimg: _this41.pgimg
+                  pgid: _this42.pgid.toString(','),
+                  pgname: _this42.pgname,
+                  pgamount: _this42.pgamount,
+                  pgimg: _this42.pgimg
                 };
 
-                _this41.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+                _this42.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
               }
             });
           }
@@ -9444,7 +9503,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var SearchFoodComponent = /*#__PURE__*/function () {
       function SearchFoodComponent(commonService, nutritionService, barcodeScanner, navParams) {
-        var _this42 = this;
+        var _this43 = this;
 
         _classCallCheck(this, SearchFoodComponent);
 
@@ -9461,7 +9520,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (Array.isArray(element.data)) {
             element.data.forEach(function (el) {
               if (el.food_name !== null) {
-                _this42.selectedFoodList2.push(el.food_name);
+                _this43.selectedFoodList2.push(el.food_name);
               }
             });
           }
@@ -9478,10 +9537,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngAfterViewInit",
         value: function ngAfterViewInit() {
-          var _this43 = this;
+          var _this44 = this;
 
           setTimeout(function () {
-            _this43.search_food_name.setFocus();
+            _this44.search_food_name.setFocus();
           }, 400);
         }
       }, {
@@ -9499,22 +9558,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkFoodName",
         value: function checkFoodName(foodname) {
-          var _this44 = this;
+          var _this45 = this;
 
           if (foodname !== '') {
             this.nutritionService.ntnxfetchFood(foodname).subscribe(function (data) {
               data.common.forEach(function (el) {
-                if (_this44.selectedFoodList2.indexOf(el['food_name']) !== -1) {
+                if (_this45.selectedFoodList2.indexOf(el['food_name']) !== -1) {
                   el['selected'] = true;
                 } else {
                   el['selected'] = false;
                 }
               });
 
-              _this44.commonService.dismissLoader();
+              _this45.commonService.dismissLoader();
 
               console.log(data.common);
-              _this44.foodList = Array.of(data);
+              _this45.foodList = Array.of(data);
               console.log();
             }, function (err) {
               console.log(err);
@@ -9526,7 +9585,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getNutriDetails",
         value: function getNutriDetails(itemDetails) {
-          var _this45 = this;
+          var _this46 = this;
 
           var itemVal = itemDetails.target.value;
 
@@ -9540,9 +9599,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               // console.log(data['foods'])
               console.log(data);
 
-              _this45.selectedFoodList.push(data['foods'][0]);
+              _this46.selectedFoodList.push(data['foods'][0]);
 
-              console.log(_this45.selectedFoodList);
+              console.log(_this46.selectedFoodList);
             });
           } else {
             console.log('viraj');
@@ -9584,26 +9643,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "scanFood",
         value: function scanFood() {
-          var _this46 = this;
+          var _this47 = this;
 
           this.barcodeScanner.scan().then(function (barcodeData) {
             console.log('Barcode data', barcodeData);
 
             if (!barcodeData.cancelled) {
-              _this46.nutritionService.nutrtionBarcode(barcodeData.text).subscribe(function (data) {
+              _this47.nutritionService.nutrtionBarcode(barcodeData.text).subscribe(function (data) {
                 console.log('asadsad');
 
                 if (!data.status) {
-                  _this46.apiData = data;
+                  _this47.apiData = data;
                   console.log(data);
                 } else {
-                  _this46.apiData = null;
+                  _this47.apiData = null;
                   console.log('ssssssss', data.status);
 
-                  _this46.commonService.presentToast('Product not found in database');
+                  _this47.commonService.presentToast('Product not found in database');
                 }
 
-                _this46.commonService.dismissModal(_this46.apiData);
+                _this47.commonService.dismissModal(_this47.apiData);
               });
             }
           })["catch"](function (err) {
@@ -9764,6 +9823,102 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       /*! ./slider-zoom.component.scss */
       "./src/app/modalContent/slider-zoom/slider-zoom.component.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])], SliderZoomComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/modalContent/terms-condition/terms-condition.component.scss":
+  /*!*****************************************************************************!*\
+    !*** ./src/app/modalContent/terms-condition/terms-condition.component.scss ***!
+    \*****************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppModalContentTermsConditionTermsConditionComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".top-header {\n  display: flex;\n  height: 50px;\n  max-height: 48px;\n  min-height: 48px;\n  justify-content: space-between;\n  right: 0;\n  top: 0;\n  z-index: 999;\n  width: 100%;\n  background: #fff; }\n  .top-header ion-icon {\n    font-size: 1.75rem;\n    color: #222;\n    margin: 0; }\n  .top-header .top-heading {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    width: 100%;\n    margin-bottom: 0; }\n  .top-header .three-block {\n    text-align: center;\n    padding: 5px 0; }\n  .top-header .three-block ion-item {\n      --inner-border-width: 0px 0px 0px 0px;\n      --padding-start: 0;\n      --inner-padding-end: 0; }\n  .top-header .three-block ion-item ion-label {\n        text-transform: capitalize;\n        font-size: 1rem;\n        color: #222; }\n  .top-header .three-block ion-item:first-child {\n      padding-left: 8px;\n      min-width: 80px; }\n  .top-header .three-block ion-item:last-child {\n      min-width: 80px; }\n  .top-header .three-block .icon-right-side {\n      display: flex;\n      align-items: center;\n      justify-content: flex-end; }\n  .top-header .three-block .ion-text-end {\n      text-align: end !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kYWxDb250ZW50L3Rlcm1zLWNvbmRpdGlvbi9DOlxceGFtcHBcXGh0ZG9jc1xcaW50b2FjdGl2ZS9zcmNcXGFwcFxcbW9kYWxDb250ZW50XFx0ZXJtcy1jb25kaXRpb25cXHRlcm1zLWNvbmRpdGlvbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGFBQWE7RUFDYixZQUFZO0VBQ1osZ0JBQWdCO0VBQ2hCLGdCQUFnQjtFQUNoQiw4QkFBOEI7RUFDOUIsUUFBUTtFQUNSLE1BQU07RUFDTixZQUFZO0VBQ1osV0FBVztFQUNYLGdCQUFnQixFQUFBO0VBVnBCO0lBYVEsa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWCxTQUFTLEVBQUE7RUFmakI7SUFrQlEsYUFBYTtJQUNiLDhCQUE4QjtJQUM5QixtQkFBbUI7SUFDbkIsV0FBVztJQUNYLGdCQUFnQixFQUFBO0VBdEJ4QjtJQXlCUSxrQkFBa0I7SUFDbEIsY0FBYyxFQUFBO0VBMUJ0QjtNQTZCWSxxQ0FBcUI7TUFDckIsa0JBQWdCO01BQ2hCLHNCQUFvQixFQUFBO0VBL0JoQztRQWlDZ0IsMEJBQTBCO1FBQzFCLGVBQWU7UUFDZixXQUFXLEVBQUE7RUFuQzNCO01BdUNZLGlCQUFpQjtNQUNqQixlQUFjLEVBQUE7RUF4QzFCO01BMkNZLGVBQWUsRUFBQTtFQTNDM0I7TUE4Q1ksYUFBYTtNQUNiLG1CQUFtQjtNQUNuQix5QkFBeUIsRUFBQTtFQWhEckM7TUFtRFksMEJBQTBCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9tb2RhbENvbnRlbnQvdGVybXMtY29uZGl0aW9uL3Rlcm1zLWNvbmRpdGlvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi50b3AtaGVhZGVye1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGhlaWdodDogNTBweDtcclxuICAgIG1heC1oZWlnaHQ6IDQ4cHg7XHJcbiAgICBtaW4taGVpZ2h0OiA0OHB4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgICB0b3A6IDA7XHJcbiAgICB6LWluZGV4OiA5OTk7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGJhY2tncm91bmQ6ICNmZmY7XHJcbiAgICAvLyBib3gtc2hhZG93OiAwcHggMnB4IDJweCAwcHggcmdiKDAgMCAwICwgMTclKTtcclxuICAgIGlvbi1pY29ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMS43NXJlbTtcclxuICAgICAgICBjb2xvcjogIzIyMjtcclxuICAgICAgICBtYXJnaW46IDA7XHJcbiAgICB9XHJcbiAgICAudG9wLWhlYWRpbmd7XHJcbiAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgICBtYXJnaW4tYm90dG9tOiAwOyAgIFxyXG4gICAgfVxyXG4gICAgLnRocmVlLWJsb2Nre1xyXG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgICAgICBwYWRkaW5nOiA1cHggMDtcclxuICAgICAgICAvLyBtYXJnaW4tYm90dG9tOiAxMHB4O1xyXG4gICAgICAgIGlvbi1pdGVte1xyXG4gICAgICAgICAgICAtLWlubmVyLWJvcmRlci13aWR0aDogMHB4IDBweCAwcHggMHB4O1xyXG4gICAgICAgICAgICAtLXBhZGRpbmctc3RhcnQ6IDA7XHJcbiAgICAgICAgICAgIC0taW5uZXItcGFkZGluZy1lbmQ6IDA7XHJcbiAgICAgICAgICAgIGlvbi1sYWJlbHtcclxuICAgICAgICAgICAgICAgIHRleHQtdHJhbnNmb3JtOiBjYXBpdGFsaXplO1xyXG4gICAgICAgICAgICAgICAgZm9udC1zaXplOiAxcmVtO1xyXG4gICAgICAgICAgICAgICAgY29sb3I6ICMyMjI7XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICB9XHJcbiAgICAgICAgaW9uLWl0ZW06Zmlyc3QtY2hpbGR7XHJcbiAgICAgICAgICAgIHBhZGRpbmctbGVmdDogOHB4O1xyXG4gICAgICAgICAgICBtaW4td2lkdGg6ODBweDtcclxuICAgICAgICB9XHJcbiAgICAgICAgaW9uLWl0ZW06bGFzdC1jaGlsZHtcclxuICAgICAgICAgICAgbWluLXdpZHRoOiA4MHB4O1xyXG4gICAgICAgIH1cclxuICAgICAgICAuaWNvbi1yaWdodC1zaWRle1xyXG4gICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xyXG4gICAgICAgIH1cclxuICAgICAgICAuaW9uLXRleHQtZW5ke1xyXG4gICAgICAgICAgICB0ZXh0LWFsaWduOiBlbmQgIWltcG9ydGFudDtcclxuICAgICAgICB9XHJcbiAgICB9XHJcbn0iXX0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/modalContent/terms-condition/terms-condition.component.ts":
+  /*!***************************************************************************!*\
+    !*** ./src/app/modalContent/terms-condition/terms-condition.component.ts ***!
+    \***************************************************************************/
+
+  /*! exports provided: TermsConditionComponent */
+
+  /***/
+  function srcAppModalContentTermsConditionTermsConditionComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "TermsConditionComponent", function () {
+      return TermsConditionComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_services_common_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/app/services/common.service */
+    "./src/app/services/common.service.ts");
+
+    var TermsConditionComponent = /*#__PURE__*/function () {
+      function TermsConditionComponent(commonService) {
+        _classCallCheck(this, TermsConditionComponent);
+
+        this.commonService = commonService;
+      }
+
+      _createClass(TermsConditionComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "closeModal",
+        value: function closeModal() {
+          this.commonService.dismissModal();
+        }
+      }]);
+
+      return TermsConditionComponent;
+    }();
+
+    TermsConditionComponent.ctorParameters = function () {
+      return [{
+        type: src_app_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"]
+      }];
+    };
+
+    TermsConditionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-terms-condition',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./terms-condition.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/modalContent/terms-condition/terms-condition.component.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./terms-condition.component.scss */
+      "./src/app/modalContent/terms-condition/terms-condition.component.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"]])], TermsConditionComponent);
     /***/
   },
 
@@ -10260,7 +10415,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var _this47 = this;
+          var _this48 = this;
 
           // this.submitted = true;
           if (this.userIdentityVerifyForm.invalid) {
@@ -10270,25 +10425,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.commonService.presentLoader();
           this.settingsService.userIndentityVerify(this.userIdentityVerifyForm.value).subscribe(function (data) {
-            _this47.commonService.dismissLoader();
+            _this48.commonService.dismissLoader();
 
             if (data.Record.RecordStatus === 'match') {
-              _this47.settingsService.trilloRecordUpdate().subscribe(function (data) {
+              _this48.settingsService.trilloRecordUpdate().subscribe(function (data) {
                 var loginUserData = JSON.parse(localStorage.getItem('userData'));
                 loginUserData.trilloMatch = 1;
                 localStorage.setItem('userData', JSON.stringify(loginUserData));
               });
 
-              _this47.commonService.dismissModal();
+              _this48.commonService.dismissModal();
 
-              _this47.commonService.presentToast('Record Match');
+              _this48.commonService.presentToast('Record Match');
             } else if (data.Record.RecordStatus === 'undefined') {
-              _this47.commonService.presentToast(data);
+              _this48.commonService.presentToast(data);
             } else {
-              _this47.commonService.presentToast('Record Not Match');
+              _this48.commonService.presentToast('Record Not Match');
             }
           }, function (err) {
-            _this47.commonService.dismissLoader();
+            _this48.commonService.dismissLoader();
           });
         }
       }, {
@@ -10413,15 +10568,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "rename",
         value: function rename() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
-            var _this48 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
+            var _this49 = this;
 
             var alert;
-            return regeneratorRuntime.wrap(function _callee16$(_context16) {
+            return regeneratorRuntime.wrap(function _callee17$(_context17) {
               while (1) {
-                switch (_context16.prev = _context16.next) {
+                switch (_context17.prev = _context17.next) {
                   case 0:
-                    _context16.next = 2;
+                    _context17.next = 2;
                     return this.alertController.create({
                       header: "Rename Playlist",
                       inputs: [{
@@ -10438,20 +10593,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         handler: function handler(blah) {
                           console.log('Confirm Cancel: blah');
 
-                          _this48.commonService.dismissPopover("");
+                          _this49.commonService.dismissPopover("");
                         }
                       }, {
                         text: 'Okay',
                         handler: function handler(data) {
                           if (data.playlistName) {
-                            _this48.musicService.renamePlaylist({
+                            _this49.musicService.renamePlaylist({
                               'playlistName': data.playlistName,
-                              'playlistId': _this48.playlistData.id
+                              'playlistId': _this49.playlistData.id
                             }).subscribe(function (data) {
                               if (data) {
-                                _this48.commonService.presentToast("Playlist renamed.");
+                                _this49.commonService.presentToast("Playlist renamed.");
 
-                                _this48.commonService.dismissPopover(true);
+                                _this49.commonService.dismissPopover(true);
                               }
                             });
                           }
@@ -10460,29 +10615,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    alert = _context16.sent;
+                    alert = _context17.sent;
                     alert.present();
 
                   case 4:
                   case "end":
-                    return _context16.stop();
+                    return _context17.stop();
                 }
               }
-            }, _callee16, this);
+            }, _callee17, this);
           }));
         }
       }, {
         key: "remove",
         value: function remove() {
-          var _this49 = this;
+          var _this50 = this;
 
           this.musicService.removePlaylist({
             'playlistId': this.playlistData.id
           }).subscribe(function (data) {
             if (data) {
-              _this49.commonService.presentToast("Playlist removed.");
+              _this50.commonService.presentToast("Playlist removed.");
 
-              _this49.commonService.dismissPopover("");
+              _this50.commonService.dismissPopover("");
             }
           });
         }
@@ -10597,35 +10752,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PlaylistDropdownComponent, [{
         key: "dismissClick",
         value: function dismissClick() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
-            return regeneratorRuntime.wrap(function _callee17$(_context17) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
+            return regeneratorRuntime.wrap(function _callee18$(_context18) {
               while (1) {
-                switch (_context17.prev = _context17.next) {
+                switch (_context18.prev = _context18.next) {
                   case 0:
-                    _context17.next = 2;
+                    _context18.next = 2;
                     return this.popoverController.dismiss();
 
                   case 2:
                   case "end":
-                    return _context17.stop();
+                    return _context18.stop();
                 }
               }
-            }, _callee17, this);
+            }, _callee18, this);
           }));
         }
       }, {
         key: "newPlaylist",
         value: function newPlaylist() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
-            var _this50 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
+            var _this51 = this;
 
             var alert;
-            return regeneratorRuntime.wrap(function _callee18$(_context18) {
+            return regeneratorRuntime.wrap(function _callee19$(_context19) {
               while (1) {
-                switch (_context18.prev = _context18.next) {
+                switch (_context19.prev = _context19.next) {
                   case 0:
                     this.dismissClick();
-                    _context18.next = 3;
+                    _context19.next = 3;
                     return this.alertController.create({
                       header: "Create New Playlist",
                       inputs: [{
@@ -10645,12 +10800,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         text: 'Okay',
                         handler: function handler(data) {
                           if (data.playlistName) {
-                            _this50.musicService.createPlaylist({
+                            _this51.musicService.createPlaylist({
                               'pname': data.playlistName,
-                              'mid': _this50.mid
+                              'mid': _this51.mid
                             }).subscribe(function (data) {
                               if (data) {
-                                _this50.commonService.presentToast("Song added.");
+                                _this51.commonService.presentToast("Song added.");
                               }
                             });
                           }
@@ -10659,15 +10814,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 3:
-                    alert = _context18.sent;
+                    alert = _context19.sent;
                     alert.present();
 
                   case 5:
                   case "end":
-                    return _context18.stop();
+                    return _context19.stop();
                 }
               }
-            }, _callee18, this);
+            }, _callee19, this);
           }));
         }
       }, {
@@ -10678,7 +10833,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addToList",
         value: function addToList(ev) {
-          var _this51 = this;
+          var _this52 = this;
 
           this.commonService.dismissPopover('');
           console.log(ev);
@@ -10688,12 +10843,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             if (data.status) {
               if (data.status.id) {
-                _this51.commonService.presentToast('Song added to playlist.');
+                _this52.commonService.presentToast('Song added to playlist.');
               } else {
-                _this51.commonService.presentToast(data.status);
+                _this52.commonService.presentToast(data.status);
               }
             } else {
-              _this51.commonService.presentToast('someting went wrong');
+              _this52.commonService.presentToast('someting went wrong');
             }
           });
         }
@@ -11085,29 +11240,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(NotificationModalComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this52 = this;
+          var _this53 = this;
 
           this.profileData = this.navParams.get('profileData');
           this.commonService.presentLoader();
           this.peopleService.getUserNotification({
             'cid': this.profileData.userData.id
           }).subscribe(function (data) {
-            _this52.commonService.dismissLoader();
+            _this53.commonService.dismissLoader();
 
             if (data.status) {
-              _this52.toggleDiscussion = data.status.discussion;
-              _this52.toggleImage = data.status.image;
-              _this52.toggleVideo = data.status.video;
-              _this52.toggleProgram = data.status.program;
+              _this53.toggleDiscussion = data.status.discussion;
+              _this53.toggleImage = data.status.image;
+              _this53.toggleVideo = data.status.video;
+              _this53.toggleProgram = data.status.program;
             }
           }, function (err) {
-            _this52.commonService.dismissLoader();
+            _this53.commonService.dismissLoader();
           });
         }
       }, {
         key: "disableNotification",
         value: function disableNotification(colName, value) {
-          var _this53 = this;
+          var _this54 = this;
 
           this.commonService.presentLoader();
           this.peopleService.userNotification({
@@ -11117,11 +11272,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this53.commonService.dismissLoader();
+            _this54.commonService.dismissLoader();
 
-            _this53.commonService.presentToast(data.toast + " " + _this53.profileData.userData.user_name);
+            _this54.commonService.presentToast(data.toast + " " + _this54.profileData.userData.user_name);
           }, function (err) {
-            _this53.commonService.dismissLoader();
+            _this54.commonService.dismissLoader();
           });
         }
       }, {
@@ -11248,7 +11403,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "removePost",
         value: function removePost() {
-          var _this54 = this;
+          var _this55 = this;
 
           this.commonService.presentLoader();
           this.postService.removePost({
@@ -11256,7 +11411,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this54.commonService.dismissLoader();
+            _this55.commonService.dismissLoader();
 
             if (data.postStatus == true) {}
           });
@@ -11268,7 +11423,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "commentDisable",
         value: function commentDisable() {
-          var _this55 = this;
+          var _this56 = this;
 
           this.commonService.presentLoader();
           this.postService.commentDisable({
@@ -11277,7 +11432,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this55.commonService.dismissLoader();
+            _this56.commonService.dismissLoader();
 
             if (data.postStatus == true) {}
           });
@@ -11632,19 +11787,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this56 = this;
+          var _this57 = this;
 
           this.viewUserId = this.navParamas.get('userId');
           var dataPromise = this.storage.get('userData');
           dataPromise.then(function (data) {
-            _this56.storageData = JSON.parse(data);
-            _this56.userId = _this56.storageData.id;
+            _this57.storageData = JSON.parse(data);
+            _this57.userId = _this57.storageData.id;
           });
           this.peopleViewService.getFollowers(this.viewUserId).subscribe(function (data) {
-            _this56.followers = data.result;
-            _this56.followerFilteredUsers = _this56.followers;
+            _this57.followers = data.result;
+            _this57.followerFilteredUsers = _this57.followers;
 
-            _this56.followers.forEach(function (element, i) {
+            _this57.followers.forEach(function (element, i) {
               if (element.following_user.follower_rel != null) {
                 element.following_user.follow = true;
                 element.following_user["class"] = '';
@@ -11656,7 +11811,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             });
 
-            console.log(_this56.followers);
+            console.log(_this57.followers);
             console.log('followersload');
           });
         }
@@ -11670,19 +11825,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "followUpPeople",
         value: function followUpPeople(folloUpId, status) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
-            var _this57 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
+            var _this58 = this;
 
-            return regeneratorRuntime.wrap(function _callee19$(_context19) {
+            return regeneratorRuntime.wrap(function _callee20$(_context20) {
               while (1) {
-                switch (_context19.prev = _context19.next) {
+                switch (_context20.prev = _context20.next) {
                   case 0:
                     this.peopleViewService.followUpPeople({
                       'followUpId': folloUpId,
                       'status': status
                     }).subscribe(function (data) {
                       if (data.followStatus == 'true') {
-                        _this57.followers.forEach(function (element, i) {
+                        _this58.followers.forEach(function (element, i) {
                           if (element.following_user.id == folloUpId) {
                             element.following_user.follow = false;
                             element.following_user["class"] = 'green text-white';
@@ -11690,7 +11845,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                           }
                         });
                       } else if (data.followStatus == 'false') {
-                        _this57.followers.forEach(function (element, i) {
+                        _this58.followers.forEach(function (element, i) {
                           if (element.following_user.id == folloUpId) {
                             element.following_user.follow = true;
                             element.following_user["class"] = '';
@@ -11699,16 +11854,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         });
                       }
 
-                      console.log(_this57.followers);
+                      console.log(_this58.followers);
                       console.log(' this.followers');
                     });
 
                   case 1:
                   case "end":
-                    return _context19.stop();
+                    return _context20.stop();
                 }
               }
-            }, _callee19, this);
+            }, _callee20, this);
           }));
         } // async unfollow(ev: any) {
         //   const popover = await this.popoverController.create({
@@ -11862,31 +12017,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ionViewWillEnter",
         value: function ionViewWillEnter() {
-          var _this58 = this;
+          var _this59 = this;
 
           this.commonService.presentLoader();
           this.programService.getAdCompanyDetails({
             'adReqId': this.adReqDetails.id
           }).subscribe(function (data) {
-            _this58.commonService.dismissLoader();
+            _this59.commonService.dismissLoader();
 
-            _this58.msgCount = data.data.count;
-            console.log(_this58.msgCount);
-            _this58.adCompanyDetail = data.data.details.filter(function (el, i) {
+            _this59.msgCount = data.data.count;
+            console.log(_this59.msgCount);
+            _this59.adCompanyDetail = data.data.details.filter(function (el, i) {
               if (el.consultant_approval) {
-                _this58.disabled = true;
+                _this59.disabled = true;
               }
 
               return el;
             });
           }, function (err) {
-            _this58.commonService.dismissLoader();
+            _this59.commonService.dismissLoader();
           });
         }
       }, {
         key: "acceptRequest",
         value: function acceptRequest(event) {
-          var _this59 = this;
+          var _this60 = this;
 
           var btn = [{
             text: 'Cancel',
@@ -11900,7 +12055,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             handler: function handler() {
               console.log('Confirm Okay');
 
-              _this59.sendRequest(event);
+              _this60.sendRequest(event);
             }
           }];
           this.commonService.presentAlert('Accept Request', 'Are you sure?', btn, '');
@@ -11908,15 +12063,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "sendRequest",
         value: function sendRequest(event) {
-          var _this60 = this;
+          var _this61 = this;
 
           this.programService.acceptSponsers({
             'acceptId': event,
             'adReqId': this.adReqDetails.id
           }).subscribe(function (data) {
-            _this60.disabled = data.data;
+            _this61.disabled = data.data;
 
-            _this60.closeModal();
+            _this61.closeModal();
           });
         }
       }, {
@@ -12174,7 +12329,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(SponserCommentComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this61 = this;
+          var _this62 = this;
 
           this.commonService.presentLoader();
           this.adDetail = this.navParams.data.adDetails;
@@ -12182,11 +12337,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.programService.getSponserComment({
             'adReqId': this.adDetail.id
           }).subscribe(function (data) {
-            _this61.comment = data.data;
+            _this62.comment = data.data;
 
-            _this61.commonService.dismissLoader();
+            _this62.commonService.dismissLoader();
           }, function (err) {
-            _this61.commonService.dismissLoader();
+            _this62.commonService.dismissLoader();
           });
           console.log(this.adDetail);
         }
@@ -12205,7 +12360,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onClickSubmit",
         value: function onClickSubmit() {
-          var _this62 = this;
+          var _this63 = this;
 
           this.submitted = true;
 
@@ -12217,11 +12372,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               'requestId': this.adDetail.id,
               'comment': this.commentForm.value.comment
             }).subscribe(function (data) {
-              _this62.ngOnInit();
+              _this63.ngOnInit();
 
-              _this62.commonService.dismissLoader();
+              _this63.commonService.dismissLoader();
             }, function (err) {
-              _this62.commonService.dismissLoader();
+              _this63.commonService.dismissLoader();
             });
           }
         }
@@ -12359,7 +12514,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       // },
       // ];
       function EquipmentsComponent(commonService, navParams, modalCtrl, programService) {
-        var _this63 = this;
+        var _this64 = this;
 
         _classCallCheck(this, EquipmentsComponent);
 
@@ -12377,12 +12532,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         console.log(this.equipment);
         this.programService.fetchEquipmentList().subscribe(function (data) {
-          _this63.equipments = data.equipmentList;
+          _this64.equipments = data.equipmentList;
 
-          _this63.equipments.filter(function (el) {
+          _this64.equipments.filter(function (el) {
             console.log(el.id);
 
-            if (_this63.equipment.includes(el.id.toString())) {
+            if (_this64.equipment.includes(el.id.toString())) {
               el.selected = true;
             }
 
@@ -12429,15 +12584,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "openEdit",
         value: function openEdit() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
-            var _this64 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
+            var _this65 = this;
 
             var modal;
-            return regeneratorRuntime.wrap(function _callee20$(_context20) {
+            return regeneratorRuntime.wrap(function _callee21$(_context21) {
               while (1) {
-                switch (_context20.prev = _context20.next) {
+                switch (_context21.prev = _context21.next) {
                   case 0:
-                    _context20.next = 2;
+                    _context21.next = 2;
                     return this.modalCtrl.create({
                       component: _add_program_add_equipments_add_equipments_component__WEBPACK_IMPORTED_MODULE_5__["AddEquipmentsComponent"],
                       cssClass: 'fullModal',
@@ -12448,31 +12603,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    modal = _context20.sent;
+                    modal = _context21.sent;
                     modal.onDidDismiss().then(function (d) {
                       console.log(d);
 
                       if (d.data.length > 0) {
                         // d.data.filter(Boolean);
-                        _this64.equipment = d.data.filter(Boolean);
-                        console.log(_this64.equipment);
+                        _this65.equipment = d.data.filter(Boolean);
+                        console.log(_this65.equipment);
 
-                        _this64.programService.updateEquipmentList({
+                        _this65.programService.updateEquipmentList({
                           "equipmentId": d.data.filter(Boolean),
-                          "programId": _this64.programDetails.id
+                          "programId": _this65.programDetails.id
                         }).subscribe(function (data) {
                           console.log('id update');
                         });
 
                         console.log(d.data.filter(Boolean));
 
-                        _this64.programService.fetchEquipmentList().subscribe(function (data) {
+                        _this65.programService.fetchEquipmentList().subscribe(function (data) {
                           console.log(data);
-                          _this64.equipments = data.equipmentList;
+                          _this65.equipments = data.equipmentList;
 
-                          _this64.equipments.filter(function (el) {
-                            if (_this64.equipment) {
-                              if (_this64.equipment.includes(el.id)) {
+                          _this65.equipments.filter(function (el) {
+                            if (_this65.equipment) {
+                              if (_this65.equipment.includes(el.id)) {
                                 el.selected = true;
                               }
 
@@ -12488,18 +12643,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         console.log('empty');
                       }
                     });
-                    _context20.next = 6;
+                    _context21.next = 6;
                     return modal.present();
 
                   case 6:
-                    return _context20.abrupt("return", _context20.sent);
+                    return _context21.abrupt("return", _context21.sent);
 
                   case 7:
                   case "end":
-                    return _context20.stop();
+                    return _context21.stop();
                 }
               }
-            }, _callee20, this);
+            }, _callee21, this);
           }));
         }
       }]);
@@ -12616,32 +12771,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "delete",
         value: function _delete() {
-          var _this65 = this;
+          var _this66 = this;
 
           this.programService.deleteProgram({
             'programId': this.programId
           }).subscribe(function (data) {
-            _this65.popOver.dismiss();
+            _this66.popOver.dismiss();
           }, function (error) {
-            _this65.popOver.dismiss();
+            _this66.popOver.dismiss();
           });
         }
       }, {
         key: "closeModal",
         value: function closeModal() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
-            return regeneratorRuntime.wrap(function _callee21$(_context21) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee22() {
+            return regeneratorRuntime.wrap(function _callee22$(_context22) {
               while (1) {
-                switch (_context21.prev = _context21.next) {
+                switch (_context22.prev = _context22.next) {
                   case 0:
                     this.popOver.dismiss();
 
                   case 1:
                   case "end":
-                    return _context21.stop();
+                    return _context22.stop();
                 }
               }
-            }, _callee21, this);
+            }, _callee22, this);
           }));
         }
       }]);
@@ -12785,32 +12940,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "recieveUser",
         value: function recieveUser(data) {
-          var _this66 = this;
+          var _this67 = this;
 
           if (data != null) {
             var uId = data.toString().split(',');
             console.log(uId);
             uId.forEach(function (el) {
-              _this66.programService.getEachUserData({
+              _this67.programService.getEachUserData({
                 el: el
               }).subscribe(function (peoples) {
                 console.log(peoples);
 
-                _this66.acceptedData.push({
+                _this67.acceptedData.push({
                   'image': peoples[0].bios.profile_pic,
                   'name': peoples[0].user_name,
                   'id': peoples[0].id
                 });
               });
 
-              console.log(_this66.acceptedData);
+              console.log(_this67.acceptedData);
             });
           }
         }
       }, {
         key: "reload",
         value: function reload(data) {
-          var _this67 = this;
+          var _this68 = this;
 
           this.commonService.presentLoader();
           console.log(data);
@@ -12819,12 +12974,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             var uId = data.split(',');
             console.log(uId);
             uId.forEach(function (el) {
-              _this67.programService.getEachUserData({
+              _this68.programService.getEachUserData({
                 el: el
               }).subscribe(function (peoples) {
                 console.log(peoples);
 
-                _this67.userData.push({
+                _this68.userData.push({
                   'image': peoples[0].bios.profile_pic,
                   'name': peoples[0].user_name,
                   'request_recive': data,
@@ -12833,36 +12988,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 });
               });
 
-              console.log(_this67.userData);
+              console.log(_this68.userData);
             });
           }
 
           this.programService.getProgramById({
             'programId': this.programDetail.id
           }).subscribe(function (data) {
-            _this67.programDetail = data;
-            console.log(_this67.programDetail);
-            _this67.participant = _this67.navParams.data.userList.filter(function (el) {
-              console.log(_this67.programDetail.programData.request_accepted);
+            _this68.programDetail = data;
+            console.log(_this68.programDetail);
+            _this68.participant = _this68.navParams.data.userList.filter(function (el) {
+              console.log(_this68.programDetail.programData.request_accepted);
 
-              if (_this67.programDetail.programData.request_accepted != null) {
+              if (_this68.programDetail.programData.request_accepted != null) {
                 console.log('innnn'); // var 
 
-                if (_this67.programDetail.programData.request_accepted.split(',').includes(el.id.toString())) {
+                if (_this68.programDetail.programData.request_accepted.split(',').includes(el.id.toString())) {
                   console.log('ttt');
                   el.request_accepted = true;
                 }
               }
 
-              console.log(_this67.participant);
+              console.log(_this68.participant);
               return el;
             });
 
-            _this67.commonService.dismissLoader();
+            _this68.commonService.dismissLoader();
           }, function (err) {
-            _this67.commonService.dismissLoader();
+            _this68.commonService.dismissLoader();
 
-            _this67.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this68.commonService.presentToast("Couldnt load data, Something went wrong.");
           });
         }
       }, {
@@ -12873,36 +13028,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "accept",
         value: function accept(event) {
-          var _this68 = this;
+          var _this69 = this;
 
           this.programService.acceptJoinRequest({
             'programId': this.prog_id,
             'userId': event
           }).subscribe(function (data) {
             console.log(data);
-            _this68.acceptedData = [];
+            _this69.acceptedData = [];
 
-            _this68.recieveUser(data.data.request_accepted);
+            _this69.recieveUser(data.data.request_accepted);
 
-            _this68.userData = [];
+            _this69.userData = [];
 
-            _this68.reload(data.data.request_recive); // this.ngOnInit();
+            _this69.reload(data.data.request_recive); // this.ngOnInit();
 
           });
         }
       }, {
         key: "deleteRequest",
         value: function deleteRequest(event) {
-          var _this69 = this;
+          var _this70 = this;
 
           this.programService.deleteJoinRequest({
             'programId': this.prog_id,
             'userId': event
           }).subscribe(function (data) {
             console.log(data);
-            _this69.userData = [];
+            _this70.userData = [];
 
-            _this69.reload(data.data.request_recive); // this.ngOnInit();
+            _this70.reload(data.data.request_recive); // this.ngOnInit();
 
           });
         }
@@ -13019,14 +13174,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "accept",
         value: function accept() {
-          var _this70 = this;
+          var _this71 = this;
 
           this.programService.acceptProgramRequest({
             'programId': this.programid
           }).subscribe(function (data) {
-            _this70.popOver.dismiss();
+            _this71.popOver.dismiss();
           }, function (err) {
-            _this70.popOver.dismiss();
+            _this71.popOver.dismiss();
           });
         }
       }, {
@@ -13195,7 +13350,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this71 = this;
+          var _this72 = this;
 
           this.programDetail = this.navParams.data.programDetail;
           console.log(this.programDetail);
@@ -13221,10 +13376,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
             console.log(data.cloneList[0].non_live_component_fee);
-            _this71.non_live_component_fee = data.cloneList[0].non_live_component_fee;
-            _this71.allProgram = data.cloneList;
+            _this72.non_live_component_fee = data.cloneList[0].non_live_component_fee;
+            _this72.allProgram = data.cloneList;
 
-            _this71.allProgram.filter(function (el) {
+            _this72.allProgram.filter(function (el) {
               el.convertedTime = new Date(el.program_date + 'Z');
               console.log(el.convertedTime);
               console.log(new Date());
@@ -13257,12 +13412,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             });
 
-            _this71.nutritionService.getNutritionById({
+            _this72.nutritionService.getNutritionById({
               'nutriId': nutriArr.toLocaleString()
             }).subscribe(function (ndata) {
-              _this71.nutritionList = ndata.nutritionList;
+              _this72.nutritionList = ndata.nutritionList;
 
-              _this71.nutritionList.forEach(function (el) {
+              _this72.nutritionList.forEach(function (el) {
                 console.log(el.image_path);
                 console.log(el.image_path.split(','));
                 var imgArr = el.image_path.split(','); //  console.log(this.nutritionList[el]);
@@ -13270,18 +13425,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 el.fImage = imgArr[0];
               });
 
-              console.log(_this71.nutritionList);
+              console.log(_this72.nutritionList);
 
-              _this71.commonService.dismissLoader();
+              _this72.commonService.dismissLoader();
             }, function (err) {
-              _this71.commonService.dismissLoader();
+              _this72.commonService.dismissLoader();
 
-              _this71.commonService.presentToast("Couldnt load data, Something went wrong.");
+              _this72.commonService.presentToast("Couldnt load data, Something went wrong.");
             });
           }, function (err) {
-            _this71.commonService.dismissLoader();
+            _this72.commonService.dismissLoader();
 
-            _this71.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this72.commonService.presentToast("Couldnt load data, Something went wrong.");
           });
         }
       }, {
@@ -13307,10 +13462,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "showVideoDetails",
         value: function showVideoDetails(item) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee22() {
-            return regeneratorRuntime.wrap(function _callee22$(_context22) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
+            return regeneratorRuntime.wrap(function _callee23$(_context23) {
               while (1) {
-                switch (_context22.prev = _context22.next) {
+                switch (_context23.prev = _context23.next) {
                   case 0:
                     //   const modal = await this.modalCtrl.create({
                     //    component: ViewVideoDetailComponent,
@@ -13324,10 +13479,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 1:
                   case "end":
-                    return _context22.stop();
+                    return _context23.stop();
                 }
               }
-            }, _callee22, this);
+            }, _callee23, this);
           }));
         }
       }, {
@@ -13341,15 +13496,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addEquipments2",
         value: function addEquipments2(event, item) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
-            var _this72 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee24() {
+            var _this73 = this;
 
             var modal;
-            return regeneratorRuntime.wrap(function _callee23$(_context23) {
+            return regeneratorRuntime.wrap(function _callee24$(_context24) {
               while (1) {
-                switch (_context23.prev = _context23.next) {
+                switch (_context24.prev = _context24.next) {
                   case 0:
-                    _context23.next = 2;
+                    _context24.next = 2;
                     return this.modalCtrl.create({
                       component: _add_program_add_equipments_add_equipments_component__WEBPACK_IMPORTED_MODULE_8__["AddEquipmentsComponent"],
                       cssClass: 'fullModal',
@@ -13360,7 +13515,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    modal = _context23.sent;
+                    modal = _context24.sent;
                     modal.onDidDismiss().then(function (d) {
                       console.log(d); // if (event == 1) {
                       //   this.addEquipments = (d.data);
@@ -13371,21 +13526,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       if (d.data) {
                         console.log('asasd');
 
-                        _this72.ngOnInit();
+                        _this73.ngOnInit();
                       }
                     });
-                    _context23.next = 6;
+                    _context24.next = 6;
                     return modal.present();
 
                   case 6:
-                    return _context23.abrupt("return", _context23.sent);
+                    return _context24.abrupt("return", _context24.sent);
 
                   case 7:
                   case "end":
-                    return _context23.stop();
+                    return _context24.stop();
                 }
               }
-            }, _callee23, this);
+            }, _callee24, this);
           }));
         }
       }]);
@@ -13521,7 +13676,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var AuthService = /*#__PURE__*/function () {
       function AuthService(http, httpErrorHandler, router, storage, platform, toastController, notify, commonService, socket) {
-        var _this73 = this;
+        var _this74 = this;
 
         _classCallCheck(this, AuthService);
 
@@ -13536,7 +13691,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.user = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"](null);
         this.authState = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"](false);
         this.platform.ready().then(function () {
-          _this73.ifLoggedIn();
+          _this74.ifLoggedIn();
         });
         this.handleError = httpErrorHandler.createHandleError('TasksService');
       }
@@ -13604,11 +13759,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "autoLogin",
         value: function autoLogin() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee24() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee25() {
             var data, userData;
-            return regeneratorRuntime.wrap(function _callee24$(_context24) {
+            return regeneratorRuntime.wrap(function _callee25$(_context25) {
               while (1) {
-                switch (_context24.prev = _context24.next) {
+                switch (_context25.prev = _context25.next) {
                   case 0:
                     data = localStorage.getItem('userToken');
                     userData = localStorage.getItem('userData');
@@ -13628,10 +13783,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 4:
                   case "end":
-                    return _context24.stop();
+                    return _context25.stop();
                 }
               }
-            }, _callee24, this);
+            }, _callee25, this);
           }));
         }
       }]);
@@ -14025,11 +14180,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(CheckTutorial, [{
         key: "canLoad",
         value: function canLoad() {
-          var _this74 = this;
+          var _this75 = this;
 
           return this.storage.get('ion_did_tutorial').then(function (res) {
             if (res) {
-              _this74.router.navigate(['/signin']);
+              _this75.router.navigate(['/signin']);
 
               return false;
             } else {
@@ -14196,10 +14351,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getUnreadCountMyProfile",
         value: function getUnreadCountMyProfile() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee25() {
-            return regeneratorRuntime.wrap(function _callee25$(_context25) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
+            return regeneratorRuntime.wrap(function _callee26$(_context26) {
               while (1) {
-                switch (_context25.prev = _context25.next) {
+                switch (_context26.prev = _context26.next) {
                   case 0:
                     this.notification.getUnreadCountMyProfile().subscribe(function (data) {
                       localStorage.setItem('notification', data.status.length);
@@ -14209,24 +14364,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 1:
                   case "end":
-                    return _context25.stop();
+                    return _context26.stop();
                 }
               }
-            }, _callee25, this);
+            }, _callee26, this);
           }));
         }
       }, {
         key: "presentPromptRedirect",
         value: function presentPromptRedirect(title, msg, sendData) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
-            var _this75 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee27() {
+            var _this76 = this;
 
             var alert;
-            return regeneratorRuntime.wrap(function _callee26$(_context26) {
+            return regeneratorRuntime.wrap(function _callee27$(_context27) {
               while (1) {
-                switch (_context26.prev = _context26.next) {
+                switch (_context27.prev = _context27.next) {
                   case 0:
-                    _context26.next = 2;
+                    _context27.next = 2;
                     return this.alertController.create({
                       cssClass: this.cssClass,
                       header: title,
@@ -14245,14 +14400,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       }, {
                         text: 'request',
                         handler: function handler(data) {
-                          _this75.presentLoader();
+                          _this76.presentLoader();
 
                           if (sendData != null && sendData != '') {
                             if (data.groupName != '' && data.groupName != null) {
                               sendData.groupName = data.groupName;
 
-                              _this75.dataService.sendChatRequest(sendData).subscribe(function (data) {
-                                _this75.dismissLoader();
+                              _this76.dataService.sendChatRequest(sendData).subscribe(function (data) {
+                                _this76.dismissLoader();
 
                                 if (data.status == 'success') {
                                   var fileData = {
@@ -14262,65 +14417,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                                   }; // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
 
                                   // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
-                                  _this75.router.navigate(['/chat-room/' + data.requestID + '/' + data.room + '/' + data.type]);
+                                  _this76.router.navigate(['/chat-room/' + data.requestID + '/' + data.room + '/' + data.type]);
                                 } else {
                                   console.log('Somthing wrong');
                                   return false;
                                 }
                               });
                             } else {
-                              _this75.dismissLoader();
+                              _this76.dismissLoader();
 
                               console.log("please enter group name");
                               return false;
                             }
                           } else {
-                            _this75.dismissLoader();
+                            _this76.dismissLoader();
                           }
                         }
                       }]
                     });
 
                   case 2:
-                    alert = _context26.sent;
-                    alert.present();
-
-                  case 4:
-                  case "end":
-                    return _context26.stop();
-                }
-              }
-            }, _callee26, this);
-          }));
-        }
-      }, {
-        key: "presentAlert",
-        value: function presentAlert(title, msg, btns, myCustomClass) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee27() {
-            var alert;
-            return regeneratorRuntime.wrap(function _callee27$(_context27) {
-              while (1) {
-                switch (_context27.prev = _context27.next) {
-                  case 0:
-                    if (myCustomClass != null && myCustomClass != '') {
-                      this.cssClass = myCustomClass;
-                    } else {
-                      this.cssClass = 'custom-alert';
-                    }
-
-                    _context27.next = 3;
-                    return this.alertController.create({
-                      cssClass: this.cssClass,
-                      header: title,
-                      message: msg,
-                      buttons: btns
-                    });
-
-                  case 3:
                     alert = _context27.sent;
                     alert.present();
 
-                  case 5:
+                  case 4:
                   case "end":
                     return _context27.stop();
                 }
@@ -14329,37 +14449,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "redirectUrlWithIdConfirm",
-        value: function redirectUrlWithIdConfirm(title, msg, redirrectUrl, id) {
+        key: "presentAlert",
+        value: function presentAlert(title, msg, btns, myCustomClass) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee28() {
-            var _this76 = this;
-
             var alert;
             return regeneratorRuntime.wrap(function _callee28$(_context28) {
               while (1) {
                 switch (_context28.prev = _context28.next) {
                   case 0:
-                    _context28.next = 2;
+                    if (myCustomClass != null && myCustomClass != '') {
+                      this.cssClass = myCustomClass;
+                    } else {
+                      this.cssClass = 'custom-alert';
+                    }
+
+                    _context28.next = 3;
                     return this.alertController.create({
+                      cssClass: this.cssClass,
                       header: title,
                       message: msg,
-                      backdropDismiss: false,
-                      cssClass: 'custom-alert',
-                      buttons: [{
-                        text: 'Ok',
-                        handler: function handler() {
-                          _this76.router.navigate([redirrectUrl, id]).then(function (e) {
-                            if (e) {} else {}
-                          });
-                        }
-                      }]
+                      buttons: btns
                     });
 
-                  case 2:
+                  case 3:
                     alert = _context28.sent;
                     alert.present();
 
-                  case 4:
+                  case 5:
                   case "end":
                     return _context28.stop();
                 }
@@ -14368,24 +14484,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "presentToast",
-        value: function presentToast(headerdata) {
+        key: "redirectUrlWithIdConfirm",
+        value: function redirectUrlWithIdConfirm(title, msg, redirrectUrl, id) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee29() {
-            var toast;
+            var _this77 = this;
+
+            var alert;
             return regeneratorRuntime.wrap(function _callee29$(_context29) {
               while (1) {
                 switch (_context29.prev = _context29.next) {
                   case 0:
                     _context29.next = 2;
-                    return this.toastController.create({
-                      header: headerdata,
-                      duration: 2000,
-                      position: 'bottom'
+                    return this.alertController.create({
+                      header: title,
+                      message: msg,
+                      backdropDismiss: false,
+                      cssClass: 'custom-alert',
+                      buttons: [{
+                        text: 'Ok',
+                        handler: function handler() {
+                          _this77.router.navigate([redirrectUrl, id]).then(function (e) {
+                            if (e) {} else {}
+                          });
+                        }
+                      }]
                     });
 
                   case 2:
-                    toast = _context29.sent;
-                    toast.present();
+                    alert = _context29.sent;
+                    alert.present();
 
                   case 4:
                   case "end":
@@ -14396,32 +14523,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "presentLoader",
-        value: function presentLoader() {
+        key: "presentToast",
+        value: function presentToast(headerdata) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee30() {
-            var _this77 = this;
-
+            var toast;
             return regeneratorRuntime.wrap(function _callee30$(_context30) {
               while (1) {
                 switch (_context30.prev = _context30.next) {
                   case 0:
-                    this.isLoading = true;
-                    _context30.next = 3;
-                    return this.loadingController.create({
-                      spinner: 'crescent',
-                      // message: 'wait...',
-                      cssClass: 'custom-loader',
-                      translucent: true
-                    }).then(function (a) {
-                      a.present().then(function () {
-                        if (!_this77.isLoading) {
-                          a.dismiss(); // a.dismiss().then(() => console.log('abort presenting loader'));
-                        }
-                      });
+                    _context30.next = 2;
+                    return this.toastController.create({
+                      header: headerdata,
+                      duration: 2000,
+                      position: 'bottom'
                     });
 
-                  case 3:
-                    return _context30.abrupt("return", _context30.sent);
+                  case 2:
+                    toast = _context30.sent;
+                    toast.present();
 
                   case 4:
                   case "end":
@@ -14432,16 +14551,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "dismissLoader",
-        value: function dismissLoader() {
+        key: "presentLoader",
+        value: function presentLoader() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee31() {
+            var _this78 = this;
+
             return regeneratorRuntime.wrap(function _callee31$(_context31) {
               while (1) {
                 switch (_context31.prev = _context31.next) {
                   case 0:
-                    this.isLoading = false;
+                    this.isLoading = true;
                     _context31.next = 3;
-                    return this.loadingController.dismiss();
+                    return this.loadingController.create({
+                      spinner: 'crescent',
+                      // message: 'wait...',
+                      cssClass: 'custom-loader',
+                      translucent: true
+                    }).then(function (a) {
+                      a.present().then(function () {
+                        if (!_this78.isLoading) {
+                          a.dismiss(); // a.dismiss().then(() => console.log('abort presenting loader'));
+                        }
+                      });
+                    });
 
                   case 3:
                     return _context31.abrupt("return", _context31.sent);
@@ -14455,13 +14587,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
+        key: "dismissLoader",
+        value: function dismissLoader() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee32() {
+            return regeneratorRuntime.wrap(function _callee32$(_context32) {
+              while (1) {
+                switch (_context32.prev = _context32.next) {
+                  case 0:
+                    this.isLoading = false;
+                    _context32.next = 3;
+                    return this.loadingController.dismiss();
+
+                  case 3:
+                    return _context32.abrupt("return", _context32.sent);
+
+                  case 4:
+                  case "end":
+                    return _context32.stop();
+                }
+              }
+            }, _callee32, this);
+          }));
+        }
+      }, {
         key: "loggingout",
         value: function loggingout() {
-          var _this78 = this;
+          var _this79 = this;
 
           this.storage.get('userData').then(function (value) {
-            return _this78.settingsService.logout().subscribe(function (data) {
-              _this78.storage.clear();
+            return _this79.settingsService.logout().subscribe(function (data) {
+              _this79.storage.clear();
 
               localStorage.removeItem('userToken');
               localStorage.removeItem('userData');
@@ -14470,15 +14625,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               localStorage.removeItem('notification');
               localStorage.clear;
 
-              _this78.dismissLoader();
+              _this79.dismissLoader();
 
-              _this78.ngOnDestroy();
+              _this79.ngOnDestroy();
 
-              _this78.router.navigateByUrl('/signin');
+              _this79.router.navigateByUrl('/signin');
 
-              _this78.navCtrl.navigateRoot;
+              _this79.navCtrl.navigateRoot;
             }, function (err) {
-              _this78.storage.clear();
+              _this79.storage.clear();
 
               localStorage.removeItem('userToken');
               localStorage.removeItem('userData');
@@ -14498,14 +14653,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "presentModal",
         value: function presentModal(path, classcss, parameters) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee32() {
-            var _this79 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee33() {
+            var _this80 = this;
 
-            return regeneratorRuntime.wrap(function _callee32$(_context32) {
+            return regeneratorRuntime.wrap(function _callee33$(_context33) {
               while (1) {
-                switch (_context32.prev = _context32.next) {
+                switch (_context33.prev = _context33.next) {
                   case 0:
-                    _context32.next = 2;
+                    _context33.next = 2;
                     return this.modalController.create({
                       component: path,
                       cssClass: classcss,
@@ -14514,35 +14669,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    this.modal = _context32.sent;
+                    this.modal = _context33.sent;
                     this.modal.onDidDismiss().then(function (d) {
-                      _this79.modal = null;
-                      _this79.modaldata = d;
+                      _this80.modal = null;
+                      _this80.modaldata = d;
                     });
-                    _context32.next = 6;
+                    _context33.next = 6;
                     return this.modal.present();
 
                   case 6:
-                    return _context32.abrupt("return", _context32.sent);
+                    return _context33.abrupt("return", _context33.sent);
 
                   case 7:
                   case "end":
-                    return _context32.stop();
+                    return _context33.stop();
                 }
               }
-            }, _callee32, this);
+            }, _callee33, this);
           }));
         }
       }, {
         key: "showPopover",
         value: function showPopover(path, classcss, parameters) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee33() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee34() {
             var popover;
-            return regeneratorRuntime.wrap(function _callee33$(_context33) {
+            return regeneratorRuntime.wrap(function _callee34$(_context34) {
               while (1) {
-                switch (_context33.prev = _context33.next) {
+                switch (_context34.prev = _context34.next) {
                   case 0:
-                    _context33.next = 2;
+                    _context34.next = 2;
                     return this.popoverController.create({
                       component: path,
                       translucent: true,
@@ -14552,19 +14707,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    popover = _context33.sent;
-                    _context33.next = 5;
+                    popover = _context34.sent;
+                    _context34.next = 5;
                     return popover.present();
 
                   case 5:
-                    return _context33.abrupt("return", _context33.sent);
+                    return _context34.abrupt("return", _context34.sent);
 
                   case 6:
                   case "end":
-                    return _context33.stop();
+                    return _context34.stop();
                 }
               }
-            }, _callee33, this);
+            }, _callee34, this);
           }));
         }
       }, {
@@ -14589,13 +14744,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var buttons = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
           var numColumns = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
           var numOptions = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 5;
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee34() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee35() {
             var picker;
-            return regeneratorRuntime.wrap(function _callee34$(_context34) {
+            return regeneratorRuntime.wrap(function _callee35$(_context35) {
               while (1) {
-                switch (_context34.prev = _context34.next) {
+                switch (_context35.prev = _context35.next) {
                   case 0:
-                    _context34.next = 2;
+                    _context35.next = 2;
                     return this.pickerController.create({
                       columns: columnOptions,
                       buttons: buttons,
@@ -14603,16 +14758,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    picker = _context34.sent;
-                    _context34.next = 5;
+                    picker = _context35.sent;
+                    _context35.next = 5;
                     return picker.present();
 
                   case 5:
                   case "end":
-                    return _context34.stop();
+                    return _context35.stop();
                 }
               }
-            }, _callee34, this);
+            }, _callee35, this);
           }));
         }
       }, {
@@ -14773,7 +14928,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var HttpErrorHandlerService = /*#__PURE__*/function () {
       function HttpErrorHandlerService(messageService) {
-        var _this80 = this;
+        var _this81 = this;
 
         _classCallCheck(this, HttpErrorHandlerService);
 
@@ -14784,7 +14939,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return function () {
             var operation = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "operation";
             var result = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-            return _this80.handleError(serviceName, operation, result);
+            return _this81.handleError(serviceName, operation, result);
           };
         };
       }
@@ -16580,7 +16735,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this81 = this;
+          var _this82 = this;
 
           console.log('viurja');
           var data = this.navParams.get('data');
@@ -16589,7 +16744,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             'nutriId': data.nutrition_id
           }).subscribe(function (data) {
             console.log(data);
-            _this81.nutritionItem = data.nutritionList.filter(function (el) {
+            _this82.nutritionItem = data.nutritionList.filter(function (el) {
               if (el.ingredients) {
                 el.ingredientsArr = el.ingredients.split(',');
               }
@@ -16600,7 +16755,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               return el;
             });
-            console.log(_this81.nutritionItem);
+            console.log(_this82.nutritionItem);
           });
         }
       }, {

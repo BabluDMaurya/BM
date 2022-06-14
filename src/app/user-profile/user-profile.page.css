@@ -61,8 +61,8 @@
 }
 
 .user-icon {
-  width: 34px;
-  height: 34px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   background: rgba(39, 166, 154, 0.07);
   display: -webkit-box;
@@ -103,6 +103,173 @@ ion-card.ios {
 }
 
 .user-info ion-card {
+  padding: 10px 0px;
+}
+
+.user-info ion-card a {
+  color: #737373;
+}
+
+.ml-0 {
+  margin-left: 0 !important;
+}
+
+.userDisplayName {
+  margin-left: 115px;
+}
+
+.user-profile-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0px 20px;
+}
+
+.user-profile-header ion-text {
+  font-size: 0.8rem;
+  margin-left: 8px;
+}
+
+.user-profile-details {
+  padding: 10px 25px;
+}
+
+.user-details {
+  font-size: 0.9rem;
+}
+
+.primary-color {
+  color: #27a69a;
+  font-size: 1.5rem;
+}
+
+.ABS-info {
+  position: absolute;
+  right: 15px;
+  bottom: 22px;
+}
+
+.ABS-info .item-native .item-inner {
+  border-style: none !important;
+  border-color: #fff !important;
+  border: none !important;
+}
+
+.exclusive-text {
+  text-transform: capitalize;
+  position: absolute;
+  top: 26px;
+  right: -60px;
+  padding: 5px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  color: #fff;
+  text-align: center;
+  width: 200px;
+  background: #27A69A;
+}
+
+.item-card {
+  border-radius: 0px;
+}
+
+.item-header {
+  padding: 15px 15px 15px 15px;
+}
+
+.img-container {
+  padding: 0px;
+}
+
+.item-card {
+  -webkit-margin-end: 0px;
+          margin-inline-end: 0px;
+  -webkit-margin-start: 0px;
+          margin-inline-start: 0px;
+}
+
+.post-image, .post-video {
+  height: calc(100vw - 25px) !important;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.post-thumbnail {
+  border-radius: 0px;
+}
+
+.video-icon {
+  top: 15px;
+  left: 15px;
+  padding: 1px 4px;
+  border-radius: 5px;
+  background: #00000029;
+  font-size: 1.2rem !important;
+}
+
+.post-slider {
+  height: 100%;
+  max-height: none !important;
+  border-radius: 0px;
+}
+
+.post-slider ion-slide {
+  height: 100% !important;
+}
+
+.post-content {
+  padding: 15px;
+}
+
+item-post {
+  margin-bottom: 10px;
+}
+
+.user-info {
+  border-top: 1px solid #cecece;
+}
+
+.pb-10 {
+  padding-bottom: 15px;
+}
+
+.empty-block {
+  width: 90%;
+  margin: auto;
+  height: 200px;
+  border: dotted #cecece;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+h4.text-center {
+  text-align: center;
+}
+
+.btn-primary {
+  padding: 12px 20px;
+  color: #FFF;
+  border-radius: 4px;
+  background-color: #27a69a;
+}
+
+.flex-center {
+  height: 50vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -111,7 +278,88 @@ ion-card.ios {
           align-items: center;
 }
 
-.user-info ion-card a {
-  color: #737373;
+.sec-banner img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.menu-icon {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.userNameBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.userNameBlock .userDisplayName {
+  margin-bottom: 0px;
+  font-size: 20px;
+  margin-top: 12px;
+}
+
+.userNameBlock ion-icon {
+  font-size: 18px;
+  margin-top: 12px;
+  margin-left: 5px;
+}
+
+.user_details {
+  display: block;
+  padding: 0 15px;
+}
+
+.user_time {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.user_time ion-text {
+  font-size: 1.3rem;
+  text-align: center;
+  line-height: 1;
+}
+
+.user_time ion-text p {
+  font-size: 1.3rem;
+  color: #27a69a;
+}
+
+.user_time ion-text span {
+  color: #999;
+  font-size: 0.75rem;
+}
+
+.user_time .ion-no-padding {
+  -webkit-box-flex: 0 !important;
+      -ms-flex: 0 0 calc(calc(2.7 / var(--ion-grid-columns, 12)) * 100%) !important;
+          flex: 0 0 calc(calc(2.7 / var(--ion-grid-columns, 12)) * 100%) !important;
+  width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%) !important;
+  max-width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%) !important;
+  background: #27A69A;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 15px;
+  margin-right: 8px;
+  border-radius: 5px;
+}
+
+.user_time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 5px;
 }
 /*# sourceMappingURL=user-profile.page.css.map */

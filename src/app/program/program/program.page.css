@@ -212,4 +212,106 @@ ion-label.active p {
 .upcomingCard ion-label {
   line-height: 1.5;
 }
+
+.swiper-wrapper .slide-container .weekview-allday-table {
+  display: none !important;
+}
+
+ion-slides.slides-container.md.slides-md.swiper-container.hydrated.swiper-container-initialized.swiper-container-horizontal {
+  background: #27A69A !important;
+}
+
+.table-bordered {
+  border: none !important;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+  border: none !important;
+}
+
+td, th {
+  border: 0 !important;
+}
+
+.calendar {
+  background: #27A69A !important;
+}
+
+::ng-deep .weekview-allday-table {
+  display: none !important;
+}
+
+::ng-deep ion-slides.slides-container.md.slides-md.swiper-container.hydrated.swiper-container-initialized.swiper-container-horizontal {
+  background: #27A69A !important;
+}
+
+::ng-deep td, ::ng-deep th {
+  border: 0 !important;
+}
+
+::ng-deep .table-bordered {
+  border: 0 !important;
+}
+
+::ng-deep .slides-container {
+  color: #fff !important;
+  background: #27A69A !important;
+}
+
+::ng-deep .list-ios {
+  margin-bottom: 0 !important;
+}
+
+::ng-deep .table > thead > tr > th.weekview-header {
+  font-size: 13px !important;
+  font-weight: 500;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+::ng-deep ion-title.ios.title-ios.title-default.hydrated {
+  padding-inline: 0px;
+}
+
+::ng-deep th.weekview-header.text-center.weekview-selected {
+  background: #fff;
+  color: #27a69a;
+}
+
+::ng-deep .calendar-hour-column {
+  display: none !important;
+}
+
+.list-person {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.flex-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+p.text-green {
+  font-size: 14px;
+}
+
+.divider-line {
+  width: 2px;
+  height: 50px;
+  margin: 0 20px;
+  background-color: #000;
+}
+
+.title__div {
+  width: 10%;
+}
+
+.primary-color {
+  color: #27a69a;
+}
 /*# sourceMappingURL=program.page.css.map */

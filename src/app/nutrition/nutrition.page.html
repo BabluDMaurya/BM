@@ -237,14 +237,14 @@
               <ion-list-header class="ion-no-padding min-height-auto">Add Manual Ingredients</ion-list-header>
               <ion-list class="ion-no-padding mb-10" *ngFor="let item of tig.controls; let i = index">
                 <ion-item [formGroup]="item">
-                  <ion-input formControlName="name" placeholder="Enter Ingredients"></ion-input>
+                  <ion-input id="ingredients-input" formControlName="name" placeholder="Enter Ingredients" [(ngModel)]="ingredientInput" ></ion-input>
                   <ion-button class="btn-square green" (click)="removeIngredients(i)" *ngIf="i!=0">
                     <ion-icon ios="ios-remove" md="md-remove"></ion-icon>
                   </ion-button>
                 </ion-item>
               </ion-list>
               
-              <ion-button class="btn-square btn-add green" (click)="addIngredients()">
+              <ion-button class="btn-square btn-add green" (click)="addIngredients(ingredientInput)">
                 <ion-icon ios="ios-add" md="md-add"></ion-icon>
               </ion-button>
             </div>

@@ -32,4 +32,49 @@ p.note {
   text-transform: capitalize;
   padding-top: 5px;
 }
+
+.nutrition-divider {
+  width: 95%;
+  margin: auto;
+  height: 10px;
+  background-color: #27A69A;
+  margin-bottom: 20px;
+}
+
+.nutrition-title {
+  text-transform: capitalize;
+}
+
+.nutrition-flex {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.nutrition-desc {
+  text-align: left;
+  color: #6c6c6c;
+}
+
+.nutrition-slide {
+  height: 210px;
+}
+
+.nutrition-slide .nutrition-image {
+  width: 100% !important;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.image-slide {
+  width: 100% !important;
+  height: 220px;
+}
+
+::ng-deep .nutrition-slides > .swiper-pagination-bullets {
+  bottom: 0;
+}
 /*# sourceMappingURL=nutrition-modal.component.css.map */

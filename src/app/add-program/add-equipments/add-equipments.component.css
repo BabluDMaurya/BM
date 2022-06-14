@@ -13,7 +13,7 @@ ion-card ion-card-content ion-segment {
   margin: 10px 0;
 }
 
-ion-card ion-card-content ion-segment ion-segment-button {
+ion-card ion-card-content ion-segment ion-segment-button, ion-card ion-card-content ion-segment ion-radio-group {
   width: 32%;
   max-width: 130px;
   background: #f3f3f3;
@@ -25,7 +25,7 @@ ion-card ion-card-content ion-segment ion-segment-button {
   overflow: hidden;
 }
 
-ion-card ion-card-content ion-segment ion-segment-button ion-button {
+ion-card ion-card-content ion-segment ion-segment-button ion-button, ion-card ion-card-content ion-segment ion-radio-group ion-button {
   position: absolute;
   top: 0;
   right: 0;
@@ -41,7 +41,7 @@ ion-card ion-card-content ion-segment ion-segment-button ion-button {
   --border-radius:50%;
 }
 
-ion-card ion-card-content ion-segment ion-segment-button:first-child {
+ion-card ion-card-content ion-segment ion-segment-button, ion-card ion-card-content ion-segment ion-radio-group:first-child {
   margin-left: 15px;
 }
 
@@ -72,7 +72,7 @@ ion-slides {
   padding: 0 5px;
 }
 
-.nutriimages-list ion-segment-button {
+.nutriimages-list ion-segment-button, .nutriimages-list ion-radio-group {
   width: 33.3%;
   max-width: 130px;
   border: none;
@@ -81,7 +81,7 @@ ion-slides {
   --padding-end: 0;
 }
 
-.nutriimages-list ion-segment-button img {
+.nutriimages-list ion-segment-button img, .nutriimages-list ion-radio-group img {
   height: 85px;
   margin-bottom: 5px;
   -o-object-fit: cover;
@@ -127,23 +127,12 @@ ion-slides {
   left: 5px;
 }
 
-.checkboxThumb::after {
-  content: '';
-  width: 16px;
-  height: 16px;
-  border: 2px solid #7d7d7d;
-  display: block;
-  border-radius: 50%;
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  background: #FFF;
-}
-
 .nutrition-no-data img {
   width: 60px;
   height: 60px !important;
   margin: 15px;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .nutrition-no-data p {
@@ -176,5 +165,119 @@ ion-slides {
 
 .users-list img:first-child {
   margin-left: 0;
+}
+
+.galleryRadio {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+ion-checkbox {
+  margin-top: 5px !important;
+  margin-left: 5px !important;
+  --border-radius: 50%;
+  --size: 20px;
+  --background: transparent;
+  --checkmark-color: transparent;
+}
+
+img {
+  height: 150px;
+}
+
+.thumb-list ion-item ion-label {
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  background: #f7f7f7;
+  width: 100%;
+  color: #9e9e9e;
+  padding: 5px;
+  text-align: center;
+  padding-left: 30px;
+  padding-right: 20px;
+}
+
+.nutriimages-list ion-label {
+  font-size: 0.75rem;
+  margin: 0;
+  text-transform: capitalize;
+  letter-spacing: 0;
+  position: absolute;
+  bottom: 0;
+  background: #f7f7f7;
+  width: 100%;
+  color: #9e9e9e;
+  padding: 5px;
+  text-align: center;
+}
+
+.infoIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  --background: #26a69a;
+  --box-shadow: none;
+  color: #FFF;
+  --padding-start: 0;
+  --padding-end: 0;
+  height: auto;
+  font-size: 16px;
+  margin: 3px;
+  z-index: 9;
+  --border-radius:50%;
+}
+
+.galleryRadio.video_button {
+  top: unset;
+  height: 20px;
+  bottom: 10px;
+  z-index: 1;
+  width: 100%;
+}
+
+ion-list ion-radio-group {
+  width: 130px !important;
+}
+
+ion-list ion-radio-group ion-item {
+  width: 100%;
+}
+
+.nutriimages-list ion-radio-group img {
+  height: 150px;
+  margin-bottom: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.nutrition-no-data img {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.no-data.nutrition-no-data {
+  display: block !important;
+}
+
+.display-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.min-width-none {
+  min-width: 0px !important;
+}
+
+ion-searchbar {
+  padding-left: 0px !important;
+  text-align: left;
+}
+
+.pX-15 {
+  padding: 0px 15px;
 }
 /*# sourceMappingURL=add-equipments.component.css.map */

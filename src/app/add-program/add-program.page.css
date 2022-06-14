@@ -6,7 +6,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
+  width: auto;
 }
 
 .users-list ion-item {
@@ -436,22 +436,523 @@ ion-list .descriptionItem ion-item {
 }
 
 .calender_green_bottom .ion-margin-start {
-  margin-left: 6px;
-  position: relative !important;
-  top: -12px;
-  right: 0 !important;
+  margin-left: 7px;
+  position: relative;
+  top: -10px;
 }
 
 .green-alram-icon {
   position: absolute;
-  top: 330px;
-  right: 15px;
+  top: 350px;
+  right: 20px;
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  padding: 5px 10px;
 }
 
 .event-detail-container ion-item {
   padding-right: 2rem;
 }
-.dateTimePopUp {
-  display: none;
+
+.showDateTime .datetime-text {
+  display: none !important;
+}
+
+.showDateTime {
+  padding: 0 10px;
+  text-align: center;
+}
+
+ion-datetime#dat {
+  padding: 0 10px;
+  position: relative;
+  left: -12px;
+}
+
+.item .sc-ion-label-md-h {
+  overflow: visible !important;
+}
+
+.counter-box[_ngcontent-pyj-c13] {
+  margin-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100px;
+}
+
+p.text-green.text-center {
+  position: relative;
+  top: 35px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 140px;
+  left: -15px;
+}
+
+.program__card {
+  position: relative;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+ion-icon.ion-margin-start.md.hydrated {
+  top: 0px;
+  width: 1rem;
+  height: 1rem;
+}
+
+ion-icon.ion-margin-start.ios.hydrated {
+  top: 0px;
+}
+
+ion-icon.live-icon.ios.hydrated, ion-icon.live-icon.md.hydrated {
+  font-size: 34px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+ion-title.ios.title-ios.title-default.hydrated {
+  padding: 0 20px;
+}
+
+.list-ios {
+  margin-bottom: 0px;
+}
+
+.live-ion-list-header {
+  -webkit-box-pack: initial;
+      -ms-flex-pack: initial;
+          justify-content: initial;
+}
+
+.live-ion-list-header .divider {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.live-ion-list-header .calender_green_bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.live-ion-list-header .calender_green_bottom ion-icon {
+  font-size: 1.7rem;
+}
+
+.live-event-addition {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #cecece;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.live-event-addition h5 {
+  color: #121212;
+  margin: 0;
+  font-weight: 500;
+}
+
+.live-event-box {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.live-event-box .live-event-head {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #121212;
+}
+
+.live-event-box .live-event-info {
+  padding: 12px 20px 2px 20px;
+  border: 1px solid #cecece;
+  border-radius: 12px;
+  max-height: 100px;
+  overflow-y: scroll;
+}
+
+.live-event-box .live-event-info .live-event-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+.live-event-box .live-event-info .live-event-details p {
+  font-size: 16px;
+  color: #121212;
+}
+
+.live-event-box .live-event-info .live-event-details .small-divider {
+  width: 1.5px;
+  height: 20px;
+  background-color: #555;
+  margin-right: 14px;
+  margin-left: 14px;
+}
+
+.live-event-icon {
+  font-size: 28px;
+  min-width: 80px;
+  color: #555;
+  margin-right: 20px;
+}
+
+.users-list {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.closeIcon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  width: 1.2rem;
+  height: 1.2rem;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.226);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.226);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.close-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0;
+  color: #26a69a;
+}
+
+.fixed {
+  position: fixed !important;
+  z-index: 9 !important;
+  background-color: #fff !important;
+}
+
+.margin-top-md {
+  margin-top: 10%;
+}
+
+form.fixed.ng-untouched.ng-pristine.ng-valid {
+  position: fixed;
+  z-index: 9;
+}
+
+.live-icon {
+  color: transparent;
+}
+
+.toggleDiv {
+  margin-bottom: 2px;
+  width: 50px;
+}
+
+.live::after {
+  content: 'Go Live';
+  color: #26a69a;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 6px 5px;
+  background: #fff;
+  border-radius: 3px;
+  margin-bottom: 2px;
+}
+
+.title {
+  font-size: 13px;
+}
+
+.title span {
+  font-size: 11px;
+  display: block;
+  color: #E7E7E7;
+  margin-bottom: 3px;
+}
+
+.live.active::after {
+  content: 'Live';
+  padding: 6px 7px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-transform: uppercase;
+  background: #FF3A3A;
+}
+
+ion-icon.active {
+  display: block;
+  color: #ff1111;
+}
+
+.width-full {
+  width: 100% !important;
+}
+
+.divider {
+  width: 1.5px;
+  height: 35px;
+  background: #fff;
+}
+
+::ng-deep table {
+  border: 0 !important;
+}
+
+::ng-deep tr {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+::ng-deep th {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+::ng-deep th, ::ng-deep td {
+  border: 0 !important;
+}
+
+::ng-deep td {
+  display: inline-block;
+  margin: 0.2rem !important;
+  padding: 0 !important;
+  width: 37px;
+  height: 37px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+::ng-deep td.monthview-secondary-with-event.text-muted {
+  border-radius: 50% !important;
+}
+
+::ng-deep td.monthview-selected {
+  border-radius: 50% !important;
+}
+
+::ng-deep span.event-detail {
+  overflow: hidden !important;
+  max-width: 50vw;
+}
+
+::ng-deep span.monthview-eventdetail-timecolumn {
+  min-width: 100px !important;
+  width: 100px !important;
+}
+
+::ng-deep .item-native {
+  -webkit-padding-start: 0 !important;
+          padding-inline-start: 0 !important;
+}
+
+::ng-deep .event-detail-container ion-item {
+  --padding-end: 40px !important;
+}
+
+ion-list-header.ion-padding-horizontal.green.text-white.md.hydrated {
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+
+ion-list.width-full.md.list-md.hydrated {
+  border-radius: 4px;
+}
+
+ion-list-header.ion-padding-horizontal.green.text-white.ios.hydrated {
+  padding-bottom: 12px;
+  padding-top: 12px;
+  text-transform: initial;
+  letter-spacing: 0px;
+}
+
+ion-list.width-full.ios.list-ios.hydrated {
+  border-radius: 4px;
+}
+
+::ng-deep table {
+  border: 0 !important;
+}
+
+::ng-deep tr {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+::ng-deep th {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+::ng-deep th, ::ng-deep td {
+  border: 0 !important;
+}
+
+::ng-deep td {
+  display: inline-block;
+  margin: 0.2rem !important;
+  padding: 0 !important;
+  width: 37px;
+  height: 37px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+::ng-deep td.monthview-secondary-with-event.text-muted {
+  border-radius: 50% !important;
+}
+
+::ng-deep td.monthview-selected {
+  border-radius: 50% !important;
+}
+
+::ng-deep span.event-detail {
+  overflow: hidden !important;
+  max-width: 50vw;
+}
+
+::ng-deep span.monthview-eventdetail-timecolumn {
+  min-width: 100px !important;
+  width: 100px !important;
+}
+
+::ng-deep .item-native {
+  -webkit-padding-start: 0 !important;
+          padding-inline-start: 0 !important;
+}
+
+::ng-deep .event-detail-container ion-item {
+  --padding-end: 40px !important;
+  --min-height: 25px !important;
+}
+
+::ng-deep .monthview-container {
+  height: auto !important;
+}
+
+::ng-deep .calendar-hour-column {
+  display: none !important;
+}
+
+::ng-deep .weekview-container {
+  height: auto !important;
+}
+
+::ng-deep .weekview-allday-table {
+  display: none !important;
+}
+
+::ng-deep ion-slides.slides-container.md.slides-md.swiper-container.hydrated.swiper-container-initialized.swiper-container-horizontal {
+  background: #27A69A !important;
+}
+
+::ng-deep td, ::ng-deep th {
+  border: 0 !important;
+}
+
+::ng-deep .table-bordered {
+  border: 0 !important;
+  border-bottom: 1px solid #cecece !important;
+}
+
+::ng-deep .slides-container {
+  color: #fff !important;
+  background: #27A69A !important;
+}
+
+::ng-deep .list-ios {
+  margin-bottom: 0 !important;
+}
+
+::ng-deep .table > thead > tr > th.weekview-header {
+  font-size: 13px !important;
+  font-weight: 500;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+::ng-deep ion-title.ios.title-ios.title-default.hydrated {
+  padding-inline: 0px;
+}
+
+::ng-deep th.weekview-header.text-center {
+  background-color: #fff;
+  color: #121212;
+}
+
+::ng-deep th.weekview-header.text-center.weekview-selected {
+  background-color: #27a69a;
+  color: #fff;
+}
+
+::ng-deep table.table.table-bordered.table-fixed.weekview-header thead {
+  background-color: #fff;
+}
+
+.toggle-cal {
+  color: #121212;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 /*# sourceMappingURL=add-program.page.css.map */

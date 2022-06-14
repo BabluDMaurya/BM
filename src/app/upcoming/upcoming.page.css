@@ -1,0 +1,25 @@
+.upcoming-card {
+  width: 90%;
+  -webkit-margin-start: 5% !important;
+          margin-inline-start: 5% !important;
+  -webkit-margin-end: 5% !important;
+          margin-inline-end: 5% !important;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+span.list-name.d-block {
+  margin-bottom: 5px;
+}
+
+.action-links {
+  margin-left: 10px;
+}
+
+.add-program {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+}
+/*# sourceMappingURL=upcoming.page.css.map */

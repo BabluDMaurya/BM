@@ -193,6 +193,7 @@ export class AddProgramPage implements OnInit {
    * function to create add program form with validation.
    */
   openStart(i) {
+    // this.sTime.setValue(null);
     this.indexForLive = i;
     this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
     if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
@@ -915,7 +916,7 @@ export class AddProgramPage implements OnInit {
         //   return false;
       }
     });
-    
+
     this.minutes = '';
     this.hours = '';
     console.log("this.myDate");
@@ -939,7 +940,7 @@ export class AddProgramPage implements OnInit {
     console.log('time', time);
   }
 
-  
+
   formatAMPM(date) {
     var hours = date[0];
     var minutes = date[1];

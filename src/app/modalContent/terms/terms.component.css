@@ -1,1 +1,79 @@
-/* No CSS *//*# sourceMappingURL=terms.component.css.map */
+.top-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50px;
+  max-height: 48px;
+  min-height: 48px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  background: #fff;
+}
+
+.top-header ion-icon {
+  font-size: 1.75rem;
+  color: #222;
+  margin: 0;
+}
+
+.top-header .top-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.top-header .three-block {
+  text-align: center;
+  padding: 5px 0;
+}
+
+.top-header .three-block ion-item {
+  --inner-border-width: 0px 0px 0px 0px;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+.top-header .three-block ion-item ion-label {
+  text-transform: capitalize;
+  font-size: 1rem;
+  color: #222;
+}
+
+.top-header .three-block ion-item:first-child {
+  padding-left: 8px;
+  min-width: 80px;
+}
+
+.top-header .three-block ion-item:last-child {
+  min-width: 80px;
+}
+
+.top-header .three-block .icon-right-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.top-header .three-block .ion-text-end {
+  text-align: end !important;
+}
+/*# sourceMappingURL=terms.component.css.map */

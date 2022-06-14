@@ -83,12 +83,12 @@ ion-card ion-card-content ion-segment ion-segment-button {
   --padding-end: 0;
   border-radius: 4px;
   overflow: hidden;
-  height: 110px;
+  height: auto;
   --color-checked: transparent;
 }
 
 ion-card ion-card-content ion-segment ion-segment-button img {
-  height: 85px;
+  height: 100%;
   margin-bottom: 5px;
   -o-object-fit: cover;
      object-fit: cover;
@@ -128,5 +128,49 @@ ion-skeleton-text.grey-header {
 
 .nutrition-no-data {
   height: calc(100vh - 320px);
+}
+
+ion-segment {
+  margin-right: 10px;
+}
+
+ion-segment-button {
+  height: 200px;
+}
+
+.checkboxThumb {
+  width: 100%;
+  height: 170px;
+}
+
+.item-image {
+  width: 100%;
+  height: 80%;
+}
+
+.item-no-image {
+  height: 80%;
+}
+
+.item-label-title {
+  width: 100%;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+}
+
+.item-label-title ion-label {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.search-bar {
+  margin-bottom: 0px;
 }
 /*# sourceMappingURL=nutrition-list.page.css.map */

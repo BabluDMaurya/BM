@@ -2488,6 +2488,13 @@ ion-select {
   margin: 0;
   margin-bottom: 15px;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100px;
 }
 
 .counter-box ion-text {
@@ -2743,7 +2750,7 @@ ion-button {
 }
 
 .error-message {
-  color: #2bbbad;
+  color: #ee2c2c;
   display: block;
   text-align: left;
 }
@@ -2877,7 +2884,7 @@ ion-button {
 
 .login-form .error-message {
   left: 0;
-  color: #2bbbad;
+  color: #ee2c2c;
   display: block;
   text-align: left;
 }
@@ -3715,5 +3722,40 @@ ion-badge {
 
 .list-inf .input-wrapper {
   display: block;
+}
+
+.showDateTime .datetime-text {
+  display: none !important;
+}
+
+.counter-box[_ngcontent-pyj-c13] {
+  margin-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100px;
+}
+
+p.text-green.text-center {
+  position: relative;
+  top: 35px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 140px;
+  left: -15px;
+}
+
+ion-col.ion-no-padding.mt-15.md.hydrated {
+  position: absolute;
+}
+
+.nutrition-left {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=app.component.css.map */

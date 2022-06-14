@@ -89,6 +89,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ionic2_calendar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ionic2-calendar */ "./node_modules/ionic2-calendar/index.js");
 /* harmony import */ var _profile_components_modules__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../profile/components.modules */ "./src/app/profile/components.modules.ts");
 /* harmony import */ var _add_program_calender_month_week_time_calender_month_week_time_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./../add-program/calender-month-week-time/calender-month-week-time.component */ "./src/app/add-program/calender-month-week-time/calender-month-week-time.component.ts");
+/* harmony import */ var src_app_modalContent_terms_condition_terms_condition_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/modalContent/terms-condition/terms-condition.component */ "./src/app/modalContent/terms-condition/terms-condition.component.ts");
 
 
 
@@ -98,6 +99,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // import { ViewVideoDetailComponent } from './../add-program/view-video-detail/view-video-detail.component';
+
 
 
 
@@ -116,8 +118,8 @@ AddProgramPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _profile_components_modules__WEBPACK_IMPORTED_MODULE_10__["ComponentModule"]
         ],
         declarations: [_add_program_page__WEBPACK_IMPORTED_MODULE_8__["AddProgramPage"],
-            _audio_player_program_audio_player_program_component__WEBPACK_IMPORTED_MODULE_6__["AudioPlayerProgramComponent"], _add_program_program_nutrition_detail_modal_program_nutrition_detail_modal_component__WEBPACK_IMPORTED_MODULE_7__["ProgramNutritionDetailModalComponent"], _add_program_calender_month_week_time_calender_month_week_time_component__WEBPACK_IMPORTED_MODULE_11__["CalenderMonthWeekTimeComponent"]],
-        entryComponents: [_add_program_program_nutrition_detail_modal_program_nutrition_detail_modal_component__WEBPACK_IMPORTED_MODULE_7__["ProgramNutritionDetailModalComponent"], _add_program_calender_month_week_time_calender_month_week_time_component__WEBPACK_IMPORTED_MODULE_11__["CalenderMonthWeekTimeComponent"]]
+            _audio_player_program_audio_player_program_component__WEBPACK_IMPORTED_MODULE_6__["AudioPlayerProgramComponent"], _add_program_program_nutrition_detail_modal_program_nutrition_detail_modal_component__WEBPACK_IMPORTED_MODULE_7__["ProgramNutritionDetailModalComponent"], _add_program_calender_month_week_time_calender_month_week_time_component__WEBPACK_IMPORTED_MODULE_11__["CalenderMonthWeekTimeComponent"], src_app_modalContent_terms_condition_terms_condition_component__WEBPACK_IMPORTED_MODULE_12__["TermsConditionComponent"]],
+        entryComponents: [_add_program_program_nutrition_detail_modal_program_nutrition_detail_modal_component__WEBPACK_IMPORTED_MODULE_7__["ProgramNutritionDetailModalComponent"], _add_program_calender_month_week_time_calender_month_week_time_component__WEBPACK_IMPORTED_MODULE_11__["CalenderMonthWeekTimeComponent"], src_app_modalContent_terms_condition_terms_condition_component__WEBPACK_IMPORTED_MODULE_12__["TermsConditionComponent"]]
     })
 ], AddProgramPageModule);
 
@@ -350,6 +352,7 @@ let AddProgramPage = class AddProgramPage {
      * function to create add program form with validation.
      */
     openStart(i) {
+        // this.sTime.setValue(null);
         this.indexForLive = i;
         this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
         if (this.repetatedDateCopy[this.indexForLive].is_live == true) {

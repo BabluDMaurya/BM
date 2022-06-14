@@ -1,4 +1,42 @@
 .component-refresher {
   top: -110px;
 }
+
+.item-card, .video-card {
+  -webkit-margin-start: 0px;
+          margin-inline-start: 0px;
+  -webkit-margin-end: 0px;
+          margin-inline-end: 0px;
+}
+
+.item-card .item-header, .item-card .card-head, .video-card .item-header, .video-card .card-head {
+  padding: 15px;
+}
+
+.item-card .item-header .header-right, .item-card .card-head .header-right, .video-card .item-header .header-right, .video-card .card-head .header-right {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.item-card .item-content ion-thumbnail, .video-card .item-content ion-thumbnail {
+  height: calc(100vw - 30px);
+}
+
+.item-card .item-content ion-thumbnail .post-slider, .video-card .item-content ion-thumbnail .post-slider {
+  max-height: none;
+  height: 100%;
+}
+
+.item-card .item-content ion-thumbnail .post-slider ion-slide, .video-card .item-content ion-thumbnail .post-slider ion-slide {
+  height: 100%;
+}
+
+.item-card .item-content ion-thumbnail img, .video-card .item-content ion-thumbnail img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
 /*# sourceMappingURL=post-tab.component.css.map */

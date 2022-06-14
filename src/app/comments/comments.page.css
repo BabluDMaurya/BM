@@ -30,6 +30,22 @@ h2 {
   border: none;
 }
 
+.comment::-webkit-input-placeholder {
+  font-size: 16px;
+}
+
+.comment:-ms-input-placeholder {
+  font-size: 16px;
+}
+
+.comment::-ms-input-placeholder {
+  font-size: 16px;
+}
+
+.comment::placeholder {
+  font-size: 16px;
+}
+
 ion-list {
   margin-bottom: 56px;
 }
@@ -65,5 +81,25 @@ ion-list > ion-list {
 .sticky-footer form ion-item .send-img {
   width: 26px;
   margin-left: 10px;
+}
+
+.comment-item h2 {
+  display: inline;
+}
+
+.comment-item .comment-links {
+  margin-top: 5px;
+}
+
+.not-ellipsis {
+  text-overflow: initial;
+  white-space: normal;
+}
+
+.not-ellipsis p {
+  line-height: 1.2;
+  color: #3d3d3d;
+  display: inline;
+  margin-left: 5px;
 }
 /*# sourceMappingURL=comments.page.css.map */

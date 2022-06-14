@@ -1,0 +1,296 @@
+.right-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.right-div .min-width-none {
+  min-width: 0px !important;
+}
+
+.right-div .pl-8 {
+  padding-left: 8px !important;
+}
+
+.ionic-divider {
+  -webkit-padding-start: 0px !important;
+          padding-inline-start: 0px !important;
+  -webkit-padding-end: 0px !important;
+          padding-inline-end: 0px !important;
+}
+
+.ionic-divider .three-tabs ion-segment ion-segment-button {
+  width: auto;
+}
+
+.ionic-divider ion-segment-button {
+  min-height: 38px;
+  color: #000;
+  text-transform: capitalize;
+  letter-spacing: 0;
+}
+
+.ionic-divider ion-segment-button .ionic-icon {
+  font-size: 2rem !important;
+}
+
+.ionic-divider ion-segment-button .live-icon {
+  padding: 5px 10px;
+  background: #555;
+  color: #fff;
+  border-radius: 20px;
+}
+
+.ionic-divider ion-segment-button .live-icon span {
+  font-size: 10px;
+  color: #fff;
+}
+
+ion-segment-button.segment-button-checked {
+  background: #27a69a;
+  --indicator-color-checked: #27a69a;
+  color: #FFF;
+}
+
+ion-segment-button.segment-button-checked .live-icon {
+  background: #27a69a;
+}
+
+ion-segment-button.segment-button-checked .live-icon span {
+  color: #fff !important;
+}
+
+.border-bot {
+  border-bottom: 1px solid #cecece;
+}
+
+.program-live-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: 10px;
+}
+
+.program-live-box .program-live-timer p {
+  font-size: 14px;
+  color: #eb0000;
+  margin-top: 3px;
+}
+
+.program-live-box .program-live-btn button {
+  background: #eb0000;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 15px;
+}
+
+.program-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 18px 12px;
+}
+
+.program-card ion-avatar {
+  margin-right: 15px;
+}
+
+.program-card .program-info {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.program-card .program-info h6 {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  color: #121212;
+}
+
+.program-card .program-info span {
+  color: #555;
+}
+
+.program-card .program-info p {
+  font-size: 12px;
+  color: #27a69a;
+  margin-top: 3px;
+}
+
+.program-card .ionic-icon {
+  color: #555;
+  margin-right: 20px;
+  margin-left: 15px;
+  font-size: 24px;
+}
+
+.program-card .program-type {
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+::ng-deep table {
+  border: 0 !important;
+}
+
+::ng-deep tr {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+::ng-deep th {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+::ng-deep th, ::ng-deep td {
+  border: 0 !important;
+}
+
+::ng-deep td {
+  display: inline-block;
+  margin: 0.2rem !important;
+  padding: 0 !important;
+  width: 37px;
+  height: 37px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+::ng-deep td.monthview-secondary-with-event.text-muted {
+  border-radius: 50% !important;
+}
+
+::ng-deep td.monthview-selected {
+  border-radius: 50% !important;
+}
+
+::ng-deep span.event-detail {
+  overflow: hidden !important;
+  max-width: 50vw;
+}
+
+::ng-deep span.monthview-eventdetail-timecolumn {
+  min-width: 100px !important;
+  width: 100px !important;
+}
+
+::ng-deep .item-native {
+  -webkit-padding-start: 0 !important;
+          padding-inline-start: 0 !important;
+}
+
+::ng-deep .event-detail-container {
+  display: none;
+}
+
+::ng-deep .event-detail-container ion-item {
+  --padding-end: 40px !important;
+  display: none;
+}
+
+::ng-deep .monthview-container {
+  height: auto !important;
+}
+
+::ng-deep .calendar-hour-column {
+  display: none !important;
+}
+
+::ng-deep .weekview-container {
+  height: auto !important;
+}
+
+::ng-deep .weekview-allday-table {
+  display: none !important;
+}
+
+::ng-deep ion-slides.slides-container.md.slides-md.swiper-container.hydrated.swiper-container-initialized.swiper-container-horizontal {
+  background: #27A69A !important;
+}
+
+::ng-deep td, ::ng-deep th {
+  border: 0 !important;
+}
+
+::ng-deep .table-bordered {
+  border: 0 !important;
+  border-bottom: 1px solid #cecece !important;
+}
+
+::ng-deep .slides-container {
+  color: #fff !important;
+  background: #27A69A !important;
+}
+
+::ng-deep .list-ios {
+  margin-bottom: 0 !important;
+}
+
+::ng-deep .table > thead > tr > th.weekview-header {
+  font-size: 13px !important;
+  font-weight: 500;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+::ng-deep ion-title.ios.title-ios.title-default.hydrated {
+  padding-inline: 0px;
+}
+
+::ng-deep th.weekview-header.text-center {
+  background-color: #fff;
+  color: #121212;
+}
+
+::ng-deep th.weekview-header.text-center.weekview-selected {
+  background-color: #27a69a;
+  color: #fff;
+}
+
+::ng-deep table.table.table-bordered.table-fixed.weekview-header thead {
+  background-color: #fff;
+}
+
+.toggle-cal {
+  color: #121212;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.segment-button-checked .live-icon {
+  background-color: #27a69a !important;
+}
+
+.event-detail-container.md.list-md.hydrated {
+  display: none !important;
+}
+
+.no-data {
+  height: 77vh;
+}
+/*# sourceMappingURL=new-schedule-program.page.css.map */
