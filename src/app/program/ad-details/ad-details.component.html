@@ -11,33 +11,38 @@
     <ion-item class="icon-right-side ion-text-end" slot="end"></ion-item>
   </ion-list>
 </ion-header>
-<ion-content class="main_content"> 
-  
+<ion-content class="main_content">
+
   <div *ngIf="adCompanyDetail?.length > 0; else no_content;">
-    <ion-row class="counter-box ion-padding" >
+    <ion-row class="counter-box ion-padding">
       <ion-col size="12">
         <p>Accept Sponsership Before Going Live OR Other Common Ad Will Be Shown</p>
       </ion-col>
     </ion-row>
-  <ion-list lines="none" class="item-list ion-no-padding" *ngFor="let item of adCompanyDetail; let i =index" >
-    <ion-list-header class="ion-padding-horizontal green text-white">
-        {{item?.company_name}}
-      <div>
-        <ion-icon name="logo-usd" class="ion-margin-start" ></ion-icon>{{item?.amount}}
-        <ion-icon ios="ios-information-circle" md="md-information-circle" (click)="showSponsersContent(item)"></ion-icon> 
-      </div> 
-    </ion-list-header>
-    <ion-item class="ion-no-padding item-card">
-      <h3 class="list-person"> {{item?.ad_description}}</h3>
-      <div slot="end">
-        <ion-button class="accept-btn " (click)="acceptRequest(item?.id)" *ngIf="!disabled"  >Accept</ion-button>
-      <ion-button (click)="acceptRequest(item?.id)" class="accept-btn"  *ngIf="disabled && item?.consultant_approval" [disabled] = 'true'>Accepted</ion-button>
-      <ion-icon ios="ios-chatbubbles" md="md-chatbubbles" (click)="showSponsersChat(item)" style="position: relative;top: 7px;" ></ion-icon>{{msgCount[i]?.unread}}
-      </div>
-      
-    </ion-item>
+    <ion-list lines="none" class="item-list ion-no-padding" *ngFor="let item of adCompanyDetail; let i =index">
+      <ion-list-header class="ion-padding-horizontal green text-white">
+        {{item?.company_name}} - {{item?.adv_role == '1' ? 'pre role' : 'sponsorship ads'}}
+        <div>
+          <ion-icon name="logo-usd" class="ion-margin-start"></ion-icon>{{item?.amount}}
+          <ion-icon ios="ios-information-circle" md="md-information-circle" (click)="showSponsersContent(item)">
+          </ion-icon>
+        </div>
+      </ion-list-header>
+      <ion-item class="ion-no-padding item-card">
+        <h3 class="list-person"> {{item?.ad_description}}</h3>
+        <div slot="end">
+          <ion-button class="accept-btn " (click)="acceptRequest(item?.id)" *ngIf="!disabled">Accept</ion-button>
+          <ion-button (click)="acceptRequest(item?.id)" class="accept-btn" *ngIf="disabled && item?.consultant_approval"
+            [disabled]='true'>Accepted</ion-button>
+          <ion-icon ios="ios-chatbubbles" md="md-chatbubbles" (click)="showSponsersChat(item)"
+            style="position: relative;top: 7px;"></ion-icon>{{msgCount[i]?.unread}}
+        </div>
 
-  </ion-list>
+      </ion-item>
+
+    </ion-list>
   </div>
-  <ng-template #no_content><div >No bid for this program yet.</div></ng-template>
+  <ng-template #no_content>
+    <div>No bid for this program yet.</div>
+  </ng-template>
 </ion-content>
