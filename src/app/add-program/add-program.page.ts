@@ -193,7 +193,6 @@ export class AddProgramPage implements OnInit {
    * function to create add program form with validation.
    */
   openStart(i) {
-    // this.sTime.setValue(null);
     this.indexForLive = i;
     this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
     if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
