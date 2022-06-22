@@ -84,7 +84,8 @@ export class NewProgramInnerPage implements OnInit {
   ];
   upcomingList: any;
   equipmentsList: any;
-  selesctedEquipment: [];
+  selesctedEquipmentId: [];
+  selesctedEquipments: [];
   equipmentsData: any;
   constructor(public commonService: CommonService,
     public navCtrl: NavController,
@@ -437,25 +438,25 @@ export class NewProgramInnerPage implements OnInit {
         this.commonService.presentToast("Couldnt load data, Something went wrong.");
       });
 
-    this.programService.fetchEquipmentList().subscribe((data) => {
-      console.log(this.equipmentsData);
-      console.log(data.equipmentList)
+    this.programService.fetchEquipmentList({ 'programId': this.programId }).subscribe((data) => {
+
       this.equipmentsList = data.equipmentList;
+      console.log(this.equipmentsList);
 
-      this.equipmentsList.filter(el => {
+      // this.equipmentsList.filter(el => {
 
-        if (this.equipmentsList) {
-          if ((this.equipmentsData).includes(el.id)) {
-            console.log('success');
-            console.log(this.selesctedEquipment);
-            el.selected = true;
-            this.selesctedEquipment = el;
-          }
-          return el
-        }
-        console.log(this.selesctedEquipment, 'selesctedEquipment');
-        console.log(this.equipmentsData);
-      })
+      //   if (this.equipmentsList) {
+      //     if ((this.equipmentsData).includes(el.id)) {
+      //       console.log('success');
+      //       console.log(this.selesctedEquipment);
+      //       el.selected = true;
+      //       this.selesctedEquipment = el;
+      //     }
+      //     return el
+      //   }
+      //   console.log(this.selesctedEquipment, 'selesctedEquipment');
+      //   console.log(this.equipmentsData);
+      // })
     });
   }
   showSchedule(event) {

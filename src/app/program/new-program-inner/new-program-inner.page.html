@@ -212,7 +212,7 @@
                 <ion-item>
                   <ion-slides [options]="slideOpts" class="ion-padding-vertical ion-margin-bottom">
                     <ion-slide class="program-slides" *ngFor="let equp of equipmentsList">
-                      <div class="container-flex" *ngIf="equp.selected">
+                      <div class="container-flex">
                         <div class="img-cont">
                           <img src="{{equipmentPicPath}}{{equp.equipment_pic}}" alt="">
                         </div>
