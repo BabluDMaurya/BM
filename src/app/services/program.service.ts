@@ -164,10 +164,15 @@ export class ProgramService {
   getEnxData(data) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/get_enx_data', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getEnxData', data)));
   }
-  fetchEquipmentList(data): Observable<any> {
+  fetchEquipmentList(): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/fetchEquipmentList', null, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('fetchEquipmentList')));
+  }
+  fetchSelectedEquipmentList(data): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/fetchSelectedEquipmentList', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('fetchSelectedEquipmentList', data)));
   }
-
+  fetchAllSelectedEquipmentList(data): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/fetchAllSelectedEquipmentList', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('fetchAllSelectedEquipmentList', data)));
+  }
   updateProgramFees(data: any): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/updateProgramFees', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('updateProgramFees', data)));
   }

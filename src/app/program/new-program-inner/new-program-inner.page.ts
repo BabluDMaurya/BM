@@ -438,25 +438,9 @@ export class NewProgramInnerPage implements OnInit {
         this.commonService.presentToast("Couldnt load data, Something went wrong.");
       });
 
-    this.programService.fetchEquipmentList({ 'programId': this.programId }).subscribe((data) => {
-
+    this.programService.fetchSelectedEquipmentList({ 'programId': this.programId }).subscribe((data) => {
+      console.log(data);
       this.equipmentsList = data.equipmentList;
-      console.log(this.equipmentsList);
-
-      // this.equipmentsList.filter(el => {
-
-      //   if (this.equipmentsList) {
-      //     if ((this.equipmentsData).includes(el.id)) {
-      //       console.log('success');
-      //       console.log(this.selesctedEquipment);
-      //       el.selected = true;
-      //       this.selesctedEquipment = el;
-      //     }
-      //     return el
-      //   }
-      //   console.log(this.selesctedEquipment, 'selesctedEquipment');
-      //   console.log(this.equipmentsData);
-      // })
     });
   }
   showSchedule(event) {

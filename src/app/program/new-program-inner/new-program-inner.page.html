@@ -211,18 +211,22 @@
                 <h5 class="ion-padding-horizontal">Equipments</h5>
                 <ion-item>
                   <ion-slides [options]="slideOpts" class="ion-padding-vertical ion-margin-bottom">
-                    <ion-slide class="program-slides" *ngFor="let equp of equipmentsList">
+                    <ion-slide class="program-slides" *ngFor="let equp of equipmentsList; index as i">
                       <div class="container-flex">
                         <div class="img-cont">
                           <img src="{{equipmentPicPath}}{{equp.equipment_pic}}" alt="">
                         </div>
                         <span class="equipment-label">{{equp.equipment_name}}</span>
                       </div>
-
+                      <!-- <div class="container-flex" #seeMore>
+                        See More
+                      </div> -->
                     </ion-slide>
-                    <!-- <div class="container-flex" style="height: 100%;">
-                      <ion-label class="">see more</ion-label>
-                    </div> -->
+                    <ion-slide class="program-slides" *ngIf="equipmentsList?.length > 2" (click)="equipments()">
+                      <div class="container-flex" style="height: 100%;">
+                        <ion-label class="">See more</ion-label>
+                      </div>
+                    </ion-slide>
                   </ion-slides>
 
 
