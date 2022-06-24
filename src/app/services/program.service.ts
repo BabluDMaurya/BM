@@ -232,4 +232,8 @@ export class ProgramService {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getAllLivePrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getAllLivePrograms', formData)));
   }
 
+  getPricing() {
+    return this.http.get<any>(Config.ApiUrl + 'api/auth/getPricing', this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getPricing')));
+  }
+
 }

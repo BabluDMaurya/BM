@@ -13,40 +13,37 @@
   </ion-list>
 </ion-header>
 <ion-content class="main_content">
-  <div class="fixed"> 
-      <form [formGroup]="finalForm" class="">
-            <ion-item lines="none" class="margin-15 ion-block" *ngIf="totalLiveSession > 0">
-              <div class="ion-left">
-                <ion-label style="display: contents;">How much would you like to charge:</ion-label>
-              </div>
-            </ion-item>
-            <ion-item>  
-              <div class="">
-                <ion-item>
-                 
-                  <ion-select placeholder="Select" formControlName="nutriMealType">
-                    <ion-select-option value="1">$0(Free) </ion-select-option>
-                    <ion-select-option value="0.99">$0.99</ion-select-option>
-                    <ion-select-option value="1.99">$1.99</ion-select-option>
-                    <ion-select-option value="2.99">$2.99</ion-select-option>
-                    <ion-select-option value="3.99">$3.99</ion-select-option>
-                  </ion-select>
-                </ion-item>
-                <!-- <ion-label style="    margin-left: 40px;">$</ion-label>
-                <ion-input class="form-control width-30" type="number" (change)="updateTotalPrice($event)" formControlName="programFees" value="0"></ion-input> -->
-              </div>
-             
-            </ion-item>
-            <ion-item lines="none" class="margin-15 ion-block" *ngIf="totalLiveSession > 0">
-              <div class="ion-left">
-                <ion-label style="display: contents;">Total for {{totalLiveSession}} session:</ion-label>
-              </div>
-              <div class="ion-right" *ngIf="totalLiveSession > 0">
-                <ion-label style="    margin-left: 40px;">$</ion-label>
-                <ion-label class="width-30">{{totalLiveAmt}}</ion-label>
-              </div>
+  <div class="fixed">
+    <form [formGroup]="finalForm" class="">
+      <ion-item lines="none" class="margin-15 ion-block" *ngIf="totalLiveSession > 0">
+        <div class="ion-left">
+          <ion-label style="display: contents;">How much would you like to charge:</ion-label>
+        </div>
+      </ion-item>
+      <ion-item>
+        <div class="">
+          <ion-item>
 
-      <!-- </ion-item>
+            <ion-select placeholder="Select" (change)="updateTotalPrice($event)" formControlName="programFees">
+              <ion-select-option *ngFor="let price of priceList" [value]="price.price">${{ price.price }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <!-- <ion-label style="    margin-left: 40px;">$</ion-label>
+                <ion-input class="form-control width-30" type="number" (change)="updateTotalPrice($event)" formControlName="programFees" value="0"></ion-input> -->
+        </div>
+
+      </ion-item>
+      <ion-item lines="none" class="margin-15 ion-block" *ngIf="totalLiveSession > 0">
+        <div class="ion-left">
+          <ion-label style="display: contents;">Total for {{totalLiveSession}} session:</ion-label>
+        </div>
+        <div class="ion-right" *ngIf="totalLiveSession > 0">
+          <ion-label style="    margin-left: 40px;">$</ion-label>
+          <ion-label class="width-30">{{totalLiveAmt}}</ion-label>
+        </div>
+
+        <!-- </ion-item>
       <ion-item lines="none" class="margin-15 ion-block" *ngIf="totalLiveSession > 0">
         <div class="ion-left">
           <ion-label style="display: contents;">Total for {{totalLiveSession}} session:</ion-label>
@@ -69,8 +66,12 @@
         </div>
         <div class="ion-right" *ngIf="totalNutritionInSession > 0 || totalVideoInSession > 0">
           <ion-label style="margin-left: 40px;">$</ion-label>
-          <ion-input class="form-control width-30" type="number" formControlName="non_live_component_fee" value="0">
-          </ion-input>
+          <ion-select placeholder="Select" formControlName="non_live_component_fee">
+            <ion-select-option *ngFor="let price of priceList" [value]="price.price">${{ price.price }}
+            </ion-select-option>
+          </ion-select>
+          <!-- <ion-input class="form-control width-30" type="number" formControlName="non_live_component_fee" value="0">
+          </ion-input> -->
         </div>
 
       </ion-item>
