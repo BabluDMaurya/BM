@@ -525,7 +525,6 @@ export class DateTimeModalComponent implements OnInit {
   }
 
   updateTotalPrice(event) {
-    console.log('abc');
     let price = event.target.value;
     // let amtPerMin = (price) / 60;
     this.totalLiveAmt = price * this.totalLiveSession;

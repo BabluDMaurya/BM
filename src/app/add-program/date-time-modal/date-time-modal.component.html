@@ -24,7 +24,7 @@
         <div class="">
           <ion-item>
 
-            <ion-select placeholder="Select" (change)="updateTotalPrice($event)" formControlName="programFees">
+            <ion-select placeholder="Select" (ionChange)="updateTotalPrice($event)" formControlName="programFees">
               <ion-select-option *ngFor="let price of priceList" [value]="price.price">${{ price.price }}
               </ion-select-option>
             </ion-select>
