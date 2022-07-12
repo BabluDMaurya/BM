@@ -48,8 +48,8 @@ import { UserModalComponent } from './add-program/user-modal/user-modal.componen
 import { UserListComponent } from './add-program/user-list/user-list.component';
 import { MusicVolumeModalComponent } from './add-video/music-volume-modal/music-volume-modal.component';
 import { MusicVolComponent } from './add-program/music-vol/music-vol.component';
-import {ChatRoomsComponent}  from './chats/chat-rooms/chat-rooms.component';
-import {CreateGroupChatComponent}  from './chats/create-group-chat/create-group-chat.component';
+import { ChatRoomsComponent } from './chats/chat-rooms/chat-rooms.component';
+import { CreateGroupChatComponent } from './chats/create-group-chat/create-group-chat.component';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
@@ -67,7 +67,7 @@ import { AddEquipmentsComponent } from './add-program/add-equipments/add-equipme
 import { ProgramNutritionDetailModalComponent } from './add-program/program-nutrition-detail-modal/program-nutrition-detail-modal.component';
 import { ScheduleModalComponent } from './program/schedule-modal/schedule-modal.component';
 import { AdDetailsComponent } from './program/ad-details/ad-details.component';
-import { SponserCommentComponent } from './program//ad-details/sponser-comment/sponser-comment.component'; 
+import { SponserCommentComponent } from './program//ad-details/sponser-comment/sponser-comment.component';
 import { AdvInfoComponent } from './program//ad-details/adv-info/adv-info.component';
 import { FormatTimePipe } from './config/format-time-pipe';
 import { ParticipantsComponent } from './program/participants/participants.component';
@@ -79,19 +79,20 @@ const config: SocketIoConfig = { url: 'https://ionicinto.wdipl.com:9902/', optio
 import { PipeModule } from './nutrition-list/pipe.module';
 import { MusicDropdownComponent } from './music/music-dropdown/music-dropdown.component';
 import { PlaylistDropdownComponent } from './music/playlist-dropdown/playlist-dropdown.component';
-import {VerifyUserComponent} from 'src/app/modalContent/verify-user/verify-user.component';
-import{VerifyUserInfoComponent} from "src/app/modalContent/verify-user-info/verify-user-info.component";
+import { VerifyUserComponent } from 'src/app/modalContent/verify-user/verify-user.component';
+import { VerifyUserInfoComponent } from "src/app/modalContent/verify-user-info/verify-user-info.component";
 // import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { ThankyouComponent } from './paypal/thankyou/thankyou.component';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
-import { PaymentComponent } from './modalContent/payment/payment.component'; 
+import { PaymentComponent } from './modalContent/payment/payment.component';
 import { EquipmentPaymentComponent } from 'src/app/modalContent/equipment-payment/equipment-payment.component';
 import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/view-video-detail.component';
-import {Stripe} from '@ionic-native/stripe/ngx';
-import { NgCalendarModule  } from 'ionic2-calendar';
+import { Stripe } from '@ionic-native/stripe/ngx';
+import { NgCalendarModule } from 'ionic2-calendar';
 import { HostingDropdownComponent } from '../app/program/hosting-dropdown/hosting-dropdown.component';
+import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 
 
 @NgModule({
@@ -100,13 +101,13 @@ import { HostingDropdownComponent } from '../app/program/hosting-dropdown/hostin
     NotificationModalComponent, InfoModalComponent, SliderZoomComponent, UserModalComponent
     , UserListComponent, MusicVolumeModalComponent, MusicVolComponent, TermsComponent, PrivacyComponent, PopoverComponent,
     DateTimeModalComponent, AddEquipmentsComponent, VideosThumbListComponent, ScheduleModalComponent,
-    RequestedDropdownComponent, FormatTimePipe, EquipmentsComponent,ViewVideoDetailComponent,
+    RequestedDropdownComponent, FormatTimePipe, EquipmentsComponent, ViewVideoDetailComponent,
 
     // GroupusersModalComponent,
-     DropdownComponent, PlaylistDropdownComponent,
+    DropdownComponent, PlaylistDropdownComponent,
     RequestsModalComponent, ParticipantsComponent, AdDetailsComponent,
-    SponserCommentComponent,  MusicDropdownComponent,AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent,
-    ChatRoomsComponent,CreateGroupChatComponent,ThankyouComponent,PaymentComponent,EquipmentPaymentComponent,HostingDropdownComponent
+    SponserCommentComponent, MusicDropdownComponent, AdvInfoComponent, VerifyUserComponent, VerifyUserInfoComponent,
+    ChatRoomsComponent, CreateGroupChatComponent, ThankyouComponent, PaymentComponent, EquipmentPaymentComponent, HostingDropdownComponent
   ],
 
   entryComponents: [UserDetailsComponent, FollowersComponent, FollowingComponent,
@@ -115,15 +116,15 @@ import { HostingDropdownComponent } from '../app/program/hosting-dropdown/hostin
     SliderZoomComponent, UserModalComponent, UserListComponent, TermsComponent, PrivacyComponent,
     MusicDropdownComponent, PlaylistDropdownComponent, MusicVolumeModalComponent, MusicVolComponent,
     PopoverComponent, DateTimeModalComponent, EquipmentsComponent, AddEquipmentsComponent
-    , VideosThumbListComponent, ScheduleModalComponent, RequestedDropdownComponent,ThankyouComponent,
-    PaymentComponent,EquipmentPaymentComponent,ViewVideoDetailComponent,HostingDropdownComponent,
+    , VideosThumbListComponent, ScheduleModalComponent, RequestedDropdownComponent, ThankyouComponent,
+    PaymentComponent, EquipmentPaymentComponent, ViewVideoDetailComponent, HostingDropdownComponent,
     // GroupusersModalComponent,
-    
-    ParticipantsComponent, DropdownComponent, RequestsModalComponent,
-    AdDetailsComponent, SponserCommentComponent, AdvInfoComponent,VerifyUserComponent,VerifyUserInfoComponent,ChatRoomsComponent,CreateGroupChatComponent],
 
-  imports: [ 
-    MbscModule,  
+    ParticipantsComponent, DropdownComponent, RequestsModalComponent,
+    AdDetailsComponent, SponserCommentComponent, AdvInfoComponent, VerifyUserComponent, VerifyUserInfoComponent, ChatRoomsComponent, CreateGroupChatComponent],
+
+  imports: [
+    MbscModule,
     BrowserModule,
     NgCalendarModule,
     IonicModule.forRoot({
@@ -177,6 +178,7 @@ import { HostingDropdownComponent } from '../app/program/hosting-dropdown/hostin
     BarcodeScanner,
     Deeplinks,
     Stripe,
+    InAppPurchase,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
     // {

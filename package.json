@@ -36,6 +36,7 @@
     "@ionic-native/file-transfer": "^5.28.0",
     "@ionic-native/geolocation": "^5.28.0",
     "@ionic-native/image-picker": "^5.28.0",
+    "@ionic-native/in-app-purchase": "^5.36.0",
     "@ionic-native/keyboard": "^5.28.0",
     "@ionic-native/local-notifications": "^5.28.0",
     "@ionic-native/location-accuracy": "^5.28.0",
@@ -202,7 +203,8 @@
       },
       "com.paypal.cordova.mobilesdk": {},
       "cordova-plugin-stripe": {},
-      "com.moust.cordova.videoplayer": {}
+      "com.moust.cordova.videoplayer": {},
+      "cordova-plugin-inapppurchase": {}
     },
     "platforms": [
       "browser",

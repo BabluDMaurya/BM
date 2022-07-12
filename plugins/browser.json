@@ -72,6 +72,9 @@
     },
     "cordova-plugin-stripe": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "cordova-plugin-inapppurchase": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
     }
   },
   "dependent_plugins": {

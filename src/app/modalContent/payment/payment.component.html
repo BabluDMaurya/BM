@@ -7,7 +7,7 @@
   </ion-list>
 </ion-header>
 <ion-list lines="none" class="ion-no-padding radio-list" *ngIf="type == 2">
-  <ion-card class="ion-no-margin upcomingCard">  
+  <ion-card class="ion-no-margin upcomingCard">
     <ion-item class="mt-20">
       <ion-avatar slot="start">
         <img src="{{url}}{{pgimg}}" *ngIf="pgimg">
@@ -16,12 +16,12 @@
       <ion-label class="text-not-overflow">
         <h3 class="list-person">Program Name : {{pgname}}</h3>
         <span class="list-person">Amount : ${{pgamount}}</span>
-      </ion-label>      
-    </ion-item>  
-    </ion-card>
+      </ion-label>
+    </ion-item>
+  </ion-card>
 </ion-list>
 <ion-list lines="none" class="ion-no-padding radio-list" *ngIf="type == 1">
-  <ion-card class="upcomingCard">  
+  <ion-card class="upcomingCard">
     <ion-item class="mt-20">
       <span class="list-person">
         Payment required to enter additional
@@ -30,10 +30,10 @@
       <span class="list-person">
         <p>Intoactive charge a small transaction fee for Live, Private and Group Session</p>
       </span>
-     
-        <span class="list-person">Amount : ${{pgamount}}</span>
-         
-    </ion-item>  
-    </ion-card>
+
+      <span class="list-person">Amount : ${{pgamount}}</span>
+
+    </ion-item>
+  </ion-card>
 </ion-list>
-<ion-button expand="full" class="green ion-no-margin"  (click)="payment()" >Payment</ion-button>
+<ion-button expand="full" class="green ion-no-margin" (click)="payment()">Payment</ion-button>
