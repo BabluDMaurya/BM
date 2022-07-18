@@ -40,6 +40,19 @@ export class PaymentComponent implements OnInit {
     }
   }
 
+  productPayment() {
+    this.iap
+      .buy(test)
+      .then((data) => {
+        console.log(data);
+        alert('Purchase was successful!');
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('Something went wrong');
+      });
+  }
+
 
   payment() {
     this.iap
@@ -49,34 +62,34 @@ export class PaymentComponent implements OnInit {
         // this.products = products
         //  [{ productId: 'com.yourapp.prod1', 'title': '...', description: '...', price: '...' }, ...]
       })
-    // this.commonService.dismissModal();
-    // if (this.type == 2) {
-    //   this.programService.insertProgPaymentDetail({ "program_id": this.pgid, "amount": this.pgamount }).subscribe(data => {
-    //     console.log(data);
-    //     if (data) {
-    //       var fileData = {
-    //         pgid: this.pgid,
-    //         pgname: this.pgname,
-    //         pgamount: this.pgamount,
-    //         pgimg: this.pgimg,
-    //       }
-    //       this.commonService.presentModal(ThankyouComponent, 'fullModal', fileData);
-    //     }
-    //   });
-    // } else if (this.type == 1) {
-    //   this.programService.insertIntoactivePaymentDetail({ "program_id": this.pgid, "amount": this.pgamount }).subscribe(data => {
-    //     console.log(data);
-    //     if (data) {
-    //       var fileData = {
-    //         pgid: this.pgid.toString(','),
-    //         pgname: this.pgname,
-    //         pgamount: this.pgamount,
-    //         pgimg: this.pgimg,
-    //       }
-    //       this.commonService.presentModal(ThankyouComponent, 'fullModal', fileData);
-    //     }
-    //   });
-    // }
+    this.commonService.dismissModal();
+    if (this.type == 2) {
+      this.programService.insertProgPaymentDetail({ "program_id": this.pgid, "amount": this.pgamount }).subscribe(data => {
+        console.log(data);
+        if (data) {
+          var fileData = {
+            pgid: this.pgid,
+            pgname: this.pgname,
+            pgamount: this.pgamount,
+            pgimg: this.pgimg,
+          }
+          this.commonService.presentModal(ThankyouComponent, 'fullModal', fileData);
+        }
+      });
+    } else if (this.type == 1) {
+      this.programService.insertIntoactivePaymentDetail({ "program_id": this.pgid, "amount": this.pgamount }).subscribe(data => {
+        console.log(data);
+        if (data) {
+          var fileData = {
+            pgid: this.pgid.toString(','),
+            pgname: this.pgname,
+            pgamount: this.pgamount,
+            pgimg: this.pgimg,
+          }
+          this.commonService.presentModal(ThankyouComponent, 'fullModal', fileData);
+        }
+      });
+    }
 
   }
 }

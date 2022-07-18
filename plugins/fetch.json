@@ -200,7 +200,7 @@
   "cordova-plugin-inapppurchase": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-inapppurchase"
+      "id": "cordova-plugin-inapppurchase@^1.2.0"
     },
     "is_top_level": true,
     "variables": {}

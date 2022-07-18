@@ -151,9 +151,9 @@
 		003F13B26B0D42FD98EA3F4B /* CDVBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F829858E5DEC432CBC4E2FBA /* CDVBarcodeScanner.bundle */; };
 		465EA4791236468B8596AAEA /* CordovaStripe.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BC4636E5094505A0A410AD /* CordovaStripe.m */; };
 		A7852614C3DC438A80F38CAD /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A65BC3EDAC440B9BCFAF2A /* Stripe.framework */; };
-		2406477BCC7944418C149C76 /* RMStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C76EFB4EE145413DB03A4982 /* RMStore.m */; };
-		5B0E09D15A4A416E80562896 /* PaymentsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = CADA076C71D1445F91A4673A /* PaymentsPlugin.m */; };
-		4B1E36CDAF1445BA95553366 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EF736278454174BED52500 /* StoreKit.framework */; };
+		F02C06C03C1A4C46A64C2B3F /* RMStore.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC714A8BD7F452288EF6265 /* RMStore.m */; };
+		CC58B3948FDB47398A705FCE /* PaymentsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AC173AE7432A4CB889448A08 /* PaymentsPlugin.m */; };
+		271CE78FA0E9423BB745A6CC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A974DC32C974D3CB9DE627E /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -412,11 +412,11 @@
 		82BC4636E5094505A0A410AD /* CordovaStripe.m */ = {isa = PBXFileReference; name = "CordovaStripe.m"; path = "cordova-plugin-stripe/CordovaStripe.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		148F962F56944888946FE159 /* CordovaStripe.h */ = {isa = PBXFileReference; name = "CordovaStripe.h"; path = "cordova-plugin-stripe/CordovaStripe.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		D8A65BC3EDAC440B9BCFAF2A /* Stripe.framework */ = {isa = PBXFileReference; name = "Stripe.framework"; path = "Intoactive Update/Plugins/cordova-plugin-stripe/Stripe.framework"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		C76EFB4EE145413DB03A4982 /* RMStore.m */ = {isa = PBXFileReference; name = "RMStore.m"; path = "cordova-plugin-inapppurchase/RMStore.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		CADA076C71D1445F91A4673A /* PaymentsPlugin.m */ = {isa = PBXFileReference; name = "PaymentsPlugin.m"; path = "cordova-plugin-inapppurchase/PaymentsPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		DB114E0DFE624EC38507CBBE /* RMStore.h */ = {isa = PBXFileReference; name = "RMStore.h"; path = "cordova-plugin-inapppurchase/RMStore.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		3E94B03BFA9B4F249CE6E2B1 /* PaymentsPlugin.h */ = {isa = PBXFileReference; name = "PaymentsPlugin.h"; path = "cordova-plugin-inapppurchase/PaymentsPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		D2EF736278454174BED52500 /* StoreKit.framework */ = {isa = PBXFileReference; name = "StoreKit.framework"; path = "System/Library/Frameworks/StoreKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		DAC714A8BD7F452288EF6265 /* RMStore.m */ = {isa = PBXFileReference; name = "RMStore.m"; path = "cordova-plugin-inapppurchase/RMStore.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		AC173AE7432A4CB889448A08 /* PaymentsPlugin.m */ = {isa = PBXFileReference; name = "PaymentsPlugin.m"; path = "cordova-plugin-inapppurchase/PaymentsPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		480BF0FD5D2646468AA41ECF /* RMStore.h */ = {isa = PBXFileReference; name = "RMStore.h"; path = "cordova-plugin-inapppurchase/RMStore.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		59C51D33B2DE4DF0A00B80AC /* PaymentsPlugin.h */ = {isa = PBXFileReference; name = "PaymentsPlugin.h"; path = "cordova-plugin-inapppurchase/PaymentsPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		5A974DC32C974D3CB9DE627E /* StoreKit.framework */ = {isa = PBXFileReference; name = "StoreKit.framework"; path = "System/Library/Frameworks/StoreKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,7 +462,7 @@
 				856047E25ACE4C80B73737AA /* Photos.framework in Frameworks */,
 				F309A6F7EEE1453184687330 /* Social.framework in Frameworks */,
 				A7852614C3DC438A80F38CAD /* Stripe.framework in Frameworks */,
-				4B1E36CDAF1445BA95553366 /* StoreKit.framework in Frameworks */,
+				271CE78FA0E9423BB745A6CC /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,7 +591,7 @@
 				63BEA4874EFC45E9B00D4893 /* Photos.framework */,
 				8D2C30AA7FC0419EAB662D1B /* Social.framework */,
 				D8A65BC3EDAC440B9BCFAF2A /* Stripe.framework */,
-				D2EF736278454174BED52500 /* StoreKit.framework */,
+				5A974DC32C974D3CB9DE627E /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -771,10 +771,10 @@
 				B6045B273AFB4CF6A76BF5D0 /* CDVBarcodeScanner.mm */,
 				82BC4636E5094505A0A410AD /* CordovaStripe.m */,
 				148F962F56944888946FE159 /* CordovaStripe.h */,
-				C76EFB4EE145413DB03A4982 /* RMStore.m */,
-				CADA076C71D1445F91A4673A /* PaymentsPlugin.m */,
-				DB114E0DFE624EC38507CBBE /* RMStore.h */,
-				3E94B03BFA9B4F249CE6E2B1 /* PaymentsPlugin.h */,
+				DAC714A8BD7F452288EF6265 /* RMStore.m */,
+				AC173AE7432A4CB889448A08 /* PaymentsPlugin.m */,
+				480BF0FD5D2646468AA41ECF /* RMStore.h */,
+				59C51D33B2DE4DF0A00B80AC /* PaymentsPlugin.h */,
 			);
 			name = Plugins;
 			path = "Intoactive Update/Plugins";
@@ -998,8 +998,8 @@
 				002C4D844C22466F8948D43C /* IonicDeeplinkPlugin.m in Sources */,
 				43623DE5AEEB4555A657D782 /* CDVBarcodeScanner.mm in Resources */,
 				465EA4791236468B8596AAEA /* CordovaStripe.m in Sources */,
-				2406477BCC7944418C149C76 /* RMStore.m in Sources */,
-				5B0E09D15A4A416E80562896 /* PaymentsPlugin.m in Sources */,
+				F02C06C03C1A4C46A64C2B3F /* RMStore.m in Sources */,
+				CC58B3948FDB47398A705FCE /* PaymentsPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
