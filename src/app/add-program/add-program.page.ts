@@ -193,7 +193,6 @@ export class AddProgramPage implements OnInit {
    * function to create add program form with validation.
    */
   openStart(i) {
-    // this.sTime.setValue(null);
     this.indexForLive = i;
     this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
     if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
@@ -1210,6 +1209,7 @@ export class AddProgramPage implements OnInit {
       var progId = d.data;
       // console.log(progId.id + 'pppppidddd');
       if (this.isVideoSelected == true) {
+        console.log('a1');
         var url = baseUrl + "api/auth/uploadVideoForProgram";
         var filename = this.selectedVideo.substr(this.selectedVideo.lastIndexOf('/') + 1);
         var options: FileUploadOptions = {
@@ -1236,6 +1236,7 @@ export class AddProgramPage implements OnInit {
           });
       }
       if (d.data.program_date) {
+        console.log('a2');
         let startTime;
         let endTime;
         startTime = new Date(d.data.program_date + 'T' + d.data.program_time + 'Z');

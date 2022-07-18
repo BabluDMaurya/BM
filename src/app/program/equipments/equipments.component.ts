@@ -3,6 +3,7 @@ import { CommonService } from 'src/app/services/common.service';
 import { NavParams, ModalController } from '@ionic/angular';
 import { ProgramService } from './../../services/program.service';
 import { AddEquipmentsComponent } from './../../add-program/add-equipments/add-equipments.component'
+import { Config } from './../../config/config'
 
 @Component({
   selector: 'app-equipments',
@@ -15,6 +16,7 @@ export class EquipmentsComponent implements OnInit {
   programDetails: any;
   equipment: any;
   equipments: any;
+  equipmentPicPath = Config.equipmentPic;
   // equipments = [{
   //   id: 1, name: 'Dumbels', selected: false,
   // },
@@ -45,27 +47,18 @@ export class EquipmentsComponent implements OnInit {
     private navParams: NavParams,
     private modalCtrl: ModalController,
     private programService: ProgramService) {
-      
+
     this.programDetails = this.navParams.data.programDetail;
     console.log(this.programDetails);
-    if(this.programDetails.equipments != null){
+    if (this.programDetails.equipments != null) {
       this.equipment = this.programDetails.equipments.split(',');
     }
     console.log(this.equipment);
-    this.programService.fetchEquipmentList().subscribe((data) => {
-      
+    this.programService.fetchAllSelectedEquipmentList({ 'programId': this.programDetails.id }).subscribe((data) => {
       this.equipments = data.equipmentList;
-      this.equipments.filter(el => {
-        console.log(el.id);
-      
-        if ((this.equipment).includes(el.id.toString())) {
-          el.selected = true;
-        }
-        return el
-     
-    })
-  });
-     }
+      console.log(data);
+    });
+  }
 
   ngOnInit() {
 
@@ -76,7 +69,7 @@ export class EquipmentsComponent implements OnInit {
   //   this.equipment = this.programDetails.equipments.split(',');
   //   console.log(this.equipment);
   //   this.programService.fetchEquipmentList().subscribe((data) => {
-      
+
   //     this.equipments = data.equipmentList;
   //     console.log(this.equipments);
   //     this.equipments.filter(el => {
@@ -90,13 +83,13 @@ export class EquipmentsComponent implements OnInit {
   //     }
   //   })
   // });
-    // this.equipments.filter(el => {
-    //   if (this.equipment.includes(el.id.toString())) {
-    //     console.log(el.id);
-    //     el.selected = true;
-    //   }
-    //   return el;
-    // });
+  // this.equipments.filter(el => {
+  //   if (this.equipment.includes(el.id.toString())) {
+  //     console.log(el.id);
+  //     el.selected = true;
+  //   }
+  //   return el;
+  // });
   // }
   closeModal() {
     this.commonService.dismissModal(this.equipment.toString());
@@ -110,34 +103,34 @@ export class EquipmentsComponent implements OnInit {
 
     modal.onDidDismiss().then((d: any) => {
       console.log(d);
-    if(d.data.length > 0){
-      // d.data.filter(Boolean);
-    this.equipment = d.data.filter(Boolean);
-    console.log(this.equipment);
-    this.programService.updateEquipmentList({ "equipmentId": d.data.filter(Boolean), "programId": this.programDetails.id}).subscribe((data) => {
-      console.log('id update');
-    });  
-    console.log(d.data.filter(Boolean));
-    this.programService.fetchEquipmentList().subscribe((data) => {
-      console.log(data)
-      this.equipments = data.equipmentList;
-    
-      this.equipments.filter(el => {
-      if (this.equipment) {
-        if ((this.equipment).includes(el.id )) {
-          el.selected = true;
-        }
-        return el
-      }
-    })
-  });
+      if (d.data.length > 0) {
+        // d.data.filter(Boolean);
+        this.equipment = d.data.filter(Boolean);
+        console.log(this.equipment);
+        this.programService.updateEquipmentList({ "equipmentId": d.data.filter(Boolean), "programId": this.programDetails.id }).subscribe((data) => {
+          console.log('id update');
+        });
+        console.log(d.data.filter(Boolean));
+        this.programService.fetchEquipmentList().subscribe((data) => {
+          console.log(data)
+          this.equipments = data.equipmentList;
 
-      if (d.data) {
-        console.log('asasd');
+          this.equipments.filter(el => {
+            if (this.equipment) {
+              if ((this.equipment).includes(el.id)) {
+                el.selected = true;
+              }
+              return el
+            }
+          })
+        });
+
+        if (d.data) {
+          console.log('asasd');
+        }
+      } else {
+        console.log('empty');
       }
-    }else{
-      console.log('empty');
-    } 
     });
     return await modal.present();
   }

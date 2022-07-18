@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-videoeditorsdk.VESDK", function(require, exports, module) { var VESDK = {
+cordova.define("cordova-plugin-videoeditorsdk.VESDK", function(require, exports, module) {
+var VESDK = {
   /**
    * Present a video editor.
    *

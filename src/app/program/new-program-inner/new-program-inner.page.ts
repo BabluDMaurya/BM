@@ -36,7 +36,7 @@ var kAppkey = "utaJyBepyYagyjeQeuaUe5aUaEavu9aPeWy6";
   styleUrls: ['../../app.component.scss', './new-program-inner.page.scss'],
 })
 export class NewProgramInnerPage implements OnInit {
-    userName: string = '';
+  userName: string = '';
   roomID: string = "";
   enxData: any;
   userData: any;
@@ -84,7 +84,8 @@ export class NewProgramInnerPage implements OnInit {
   ];
   upcomingList: any;
   equipmentsList: any;
-  selesctedEquipment: [];
+  selesctedEquipmentId: [];
+  selesctedEquipments: [];
   equipmentsData: any;
   constructor(public commonService: CommonService,
     public navCtrl: NavController,
@@ -182,7 +183,7 @@ export class NewProgramInnerPage implements OnInit {
     }
     );
 
-   
+
   }
   initRoom() {
     if (this.userName.length == 0) {
@@ -437,26 +438,10 @@ export class NewProgramInnerPage implements OnInit {
         this.commonService.presentToast("Couldnt load data, Something went wrong.");
       });
 
-      this.programService.fetchEquipmentList().subscribe((data) => {
-        console.log(this.equipmentsData);
-        console.log(data.equipmentList)
-        this.equipmentsList = data.equipmentList;
-  
-        this.equipmentsList.filter(el => {
-
-          if (this.equipmentsList) {
-            if ((this.equipmentsData).includes(el.id)) {
-              console.log('success');
-              console.log(this.selesctedEquipment);
-              el.selected = true;
-              this.selesctedEquipment = el;
-            }
-            return el
-          }
-          console.log(this.selesctedEquipment, 'selesctedEquipment');
-          console.log(this.equipmentsData);
-        })
-      });
+    this.programService.fetchSelectedEquipmentList({ 'programId': this.programId }).subscribe((data) => {
+      console.log(data);
+      this.equipmentsList = data.equipmentList;
+    });
   }
   showSchedule(event) {
     this.commonService.presentModal(ScheduleModalComponent, 'fullModal', { 'programDetail': event, 'user_type': this.userData.user_type });

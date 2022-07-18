@@ -27,13 +27,16 @@
       <ion-avatar slot="start">
         <img src="{{url}}{{upcoming?.img_arr[0]}}" *ngIf="programFiltered[i]?.image_path">
         <!-- <img src="{{profile_url}}{{upcoming?.program_user?.bios?.profile_pic}}" *ngIf="upcoming?.program_user?.bios?.profile_pic"> -->
-        <img  src="../../assets/images/loading.jpg" *ngIf="!programFiltered[i]?.image_path">
+        <img src="../../assets/images/loading.jpg" *ngIf="!programFiltered[i]?.image_path">
       </ion-avatar>
-      <ion-label [routerLink]="userData?.id ==upcoming?.user_id ? ['/program-details/',upcoming.id] : ['/program-view/',upcoming.id]">
+      <ion-label
+        [routerLink]="userData?.id ==upcoming?.user_id ? ['/program-details/',upcoming.id] : ['/program-view/',upcoming.id]">
         <h3 class="list-person">{{upcoming?.title}}</h3>
         <span class="list-name d-block">{{upcoming?.type_id}}</span>
-        <span class="list-name d-block">Created by:{{upcoming?.program_user?.user_name}} {{upcoming?.convertedTime | date:'medium'}}</span>
-        <span class="list-name d-block" *ngIf="upcoming?.cd>0"> <b><span *ngIf="upcoming?.hh > 0">{{ upcoming?.hh |number }} Hours</span> {{ upcoming?.mm |number  }} Minutes  {{ upcoming?.ss |number }} Seconds </b> </span>
+        <span class="list-name d-block">Created by:{{upcoming?.program_user?.user_name}} {{upcoming?.convertedTime |
+          date:'medium'}}</span>
+        <span class="list-name d-block" *ngIf="upcoming?.cd>0"> <b><span *ngIf="upcoming?.hh > 0">{{ upcoming?.hh
+              |number }} Hours</span> {{ upcoming?.mm |number }} Minutes {{ upcoming?.ss |number }} Seconds </b> </span>
         <!-- <span class="list-name d-block" *ngIf="upcoming?.cd>0">Countdown: <b><span *ngIf="upcoming?.hh > 0">{{ upcoming?.hh |number }} Hours</span> {{ upcoming?.mm |number  }} Minutes  {{ upcoming?.ss |number }} Seconds </b> </span> -->
         <span class="list-name d-block" *ngIf="upcoming?.cd==0"> <b> L I V E</b></span>
         <!-- <countdown [config]="{leftTime: 30}"></countdown> -->
@@ -44,14 +47,18 @@
     </ion-item>
   </ion-card>
   <!--------------- S K E L E T O N ------------>
-  <ion-list lines="none" *ngIf="!programFiltered">      
+  <ion-list lines="none" *ngIf="!programFiltered">
     <ion-item *ngFor="let skeleton of [].constructor(20)" class="item-card">
       <ion-avatar slot="start">
         <ion-skeleton-text></ion-skeleton-text>
       </ion-avatar>
       <ion-label>
-        <h3 class="list-person"><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h3>
-        <span class="list-name"><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></span>
+        <h3 class="list-person">
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </h3>
+        <span class="list-name">
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </span>
       </ion-label>
     </ion-item>
   </ion-list>

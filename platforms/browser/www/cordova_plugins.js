@@ -512,6 +512,20 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+        "id": "cordova-plugin-stripe.stripe",
+        "pluginId": "cordova-plugin-stripe",
+        "clobbers": [
+            "cordova.plugins.stripe"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-stripe/src/browser/CordovaStripe.js",
+        "id": "cordova-plugin-stripe.CordovaStripe",
+        "pluginId": "cordova-plugin-stripe",
+        "runs": true
+    },
+    {
         "file": "plugins/cordova-plugin-telerik-imagepicker/www/imagepicker.js",
         "id": "cordova-plugin-telerik-imagepicker.ImagePicker",
         "pluginId": "cordova-plugin-telerik-imagepicker",
@@ -578,20 +592,6 @@ module.exports = [
         "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
         "pluginId": "phonegap-plugin-barcodescanner",
         "runs": true
-    },
-    {
-        "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
-        "id": "cordova-plugin-stripe.stripe",
-        "pluginId": "cordova-plugin-stripe",
-        "clobbers": [
-            "cordova.plugins.stripe"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-stripe/src/browser/CordovaStripe.js",
-        "id": "cordova-plugin-stripe.CordovaStripe",
-        "pluginId": "cordova-plugin-stripe",
-        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -626,6 +626,7 @@ module.exports.metadata =
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-streaming-media": "2.2.0",
+    "cordova-plugin-stripe": "1.5.3",
     "cordova-plugin-telerik-imagepicker": "2.3.3",
     "cordova-plugin-whitelist": "1.3.3",
     "es6-promise-plugin": "4.2.2",
@@ -634,7 +635,7 @@ module.exports.metadata =
     "enablex-cordova-plugin": "1.8.0",
     "ionic-plugin-deeplinks": "1.0.22",
     "phonegap-plugin-barcodescanner": "8.1.0",
-    "cordova-plugin-stripe": "1.5.3"
+    "cordova-plugin-inapppurchase": "1.1.0"
 }
 // BOTTOM OF METADATA
 });

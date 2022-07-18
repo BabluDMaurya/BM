@@ -30,5 +30,6 @@
     "UserNotifications.framework": 1,
     "MediaPlayer.framework": 1,
     "Photos.framework": 1,
-    "Social.framework": 1
+    "Social.framework": 1,
+    "StoreKit.framework": 1
 }

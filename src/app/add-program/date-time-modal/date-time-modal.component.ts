@@ -51,6 +51,7 @@ export class DateTimeModalComponent implements OnInit {
   repetatedDate: any = [];
   bonusDates: any = [];
   videoList: any;
+  priceList: [];
   sliderOpts = {
     zoom: false,
     slidesPerView: 3,
@@ -167,6 +168,11 @@ export class DateTimeModalComponent implements OnInit {
   }
   ngOnInit() {
     this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+
+    // Get pricing list
+    this.programService.getPricing().subscribe((data) => {
+      this.priceList = data.pricing;
+    });
 
   }
   //------------------ 
@@ -519,7 +525,6 @@ export class DateTimeModalComponent implements OnInit {
   }
 
   updateTotalPrice(event) {
-
     let price = event.target.value;
     // let amtPerMin = (price) / 60;
     this.totalLiveAmt = price * this.totalLiveSession;

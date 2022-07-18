@@ -171,6 +171,10 @@
             {
               "xml": "<feature name=\"CordovaStripe\"><param name=\"ios-package\" value=\"CordovaStripe\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"PaymentsPlugin\"><param name=\"ios-package\" value=\"PaymentsPlugin\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -373,6 +377,9 @@
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-stripe": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-inapppurchase": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
@@ -958,6 +965,14 @@
       "clobbers": [
         "cordova.plugins.stripe"
       ]
+    },
+    {
+      "id": "cordova-plugin-inapppurchase.PaymentsPlugin",
+      "file": "plugins/cordova-plugin-inapppurchase/www/index-ios.js",
+      "pluginId": "cordova-plugin-inapppurchase",
+      "clobbers": [
+        "inAppPurchase"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -998,6 +1013,7 @@
     "enablex-cordova-plugin": "1.8.0",
     "ionic-plugin-deeplinks": "1.0.22",
     "phonegap-plugin-barcodescanner": "8.1.0",
-    "cordova-plugin-stripe": "1.5.3"
+    "cordova-plugin-stripe": "1.5.3",
+    "cordova-plugin-inapppurchase": "1.1.0"
   }
 }

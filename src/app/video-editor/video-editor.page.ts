@@ -21,6 +21,7 @@ export class VideoEditorPage implements OnInit {
   };
 
   vesdk_failure(error) {
+    console.log('setup error');
     console.log('vesdk_failure: ' + JSON.stringify(error))
   };
 
@@ -76,7 +77,7 @@ export class VideoEditorPage implements OnInit {
 
     VESDK.openEditor(
         this.vesdk_success, this.vesdk_failure,
-        VESDK.loadResource('www/assets/Skater.mp4'), config
+        VESDK.loadResource('www/assets/videos/SampleVideo.mp4'), config
     );
   }
 }

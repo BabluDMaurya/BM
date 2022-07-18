@@ -55,6 +55,9 @@
     "cordova-plugin-streaming-media": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
+    "cordova-plugin-stripe": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
     "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
@@ -70,7 +73,7 @@
       "DEEPLINK_HOST": "ionicinto.wdipl.com",
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
-    "cordova-plugin-stripe": {
+    "cordova-plugin-inapppurchase": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     }
   },
