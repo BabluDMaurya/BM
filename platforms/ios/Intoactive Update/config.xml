@@ -118,6 +118,9 @@
     <feature name="CordovaStripe">
         <param name="ios-package" value="CordovaStripe" />
     </feature>
+    <feature name="PaymentsPlugin">
+        <param name="ios-package" value="PaymentsPlugin" />
+    </feature>
     <name>Intoactive Update</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>

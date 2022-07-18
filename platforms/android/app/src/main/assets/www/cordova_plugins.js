@@ -562,11 +562,11 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-videoeditorsdk.VESDK",
-      "file": "plugins/cordova-plugin-videoeditorsdk/www/videoeditorsdk.js",
-      "pluginId": "cordova-plugin-videoeditorsdk",
-      "clobbers": [
-        "VESDK"
+      "id": "cordova-plugin-inapppurchase.InAppBillingV3",
+      "file": "plugins/cordova-plugin-inapppurchase/www/index-android.js",
+      "pluginId": "cordova-plugin-inapppurchase",
+      "merges": [
+        "inAppPurchase"
       ]
     }
   ];
@@ -608,6 +608,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.paypal.cordova.mobilesdk": "3.5.0",
     "com.moust.cordova.videoplayer": "1.0.1",
     "cordova-plugin-stripe": "1.5.3",
-    "cordova-plugin-videoeditorsdk": "1.1.0"
+    "cordova-plugin-inapppurchase": "1.1.0"
   };
 });

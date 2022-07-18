@@ -69,8 +69,8 @@ export class ProgramService {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/updateVideo', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('updateVideo', data)));
   }
 
-  updateDescription(data:any):Observable<any>{
-    return this.http.post<any>(Config.ApiUrl + 'api/auth/updateDescription' , data, this.getApiHeaders(null,true) ).pipe(catchError(this.handleError('updateDescription',data)));
+  updateDescription(data: any): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/updateDescription', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('updateDescription', data)));
   }
   getUpcomingPrograms(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getUpcomingPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getUpcomingPrograms', formData)));
@@ -79,7 +79,7 @@ export class ProgramService {
   getHostedPrograms(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getHostedPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getHostedPrograms', formData)));
   }
-  getSchedulePrograms(formData){
+  getSchedulePrograms(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getSchedulePrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getSchedulePrograms', formData)));
   }
 
@@ -90,11 +90,11 @@ export class ProgramService {
   getAllRequestedPrograms(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getAllRequestedPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getAllRequestedPrograms', formData)));
   }
-  
+
   acceptProgramRequest(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/acceptProgramRequest', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('acceptProgramRequest', formData)));
   }
-  
+
   getAcceptedPrograms(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getAcceptedPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getAcceptedPrograms', formData)));
   }
@@ -114,11 +114,11 @@ export class ProgramService {
   acceptSponsers(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/acceptSponsers', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('acceptSponsers', formData)));
   }
-  
+
   checkStreaming(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/checkStreaming', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('checkStreaming', formData)));
   }
-  
+
   joinRequest(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/joinProgramRequest', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('joinRequest', formData)));
   }
@@ -133,41 +133,46 @@ export class ProgramService {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/deleteProgram', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('deleteProgram', formData)));
   }
 
-  getConsultPrograms(formData){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/getConsultPrograms', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getConsultPrograms', formData)));
-  } 
-
-  getAllUpcomingPrograms(formData){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/getAllUpcomingProgram', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getAllUpcomingPrograms', formData)));
-  }
-  getAllSelectedUpcomingPrograms(formData){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/getAllSelectedUpcomingPrograms', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getAllSelectedUpcomingPrograms', formData)));
+  getConsultPrograms(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/getConsultPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getConsultPrograms', formData)));
   }
 
-  getSponserComment(formData){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/getSponserComment', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getSponserComment', formData)));
+  getAllUpcomingPrograms(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/getAllUpcomingProgram', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getAllUpcomingPrograms', formData)));
   }
-  addSponserComment(formData){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/addSponserComment', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('addSponserComment', formData)));
-  }
-
-  getSponserList(formData){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/getSponserList', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getSponserList', formData)));
+  getAllSelectedUpcomingPrograms(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/getAllSelectedUpcomingPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getAllSelectedUpcomingPrograms', formData)));
   }
 
-  openTokSessionCreate(data){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/openTokSessionCreate', data ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('openTokSessionCreate', data)));
+  getSponserComment(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/getSponserComment', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getSponserComment', formData)));
   }
-  setEnxData(data){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/set_enx_data', data ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('setEnxData', data)));
+  addSponserComment(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/addSponserComment', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('addSponserComment', formData)));
   }
-  getEnxData(data){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/get_enx_data', data ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getEnxData', data)));
+
+  getSponserList(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/getSponserList', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getSponserList', formData)));
+  }
+
+  openTokSessionCreate(data) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/openTokSessionCreate', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('openTokSessionCreate', data)));
+  }
+  setEnxData(data) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/set_enx_data', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('setEnxData', data)));
+  }
+  getEnxData(data) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/get_enx_data', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getEnxData', data)));
   }
   fetchEquipmentList(): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/fetchEquipmentList', null, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('fetchEquipmentList')));
   }
-
+  fetchSelectedEquipmentList(data): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/fetchSelectedEquipmentList', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('fetchSelectedEquipmentList', data)));
+  }
+  fetchAllSelectedEquipmentList(data): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/fetchAllSelectedEquipmentList', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('fetchAllSelectedEquipmentList', data)));
+  }
   updateProgramFees(data: any): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/updateProgramFees', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('updateProgramFees', data)));
   }
@@ -200,11 +205,11 @@ export class ProgramService {
   }
 
   getEachUserData(id: any) {
-    return this.http.post<any>(Config.ApiUrl+'api/auth/getEachUserData', id ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getEachUserData', id)));
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/getEachUserData', id, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getEachUserData', id)));
   }
 
   updateWatchCounter(id: any) {
-    return this.http.post<any>(Config.ApiUrl+'api/auth/updateWatchCounter', id ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('updateWatchCounter', id)));
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/updateWatchCounter', id, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('updateWatchCounter', id)));
   }
 
   createStripeCustomerId(data: any): Observable<any> {
@@ -215,16 +220,20 @@ export class ProgramService {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/createStripeConnectAccount', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('createStripeConnectAccount', data)));
   }
 
-  getAllNutritionPrograms(formData){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/getAllNutritionPrograms', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getAllNutritionPrograms', formData)));
+  getAllNutritionPrograms(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/getAllNutritionPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getAllNutritionPrograms', formData)));
   }
 
-  getAllVideoPrograms(formData){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/getAllVideoPrograms', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getAllVideoPrograms', formData)));
+  getAllVideoPrograms(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/getAllVideoPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getAllVideoPrograms', formData)));
   }
 
-  getAllLivePrograms(formData){
-    return this.http.post<any>(Config.ApiUrl+'api/auth/getAllLivePrograms', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getAllLivePrograms', formData)));
+  getAllLivePrograms(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/getAllLivePrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getAllLivePrograms', formData)));
+  }
+
+  getPricing() {
+    return this.http.get<any>(Config.ApiUrl + 'api/auth/getPricing', this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getPricing')));
   }
 
 }

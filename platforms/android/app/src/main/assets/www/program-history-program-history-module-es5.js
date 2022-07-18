@@ -174,7 +174,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-card {\n  border-radius: 0;\n  box-shadow: none;\n  border-bottom: 5px solid #f7f7f7; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dGluZ3MvcHJvZ3JhbS1oaXN0b3J5L0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFxzZXR0aW5nc1xccHJvZ3JhbS1oaXN0b3J5XFxwcm9ncmFtLWhpc3RvcnkucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQVMsZ0JBQWdCO0VBQUMsZ0JBQWdCO0VBQUMsZ0NBQWdDLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9zZXR0aW5ncy9wcm9ncmFtLWhpc3RvcnkvcHJvZ3JhbS1oaXN0b3J5LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jYXJke2JvcmRlci1yYWRpdXM6IDA7Ym94LXNoYWRvdzogbm9uZTtib3JkZXItYm90dG9tOiA1cHggc29saWQgI2Y3ZjdmNzt9Il19 */";
+    __webpack_exports__["default"] = "ion-card {\n  border-radius: 0;\n  box-shadow: none;\n  border-bottom: 5px solid #f7f7f7;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dGluZ3MvcHJvZ3JhbS1oaXN0b3J5L0Q6XFxuaWtoaWxcXEludG9hY3RpdmUvc3JjXFxhcHBcXHNldHRpbmdzXFxwcm9ncmFtLWhpc3RvcnlcXHByb2dyYW0taGlzdG9yeS5wYWdlLnNjc3MiLCJzcmMvYXBwL3NldHRpbmdzL3Byb2dyYW0taGlzdG9yeS9wcm9ncmFtLWhpc3RvcnkucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQVMsZ0JBQUE7RUFBaUIsZ0JBQUE7RUFBaUIsZ0NBQUE7QUNJM0MiLCJmaWxlIjoic3JjL2FwcC9zZXR0aW5ncy9wcm9ncmFtLWhpc3RvcnkvcHJvZ3JhbS1oaXN0b3J5LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jYXJke2JvcmRlci1yYWRpdXM6IDA7Ym94LXNoYWRvdzogbm9uZTtib3JkZXItYm90dG9tOiA1cHggc29saWQgI2Y3ZjdmNzt9IiwiaW9uLWNhcmQge1xuICBib3JkZXItcmFkaXVzOiAwO1xuICBib3gtc2hhZG93OiBub25lO1xuICBib3JkZXItYm90dG9tOiA1cHggc29saWQgI2Y3ZjdmNztcbn0iXX0= */";
     /***/
   },
 

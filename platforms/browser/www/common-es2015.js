@@ -952,7 +952,7 @@ PaymentsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-text {\n  line-height: 1.5; }\n\n.ios.main_content {\n  --padding-top: 0px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dGluZ3MvcHJpdmFjeS9DOlxceGFtcHBcXGh0ZG9jc1xcaW50b2FjdGl2ZS9zcmNcXGFwcFxcc2V0dGluZ3NcXHByaXZhY3lcXHByaXZhY3kucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQVMsZ0JBQWdCLEVBQUE7O0FBQ3pCO0VBQWtCLGtCQUFjLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9zZXR0aW5ncy9wcml2YWN5L3ByaXZhY3kucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRleHR7bGluZS1oZWlnaHQ6IDEuNTt9XHJcbi5pb3MubWFpbl9jb250ZW50ey0tcGFkZGluZy10b3A6IDBweDt9Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-text {\n  line-height: 1.5;\n}\n\n.ios.main_content {\n  --padding-top: 0px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2V0dGluZ3MvcHJpdmFjeS9EOlxcbmlraGlsXFxJbnRvYWN0aXZlL3NyY1xcYXBwXFxzZXR0aW5nc1xccHJpdmFjeVxccHJpdmFjeS5wYWdlLnNjc3MiLCJzcmMvYXBwL3NldHRpbmdzL3ByaXZhY3kvcHJpdmFjeS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBUyxnQkFBQTtBQ0VUOztBRERBO0VBQWtCLGtCQUFBO0FDS2xCIiwiZmlsZSI6InNyYy9hcHAvc2V0dGluZ3MvcHJpdmFjeS9wcml2YWN5LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10ZXh0e2xpbmUtaGVpZ2h0OiAxLjU7fVxyXG4uaW9zLm1haW5fY29udGVudHstLXBhZGRpbmctdG9wOiAwcHg7fSIsImlvbi10ZXh0IHtcbiAgbGluZS1oZWlnaHQ6IDEuNTtcbn1cblxuLmlvcy5tYWluX2NvbnRlbnQge1xuICAtLXBhZGRpbmctdG9wOiAwcHg7XG59Il19 */");
 
 /***/ }),
 
