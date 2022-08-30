@@ -21,6 +21,7 @@
     "libz.tbd": 2,
     "AddressBook.framework": 1,
     "libsqlite3.0.tbd": 1,
+    "StoreKit.framework": 1,
     "WebKit.framework": 1,
     "GLKit.framework": 1,
     "CoreAudio.framework": 1,
@@ -30,6 +31,5 @@
     "UserNotifications.framework": 1,
     "MediaPlayer.framework": 1,
     "Photos.framework": 1,
-    "Social.framework": 1,
-    "StoreKit.framework": 1
+    "Social.framework": 1
 }

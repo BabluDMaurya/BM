@@ -56,6 +56,9 @@
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
     </feature>
+    <feature name="PaymentsPlugin">
+        <param name="ios-package" value="PaymentsPlugin" />
+    </feature>
     <feature name="CDVIonicKeyboard">
         <param name="ios-package" onload="true" value="CDVIonicKeyboard" />
     </feature>
@@ -96,6 +99,9 @@
     <feature name="StreamingMedia">
         <param name="ios-package" value="StreamingMedia" />
     </feature>
+    <feature name="CordovaStripe">
+        <param name="ios-package" value="CordovaStripe" />
+    </feature>
     <feature name="ImagePicker">
         <param name="ios-package" value="SOSPicker" />
     </feature>
@@ -114,12 +120,6 @@
     </feature>
     <feature name="BarcodeScanner">
         <param name="ios-package" value="CDVBarcodeScanner" />
-    </feature>
-    <feature name="CordovaStripe">
-        <param name="ios-package" value="CordovaStripe" />
-    </feature>
-    <feature name="PaymentsPlugin">
-        <param name="ios-package" value="PaymentsPlugin" />
     </feature>
     <name>Intoactive Update</name>
     <description>An awesome Ionic/Cordova app.</description>

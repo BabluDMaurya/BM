@@ -41,15 +41,17 @@ export class PaymentComponent implements OnInit {
   }
 
   productPayment() {
+    console.log('getProductId');
     this.iap
-      .buy(test)
-      .then((data) => {
-        console.log(data);
-        alert('Purchase was successful!');
+      .getProducts(['com.bm.ionicfcm.test'])
+      .then((products) => {
+        console.log(JSON.stringify(products));
+        
+        // this.products = products
       })
       .catch((err) => {
         console.log(err);
-        alert('Something went wrong');
+        console.log(JSON.stringify(err));
       });
   }
 
