@@ -79,9 +79,9 @@
                 <ion-segment-button class="ionic-segment-btn" value="chat">
                   <ion-icon class="ionic-icon" ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
                 </ion-segment-button>
-                <ion-segment-button class="ionic-segment-btn" value="programtype">
+                <!-- <ion-segment-button class="ionic-segment-btn" value="programtype">
                   <img class="ionic-img" src="../../../assets/images/target.svg" />
-                </ion-segment-button>
+                </ion-segment-button> -->
               </ion-segment>
             </ion-toolbar>
           </ion-item-divider>
@@ -104,6 +104,27 @@
                       </ion-item>
                     </ion-list> -->
                   </ion-col>
+                  <ion-col>
+                    <ion-item class="list-items" lines="">
+                      <div class="icon-text ion-margin-bottom" style="width: 100%; display: flex; justify-content: center; ">
+                        <!-- <h5 class="">Program</h5> -->
+                        <div class="flex-with-partition">
+                          <p>{{programDetail?.video_id.split(",").length}} Videos </p>
+                          <p>{{programDetail?.nutrition_id.split(",").length}} Nutrition</p>
+                          <p *ngIf="programDetail?.payment_type == 'Paid' ">${{programFee}}</p>
+                          <p *ngIf="programDetail?.payment_type == 'Free' ">{{programFee}}</p>
+    
+                        </div>
+                        <!-- <ion-chip>
+                        {{programDetail?.video_id.split(",").length}} Videos 
+                      </ion-chip>
+                      <ion-chip>
+                        {{programFee}}
+                      </ion-chip> -->
+                      </div>
+                    </ion-item>
+                  </ion-col>
+           
                   <!-- <ion-col class="infoBox" *ngIf="programDetail?.type_id == 'video' && !programDetail?.ended && adData?.video_approve_status!= 1 && !programDetail?.live">
                     <h6 *ngIf="programDetail?.is_requested ==1 && !programDetail?.request_recive"> No joining request recived yet</h6>
                     <h6 *ngIf="adData?.id && adData?.video_approve_status== null"> Your request for ad sponser is yet to verify. </h6>
@@ -160,7 +181,7 @@
                 <ion-col class="infoBox"
                   *ngIf="programDetail?.type_id == 'video' && !programDetail?.ended && adData?.video_approve_status!= 1 && !programDetail?.live">
                   <h6 *ngIf="programDetail?.is_requested ==1 && !programDetail?.request_recive"> No joining request
-                    recived yet</h6>
+                    received yet</h6>
                   <h6 *ngIf="adData?.id && adData?.video_approve_status== null"> Your request for ad sponser is yet to
                     verify. </h6>
                   <h6 *ngIf="adData?.id && adData?.video_approve_status== 0"> Your Video is Not Approved </h6>
@@ -170,32 +191,15 @@
                   <ion-button class="btnVerify green" *ngIf="programDetail?.live" (click)="joinRoom()">Go Live
                   </ion-button>
                 </div>
+                
                 <!-- <div *ngIf="userData.trilloMatch != '1' && programDetail?.is_live_status == 1">
                   <ion-button class="btnVerify" (click)="verifyUser()">Verify to Go Live</ion-button>
                 </div> -->
                 <div *ngIf="userData.trilloMatch != '1' && programDetail?.is_live_status == 0">
                   <ion-button class="btnVerify">No live program available</ion-button>
                 </div>
-
-                <ion-item class="list-items" lines="">
-                  <div class="icon-text ion-margin-bottom" style="width: 100%;">
-                    <h5 class="">Program</h5>
-                    <div class="flex-with-partition">
-                      <p>{{programDetail?.video_id.split(",").length}} Videos </p>
-                      <p>{{programDetail?.nutrition_id.split(",").length}} Nutrition</p>
-                      <p *ngIf="programDetail?.payment_type == 'Paid' ">${{programFee}}</p>
-                      <p *ngIf="programDetail?.payment_type == 'Free' ">{{programFee}}</p>
-
-                    </div>
-                    <!-- <ion-chip>
-                    {{programDetail?.video_id.split(",").length}} Videos 
-                  </ion-chip>
-                  <ion-chip>
-                    {{programFee}}
-                  </ion-chip> -->
-                  </div>
-                </ion-item>
-                <ion-item class="ion-padding-top" lines="">
+                
+                <ion-item  *ngIf="programDetail?.nutri_desc != ''" class="ion-padding-top" lines="">
                   <p class="ion-padding-bottom" style="font-size: 16px;">
                     {{programDetail?.nutri_desc}}
                   </p>
@@ -211,7 +215,7 @@
                 <h5 class="ion-padding-horizontal">Equipments</h5>
                 <ion-item>
                   <ion-slides [options]="slideOpts" class="ion-padding-vertical ion-margin-bottom">
-                    <ion-slide class="program-slides" *ngFor="let equp of equipmentsList; index as i">
+                    <ion-slide class="program-slides" *ngFor="let equp of equipmentsList; index as i" >
                       <div class="container-flex">
                         <div class="img-cont">
                           <img src="{{equipmentPicPath}}{{equp.equipment_pic}}" alt="">
@@ -265,11 +269,11 @@
 
               <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'videos'">
                 <div class="program-card" *ngFor="let val of allProgramData; let i=index;">
-                  <div class="programs-date">
+                  <div class="programs-date" *ngIf="val.is_live_status == 1 || val.nutrition_id || val.video_id">
                     <p class="fs-16 mb-10">{{val.program_date |date:'medium'}}</p>
                   </div>
                   <div class="programs-flex">
-                    <div class="program-session program-flex-child" *ngIf="val.is_live_status == 1">
+                    <div style="background-image: url('https://www.thebalancesmb.com/thmb/WexUZNoJ-q395XfYSrPxPkuC3Io=/960x540/smart/filters:no_upscale()/escavation-921233_960_720-57a2715c3df78c327648cd18.jpg');" class="program-session program-flex-child" *ngIf="val.is_live_status == 1">
                       <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
                       <div class="session-timer">
                         <p class="fs-14">{{val.hh}}</p>
@@ -278,18 +282,27 @@
                         <span>:</span>
                         <p class="fs-14">{{val.ss}}</p>
                       </div>
+                      <div class="closeIcon">
+                        <ion-icon color="primary" ios="ios-close" md="md-close" class="ion-no-margin close-icon" (click)="cancelLiveProgram(val.id)">
+                        </ion-icon>
+                      </div>
                     </div>
-                    <div class="program-video program-flex-child" *ngIf="val.video_id != '' "
+                    
+                    <div  style="background-image: url('https://www.thebalancesmb.com/thmb/WexUZNoJ-q395XfYSrPxPkuC3Io=/960x540/smart/filters:no_upscale()/escavation-921233_960_720-57a2715c3df78c327648cd18.jpg');" class="program-video program-flex-child" *ngIf="val.video_id != '' "
                       (click)="showVideoDetails(val.id,val.video_id)">
                       <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
                       <p class="fs-14">Video</p>
                     </div>
-                    <div class="program-nutrition program-flex-child" *ngIf="val.nutrition_id != '' "
+                    <div  style="background-image: url('https://www.thebalancesmb.com/thmb/WexUZNoJ-q395XfYSrPxPkuC3Io=/960x540/smart/filters:no_upscale()/escavation-921233_960_720-57a2715c3df78c327648cd18.jpg');" class="program-nutrition program-flex-child" *ngIf="val.nutrition_id != '' "
                       (click)="nutritionModal(val)">
                       <ion-icon class="ionic-icon" ios="ios-nutrition" md="md-nutrition"></ion-icon>
                       <p class="fs-14">Nutrition</p>
                     </div>
                   </div>
+                </div>
+                <div *ngIf="programDetail?.is_live_status == 1" class="ion-text-center">
+                  <ion-button class="btnVerify green" *ngIf="programDetail?.live" (click)="joinRoom()">Go Live
+                  </ion-button>
                 </div>
               </ion-list>
               <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'chat'">

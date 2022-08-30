@@ -174,6 +174,10 @@ const routes: Routes = [
     loadChildren: () => import('./profile/all-images/all-images.module').then(m => m.AllImagesPageModule)
   },
   {
+    path: 'all-user-images/:postType/:userId/:page',
+    loadChildren: () => import('./profile/all-images/all-images.module').then(m => m.AllImagesPageModule)
+  },
+  {
     path: 'comments/:postId',
     loadChildren: () => import('./comments/comments.module').then(m => m.CommentsPageModule)
   },

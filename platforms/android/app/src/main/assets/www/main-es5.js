@@ -885,7 +885,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"center\" style=\"padding-left: 16px;\">\r\n      <ion-label>Payment Pending</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end mw-30\" slot=\"end\" (click)=\"closeModal()\">X</ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" *ngIf=\"type == 2\">\r\n  <ion-card class=\"ion-no-margin upcomingCard\">\r\n    <ion-item class=\"mt-20\">\r\n      <ion-avatar slot=\"start\">\r\n        <img src=\"{{url}}{{pgimg}}\" *ngIf=\"pgimg\">\r\n        <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!pgimg\">\r\n      </ion-avatar>\r\n      <ion-label class=\"text-not-overflow\">\r\n        <h3 class=\"list-person\">Program Name : {{pgname}}</h3>\r\n        <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n      </ion-label>\r\n    </ion-item>\r\n  </ion-card>\r\n</ion-list>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" *ngIf=\"type == 1\">\r\n  <ion-card class=\"upcomingCard\">\r\n    <ion-item class=\"mt-20\">\r\n      <span class=\"list-person\">\r\n        Payment required to enter additional\r\n        Private & Group Streams\r\n      </span>\r\n      <span class=\"list-person\">\r\n        <p>Intoactive charge a small transaction fee for Live, Private and Group Session</p>\r\n      </span>\r\n\r\n      <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n\r\n    </ion-item>\r\n  </ion-card>\r\n</ion-list>\r\n<ion-button expand=\"full\" class=\"green ion-no-margin\" (click)=\"payment()\">Payment</ion-button>";
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"center\" style=\"padding-left: 16px;\">\r\n      <ion-label>Payment Pending</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end mw-30\" slot=\"end\" (click)=\"closeModal()\">X</ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" *ngIf=\"type == 2\">\r\n  <ion-card class=\"ion-no-margin upcomingCard\">\r\n    <ion-item class=\"mt-20\">\r\n      <ion-avatar slot=\"start\">\r\n        <img src=\"{{url}}{{pgimg}}\" *ngIf=\"pgimg\">\r\n        <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!pgimg\">\r\n      </ion-avatar>\r\n      <ion-label class=\"text-not-overflow\">\r\n        <h3 class=\"list-person\">Program Name : {{pgname}}</h3>\r\n        <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n      </ion-label>\r\n    </ion-item>\r\n  </ion-card>\r\n</ion-list>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" *ngIf=\"type == 1\">\r\n  <ion-card class=\"upcomingCard\">\r\n    <ion-item class=\"mt-20\">\r\n      <span class=\"list-person\">\r\n        Payment required to enter additional\r\n        Private & Group Streams\r\n      </span>\r\n      <span class=\"list-person\">\r\n        <p>Intoactive charge a small transaction fee for Live, Private and Group Session</p>\r\n      </span>\r\n\r\n      <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n\r\n    </ion-item>\r\n  </ion-card>\r\n</ion-list>\r\n<ion-button expand=\"full\" class=\"green ion-no-margin\" (click)=\"payment()\">Payment</ion-button>\r\n<ion-button expand=\"full\" class=\"green ion-no-margin\" (click)=\"productPayment()\">Product Payment</ion-button>";
     /***/
   },
 
@@ -9228,19 +9228,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_program_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! src/app/paypal/thankyou/thankyou.component */
+    "./src/app/paypal/thankyou/thankyou.component.ts");
+    /* harmony import */
+
+
+    var _services_program_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ../../services/program.service */
     "./src/app/services/program.service.ts");
     /* harmony import */
 
 
-    var _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @ionic-native/stripe/ngx */
     "./node_modules/@ionic-native/stripe/ngx/index.js");
     /* harmony import */
 
 
-    var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! @ionic-native/in-app-purchase/ngx */
     "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
 
@@ -9274,39 +9280,62 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
         }
       }, {
+        key: "productPayment",
+        value: function productPayment() {
+          this.iap.getProducts([test]).then(function (products) {
+            console.log(products); // this.products = products
+          })["catch"](function (err) {
+            console.log(err);
+          });
+        }
+      }, {
         key: "payment",
         value: function payment() {
+          var _this43 = this;
+
           this.iap.getProducts([test]).then(function (products) {
             console.log(products); // this.products = products
             //  [{ productId: 'com.yourapp.prod1', 'title': '...', description: '...', price: '...' }, ...]
-          }); // this.commonService.dismissModal();
-          // if (this.type == 2) {
-          //   this.programService.insertProgPaymentDetail({ "program_id": this.pgid, "amount": this.pgamount }).subscribe(data => {
-          //     console.log(data);
-          //     if (data) {
-          //       var fileData = {
-          //         pgid: this.pgid,
-          //         pgname: this.pgname,
-          //         pgamount: this.pgamount,
-          //         pgimg: this.pgimg,
-          //       }
-          //       this.commonService.presentModal(ThankyouComponent, 'fullModal', fileData);
-          //     }
-          //   });
-          // } else if (this.type == 1) {
-          //   this.programService.insertIntoactivePaymentDetail({ "program_id": this.pgid, "amount": this.pgamount }).subscribe(data => {
-          //     console.log(data);
-          //     if (data) {
-          //       var fileData = {
-          //         pgid: this.pgid.toString(','),
-          //         pgname: this.pgname,
-          //         pgamount: this.pgamount,
-          //         pgimg: this.pgimg,
-          //       }
-          //       this.commonService.presentModal(ThankyouComponent, 'fullModal', fileData);
-          //     }
-          //   });
-          // }
+          });
+          this.commonService.dismissModal();
+
+          if (this.type == 2) {
+            this.programService.insertProgPaymentDetail({
+              "program_id": this.pgid,
+              "amount": this.pgamount
+            }).subscribe(function (data) {
+              console.log(data);
+
+              if (data) {
+                var fileData = {
+                  pgid: _this43.pgid,
+                  pgname: _this43.pgname,
+                  pgamount: _this43.pgamount,
+                  pgimg: _this43.pgimg
+                };
+
+                _this43.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+              }
+            });
+          } else if (this.type == 1) {
+            this.programService.insertIntoactivePaymentDetail({
+              "program_id": this.pgid,
+              "amount": this.pgamount
+            }).subscribe(function (data) {
+              console.log(data);
+
+              if (data) {
+                var fileData = {
+                  pgid: _this43.pgid.toString(','),
+                  pgname: _this43.pgname,
+                  pgamount: _this43.pgamount,
+                  pgimg: _this43.pgimg
+                };
+
+                _this43.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+              }
+            });
+          }
         }
       }]);
 
@@ -9319,11 +9348,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
       }, {
-        type: _services_program_service__WEBPACK_IMPORTED_MODULE_5__["ProgramService"]
+        type: _services_program_service__WEBPACK_IMPORTED_MODULE_6__["ProgramService"]
       }, {
-        type: _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_6__["Stripe"]
+        type: _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_7__["Stripe"]
       }, {
-        type: _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_7__["InAppPurchase"]
+        type: _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_8__["InAppPurchase"]
       }];
     };
 
@@ -9343,7 +9372,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       "./src/app/app.component.scss"))["default"], tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./payment.component.scss */
       "./src/app/modalContent/payment/payment.component.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_common_service__WEBPACK_IMPORTED_MODULE_3__["CommonService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_program_service__WEBPACK_IMPORTED_MODULE_5__["ProgramService"], _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_6__["Stripe"], _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_7__["InAppPurchase"]])], PaymentComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_common_service__WEBPACK_IMPORTED_MODULE_3__["CommonService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_program_service__WEBPACK_IMPORTED_MODULE_6__["ProgramService"], _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_7__["Stripe"], _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_8__["InAppPurchase"]])], PaymentComponent);
     /***/
   },
 
@@ -9521,7 +9550,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var SearchFoodComponent = /*#__PURE__*/function () {
       function SearchFoodComponent(commonService, nutritionService, barcodeScanner, navParams) {
-        var _this43 = this;
+        var _this44 = this;
 
         _classCallCheck(this, SearchFoodComponent);
 
@@ -9538,7 +9567,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (Array.isArray(element.data)) {
             element.data.forEach(function (el) {
               if (el.food_name !== null) {
-                _this43.selectedFoodList2.push(el.food_name);
+                _this44.selectedFoodList2.push(el.food_name);
               }
             });
           }
@@ -9555,10 +9584,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngAfterViewInit",
         value: function ngAfterViewInit() {
-          var _this44 = this;
+          var _this45 = this;
 
           setTimeout(function () {
-            _this44.search_food_name.setFocus();
+            _this45.search_food_name.setFocus();
           }, 400);
         }
       }, {
@@ -9576,22 +9605,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkFoodName",
         value: function checkFoodName(foodname) {
-          var _this45 = this;
+          var _this46 = this;
 
           if (foodname !== '') {
             this.nutritionService.ntnxfetchFood(foodname).subscribe(function (data) {
               data.common.forEach(function (el) {
-                if (_this45.selectedFoodList2.indexOf(el['food_name']) !== -1) {
+                if (_this46.selectedFoodList2.indexOf(el['food_name']) !== -1) {
                   el['selected'] = true;
                 } else {
                   el['selected'] = false;
                 }
               });
 
-              _this45.commonService.dismissLoader();
+              _this46.commonService.dismissLoader();
 
               console.log(data.common);
-              _this45.foodList = Array.of(data);
+              _this46.foodList = Array.of(data);
               console.log();
             }, function (err) {
               console.log(err);
@@ -9603,7 +9632,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getNutriDetails",
         value: function getNutriDetails(itemDetails) {
-          var _this46 = this;
+          var _this47 = this;
 
           var itemVal = itemDetails.target.value;
 
@@ -9617,9 +9646,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               // console.log(data['foods'])
               console.log(data);
 
-              _this46.selectedFoodList.push(data['foods'][0]);
+              _this47.selectedFoodList.push(data['foods'][0]);
 
-              console.log(_this46.selectedFoodList);
+              console.log(_this47.selectedFoodList);
             });
           } else {
             console.log('viraj');
@@ -9661,26 +9690,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "scanFood",
         value: function scanFood() {
-          var _this47 = this;
+          var _this48 = this;
 
           this.barcodeScanner.scan().then(function (barcodeData) {
             console.log('Barcode data', barcodeData);
 
             if (!barcodeData.cancelled) {
-              _this47.nutritionService.nutrtionBarcode(barcodeData.text).subscribe(function (data) {
+              _this48.nutritionService.nutrtionBarcode(barcodeData.text).subscribe(function (data) {
                 console.log('asadsad');
 
                 if (!data.status) {
-                  _this47.apiData = data;
+                  _this48.apiData = data;
                   console.log(data);
                 } else {
-                  _this47.apiData = null;
+                  _this48.apiData = null;
                   console.log('ssssssss', data.status);
 
-                  _this47.commonService.presentToast('Product not found in database');
+                  _this48.commonService.presentToast('Product not found in database');
                 }
 
-                _this47.commonService.dismissModal(_this47.apiData);
+                _this48.commonService.dismissModal(_this48.apiData);
               });
             }
           })["catch"](function (err) {
@@ -10433,7 +10462,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var _this48 = this;
+          var _this49 = this;
 
           // this.submitted = true;
           if (this.userIdentityVerifyForm.invalid) {
@@ -10443,25 +10472,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.commonService.presentLoader();
           this.settingsService.userIndentityVerify(this.userIdentityVerifyForm.value).subscribe(function (data) {
-            _this48.commonService.dismissLoader();
+            _this49.commonService.dismissLoader();
 
             if (data.Record.RecordStatus === 'match') {
-              _this48.settingsService.trilloRecordUpdate().subscribe(function (data) {
+              _this49.settingsService.trilloRecordUpdate().subscribe(function (data) {
                 var loginUserData = JSON.parse(localStorage.getItem('userData'));
                 loginUserData.trilloMatch = 1;
                 localStorage.setItem('userData', JSON.stringify(loginUserData));
               });
 
-              _this48.commonService.dismissModal();
+              _this49.commonService.dismissModal();
 
-              _this48.commonService.presentToast('Record Match');
+              _this49.commonService.presentToast('Record Match');
             } else if (data.Record.RecordStatus === 'undefined') {
-              _this48.commonService.presentToast(data);
+              _this49.commonService.presentToast(data);
             } else {
-              _this48.commonService.presentToast('Record Not Match');
+              _this49.commonService.presentToast('Record Not Match');
             }
           }, function (err) {
-            _this48.commonService.dismissLoader();
+            _this49.commonService.dismissLoader();
           });
         }
       }, {
@@ -10587,7 +10616,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "rename",
         value: function rename() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
-            var _this49 = this;
+            var _this50 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee17$(_context17) {
@@ -10611,20 +10640,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         handler: function handler(blah) {
                           console.log('Confirm Cancel: blah');
 
-                          _this49.commonService.dismissPopover("");
+                          _this50.commonService.dismissPopover("");
                         }
                       }, {
                         text: 'Okay',
                         handler: function handler(data) {
                           if (data.playlistName) {
-                            _this49.musicService.renamePlaylist({
+                            _this50.musicService.renamePlaylist({
                               'playlistName': data.playlistName,
-                              'playlistId': _this49.playlistData.id
+                              'playlistId': _this50.playlistData.id
                             }).subscribe(function (data) {
                               if (data) {
-                                _this49.commonService.presentToast("Playlist renamed.");
+                                _this50.commonService.presentToast("Playlist renamed.");
 
-                                _this49.commonService.dismissPopover(true);
+                                _this50.commonService.dismissPopover(true);
                               }
                             });
                           }
@@ -10647,15 +10676,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "remove",
         value: function remove() {
-          var _this50 = this;
+          var _this51 = this;
 
           this.musicService.removePlaylist({
             'playlistId': this.playlistData.id
           }).subscribe(function (data) {
             if (data) {
-              _this50.commonService.presentToast("Playlist removed.");
+              _this51.commonService.presentToast("Playlist removed.");
 
-              _this50.commonService.dismissPopover("");
+              _this51.commonService.dismissPopover("");
             }
           });
         }
@@ -10790,7 +10819,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "newPlaylist",
         value: function newPlaylist() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
-            var _this51 = this;
+            var _this52 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee19$(_context19) {
@@ -10818,12 +10847,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         text: 'Okay',
                         handler: function handler(data) {
                           if (data.playlistName) {
-                            _this51.musicService.createPlaylist({
+                            _this52.musicService.createPlaylist({
                               'pname': data.playlistName,
-                              'mid': _this51.mid
+                              'mid': _this52.mid
                             }).subscribe(function (data) {
                               if (data) {
-                                _this51.commonService.presentToast("Song added.");
+                                _this52.commonService.presentToast("Song added.");
                               }
                             });
                           }
@@ -10851,7 +10880,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addToList",
         value: function addToList(ev) {
-          var _this52 = this;
+          var _this53 = this;
 
           this.commonService.dismissPopover('');
           console.log(ev);
@@ -10861,12 +10890,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             if (data.status) {
               if (data.status.id) {
-                _this52.commonService.presentToast('Song added to playlist.');
+                _this53.commonService.presentToast('Song added to playlist.');
               } else {
-                _this52.commonService.presentToast(data.status);
+                _this53.commonService.presentToast(data.status);
               }
             } else {
-              _this52.commonService.presentToast('someting went wrong');
+              _this53.commonService.presentToast('someting went wrong');
             }
           });
         }
@@ -11258,29 +11287,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(NotificationModalComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this53 = this;
+          var _this54 = this;
 
           this.profileData = this.navParams.get('profileData');
           this.commonService.presentLoader();
           this.peopleService.getUserNotification({
             'cid': this.profileData.userData.id
           }).subscribe(function (data) {
-            _this53.commonService.dismissLoader();
+            _this54.commonService.dismissLoader();
 
             if (data.status) {
-              _this53.toggleDiscussion = data.status.discussion;
-              _this53.toggleImage = data.status.image;
-              _this53.toggleVideo = data.status.video;
-              _this53.toggleProgram = data.status.program;
+              _this54.toggleDiscussion = data.status.discussion;
+              _this54.toggleImage = data.status.image;
+              _this54.toggleVideo = data.status.video;
+              _this54.toggleProgram = data.status.program;
             }
           }, function (err) {
-            _this53.commonService.dismissLoader();
+            _this54.commonService.dismissLoader();
           });
         }
       }, {
         key: "disableNotification",
         value: function disableNotification(colName, value) {
-          var _this54 = this;
+          var _this55 = this;
 
           this.commonService.presentLoader();
           this.peopleService.userNotification({
@@ -11290,11 +11319,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this54.commonService.dismissLoader();
+            _this55.commonService.dismissLoader();
 
-            _this54.commonService.presentToast(data.toast + " " + _this54.profileData.userData.user_name);
+            _this55.commonService.presentToast(data.toast + " " + _this55.profileData.userData.user_name);
           }, function (err) {
-            _this54.commonService.dismissLoader();
+            _this55.commonService.dismissLoader();
           });
         }
       }, {
@@ -11421,7 +11450,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "removePost",
         value: function removePost() {
-          var _this55 = this;
+          var _this56 = this;
 
           this.commonService.presentLoader();
           this.postService.removePost({
@@ -11429,7 +11458,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this55.commonService.dismissLoader();
+            _this56.commonService.dismissLoader();
 
             if (data.postStatus == true) {}
           });
@@ -11441,7 +11470,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "commentDisable",
         value: function commentDisable() {
-          var _this56 = this;
+          var _this57 = this;
 
           this.commonService.presentLoader();
           this.postService.commentDisable({
@@ -11450,7 +11479,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this56.commonService.dismissLoader();
+            _this57.commonService.dismissLoader();
 
             if (data.postStatus == true) {}
           });
@@ -11805,19 +11834,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this57 = this;
+          var _this58 = this;
 
           this.viewUserId = this.navParamas.get('userId');
           var dataPromise = this.storage.get('userData');
           dataPromise.then(function (data) {
-            _this57.storageData = JSON.parse(data);
-            _this57.userId = _this57.storageData.id;
+            _this58.storageData = JSON.parse(data);
+            _this58.userId = _this58.storageData.id;
           });
           this.peopleViewService.getFollowers(this.viewUserId).subscribe(function (data) {
-            _this57.followers = data.result;
-            _this57.followerFilteredUsers = _this57.followers;
+            _this58.followers = data.result;
+            _this58.followerFilteredUsers = _this58.followers;
 
-            _this57.followers.forEach(function (element, i) {
+            _this58.followers.forEach(function (element, i) {
               if (element.following_user.follower_rel != null) {
                 element.following_user.follow = true;
                 element.following_user["class"] = '';
@@ -11829,7 +11858,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             });
 
-            console.log(_this57.followers);
+            console.log(_this58.followers);
             console.log('followersload');
           });
         }
@@ -11844,7 +11873,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "followUpPeople",
         value: function followUpPeople(folloUpId, status) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
-            var _this58 = this;
+            var _this59 = this;
 
             return regeneratorRuntime.wrap(function _callee20$(_context20) {
               while (1) {
@@ -11855,7 +11884,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       'status': status
                     }).subscribe(function (data) {
                       if (data.followStatus == 'true') {
-                        _this58.followers.forEach(function (element, i) {
+                        _this59.followers.forEach(function (element, i) {
                           if (element.following_user.id == folloUpId) {
                             element.following_user.follow = false;
                             element.following_user["class"] = 'green text-white';
@@ -11863,7 +11892,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                           }
                         });
                       } else if (data.followStatus == 'false') {
-                        _this58.followers.forEach(function (element, i) {
+                        _this59.followers.forEach(function (element, i) {
                           if (element.following_user.id == folloUpId) {
                             element.following_user.follow = true;
                             element.following_user["class"] = '';
@@ -11872,7 +11901,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         });
                       }
 
-                      console.log(_this58.followers);
+                      console.log(_this59.followers);
                       console.log(' this.followers');
                     });
 
@@ -12035,31 +12064,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ionViewWillEnter",
         value: function ionViewWillEnter() {
-          var _this59 = this;
+          var _this60 = this;
 
           this.commonService.presentLoader();
           this.programService.getAdCompanyDetails({
             'adReqId': this.adReqDetails.id
           }).subscribe(function (data) {
-            _this59.commonService.dismissLoader();
+            _this60.commonService.dismissLoader();
 
-            _this59.msgCount = data.data.count;
-            console.log(_this59.msgCount);
-            _this59.adCompanyDetail = data.data.details.filter(function (el, i) {
+            _this60.msgCount = data.data.count;
+            console.log(_this60.msgCount);
+            _this60.adCompanyDetail = data.data.details.filter(function (el, i) {
               if (el.consultant_approval) {
-                _this59.disabled = true;
+                _this60.disabled = true;
               }
 
               return el;
             });
           }, function (err) {
-            _this59.commonService.dismissLoader();
+            _this60.commonService.dismissLoader();
           });
         }
       }, {
         key: "acceptRequest",
         value: function acceptRequest(event) {
-          var _this60 = this;
+          var _this61 = this;
 
           var btn = [{
             text: 'Cancel',
@@ -12073,7 +12102,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             handler: function handler() {
               console.log('Confirm Okay');
 
-              _this60.sendRequest(event);
+              _this61.sendRequest(event);
             }
           }];
           this.commonService.presentAlert('Accept Request', 'Are you sure?', btn, '');
@@ -12081,15 +12110,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "sendRequest",
         value: function sendRequest(event) {
-          var _this61 = this;
+          var _this62 = this;
 
           this.programService.acceptSponsers({
             'acceptId': event,
             'adReqId': this.adReqDetails.id
           }).subscribe(function (data) {
-            _this61.disabled = data.data;
+            _this62.disabled = data.data;
 
-            _this61.closeModal();
+            _this62.closeModal();
           });
         }
       }, {
@@ -12347,7 +12376,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(SponserCommentComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this62 = this;
+          var _this63 = this;
 
           this.commonService.presentLoader();
           this.adDetail = this.navParams.data.adDetails;
@@ -12355,11 +12384,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.programService.getSponserComment({
             'adReqId': this.adDetail.id
           }).subscribe(function (data) {
-            _this62.comment = data.data;
+            _this63.comment = data.data;
 
-            _this62.commonService.dismissLoader();
+            _this63.commonService.dismissLoader();
           }, function (err) {
-            _this62.commonService.dismissLoader();
+            _this63.commonService.dismissLoader();
           });
           console.log(this.adDetail);
         }
@@ -12378,7 +12407,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onClickSubmit",
         value: function onClickSubmit() {
-          var _this63 = this;
+          var _this64 = this;
 
           this.submitted = true;
 
@@ -12390,11 +12419,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               'requestId': this.adDetail.id,
               'comment': this.commentForm.value.comment
             }).subscribe(function (data) {
-              _this63.ngOnInit();
+              _this64.ngOnInit();
 
-              _this63.commonService.dismissLoader();
+              _this64.commonService.dismissLoader();
             }, function (err) {
-              _this63.commonService.dismissLoader();
+              _this64.commonService.dismissLoader();
             });
           }
         }
@@ -12538,7 +12567,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       // },
       // ];
       function EquipmentsComponent(commonService, navParams, modalCtrl, programService) {
-        var _this64 = this;
+        var _this65 = this;
 
         _classCallCheck(this, EquipmentsComponent);
 
@@ -12559,7 +12588,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.programService.fetchAllSelectedEquipmentList({
           'programId': this.programDetails.id
         }).subscribe(function (data) {
-          _this64.equipments = data.equipmentList;
+          _this65.equipments = data.equipmentList;
           console.log(data);
         });
       }
@@ -12603,7 +12632,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "openEdit",
         value: function openEdit() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
-            var _this65 = this;
+            var _this66 = this;
 
             var modal;
             return regeneratorRuntime.wrap(function _callee21$(_context21) {
@@ -12627,25 +12656,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                       if (d.data.length > 0) {
                         // d.data.filter(Boolean);
-                        _this65.equipment = d.data.filter(Boolean);
-                        console.log(_this65.equipment);
+                        _this66.equipment = d.data.filter(Boolean);
+                        console.log(_this66.equipment);
 
-                        _this65.programService.updateEquipmentList({
+                        _this66.programService.updateEquipmentList({
                           "equipmentId": d.data.filter(Boolean),
-                          "programId": _this65.programDetails.id
+                          "programId": _this66.programDetails.id
                         }).subscribe(function (data) {
                           console.log('id update');
                         });
 
                         console.log(d.data.filter(Boolean));
 
-                        _this65.programService.fetchEquipmentList().subscribe(function (data) {
+                        _this66.programService.fetchEquipmentList().subscribe(function (data) {
                           console.log(data);
-                          _this65.equipments = data.equipmentList;
+                          _this66.equipments = data.equipmentList;
 
-                          _this65.equipments.filter(function (el) {
-                            if (_this65.equipment) {
-                              if (_this65.equipment.includes(el.id)) {
+                          _this66.equipments.filter(function (el) {
+                            if (_this66.equipment) {
+                              if (_this66.equipment.includes(el.id)) {
                                 el.selected = true;
                               }
 
@@ -12789,14 +12818,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "delete",
         value: function _delete() {
-          var _this66 = this;
+          var _this67 = this;
 
           this.programService.deleteProgram({
             'programId': this.programId
           }).subscribe(function (data) {
-            _this66.popOver.dismiss();
+            _this67.popOver.dismiss();
           }, function (error) {
-            _this66.popOver.dismiss();
+            _this67.popOver.dismiss();
           });
         }
       }, {
@@ -12958,32 +12987,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "recieveUser",
         value: function recieveUser(data) {
-          var _this67 = this;
+          var _this68 = this;
 
           if (data != null) {
             var uId = data.toString().split(',');
             console.log(uId);
             uId.forEach(function (el) {
-              _this67.programService.getEachUserData({
+              _this68.programService.getEachUserData({
                 el: el
               }).subscribe(function (peoples) {
                 console.log(peoples);
 
-                _this67.acceptedData.push({
+                _this68.acceptedData.push({
                   'image': peoples[0].bios.profile_pic,
                   'name': peoples[0].user_name,
                   'id': peoples[0].id
                 });
               });
 
-              console.log(_this67.acceptedData);
+              console.log(_this68.acceptedData);
             });
           }
         }
       }, {
         key: "reload",
         value: function reload(data) {
-          var _this68 = this;
+          var _this69 = this;
 
           this.commonService.presentLoader();
           console.log(data);
@@ -12992,12 +13021,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             var uId = data.split(',');
             console.log(uId);
             uId.forEach(function (el) {
-              _this68.programService.getEachUserData({
+              _this69.programService.getEachUserData({
                 el: el
               }).subscribe(function (peoples) {
                 console.log(peoples);
 
-                _this68.userData.push({
+                _this69.userData.push({
                   'image': peoples[0].bios.profile_pic,
                   'name': peoples[0].user_name,
                   'request_recive': data,
@@ -13006,36 +13035,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 });
               });
 
-              console.log(_this68.userData);
+              console.log(_this69.userData);
             });
           }
 
           this.programService.getProgramById({
             'programId': this.programDetail.id
           }).subscribe(function (data) {
-            _this68.programDetail = data;
-            console.log(_this68.programDetail);
-            _this68.participant = _this68.navParams.data.userList.filter(function (el) {
-              console.log(_this68.programDetail.programData.request_accepted);
+            _this69.programDetail = data;
+            console.log(_this69.programDetail);
+            _this69.participant = _this69.navParams.data.userList.filter(function (el) {
+              console.log(_this69.programDetail.programData.request_accepted);
 
-              if (_this68.programDetail.programData.request_accepted != null) {
+              if (_this69.programDetail.programData.request_accepted != null) {
                 console.log('innnn'); // var 
 
-                if (_this68.programDetail.programData.request_accepted.split(',').includes(el.id.toString())) {
+                if (_this69.programDetail.programData.request_accepted.split(',').includes(el.id.toString())) {
                   console.log('ttt');
                   el.request_accepted = true;
                 }
               }
 
-              console.log(_this68.participant);
+              console.log(_this69.participant);
               return el;
             });
 
-            _this68.commonService.dismissLoader();
+            _this69.commonService.dismissLoader();
           }, function (err) {
-            _this68.commonService.dismissLoader();
+            _this69.commonService.dismissLoader();
 
-            _this68.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this69.commonService.presentToast("Couldnt load data, Something went wrong.");
           });
         }
       }, {
@@ -13046,36 +13075,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "accept",
         value: function accept(event) {
-          var _this69 = this;
+          var _this70 = this;
 
           this.programService.acceptJoinRequest({
             'programId': this.prog_id,
             'userId': event
           }).subscribe(function (data) {
             console.log(data);
-            _this69.acceptedData = [];
+            _this70.acceptedData = [];
 
-            _this69.recieveUser(data.data.request_accepted);
+            _this70.recieveUser(data.data.request_accepted);
 
-            _this69.userData = [];
+            _this70.userData = [];
 
-            _this69.reload(data.data.request_recive); // this.ngOnInit();
+            _this70.reload(data.data.request_recive); // this.ngOnInit();
 
           });
         }
       }, {
         key: "deleteRequest",
         value: function deleteRequest(event) {
-          var _this70 = this;
+          var _this71 = this;
 
           this.programService.deleteJoinRequest({
             'programId': this.prog_id,
             'userId': event
           }).subscribe(function (data) {
             console.log(data);
-            _this70.userData = [];
+            _this71.userData = [];
 
-            _this70.reload(data.data.request_recive); // this.ngOnInit();
+            _this71.reload(data.data.request_recive); // this.ngOnInit();
 
           });
         }
@@ -13192,14 +13221,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "accept",
         value: function accept() {
-          var _this71 = this;
+          var _this72 = this;
 
           this.programService.acceptProgramRequest({
             'programId': this.programid
           }).subscribe(function (data) {
-            _this71.popOver.dismiss();
+            _this72.popOver.dismiss();
           }, function (err) {
-            _this71.popOver.dismiss();
+            _this72.popOver.dismiss();
           });
         }
       }, {
@@ -13368,7 +13397,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this72 = this;
+          var _this73 = this;
 
           this.programDetail = this.navParams.data.programDetail;
           console.log(this.programDetail);
@@ -13394,10 +13423,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
             console.log(data.cloneList[0].non_live_component_fee);
-            _this72.non_live_component_fee = data.cloneList[0].non_live_component_fee;
-            _this72.allProgram = data.cloneList;
+            _this73.non_live_component_fee = data.cloneList[0].non_live_component_fee;
+            _this73.allProgram = data.cloneList;
 
-            _this72.allProgram.filter(function (el) {
+            _this73.allProgram.filter(function (el) {
               el.convertedTime = new Date(el.program_date + 'Z');
               console.log(el.convertedTime);
               console.log(new Date());
@@ -13430,12 +13459,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             });
 
-            _this72.nutritionService.getNutritionById({
+            _this73.nutritionService.getNutritionById({
               'nutriId': nutriArr.toLocaleString()
             }).subscribe(function (ndata) {
-              _this72.nutritionList = ndata.nutritionList;
+              _this73.nutritionList = ndata.nutritionList;
 
-              _this72.nutritionList.forEach(function (el) {
+              _this73.nutritionList.forEach(function (el) {
                 console.log(el.image_path);
                 console.log(el.image_path.split(','));
                 var imgArr = el.image_path.split(','); //  console.log(this.nutritionList[el]);
@@ -13443,18 +13472,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 el.fImage = imgArr[0];
               });
 
-              console.log(_this72.nutritionList);
+              console.log(_this73.nutritionList);
 
-              _this72.commonService.dismissLoader();
+              _this73.commonService.dismissLoader();
             }, function (err) {
-              _this72.commonService.dismissLoader();
+              _this73.commonService.dismissLoader();
 
-              _this72.commonService.presentToast("Couldnt load data, Something went wrong.");
+              _this73.commonService.presentToast("Couldnt load data, Something went wrong.");
             });
           }, function (err) {
-            _this72.commonService.dismissLoader();
+            _this73.commonService.dismissLoader();
 
-            _this72.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this73.commonService.presentToast("Couldnt load data, Something went wrong.");
           });
         }
       }, {
@@ -13515,7 +13544,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "addEquipments2",
         value: function addEquipments2(event, item) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee24() {
-            var _this73 = this;
+            var _this74 = this;
 
             var modal;
             return regeneratorRuntime.wrap(function _callee24$(_context24) {
@@ -13544,7 +13573,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       if (d.data) {
                         console.log('asasd');
 
-                        _this73.ngOnInit();
+                        _this74.ngOnInit();
                       }
                     });
                     _context24.next = 6;
@@ -13694,7 +13723,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var AuthService = /*#__PURE__*/function () {
       function AuthService(http, httpErrorHandler, router, storage, platform, toastController, notify, commonService, socket) {
-        var _this74 = this;
+        var _this75 = this;
 
         _classCallCheck(this, AuthService);
 
@@ -13709,7 +13738,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.user = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"](null);
         this.authState = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"](false);
         this.platform.ready().then(function () {
-          _this74.ifLoggedIn();
+          _this75.ifLoggedIn();
         });
         this.handleError = httpErrorHandler.createHandleError('TasksService');
       }
@@ -14198,11 +14227,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(CheckTutorial, [{
         key: "canLoad",
         value: function canLoad() {
-          var _this75 = this;
+          var _this76 = this;
 
           return this.storage.get('ion_did_tutorial').then(function (res) {
             if (res) {
-              _this75.router.navigate(['/signin']);
+              _this76.router.navigate(['/signin']);
 
               return false;
             } else {
@@ -14392,7 +14421,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "presentPromptRedirect",
         value: function presentPromptRedirect(title, msg, sendData) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee27() {
-            var _this76 = this;
+            var _this77 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee27$(_context27) {
@@ -14418,14 +14447,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       }, {
                         text: 'request',
                         handler: function handler(data) {
-                          _this76.presentLoader();
+                          _this77.presentLoader();
 
                           if (sendData != null && sendData != '') {
                             if (data.groupName != '' && data.groupName != null) {
                               sendData.groupName = data.groupName;
 
-                              _this76.dataService.sendChatRequest(sendData).subscribe(function (data) {
-                                _this76.dismissLoader();
+                              _this77.dataService.sendChatRequest(sendData).subscribe(function (data) {
+                                _this77.dismissLoader();
 
                                 if (data.status == 'success') {
                                   var fileData = {
@@ -14435,20 +14464,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                                   }; // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
 
                                   // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
-                                  _this76.router.navigate(['/chat-room/' + data.requestID + '/' + data.room + '/' + data.type]);
+                                  _this77.router.navigate(['/chat-room/' + data.requestID + '/' + data.room + '/' + data.type]);
                                 } else {
                                   console.log('Somthing wrong');
                                   return false;
                                 }
                               });
                             } else {
-                              _this76.dismissLoader();
+                              _this77.dismissLoader();
 
                               console.log("please enter group name");
                               return false;
                             }
                           } else {
-                            _this76.dismissLoader();
+                            _this77.dismissLoader();
                           }
                         }
                       }]
@@ -14505,7 +14534,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "redirectUrlWithIdConfirm",
         value: function redirectUrlWithIdConfirm(title, msg, redirrectUrl, id) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee29() {
-            var _this77 = this;
+            var _this78 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee29$(_context29) {
@@ -14521,7 +14550,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       buttons: [{
                         text: 'Ok',
                         handler: function handler() {
-                          _this77.router.navigate([redirrectUrl, id]).then(function (e) {
+                          _this78.router.navigate([redirrectUrl, id]).then(function (e) {
                             if (e) {} else {}
                           });
                         }
@@ -14572,7 +14601,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "presentLoader",
         value: function presentLoader() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee31() {
-            var _this78 = this;
+            var _this79 = this;
 
             return regeneratorRuntime.wrap(function _callee31$(_context31) {
               while (1) {
@@ -14587,7 +14616,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       translucent: true
                     }).then(function (a) {
                       a.present().then(function () {
-                        if (!_this78.isLoading) {
+                        if (!_this79.isLoading) {
                           a.dismiss(); // a.dismiss().then(() => console.log('abort presenting loader'));
                         }
                       });
@@ -14630,11 +14659,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loggingout",
         value: function loggingout() {
-          var _this79 = this;
+          var _this80 = this;
 
           this.storage.get('userData').then(function (value) {
-            return _this79.settingsService.logout().subscribe(function (data) {
-              _this79.storage.clear();
+            return _this80.settingsService.logout().subscribe(function (data) {
+              _this80.storage.clear();
 
               localStorage.removeItem('userToken');
               localStorage.removeItem('userData');
@@ -14643,15 +14672,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               localStorage.removeItem('notification');
               localStorage.clear;
 
-              _this79.dismissLoader();
+              _this80.dismissLoader();
 
-              _this79.ngOnDestroy();
+              _this80.ngOnDestroy();
 
-              _this79.router.navigateByUrl('/signin');
+              _this80.router.navigateByUrl('/signin');
 
-              _this79.navCtrl.navigateRoot;
+              _this80.navCtrl.navigateRoot;
             }, function (err) {
-              _this79.storage.clear();
+              _this80.storage.clear();
 
               localStorage.removeItem('userToken');
               localStorage.removeItem('userData');
@@ -14672,7 +14701,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "presentModal",
         value: function presentModal(path, classcss, parameters) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee33() {
-            var _this80 = this;
+            var _this81 = this;
 
             return regeneratorRuntime.wrap(function _callee33$(_context33) {
               while (1) {
@@ -14689,8 +14718,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   case 2:
                     this.modal = _context33.sent;
                     this.modal.onDidDismiss().then(function (d) {
-                      _this80.modal = null;
-                      _this80.modaldata = d;
+                      _this81.modal = null;
+                      _this81.modaldata = d;
                     });
                     _context33.next = 6;
                     return this.modal.present();
@@ -14946,7 +14975,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var HttpErrorHandlerService = /*#__PURE__*/function () {
       function HttpErrorHandlerService(messageService) {
-        var _this81 = this;
+        var _this82 = this;
 
         _classCallCheck(this, HttpErrorHandlerService);
 
@@ -14957,7 +14986,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return function () {
             var operation = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "operation";
             var result = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-            return _this81.handleError(serviceName, operation, result);
+            return _this82.handleError(serviceName, operation, result);
           };
         };
       }
@@ -16768,7 +16797,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this82 = this;
+          var _this83 = this;
 
           console.log('viurja');
           var data = this.navParams.get('data');
@@ -16777,7 +16806,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             'nutriId': data.nutrition_id
           }).subscribe(function (data) {
             console.log(data);
-            _this82.nutritionItem = data.nutritionList.filter(function (el) {
+            _this83.nutritionItem = data.nutritionList.filter(function (el) {
               if (el.ingredients) {
                 el.ingredientsArr = el.ingredients.split(',');
               }
@@ -16788,7 +16817,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               return el;
             });
-            console.log(_this82.nutritionItem);
+            console.log(_this83.nutritionItem);
           });
         }
       }, {

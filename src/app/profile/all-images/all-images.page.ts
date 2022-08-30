@@ -19,6 +19,7 @@ export class AllImagesPage implements OnInit {
   consultName: any;
   myPosts: any = [];
   last_page: any;
+  loginUserData: any;
   currentPage: any = 0;
   url: any = Config.imgUrl;
 
@@ -32,12 +33,14 @@ export class AllImagesPage implements OnInit {
   }
 
   ngOnInit() {
+    this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+    console.log(this.loginUserData);
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.consultID = params.get('userId');
       this.consultName = params.get('userName');
     });
     
-    this.peopleView.getMyPost('1', this.consultID, 1).subscribe((data: any) => {
+    this.peopleView.getMyPost('1', this.loginUserData.id, 1).subscribe((data: any) => {
 
       data.posts.data.forEach(element => {
 
