@@ -78,8 +78,8 @@
               </a>              
             </div> -->
           </div>
-          <div class="user-name">
-            <ion-text>
+          <div class="user-name" style="margin-right: 20px">
+            <ion-text style="text-align: center;">
               <p>{{profileData?.userData?.additional?.tag_line}}</p>
             </ion-text>
           </div>
@@ -169,6 +169,24 @@
           <ion-label>Sponsor</ion-label>
         </ion-item>
       </ion-list>
+      <ion-row lines="none" style="padding: 5px 0; margin: 0; justify-content: start;" class="top-list" [(ngModel)]="consultantProfile">
+        <!-- <ion-item style=" padding: 10px 0;" class="box-shadow-none" value="aboutInfo" (click)="notification1()">
+          <div class="top-icon">
+            <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+          </div>
+          <ion-label>Info</ion-label>
+        </ion-item> -->
+        <ion-col class="ion-padding-horizontal" size="6">
+          <div class="ion-padding-horizontal" style="width: 100%;"  detail="false" button class="box-shadow-none icon-div" value="post" (click)="notification1()">
+              <ion-button expand="block" style="--background: #27a69a;">About</ion-button> 
+          </div>
+        </ion-col>
+        <ion-col  class="ion-padding-horizontal" size="6">
+          <div class="ion-padding-horizontal" style="width: 100%;"  detail="false" button class="box-shadow-none icon-div" value="post" [routerLink]="['/all-images']">
+            <ion-button expand="block" style="--background: #27a69a;">Photos</ion-button> 
+        </div>
+        </ion-col>
+      </ion-row>
     </ion-col>
   </ion-item-divider>
 

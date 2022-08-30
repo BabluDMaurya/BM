@@ -52,6 +52,7 @@ export class NewProgramViewPage implements OnInit {
   intoActivePaid: any;
   totalMin: any;
   min: any;
+  watchTime: any;
   tmp: any;
   adData: any;
   displayProgData: boolean = false;
@@ -69,6 +70,7 @@ export class NewProgramViewPage implements OnInit {
   programDescription: any;
   participants: any;
   pgtitle: any;
+  paymentStatus: any;
   //
   non_live_component_fee: any = 0;
   userName: string = "Bablu";
@@ -100,9 +102,13 @@ export class NewProgramViewPage implements OnInit {
   }
 
   ngOnInit() {
-
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.programId = params.get('programId');
+    });
+    
+    this.programService.checkPaymentStatus({ 'programId': this.programId, 'userId': this.userData.id }).subscribe((data) => {
+      console.log(data);
+      this.paymentStatus = data.payment_status
     });
 
     this.userData = JSON.parse(localStorage.getItem('userData'));
@@ -112,9 +118,9 @@ export class NewProgramViewPage implements OnInit {
     this.Mins = 0;
     this.programService.getIntoActivePendingPaymentStatus('').subscribe(data => {
       this.intoActivePaid = data.data;
-      // console.log(this.intoActivePaid);
+      console.log(this.intoActivePaid);
       this.intoActivePaid.forEach(el => {
-
+        this.watchTime = (el.time / 60);
 
         if (el.type_id == 3) {
           this.minute = ((el.time / 60) * 0.008);
@@ -123,6 +129,8 @@ export class NewProgramViewPage implements OnInit {
           this.minute = ((el.time / 60) * 0.0075);
           this.mms = (el.time / 60);
         }
+        
+        
         this.totalIntoFee = parseFloat(this.minute) + parseFloat(this.min);
         this.totalMin = parseFloat(this.mms) + parseFloat(this.Mins);
         this.min = this.totalIntoFee;
@@ -208,7 +216,7 @@ export class NewProgramViewPage implements OnInit {
       this.roomID = data.room_id;
     });
   }
-
+  
   joinRoom() {
     if (this.roomID.length == 0) {
       alert("Kindly Enter Room ID");
@@ -267,6 +275,7 @@ export class NewProgramViewPage implements OnInit {
         this.parentProgId = data.programData.parent_program;
       }
       this.programService.getProgramById({ "parentId": this.parentProgId }).subscribe(data => {
+        console.log('allProgData -',data);
         this.allProgramData = data.cloneList;
         this.non_live_component_fee = data.cloneList[0].non_live_component_fee;
 
@@ -474,11 +483,11 @@ export class NewProgramViewPage implements OnInit {
   }
   joinRequest() {
     var type_id = '0';
-    console.log(this.programType);
+    console.log(this.programDetail);
     if (this.programType == 'Private') {
       type_id = '1';
     }
-    this.programService.joinRequest({ 'programId': this.programDetail.id, 'type_id': type_id }).subscribe(data => {
+    this.programService.joinRequest({ 'programId': this.programDetail.id, 'type_id': type_id, 'invitation_type': this.programDetail.is_requested}).subscribe(data => {
       this.request_join = true;
     });
   }
@@ -512,32 +521,44 @@ export class NewProgramViewPage implements OnInit {
   }
 
   nutritionModal(data) {
-    if (this.non_live_component_fee > '0') {
-      var fileData = {
-        pgamount: this.non_live_component_fee,
-      }
-      this.commonService.presentModal(EquipmentPaymentComponent, 'bottomModal', fileData);
-      // this.commonService.presentToast("Program is Paid.")
-    } else if (!this.displayProgData) {
-      this.commonService.presentToast("Program is not live yet.");
-    } else {
+    
+    if(this.paymentStatus > 0){
       this.commonService.presentModal(NutritionModalComponent, 'fullModal', { 'data': data });
+    } else {
+      if (this.non_live_component_fee > '0') {
+        var fileData = {
+          pgamount: this.non_live_component_fee,
+          programId:this.programId
+        }
+        this.commonService.presentModal(EquipmentPaymentComponent, 'bottomModal', fileData);
+        // this.commonService.presentToast("Program is Paid.")
+      } else if (!this.displayProgData) {
+        this.commonService.presentToast("Program is not live yet.");
+      } else {
+        this.commonService.presentModal(NutritionModalComponent, 'fullModal', { 'data': data });
+      }
     }
 
   }
   async showVideoDetails(item, videoIDs) {
-
-    if (this.non_live_component_fee > '0') {
-      var fileData = {
-        pgamount: this.non_live_component_fee,
-      }
-      this.commonService.presentModal(EquipmentPaymentComponent, 'bottomModal', fileData);
-      // this.commonService.presentToast("Program is Paid.")
-    } else if (!this.displayProgData) {
-      this.commonService.presentToast("Program is not live yet.");
-    } else {
+    
+    if(this.paymentStatus > 0){
       this.commonService.presentModal(ViewVideoDetailComponent, 'fullModal', { 'details': item, 'videoIds': videoIDs });
+    } else {
+      if (this.non_live_component_fee > '0') {
+        var fileData = {
+          pgamount: this.non_live_component_fee,
+          programId:this.programId
+        }
+        this.commonService.presentModal(EquipmentPaymentComponent, 'bottomModal', fileData);
+        // this.commonService.presentToast("Program is Paid.")
+      } else if (!this.displayProgData) {
+        this.commonService.presentToast("Program is not live yet.");
+      } else {
+        this.commonService.presentModal(ViewVideoDetailComponent, 'fullModal', { 'details': item, 'videoIds': videoIDs });
+      }
     }
+    
   }
 
 

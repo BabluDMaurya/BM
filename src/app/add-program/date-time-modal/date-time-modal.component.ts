@@ -345,6 +345,7 @@ export class DateTimeModalComponent implements OnInit {
     //   return;
     // }
     if (this.programData.programType == '6') {
+      this.approval_btn = true;
       let data = [];
       this.videoList.forEach(el => {
         if (el.sele == true) {

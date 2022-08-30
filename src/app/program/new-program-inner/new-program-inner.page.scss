@@ -130,6 +130,7 @@
             background: #27a69a;
             color: #fff;
             margin-left: 5%;
+            position: relative;
 
             .ionic-icon {
                 font-size: 1.5rem !important;
@@ -285,6 +286,25 @@
 }
 
 ion-button.green.hydrated {
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
     height: 40px;
+    width: fit-content;
+    margin: 0 auto;
+}
+.closeIcon{
+    position: absolute;
+    right: -6px;
+    top: -6px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.226);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.close-icon{
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0;
+    color: #26a69a;
 }

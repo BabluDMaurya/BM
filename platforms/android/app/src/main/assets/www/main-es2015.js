@@ -1022,7 +1022,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"center\" style=\"padding-left: 16px;\">\r\n      <ion-label>Payment Pending</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end mw-30\" slot=\"end\" (click)=\"closeModal()\">X</ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" *ngIf=\"type == 2\">\r\n  <ion-card class=\"ion-no-margin upcomingCard\">\r\n    <ion-item class=\"mt-20\">\r\n      <ion-avatar slot=\"start\">\r\n        <img src=\"{{url}}{{pgimg}}\" *ngIf=\"pgimg\">\r\n        <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!pgimg\">\r\n      </ion-avatar>\r\n      <ion-label class=\"text-not-overflow\">\r\n        <h3 class=\"list-person\">Program Name : {{pgname}}</h3>\r\n        <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n      </ion-label>\r\n    </ion-item>\r\n  </ion-card>\r\n</ion-list>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" *ngIf=\"type == 1\">\r\n  <ion-card class=\"upcomingCard\">\r\n    <ion-item class=\"mt-20\">\r\n      <span class=\"list-person\">\r\n        Payment required to enter additional\r\n        Private & Group Streams\r\n      </span>\r\n      <span class=\"list-person\">\r\n        <p>Intoactive charge a small transaction fee for Live, Private and Group Session</p>\r\n      </span>\r\n\r\n      <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n\r\n    </ion-item>\r\n  </ion-card>\r\n</ion-list>\r\n<ion-button expand=\"full\" class=\"green ion-no-margin\" (click)=\"payment()\">Payment</ion-button>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"center\" style=\"padding-left: 16px;\">\r\n      <ion-label>Payment Pending</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end mw-30\" slot=\"end\" (click)=\"closeModal()\">X</ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" *ngIf=\"type == 2\">\r\n  <ion-card class=\"ion-no-margin upcomingCard\">\r\n    <ion-item class=\"mt-20\">\r\n      <ion-avatar slot=\"start\">\r\n        <img src=\"{{url}}{{pgimg}}\" *ngIf=\"pgimg\">\r\n        <img src=\"../../../assets/images/loading.jpg\" *ngIf=\"!pgimg\">\r\n      </ion-avatar>\r\n      <ion-label class=\"text-not-overflow\">\r\n        <h3 class=\"list-person\">Program Name : {{pgname}}</h3>\r\n        <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n      </ion-label>\r\n    </ion-item>\r\n  </ion-card>\r\n</ion-list>\r\n<ion-list lines=\"none\" class=\"ion-no-padding radio-list\" *ngIf=\"type == 1\">\r\n  <ion-card class=\"upcomingCard\">\r\n    <ion-item class=\"mt-20\">\r\n      <span class=\"list-person\">\r\n        Payment required to enter additional\r\n        Private & Group Streams\r\n      </span>\r\n      <span class=\"list-person\">\r\n        <p>Intoactive charge a small transaction fee for Live, Private and Group Session</p>\r\n      </span>\r\n\r\n      <span class=\"list-person\">Amount : ${{pgamount}}</span>\r\n\r\n    </ion-item>\r\n  </ion-card>\r\n</ion-list>\r\n<ion-button expand=\"full\" class=\"green ion-no-margin\" (click)=\"payment()\">Payment</ion-button>\r\n<ion-button expand=\"full\" class=\"green ion-no-margin\" (click)=\"productPayment()\">Product Payment</ion-button>");
 
 /***/ }),
 
@@ -5966,9 +5966,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config/config */ "./src/app/config/config.ts");
 /* harmony import */ var src_app_services_common_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/common.service */ "./src/app/services/common.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _services_program_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/program.service */ "./src/app/services/program.service.ts");
-/* harmony import */ var _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/stripe/ngx */ "./node_modules/@ionic-native/stripe/ngx/index.js");
-/* harmony import */ var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/in-app-purchase/ngx */ "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
+/* harmony import */ var src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/paypal/thankyou/thankyou.component */ "./src/app/paypal/thankyou/thankyou.component.ts");
+/* harmony import */ var _services_program_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/program.service */ "./src/app/services/program.service.ts");
+/* harmony import */ var _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/stripe/ngx */ "./node_modules/@ionic-native/stripe/ngx/index.js");
+/* harmony import */ var _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/in-app-purchase/ngx */ "./node_modules/@ionic-native/in-app-purchase/ngx/index.js");
+
 
 
 
@@ -5997,6 +5999,17 @@ let PaymentComponent = class PaymentComponent {
             this.router.navigateByUrl('/tabs/program');
         }
     }
+    productPayment() {
+        this.iap
+            .getProducts([test])
+            .then((products) => {
+            console.log(products);
+            // this.products = products
+        })
+            .catch((err) => {
+            console.log(err);
+        });
+    }
     payment() {
         this.iap
             .getProducts([test])
@@ -6005,42 +6018,43 @@ let PaymentComponent = class PaymentComponent {
             // this.products = products
             //  [{ productId: 'com.yourapp.prod1', 'title': '...', description: '...', price: '...' }, ...]
         });
-        // this.commonService.dismissModal();
-        // if (this.type == 2) {
-        //   this.programService.insertProgPaymentDetail({ "program_id": this.pgid, "amount": this.pgamount }).subscribe(data => {
-        //     console.log(data);
-        //     if (data) {
-        //       var fileData = {
-        //         pgid: this.pgid,
-        //         pgname: this.pgname,
-        //         pgamount: this.pgamount,
-        //         pgimg: this.pgimg,
-        //       }
-        //       this.commonService.presentModal(ThankyouComponent, 'fullModal', fileData);
-        //     }
-        //   });
-        // } else if (this.type == 1) {
-        //   this.programService.insertIntoactivePaymentDetail({ "program_id": this.pgid, "amount": this.pgamount }).subscribe(data => {
-        //     console.log(data);
-        //     if (data) {
-        //       var fileData = {
-        //         pgid: this.pgid.toString(','),
-        //         pgname: this.pgname,
-        //         pgamount: this.pgamount,
-        //         pgimg: this.pgimg,
-        //       }
-        //       this.commonService.presentModal(ThankyouComponent, 'fullModal', fileData);
-        //     }
-        //   });
-        // }
+        this.commonService.dismissModal();
+        if (this.type == 2) {
+            this.programService.insertProgPaymentDetail({ "program_id": this.pgid, "amount": this.pgamount }).subscribe(data => {
+                console.log(data);
+                if (data) {
+                    var fileData = {
+                        pgid: this.pgid,
+                        pgname: this.pgname,
+                        pgamount: this.pgamount,
+                        pgimg: this.pgimg,
+                    };
+                    this.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+                }
+            });
+        }
+        else if (this.type == 1) {
+            this.programService.insertIntoactivePaymentDetail({ "program_id": this.pgid, "amount": this.pgamount }).subscribe(data => {
+                console.log(data);
+                if (data) {
+                    var fileData = {
+                        pgid: this.pgid.toString(','),
+                        pgname: this.pgname,
+                        pgamount: this.pgamount,
+                        pgimg: this.pgimg,
+                    };
+                    this.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+                }
+            });
+        }
     }
 };
 PaymentComponent.ctorParameters = () => [
     { type: src_app_services_common_service__WEBPACK_IMPORTED_MODULE_3__["CommonService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
-    { type: _services_program_service__WEBPACK_IMPORTED_MODULE_5__["ProgramService"] },
-    { type: _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_6__["Stripe"] },
-    { type: _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_7__["InAppPurchase"] }
+    { type: _services_program_service__WEBPACK_IMPORTED_MODULE_6__["ProgramService"] },
+    { type: _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_7__["Stripe"] },
+    { type: _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_8__["InAppPurchase"] }
 ];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
@@ -6073,8 +6087,8 @@ PaymentComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./../../app.component.scss */ "./src/app/app.component.scss")).default, tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./payment.component.scss */ "./src/app/modalContent/payment/payment.component.scss")).default]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_common_service__WEBPACK_IMPORTED_MODULE_3__["CommonService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
-        _services_program_service__WEBPACK_IMPORTED_MODULE_5__["ProgramService"], _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_6__["Stripe"],
-        _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_7__["InAppPurchase"]])
+        _services_program_service__WEBPACK_IMPORTED_MODULE_6__["ProgramService"], _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_7__["Stripe"],
+        _ionic_native_in_app_purchase_ngx__WEBPACK_IMPORTED_MODULE_8__["InAppPurchase"]])
 ], PaymentComponent);
 
 
