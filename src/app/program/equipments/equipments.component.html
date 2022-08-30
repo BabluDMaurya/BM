@@ -15,10 +15,10 @@
 </ion-header>
 <ion-content class="main_content">
 
-  <div *ngIf="equipment;else nodata">
+  <!-- <div *ngIf="equipment;else nodata">
     <ion-list class="user-list ion-no-padding">
       <ion-item *ngFor="let equp of equipments">
-        <div class="users-list">
+        <div class="users-list" (click)="openViewer(equipmentPicPath+equp.equipment_pic)">
           <img src="{{equipmentPicPath}}{{equp.equipment_pic}}" />
         </div>
         <ion-label class="ion-padding-horizontal">
@@ -26,7 +26,54 @@
         </ion-label>
       </ion-item>
     </ion-list>
-  </div>
+  </div> -->
+  <ion-list *ngFor="let equp of equipments; index as i">
+    <ion-list-header>
+      <ion-label>{{equp.program_date}}</ion-label>
+    </ion-list-header>
+    <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let item of equp.list; index as j">
+        <div>
+          <div>
+            <img src="{{equipmentPicPath}}{{item.equipment_pic}}" alt="equipment name" />
+          </div>
+          <div>
+            <ion-text>{{item.equipment_name}}</ion-text>
+          </div>
+        </div>
+      </ion-slide>
+      <!-- <ion-slide>
+        <div>
+          <div>
+            <img src="dasdsa.png" alt="equipment name" />
+          </div>
+          <div>
+            <ion-text>Equipment Name</ion-text>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div>
+          <div>
+            <img src="dasdsa.png" alt="equipment name" />
+          </div>
+          <div>
+            <ion-text>Equipment Name</ion-text>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div>
+          <div>
+            <img src="dasdsa.png" alt="equipment name" />
+          </div>
+          <div>
+            <ion-text>Equipment Name</ion-text>
+          </div>
+        </div>
+      </ion-slide> -->
+    </ion-slides>
+  </ion-list>
   <ng-template #nodata>
     <div class="no-data">
       <img src="../../../assets/images/error.svg" class="mb-10" width="40px" />

@@ -9,6 +9,7 @@ import { ProgramService } from '../../services/program.service';
 })
 export class EquipmentPaymentComponent implements OnInit {
   @Input() pgamount;
+  @Input() programId;
   constructor(private commonService:CommonService,private programService: ProgramService) { }
 
   ngOnInit() {}
@@ -17,7 +18,7 @@ export class EquipmentPaymentComponent implements OnInit {
   }
 
   payment(){
-    this.programService.insertEquipmentPaymentDetail({"program_id" : this.pgamount, "amount" : this.pgamount }).subscribe(data => {
+    this.programService.insertEquipmentPaymentDetail({"program_id" : this.programId, "amount" : this.pgamount }).subscribe(data => {
       console.log(data);
       this.commonService.dismissModal(data);
       this.commonService.presentToast("Payment Done.")

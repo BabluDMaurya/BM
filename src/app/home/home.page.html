@@ -153,11 +153,11 @@
       <ion-grid *ngIf="post?.length>0" class="home-cat">
         <ion-row class="row">
           <ion-col size="6" *ngFor="let user of  post">
-            <ion-card class="cat-card">              
-                <div class="catBG"> 
+            <ion-card class="cat-card" style="background-color: #27a69a;">              
+                <!-- <div class="catBG"> 
                   <img [defaultImage]="defaultConsultantBackgroundImage" [lazyLoad]="consultantBackgroundImag+user?.bios?.profile_background_image"/>
-                  <!-- <img src="https://ionicinto.wdipl.com/public/profile_background_image/thumb/{{user?.bios?.profile_background_image}}" *ngIf="user?.bios?.profile_pic"> -->
-                </div>
+                  <img src="https://ionicinto.wdipl.com/public/profile_background_image/thumb/{{user?.bios?.profile_background_image}}" *ngIf="user?.bios?.profile_pic">
+                </div> -->
                   <ion-card-content class="home-card">
                 <ion-avatar [routerLink]="['/tabs/consultant-profile-view/',user?.id]">
                   <img [defaultImage]="defaultUserImage" [lazyLoad]="userPPicurl+user?.bios?.profile_pic"/>

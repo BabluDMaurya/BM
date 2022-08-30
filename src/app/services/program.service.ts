@@ -103,6 +103,10 @@ export class ProgramService {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/advertiseRequest', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('advertiseRequest', formData)));
   }
 
+  cancelLiveProgram(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/cancelLiveProgram', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('cancelLiveProgram', formData)));
+  }
+
   getAdDetail(formData) {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getAdDetail', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getAdDetail', formData)));
   }
@@ -173,6 +177,9 @@ export class ProgramService {
   fetchAllSelectedEquipmentList(data): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/fetchAllSelectedEquipmentList', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('fetchAllSelectedEquipmentList', data)));
   }
+  checkPaymentStatus(data): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/checkPaymentStatus', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('checkPaymentStatus', data)));
+  }
   updateProgramFees(data: any): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/updateProgramFees', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('updateProgramFees', data)));
   }
@@ -182,6 +189,10 @@ export class ProgramService {
 
   insertProgPaymentDetail(data: any): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/insertProgPaymentDetail', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('insertProgPaymentDetail', data)));
+  }
+
+  insertProdPaymentDetail(data: any): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/auth/insertProdPaymentDetail', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('insertProdPaymentDetail', data)));
   }
 
   insertIntoactivePaymentDetail(data: any): Observable<any> {

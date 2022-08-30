@@ -134,6 +134,10 @@
                       <ion-radio slot="start" value="2" formControlName="programType"></ion-radio>
                     </ion-item> -->
                     <ion-item lines="none">
+                      <ion-label>Video</ion-label>
+                      <ion-radio slot="start" value="6" formControlName="programType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
                       <ion-label>Private</ion-label>
                       <!-- <ion-label>One to One</ion-label> -->
                       <!-- <ion-label>Private - Twoway</ion-label> -->
@@ -148,11 +152,7 @@
                       <ion-label>Broadcast</ion-label>
                       <!-- <ion-label>One to Many</ion-label> -->
                       <ion-radio slot="start" value="5" formControlName="programType"></ion-radio>
-                    </ion-item>
-                    <ion-item lines="none">
-                      <ion-label>Video</ion-label>
-                      <ion-radio slot="start" value="6" formControlName="programType"></ion-radio>
-                    </ion-item>
+                    </ion-item>                    
                     <!-- <ion-item lines="none">
                       <ion-label>Nutrition</ion-label>
                       <ion-radio slot="start" value="7" formControlName="programType" disabled="true"></ion-radio>
@@ -177,7 +177,7 @@
             <ion-item class="mb-10">
               <ion-row>
                 <ion-list-header class="grey-header">
-                  <ion-label>Participants</ion-label>
+                  <ion-label>Invitation Type</ion-label>
                 </ion-list-header>
                 <ion-col size="6" class="ion-no-padding">
                   <ion-radio-group lines="none" class="full-width radio-list" formControlName="participantsType">
@@ -189,6 +189,10 @@
                     <ion-item lines="none" class="mb-10 sel-parti-open-item" (click)="clearExcl()">
                       <ion-label>Open</ion-label>
                       <ion-radio slot="start" value="2" checked formControlName="participantsType"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none" class="mb-10 sel-parti-open-item" (click)="clearExcl()">
+                      <ion-label>Approval</ion-label>
+                      <ion-radio slot="start" value="3" checked formControlName="participantsType"></ion-radio>
                     </ion-item>
                     <ng-container *ngFor="let validation of validation_messages.participantsType">
                       <span class="error-message"
@@ -383,13 +387,15 @@
             <div class="calender_green_bottom">
               <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)"  checked={{date.is_live}}  slot="end"></ion-toggle> -->
               <!-- <ion-icon class="live-icon" (click)="picker.open()" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="activatePopup(i)" [ngClass]="{'active': date.is_live}"></ion-icon> -->
-              <div class="toggleDiv" (click)="toggleIcon(item)">
+              <div class="toggleDiv" *ngIf="programForm.value.programType != 6" (click)="toggleIcon(item)">
                 <!-- <ion-toggle [disabled] = '' (ionChange)="activatePopup(i)" (click)="toggleIcon(item)" checked={{date.is_live}}  slot="end"></ion-toggle>
                 <ion-icon class="live-icon" src="../../assets/images/live-video.svg" (ionChange)="activatePopup(i)"   (click)="toggleIcon(item)" [ngClass]="{'active': item.active}"></ion-icon> -->
                 <!-- <ion-label class="live"  (ionChange)="activatePopup(i)"   [ngClass]="{'active': item.active}"></ion-label> -->
                 <ion-label class="live" (click)="openStart(i)" (ionChange)="activatePopup(i)"
                   [ngClass]="{'active': date.is_live}"></ion-label>
               </div>
+              <ion-icon *ngIf="!date.is_live && date.video != ''" ios="ios-clock" (click)="openStart(i)" md="md-clock" class="ion-margin-start"
+              ></ion-icon>
               <ion-icon ios="ios-fitness" md="md-fitness" class="ion-margin-start"
                 (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
               <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start"

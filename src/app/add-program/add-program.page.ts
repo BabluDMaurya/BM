@@ -49,6 +49,7 @@ export class AddProgramPage implements OnInit {
   progDuration: any;
   selectDate: any = [];
   dateObj: any;
+  oldTimeDuration: null;
   progEndTime: any;
   noEvent: any = true;
   timeSlot: any = false;
@@ -180,6 +181,7 @@ export class AddProgramPage implements OnInit {
         participant: participantType
       });
     });
+    console.log(events);
     this.eventSource = (events);
     return events;
   }
@@ -193,12 +195,30 @@ export class AddProgramPage implements OnInit {
    * function to create add program form with validation.
    */
   openStart(i) {
-    this.indexForLive = i;
-    this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
-    if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
-      this.repetatedDateCopy[this.indexForLive].is_live = false
+    console.log(i);
+    console.log(this.oldTimeDuration);
+    // if(this.oldTimeDuration == undefined){
+    //   console.log('Undefined');
+    // } else {
+    //   console.log('Not undefined');
+    // }
+    
+    if(this.oldTimeDuration == undefined){
+      this.indexForLive = i;
+      this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
+      if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
+        this.repetatedDateCopy[this.indexForLive].is_live = false
+      } else {
+        this.sTime.open();
+      }
     } else {
-      this.sTime.open();
+      this.indexForLive = i;
+      this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
+      if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
+        this.repetatedDateCopy[this.indexForLive].is_live = false;
+      } else {
+        this.repetatedDateCopy[this.indexForLive].is_live = true;
+      }
     }
 
   }
@@ -782,7 +802,8 @@ export class AddProgramPage implements OnInit {
             //   return false;
             // }
             console.log(this.indexForLive + 'indexForLive');
-            console.log(data.duration);
+            this.oldTimeDuration = data.duration
+            console.log(this.oldTimeDuration);
             if (data.duration <= 0) {
               this.showErrorToast('Enter Valid Duration');
               return false;
@@ -833,8 +854,8 @@ export class AddProgramPage implements OnInit {
                     } else {
                       this.noEvent = false;
                       console.log('nn');
-                      this.selectNewTime();
-
+                      this.sameTime();
+                      this.sTime.open();
                     }
                   }
                   // else{
@@ -1084,6 +1105,17 @@ export class AddProgramPage implements OnInit {
   //   });
   //   return modal.present();
   // }
+
+  async sameTime(){
+    const toast = await this.toastCtrl.create({
+      message: 'Program is already assigned for this time slot',
+      duration: 3000,
+      position: 'top'
+    });
+
+    toast.present();
+  }
+
   selectNewTime() {
 
 
@@ -1387,7 +1419,7 @@ export class AddProgramPage implements OnInit {
   get f() { return this.programForm.controls; }
 
   nextStep(event) {
-
+    console.log(event);
     this.selected = [];
     this.repetatedDateCopy = [];
     this.repetatedDate = [];

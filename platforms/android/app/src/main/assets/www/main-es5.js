@@ -9282,12 +9282,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "productPayment",
         value: function productPayment() {
-          console.log('getProductId');
-          this.iap.getProducts(['com.bm.ionicfcm.test']).then(function (products) {
-            console.log(JSON.stringify(products)); // this.products = products
+
+          this.iap.getProducts([test]).then(function (products) {
+            console.log(products); // this.products = products
           })["catch"](function (err) {
             console.log(err);
-            console.log(JSON.stringify(err));
           });
         }
       }, {

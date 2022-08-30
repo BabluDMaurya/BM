@@ -20,6 +20,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { NutritionService } from './../../services/nutrition.service';
 import { NutritionModalComponent } from 'src/app/user-profile/nutrition-modal/nutrition-modal.component';
 import { ViewVideoDetailComponent } from 'src/app/add-program/view-video-detail/view-video-detail.component';
+
 /* To try the app with Enablex hosted service you need to set the kTry = true */
 var kTry = true;
 /*Your webservice host URL, Keet the defined host when kTry = true */
@@ -270,7 +271,7 @@ export class NewProgramInnerPage implements OnInit {
 
     this.commonService.presentLoader();
     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
-      // console.log(data,'pdata');
+      console.log(data,'pdata');
       // console.log(data.programData.parent_program);
       if (data.programData.parent_program == null) {
         console.log('nullll');
@@ -282,7 +283,7 @@ export class NewProgramInnerPage implements OnInit {
         this.upcomingList = this.getCounter(data.cloneList);
 
         this.allProgramData = this.upcomingList;
-        // console.log(data, 'programData');
+        console.log(data, 'programData');
         console.log(this.allProgramData, 'allProgramData');
       });
       this.programDetail = data.programData;
@@ -439,7 +440,8 @@ export class NewProgramInnerPage implements OnInit {
       });
 
     this.programService.fetchSelectedEquipmentList({ 'programId': this.programId }).subscribe((data) => {
-      console.log(data);
+      console.log('Program id for equipment ',this.programId);
+      console.log(data.equipmentList);
       this.equipmentsList = data.equipmentList;
     });
   }
@@ -602,5 +604,11 @@ export class NewProgramInnerPage implements OnInit {
   goBack() {
     // this.navCtrl.back();
     this.router.navigate(['/new-schedule-program']);
+  }
+
+  cancelLiveProgram(id){
+    this.programService.cancelLiveProgram({ 'programId': id }).subscribe(data => {
+      this.router.navigate(['/tabs/program']);
+    });
   }
 }

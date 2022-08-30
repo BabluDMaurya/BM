@@ -41,29 +41,34 @@ export class PaymentComponent implements OnInit {
   }
 
   productPayment() {
-    console.log('getProductId');
-    this.iap
-      .getProducts(['com.bm.ionicfcm.test'])
-      .then((products) => {
-        console.log(JSON.stringify(products));
-        
-        // this.products = products
-      })
-      .catch((err) => {
-        console.log(err);
-        console.log(JSON.stringify(err));
-      });
+
+    // this.iap
+    //   .getProducts([test])
+    //   .then((products) => {
+    //     console.log(products);
+    //     // this.products = products
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
+    this.programService.insertProdPaymentDetail({ "program_id": this.pgid, "amount": this.pgamount }).subscribe(data => {
+      console.log(this.pgamount);
+      if (data) {
+        var fileData = {
+          pgid: this.pgid,
+          pgname: this.pgname,
+          pgamount: this.pgamount,
+          pgimg: this.pgimg,
+        }
+        this.commonService.presentModal(ThankyouComponent, 'fullModal', fileData);
+      }
+    });
+
   }
 
 
-  payment() {
-    this.iap
-      .getProducts([test])
-      .then((products) => {
-        console.log(products);
-        // this.products = products
-        //  [{ productId: 'com.yourapp.prod1', 'title': '...', description: '...', price: '...' }, ...]
-      })
+  payment() {    
     this.commonService.dismissModal();
     if (this.type == 2) {
       this.programService.insertProgPaymentDetail({ "program_id": this.pgid, "amount": this.pgamount }).subscribe(data => {

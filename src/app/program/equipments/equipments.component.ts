@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
 import { NavParams, ModalController } from '@ionic/angular';
+import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 import { ProgramService } from './../../services/program.service';
 import { AddEquipmentsComponent } from './../../add-program/add-equipments/add-equipments.component'
 import { Config } from './../../config/config'
@@ -17,6 +18,11 @@ export class EquipmentsComponent implements OnInit {
   equipment: any;
   equipments: any;
   equipmentPicPath = Config.equipmentPic;
+  url = Config.imgUrl;
+  slideOpts = {
+    slidesPerView: 3,
+    speed: 400
+  };
   // equipments = [{
   //   id: 1, name: 'Dumbels', selected: false,
   // },
@@ -56,7 +62,8 @@ export class EquipmentsComponent implements OnInit {
     console.log(this.equipment);
     this.programService.fetchAllSelectedEquipmentList({ 'programId': this.programDetails.id }).subscribe((data) => {
       this.equipments = data.equipmentList;
-      console.log(data);
+      console.log(data.equipmentList);
+      console.log(this.programDetails.id);
     });
   }
 
@@ -132,6 +139,22 @@ export class EquipmentsComponent implements OnInit {
         console.log('empty');
       }
     });
+    return await modal.present();
+  }
+
+  async openViewer(path) {
+    const modal = await this.modalCtrl.create({
+      component: ViewerModalComponent,
+      componentProps: {
+        src: path, // required
+        srcHighRes: path,
+        srcFallback: path
+      },
+      cssClass: 'ion-img-viewer', // required
+      keyboardClose: true,
+      showBackdrop: true
+    });
+
     return await modal.present();
   }
 }

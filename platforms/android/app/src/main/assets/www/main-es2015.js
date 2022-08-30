@@ -6000,16 +6000,18 @@ let PaymentComponent = class PaymentComponent {
         }
     }
     productPayment() {
-        console.log('getProductId');
+
         this.iap
-            .getProducts(['com.bm.ionicfcm.test'])
+            .getProducts([test])
             .then((products) => {
-            console.log(JSON.stringify(products));
+            console.log(products);
             // this.products = products
         })
             .catch((err) => {
             console.log(err);
+
             console.log(JSON.stringify(err));
+
         });
     }
     payment() {
