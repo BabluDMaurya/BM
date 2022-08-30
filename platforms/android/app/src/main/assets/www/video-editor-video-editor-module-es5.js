@@ -228,6 +228,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "vesdk_failure",
         value: function vesdk_failure(error) {
+          console.log('setup error');
           console.log('vesdk_failure: ' + JSON.stringify(error));
         }
       }, {
@@ -278,7 +279,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               }]
             }
           };
-          VESDK.openEditor(this.vesdk_success, this.vesdk_failure, VESDK.loadResource('www/assets/Skater.mp4'), config);
+          VESDK.openEditor(this.vesdk_success, this.vesdk_failure, VESDK.loadResource('www/assets/videos/SampleVideo.mp4'), config);
         }
       }]);
 

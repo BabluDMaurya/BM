@@ -271,7 +271,7 @@ export class NewProgramInnerPage implements OnInit {
 
     this.commonService.presentLoader();
     this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
-      // console.log(data,'pdata');
+      console.log(data,'pdata');
       // console.log(data.programData.parent_program);
       if (data.programData.parent_program == null) {
         console.log('nullll');

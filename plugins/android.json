@@ -10,6 +10,12 @@
     "com-sarriaroman-photoviewer": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
+    "com.moust.cordova.videoplayer": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
+    "com.paypal.cordova.mobilesdk": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
     "cordova-android-support-gradle-release": {
       "ANDROID_SUPPORT_VERSION": "27.+",
       "PACKAGE_NAME": "com.bm.ionicfcm"
@@ -56,6 +62,9 @@
     "cordova-plugin-streaming-media": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
+    "cordova-plugin-stripe": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
     "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
@@ -84,13 +93,10 @@
       "DEEPLINK_5_HOST": " ",
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
-    "com.paypal.cordova.mobilesdk": {
+    "cordova-plugin-inapppurchase": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
-    "com.moust.cordova.videoplayer": {
-      "PACKAGE_NAME": "com.bm.ionicfcm"
-    },
-    "cordova-plugin-stripe": {
+    "cordova-plugin-inapppurchase": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
     "cordova-plugin-inapppurchase": {
@@ -98,6 +104,9 @@
     }
   },
   "dependent_plugins": {
+    "card.io.cordova.mobilesdk": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
     "cordova-clipboard": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
@@ -144,9 +153,6 @@
     },
     "phonegap-plugin-barcodescanner": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "com.bm.ionicfcm"
-    },
-    "card.io.cordova.mobilesdk": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     }
   }
