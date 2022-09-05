@@ -17,6 +17,7 @@ export class EquipmentsComponent implements OnInit {
   programDetails: any;
   equipment: any;
   equipments: any;
+  parentProgId: any;
   equipmentPicPath = Config.equipmentPic;
   url = Config.imgUrl;
   slideOpts = {
@@ -56,11 +57,16 @@ export class EquipmentsComponent implements OnInit {
 
     this.programDetails = this.navParams.data.programDetail;
     console.log(this.programDetails);
+    if (this.programDetails.parent_program == null) {
+      this.parentProgId = this.programDetails.id;
+    } else {
+      this.parentProgId = this.programDetails.parent_program;
+    }
     if (this.programDetails.equipments != null) {
       this.equipment = this.programDetails.equipments.split(',');
     }
     console.log(this.equipment);
-    this.programService.fetchAllSelectedEquipmentList({ 'programId': this.programDetails.id }).subscribe((data) => {
+    this.programService.fetchAllSelectedEquipmentList({ 'programId': this.parentProgId }).subscribe((data) => {
       this.equipments = data.equipmentList;
       console.log(data.equipmentList);
       console.log(this.programDetails.id);

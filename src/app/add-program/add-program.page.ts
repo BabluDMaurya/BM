@@ -205,7 +205,7 @@ export class AddProgramPage implements OnInit {
     
     if(this.oldTimeDuration == undefined){
       this.indexForLive = i;
-      this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
+      // this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
       if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
         this.repetatedDateCopy[this.indexForLive].is_live = false
       } else {
@@ -213,7 +213,7 @@ export class AddProgramPage implements OnInit {
       }
     } else {
       this.indexForLive = i;
-      this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
+      // this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
       if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
         this.repetatedDateCopy[this.indexForLive].is_live = false;
       } else {

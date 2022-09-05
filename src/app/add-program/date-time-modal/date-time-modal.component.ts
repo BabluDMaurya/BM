@@ -344,8 +344,8 @@ export class DateTimeModalComponent implements OnInit {
     //   this.commonService.presentToast('Please select Duration');
     //   return;
     // }
-    if (this.programData.programType == '6') {
-      this.approval_btn = true;
+    if (this.programData.programType == '6') {      
+
       let data = [];
       this.videoList.forEach(el => {
         if (el.sele == true) {
@@ -375,6 +375,14 @@ export class DateTimeModalComponent implements OnInit {
           }
         }
       });
+
+      this.programService.advertiseRequest({'programId':this.programData.id}).subscribe(data=>{
+        this.adData = data.status;
+        this.request_approve_btn = true;
+        this.commonService.dismissLoader();
+        // this.commonService.presentToast('Request Sent');
+        console.log(data);
+      } );
 
 
     }
@@ -506,7 +514,7 @@ export class DateTimeModalComponent implements OnInit {
       //   this.request_approve_btn = true;
       //   this.commonService.dismissLoader();
       //   this.commonService.presentToast('Request Sent');
-      //   console.log(data);
+      //   console.log(data); 
       // } );
     } else {
       this.commonService.dismissLoader();

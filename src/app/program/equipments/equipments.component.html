@@ -34,7 +34,7 @@
     <ion-slides [options]="slideOpts">
       <ion-slide *ngFor="let item of equp.list; index as j">
         <div>
-          <div>
+          <div (click)="openViewer(equipmentPicPath+item.equipment_pic)">
             <img src="{{equipmentPicPath}}{{item.equipment_pic}}" alt="equipment name" />
           </div>
           <div>
