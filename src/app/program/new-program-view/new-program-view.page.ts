@@ -266,6 +266,7 @@ export class NewProgramViewPage implements OnInit {
       console.log(this.programDetail);
       console.log(this.programDetail.is_requested);
       console.log(this.request_join);
+      console.log(this.programDetail.ended);
       console.log(this.prePayment);
       console.log('enddddddddd');
       if (data.programData.parent_program == null) {
@@ -483,13 +484,15 @@ export class NewProgramViewPage implements OnInit {
   }
   joinRequest() {
     var type_id = '0';
-    console.log(this.programDetail);
+    console.log(this.request_join);
     if (this.programType == 'Private') {
       type_id = '1';
     }
     this.programService.joinRequest({ 'programId': this.programDetail.id, 'type_id': type_id, 'invitation_type': this.programDetail.is_requested}).subscribe(data => {
       this.request_join = true;
     });
+    console.log(this.request_join);
+    console.log(this.programDetail.ended);    
   }
 
   simpleNotif() {
@@ -541,11 +544,13 @@ export class NewProgramViewPage implements OnInit {
 
   }
   async showVideoDetails(item, videoIDs) {
-    
+    console.log(this.non_live_component_fee);
     if(this.paymentStatus > 0){
+      console.log('a');
       this.commonService.presentModal(ViewVideoDetailComponent, 'fullModal', { 'details': item, 'videoIds': videoIDs });
     } else {
       if (this.non_live_component_fee > '0') {
+        console.log('b');
         var fileData = {
           pgamount: this.non_live_component_fee,
           programId:this.programId
@@ -553,6 +558,7 @@ export class NewProgramViewPage implements OnInit {
         this.commonService.presentModal(EquipmentPaymentComponent, 'bottomModal', fileData);
         // this.commonService.presentToast("Program is Paid.")
       } else if (!this.displayProgData) {
+        console.log('c');
         this.commonService.presentToast("Program is not live yet.");
       } else {
         this.commonService.presentModal(ViewVideoDetailComponent, 'fullModal', { 'details': item, 'videoIds': videoIDs });

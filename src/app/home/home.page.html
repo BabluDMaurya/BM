@@ -36,12 +36,15 @@
       </ion-col>-->
       <ion-slides [options]="sliderOpts">
         <ion-slide class="white-background" *ngFor="let special of  specialities">
-          <ion-col size="12">
-            <ion-card class="category-card"> 
+          <!-- <ion-col size="12"> -->
+            <!-- <ion-card class="category-card"> 
                 <img [defaultImage]="defaultCatImage" [lazyLoad]="caturl+special?.specialities_image" />
-            </ion-card>
-            <h4>{{special?.name}}</h4>
-          </ion-col>
+            </ion-card> -->
+            <!-- <ion-segment> -->
+              <ion-chip style="font-size: 11px;">{{special?.name}}</ion-chip>
+            <!-- </ion-segment> -->
+            <!-- <h4>{{special?.name}}</h4> -->
+          <!-- </ion-col> -->
         </ion-slide>
       </ion-slides>
     </ion-row>
@@ -152,19 +155,22 @@
 
       <ion-grid *ngIf="post?.length>0" class="home-cat">
         <ion-row class="row">
-          <ion-col size="6" *ngFor="let user of  post">
-            <ion-card class="cat-card" style="background-color: #27a69a;">              
+          <ion-col size="3" style="justify-content: center;" *ngFor="let user of  post">
+            <!-- <ion-card class="cat-card" style="background-color: #27a69a;">               -->
                 <!-- <div class="catBG"> 
                   <img [defaultImage]="defaultConsultantBackgroundImage" [lazyLoad]="consultantBackgroundImag+user?.bios?.profile_background_image"/>
                   <img src="https://ionicinto.wdipl.com/public/profile_background_image/thumb/{{user?.bios?.profile_background_image}}" *ngIf="user?.bios?.profile_pic">
                 </div> -->
-                  <ion-card-content class="home-card">
-                <ion-avatar [routerLink]="['/tabs/consultant-profile-view/',user?.id]">
-                  <img [defaultImage]="defaultUserImage" [lazyLoad]="userPPicurl+user?.bios?.profile_pic"/>
-                </ion-avatar>
-                {{user?.user_name}}
-              </ion-card-content>
-            </ion-card>
+                  <!-- <ion-card-content class="home-card"> -->
+                    <div>
+                      <ion-avatar [routerLink]="['/tabs/consultant-profile-view/',user?.id]">
+                        <img [defaultImage]="defaultUserImage" [lazyLoad]="userPPicurl+user?.bios?.profile_pic"/>
+                      </ion-avatar>
+                      {{user?.user_name}}
+                    </div>
+        
+              <!-- </ion-card-content> -->
+            <!-- </ion-card> -->
           </ion-col>
         </ion-row>
       </ion-grid>

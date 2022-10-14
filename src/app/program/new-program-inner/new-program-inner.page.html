@@ -132,12 +132,15 @@
                   </ion-col> -->
                   <ion-col size="12" style="position: static;" class="ion-no-padding  green-text">
                     <!-- <ion-text><p class="program-date">{{programDateTime|date:'medium'}}</p></ion-text> -->
-                    <ion-text>
+                    <ion-text *ngIf="programDetail?.is_live_status == 1">
                       <p class="program-date">{{programDateTime|date:'medium'}}</p>
+                    </ion-text>
+                    <ion-text *ngIf="programDetail?.is_live_status == 0">
+                      <p class="program-date">{{programDateTime|date:'MMM d, yyyy'}}</p>
                     </ion-text>
                   </ion-col>
                 </ion-row>
-                <ion-row class="counter-box " *ngIf="programDetail?.is_live_status == 1">
+                <ion-row class="counter-box " *ngIf="programDetail?.is_live_status == 1 && !programDetail?.live">
                   <ion-col size="3" class="ion-padding timer-block" *ngIf="!programDetail?.ended ">
                     <ion-text>
                       <p class="count_time">{{dd | async}}</p> Days
@@ -213,31 +216,32 @@
                   class="mb-56 btn-height green ion-text-uppercase ion-no-margin full-height">See Ad Sponser Options
                 </ion-button>
                 <h5 class="ion-padding-horizontal">Equipments</h5>
-                <ion-item>
-                  <ion-slides [options]="slideOpts" class="ion-padding-vertical ion-margin-bottom">
-                    <ion-slide class="program-slides" *ngFor="let equp of equipmentsList; index as i" >
-                      <div class="container-flex">
-                        <div class="img-cont">
-                          <img src="{{equipmentPicPath}}{{equp.equipment_pic}}" alt="">
-                        </div>
-                        <span class="equipment-label">{{equp.equipment_name}}</span>
+                <ion-slides [options]="slideOpts" class="ion-padding-vertical ion-margin-bottom">
+                  <ion-slide class="program-slides" *ngFor="let equp of equipmentsList; index as i" >
+                    <div class="container-flex">
+                      <div class="img-cont">
+                        <img src="{{equipmentPicPath}}{{equp.equipment_pic}}" alt="">
                       </div>
-                      <!-- <div class="container-flex" #seeMore>
-                        See More
-                      </div> -->
-                    </ion-slide>
-                    <ion-slide class="program-slides" *ngIf="equipmentsList?.length > 2" (click)="equipments()">
-                      <div class="container-flex" style="height: 100%;">
-                        <ion-label class="">See more</ion-label>
-                      </div>
-                    </ion-slide>
-                  </ion-slides>
+                      <span class="equipment-label">{{equp.equipment_name}}</span>
+                    </div>
+                    <!-- <div class="container-flex" #seeMore>
+                      See More
+                    </div> -->
+                  </ion-slide>
+                  <ion-slide class="program-slides" *ngIf="equipmentsList?.length > 2" (click)="equipments()">
+                    <div class="container-flex" style="height: 100%;">
+                      <ion-label class="">See more</ion-label>
+                    </div>
+                  </ion-slide>
+                </ion-slides>
+                <!-- <ion-item class="equipments"> -->
+ 
 
 
                   <!-- <div class="container-flex" style="height: 100%;">
                     <ion-label class="">see more</ion-label>
                   </div> -->
-                </ion-item>
+                <!-- </ion-item> -->
                 <!-- <ion-slides [options]="slideOpts" class="ion-padding-vertical ion-margin-bottom">
                   <ion-slide class="program-slides">
                     <div class="container-flex">
@@ -273,14 +277,14 @@
                     <p class="fs-16 mb-10">{{val.program_date |date:'medium'}}</p>
                   </div>
                   <div class="programs-flex">
-                    <div style="background-image: url('https://www.thebalancesmb.com/thmb/WexUZNoJ-q395XfYSrPxPkuC3Io=/960x540/smart/filters:no_upscale()/escavation-921233_960_720-57a2715c3df78c327648cd18.jpg');" class="program-session program-flex-child" *ngIf="val.is_live_status == 1">
+                    <div [ngStyle]="{background: 'url(' + profileUrl+val.user_img + ')'}" class="program-session program-flex-child" *ngIf="val.is_live_status == 1">
                       <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
                       <div class="session-timer">
-                        <p class="fs-14">{{val.hh}}</p>
+                        <p class="fs-14">{{val.hh}}h</p>
                         <span>:</span>
-                        <p class="fs-14">{{val.mm}}</p>
+                        <p class="fs-14">{{val.mm}}m</p>
                         <span>:</span>
-                        <p class="fs-14">{{val.ss}}</p>
+                        <p class="fs-14">{{val.ss}}s</p>
                       </div>
                       <div class="closeIcon">
                         <ion-icon color="primary" ios="ios-close" md="md-close" class="ion-no-margin close-icon" (click)="cancelLiveProgram(val.id)">
@@ -288,12 +292,12 @@
                       </div>
                     </div>
                     
-                    <div  style="background-image: url('https://www.thebalancesmb.com/thmb/WexUZNoJ-q395XfYSrPxPkuC3Io=/960x540/smart/filters:no_upscale()/escavation-921233_960_720-57a2715c3df78c327648cd18.jpg');" class="program-video program-flex-child" *ngIf="val.video_id != '' "
+                    <div [ngStyle]="{background: 'url(' + videoUrl+val.video_img + ')'}" class="program-video program-flex-child" *ngIf="val.video_id != '' "
                       (click)="showVideoDetails(val.id,val.video_id)">
                       <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
                       <p class="fs-14">Video</p>
                     </div>
-                    <div  style="background-image: url('https://www.thebalancesmb.com/thmb/WexUZNoJ-q395XfYSrPxPkuC3Io=/960x540/smart/filters:no_upscale()/escavation-921233_960_720-57a2715c3df78c327648cd18.jpg');" class="program-nutrition program-flex-child" *ngIf="val.nutrition_id != '' "
+                    <div [ngStyle]="val.nutrition_img && {background: 'url(' + url+val.nutrition_img.split(',')[0] + ')'} || {background: 'url(../../../assets/images/default_nutrition.jpg)'}" class="program-nutrition program-flex-child" *ngIf="val.nutrition_id != '' "
                       (click)="nutritionModal(val)">
                       <ion-icon class="ionic-icon" ios="ios-nutrition" md="md-nutrition"></ion-icon>
                       <p class="fs-14">Nutrition</p>
@@ -319,7 +323,15 @@
                       <span>Good morning rock</span>
                     </div>
                   </div> -->
-                  <p>No Chat available</p>
+                  <div class="chat_btn">
+                    <ion-item *ngIf="programDetail?.chat_status == 1" (click)="showChatUsers()" detail="false">
+                      <div class="top-icon">
+                        <ion-icon ios="ios-text" md="md-text"></ion-icon>
+                      </div>
+                      <ion-label>Chat</ion-label>
+                    </ion-item>
+                  </div>
+                  <!-- <p>No Chat available</p> -->
                 </div>
               </ion-list>
               <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'programtype'">

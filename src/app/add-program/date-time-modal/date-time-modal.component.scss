@@ -236,8 +236,16 @@ ion-list{padding-top: 0 !important;padding-bottom: 0 !important;
         }
     }
     .full-height{
-        height: 56px;
+        height: 45px;
         border-radius: 15px;
+        width: fit-content;
+        margin: 0 auto;
+        padding: 0 35px;
+        color: #fff;
+    }
+    .button-center{
+        display: flex;
+        justify-content: center;
     }
     .sticky-footer{
         height: auto;
@@ -259,4 +267,7 @@ ion-list-header.ion-padding-horizontal.green.text-white.ios.hydrated {
 }
 ion-list.width-full.ios.list-ios.hydrated {
     border-radius: 4px;
+}
+.sticky-footer .green , .sticky-footer .green:focus{
+    box-shadow: none !important;
 }

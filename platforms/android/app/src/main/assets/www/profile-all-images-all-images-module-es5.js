@@ -272,11 +272,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function ngOnInit() {
           var _this = this;
 
+          this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+          console.log(this.loginUserData);
           this.actRoute.paramMap.subscribe(function (params) {
             _this.consultID = params.get('userId');
             _this.consultName = params.get('userName');
           });
-          this.peopleView.getMyPost('1', this.consultID, 1).subscribe(function (data) {
+          this.peopleView.getMyPost('1', this.loginUserData.id, 1).subscribe(function (data) {
             data.posts.data.forEach(function (element) {
               _this.myPosts.push(element);
             });

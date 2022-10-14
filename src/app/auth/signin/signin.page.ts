@@ -107,6 +107,7 @@ export class SigninPage implements OnInit, OnDestroy {
         this.storage.set('userToken', data.userToken);
         localStorage.setItem('userData', JSON.stringify(data.userData));
         localStorage.setItem('userToken', data.userToken);
+        localStorage.removeItem('guestUser');
         this.commonService.setUserData(data.userToken, data.userToken);
         
 
@@ -170,6 +171,12 @@ export class SigninPage implements OnInit, OnDestroy {
         this.commonService.dismissLoader();
       });
   }
+
+  // guestLogin(){
+  //   console.log('test');
+  //   localStorage.setItem('guestUser', '1');
+  //   this.router.navigateByUrl('tabs/guest-home');
+  // }
 
   onBack() {
     this.router.navigate(["/signup"]);
