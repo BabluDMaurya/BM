@@ -5,7 +5,7 @@ import { ParticipantsComponent } from '../participants/participants.component';
 import { EquipmentsComponent } from '../equipments/equipments.component';
 import { ChatUserComponent } from '../chat-user/chat-user.component';
 import { AdDetailsComponent } from '../ad-details/ad-details.component';
-import { NavController, Platform, ModalController } from '@ionic/angular';
+import { NavController, Platform, ModalController, AlertController, ToastController } from '@ionic/angular';
 import { ActivatedRoute, ParamMap, Router, NavigationExtras } from '@angular/router'
 import { ProgramService } from './../../services/program.service'
 import { Config } from './../../config/config'
@@ -68,6 +68,7 @@ export class NewProgramInnerPage implements OnInit {
   profileUrl = Config.profilePic;
   url = Config.imgUrl;
   vidUrl = Config.progVidUrl;
+  videoUrl =Config.storagePath;
   program_fee: any;
   programDateTime: any;
   programFee: any;
@@ -100,6 +101,8 @@ export class NewProgramInnerPage implements OnInit {
     private modalCtrl: ModalController,
     public socialSharing: SocialSharing,
     private nutritionService: NutritionService,
+    private alertCtrl: AlertController,
+    private toastCtrl: ToastController,
   ) {
 
   }
@@ -337,6 +340,7 @@ export class NewProgramInnerPage implements OnInit {
       this.programImage = this.programDetail.img_array[0];
       //  ------------ C O U N T   D O W N   T I M E R ---------
       let a: any = new Date(this.programDetail.program_date + 'Z');
+      console.log('Program Date',a);
       this.programDateTime = a;
       let b: any = new Date();
       let c: any;
@@ -406,11 +410,14 @@ export class NewProgramInnerPage implements OnInit {
       //----------------------------------------
       this.broadcastId = 'programId_' + data.programData.id;
       let payload = '';
-      if (this.programDetail.is_requested) {
+      console.log(this.programDetail.is_requested);
+      if (this.programDetail.is_requested == 1) {
         payload = this.programDetail.request_recive
-      } else {
-        payload = this.programDetail.request_sent + ',' + this.programDetail.request_accepted
+      } else if(this.programDetail.is_requested == 2) {
+        // payload = this.programDetail.request_sent + ',' + this.programDetail.request_accepted
+        payload = this.programDetail.request_accepted
       }
+      console.log(payload);
       this.commonService.getUsersById({ "userId": payload }).subscribe(data => {
         this.userList = data.userList;
         console.log(this.userList + 'this.userList');
@@ -504,6 +511,7 @@ export class NewProgramInnerPage implements OnInit {
     if (this.programType != "public") {
       this.commonService.presentLoader();
       this.chatService.checkChatProgram({ 'programId': this.programId, 'type': 3 }).subscribe((data: any) => {
+        console.log(data);
         if (data.id > 0) {
           this.commonService.dismissLoader();
           var chatRoom = data.room_id;
@@ -606,9 +614,41 @@ export class NewProgramInnerPage implements OnInit {
     this.router.navigate(['/new-schedule-program']);
   }
 
-  cancelLiveProgram(id){
-    this.programService.cancelLiveProgram({ 'programId': id }).subscribe(data => {
-      this.router.navigate(['/tabs/program']);
+  async cancelLiveProgram(id){
+
+    let alert = this.alertCtrl.create({
+      header: 'Delete Session',
+      message: 'Are you sure you want to delete the live session?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel'
+        },
+        {
+          text: 'Yes',
+          handler: data => {
+            this.programService.cancelLiveProgram({ 'programId': id }).subscribe(data => {
+              this.showSuccessToast();
+              this.router.navigate(['/tabs/program']);              
+            });
+          }
+        }
+      ]
     });
+    (await alert).present();
+    
   }
+
+  async showSuccessToast(){
+    const toast = await this.toastCtrl.create({
+      message: 'Program has been cancelled',
+      duration: 5000,
+      position: 'top'
+    });
+
+    toast.present();
+  }
+
+  
 }
+

@@ -279,29 +279,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.commonService.presentToast('Fetching Sponsors'); //------ sponcer list ----------//  
 
           this.programService.getSponserList(null).subscribe(function (data) {
-            data.data.forEach(function (element) {
-              _this.commonService.dismissLoader();
-
-              if (element.get_adv.length > 0) {
-                element.get_adv.forEach(function (el) {
-                  el.expanded = false;
-
-                  _this.programList.push(el);
-                });
-              }
-
-              if (element.get_prog.length > 0) {
-                element.get_prog.forEach(function (al) {
-                  al.expanded = false;
-
-                  _this.programData.push(al);
-                });
-              }
-            }, function (error) {
-              _this.commonService.dismissLoader();
-
-              _this.commonService.presentToast('Failed to fetch.' + error);
-            });
+            console.log(data.data);
+            _this.programList = data.data; // data.data.forEach(element => { 
+            //   this.commonService.dismissLoader();
+            //   if(element.get_adv.length > 0)
+            //   {
+            //     element.get_adv.forEach(el => {
+            //       el.expanded = false;
+            //       this.programList.push(el);
+            //     });
+            //   }
+            //   if(element.get_prog.length > 0)
+            //   {
+            //     element.get_prog.forEach(al => {
+            //       al.expanded = false;
+            //       this.programData.push(al);
+            //     });
+            //   }
+            // },
+            // error =>{
+            //   this.commonService.dismissLoader();
+            //   this.commonService.presentToast('Failed to fetch.'+error);
+            // }); 
           }); //------chat list---------//
           // this.notification.geUnreadSponcerChat().subscribe(
           //   (data: any) => {

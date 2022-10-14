@@ -38,7 +38,7 @@ export class HomePage implements OnInit {
     zoom: true,
     slidesPerView: 4,
     centeredSlides: false,
-    spaceBetween: 2
+    spaceBetween: 2, 
   }
   constructor(
     private homeService: HomeService,

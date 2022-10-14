@@ -485,7 +485,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\" class=\"min-width-none\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <!-- <ion-item slot=\"center\">\r\n      <ion-label *ngIf=\"modelOpen==1\">Select Equipments</ion-label>\r\n      <ion-label *ngIf=\"modelOpen==2\">Select Nutrition</ion-label>\r\n    </ion-item> -->\r\n    <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar *ngIf=\"modelOpen==1\" [(ngModel)]=\"equipmentSearchTerm\" placeholder=\"Search and Select Equipments\"></ion-searchbar>\r\n      <ion-searchbar *ngIf=\"modelOpen==2\" [(ngModel)]=\"equipmentSearchTerm\" placeholder=\"Search and Select Nutrition\"></ion-searchbar>\r\n    </ion-toolbar>\r\n    <!-- <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\"></ion-item> -->\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <ion-list class=\"user-list ion-no-padding\" *ngIf=\"modelOpen==1\">\r\n    <!-- <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar [(ngModel)]=\"equipmentSearchTerm\"></ion-searchbar>\r\n    </ion-toolbar> -->\r\n    <ion-item *ngFor=\"let equip of equipmentFiltered\" class=\"pX-15\">\r\n      <div class=\"users-list\" >\r\n        <img src=\"{{equipmentPicPath}}{{equip.equipment_pic}}\" />\r\n      </div>\r\n      <ion-label class=\"ion-padding-horizontal\">\r\n        <h3 class=\"list-person\"> {{equip.equipment_name}} </h3>\r\n      </ion-label>\r\n      <ion-checkbox slot=\"end\" [(ngModel)]=\"equip.selected\" name=\"equip.equipment_name\"></ion-checkbox>\r\n    </ion-item>\r\n  </ion-list>\r\n  <div class=\"user-list ion-no-padding\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n    <!-- <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar [(ngModel)]=\"nutritionSearchTerm\"></ion-searchbar>\r\n    </ion-toolbar> -->\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Breakfast</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n          <!-- P r e v i o u s C a r d -->\r\n\r\n          <!-- <ion-segment-button (click)=\"showdetails(nutri)\" *ngFor=\"let nutri of nutritionFiltered  | filter:'BreakFast':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"galleryRadio video_button\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Breakfast </p>                \r\n              </div>\r\n            </div> -->\r\n            <!-- <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button> -->\r\n          <!-- </ion-segment-button> -->\r\n\r\n          <!-- N e w  C a r d -->\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n              <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'BreakFast':'type'\">  \r\n              <ion-item>\r\n                <div class=\"galleryRadio video_button\">\r\n                  <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n                </div>\r\n                <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n                <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n                <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              </ion-item>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No BreakFast</p> \r\n              </div>\r\n              </ion-radio-group>\r\n          </ion-list>\r\n        </ion-segment>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Brunch</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n          <!-- P r e v i o u s C a r d -->\r\n\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered  | filter:'Brunch':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Brunch </p>\r\n              </div>\r\n            </div>\r\n            <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n\r\n          <!-- N e w  C a r d -->\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Brunch':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Brunch</p> \r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n\r\n\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Lunch</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered  | filter:'Lunch':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n            <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n              <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n            </div>\r\n            <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n            <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n            <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\">\r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Lunch </p> \r\n            </div>\r\n            </div>\r\n            <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n\r\n\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Lunch':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Lunch</p> \r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Snacks</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered | filter:'Snacks':'type' \">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Snacks </p>\r\n              </div>\r\n            </div>\r\n            <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Snacks':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Snacks </p>\r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Dinner</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered  | filter:'Dinner':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Dinner</p> \r\n              </div>\r\n            </div>\r\n            <ion-button *ngIf=\"!nutri.empty\" (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Dinner':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Dinner</p> \r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered == '' \">\r\n      <ion-card-content>\r\n        <div  class=\"no-data nutrition-no-data\"> \r\n          <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n          <p>No Data Found</p> \r\n        </div>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <div *ngIf=\"!nutritionList\">\r\n      <ion-card class=\"item-card\" *ngFor=\"let skeleton of [].constructor(5)\">\r\n        <ion-skeleton-text class=\"grey-header green\" animated></ion-skeleton-text>\r\n        <ion-card-content class=\"ion-no-padding\">\r\n          <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n          </ion-segment>\r\n        </ion-card-content>\r\n      </ion-card>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n<ion-footer class=\"sticky-footer\">\r\n  <ion-button expand=\"full\" class=\"green ion-no-margin full-height\" (click)=\"submit()\">Ok</ion-button>\r\n</ion-footer>";
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\" class=\"min-width-none\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <!-- <ion-item slot=\"center\">\r\n      <ion-label *ngIf=\"modelOpen==1\">Select Equipments</ion-label>\r\n      <ion-label *ngIf=\"modelOpen==2\">Select Nutrition</ion-label>\r\n    </ion-item> -->\r\n    <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar *ngIf=\"modelOpen==1\" [(ngModel)]=\"equipmentSearchTerm\" placeholder=\"Search and Select Equipments\"></ion-searchbar>\r\n      <ion-searchbar *ngIf=\"modelOpen==2\" [(ngModel)]=\"equipmentSearchTerm\" placeholder=\"Search and Select Nutrition\"></ion-searchbar>\r\n    </ion-toolbar>\r\n    <!-- <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\"></ion-item> -->\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <ion-list class=\"user-list ion-no-padding\" *ngIf=\"modelOpen==1\">\r\n    <!-- <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar [(ngModel)]=\"equipmentSearchTerm\"></ion-searchbar>\r\n    </ion-toolbar> -->\r\n    <ion-item *ngFor=\"let equip of equipmentFiltered\" class=\"pX-15\">\r\n      <div class=\"users-list\" (click)=\"openViewer(equipmentPicPath+equip.equipment_pic)\">\r\n        <img src=\"{{equipmentPicPath}}{{equip.equipment_pic}}\" />\r\n      </div>\r\n      <ion-label class=\"ion-padding-horizontal\">\r\n        <h3 class=\"list-person\"> {{equip.equipment_name}} </h3>\r\n      </ion-label>\r\n      <ion-checkbox slot=\"end\" [(ngModel)]=\"equip.selected\" name=\"equip.equipment_name\"></ion-checkbox>\r\n    </ion-item>\r\n  </ion-list>\r\n  <div class=\"user-list ion-no-padding\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n    <!-- <ion-toolbar class=\"searchbar\">\r\n      <ion-searchbar [(ngModel)]=\"nutritionSearchTerm\"></ion-searchbar>\r\n    </ion-toolbar> -->\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Breakfast</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n          <!-- P r e v i o u s C a r d -->\r\n\r\n          <!-- <ion-segment-button (click)=\"showdetails(nutri)\" *ngFor=\"let nutri of nutritionFiltered  | filter:'BreakFast':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"galleryRadio video_button\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Breakfast </p>                \r\n              </div>\r\n            </div> -->\r\n            <!-- <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button> -->\r\n          <!-- </ion-segment-button> -->\r\n\r\n          <!-- N e w  C a r d -->\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n              <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'BreakFast':'type'\">  \r\n              <ion-item>\r\n                <div class=\"galleryRadio video_button\">\r\n                  <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n                </div>\r\n                <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n                <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n                <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              </ion-item>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No BreakFast</p> \r\n              </div>\r\n              </ion-radio-group>\r\n          </ion-list>\r\n        </ion-segment>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Brunch</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n          <!-- P r e v i o u s C a r d -->\r\n\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered  | filter:'Brunch':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Brunch </p>\r\n              </div>\r\n            </div>\r\n            <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n\r\n          <!-- N e w  C a r d -->\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Brunch':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Brunch</p> \r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n\r\n\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Lunch</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered  | filter:'Lunch':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n            <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n              <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n            </div>\r\n            <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n            <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n            <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\">\r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Lunch </p> \r\n            </div>\r\n            </div>\r\n            <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n\r\n\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Lunch':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Lunch</p> \r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Snacks</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n\r\n\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered | filter:'Snacks':'type' \">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Snacks </p>\r\n              </div>\r\n            </div>\r\n            <ion-button (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Snacks':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Snacks </p>\r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered != '' \">\r\n      <ion-card-header class=\"grey-header green text-white\">Dinner</ion-card-header>\r\n      <ion-card-content class=\"ion-no-padding\">\r\n        <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n          <!-- <ion-segment-button *ngFor=\"let nutri of nutritionFiltered  | filter:'Dinner':'type'\">\r\n            <div class=\"checkboxThumb\">\r\n              <div class=\"thumb-checkbox\" *ngIf=\"!nutri.empty\">\r\n                <ion-checkbox slot=\"start\" [(ngModel)]=\"nutri.sele\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n              <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n                <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n                <p>No Dinner</p> \r\n              </div>\r\n            </div>\r\n            <ion-button *ngIf=\"!nutri.empty\" (click)=\"showdetails(nutri)\"><ion-icon name=\"information-circle\"></ion-icon></ion-button>\r\n          </ion-segment-button> -->\r\n          <ion-list class=\"ion-no-padding thumb-list display-flex\" lines=\"none\" *ngIf=\"modelOpen==2 && nutritionList?.length>0; else no_content \">\r\n            <ion-radio-group *ngFor=\"let nutri of nutritionFiltered  | filter:'Dinner':'type'\">  \r\n            <ion-item>\r\n              <div class=\"galleryRadio video_button\">\r\n                <ion-checkbox [(ngModel)]=\"nutri.sele\" name=\"item.id\" slot=\"start\"> </ion-checkbox>\r\n              </div>\r\n              <img src=\"{{url}}{{nutri?.img_array[0]}}\" (click)=\"showdetails(nutri)\" *ngIf=\"nutri?.image_path && !nutri.empty\" />\r\n              <img src=\"../../assets/images/nutrition2.png\" (click)=\"showdetails(nutri)\" *ngIf=\"!nutri.empty && !nutri?.image_path\" />\r\n              <ion-label *ngIf=\"!nutri.empty\">{{nutri?.title}}</ion-label>\r\n            </ion-item>\r\n            <div *ngIf=\"nutri.empty\" class=\"no-data nutrition-no-data\"> \r\n              <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n              <p>No Dinner</p> \r\n            </div>\r\n            </ion-radio-group>\r\n          </ion-list> \r\n        </ion-segment>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card class=\"ion-no-margin\" *ngIf=\"nutritionFiltered == '' \">\r\n      <ion-card-content>\r\n        <div  class=\"no-data nutrition-no-data\"> \r\n          <img src=\"../../../assets/images/dish.svg\" class=\"mb-10\" width=\"40px\" />\r\n          <p>No Data Found</p> \r\n        </div>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <div *ngIf=\"!nutritionList\">\r\n      <ion-card class=\"item-card\" *ngFor=\"let skeleton of [].constructor(5)\">\r\n        <ion-skeleton-text class=\"grey-header green\" animated></ion-skeleton-text>\r\n        <ion-card-content class=\"ion-no-padding\">\r\n          <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n            <ion-segment-button>\r\n              <ion-skeleton-text animated style=\"width: 130px;height: 85px;\"></ion-skeleton-text>\r\n              <ion-skeleton-text animated></ion-skeleton-text>\r\n            </ion-segment-button>\r\n          </ion-segment>\r\n        </ion-card-content>\r\n      </ion-card>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n<ion-footer class=\"sticky-footer\">\r\n  <ion-button expand=\"full\" class=\"green ion-no-margin full-height\" (click)=\"submit()\">Ok</ion-button>\r\n</ion-footer>";
     /***/
   },
 
@@ -525,7 +525,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal('')\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>{{programData?.programTitle}}</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\">\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <div class=\"fixed\">\r\n    <form [formGroup]=\"finalForm\" class=\"\">\r\n      <ion-item lines=\"none\" class=\"margin-15 ion-block\" *ngIf=\"totalLiveSession > 0\">\r\n        <div class=\"ion-left\">\r\n          <ion-label style=\"display: contents;\">How much would you like to charge:</ion-label>\r\n        </div>\r\n      </ion-item>\r\n      <ion-item>\r\n        <div class=\"\">\r\n          <ion-item>\r\n\r\n            <ion-select placeholder=\"Select\" (ionChange)=\"updateTotalPrice($event)\" formControlName=\"programFees\">\r\n              <ion-select-option *ngFor=\"let price of priceList\" [value]=\"price.price\">${{ price.price }}\r\n              </ion-select-option>\r\n            </ion-select>\r\n          </ion-item>\r\n          <!-- <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n                <ion-input class=\"form-control width-30\" type=\"number\" (change)=\"updateTotalPrice($event)\" formControlName=\"programFees\" value=\"0\"></ion-input> -->\r\n        </div>\r\n\r\n      </ion-item>\r\n      <ion-item lines=\"none\" class=\"margin-15 ion-block\" *ngIf=\"totalLiveSession > 0\">\r\n        <div class=\"ion-left\">\r\n          <ion-label style=\"display: contents;\">Total for {{totalLiveSession}} session:</ion-label>\r\n        </div>\r\n        <div class=\"ion-right\" *ngIf=\"totalLiveSession > 0\">\r\n          <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n          <ion-label class=\"width-30\">{{totalLiveAmt}}</ion-label>\r\n        </div>\r\n\r\n        <!-- </ion-item>\r\n      <ion-item lines=\"none\" class=\"margin-15 ion-block\" *ngIf=\"totalLiveSession > 0\">\r\n        <div class=\"ion-left\">\r\n          <ion-label style=\"display: contents;\">Total for {{totalLiveSession}} session:</ion-label>\r\n        </div>\r\n        <div class=\"ion-right\" *ngIf=\"totalLiveSession > 0\">\r\n          <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n          <ion-label class=\"width-30\">{{totalLiveAmt}}</ion-label>\r\n        </div> -->\r\n\r\n      </ion-item>\r\n      <ion-item lines=\"none\" class=\"margin-15 ion-block\">\r\n        <div class=\"ion-left\">\r\n          <ion-label *ngIf=\"totalNutritionInSession > 0 && totalVideoInSession > 0\" style=\"display: contents;\">Price of\r\n            Nutrition and Video Instruction:</ion-label>\r\n          <ion-label *ngIf=\"totalNutritionInSession > 0 && totalVideoInSession == 0\" style=\"display: contents;\">Price of\r\n            Nutrition Instruction:</ion-label>\r\n          <ion-label *ngIf=\"totalNutritionInSession == 0 && totalVideoInSession > 0\" style=\"display: contents;\">Price of\r\n            Video Instruction:</ion-label>\r\n\r\n        </div>\r\n        <div class=\"ion-right\" *ngIf=\"totalNutritionInSession > 0 || totalVideoInSession > 0\">\r\n          <ion-label style=\"margin-left: 40px;\">$</ion-label>\r\n          <ion-select placeholder=\"Select\" formControlName=\"non_live_component_fee\">\r\n            <ion-select-option *ngFor=\"let price of priceList\" [value]=\"price.price\">${{ price.price }}\r\n            </ion-select-option>\r\n          </ion-select>\r\n          <!-- <ion-input class=\"form-control width-30\" type=\"number\" formControlName=\"non_live_component_fee\" value=\"0\">\r\n          </ion-input> -->\r\n        </div>\r\n\r\n      </ion-item>\r\n      <div *ngIf=\"programData.programType == '6' \">\r\n        <ion-label style=\"display: block;margin-top: 15px; padding-left: 15px;\">Would you like to request Sponsors:\r\n        </ion-label>\r\n        <ion-item lines=\"none\">\r\n          <ion-radio-group value=\"sponsors_group\" class=\"radio-group radioPreview\">\r\n            <ion-item>\r\n              <ion-label>Yes</ion-label>\r\n              <ion-radio slot=\"start\" value=\"1\" (click)=\"sponsar_prog()\"></ion-radio>\r\n            </ion-item>\r\n            <ion-item>\r\n              <ion-label>No</ion-label>\r\n              <ion-radio slot=\"start\" value=\"2\" (click)=\"unsponsar_prog()\"></ion-radio>\r\n            </ion-item>\r\n          </ion-radio-group>\r\n        </ion-item>\r\n      </div>\r\n\r\n      <ion-list class=\"prog_btn_list mb-0\">\r\n        <ion-item lines=\"none\" (click)=\"verifyUserInfoModal()\"\r\n          *ngIf=\"loginUserData.trilloMatch != '1' && programData.programType != '6' \">\r\n          <ion-button class=\"green btn button-medium\">Earn with Intoative</ion-button>\r\n        </ion-item>\r\n        <ion-item class=\"\" *ngIf=\"approval_btn && !request_approve_btn \">\r\n          <ion-button (click)=\"applyAdvertise()\" class=\"green btn button-medium\">Request Approval</ion-button>\r\n        </ion-item>\r\n      </ion-list>\r\n    </form>\r\n    <form class=\"nutrition-form ion-padding-horizontal\">\r\n      <div *ngIf=\"programData?.programType==6\">\r\n        <h6 class=\"repeatedHeading mb-10\">Select Video</h6>\r\n        <ion-col size=\"12\" class=\"ion-no-padding\">\r\n          <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n            <ion-segment-button *ngFor=\"let preview of videoList\">\r\n              <div class=\"checkboxThumb\">\r\n                <div class=\"thumb-checkbox\">\r\n                  <ion-checkbox [(ngModel)]=\"preview.sele\" name=\"preview.id\" value=\"preview.id\" slot=\"start\">\r\n                  </ion-checkbox>\r\n                </div>\r\n                <img *ngIf=\"preview?.thumb_path\" src=\"{{storagePath}}{{preview?.thumb_path}}\" alt=\"path\" />\r\n                <img *ngIf=\"!preview?.thumb_path\" src=\"../../../assets/images/video.png\" />\r\n                <ion-label>{{preview.title}}</ion-label>\r\n                <ion-button class=\"infoIcon\" (click)=\"showVideoDetails(preview.posts_id)\">\r\n                  <ion-icon name=\"information-circle\"></ion-icon>\r\n                </ion-button>\r\n              </div>\r\n            </ion-segment-button>\r\n          </ion-segment>\r\n\r\n        </ion-col>\r\n        <div *ngIf=\"videoList.length==0\" class=\"no-data\">\r\n          <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n          <p>No post added yet!!!</p>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n  </div>\r\n  <div *ngIf=\"repetatedDateCopy.length>0\" class=\"margin-top-md\">\r\n    <!-- <div class=\"ion-padding-horizontal\">\r\n    <ion-list>            \r\n        <ion-item class=\"ion-no-padding ion-margin-vertical\">\r\n          <ion-label>Add Bonus Video, Nutrition</ion-label>\r\n          <ion-datetime value=\"\" display-timezone=\"utc\"  (ionChange)=\"addExtraDay($event)\"></ion-datetime>\r\n        </ion-item>\r\n      </ion-list> \r\n    </div> -->\r\n    <ion-list *ngFor=\"let date of repetatedDateCopy let i = index\">\r\n      <ion-list-header class=\"ion-padding-horizontal green text-white live-ion-list-header\">\r\n        <div class=\"title\" *ngIf=\"date.is_live\">\r\n          {{date.date | date :'medium'}}\r\n        </div>\r\n        <div class=\"title\" *ngIf=\"!date.is_live\">\r\n          {{date.date | date :'mediumDate'}}\r\n        </div>\r\n        <div class=\"divider\"></div>\r\n        <div class=\"calender_green_bottom\">\r\n          <div class=\"\">\r\n            <div class=\"title\" *ngIf=\"date.is_live\">Live</div>\r\n            <div class=\"title\" *ngIf=\"!date.is_live\">Non-Live</div>\r\n          </div>\r\n          <ion-icon ios=\"ios-fitness\" md=\"md-fitness\" class=\"ion-margin-start\"\r\n            (click)=\"addEquipments2(1,date.equipments,i)\"></ion-icon>\r\n          <ion-icon ios=\"ios-nutrition\" md=\"md-nutrition\" class=\"ion-margin-start\"\r\n            (click)=\"addEquipments2(2,date.nutrition_id,i)\">\r\n          </ion-icon>\r\n          <ion-icon ios=\"ios-videocam\" md=\"md-videocam\" class=\"ion-margin-start\" (click)=\"addVideo(item,i)\"></ion-icon>\r\n        </div>\r\n      </ion-list-header>\r\n      <ion-item>\r\n        <ion-icon class=\"live-event-icon\" ios=\"ios-fitness\" md=\"md-fitness\"></ion-icon>\r\n        <div class=\"users-list\" *ngIf=\"date?.equipments.length>0;else no_equipment\">\r\n          <img src=\"../../assets/images/demo1.jpg\" *ngFor=\"let item of date?.equipments\" />\r\n        </div>\r\n        <ng-template #no_equipment>No Equipment Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-icon class=\"live-event-icon\" ios=\"ios-nutrition\" md=\"md-nutrition\"></ion-icon>\r\n        <div class=\"users-list\" *ngIf=\"date.nutrition_id.length>0;else no_nutrition\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.nutrition_id\" />\r\n        </div>\r\n        <ng-template #no_nutrition>No Nutrition Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-icon class=\"live-event-icon\" ios=\"ios-videocam\" md=\"md-videocam\"></ion-icon>\r\n        <div class=\"users-list\" *ngIf=\"date?.video;else no_videos\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.video\" />\r\n        </div>\r\n        <ng-template #no_videos>No videos Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item class=\"descriptionItem\">\r\n        <ion-textarea placeholder=\"Enter Description\" (ionChange)=\"detailsUpdate($event ,i)\"\r\n          value=\"{{item?.description}}\"></ion-textarea>\r\n      </ion-item>\r\n    </ion-list>\r\n    <!-- <ion-list *ngFor=\"let date of repetatedDateCopy let i = index\">\r\n      <ion-list-header class=\"ion-padding-horizontal green text-white\">\r\n        <div *ngIf=\"date.is_live\">\r\n          {{date.date | date :'medium'}}\r\n        </div>\r\n        <div *ngIf=\"!date.is_live\">\r\n          {{date.date | date :'mediumDate'}}\r\n        </div>\r\n        <div>\r\n          <ion-icon ios=\"ios-fitness\" md=\"md-fitness\" (click)=\"addEquipments2(1,date.equipments,i)\"></ion-icon>\r\n          <ion-icon ios=\"ios-restaurant\" md=\"md-restaurant\" class=\"ion-margin-start\" (click)=\"addEquipments2(2,date.nutrition_id,i)\">\r\n          </ion-icon>\r\n          <ion-icon ios=\"ios-videocam\" md=\"md-videocam\" class=\"ion-margin-start\" (click)=\"addVideo(item,i)\"></ion-icon>\r\n        </div>\r\n      </ion-list-header>\r\n      <ion-item>\r\n        <ion-label>Equipments :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date?.equipments.length>0;else no_equipment\">\r\n          <img src=\"../../assets/images/demo1.jpg\" *ngFor=\"let item of date?.equipments\" />\r\n        </div>\r\n        <ng-template #no_equipment>No Equipment Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Nutritions :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date.nutrition_id.length>0;else no_nutrition\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.nutrition_id\" />\r\n        </div>\r\n        <ng-template #no_nutrition>No Nutrition Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Videos :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date?.video;else no_videos\">\r\n        \r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.video\" />\r\n        </div>\r\n        <ng-template #no_videos>No videos Selected</ng-template>\r\n      </ion-item>      \r\n      <ion-item class=\"descriptionItem\">\r\n        <ion-textarea placeholder=\"Enter Description\" (ionChange)=\"detailsUpdate($event ,i)\"\r\n            value=\"{{item?.description}}\"></ion-textarea>\r\n      </ion-item>\r\n    </ion-list>     -->\r\n  </div>\r\n\r\n</ion-content>\r\n<ion-footer class=\"sticky-footer\">\r\n  <div class=\"terms-footer\">\r\n    <ion-checkbox (ionChange)=\"termsChecked($event)\"></ion-checkbox>\r\n    <ion-label> I have read and agree to the Terms and Conditions.</ion-label>\r\n    <ion-icon (click)=\"openModal()\" ios=\"ios-arrow-dropdown\" md=\"md-arrow-dropdown\"></ion-icon>\r\n  </div>\r\n  <ion-button [disabled]=\"isDisabled\" expand=\"full\" (click)=\"onSubmit()\"\r\n    class=\"green ion-text-uppercase ion-no-margin full-height\">Save</ion-button>\r\n</ion-footer>";
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal('')\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>{{programData?.programTitle}}</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\">\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n  <div class=\"fixed\">\r\n    <form [formGroup]=\"finalForm\" class=\"\">\r\n      <!-- <ion-item lines=\"none\" class=\"margin-15 ion-block\" *ngIf=\"totalLiveSession > 0\">\r\n        <div class=\"ion-left\">\r\n          <ion-label style=\"display: contents;\">How much would you like to charge:</ion-label>\r\n        </div>\r\n      </ion-item> -->\r\n      <!-- <ion-item>\r\n        <div class=\"\">\r\n          <ion-item>\r\n\r\n            <ion-select placeholder=\"Select\" (ionChange)=\"updateTotalPrice($event)\" formControlName=\"programFees\">\r\n              <ion-select-option *ngFor=\"let price of priceList\" [value]=\"price.price\">${{ price.price }}\r\n              </ion-select-option>\r\n            </ion-select>\r\n          </ion-item>\r\n        </div>\r\n\r\n      </ion-item> -->\r\n      <!-- <ion-item lines=\"none\" class=\"margin-15 ion-block\" *ngIf=\"totalLiveSession > 0\">\r\n        <div class=\"ion-left\">\r\n          <ion-label style=\"display: contents;\">Total for {{totalLiveSession}} session:</ion-label>\r\n        </div>\r\n        <div class=\"ion-right\" *ngIf=\"totalLiveSession > 0\">\r\n          <ion-label style=\"    margin-left: 40px;\">$</ion-label>\r\n          <ion-label class=\"width-30\">{{totalLiveAmt}}</ion-label>\r\n        </div>\r\n\r\n      </ion-item> -->\r\n      <ion-item lines=\"none\" class=\"margin-15 ion-block\">\r\n        <div class=\"ion-left\">\r\n          <ion-label *ngIf=\"totalNutritionInSession > 0 && totalVideoInSession > 0\" style=\"display: contents;\">Price of\r\n            Nutrition and Video Instruction:</ion-label>\r\n          <ion-label *ngIf=\"totalNutritionInSession > 0 && totalVideoInSession == 0\" style=\"display: contents;\">Price of\r\n            Nutrition Instruction:</ion-label>\r\n          <ion-label *ngIf=\"totalNutritionInSession == 0 && totalVideoInSession > 0\" style=\"display: contents;\">Price of\r\n            Video Instruction:</ion-label>\r\n\r\n        </div>\r\n        <div class=\"ion-right\" *ngIf=\"totalNutritionInSession > 0 || totalVideoInSession > 0\">\r\n          <ion-label style=\"margin-left: 40px;\">$</ion-label>\r\n          <ion-select placeholder=\"Select\" formControlName=\"non_live_component_fee\">\r\n            <ion-select-option *ngFor=\"let price of priceList\" [value]=\"price.price\">{{ price.price }}\r\n            </ion-select-option>\r\n          </ion-select>\r\n          <!-- <ion-input class=\"form-control width-30\" type=\"number\" formControlName=\"non_live_component_fee\" value=\"0\">\r\n          </ion-input> -->\r\n        </div>\r\n\r\n      </ion-item>\r\n      <!-- <div *ngIf=\"programData.programType == '6' \">\r\n        <ion-label style=\"display: block;margin-top: 15px; padding-left: 15px;\">Would you like to request Sponsors:\r\n        </ion-label>\r\n        <ion-item lines=\"none\">\r\n          <ion-radio-group value=\"sponsors_group\" class=\"radio-group radioPreview\">\r\n            <ion-item>\r\n              <ion-label>Yes</ion-label>\r\n              <ion-radio slot=\"start\" value=\"1\" (click)=\"sponsar_prog()\"></ion-radio>\r\n            </ion-item>\r\n            <ion-item>\r\n              <ion-label>No</ion-label>\r\n              <ion-radio slot=\"start\" value=\"2\" (click)=\"unsponsar_prog()\"></ion-radio>\r\n            </ion-item>\r\n          </ion-radio-group>\r\n        </ion-item>\r\n      </div> -->\r\n\r\n      <ion-list class=\"prog_btn_list mb-0\">\r\n        <ion-item lines=\"none\" (click)=\"verifyUserInfoModal()\"\r\n          *ngIf=\"loginUserData.trilloMatch != '1' && programData.programType != '6' \">\r\n          <ion-button class=\"green btn button-medium\">Earn with Intoative</ion-button>\r\n        </ion-item>\r\n        <ion-item class=\"\" *ngIf=\"approval_btn && !request_approve_btn \">\r\n          <ion-button (click)=\"applyAdvertise()\" class=\"green btn button-medium\">Request Approval</ion-button>\r\n        </ion-item>\r\n      </ion-list>\r\n    </form>\r\n    <form class=\"nutrition-form ion-padding-horizontal\">\r\n      <div *ngIf=\"programData?.programType==6\">\r\n        <h6 class=\"repeatedHeading mb-10\">Select Video</h6>\r\n        <ion-col size=\"12\" class=\"ion-no-padding\">\r\n          <ion-segment scrollable=\"true\" class=\"ion-no-padding nutriimages-list\">\r\n            <ion-segment-button *ngFor=\"let preview of videoList\">\r\n              <div class=\"checkboxThumb\">\r\n                <div class=\"thumb-checkbox\">\r\n                  <ion-checkbox [(ngModel)]=\"preview.sele\" name=\"preview.id\" value=\"preview.id\" slot=\"start\">\r\n                  </ion-checkbox>\r\n                </div>\r\n                <img *ngIf=\"preview?.thumb_path\" src=\"{{storagePath}}{{preview?.thumb_path}}\" alt=\"path\" />\r\n                <img *ngIf=\"!preview?.thumb_path\" src=\"../../../assets/images/video.png\" />\r\n                <ion-label>{{preview.title}}</ion-label>\r\n                <ion-button class=\"infoIcon\" (click)=\"showVideoDetails(preview.posts_id)\">\r\n                  <ion-icon name=\"information-circle\"></ion-icon>\r\n                </ion-button>\r\n              </div>\r\n            </ion-segment-button>\r\n          </ion-segment>\r\n\r\n        </ion-col>\r\n        <div *ngIf=\"videoList.length==0\" class=\"no-data\">\r\n          <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n          <p>No post added yet!!!</p>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n  </div>\r\n  <div *ngIf=\"repetatedDateCopy.length>0\" class=\"margin-top-md\">\r\n    <!-- <div class=\"ion-padding-horizontal\">\r\n    <ion-list>            \r\n        <ion-item class=\"ion-no-padding ion-margin-vertical\">\r\n          <ion-label>Add Bonus Video, Nutrition</ion-label>\r\n          <ion-datetime value=\"\" display-timezone=\"utc\"  (ionChange)=\"addExtraDay($event)\"></ion-datetime>\r\n        </ion-item>\r\n      </ion-list> \r\n    </div> -->\r\n    <ion-list *ngFor=\"let date of repetatedDateCopy let i = index\">\r\n      <ion-list-header class=\"ion-padding-horizontal green text-white live-ion-list-header\">\r\n        <div class=\"title\" *ngIf=\"date.is_live\">\r\n          {{date.date | date :'medium'}}\r\n        </div>\r\n        <div class=\"title\" *ngIf=\"!date.is_live\">\r\n          {{date.date | date :'mediumDate'}}\r\n        </div>\r\n        <div class=\"divider\"></div>\r\n        <div class=\"calender_green_bottom\">\r\n          <div class=\"\">\r\n            <div class=\"title\" *ngIf=\"date.is_live\">Live</div>\r\n            <div class=\"title\" *ngIf=\"!date.is_live\">Non-Live</div>\r\n          </div>\r\n          <ion-icon ios=\"ios-fitness\" md=\"md-fitness\" class=\"ion-margin-start\"\r\n            (click)=\"addEquipments2(1,date.equipments,i)\"></ion-icon>\r\n          <ion-icon ios=\"ios-nutrition\" md=\"md-nutrition\" class=\"ion-margin-start\"\r\n            (click)=\"addEquipments2(2,date.nutrition_id,i)\">\r\n          </ion-icon>\r\n          <ion-icon ios=\"ios-videocam\" md=\"md-videocam\" class=\"ion-margin-start\" (click)=\"addVideo(item,i)\"></ion-icon>\r\n        </div>\r\n      </ion-list-header>\r\n      <ion-item>\r\n        <ion-icon class=\"live-event-icon\" ios=\"ios-fitness\" md=\"md-fitness\"></ion-icon>\r\n        <div class=\"users-list\" *ngIf=\"date?.equipments.length>0;else no_equipment\">\r\n          <img src=\"../../assets/images/demo1.jpg\" *ngFor=\"let item of date?.equipments\" />\r\n        </div>\r\n        <ng-template #no_equipment>No Equipment Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-icon class=\"live-event-icon\" ios=\"ios-nutrition\" md=\"md-nutrition\"></ion-icon>\r\n        <div class=\"users-list\" *ngIf=\"date.nutrition_id.length>0;else no_nutrition\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.nutrition_id\" />\r\n        </div>\r\n        <ng-template #no_nutrition>No Nutrition Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-icon class=\"live-event-icon\" ios=\"ios-videocam\" md=\"md-videocam\"></ion-icon>\r\n        <div class=\"users-list\" *ngIf=\"date?.video;else no_videos\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.video\" />\r\n        </div>\r\n        <ng-template #no_videos>No videos Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item class=\"descriptionItem\">\r\n        <ion-textarea placeholder=\"Enter Description\" (ionChange)=\"detailsUpdate($event ,i)\"\r\n          value=\"{{item?.description}}\"></ion-textarea>\r\n      </ion-item>\r\n    </ion-list>\r\n    <!-- <ion-list *ngFor=\"let date of repetatedDateCopy let i = index\">\r\n      <ion-list-header class=\"ion-padding-horizontal green text-white\">\r\n        <div *ngIf=\"date.is_live\">\r\n          {{date.date | date :'medium'}}\r\n        </div>\r\n        <div *ngIf=\"!date.is_live\">\r\n          {{date.date | date :'mediumDate'}}\r\n        </div>\r\n        <div>\r\n          <ion-icon ios=\"ios-fitness\" md=\"md-fitness\" (click)=\"addEquipments2(1,date.equipments,i)\"></ion-icon>\r\n          <ion-icon ios=\"ios-restaurant\" md=\"md-restaurant\" class=\"ion-margin-start\" (click)=\"addEquipments2(2,date.nutrition_id,i)\">\r\n          </ion-icon>\r\n          <ion-icon ios=\"ios-videocam\" md=\"md-videocam\" class=\"ion-margin-start\" (click)=\"addVideo(item,i)\"></ion-icon>\r\n        </div>\r\n      </ion-list-header>\r\n      <ion-item>\r\n        <ion-label>Equipments :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date?.equipments.length>0;else no_equipment\">\r\n          <img src=\"../../assets/images/demo1.jpg\" *ngFor=\"let item of date?.equipments\" />\r\n        </div>\r\n        <ng-template #no_equipment>No Equipment Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Nutritions :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date.nutrition_id.length>0;else no_nutrition\">\r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.nutrition_id\" />\r\n        </div>\r\n        <ng-template #no_nutrition>No Nutrition Selected</ng-template>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>Videos :</ion-label>\r\n        <div class=\"users-list\" *ngIf=\"date?.video;else no_videos\">\r\n        \r\n          <img src=\"../../assets/images/demo2.jpg\" *ngFor=\"let item of date.video\" />\r\n        </div>\r\n        <ng-template #no_videos>No videos Selected</ng-template>\r\n      </ion-item>      \r\n      <ion-item class=\"descriptionItem\">\r\n        <ion-textarea placeholder=\"Enter Description\" (ionChange)=\"detailsUpdate($event ,i)\"\r\n            value=\"{{item?.description}}\"></ion-textarea>\r\n      </ion-item>\r\n    </ion-list>     -->\r\n  </div>\r\n\r\n</ion-content>\r\n<ion-footer class=\"sticky-footer\">\r\n  <div class=\"terms-footer\">\r\n    <ion-checkbox (ionChange)=\"termsChecked($event)\"></ion-checkbox>\r\n    <ion-label> I have read and agree to the Terms and Conditions.</ion-label>\r\n    <ion-icon (click)=\"openModal()\" ios=\"ios-arrow-dropdown\" md=\"md-arrow-dropdown\"></ion-icon>\r\n  </div>\r\n  <ion-button [disabled]=\"isDisabled\" expand=\"full\" (click)=\"onSubmit()\"\r\n    class=\"green ion-text-uppercase ion-no-margin full-height\">Save</ion-button>\r\n</ion-footer>";
     /***/
   },
 
@@ -1305,7 +1305,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>Equipments</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\">\r\n      <ion-icon ios=\"ios-create\" md=\"md-create\" slot=\"end\" (click)=\"openEdit()\"></ion-icon>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n\r\n  <div *ngIf=\"equipment;else nodata\">\r\n    <ion-list class=\"user-list ion-no-padding\">\r\n      <ion-item *ngFor=\"let equp of equipments\">\r\n        <div class=\"users-list\">\r\n          <img src=\"{{equipmentPicPath}}{{equp.equipment_pic}}\" />\r\n        </div>\r\n        <ion-label class=\"ion-padding-horizontal\">\r\n          <h3 class=\"list-person\">{{equp.equipment_name}} </h3>\r\n        </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n  </div>\r\n  <ng-template #nodata>\r\n    <div class=\"no-data\">\r\n      <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n      <p>No Data Found</p>\r\n    </div>\r\n  </ng-template>\r\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header class=\"top-header ion-no-padding\">\r\n  <ion-list class=\"top-heading three-block\">\r\n    <ion-item slot=\"start\">\r\n      <ion-buttons class=\"ion-no-margin\" (click)=\"closeModal()\">\r\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\r\n      </ion-buttons>\r\n    </ion-item>\r\n    <ion-item slot=\"center\">\r\n      <ion-label>Equipments</ion-label>\r\n    </ion-item>\r\n    <ion-item class=\"icon-right-side ion-text-end\" slot=\"end\">\r\n      <ion-icon ios=\"ios-create\" md=\"md-create\" slot=\"end\" (click)=\"openEdit()\"></ion-icon>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-header>\r\n<ion-content class=\"main_content\">\r\n\r\n  <!-- <div *ngIf=\"equipment;else nodata\">\r\n    <ion-list class=\"user-list ion-no-padding\">\r\n      <ion-item *ngFor=\"let equp of equipments\">\r\n        <div class=\"users-list\" (click)=\"openViewer(equipmentPicPath+equp.equipment_pic)\">\r\n          <img src=\"{{equipmentPicPath}}{{equp.equipment_pic}}\" />\r\n        </div>\r\n        <ion-label class=\"ion-padding-horizontal\">\r\n          <h3 class=\"list-person\">{{equp.equipment_name}} </h3>\r\n        </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n  </div> -->\r\n  <ion-list *ngFor=\"let equp of equipments; index as i\">\r\n    <ion-list-header>\r\n      <ion-label>{{equp.program_date}}</ion-label>\r\n    </ion-list-header>\r\n    <ion-slides [options]=\"slideOpts\">\r\n      <ion-slide *ngFor=\"let item of equp.list; index as j\">\r\n        <div>\r\n          <div (click)=\"openViewer(equipmentPicPath+item.equipment_pic)\">\r\n            <img src=\"{{equipmentPicPath}}{{item.equipment_pic}}\" alt=\"equipment name\" />\r\n          </div>\r\n          <div>\r\n            <ion-text>{{item.equipment_name}}</ion-text>\r\n          </div>\r\n        </div>\r\n      </ion-slide>\r\n      <!-- <ion-slide>\r\n        <div>\r\n          <div>\r\n            <img src=\"dasdsa.png\" alt=\"equipment name\" />\r\n          </div>\r\n          <div>\r\n            <ion-text>Equipment Name</ion-text>\r\n          </div>\r\n        </div>\r\n      </ion-slide>\r\n      <ion-slide>\r\n        <div>\r\n          <div>\r\n            <img src=\"dasdsa.png\" alt=\"equipment name\" />\r\n          </div>\r\n          <div>\r\n            <ion-text>Equipment Name</ion-text>\r\n          </div>\r\n        </div>\r\n      </ion-slide>\r\n      <ion-slide>\r\n        <div>\r\n          <div>\r\n            <img src=\"dasdsa.png\" alt=\"equipment name\" />\r\n          </div>\r\n          <div>\r\n            <ion-text>Equipment Name</ion-text>\r\n          </div>\r\n        </div>\r\n      </ion-slide> -->\r\n    </ion-slides>\r\n  </ion-list>\r\n  <ng-template #nodata>\r\n    <div class=\"no-data\">\r\n      <img src=\"../../../assets/images/error.svg\" class=\"mb-10\" width=\"40px\" />\r\n      <p>No Data Found</p>\r\n    </div>\r\n  </ng-template>\r\n</ion-content>";
     /***/
   },
 
@@ -2097,7 +2097,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _add_program_program_nutrition_detail_modal_program_nutrition_detail_modal_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var ngx_ionic_image_viewer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ngx-ionic-image-viewer */
+    "./node_modules/ngx-ionic-image-viewer/fesm2015/ngx-ionic-image-viewer.js");
+    /* harmony import */
+
+
+    var _add_program_program_nutrition_detail_modal_program_nutrition_detail_modal_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ../../add-program/program-nutrition-detail-modal/program-nutrition-detail-modal.component */
     "./src/app/add-program/program-nutrition-detail-modal/program-nutrition-detail-modal.component.ts");
 
@@ -2271,7 +2277,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   case 0:
                     _context.next = 2;
                     return this.modalCtrl.create({
-                      component: _add_program_program_nutrition_detail_modal_program_nutrition_detail_modal_component__WEBPACK_IMPORTED_MODULE_7__["ProgramNutritionDetailModalComponent"],
+                      component: _add_program_program_nutrition_detail_modal_program_nutrition_detail_modal_component__WEBPACK_IMPORTED_MODULE_8__["ProgramNutritionDetailModalComponent"],
                       cssClass: 'fullModal',
                       componentProps: {
                         'details': item
@@ -2292,6 +2298,44 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             }, _callee, this);
+          }));
+        }
+      }, {
+        key: "openViewer",
+        value: function openViewer(path) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var modal;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    _context2.next = 2;
+                    return this.modalCtrl.create({
+                      component: ngx_ionic_image_viewer__WEBPACK_IMPORTED_MODULE_7__["ViewerModalComponent"],
+                      componentProps: {
+                        src: path,
+                        srcHighRes: path,
+                        srcFallback: path
+                      },
+                      cssClass: 'ion-img-viewer',
+                      keyboardClose: true,
+                      showBackdrop: true
+                    });
+
+                  case 2:
+                    modal = _context2.sent;
+                    _context2.next = 5;
+                    return modal.present();
+
+                  case 5:
+                    return _context2.abrupt("return", _context2.sent);
+
+                  case 6:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
           }));
         }
       }]);
@@ -2450,46 +2494,46 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onEventSelected",
         value: function onEventSelected(event) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
             var start, end, alert;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
               while (1) {
-                switch (_context2.prev = _context2.next) {
+                switch (_context3.prev = _context3.next) {
                   case 0:
                     start = Object(_angular_common__WEBPACK_IMPORTED_MODULE_2__["formatDate"])(event.startTime, 'medium', this.locale);
                     end = Object(_angular_common__WEBPACK_IMPORTED_MODULE_2__["formatDate"])(event.endTime, 'medium', this.locale);
-                    _context2.next = 4;
+                    _context3.next = 4;
                     return this.alertCtrl.create({
                       header: event.title,
                       subHeader: event.desc,
-                      message: 'From: ' + start + '<br>To: ' + end + '<br>Program Type: ' + event.typeID + '<br>Participant Type: ' + event.participant,
+                      message: 'From: ' + start + '<br>To: ' + end + '<br>Program Type: ' + event.typeID + '<br>Invitation Type: ' + event.participant,
                       buttons: ['OK'],
                       cssClass: "custom-alert"
                     });
 
                   case 4:
-                    alert = _context2.sent;
+                    alert = _context3.sent;
                     // this.commonService.dismissModal();
                     alert.present();
 
                   case 6:
                   case "end":
-                    return _context2.stop();
+                    return _context3.stop();
                 }
               }
-            }, _callee2, this);
+            }, _callee3, this);
           }));
         }
       }, {
         key: "duplicatEvent",
         value: function duplicatEvent() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
             var alert;
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
-                switch (_context3.prev = _context3.next) {
+                switch (_context4.prev = _context4.next) {
                   case 0:
-                    _context3.next = 2;
+                    _context4.next = 2;
                     return this.alertCtrl.create({
                       header: '',
                       subHeader: '',
@@ -2499,16 +2543,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    alert = _context3.sent;
+                    alert = _context4.sent;
                     // this.commonService.dismissModal();
                     alert.present();
 
                   case 4:
                   case "end":
-                    return _context3.stop();
+                    return _context4.stop();
                 }
               }
-            }, _callee3, this);
+            }, _callee4, this);
           }));
         }
       }, {
@@ -2743,7 +2787,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".inline-flex ion-datetime {\n  padding-left: 1px;\n  padding-right: 5px;\n}\n\n.radio-group {\n  display: flex;\n}\n\n.radio-group ion-item {\n  --background: transparent;\n  --inner-border-width: 0 0 0 0;\n}\n\n.radio-group ion-item ion-radio {\n  margin-right: 10px;\n}\n\n.nutriimages-list ion-label {\n  font-size: 0.75rem;\n  margin: 3px 0;\n  text-transform: capitalize;\n  letter-spacing: 0;\n  font-weight: 400;\n  display: block;\n  color: #444;\n}\n\n.video-card {\n  box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09);\n}\n\nion-slides {\n  background: transparent;\n  padding: 0 5px;\n}\n\n.nutriimages-list ion-segment-button {\n  width: 32%;\n  border: none;\n  padding: 0;\n  --padding-start: 0;\n  --padding-end: 0;\n  margin: 0 3px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: #f7f7f7;\n  border-radius: 4px;\n}\n\n.nutriimages-list ion-segment-button:first-child {\n  margin-left: 0;\n}\n\n.nutriimages-list ion-segment-button img {\n  -o-object-fit: contain;\n     object-fit: contain;\n  max-width: 100%;\n}\n\n.nutriimages-list .segment-button-checked {\n  background: #eaeaea;\n  --color-checked: transparent;\n}\n\n.nutriimages-list .thumb-checkbox {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n}\n\n.nutriimages-list .thumb-checkbox ion-checkbox {\n  opacity: 0;\n  width: 100%;\n  height: 78px;\n  padding: 0 0;\n}\n\n.checkboxThumb::after {\n  content: \"\";\n  width: 16px;\n  height: 16px;\n  border: 2px solid #7d7d7d;\n  display: block;\n  border-radius: 50%;\n  position: absolute;\n  top: 5px;\n  left: 5px;\n}\n\n.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked {\n  opacity: 1;\n  --background-checked:transparent;\n  --border-color-checked:transparent;\n  --size:0;\n  --checkmark-color:transparent;\n}\n\n.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked:after {\n  content: \"\";\n  width: 20px;\n  height: 20px;\n  background: #26a69a;\n  display: block;\n  border-radius: 50%;\n  position: absolute;\n  top: 5px;\n  left: 5px;\n}\n\n.item-list ion-list-header ion-icon {\n  font-size: 1.15rem;\n}\n\n.users-list {\n  --min-height: auto;\n  display: flex;\n  align-items: center;\n  margin: 6px 0;\n}\n\n.users-list img {\n  width: 36px;\n  height: 36px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 50%;\n  margin-left: -10px;\n}\n\n.users-list img:first-child {\n  margin-left: 0;\n}\n\n.users-list ion-label {\n  width: 100px;\n}\n\n.view-all {\n  width: 36px;\n  height: 36px;\n  max-width: 36px;\n  text-align: center;\n  background: #f1f0f0;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 0;\n  margin-left: -10px;\n}\n\nion-list .durationItem {\n  --padding-end: 0;\n}\n\nion-list .durationItem ion-input {\n  position: relative;\n  top: 2px;\n  text-align: right;\n}\n\n.program-card {\n  width: 100%;\n}\n\nion-item ion-list {\n  width: 100%;\n}\n\n.item-list > ion-item {\n  --inner-padding-end: 0;\n}\n\n.thumb-list ion-item ion-label {\n  position: absolute;\n  bottom: 0;\n  margin: 0;\n  background: rgba(38, 166, 154, 0.5);\n  width: 100%;\n  color: #FFF;\n  padding: 5px;\n  text-align: center;\n}\n\n.fixed {\n  position: -webkit-sticky;\n  position: sticky;\n  width: 100%;\n  top: 0px;\n  padding-top: 5px;\n  z-index: 999;\n  background: #fff;\n}\n\n.margintop-45 {\n  margin-top: 45%;\n}\n\n.margin-15 {\n  margin: 15px 0px !important;\n}\n\n.mb-0 {\n  margin-bottom: 0 !important;\n}\n\nion-list {\n  padding-top: 0 !important;\n  padding-bottom: 0 !important;\n}\n\nion-list ion-item {\n  font-size: 0.875rem;\n  --padding-end: 16px;\n  -webkit-padding-end: 0;\n          padding-inline-end: 0;\n  --inner-padding-end: 0;\n  --min-height: 44px;\n  --border-color: whitesmoke;\n}\n\nion-list .descriptionItem ion-item {\n  padding: 0;\n}\n\n.repeatedHeading {\n  font-weight: 400;\n  font-size: 15px;\n  margin-bottom: 0;\n}\n\n.infoIcon {\n  position: absolute;\n  top: 0;\n  right: 0;\n  --background: #26a69a;\n  --box-shadow: none;\n  color: #FFF;\n  --padding-start: 0;\n  --padding-end: 0;\n  height: auto;\n  font-size: 16px;\n  margin: 3px;\n  z-index: 9;\n  --border-radius:50%;\n}\n\n.ion-block {\n  display: flex;\n  align-items: center;\n}\n\n.ion-left {\n  flex: 1;\n}\n\n.ion-right {\n  display: flex;\n  align-items: center;\n}\n\n.width-30 {\n  width: 30px;\n}\n\n.live-ion-list-header {\n  justify-content: initial;\n}\n\n.live-ion-list-header .divider {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\n.live-ion-list-header .calender_green_bottom {\n  display: flex;\n  flex: 1;\n  justify-content: space-around;\n  align-items: center;\n}\n\n.live-ion-list-header .calender_green_bottom ion-icon {\n  font-size: 1.7rem;\n}\n\n.live-event-addition {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  background: #cecece;\n  padding: 15px;\n  border-radius: 12px;\n  margin-bottom: 12px;\n}\n\n.live-event-addition h5 {\n  color: #121212;\n  margin: 0;\n  font-weight: 500;\n}\n\n.live-event-box {\n  width: 100%;\n  margin-bottom: 20px;\n}\n\n.live-event-box .live-event-head {\n  margin-bottom: 10px;\n  font-size: 14px;\n  color: #121212;\n}\n\n.live-event-box .live-event-info {\n  padding: 12px 20px 2px 20px;\n  border: 1px solid #cecece;\n  border-radius: 12px;\n  max-height: 100px;\n  overflow-y: scroll;\n}\n\n.live-event-box .live-event-info .live-event-details {\n  display: flex;\n  align-items: center;\n  margin-bottom: 10px;\n}\n\n.live-event-box .live-event-info .live-event-details p {\n  font-size: 16px;\n  color: #121212;\n}\n\n.live-event-box .live-event-info .live-event-details .small-divider {\n  width: 1.5px;\n  height: 20px;\n  background-color: #555;\n  margin-right: 14px;\n  margin-left: 14px;\n}\n\n.live-event-icon {\n  font-size: 28px;\n  min-width: 80px;\n  color: #555;\n  margin-right: 20px;\n}\n\n.live-icon {\n  color: transparent;\n}\n\n.toggleDiv {\n  margin-bottom: 2px;\n  width: 50px;\n}\n\n.live::after {\n  content: \"Go Live\";\n  color: #26a69a;\n  font-size: 11px;\n  font-weight: 500;\n  padding: 6px 5px;\n  background: #fff;\n  border-radius: 3px;\n  margin-bottom: 2px;\n}\n\n.title {\n  font-size: 13px;\n}\n\n.title span {\n  font-size: 11px;\n  display: block;\n  color: #E7E7E7;\n  margin-bottom: 3px;\n}\n\n.live.active::after {\n  content: \"Live\";\n  padding: 6px 7px;\n  font-size: 11px;\n  letter-spacing: 2px;\n  color: #fff;\n  text-transform: uppercase;\n  background: #FF3A3A;\n}\n\nion-icon.active {\n  display: block;\n  color: #ff1111;\n}\n\n.width-full {\n  width: 100% !important;\n}\n\n.divider {\n  width: 1.5px;\n  height: 35px;\n  background: #fff;\n}\n\n.terms-footer {\n  display: flex;\n  align-items: center;\n  padding: 5px 10px;\n}\n\n.terms-footer ion-checkbox {\n  margin-right: 8px;\n}\n\n.terms-footer ion-icon {\n  color: #555;\n  font-size: 24px;\n}\n\n.full-height {\n  height: 56px;\n}\n\n.sticky-footer {\n  height: auto;\n}\n\nion-list-header.ion-padding-horizontal.green.text-white.md.hydrated {\n  padding-bottom: 12px;\n  padding-top: 12px;\n}\n\nion-list.width-full.md.list-md.hydrated {\n  border-radius: 4px;\n}\n\nion-list-header.ion-padding-horizontal.green.text-white.ios.hydrated {\n  padding-bottom: 12px;\n  padding-top: 12px;\n  text-transform: initial;\n  letter-spacing: 0px;\n}\n\nion-list.width-full.ios.list-ios.hydrated {\n  border-radius: 4px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWRkLXByb2dyYW0vZGF0ZS10aW1lLW1vZGFsL0Q6XFxuaWtoaWxcXEludG9hY3RpdmUvc3JjXFxhcHBcXGFkZC1wcm9ncmFtXFxkYXRlLXRpbWUtbW9kYWxcXGRhdGUtdGltZS1tb2RhbC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYWRkLXByb2dyYW0vZGF0ZS10aW1lLW1vZGFsL2RhdGUtdGltZS1tb2RhbC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUEwQixpQkFBQTtFQUFrQixrQkFBQTtBQ0c1Qzs7QURGQTtFQUFhLGFBQUE7QUNNYjs7QURMQTtFQUFzQix5QkFBQTtFQUEwQiw2QkFBQTtBQ1VoRDs7QURUQTtFQUFnQyxrQkFBQTtBQ2FoQzs7QURYQTtFQUE0QixrQkFBQTtFQUFtQixhQUFBO0VBQWMsMEJBQUE7RUFBMkIsaUJBQUE7RUFBa0IsZ0JBQUE7RUFBaUIsY0FBQTtFQUFlLFdBQUE7QUNxQjFJOztBRHBCQTtFQUFZLCtDQUFBO0FDd0JaOztBRHZCQTtFQUFXLHVCQUFBO0VBQXdCLGNBQUE7QUM0Qm5DOztBRDNCQTtFQUFxQyxVQUFBO0VBQVcsWUFBQTtFQUFhLFVBQUE7RUFBVyxrQkFBQTtFQUFtQixnQkFBQTtFQUFxQixhQUFBO0VBQWMsYUFBQTtFQUFjLHVCQUFBO0VBQXdCLG1CQUFBO0VBQW9CLG1CQUFBO0VBQW9CLGtCQUFBO0FDeUM1TTs7QUR4Q0E7RUFBaUQsY0FBQTtBQzRDakQ7O0FEM0NBO0VBQXlDLHNCQUFBO0tBQUEsbUJBQUE7RUFBb0IsZUFBQTtBQ2dEN0Q7O0FEL0NBO0VBQTBDLG1CQUFBO0VBQW9CLDRCQUFBO0FDb0Q5RDs7QURuREE7RUFBa0Msa0JBQUE7RUFBbUIsV0FBQTtFQUFZLFlBQUE7QUN5RGpFOztBRHhEQTtFQUErQyxVQUFBO0VBQVUsV0FBQTtFQUFXLFlBQUE7RUFBWSxZQUFBO0FDK0RoRjs7QUQ3REE7RUFBc0IsV0FBQTtFQUFZLFdBQUE7RUFBWSxZQUFBO0VBQWEseUJBQUE7RUFBMEIsY0FBQTtFQUFlLGtCQUFBO0VBQW1CLGtCQUFBO0VBQW1CLFFBQUE7RUFBUyxTQUFBO0FDeUVuSjs7QUR4RUE7RUFBZ0UsVUFBQTtFQUFVLGdDQUFBO0VBQWlDLGtDQUFBO0VBQW1DLFFBQUE7RUFBUyw2QkFBQTtBQ2dGdko7O0FEL0VBO0VBQXNFLFdBQUE7RUFBVyxXQUFBO0VBQVcsWUFBQTtFQUFZLG1CQUFBO0VBQW1CLGNBQUE7RUFBYyxrQkFBQTtFQUFrQixrQkFBQTtFQUFrQixRQUFBO0VBQVEsU0FBQTtBQzJGckw7O0FEMUZBO0VBQW9DLGtCQUFBO0FDOEZwQzs7QUQ1RkE7RUFBWSxrQkFBQTtFQUFtQixhQUFBO0VBQWMsbUJBQUE7RUFBb0IsYUFBQTtBQ21HakU7O0FEbEdBO0VBQWdCLFdBQUE7RUFBWSxZQUFBO0VBQWEsb0JBQUE7S0FBQSxpQkFBQTtFQUFrQixrQkFBQTtFQUFtQixrQkFBQTtBQzBHOUU7O0FEekdBO0VBQTRCLGNBQUE7QUM2RzVCOztBRDVHQTtFQUFzQixZQUFBO0FDZ0h0Qjs7QUQvR0E7RUFBVSxXQUFBO0VBQVcsWUFBQTtFQUFZLGVBQUE7RUFBZ0Isa0JBQUE7RUFBa0IsbUJBQUE7RUFBbUIsa0JBQUE7RUFBa0IsYUFBQTtFQUFhLHVCQUFBO0VBQXVCLG1CQUFBO0VBQW1CLFNBQUE7RUFBVSxrQkFBQTtBQzZIeks7O0FEMUhJO0VBQWMsZ0JBQUE7QUM4SGxCOztBRDdIUTtFQUFVLGtCQUFBO0VBQW1CLFFBQUE7RUFBUyxpQkFBQTtBQ2tJOUM7O0FEOUhBO0VBQWMsV0FBQTtBQ2tJZDs7QURqSUE7RUFBa0IsV0FBQTtBQ3FJbEI7O0FEcElBO0VBQXNCLHNCQUFBO0FDd0l0Qjs7QURySVE7RUFDSixrQkFBQTtFQUNBLFNBQUE7RUFDQSxTQUFBO0VBQ0EsbUNBQUE7RUFDQSxXQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtBQ3dJSjs7QURwSUE7RUFLSSx3QkFBQTtFQUNBLGdCQUFBO0VBQ0EsV0FBQTtFQUNBLFFBQUE7RUFDQSxnQkFBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtBQ21JSjs7QURqSUE7RUFDSSxlQUFBO0FDb0lKOztBRGxJQTtFQUNJLDJCQUFBO0FDcUlKOztBRG5JQTtFQUNJLDJCQUFBO0FDc0lKOztBRHBJQTtFQUFTLHlCQUFBO0VBQTBCLDRCQUFBO0FDeUluQzs7QUR4SUk7RUFBUyxtQkFBQTtFQUFvQixtQkFBQTtFQUFvQixzQkFBQTtVQUFBLHFCQUFBO0VBQXNCLHNCQUFBO0VBQXVCLGtCQUFBO0VBQW1CLDBCQUFBO0FDZ0pySDs7QUQ5SVE7RUFBUyxVQUFBO0FDaUpqQjs7QUQ5SUE7RUFBaUIsZ0JBQUE7RUFBaUIsZUFBQTtFQUFnQixnQkFBQTtBQ29KbEQ7O0FEbkpBO0VBQVUsa0JBQUE7RUFDTixNQUFBO0VBQ0EsUUFBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtFQUNBLFlBQUE7RUFDQSxlQUFBO0VBQ0EsV0FBQTtFQUNBLFVBQUE7RUFBVyxtQkFBQTtBQ3dKZjs7QUR0Skk7RUFDSSxhQUFBO0VBQ0EsbUJBQUE7QUN5SlI7O0FEdkpJO0VBQ0ksT0FBQTtBQzBKUjs7QUR4Skk7RUFDSSxhQUFBO0VBQ0EsbUJBQUE7QUMySlI7O0FEekpJO0VBQ0ksV0FBQTtBQzRKUjs7QUR4Skk7RUFDSSx3QkFBQTtBQzJKUjs7QUQxSlE7RUFDSSxpQkFBQTtFQUNBLGtCQUFBO0FDNEpaOztBRDFKUTtFQUNJLGFBQUE7RUFDQSxPQUFBO0VBQ0EsNkJBQUE7RUFDQSxtQkFBQTtBQzRKWjs7QUQzSlk7RUFDSSxpQkFBQTtBQzZKaEI7O0FEekpJO0VBQ0ksV0FBQTtFQUNBLGFBQUE7RUFDQSx1QkFBQTtFQUNBLG1CQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsbUJBQUE7QUM0SlI7O0FEM0pRO0VBQ0ksY0FBQTtFQUNBLFNBQUE7RUFDQSxnQkFBQTtBQzZKWjs7QUQxSkk7RUFDSSxXQUFBO0VBQ0EsbUJBQUE7QUM2SlI7O0FENUpRO0VBQ0ksbUJBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBQzhKWjs7QUQ1SlE7RUFDSSwyQkFBQTtFQUNBLHlCQUFBO0VBQ0EsbUJBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0FDOEpaOztBRDdKWTtFQUNJLGFBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0FDK0poQjs7QUQ5SmdCO0VBQ0ksZUFBQTtFQUNBLGNBQUE7QUNnS3BCOztBRDlKZ0I7RUFDSSxZQUFBO0VBQ0EsWUFBQTtFQUNBLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSxpQkFBQTtBQ2dLcEI7O0FEM0pJO0VBQ0ksZUFBQTtFQUNBLGVBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7QUM4SlI7O0FENUpJO0VBRUksa0JBQUE7QUM4SlI7O0FENUpJO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0FDK0pSOztBRDdKSTtFQUNJLGtCQUFBO0VBQ0EsY0FBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7RUFFQSxrQkFBQTtFQUNBLGtCQUFBO0FDK0pSOztBRDdKSTtFQUNJLGVBQUE7QUNnS1I7O0FEOUpJO0VBQ0ksZUFBQTtFQUNBLGNBQUE7RUFDQSxjQUFBO0VBQ0Esa0JBQUE7QUNpS1I7O0FEL0pJO0VBQ0ksZUFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLG1CQUFBO0VBQ0EsV0FBQTtFQUNBLHlCQUFBO0VBQ0EsbUJBQUE7QUNrS1I7O0FEL0pJO0VBQ0ksY0FBQTtFQUNBLGNBQUE7QUNrS1I7O0FEaEtJO0VBQ0ksc0JBQUE7QUNtS1I7O0FEaktJO0VBQ0ksWUFBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtBQ29LUjs7QURsS0k7RUFDSSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSxpQkFBQTtBQ3FLUjs7QURwS1E7RUFDSSxpQkFBQTtBQ3NLWjs7QURwS1E7RUFDSSxXQUFBO0VBQ0EsZUFBQTtBQ3NLWjs7QURuS0k7RUFDSSxZQUFBO0FDc0tSOztBRHBLSTtFQUNJLFlBQUE7QUN1S1I7O0FEcEtBO0VBQ0ksb0JBQUE7RUFDQSxpQkFBQTtBQ3VLSjs7QURyS0E7RUFDSSxrQkFBQTtBQ3dLSjs7QURyS0E7RUFDSSxvQkFBQTtFQUNBLGlCQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtBQ3dLSjs7QUR0S0E7RUFDSSxrQkFBQTtBQ3lLSiIsImZpbGUiOiJzcmMvYXBwL2FkZC1wcm9ncmFtL2RhdGUtdGltZS1tb2RhbC9kYXRlLXRpbWUtbW9kYWwuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaW5saW5lLWZsZXggaW9uLWRhdGV0aW1le3BhZGRpbmctbGVmdDogMXB4O3BhZGRpbmctcmlnaHQ6IDVweDt9XHJcbi5yYWRpby1ncm91cHtkaXNwbGF5OiBmbGV4O31cclxuLnJhZGlvLWdyb3VwIGlvbi1pdGVtey0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7LS1pbm5lci1ib3JkZXItd2lkdGg6IDAgMCAwIDA7fVxyXG4ucmFkaW8tZ3JvdXAgaW9uLWl0ZW0gaW9uLXJhZGlve21hcmdpbi1yaWdodDogMTBweDt9XHJcblxyXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tbGFiZWx7Zm9udC1zaXplOiAwLjc1cmVtO21hcmdpbjogM3B4IDA7dGV4dC10cmFuc2Zvcm06IGNhcGl0YWxpemU7bGV0dGVyLXNwYWNpbmc6IDA7Zm9udC13ZWlnaHQ6IDQwMDtkaXNwbGF5OiBibG9jaztjb2xvcjogIzQ0NDt9XHJcbi52aWRlby1jYXJke2JveC1zaGFkb3c6IDBweCA0cHggMTBweCByZ2JhKDM0LCAzNSwgNTgsIDAuMDkpO31cclxuaW9uLXNsaWRlc3tiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtwYWRkaW5nOiAwIDVweDt9XHJcbi5udXRyaWltYWdlcy1saXN0IGlvbi1zZWdtZW50LWJ1dHRvbnt3aWR0aDogMzIlO2JvcmRlcjogbm9uZTtwYWRkaW5nOiAwOy0tcGFkZGluZy1zdGFydDogMDstLXBhZGRpbmctZW5kOiAwOyAgICBtYXJnaW46IDAgM3B4O2Rpc3BsYXk6IGZsZXg7anVzdGlmeS1jb250ZW50OiBjZW50ZXI7YWxpZ24taXRlbXM6IGNlbnRlcjtiYWNrZ3JvdW5kOiAjZjdmN2Y3O2JvcmRlci1yYWRpdXM6IDRweDt9XHJcbi5udXRyaWltYWdlcy1saXN0IGlvbi1zZWdtZW50LWJ1dHRvbjpmaXJzdC1jaGlsZHttYXJnaW4tbGVmdDogMDt9XHJcbi5udXRyaWltYWdlcy1saXN0IGlvbi1zZWdtZW50LWJ1dHRvbiBpbWd7b2JqZWN0LWZpdDogY29udGFpbjttYXgtd2lkdGg6IDEwMCU7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCAuc2VnbWVudC1idXR0b24tY2hlY2tlZHtiYWNrZ3JvdW5kOiAjZWFlYWVhOy0tY29sb3ItY2hlY2tlZDogdHJhbnNwYXJlbnQ7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCAudGh1bWItY2hlY2tib3h7cG9zaXRpb246IGFic29sdXRlO3dpZHRoOiAxMDAlO2hlaWdodDogMTAwJTt9XHJcbi5udXRyaWltYWdlcy1saXN0IC50aHVtYi1jaGVja2JveCBpb24tY2hlY2tib3h7b3BhY2l0eTowO3dpZHRoOjEwMCU7aGVpZ2h0Ojc4cHg7cGFkZGluZzowIDB9XHJcbi8vIC5jaGVja2JveFRodW1ie2Rpc3BsYXk6IGNvbnRlbnRzO31cclxuLmNoZWNrYm94VGh1bWI6OmFmdGVye2NvbnRlbnQ6ICcnO3dpZHRoOiAxNnB4O2hlaWdodDogMTZweDtib3JkZXI6IDJweCBzb2xpZCAjN2Q3ZDdkO2Rpc3BsYXk6IGJsb2NrO2JvcmRlci1yYWRpdXM6IDUwJTtwb3NpdGlvbjogYWJzb2x1dGU7dG9wOiA1cHg7bGVmdDogNXB4O31cclxuLm51dHJpaW1hZ2VzLWxpc3QgLnRodW1iLWNoZWNrYm94IGlvbi1jaGVja2JveC5jaGVja2JveC1jaGVja2Vke29wYWNpdHk6MTstLWJhY2tncm91bmQtY2hlY2tlZDp0cmFuc3BhcmVudDstLWJvcmRlci1jb2xvci1jaGVja2VkOnRyYW5zcGFyZW50Oy0tc2l6ZTowOy0tY2hlY2ttYXJrLWNvbG9yOnRyYW5zcGFyZW50fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCAudGh1bWItY2hlY2tib3ggaW9uLWNoZWNrYm94LmNoZWNrYm94LWNoZWNrZWQ6YWZ0ZXJ7Y29udGVudDonJzt3aWR0aDoyMHB4O2hlaWdodDoyMHB4O2JhY2tncm91bmQ6IzI2YTY5YTtkaXNwbGF5OmJsb2NrO2JvcmRlci1yYWRpdXM6NTAlO3Bvc2l0aW9uOmFic29sdXRlO3RvcDo1cHg7bGVmdDo1cHh9XHJcbi5pdGVtLWxpc3QgaW9uLWxpc3QtaGVhZGVyIGlvbi1pY29ue2ZvbnQtc2l6ZTogMS4xNXJlbTt9XHJcblxyXG4udXNlcnMtbGlzdHstLW1pbi1oZWlnaHQ6IGF1dG87ZGlzcGxheTogZmxleDthbGlnbi1pdGVtczogY2VudGVyO21hcmdpbjogNnB4IDA7fVxyXG4udXNlcnMtbGlzdCBpbWd7d2lkdGg6IDM2cHg7aGVpZ2h0OiAzNnB4O29iamVjdC1maXQ6IGNvdmVyO2JvcmRlci1yYWRpdXM6IDUwJTttYXJnaW4tbGVmdDogLTEwcHg7fVxyXG4udXNlcnMtbGlzdCBpbWc6Zmlyc3QtY2hpbGR7bWFyZ2luLWxlZnQ6IDA7fVxyXG4udXNlcnMtbGlzdCBpb24tbGFiZWx7d2lkdGg6IDEwMHB4O31cclxuLnZpZXctYWxse3dpZHRoOjM2cHg7aGVpZ2h0OjM2cHg7bWF4LXdpZHRoOiAzNnB4O3RleHQtYWxpZ246Y2VudGVyO2JhY2tncm91bmQ6I2YxZjBmMDtib3JkZXItcmFkaXVzOjUwJTtkaXNwbGF5OmZsZXg7anVzdGlmeS1jb250ZW50OmNlbnRlcjthbGlnbi1pdGVtczpjZW50ZXI7bWFyZ2luOiAwO21hcmdpbi1sZWZ0OiAtMTBweDt9XHJcblxyXG5pb24tbGlzdHtcclxuICAgIC5kdXJhdGlvbkl0ZW17LS1wYWRkaW5nLWVuZDogMDtcclxuICAgICAgICBpb24taW5wdXR7cG9zaXRpb246IHJlbGF0aXZlO3RvcDogMnB4O3RleHQtYWxpZ246IHJpZ2h0O31cclxuICAgIH1cclxufVxyXG5cclxuLnByb2dyYW0tY2FyZHt3aWR0aDogMTAwJTt9XHJcbmlvbi1pdGVtIGlvbi1saXN0e3dpZHRoOiAxMDAlO31cclxuLml0ZW0tbGlzdCA+IGlvbi1pdGVtey0taW5uZXItcGFkZGluZy1lbmQ6IDA7fVxyXG4udGh1bWItbGlzdCB7XHJcbiAgICBpb24taXRlbXtcclxuICAgICAgICBpb24tbGFiZWx7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBib3R0b206IDA7XHJcbiAgICBtYXJnaW46IDA7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2JhKDM4LCAxNjYsIDE1NCwgMC41MCk7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGNvbG9yOiAjRkZGO1xyXG4gICAgcGFkZGluZzogNXB4O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcbn1cclxufVxyXG4uZml4ZWQge1xyXG4gICAgLy8gcG9zaXRpb246IGZpeGVkICFpbXBvcnRhbnQ7XHJcbiAgICAvLyB6LWluZGV4OiA5ICFpbXBvcnRhbnQ7XHJcbiAgICAvLyBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmICFpbXBvcnRhbnQ7XHJcbiAgICAvLyBtYXJnaW4tdG9wOiAtMnB4ICFpbXBvcnRhbnQ7XHJcbiAgICBwb3NpdGlvbjogLXdlYmtpdC1zdGlja3k7XHJcbiAgICBwb3NpdGlvbjogc3RpY2t5O1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICB0b3A6IDBweDtcclxuICAgIHBhZGRpbmctdG9wOiA1cHg7XHJcbiAgICB6LWluZGV4OiA5OTk7XHJcbiAgICBiYWNrZ3JvdW5kOiAjZmZmO1xyXG59XHJcbi5tYXJnaW50b3AtNDV7XHJcbiAgICBtYXJnaW4tdG9wOiA0NSU7XHJcbn1cclxuLm1hcmdpbi0xNXtcclxuICAgIG1hcmdpbjogMTVweCAwcHggIWltcG9ydGFudDtcclxufVxyXG4ubWItMHtcclxuICAgIG1hcmdpbi1ib3R0b206IDAgIWltcG9ydGFudDtcclxufVxyXG5pb24tbGlzdHtwYWRkaW5nLXRvcDogMCAhaW1wb3J0YW50O3BhZGRpbmctYm90dG9tOiAwICFpbXBvcnRhbnQ7XHJcbiAgICBpb24taXRlbXtmb250LXNpemU6IDAuODc1cmVtOy0tcGFkZGluZy1lbmQ6IDE2cHg7cGFkZGluZy1pbmxpbmUtZW5kOiAwOy0taW5uZXItcGFkZGluZy1lbmQ6IDA7LS1taW4taGVpZ2h0OiA0NHB4Oy0tYm9yZGVyLWNvbG9yOiB3aGl0ZXNtb2tlO31cclxuICAgIC5kZXNjcmlwdGlvbkl0ZW17XHJcbiAgICAgICAgaW9uLWl0ZW17cGFkZGluZzogMDt9XHJcbiAgICB9XHJcbn1cclxuLnJlcGVhdGVkSGVhZGluZ3tmb250LXdlaWdodDogNDAwO2ZvbnQtc2l6ZTogMTVweDttYXJnaW4tYm90dG9tOiAwO31cclxuLmluZm9JY29ue3Bvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMDtcclxuICAgIHJpZ2h0OiAwO1xyXG4gICAgLS1iYWNrZ3JvdW5kOiAjMjZhNjlhO1xyXG4gICAgLS1ib3gtc2hhZG93OiBub25lO1xyXG4gICAgY29sb3I6ICNGRkY7XHJcbiAgICAtLXBhZGRpbmctc3RhcnQ6IDA7XHJcbiAgICAtLXBhZGRpbmctZW5kOiAwO1xyXG4gICAgaGVpZ2h0OiBhdXRvO1xyXG4gICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgbWFyZ2luOiAzcHg7XHJcbiAgICB6LWluZGV4OiA5Oy0tYm9yZGVyLXJhZGl1czo1MCV9XHJcblxyXG4gICAgLmlvbi1ibG9ja3tcclxuICAgICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICB9XHJcbiAgICAuaW9uLWxlZnR7XHJcbiAgICAgICAgZmxleDogMTtcclxuICAgIH1cclxuICAgIC5pb24tcmlnaHR7XHJcbiAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgfVxyXG4gICAgLndpZHRoLTMwe1xyXG4gICAgICAgIHdpZHRoOiAzMHB4O1xyXG4gICAgfVxyXG5cclxuXHJcbiAgICAubGl2ZS1pb24tbGlzdC1oZWFkZXJ7XHJcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBpbml0aWFsO1xyXG4gICAgICAgIC5kaXZpZGVye1xyXG4gICAgICAgICAgICBtYXJnaW4tbGVmdDogMjBweDtcclxuICAgICAgICAgICAgbWFyZ2luLXJpZ2h0OiAyMHB4O1xyXG4gICAgICAgIH1cclxuICAgICAgICAuY2FsZW5kZXJfZ3JlZW5fYm90dG9te1xyXG4gICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICAgICAgICBmbGV4OiAxO1xyXG4gICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcclxuICAgICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgICAgICAgICAgaW9uLWljb257XHJcbiAgICAgICAgICAgICAgICBmb250LXNpemU6IDEuN3JlbTtcclxuICAgICAgICAgICAgfVxyXG4gICAgICAgIH1cclxuICAgIH1cclxuICAgIC5saXZlLWV2ZW50LWFkZGl0aW9ue1xyXG4gICAgICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICAgICAgYmFja2dyb3VuZDogI2NlY2VjZTtcclxuICAgICAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDEycHg7XHJcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogMTJweDtcclxuICAgICAgICBoNXtcclxuICAgICAgICAgICAgY29sb3I6ICMxMjEyMTI7XHJcbiAgICAgICAgICAgIG1hcmdpbjogMDtcclxuICAgICAgICAgICAgZm9udC13ZWlnaHQ6IDUwMDtcclxuICAgICAgICB9XHJcbiAgICB9XHJcbiAgICAubGl2ZS1ldmVudC1ib3h7XHJcbiAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogMjBweDtcclxuICAgICAgICAubGl2ZS1ldmVudC1oZWFke1xyXG4gICAgICAgICAgICBtYXJnaW4tYm90dG9tOiAxMHB4O1xyXG4gICAgICAgICAgICBmb250LXNpemU6IDE0cHg7XHJcbiAgICAgICAgICAgIGNvbG9yOiAjMTIxMjEyO1xyXG4gICAgICAgIH1cclxuICAgICAgICAubGl2ZS1ldmVudC1pbmZve1xyXG4gICAgICAgICAgICBwYWRkaW5nOiAxMnB4IDIwcHggMnB4IDIwcHg7XHJcbiAgICAgICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICNjZWNlY2U7XHJcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDEycHg7IFxyXG4gICAgICAgICAgICBtYXgtaGVpZ2h0OiAxMDBweDtcclxuICAgICAgICAgICAgb3ZlcmZsb3cteTogc2Nyb2xsO1xyXG4gICAgICAgICAgICAubGl2ZS1ldmVudC1kZXRhaWxze1xyXG4gICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICAgICAgICAgICAgICBtYXJnaW4tYm90dG9tOiAxMHB4O1xyXG4gICAgICAgICAgICAgICAgcHtcclxuICAgICAgICAgICAgICAgICAgICBmb250LXNpemU6IDE2cHg7XHJcbiAgICAgICAgICAgICAgICAgICAgY29sb3I6ICMxMjEyMTI7XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgICAgICAuc21hbGwtZGl2aWRlcntcclxuICAgICAgICAgICAgICAgICAgICB3aWR0aDogMS41cHg7XHJcbiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAyMHB4O1xyXG4gICAgICAgICAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM1NTU7XHJcbiAgICAgICAgICAgICAgICAgICAgbWFyZ2luLXJpZ2h0OiAxNHB4O1xyXG4gICAgICAgICAgICAgICAgICAgIG1hcmdpbi1sZWZ0OiAxNHB4XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICB9XHJcbiAgICB9XHJcbiAgICAubGl2ZS1ldmVudC1pY29ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMjhweDtcclxuICAgICAgICBtaW4td2lkdGg6IDgwcHg7XHJcbiAgICAgICAgY29sb3I6ICM1NTU7XHJcbiAgICAgICAgbWFyZ2luLXJpZ2h0OiAyMHB4O1xyXG4gICAgfVxyXG4gICAgLmxpdmUtaWNvbntcclxuICAgICAgICAvLyBjb2xvcjogI2ZmZjtcclxuICAgICAgICBjb2xvcjogdHJhbnNwYXJlbnQ7XHJcbiAgICB9XHJcbiAgICAudG9nZ2xlRGl2IHtcclxuICAgICAgICBtYXJnaW4tYm90dG9tOiAycHg7XHJcbiAgICAgICAgd2lkdGg6IDUwcHg7XHJcbiAgICB9XHJcbiAgICAubGl2ZTo6YWZ0ZXJ7XHJcbiAgICAgICAgY29udGVudDogJ0dvIExpdmUnO1xyXG4gICAgICAgIGNvbG9yOiAjMjZhNjlhO1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTFweDtcclxuICAgICAgICBmb250LXdlaWdodDogNTAwO1xyXG4gICAgICAgIHBhZGRpbmc6IDZweCA1cHg7XHJcbiAgICAgICAgYmFja2dyb3VuZDogI2ZmZjtcclxuICAgICAgICAvLyB0cmFuc2l0aW9uOiBhbGwgLjJzIGVhc2UtaW4tb3V0O1xyXG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDNweDtcclxuICAgICAgICBtYXJnaW4tYm90dG9tOiAycHg7XHJcbiAgICB9XHJcbiAgICAudGl0bGV7XHJcbiAgICAgICAgZm9udC1zaXplOiAxM3B4O1xyXG4gICAgfVxyXG4gICAgLnRpdGxlIHNwYW57XHJcbiAgICAgICAgZm9udC1zaXplOiAxMXB4O1xyXG4gICAgICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgICAgIGNvbG9yOiAjRTdFN0U3O1xyXG4gICAgICAgIG1hcmdpbi1ib3R0b206IDNweDtcclxuICAgIH1cclxuICAgIC5saXZlLmFjdGl2ZTo6YWZ0ZXJ7XHJcbiAgICAgICAgY29udGVudDogJ0xpdmUnO1xyXG4gICAgICAgIHBhZGRpbmc6IDZweCA3cHg7XHJcbiAgICAgICAgZm9udC1zaXplOiAxMXB4O1xyXG4gICAgICAgIGxldHRlci1zcGFjaW5nOiAycHg7XHJcbiAgICAgICAgY29sb3I6ICNmZmY7XHJcbiAgICAgICAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjRkYzQTNBO1xyXG4gICAgICAgIC8vIHRyYW5zaXRpb246IGFsbCAuMnMgZWFzZS1pbi1vdXQ7XHJcbiAgICB9XHJcbiAgICBpb24taWNvbi5hY3RpdmV7XHJcbiAgICAgICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICAgICAgY29sb3I6IHJnYigyNTUsIDE3LCAxNyk7XHJcbiAgICB9XHJcbiAgICAud2lkdGgtZnVsbHtcclxuICAgICAgICB3aWR0aDogMTAwJSAhaW1wb3J0YW50O1xyXG4gICAgfVxyXG4gICAgLmRpdmlkZXIge1xyXG4gICAgICAgIHdpZHRoOiAxLjVweDtcclxuICAgICAgICBoZWlnaHQ6IDM1cHg7XHJcbiAgICAgICAgYmFja2dyb3VuZDogI2ZmZjtcclxuICAgIH1cclxuICAgIC50ZXJtcy1mb290ZXJ7XHJcbiAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgICAgIHBhZGRpbmc6IDVweCAxMHB4O1xyXG4gICAgICAgIGlvbi1jaGVja2JveHtcclxuICAgICAgICAgICAgbWFyZ2luLXJpZ2h0OiA4cHg7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIGlvbi1pY29ue1xyXG4gICAgICAgICAgICBjb2xvcjogIzU1NTtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAyNHB4O1xyXG4gICAgICAgIH1cclxuICAgIH1cclxuICAgIC5mdWxsLWhlaWdodHtcclxuICAgICAgICBoZWlnaHQ6IDU2cHg7XHJcbiAgICB9XHJcbiAgICAuc3RpY2t5LWZvb3RlcntcclxuICAgICAgICBoZWlnaHQ6IGF1dG87XHJcbiAgICB9XHJcbiAgICAvLyBBTkRST0lEIENTU1xyXG5pb24tbGlzdC1oZWFkZXIuaW9uLXBhZGRpbmctaG9yaXpvbnRhbC5ncmVlbi50ZXh0LXdoaXRlLm1kLmh5ZHJhdGVkIHtcclxuICAgIHBhZGRpbmctYm90dG9tOiAxMnB4O1xyXG4gICAgcGFkZGluZy10b3A6IDEycHg7XHJcbn1cclxuaW9uLWxpc3Qud2lkdGgtZnVsbC5tZC5saXN0LW1kLmh5ZHJhdGVkIHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxufVxyXG4vLyBJT1MgQ1NTXHJcbmlvbi1saXN0LWhlYWRlci5pb24tcGFkZGluZy1ob3Jpem9udGFsLmdyZWVuLnRleHQtd2hpdGUuaW9zLmh5ZHJhdGVkIHtcclxuICAgIHBhZGRpbmctYm90dG9tOiAxMnB4O1xyXG4gICAgcGFkZGluZy10b3A6IDEycHg7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogaW5pdGlhbDtcclxuICAgIGxldHRlci1zcGFjaW5nOiAwcHg7XHJcbn1cclxuaW9uLWxpc3Qud2lkdGgtZnVsbC5pb3MubGlzdC1pb3MuaHlkcmF0ZWQge1xyXG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG59IiwiLmlubGluZS1mbGV4IGlvbi1kYXRldGltZSB7XG4gIHBhZGRpbmctbGVmdDogMXB4O1xuICBwYWRkaW5nLXJpZ2h0OiA1cHg7XG59XG5cbi5yYWRpby1ncm91cCB7XG4gIGRpc3BsYXk6IGZsZXg7XG59XG5cbi5yYWRpby1ncm91cCBpb24taXRlbSB7XG4gIC0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gIC0taW5uZXItYm9yZGVyLXdpZHRoOiAwIDAgMCAwO1xufVxuXG4ucmFkaW8tZ3JvdXAgaW9uLWl0ZW0gaW9uLXJhZGlvIHtcbiAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xufVxuXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tbGFiZWwge1xuICBmb250LXNpemU6IDAuNzVyZW07XG4gIG1hcmdpbjogM3B4IDA7XG4gIHRleHQtdHJhbnNmb3JtOiBjYXBpdGFsaXplO1xuICBsZXR0ZXItc3BhY2luZzogMDtcbiAgZm9udC13ZWlnaHQ6IDQwMDtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGNvbG9yOiAjNDQ0O1xufVxuXG4udmlkZW8tY2FyZCB7XG4gIGJveC1zaGFkb3c6IDBweCA0cHggMTBweCByZ2JhKDM0LCAzNSwgNTgsIDAuMDkpO1xufVxuXG5pb24tc2xpZGVzIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gIHBhZGRpbmc6IDAgNXB4O1xufVxuXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tc2VnbWVudC1idXR0b24ge1xuICB3aWR0aDogMzIlO1xuICBib3JkZXI6IG5vbmU7XG4gIHBhZGRpbmc6IDA7XG4gIC0tcGFkZGluZy1zdGFydDogMDtcbiAgLS1wYWRkaW5nLWVuZDogMDtcbiAgbWFyZ2luOiAwIDNweDtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJhY2tncm91bmQ6ICNmN2Y3Zjc7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbn1cblxuLm51dHJpaW1hZ2VzLWxpc3QgaW9uLXNlZ21lbnQtYnV0dG9uOmZpcnN0LWNoaWxkIHtcbiAgbWFyZ2luLWxlZnQ6IDA7XG59XG5cbi5udXRyaWltYWdlcy1saXN0IGlvbi1zZWdtZW50LWJ1dHRvbiBpbWcge1xuICBvYmplY3QtZml0OiBjb250YWluO1xuICBtYXgtd2lkdGg6IDEwMCU7XG59XG5cbi5udXRyaWltYWdlcy1saXN0IC5zZWdtZW50LWJ1dHRvbi1jaGVja2VkIHtcbiAgYmFja2dyb3VuZDogI2VhZWFlYTtcbiAgLS1jb2xvci1jaGVja2VkOiB0cmFuc3BhcmVudDtcbn1cblxuLm51dHJpaW1hZ2VzLWxpc3QgLnRodW1iLWNoZWNrYm94IHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuXG4ubnV0cmlpbWFnZXMtbGlzdCAudGh1bWItY2hlY2tib3ggaW9uLWNoZWNrYm94IHtcbiAgb3BhY2l0eTogMDtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogNzhweDtcbiAgcGFkZGluZzogMCAwO1xufVxuXG4uY2hlY2tib3hUaHVtYjo6YWZ0ZXIge1xuICBjb250ZW50OiBcIlwiO1xuICB3aWR0aDogMTZweDtcbiAgaGVpZ2h0OiAxNnB4O1xuICBib3JkZXI6IDJweCBzb2xpZCAjN2Q3ZDdkO1xuICBkaXNwbGF5OiBibG9jaztcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogNXB4O1xuICBsZWZ0OiA1cHg7XG59XG5cbi5udXRyaWltYWdlcy1saXN0IC50aHVtYi1jaGVja2JveCBpb24tY2hlY2tib3guY2hlY2tib3gtY2hlY2tlZCB7XG4gIG9wYWNpdHk6IDE7XG4gIC0tYmFja2dyb3VuZC1jaGVja2VkOnRyYW5zcGFyZW50O1xuICAtLWJvcmRlci1jb2xvci1jaGVja2VkOnRyYW5zcGFyZW50O1xuICAtLXNpemU6MDtcbiAgLS1jaGVja21hcmstY29sb3I6dHJhbnNwYXJlbnQ7XG59XG5cbi5udXRyaWltYWdlcy1saXN0IC50aHVtYi1jaGVja2JveCBpb24tY2hlY2tib3guY2hlY2tib3gtY2hlY2tlZDphZnRlciB7XG4gIGNvbnRlbnQ6IFwiXCI7XG4gIHdpZHRoOiAyMHB4O1xuICBoZWlnaHQ6IDIwcHg7XG4gIGJhY2tncm91bmQ6ICMyNmE2OWE7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiA1cHg7XG4gIGxlZnQ6IDVweDtcbn1cblxuLml0ZW0tbGlzdCBpb24tbGlzdC1oZWFkZXIgaW9uLWljb24ge1xuICBmb250LXNpemU6IDEuMTVyZW07XG59XG5cbi51c2Vycy1saXN0IHtcbiAgLS1taW4taGVpZ2h0OiBhdXRvO1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBtYXJnaW46IDZweCAwO1xufVxuXG4udXNlcnMtbGlzdCBpbWcge1xuICB3aWR0aDogMzZweDtcbiAgaGVpZ2h0OiAzNnB4O1xuICBvYmplY3QtZml0OiBjb3ZlcjtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xuICBtYXJnaW4tbGVmdDogLTEwcHg7XG59XG5cbi51c2Vycy1saXN0IGltZzpmaXJzdC1jaGlsZCB7XG4gIG1hcmdpbi1sZWZ0OiAwO1xufVxuXG4udXNlcnMtbGlzdCBpb24tbGFiZWwge1xuICB3aWR0aDogMTAwcHg7XG59XG5cbi52aWV3LWFsbCB7XG4gIHdpZHRoOiAzNnB4O1xuICBoZWlnaHQ6IDM2cHg7XG4gIG1heC13aWR0aDogMzZweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBiYWNrZ3JvdW5kOiAjZjFmMGYwO1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBtYXJnaW46IDA7XG4gIG1hcmdpbi1sZWZ0OiAtMTBweDtcbn1cblxuaW9uLWxpc3QgLmR1cmF0aW9uSXRlbSB7XG4gIC0tcGFkZGluZy1lbmQ6IDA7XG59XG5pb24tbGlzdCAuZHVyYXRpb25JdGVtIGlvbi1pbnB1dCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdG9wOiAycHg7XG4gIHRleHQtYWxpZ246IHJpZ2h0O1xufVxuXG4ucHJvZ3JhbS1jYXJkIHtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbmlvbi1pdGVtIGlvbi1saXN0IHtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5pdGVtLWxpc3QgPiBpb24taXRlbSB7XG4gIC0taW5uZXItcGFkZGluZy1lbmQ6IDA7XG59XG5cbi50aHVtYi1saXN0IGlvbi1pdGVtIGlvbi1sYWJlbCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICBtYXJnaW46IDA7XG4gIGJhY2tncm91bmQ6IHJnYmEoMzgsIDE2NiwgMTU0LCAwLjUpO1xuICB3aWR0aDogMTAwJTtcbiAgY29sb3I6ICNGRkY7XG4gIHBhZGRpbmc6IDVweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uZml4ZWQge1xuICBwb3NpdGlvbjogLXdlYmtpdC1zdGlja3k7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIHdpZHRoOiAxMDAlO1xuICB0b3A6IDBweDtcbiAgcGFkZGluZy10b3A6IDVweDtcbiAgei1pbmRleDogOTk5O1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xufVxuXG4ubWFyZ2ludG9wLTQ1IHtcbiAgbWFyZ2luLXRvcDogNDUlO1xufVxuXG4ubWFyZ2luLTE1IHtcbiAgbWFyZ2luOiAxNXB4IDBweCAhaW1wb3J0YW50O1xufVxuXG4ubWItMCB7XG4gIG1hcmdpbi1ib3R0b206IDAgIWltcG9ydGFudDtcbn1cblxuaW9uLWxpc3Qge1xuICBwYWRkaW5nLXRvcDogMCAhaW1wb3J0YW50O1xuICBwYWRkaW5nLWJvdHRvbTogMCAhaW1wb3J0YW50O1xufVxuaW9uLWxpc3QgaW9uLWl0ZW0ge1xuICBmb250LXNpemU6IDAuODc1cmVtO1xuICAtLXBhZGRpbmctZW5kOiAxNnB4O1xuICBwYWRkaW5nLWlubGluZS1lbmQ6IDA7XG4gIC0taW5uZXItcGFkZGluZy1lbmQ6IDA7XG4gIC0tbWluLWhlaWdodDogNDRweDtcbiAgLS1ib3JkZXItY29sb3I6IHdoaXRlc21va2U7XG59XG5pb24tbGlzdCAuZGVzY3JpcHRpb25JdGVtIGlvbi1pdGVtIHtcbiAgcGFkZGluZzogMDtcbn1cblxuLnJlcGVhdGVkSGVhZGluZyB7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG4gIGZvbnQtc2l6ZTogMTVweDtcbiAgbWFyZ2luLWJvdHRvbTogMDtcbn1cblxuLmluZm9JY29uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIHJpZ2h0OiAwO1xuICAtLWJhY2tncm91bmQ6ICMyNmE2OWE7XG4gIC0tYm94LXNoYWRvdzogbm9uZTtcbiAgY29sb3I6ICNGRkY7XG4gIC0tcGFkZGluZy1zdGFydDogMDtcbiAgLS1wYWRkaW5nLWVuZDogMDtcbiAgaGVpZ2h0OiBhdXRvO1xuICBmb250LXNpemU6IDE2cHg7XG4gIG1hcmdpbjogM3B4O1xuICB6LWluZGV4OiA5O1xuICAtLWJvcmRlci1yYWRpdXM6NTAlO1xufVxuXG4uaW9uLWJsb2NrIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLmlvbi1sZWZ0IHtcbiAgZmxleDogMTtcbn1cblxuLmlvbi1yaWdodCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi53aWR0aC0zMCB7XG4gIHdpZHRoOiAzMHB4O1xufVxuXG4ubGl2ZS1pb24tbGlzdC1oZWFkZXIge1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGluaXRpYWw7XG59XG4ubGl2ZS1pb24tbGlzdC1oZWFkZXIgLmRpdmlkZXIge1xuICBtYXJnaW4tbGVmdDogMjBweDtcbiAgbWFyZ2luLXJpZ2h0OiAyMHB4O1xufVxuLmxpdmUtaW9uLWxpc3QtaGVhZGVyIC5jYWxlbmRlcl9ncmVlbl9ib3R0b20ge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4OiAxO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cbi5saXZlLWlvbi1saXN0LWhlYWRlciAuY2FsZW5kZXJfZ3JlZW5fYm90dG9tIGlvbi1pY29uIHtcbiAgZm9udC1zaXplOiAxLjdyZW07XG59XG5cbi5saXZlLWV2ZW50LWFkZGl0aW9uIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBiYWNrZ3JvdW5kOiAjY2VjZWNlO1xuICBwYWRkaW5nOiAxNXB4O1xuICBib3JkZXItcmFkaXVzOiAxMnB4O1xuICBtYXJnaW4tYm90dG9tOiAxMnB4O1xufVxuLmxpdmUtZXZlbnQtYWRkaXRpb24gaDUge1xuICBjb2xvcjogIzEyMTIxMjtcbiAgbWFyZ2luOiAwO1xuICBmb250LXdlaWdodDogNTAwO1xufVxuXG4ubGl2ZS1ldmVudC1ib3gge1xuICB3aWR0aDogMTAwJTtcbiAgbWFyZ2luLWJvdHRvbTogMjBweDtcbn1cbi5saXZlLWV2ZW50LWJveCAubGl2ZS1ldmVudC1oZWFkIHtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBjb2xvcjogIzEyMTIxMjtcbn1cbi5saXZlLWV2ZW50LWJveCAubGl2ZS1ldmVudC1pbmZvIHtcbiAgcGFkZGluZzogMTJweCAyMHB4IDJweCAyMHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCAjY2VjZWNlO1xuICBib3JkZXItcmFkaXVzOiAxMnB4O1xuICBtYXgtaGVpZ2h0OiAxMDBweDtcbiAgb3ZlcmZsb3cteTogc2Nyb2xsO1xufVxuLmxpdmUtZXZlbnQtYm94IC5saXZlLWV2ZW50LWluZm8gLmxpdmUtZXZlbnQtZGV0YWlscyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIG1hcmdpbi1ib3R0b206IDEwcHg7XG59XG4ubGl2ZS1ldmVudC1ib3ggLmxpdmUtZXZlbnQtaW5mbyAubGl2ZS1ldmVudC1kZXRhaWxzIHAge1xuICBmb250LXNpemU6IDE2cHg7XG4gIGNvbG9yOiAjMTIxMjEyO1xufVxuLmxpdmUtZXZlbnQtYm94IC5saXZlLWV2ZW50LWluZm8gLmxpdmUtZXZlbnQtZGV0YWlscyAuc21hbGwtZGl2aWRlciB7XG4gIHdpZHRoOiAxLjVweDtcbiAgaGVpZ2h0OiAyMHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNTU1O1xuICBtYXJnaW4tcmlnaHQ6IDE0cHg7XG4gIG1hcmdpbi1sZWZ0OiAxNHB4O1xufVxuXG4ubGl2ZS1ldmVudC1pY29uIHtcbiAgZm9udC1zaXplOiAyOHB4O1xuICBtaW4td2lkdGg6IDgwcHg7XG4gIGNvbG9yOiAjNTU1O1xuICBtYXJnaW4tcmlnaHQ6IDIwcHg7XG59XG5cbi5saXZlLWljb24ge1xuICBjb2xvcjogdHJhbnNwYXJlbnQ7XG59XG5cbi50b2dnbGVEaXYge1xuICBtYXJnaW4tYm90dG9tOiAycHg7XG4gIHdpZHRoOiA1MHB4O1xufVxuXG4ubGl2ZTo6YWZ0ZXIge1xuICBjb250ZW50OiBcIkdvIExpdmVcIjtcbiAgY29sb3I6ICMyNmE2OWE7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbiAgcGFkZGluZzogNnB4IDVweDtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgYm9yZGVyLXJhZGl1czogM3B4O1xuICBtYXJnaW4tYm90dG9tOiAycHg7XG59XG5cbi50aXRsZSB7XG4gIGZvbnQtc2l6ZTogMTNweDtcbn1cblxuLnRpdGxlIHNwYW4ge1xuICBmb250LXNpemU6IDExcHg7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBjb2xvcjogI0U3RTdFNztcbiAgbWFyZ2luLWJvdHRvbTogM3B4O1xufVxuXG4ubGl2ZS5hY3RpdmU6OmFmdGVyIHtcbiAgY29udGVudDogXCJMaXZlXCI7XG4gIHBhZGRpbmc6IDZweCA3cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgbGV0dGVyLXNwYWNpbmc6IDJweDtcbiAgY29sb3I6ICNmZmY7XG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gIGJhY2tncm91bmQ6ICNGRjNBM0E7XG59XG5cbmlvbi1pY29uLmFjdGl2ZSB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBjb2xvcjogI2ZmMTExMTtcbn1cblxuLndpZHRoLWZ1bGwge1xuICB3aWR0aDogMTAwJSAhaW1wb3J0YW50O1xufVxuXG4uZGl2aWRlciB7XG4gIHdpZHRoOiAxLjVweDtcbiAgaGVpZ2h0OiAzNXB4O1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xufVxuXG4udGVybXMtZm9vdGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgcGFkZGluZzogNXB4IDEwcHg7XG59XG4udGVybXMtZm9vdGVyIGlvbi1jaGVja2JveCB7XG4gIG1hcmdpbi1yaWdodDogOHB4O1xufVxuLnRlcm1zLWZvb3RlciBpb24taWNvbiB7XG4gIGNvbG9yOiAjNTU1O1xuICBmb250LXNpemU6IDI0cHg7XG59XG5cbi5mdWxsLWhlaWdodCB7XG4gIGhlaWdodDogNTZweDtcbn1cblxuLnN0aWNreS1mb290ZXIge1xuICBoZWlnaHQ6IGF1dG87XG59XG5cbmlvbi1saXN0LWhlYWRlci5pb24tcGFkZGluZy1ob3Jpem9udGFsLmdyZWVuLnRleHQtd2hpdGUubWQuaHlkcmF0ZWQge1xuICBwYWRkaW5nLWJvdHRvbTogMTJweDtcbiAgcGFkZGluZy10b3A6IDEycHg7XG59XG5cbmlvbi1saXN0LndpZHRoLWZ1bGwubWQubGlzdC1tZC5oeWRyYXRlZCB7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbn1cblxuaW9uLWxpc3QtaGVhZGVyLmlvbi1wYWRkaW5nLWhvcml6b250YWwuZ3JlZW4udGV4dC13aGl0ZS5pb3MuaHlkcmF0ZWQge1xuICBwYWRkaW5nLWJvdHRvbTogMTJweDtcbiAgcGFkZGluZy10b3A6IDEycHg7XG4gIHRleHQtdHJhbnNmb3JtOiBpbml0aWFsO1xuICBsZXR0ZXItc3BhY2luZzogMHB4O1xufVxuXG5pb24tbGlzdC53aWR0aC1mdWxsLmlvcy5saXN0LWlvcy5oeWRyYXRlZCB7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbn0iXX0= */";
+    __webpack_exports__["default"] = ".inline-flex ion-datetime {\n  padding-left: 1px;\n  padding-right: 5px;\n}\n\n.radio-group {\n  display: flex;\n}\n\n.radio-group ion-item {\n  --background: transparent;\n  --inner-border-width: 0 0 0 0;\n}\n\n.radio-group ion-item ion-radio {\n  margin-right: 10px;\n}\n\n.nutriimages-list ion-label {\n  font-size: 0.75rem;\n  margin: 3px 0;\n  text-transform: capitalize;\n  letter-spacing: 0;\n  font-weight: 400;\n  display: block;\n  color: #444;\n}\n\n.video-card {\n  box-shadow: 0px 4px 10px rgba(34, 35, 58, 0.09);\n}\n\nion-slides {\n  background: transparent;\n  padding: 0 5px;\n}\n\n.nutriimages-list ion-segment-button {\n  width: 32%;\n  border: none;\n  padding: 0;\n  --padding-start: 0;\n  --padding-end: 0;\n  margin: 0 3px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: #f7f7f7;\n  border-radius: 4px;\n}\n\n.nutriimages-list ion-segment-button:first-child {\n  margin-left: 0;\n}\n\n.nutriimages-list ion-segment-button img {\n  -o-object-fit: contain;\n     object-fit: contain;\n  max-width: 100%;\n}\n\n.nutriimages-list .segment-button-checked {\n  background: #eaeaea;\n  --color-checked: transparent;\n}\n\n.nutriimages-list .thumb-checkbox {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n}\n\n.nutriimages-list .thumb-checkbox ion-checkbox {\n  opacity: 0;\n  width: 100%;\n  height: 78px;\n  padding: 0 0;\n}\n\n.checkboxThumb::after {\n  content: \"\";\n  width: 16px;\n  height: 16px;\n  border: 2px solid #7d7d7d;\n  display: block;\n  border-radius: 50%;\n  position: absolute;\n  top: 5px;\n  left: 5px;\n}\n\n.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked {\n  opacity: 1;\n  --background-checked:transparent;\n  --border-color-checked:transparent;\n  --size:0;\n  --checkmark-color:transparent;\n}\n\n.nutriimages-list .thumb-checkbox ion-checkbox.checkbox-checked:after {\n  content: \"\";\n  width: 20px;\n  height: 20px;\n  background: #26a69a;\n  display: block;\n  border-radius: 50%;\n  position: absolute;\n  top: 5px;\n  left: 5px;\n}\n\n.item-list ion-list-header ion-icon {\n  font-size: 1.15rem;\n}\n\n.users-list {\n  --min-height: auto;\n  display: flex;\n  align-items: center;\n  margin: 6px 0;\n}\n\n.users-list img {\n  width: 36px;\n  height: 36px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 50%;\n  margin-left: -10px;\n}\n\n.users-list img:first-child {\n  margin-left: 0;\n}\n\n.users-list ion-label {\n  width: 100px;\n}\n\n.view-all {\n  width: 36px;\n  height: 36px;\n  max-width: 36px;\n  text-align: center;\n  background: #f1f0f0;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 0;\n  margin-left: -10px;\n}\n\nion-list .durationItem {\n  --padding-end: 0;\n}\n\nion-list .durationItem ion-input {\n  position: relative;\n  top: 2px;\n  text-align: right;\n}\n\n.program-card {\n  width: 100%;\n}\n\nion-item ion-list {\n  width: 100%;\n}\n\n.item-list > ion-item {\n  --inner-padding-end: 0;\n}\n\n.thumb-list ion-item ion-label {\n  position: absolute;\n  bottom: 0;\n  margin: 0;\n  background: rgba(38, 166, 154, 0.5);\n  width: 100%;\n  color: #FFF;\n  padding: 5px;\n  text-align: center;\n}\n\n.fixed {\n  position: -webkit-sticky;\n  position: sticky;\n  width: 100%;\n  top: 0px;\n  padding-top: 5px;\n  z-index: 999;\n  background: #fff;\n}\n\n.margintop-45 {\n  margin-top: 45%;\n}\n\n.margin-15 {\n  margin: 15px 0px !important;\n}\n\n.mb-0 {\n  margin-bottom: 0 !important;\n}\n\nion-list {\n  padding-top: 0 !important;\n  padding-bottom: 0 !important;\n}\n\nion-list ion-item {\n  font-size: 0.875rem;\n  --padding-end: 16px;\n  -webkit-padding-end: 0;\n          padding-inline-end: 0;\n  --inner-padding-end: 0;\n  --min-height: 44px;\n  --border-color: whitesmoke;\n}\n\nion-list .descriptionItem ion-item {\n  padding: 0;\n}\n\n.repeatedHeading {\n  font-weight: 400;\n  font-size: 15px;\n  margin-bottom: 0;\n}\n\n.infoIcon {\n  position: absolute;\n  top: 0;\n  right: 0;\n  --background: #26a69a;\n  --box-shadow: none;\n  color: #FFF;\n  --padding-start: 0;\n  --padding-end: 0;\n  height: auto;\n  font-size: 16px;\n  margin: 3px;\n  z-index: 9;\n  --border-radius:50%;\n}\n\n.ion-block {\n  display: flex;\n  align-items: center;\n}\n\n.ion-left {\n  flex: 1;\n}\n\n.ion-right {\n  display: flex;\n  align-items: center;\n}\n\n.width-30 {\n  width: 30px;\n}\n\n.live-ion-list-header {\n  justify-content: initial;\n}\n\n.live-ion-list-header .divider {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n\n.live-ion-list-header .calender_green_bottom {\n  display: flex;\n  flex: 1;\n  justify-content: space-around;\n  align-items: center;\n}\n\n.live-ion-list-header .calender_green_bottom ion-icon {\n  font-size: 1.7rem;\n}\n\n.live-event-addition {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  background: #cecece;\n  padding: 15px;\n  border-radius: 12px;\n  margin-bottom: 12px;\n}\n\n.live-event-addition h5 {\n  color: #121212;\n  margin: 0;\n  font-weight: 500;\n}\n\n.live-event-box {\n  width: 100%;\n  margin-bottom: 20px;\n}\n\n.live-event-box .live-event-head {\n  margin-bottom: 10px;\n  font-size: 14px;\n  color: #121212;\n}\n\n.live-event-box .live-event-info {\n  padding: 12px 20px 2px 20px;\n  border: 1px solid #cecece;\n  border-radius: 12px;\n  max-height: 100px;\n  overflow-y: scroll;\n}\n\n.live-event-box .live-event-info .live-event-details {\n  display: flex;\n  align-items: center;\n  margin-bottom: 10px;\n}\n\n.live-event-box .live-event-info .live-event-details p {\n  font-size: 16px;\n  color: #121212;\n}\n\n.live-event-box .live-event-info .live-event-details .small-divider {\n  width: 1.5px;\n  height: 20px;\n  background-color: #555;\n  margin-right: 14px;\n  margin-left: 14px;\n}\n\n.live-event-icon {\n  font-size: 28px;\n  min-width: 80px;\n  color: #555;\n  margin-right: 20px;\n}\n\n.live-icon {\n  color: transparent;\n}\n\n.toggleDiv {\n  margin-bottom: 2px;\n  width: 50px;\n}\n\n.live::after {\n  content: \"Go Live\";\n  color: #26a69a;\n  font-size: 11px;\n  font-weight: 500;\n  padding: 6px 5px;\n  background: #fff;\n  border-radius: 3px;\n  margin-bottom: 2px;\n}\n\n.title {\n  font-size: 13px;\n}\n\n.title span {\n  font-size: 11px;\n  display: block;\n  color: #E7E7E7;\n  margin-bottom: 3px;\n}\n\n.live.active::after {\n  content: \"Live\";\n  padding: 6px 7px;\n  font-size: 11px;\n  letter-spacing: 2px;\n  color: #fff;\n  text-transform: uppercase;\n  background: #FF3A3A;\n}\n\nion-icon.active {\n  display: block;\n  color: #ff1111;\n}\n\n.width-full {\n  width: 100% !important;\n}\n\n.divider {\n  width: 1.5px;\n  height: 35px;\n  background: #fff;\n}\n\n.terms-footer {\n  display: flex;\n  align-items: center;\n  padding: 5px 10px;\n}\n\n.terms-footer ion-checkbox {\n  margin-right: 8px;\n}\n\n.terms-footer ion-icon {\n  color: #555;\n  font-size: 24px;\n}\n\n.full-height {\n  height: 56px;\n  border-radius: 15px;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: 0 auto;\n  padding: 0 35px;\n}\n\n.sticky-footer {\n  height: auto;\n}\n\nion-list-header.ion-padding-horizontal.green.text-white.md.hydrated {\n  padding-bottom: 12px;\n  padding-top: 12px;\n}\n\nion-list.width-full.md.list-md.hydrated {\n  border-radius: 4px;\n}\n\nion-list-header.ion-padding-horizontal.green.text-white.ios.hydrated {\n  padding-bottom: 12px;\n  padding-top: 12px;\n  text-transform: initial;\n  letter-spacing: 0px;\n}\n\nion-list.width-full.ios.list-ios.hydrated {\n  border-radius: 4px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWRkLXByb2dyYW0vZGF0ZS10aW1lLW1vZGFsL0Q6XFxuaWtoaWxcXEludG9hY3RpdmUvc3JjXFxhcHBcXGFkZC1wcm9ncmFtXFxkYXRlLXRpbWUtbW9kYWxcXGRhdGUtdGltZS1tb2RhbC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYWRkLXByb2dyYW0vZGF0ZS10aW1lLW1vZGFsL2RhdGUtdGltZS1tb2RhbC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUEwQixpQkFBQTtFQUFrQixrQkFBQTtBQ0c1Qzs7QURGQTtFQUFhLGFBQUE7QUNNYjs7QURMQTtFQUFzQix5QkFBQTtFQUEwQiw2QkFBQTtBQ1VoRDs7QURUQTtFQUFnQyxrQkFBQTtBQ2FoQzs7QURYQTtFQUE0QixrQkFBQTtFQUFtQixhQUFBO0VBQWMsMEJBQUE7RUFBMkIsaUJBQUE7RUFBa0IsZ0JBQUE7RUFBaUIsY0FBQTtFQUFlLFdBQUE7QUNxQjFJOztBRHBCQTtFQUFZLCtDQUFBO0FDd0JaOztBRHZCQTtFQUFXLHVCQUFBO0VBQXdCLGNBQUE7QUM0Qm5DOztBRDNCQTtFQUFxQyxVQUFBO0VBQVcsWUFBQTtFQUFhLFVBQUE7RUFBVyxrQkFBQTtFQUFtQixnQkFBQTtFQUFxQixhQUFBO0VBQWMsYUFBQTtFQUFjLHVCQUFBO0VBQXdCLG1CQUFBO0VBQW9CLG1CQUFBO0VBQW9CLGtCQUFBO0FDeUM1TTs7QUR4Q0E7RUFBaUQsY0FBQTtBQzRDakQ7O0FEM0NBO0VBQXlDLHNCQUFBO0tBQUEsbUJBQUE7RUFBb0IsZUFBQTtBQ2dEN0Q7O0FEL0NBO0VBQTBDLG1CQUFBO0VBQW9CLDRCQUFBO0FDb0Q5RDs7QURuREE7RUFBa0Msa0JBQUE7RUFBbUIsV0FBQTtFQUFZLFlBQUE7QUN5RGpFOztBRHhEQTtFQUErQyxVQUFBO0VBQVUsV0FBQTtFQUFXLFlBQUE7RUFBWSxZQUFBO0FDK0RoRjs7QUQ3REE7RUFBc0IsV0FBQTtFQUFZLFdBQUE7RUFBWSxZQUFBO0VBQWEseUJBQUE7RUFBMEIsY0FBQTtFQUFlLGtCQUFBO0VBQW1CLGtCQUFBO0VBQW1CLFFBQUE7RUFBUyxTQUFBO0FDeUVuSjs7QUR4RUE7RUFBZ0UsVUFBQTtFQUFVLGdDQUFBO0VBQWlDLGtDQUFBO0VBQW1DLFFBQUE7RUFBUyw2QkFBQTtBQ2dGdko7O0FEL0VBO0VBQXNFLFdBQUE7RUFBVyxXQUFBO0VBQVcsWUFBQTtFQUFZLG1CQUFBO0VBQW1CLGNBQUE7RUFBYyxrQkFBQTtFQUFrQixrQkFBQTtFQUFrQixRQUFBO0VBQVEsU0FBQTtBQzJGckw7O0FEMUZBO0VBQW9DLGtCQUFBO0FDOEZwQzs7QUQ1RkE7RUFBWSxrQkFBQTtFQUFtQixhQUFBO0VBQWMsbUJBQUE7RUFBb0IsYUFBQTtBQ21HakU7O0FEbEdBO0VBQWdCLFdBQUE7RUFBWSxZQUFBO0VBQWEsb0JBQUE7S0FBQSxpQkFBQTtFQUFrQixrQkFBQTtFQUFtQixrQkFBQTtBQzBHOUU7O0FEekdBO0VBQTRCLGNBQUE7QUM2RzVCOztBRDVHQTtFQUFzQixZQUFBO0FDZ0h0Qjs7QUQvR0E7RUFBVSxXQUFBO0VBQVcsWUFBQTtFQUFZLGVBQUE7RUFBZ0Isa0JBQUE7RUFBa0IsbUJBQUE7RUFBbUIsa0JBQUE7RUFBa0IsYUFBQTtFQUFhLHVCQUFBO0VBQXVCLG1CQUFBO0VBQW1CLFNBQUE7RUFBVSxrQkFBQTtBQzZIeks7O0FEMUhJO0VBQWMsZ0JBQUE7QUM4SGxCOztBRDdIUTtFQUFVLGtCQUFBO0VBQW1CLFFBQUE7RUFBUyxpQkFBQTtBQ2tJOUM7O0FEOUhBO0VBQWMsV0FBQTtBQ2tJZDs7QURqSUE7RUFBa0IsV0FBQTtBQ3FJbEI7O0FEcElBO0VBQXNCLHNCQUFBO0FDd0l0Qjs7QURySVE7RUFDSixrQkFBQTtFQUNBLFNBQUE7RUFDQSxTQUFBO0VBQ0EsbUNBQUE7RUFDQSxXQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtBQ3dJSjs7QURwSUE7RUFLSSx3QkFBQTtFQUNBLGdCQUFBO0VBQ0EsV0FBQTtFQUNBLFFBQUE7RUFDQSxnQkFBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtBQ21JSjs7QURqSUE7RUFDSSxlQUFBO0FDb0lKOztBRGxJQTtFQUNJLDJCQUFBO0FDcUlKOztBRG5JQTtFQUNJLDJCQUFBO0FDc0lKOztBRHBJQTtFQUFTLHlCQUFBO0VBQTBCLDRCQUFBO0FDeUluQzs7QUR4SUk7RUFBUyxtQkFBQTtFQUFvQixtQkFBQTtFQUFvQixzQkFBQTtVQUFBLHFCQUFBO0VBQXNCLHNCQUFBO0VBQXVCLGtCQUFBO0VBQW1CLDBCQUFBO0FDZ0pySDs7QUQ5SVE7RUFBUyxVQUFBO0FDaUpqQjs7QUQ5SUE7RUFBaUIsZ0JBQUE7RUFBaUIsZUFBQTtFQUFnQixnQkFBQTtBQ29KbEQ7O0FEbkpBO0VBQVUsa0JBQUE7RUFDTixNQUFBO0VBQ0EsUUFBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtFQUNBLFlBQUE7RUFDQSxlQUFBO0VBQ0EsV0FBQTtFQUNBLFVBQUE7RUFBVyxtQkFBQTtBQ3dKZjs7QUR0Skk7RUFDSSxhQUFBO0VBQ0EsbUJBQUE7QUN5SlI7O0FEdkpJO0VBQ0ksT0FBQTtBQzBKUjs7QUR4Skk7RUFDSSxhQUFBO0VBQ0EsbUJBQUE7QUMySlI7O0FEekpJO0VBQ0ksV0FBQTtBQzRKUjs7QUR4Skk7RUFDSSx3QkFBQTtBQzJKUjs7QUQxSlE7RUFDSSxpQkFBQTtFQUNBLGtCQUFBO0FDNEpaOztBRDFKUTtFQUNJLGFBQUE7RUFDQSxPQUFBO0VBQ0EsNkJBQUE7RUFDQSxtQkFBQTtBQzRKWjs7QUQzSlk7RUFDSSxpQkFBQTtBQzZKaEI7O0FEekpJO0VBQ0ksV0FBQTtFQUNBLGFBQUE7RUFDQSx1QkFBQTtFQUNBLG1CQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsbUJBQUE7QUM0SlI7O0FEM0pRO0VBQ0ksY0FBQTtFQUNBLFNBQUE7RUFDQSxnQkFBQTtBQzZKWjs7QUQxSkk7RUFDSSxXQUFBO0VBQ0EsbUJBQUE7QUM2SlI7O0FENUpRO0VBQ0ksbUJBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBQzhKWjs7QUQ1SlE7RUFDSSwyQkFBQTtFQUNBLHlCQUFBO0VBQ0EsbUJBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0FDOEpaOztBRDdKWTtFQUNJLGFBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0FDK0poQjs7QUQ5SmdCO0VBQ0ksZUFBQTtFQUNBLGNBQUE7QUNnS3BCOztBRDlKZ0I7RUFDSSxZQUFBO0VBQ0EsWUFBQTtFQUNBLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSxpQkFBQTtBQ2dLcEI7O0FEM0pJO0VBQ0ksZUFBQTtFQUNBLGVBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7QUM4SlI7O0FENUpJO0VBRUksa0JBQUE7QUM4SlI7O0FENUpJO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0FDK0pSOztBRDdKSTtFQUNJLGtCQUFBO0VBQ0EsY0FBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7RUFFQSxrQkFBQTtFQUNBLGtCQUFBO0FDK0pSOztBRDdKSTtFQUNJLGVBQUE7QUNnS1I7O0FEOUpJO0VBQ0ksZUFBQTtFQUNBLGNBQUE7RUFDQSxjQUFBO0VBQ0Esa0JBQUE7QUNpS1I7O0FEL0pJO0VBQ0ksZUFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLG1CQUFBO0VBQ0EsV0FBQTtFQUNBLHlCQUFBO0VBQ0EsbUJBQUE7QUNrS1I7O0FEL0pJO0VBQ0ksY0FBQTtFQUNBLGNBQUE7QUNrS1I7O0FEaEtJO0VBQ0ksc0JBQUE7QUNtS1I7O0FEaktJO0VBQ0ksWUFBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtBQ29LUjs7QURsS0k7RUFDSSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSxpQkFBQTtBQ3FLUjs7QURwS1E7RUFDSSxpQkFBQTtBQ3NLWjs7QURwS1E7RUFDSSxXQUFBO0VBQ0EsZUFBQTtBQ3NLWjs7QURuS0k7RUFDSSxZQUFBO0VBQ0EsbUJBQUE7RUFDQSwwQkFBQTtFQUFBLHVCQUFBO0VBQUEsa0JBQUE7RUFDQSxjQUFBO0VBQ0EsZUFBQTtBQ3NLUjs7QURwS0k7RUFDSSxZQUFBO0FDdUtSOztBRHBLQTtFQUNJLG9CQUFBO0VBQ0EsaUJBQUE7QUN1S0o7O0FEcktBO0VBQ0ksa0JBQUE7QUN3S0o7O0FEcktBO0VBQ0ksb0JBQUE7RUFDQSxpQkFBQTtFQUNBLHVCQUFBO0VBQ0EsbUJBQUE7QUN3S0o7O0FEdEtBO0VBQ0ksa0JBQUE7QUN5S0oiLCJmaWxlIjoic3JjL2FwcC9hZGQtcHJvZ3JhbS9kYXRlLXRpbWUtbW9kYWwvZGF0ZS10aW1lLW1vZGFsLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmlubGluZS1mbGV4IGlvbi1kYXRldGltZXtwYWRkaW5nLWxlZnQ6IDFweDtwYWRkaW5nLXJpZ2h0OiA1cHg7fVxyXG4ucmFkaW8tZ3JvdXB7ZGlzcGxheTogZmxleDt9XHJcbi5yYWRpby1ncm91cCBpb24taXRlbXstLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50Oy0taW5uZXItYm9yZGVyLXdpZHRoOiAwIDAgMCAwO31cclxuLnJhZGlvLWdyb3VwIGlvbi1pdGVtIGlvbi1yYWRpb3ttYXJnaW4tcmlnaHQ6IDEwcHg7fVxyXG5cclxuLm51dHJpaW1hZ2VzLWxpc3QgaW9uLWxhYmVse2ZvbnQtc2l6ZTogMC43NXJlbTttYXJnaW46IDNweCAwO3RleHQtdHJhbnNmb3JtOiBjYXBpdGFsaXplO2xldHRlci1zcGFjaW5nOiAwO2ZvbnQtd2VpZ2h0OiA0MDA7ZGlzcGxheTogYmxvY2s7Y29sb3I6ICM0NDQ7fVxyXG4udmlkZW8tY2FyZHtib3gtc2hhZG93OiAwcHggNHB4IDEwcHggcmdiYSgzNCwgMzUsIDU4LCAwLjA5KTt9XHJcbmlvbi1zbGlkZXN7YmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7cGFkZGluZzogMCA1cHg7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tc2VnbWVudC1idXR0b257d2lkdGg6IDMyJTtib3JkZXI6IG5vbmU7cGFkZGluZzogMDstLXBhZGRpbmctc3RhcnQ6IDA7LS1wYWRkaW5nLWVuZDogMDsgICAgbWFyZ2luOiAwIDNweDtkaXNwbGF5OiBmbGV4O2p1c3RpZnktY29udGVudDogY2VudGVyO2FsaWduLWl0ZW1zOiBjZW50ZXI7YmFja2dyb3VuZDogI2Y3ZjdmNztib3JkZXItcmFkaXVzOiA0cHg7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tc2VnbWVudC1idXR0b246Zmlyc3QtY2hpbGR7bWFyZ2luLWxlZnQ6IDA7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tc2VnbWVudC1idXR0b24gaW1ne29iamVjdC1maXQ6IGNvbnRhaW47bWF4LXdpZHRoOiAxMDAlO31cclxuLm51dHJpaW1hZ2VzLWxpc3QgLnNlZ21lbnQtYnV0dG9uLWNoZWNrZWR7YmFja2dyb3VuZDogI2VhZWFlYTstLWNvbG9yLWNoZWNrZWQ6IHRyYW5zcGFyZW50O31cclxuLm51dHJpaW1hZ2VzLWxpc3QgLnRodW1iLWNoZWNrYm94e3Bvc2l0aW9uOiBhYnNvbHV0ZTt3aWR0aDogMTAwJTtoZWlnaHQ6IDEwMCU7fVxyXG4ubnV0cmlpbWFnZXMtbGlzdCAudGh1bWItY2hlY2tib3ggaW9uLWNoZWNrYm94e29wYWNpdHk6MDt3aWR0aDoxMDAlO2hlaWdodDo3OHB4O3BhZGRpbmc6MCAwfVxyXG4vLyAuY2hlY2tib3hUaHVtYntkaXNwbGF5OiBjb250ZW50czt9XHJcbi5jaGVja2JveFRodW1iOjphZnRlcntjb250ZW50OiAnJzt3aWR0aDogMTZweDtoZWlnaHQ6IDE2cHg7Ym9yZGVyOiAycHggc29saWQgIzdkN2Q3ZDtkaXNwbGF5OiBibG9jaztib3JkZXItcmFkaXVzOiA1MCU7cG9zaXRpb246IGFic29sdXRlO3RvcDogNXB4O2xlZnQ6IDVweDt9XHJcbi5udXRyaWltYWdlcy1saXN0IC50aHVtYi1jaGVja2JveCBpb24tY2hlY2tib3guY2hlY2tib3gtY2hlY2tlZHtvcGFjaXR5OjE7LS1iYWNrZ3JvdW5kLWNoZWNrZWQ6dHJhbnNwYXJlbnQ7LS1ib3JkZXItY29sb3ItY2hlY2tlZDp0cmFuc3BhcmVudDstLXNpemU6MDstLWNoZWNrbWFyay1jb2xvcjp0cmFuc3BhcmVudH1cclxuLm51dHJpaW1hZ2VzLWxpc3QgLnRodW1iLWNoZWNrYm94IGlvbi1jaGVja2JveC5jaGVja2JveC1jaGVja2VkOmFmdGVye2NvbnRlbnQ6Jyc7d2lkdGg6MjBweDtoZWlnaHQ6MjBweDtiYWNrZ3JvdW5kOiMyNmE2OWE7ZGlzcGxheTpibG9jaztib3JkZXItcmFkaXVzOjUwJTtwb3NpdGlvbjphYnNvbHV0ZTt0b3A6NXB4O2xlZnQ6NXB4fVxyXG4uaXRlbS1saXN0IGlvbi1saXN0LWhlYWRlciBpb24taWNvbntmb250LXNpemU6IDEuMTVyZW07fVxyXG5cclxuLnVzZXJzLWxpc3R7LS1taW4taGVpZ2h0OiBhdXRvO2Rpc3BsYXk6IGZsZXg7YWxpZ24taXRlbXM6IGNlbnRlcjttYXJnaW46IDZweCAwO31cclxuLnVzZXJzLWxpc3QgaW1ne3dpZHRoOiAzNnB4O2hlaWdodDogMzZweDtvYmplY3QtZml0OiBjb3Zlcjtib3JkZXItcmFkaXVzOiA1MCU7bWFyZ2luLWxlZnQ6IC0xMHB4O31cclxuLnVzZXJzLWxpc3QgaW1nOmZpcnN0LWNoaWxke21hcmdpbi1sZWZ0OiAwO31cclxuLnVzZXJzLWxpc3QgaW9uLWxhYmVse3dpZHRoOiAxMDBweDt9XHJcbi52aWV3LWFsbHt3aWR0aDozNnB4O2hlaWdodDozNnB4O21heC13aWR0aDogMzZweDt0ZXh0LWFsaWduOmNlbnRlcjtiYWNrZ3JvdW5kOiNmMWYwZjA7Ym9yZGVyLXJhZGl1czo1MCU7ZGlzcGxheTpmbGV4O2p1c3RpZnktY29udGVudDpjZW50ZXI7YWxpZ24taXRlbXM6Y2VudGVyO21hcmdpbjogMDttYXJnaW4tbGVmdDogLTEwcHg7fVxyXG5cclxuaW9uLWxpc3R7XHJcbiAgICAuZHVyYXRpb25JdGVtey0tcGFkZGluZy1lbmQ6IDA7XHJcbiAgICAgICAgaW9uLWlucHV0e3Bvc2l0aW9uOiByZWxhdGl2ZTt0b3A6IDJweDt0ZXh0LWFsaWduOiByaWdodDt9XHJcbiAgICB9XHJcbn1cclxuXHJcbi5wcm9ncmFtLWNhcmR7d2lkdGg6IDEwMCU7fVxyXG5pb24taXRlbSBpb24tbGlzdHt3aWR0aDogMTAwJTt9XHJcbi5pdGVtLWxpc3QgPiBpb24taXRlbXstLWlubmVyLXBhZGRpbmctZW5kOiAwO31cclxuLnRodW1iLWxpc3Qge1xyXG4gICAgaW9uLWl0ZW17XHJcbiAgICAgICAgaW9uLWxhYmVse1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgYm90dG9tOiAwO1xyXG4gICAgbWFyZ2luOiAwO1xyXG4gICAgYmFja2dyb3VuZDogcmdiYSgzOCwgMTY2LCAxNTQsIDAuNTApO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBjb2xvcjogI0ZGRjtcclxuICAgIHBhZGRpbmc6IDVweDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG59XHJcbn1cclxuLmZpeGVkIHtcclxuICAgIC8vIHBvc2l0aW9uOiBmaXhlZCAhaW1wb3J0YW50O1xyXG4gICAgLy8gei1pbmRleDogOSAhaW1wb3J0YW50O1xyXG4gICAgLy8gYmFja2dyb3VuZC1jb2xvcjogI2ZmZiAhaW1wb3J0YW50O1xyXG4gICAgLy8gbWFyZ2luLXRvcDogLTJweCAhaW1wb3J0YW50O1xyXG4gICAgcG9zaXRpb246IC13ZWJraXQtc3RpY2t5O1xyXG4gICAgcG9zaXRpb246IHN0aWNreTtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgdG9wOiAwcHg7XHJcbiAgICBwYWRkaW5nLXRvcDogNXB4O1xyXG4gICAgei1pbmRleDogOTk5O1xyXG4gICAgYmFja2dyb3VuZDogI2ZmZjtcclxufVxyXG4ubWFyZ2ludG9wLTQ1e1xyXG4gICAgbWFyZ2luLXRvcDogNDUlO1xyXG59XHJcbi5tYXJnaW4tMTV7XHJcbiAgICBtYXJnaW46IDE1cHggMHB4ICFpbXBvcnRhbnQ7XHJcbn1cclxuLm1iLTB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAwICFpbXBvcnRhbnQ7XHJcbn1cclxuaW9uLWxpc3R7cGFkZGluZy10b3A6IDAgIWltcG9ydGFudDtwYWRkaW5nLWJvdHRvbTogMCAhaW1wb3J0YW50O1xyXG4gICAgaW9uLWl0ZW17Zm9udC1zaXplOiAwLjg3NXJlbTstLXBhZGRpbmctZW5kOiAxNnB4O3BhZGRpbmctaW5saW5lLWVuZDogMDstLWlubmVyLXBhZGRpbmctZW5kOiAwOy0tbWluLWhlaWdodDogNDRweDstLWJvcmRlci1jb2xvcjogd2hpdGVzbW9rZTt9XHJcbiAgICAuZGVzY3JpcHRpb25JdGVte1xyXG4gICAgICAgIGlvbi1pdGVte3BhZGRpbmc6IDA7fVxyXG4gICAgfVxyXG59XHJcbi5yZXBlYXRlZEhlYWRpbmd7Zm9udC13ZWlnaHQ6IDQwMDtmb250LXNpemU6IDE1cHg7bWFyZ2luLWJvdHRvbTogMDt9XHJcbi5pbmZvSWNvbntwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6IDA7XHJcbiAgICByaWdodDogMDtcclxuICAgIC0tYmFja2dyb3VuZDogIzI2YTY5YTtcclxuICAgIC0tYm94LXNoYWRvdzogbm9uZTtcclxuICAgIGNvbG9yOiAjRkZGO1xyXG4gICAgLS1wYWRkaW5nLXN0YXJ0OiAwO1xyXG4gICAgLS1wYWRkaW5nLWVuZDogMDtcclxuICAgIGhlaWdodDogYXV0bztcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgIG1hcmdpbjogM3B4O1xyXG4gICAgei1pbmRleDogOTstLWJvcmRlci1yYWRpdXM6NTAlfVxyXG5cclxuICAgIC5pb24tYmxvY2t7XHJcbiAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgfVxyXG4gICAgLmlvbi1sZWZ0e1xyXG4gICAgICAgIGZsZXg6IDE7XHJcbiAgICB9XHJcbiAgICAuaW9uLXJpZ2h0e1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIH1cclxuICAgIC53aWR0aC0zMHtcclxuICAgICAgICB3aWR0aDogMzBweDtcclxuICAgIH1cclxuXHJcblxyXG4gICAgLmxpdmUtaW9uLWxpc3QtaGVhZGVye1xyXG4gICAgICAgIGp1c3RpZnktY29udGVudDogaW5pdGlhbDtcclxuICAgICAgICAuZGl2aWRlcntcclxuICAgICAgICAgICAgbWFyZ2luLWxlZnQ6IDIwcHg7XHJcbiAgICAgICAgICAgIG1hcmdpbi1yaWdodDogMjBweDtcclxuICAgICAgICB9XHJcbiAgICAgICAgLmNhbGVuZGVyX2dyZWVuX2JvdHRvbXtcclxuICAgICAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICAgICAgZmxleDogMTtcclxuICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XHJcbiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICAgICAgICAgIGlvbi1pY29ue1xyXG4gICAgICAgICAgICAgICAgZm9udC1zaXplOiAxLjdyZW07XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICB9XHJcbiAgICB9XHJcbiAgICAubGl2ZS1ldmVudC1hZGRpdGlvbntcclxuICAgICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICNjZWNlY2U7XHJcbiAgICAgICAgcGFkZGluZzogMTVweDtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiAxMnB4O1xyXG4gICAgICAgIG1hcmdpbi1ib3R0b206IDEycHg7XHJcbiAgICAgICAgaDV7XHJcbiAgICAgICAgICAgIGNvbG9yOiAjMTIxMjEyO1xyXG4gICAgICAgICAgICBtYXJnaW46IDA7XHJcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbiAgICAgICAgfVxyXG4gICAgfVxyXG4gICAgLmxpdmUtZXZlbnQtYm94e1xyXG4gICAgICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgICAgIG1hcmdpbi1ib3R0b206IDIwcHg7XHJcbiAgICAgICAgLmxpdmUtZXZlbnQtaGVhZHtcclxuICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTBweDtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xyXG4gICAgICAgICAgICBjb2xvcjogIzEyMTIxMjtcclxuICAgICAgICB9XHJcbiAgICAgICAgLmxpdmUtZXZlbnQtaW5mb3tcclxuICAgICAgICAgICAgcGFkZGluZzogMTJweCAyMHB4IDJweCAyMHB4O1xyXG4gICAgICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjY2VjZWNlO1xyXG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiAxMnB4OyBcclxuICAgICAgICAgICAgbWF4LWhlaWdodDogMTAwcHg7XHJcbiAgICAgICAgICAgIG92ZXJmbG93LXk6IHNjcm9sbDtcclxuICAgICAgICAgICAgLmxpdmUtZXZlbnQtZGV0YWlsc3tcclxuICAgICAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTBweDtcclxuICAgICAgICAgICAgICAgIHB7XHJcbiAgICAgICAgICAgICAgICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICAgICAgICAgICAgICAgIGNvbG9yOiAjMTIxMjEyO1xyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICAgICAgLnNtYWxsLWRpdmlkZXJ7XHJcbiAgICAgICAgICAgICAgICAgICAgd2lkdGg6IDEuNXB4O1xyXG4gICAgICAgICAgICAgICAgICAgIGhlaWdodDogMjBweDtcclxuICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNTU1O1xyXG4gICAgICAgICAgICAgICAgICAgIG1hcmdpbi1yaWdodDogMTRweDtcclxuICAgICAgICAgICAgICAgICAgICBtYXJnaW4tbGVmdDogMTRweFxyXG4gICAgICAgICAgICAgICAgfVxyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG4gICAgfVxyXG4gICAgLmxpdmUtZXZlbnQtaWNvbntcclxuICAgICAgICBmb250LXNpemU6IDI4cHg7XHJcbiAgICAgICAgbWluLXdpZHRoOiA4MHB4O1xyXG4gICAgICAgIGNvbG9yOiAjNTU1O1xyXG4gICAgICAgIG1hcmdpbi1yaWdodDogMjBweDtcclxuICAgIH1cclxuICAgIC5saXZlLWljb257XHJcbiAgICAgICAgLy8gY29sb3I6ICNmZmY7XHJcbiAgICAgICAgY29sb3I6IHRyYW5zcGFyZW50O1xyXG4gICAgfVxyXG4gICAgLnRvZ2dsZURpdiB7XHJcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogMnB4O1xyXG4gICAgICAgIHdpZHRoOiA1MHB4O1xyXG4gICAgfVxyXG4gICAgLmxpdmU6OmFmdGVye1xyXG4gICAgICAgIGNvbnRlbnQ6ICdHbyBMaXZlJztcclxuICAgICAgICBjb2xvcjogIzI2YTY5YTtcclxuICAgICAgICBmb250LXNpemU6IDExcHg7XHJcbiAgICAgICAgZm9udC13ZWlnaHQ6IDUwMDtcclxuICAgICAgICBwYWRkaW5nOiA2cHggNXB4O1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICNmZmY7XHJcbiAgICAgICAgLy8gdHJhbnNpdGlvbjogYWxsIC4ycyBlYXNlLWluLW91dDtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiAzcHg7XHJcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogMnB4O1xyXG4gICAgfVxyXG4gICAgLnRpdGxle1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTNweDtcclxuICAgIH1cclxuICAgIC50aXRsZSBzcGFue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTFweDtcclxuICAgICAgICBkaXNwbGF5OiBibG9jaztcclxuICAgICAgICBjb2xvcjogI0U3RTdFNztcclxuICAgICAgICBtYXJnaW4tYm90dG9tOiAzcHg7XHJcbiAgICB9XHJcbiAgICAubGl2ZS5hY3RpdmU6OmFmdGVye1xyXG4gICAgICAgIGNvbnRlbnQ6ICdMaXZlJztcclxuICAgICAgICBwYWRkaW5nOiA2cHggN3B4O1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTFweDtcclxuICAgICAgICBsZXR0ZXItc3BhY2luZzogMnB4O1xyXG4gICAgICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XHJcbiAgICAgICAgYmFja2dyb3VuZDogI0ZGM0EzQTtcclxuICAgICAgICAvLyB0cmFuc2l0aW9uOiBhbGwgLjJzIGVhc2UtaW4tb3V0O1xyXG4gICAgfVxyXG4gICAgaW9uLWljb24uYWN0aXZle1xyXG4gICAgICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgICAgIGNvbG9yOiByZ2IoMjU1LCAxNywgMTcpO1xyXG4gICAgfVxyXG4gICAgLndpZHRoLWZ1bGx7XHJcbiAgICAgICAgd2lkdGg6IDEwMCUgIWltcG9ydGFudDtcclxuICAgIH1cclxuICAgIC5kaXZpZGVyIHtcclxuICAgICAgICB3aWR0aDogMS41cHg7XHJcbiAgICAgICAgaGVpZ2h0OiAzNXB4O1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICNmZmY7XHJcbiAgICB9XHJcbiAgICAudGVybXMtZm9vdGVye1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgICAgICBwYWRkaW5nOiA1cHggMTBweDtcclxuICAgICAgICBpb24tY2hlY2tib3h7XHJcbiAgICAgICAgICAgIG1hcmdpbi1yaWdodDogOHB4O1xyXG4gICAgICAgIH1cclxuICAgICAgICBpb24taWNvbntcclxuICAgICAgICAgICAgY29sb3I6ICM1NTU7XHJcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMjRweDtcclxuICAgICAgICB9XHJcbiAgICB9XHJcbiAgICAuZnVsbC1oZWlnaHR7XHJcbiAgICAgICAgaGVpZ2h0OiA1NnB4O1xyXG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDE1cHg7XHJcbiAgICAgICAgd2lkdGg6IGZpdC1jb250ZW50O1xyXG4gICAgICAgIG1hcmdpbjogMCBhdXRvO1xyXG4gICAgICAgIHBhZGRpbmc6IDAgMzVweDtcclxuICAgIH1cclxuICAgIC5zdGlja3ktZm9vdGVye1xyXG4gICAgICAgIGhlaWdodDogYXV0bztcclxuICAgIH1cclxuICAgIC8vIEFORFJPSUQgQ1NTXHJcbmlvbi1saXN0LWhlYWRlci5pb24tcGFkZGluZy1ob3Jpem9udGFsLmdyZWVuLnRleHQtd2hpdGUubWQuaHlkcmF0ZWQge1xyXG4gICAgcGFkZGluZy1ib3R0b206IDEycHg7XHJcbiAgICBwYWRkaW5nLXRvcDogMTJweDtcclxufVxyXG5pb24tbGlzdC53aWR0aC1mdWxsLm1kLmxpc3QtbWQuaHlkcmF0ZWQge1xyXG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG59XHJcbi8vIElPUyBDU1NcclxuaW9uLWxpc3QtaGVhZGVyLmlvbi1wYWRkaW5nLWhvcml6b250YWwuZ3JlZW4udGV4dC13aGl0ZS5pb3MuaHlkcmF0ZWQge1xyXG4gICAgcGFkZGluZy1ib3R0b206IDEycHg7XHJcbiAgICBwYWRkaW5nLXRvcDogMTJweDtcclxuICAgIHRleHQtdHJhbnNmb3JtOiBpbml0aWFsO1xyXG4gICAgbGV0dGVyLXNwYWNpbmc6IDBweDtcclxufVxyXG5pb24tbGlzdC53aWR0aC1mdWxsLmlvcy5saXN0LWlvcy5oeWRyYXRlZCB7XHJcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XHJcbn0iLCIuaW5saW5lLWZsZXggaW9uLWRhdGV0aW1lIHtcbiAgcGFkZGluZy1sZWZ0OiAxcHg7XG4gIHBhZGRpbmctcmlnaHQ6IDVweDtcbn1cblxuLnJhZGlvLWdyb3VwIHtcbiAgZGlzcGxheTogZmxleDtcbn1cblxuLnJhZGlvLWdyb3VwIGlvbi1pdGVtIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgLS1pbm5lci1ib3JkZXItd2lkdGg6IDAgMCAwIDA7XG59XG5cbi5yYWRpby1ncm91cCBpb24taXRlbSBpb24tcmFkaW8ge1xuICBtYXJnaW4tcmlnaHQ6IDEwcHg7XG59XG5cbi5udXRyaWltYWdlcy1saXN0IGlvbi1sYWJlbCB7XG4gIGZvbnQtc2l6ZTogMC43NXJlbTtcbiAgbWFyZ2luOiAzcHggMDtcbiAgdGV4dC10cmFuc2Zvcm06IGNhcGl0YWxpemU7XG4gIGxldHRlci1zcGFjaW5nOiAwO1xuICBmb250LXdlaWdodDogNDAwO1xuICBkaXNwbGF5OiBibG9jaztcbiAgY29sb3I6ICM0NDQ7XG59XG5cbi52aWRlby1jYXJkIHtcbiAgYm94LXNoYWRvdzogMHB4IDRweCAxMHB4IHJnYmEoMzQsIDM1LCA1OCwgMC4wOSk7XG59XG5cbmlvbi1zbGlkZXMge1xuICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgcGFkZGluZzogMCA1cHg7XG59XG5cbi5udXRyaWltYWdlcy1saXN0IGlvbi1zZWdtZW50LWJ1dHRvbiB7XG4gIHdpZHRoOiAzMiU7XG4gIGJvcmRlcjogbm9uZTtcbiAgcGFkZGluZzogMDtcbiAgLS1wYWRkaW5nLXN0YXJ0OiAwO1xuICAtLXBhZGRpbmctZW5kOiAwO1xuICBtYXJnaW46IDAgM3B4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYmFja2dyb3VuZDogI2Y3ZjdmNztcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xufVxuXG4ubnV0cmlpbWFnZXMtbGlzdCBpb24tc2VnbWVudC1idXR0b246Zmlyc3QtY2hpbGQge1xuICBtYXJnaW4tbGVmdDogMDtcbn1cblxuLm51dHJpaW1hZ2VzLWxpc3QgaW9uLXNlZ21lbnQtYnV0dG9uIGltZyB7XG4gIG9iamVjdC1maXQ6IGNvbnRhaW47XG4gIG1heC13aWR0aDogMTAwJTtcbn1cblxuLm51dHJpaW1hZ2VzLWxpc3QgLnNlZ21lbnQtYnV0dG9uLWNoZWNrZWQge1xuICBiYWNrZ3JvdW5kOiAjZWFlYWVhO1xuICAtLWNvbG9yLWNoZWNrZWQ6IHRyYW5zcGFyZW50O1xufVxuXG4ubnV0cmlpbWFnZXMtbGlzdCAudGh1bWItY2hlY2tib3gge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG59XG5cbi5udXRyaWltYWdlcy1saXN0IC50aHVtYi1jaGVja2JveCBpb24tY2hlY2tib3gge1xuICBvcGFjaXR5OiAwO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiA3OHB4O1xuICBwYWRkaW5nOiAwIDA7XG59XG5cbi5jaGVja2JveFRodW1iOjphZnRlciB7XG4gIGNvbnRlbnQ6IFwiXCI7XG4gIHdpZHRoOiAxNnB4O1xuICBoZWlnaHQ6IDE2cHg7XG4gIGJvcmRlcjogMnB4IHNvbGlkICM3ZDdkN2Q7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiA1cHg7XG4gIGxlZnQ6IDVweDtcbn1cblxuLm51dHJpaW1hZ2VzLWxpc3QgLnRodW1iLWNoZWNrYm94IGlvbi1jaGVja2JveC5jaGVja2JveC1jaGVja2VkIHtcbiAgb3BhY2l0eTogMTtcbiAgLS1iYWNrZ3JvdW5kLWNoZWNrZWQ6dHJhbnNwYXJlbnQ7XG4gIC0tYm9yZGVyLWNvbG9yLWNoZWNrZWQ6dHJhbnNwYXJlbnQ7XG4gIC0tc2l6ZTowO1xuICAtLWNoZWNrbWFyay1jb2xvcjp0cmFuc3BhcmVudDtcbn1cblxuLm51dHJpaW1hZ2VzLWxpc3QgLnRodW1iLWNoZWNrYm94IGlvbi1jaGVja2JveC5jaGVja2JveC1jaGVja2VkOmFmdGVyIHtcbiAgY29udGVudDogXCJcIjtcbiAgd2lkdGg6IDIwcHg7XG4gIGhlaWdodDogMjBweDtcbiAgYmFja2dyb3VuZDogIzI2YTY5YTtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDVweDtcbiAgbGVmdDogNXB4O1xufVxuXG4uaXRlbS1saXN0IGlvbi1saXN0LWhlYWRlciBpb24taWNvbiB7XG4gIGZvbnQtc2l6ZTogMS4xNXJlbTtcbn1cblxuLnVzZXJzLWxpc3Qge1xuICAtLW1pbi1oZWlnaHQ6IGF1dG87XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIG1hcmdpbjogNnB4IDA7XG59XG5cbi51c2Vycy1saXN0IGltZyB7XG4gIHdpZHRoOiAzNnB4O1xuICBoZWlnaHQ6IDM2cHg7XG4gIG9iamVjdC1maXQ6IGNvdmVyO1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIG1hcmdpbi1sZWZ0OiAtMTBweDtcbn1cblxuLnVzZXJzLWxpc3QgaW1nOmZpcnN0LWNoaWxkIHtcbiAgbWFyZ2luLWxlZnQ6IDA7XG59XG5cbi51c2Vycy1saXN0IGlvbi1sYWJlbCB7XG4gIHdpZHRoOiAxMDBweDtcbn1cblxuLnZpZXctYWxsIHtcbiAgd2lkdGg6IDM2cHg7XG4gIGhlaWdodDogMzZweDtcbiAgbWF4LXdpZHRoOiAzNnB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJhY2tncm91bmQ6ICNmMWYwZjA7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIG1hcmdpbjogMDtcbiAgbWFyZ2luLWxlZnQ6IC0xMHB4O1xufVxuXG5pb24tbGlzdCAuZHVyYXRpb25JdGVtIHtcbiAgLS1wYWRkaW5nLWVuZDogMDtcbn1cbmlvbi1saXN0IC5kdXJhdGlvbkl0ZW0gaW9uLWlucHV0IHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0b3A6IDJweDtcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XG59XG5cbi5wcm9ncmFtLWNhcmQge1xuICB3aWR0aDogMTAwJTtcbn1cblxuaW9uLWl0ZW0gaW9uLWxpc3Qge1xuICB3aWR0aDogMTAwJTtcbn1cblxuLml0ZW0tbGlzdCA+IGlvbi1pdGVtIHtcbiAgLS1pbm5lci1wYWRkaW5nLWVuZDogMDtcbn1cblxuLnRodW1iLWxpc3QgaW9uLWl0ZW0gaW9uLWxhYmVsIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBib3R0b206IDA7XG4gIG1hcmdpbjogMDtcbiAgYmFja2dyb3VuZDogcmdiYSgzOCwgMTY2LCAxNTQsIDAuNSk7XG4gIHdpZHRoOiAxMDAlO1xuICBjb2xvcjogI0ZGRjtcbiAgcGFkZGluZzogNXB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5maXhlZCB7XG4gIHBvc2l0aW9uOiAtd2Via2l0LXN0aWNreTtcbiAgcG9zaXRpb246IHN0aWNreTtcbiAgd2lkdGg6IDEwMCU7XG4gIHRvcDogMHB4O1xuICBwYWRkaW5nLXRvcDogNXB4O1xuICB6LWluZGV4OiA5OTk7XG4gIGJhY2tncm91bmQ6ICNmZmY7XG59XG5cbi5tYXJnaW50b3AtNDUge1xuICBtYXJnaW4tdG9wOiA0NSU7XG59XG5cbi5tYXJnaW4tMTUge1xuICBtYXJnaW46IDE1cHggMHB4ICFpbXBvcnRhbnQ7XG59XG5cbi5tYi0wIHtcbiAgbWFyZ2luLWJvdHRvbTogMCAhaW1wb3J0YW50O1xufVxuXG5pb24tbGlzdCB7XG4gIHBhZGRpbmctdG9wOiAwICFpbXBvcnRhbnQ7XG4gIHBhZGRpbmctYm90dG9tOiAwICFpbXBvcnRhbnQ7XG59XG5pb24tbGlzdCBpb24taXRlbSB7XG4gIGZvbnQtc2l6ZTogMC44NzVyZW07XG4gIC0tcGFkZGluZy1lbmQ6IDE2cHg7XG4gIHBhZGRpbmctaW5saW5lLWVuZDogMDtcbiAgLS1pbm5lci1wYWRkaW5nLWVuZDogMDtcbiAgLS1taW4taGVpZ2h0OiA0NHB4O1xuICAtLWJvcmRlci1jb2xvcjogd2hpdGVzbW9rZTtcbn1cbmlvbi1saXN0IC5kZXNjcmlwdGlvbkl0ZW0gaW9uLWl0ZW0ge1xuICBwYWRkaW5nOiAwO1xufVxuXG4ucmVwZWF0ZWRIZWFkaW5nIHtcbiAgZm9udC13ZWlnaHQ6IDQwMDtcbiAgZm9udC1zaXplOiAxNXB4O1xuICBtYXJnaW4tYm90dG9tOiAwO1xufVxuXG4uaW5mb0ljb24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogMDtcbiAgcmlnaHQ6IDA7XG4gIC0tYmFja2dyb3VuZDogIzI2YTY5YTtcbiAgLS1ib3gtc2hhZG93OiBub25lO1xuICBjb2xvcjogI0ZGRjtcbiAgLS1wYWRkaW5nLXN0YXJ0OiAwO1xuICAtLXBhZGRpbmctZW5kOiAwO1xuICBoZWlnaHQ6IGF1dG87XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgbWFyZ2luOiAzcHg7XG4gIHotaW5kZXg6IDk7XG4gIC0tYm9yZGVyLXJhZGl1czo1MCU7XG59XG5cbi5pb24tYmxvY2sge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG4uaW9uLWxlZnQge1xuICBmbGV4OiAxO1xufVxuXG4uaW9uLXJpZ2h0IHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLndpZHRoLTMwIHtcbiAgd2lkdGg6IDMwcHg7XG59XG5cbi5saXZlLWlvbi1saXN0LWhlYWRlciB7XG4gIGp1c3RpZnktY29udGVudDogaW5pdGlhbDtcbn1cbi5saXZlLWlvbi1saXN0LWhlYWRlciAuZGl2aWRlciB7XG4gIG1hcmdpbi1sZWZ0OiAyMHB4O1xuICBtYXJnaW4tcmlnaHQ6IDIwcHg7XG59XG4ubGl2ZS1pb24tbGlzdC1oZWFkZXIgLmNhbGVuZGVyX2dyZWVuX2JvdHRvbSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXg6IDE7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuLmxpdmUtaW9uLWxpc3QtaGVhZGVyIC5jYWxlbmRlcl9ncmVlbl9ib3R0b20gaW9uLWljb24ge1xuICBmb250LXNpemU6IDEuN3JlbTtcbn1cblxuLmxpdmUtZXZlbnQtYWRkaXRpb24ge1xuICB3aWR0aDogMTAwJTtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGJhY2tncm91bmQ6ICNjZWNlY2U7XG4gIHBhZGRpbmc6IDE1cHg7XG4gIGJvcmRlci1yYWRpdXM6IDEycHg7XG4gIG1hcmdpbi1ib3R0b206IDEycHg7XG59XG4ubGl2ZS1ldmVudC1hZGRpdGlvbiBoNSB7XG4gIGNvbG9yOiAjMTIxMjEyO1xuICBtYXJnaW46IDA7XG4gIGZvbnQtd2VpZ2h0OiA1MDA7XG59XG5cbi5saXZlLWV2ZW50LWJveCB7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tYm90dG9tOiAyMHB4O1xufVxuLmxpdmUtZXZlbnQtYm94IC5saXZlLWV2ZW50LWhlYWQge1xuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICBmb250LXNpemU6IDE0cHg7XG4gIGNvbG9yOiAjMTIxMjEyO1xufVxuLmxpdmUtZXZlbnQtYm94IC5saXZlLWV2ZW50LWluZm8ge1xuICBwYWRkaW5nOiAxMnB4IDIwcHggMnB4IDIwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNjZWNlY2U7XG4gIGJvcmRlci1yYWRpdXM6IDEycHg7XG4gIG1heC1oZWlnaHQ6IDEwMHB4O1xuICBvdmVyZmxvdy15OiBzY3JvbGw7XG59XG4ubGl2ZS1ldmVudC1ib3ggLmxpdmUtZXZlbnQtaW5mbyAubGl2ZS1ldmVudC1kZXRhaWxzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbn1cbi5saXZlLWV2ZW50LWJveCAubGl2ZS1ldmVudC1pbmZvIC5saXZlLWV2ZW50LWRldGFpbHMgcCB7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgY29sb3I6ICMxMjEyMTI7XG59XG4ubGl2ZS1ldmVudC1ib3ggLmxpdmUtZXZlbnQtaW5mbyAubGl2ZS1ldmVudC1kZXRhaWxzIC5zbWFsbC1kaXZpZGVyIHtcbiAgd2lkdGg6IDEuNXB4O1xuICBoZWlnaHQ6IDIwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICM1NTU7XG4gIG1hcmdpbi1yaWdodDogMTRweDtcbiAgbWFyZ2luLWxlZnQ6IDE0cHg7XG59XG5cbi5saXZlLWV2ZW50LWljb24ge1xuICBmb250LXNpemU6IDI4cHg7XG4gIG1pbi13aWR0aDogODBweDtcbiAgY29sb3I6ICM1NTU7XG4gIG1hcmdpbi1yaWdodDogMjBweDtcbn1cblxuLmxpdmUtaWNvbiB7XG4gIGNvbG9yOiB0cmFuc3BhcmVudDtcbn1cblxuLnRvZ2dsZURpdiB7XG4gIG1hcmdpbi1ib3R0b206IDJweDtcbiAgd2lkdGg6IDUwcHg7XG59XG5cbi5saXZlOjphZnRlciB7XG4gIGNvbnRlbnQ6IFwiR28gTGl2ZVwiO1xuICBjb2xvcjogIzI2YTY5YTtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBmb250LXdlaWdodDogNTAwO1xuICBwYWRkaW5nOiA2cHggNXB4O1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xuICBib3JkZXItcmFkaXVzOiAzcHg7XG4gIG1hcmdpbi1ib3R0b206IDJweDtcbn1cblxuLnRpdGxlIHtcbiAgZm9udC1zaXplOiAxM3B4O1xufVxuXG4udGl0bGUgc3BhbiB7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGNvbG9yOiAjRTdFN0U3O1xuICBtYXJnaW4tYm90dG9tOiAzcHg7XG59XG5cbi5saXZlLmFjdGl2ZTo6YWZ0ZXIge1xuICBjb250ZW50OiBcIkxpdmVcIjtcbiAgcGFkZGluZzogNnB4IDdweDtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBsZXR0ZXItc3BhY2luZzogMnB4O1xuICBjb2xvcjogI2ZmZjtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgYmFja2dyb3VuZDogI0ZGM0EzQTtcbn1cblxuaW9uLWljb24uYWN0aXZlIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGNvbG9yOiAjZmYxMTExO1xufVxuXG4ud2lkdGgtZnVsbCB7XG4gIHdpZHRoOiAxMDAlICFpbXBvcnRhbnQ7XG59XG5cbi5kaXZpZGVyIHtcbiAgd2lkdGg6IDEuNXB4O1xuICBoZWlnaHQ6IDM1cHg7XG4gIGJhY2tncm91bmQ6ICNmZmY7XG59XG5cbi50ZXJtcy1mb290ZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBwYWRkaW5nOiA1cHggMTBweDtcbn1cbi50ZXJtcy1mb290ZXIgaW9uLWNoZWNrYm94IHtcbiAgbWFyZ2luLXJpZ2h0OiA4cHg7XG59XG4udGVybXMtZm9vdGVyIGlvbi1pY29uIHtcbiAgY29sb3I6ICM1NTU7XG4gIGZvbnQtc2l6ZTogMjRweDtcbn1cblxuLmZ1bGwtaGVpZ2h0IHtcbiAgaGVpZ2h0OiA1NnB4O1xuICBib3JkZXItcmFkaXVzOiAxNXB4O1xuICB3aWR0aDogZml0LWNvbnRlbnQ7XG4gIG1hcmdpbjogMCBhdXRvO1xuICBwYWRkaW5nOiAwIDM1cHg7XG59XG5cbi5zdGlja3ktZm9vdGVyIHtcbiAgaGVpZ2h0OiBhdXRvO1xufVxuXG5pb24tbGlzdC1oZWFkZXIuaW9uLXBhZGRpbmctaG9yaXpvbnRhbC5ncmVlbi50ZXh0LXdoaXRlLm1kLmh5ZHJhdGVkIHtcbiAgcGFkZGluZy1ib3R0b206IDEycHg7XG4gIHBhZGRpbmctdG9wOiAxMnB4O1xufVxuXG5pb24tbGlzdC53aWR0aC1mdWxsLm1kLmxpc3QtbWQuaHlkcmF0ZWQge1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG59XG5cbmlvbi1saXN0LWhlYWRlci5pb24tcGFkZGluZy1ob3Jpem9udGFsLmdyZWVuLnRleHQtd2hpdGUuaW9zLmh5ZHJhdGVkIHtcbiAgcGFkZGluZy1ib3R0b206IDEycHg7XG4gIHBhZGRpbmctdG9wOiAxMnB4O1xuICB0ZXh0LXRyYW5zZm9ybTogaW5pdGlhbDtcbiAgbGV0dGVyLXNwYWNpbmc6IDBweDtcbn1cblxuaW9uLWxpc3Qud2lkdGgtZnVsbC5pb3MubGlzdC1pb3MuaHlkcmF0ZWQge1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG59Il19 */";
     /***/
   },
 
@@ -2976,31 +3020,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(DateTimeModalComponent, [{
         key: "openModal",
         value: function openModal() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
             var modal;
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
               while (1) {
-                switch (_context4.prev = _context4.next) {
+                switch (_context5.prev = _context5.next) {
                   case 0:
-                    _context4.next = 2;
+                    _context5.next = 2;
                     return this.modalController.create({
                       component: src_app_modalContent_terms_condition_terms_condition_component__WEBPACK_IMPORTED_MODULE_14__["TermsConditionComponent"]
                     });
 
                   case 2:
-                    modal = _context4.sent;
-                    _context4.next = 5;
+                    modal = _context5.sent;
+                    _context5.next = 5;
                     return modal.present();
 
                   case 5:
-                    return _context4.abrupt("return", _context4.sent);
+                    return _context5.abrupt("return", _context5.sent);
 
                   case 6:
                   case "end":
-                    return _context4.stop();
+                    return _context5.stop();
                 }
               }
-            }, _callee4, this);
+            }, _callee5, this);
           }));
         } //------------------ 
 
@@ -3052,11 +3096,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "openCalendar",
         value: function openCalendar() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
             var options, myCalendar, event, date;
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
               while (1) {
-                switch (_context5.prev = _context5.next) {
+                switch (_context6.prev = _context6.next) {
                   case 0:
                     options = {
                       pickMode: 'multi',
@@ -3064,7 +3108,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       doneIcon: true,
                       closeIcon: true
                     };
-                    _context5.next = 3;
+                    _context6.next = 3;
                     return this.modalController.create({
                       component: ion2_calendar__WEBPACK_IMPORTED_MODULE_11__["CalendarModal"],
                       componentProps: {
@@ -3074,37 +3118,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 3:
-                    myCalendar = _context5.sent;
+                    myCalendar = _context6.sent;
                     myCalendar.present();
-                    _context5.next = 7;
+                    _context6.next = 7;
                     return myCalendar.onDidDismiss();
 
                   case 7:
-                    event = _context5.sent;
+                    event = _context6.sent;
                     date = event.data;
 
                   case 9:
                   case "end":
-                    return _context5.stop();
+                    return _context6.stop();
                 }
               }
-            }, _callee5, this);
+            }, _callee6, this);
           }));
         }
       }, {
         key: "basic",
         value: function basic() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
             var options, myCalendar, event, date, endDate, dateMove, currentDate;
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
               while (1) {
-                switch (_context6.prev = _context6.next) {
+                switch (_context7.prev = _context7.next) {
                   case 0:
                     this.repetatedDateCopy = [];
                     this.repetatedDate = [];
                     this.repetative = 2;
                     options = {};
-                    _context6.next = 6;
+                    _context7.next = 6;
                     return this.modalController.create({
                       component: ion2_calendar__WEBPACK_IMPORTED_MODULE_11__["CalendarModal"],
                       componentProps: {
@@ -3113,13 +3157,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 6:
-                    myCalendar = _context6.sent;
+                    myCalendar = _context7.sent;
                     myCalendar.present();
-                    _context6.next = 10;
+                    _context7.next = 10;
                     return myCalendar.onDidDismiss();
 
                   case 10:
-                    event = _context6.sent;
+                    event = _context7.sent;
                     date = event.data;
 
                     if (date == null) {
@@ -3147,22 +3191,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 13:
                   case "end":
-                    return _context6.stop();
+                    return _context7.stop();
                 }
               }
-            }, _callee6, this);
+            }, _callee7, this);
           }));
         }
       }, {
         key: "multiple",
         value: function multiple() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
             var _this7 = this;
 
             var options, myCalendar, event, date, hourspan;
-            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+            return regeneratorRuntime.wrap(function _callee8$(_context8) {
               while (1) {
-                switch (_context7.prev = _context7.next) {
+                switch (_context8.prev = _context8.next) {
                   case 0:
                     this.repetatedDate = [];
                     this.repetatedDateCopy = [];
@@ -3171,7 +3215,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       pickMode: 'multi',
                       title: 'Custom Selection'
                     };
-                    _context7.next = 6;
+                    _context8.next = 6;
                     return this.modalController.create({
                       component: ion2_calendar__WEBPACK_IMPORTED_MODULE_11__["CalendarModal"],
                       componentProps: {
@@ -3181,13 +3225,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 6:
-                    myCalendar = _context7.sent;
+                    myCalendar = _context8.sent;
                     myCalendar.present();
-                    _context7.next = 10;
+                    _context8.next = 10;
                     return myCalendar.onDidDismiss();
 
                   case 10:
-                    event = _context7.sent;
+                    event = _context8.sent;
                     console.log(event);
                     date = event.data;
                     hourspan = this.calendarData;
@@ -3231,30 +3275,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 16:
                   case "end":
-                    return _context7.stop();
+                    return _context8.stop();
                 }
               }
-            }, _callee7, this);
+            }, _callee8, this);
           }));
         }
       }, {
         key: "newtest",
         value: function newtest() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
             var _this8 = this;
 
             var options, modal;
-            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            return regeneratorRuntime.wrap(function _callee9$(_context9) {
               while (1) {
-                switch (_context8.prev = _context8.next) {
+                switch (_context9.prev = _context9.next) {
                   case 0:
                     if (!(!this.duration && this.programData.programType !== '6')) {
-                      _context8.next = 5;
+                      _context9.next = 5;
                       break;
                     }
 
                     this.commonService.presentToast('Please select Duration');
-                    return _context8.abrupt("return");
+                    return _context9.abrupt("return");
 
                   case 5:
                     this.repetatedDate = [];
@@ -3263,7 +3307,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     options = {
                       pickMode: 'multi'
                     };
-                    _context8.next = 11;
+                    _context9.next = 11;
                     return this.modalController.create({
                       component: _add_program_calender_month_week_time_calender_month_week_time_component__WEBPACK_IMPORTED_MODULE_8__["CalenderMonthWeekTimeComponent"],
                       cssClass: 'fullModal',
@@ -3278,7 +3322,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 11:
-                    modal = _context8.sent;
+                    modal = _context9.sent;
                     modal.onDidDismiss().then(function (data) {
                       console.log(data);
 
@@ -3325,18 +3369,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         console.log(_this8.repetatedDate);
                       }
                     });
-                    _context8.next = 15;
+                    _context9.next = 15;
                     return modal.present();
 
                   case 15:
-                    return _context8.abrupt("return", _context8.sent);
+                    return _context9.abrupt("return", _context9.sent);
 
                   case 16:
                   case "end":
-                    return _context8.stop();
+                    return _context9.stop();
                 }
               }
-            }, _callee8, this);
+            }, _callee9, this);
           }));
         }
       }, {
@@ -3357,10 +3401,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function onSubmit() {
           var _this9 = this;
 
-          // if (this.programData.programType !== '6' && !this.duration) {
-          //   this.commonService.presentToast('Please select Duration');
-          //   return;
-          // }
+          if (this.programData.programType !== '6' && !this.duration) {
+            this.commonService.presentToast('Please select Duration');
+            return;
+          }
+
           if (this.programData.programType == '6') {
             var data = [];
             this.videoList.forEach(function (el) {
@@ -3394,6 +3439,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             });
+            this.programService.advertiseRequest({
+              'programId': this.programData.id
+            }).subscribe(function (data) {
+              console.log(_this9.programData.id);
+              _this9.adData = data.status;
+              _this9.request_approve_btn = true;
+
+              _this9.commonService.dismissLoader(); // this.commonService.presentToast('Request Sent');
+
+
+              console.log(data);
+            });
           }
 
           var hourspan = this.calendarData;
@@ -3426,15 +3483,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addEquipments2",
         value: function addEquipments2(event, item, i) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
             var _this10 = this;
 
             var modal;
-            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            return regeneratorRuntime.wrap(function _callee10$(_context10) {
               while (1) {
-                switch (_context9.prev = _context9.next) {
+                switch (_context10.prev = _context10.next) {
                   case 0:
-                    _context9.next = 2;
+                    _context10.next = 2;
                     return this.modalController.create({
                       component: _add_equipments_add_equipments_component__WEBPACK_IMPORTED_MODULE_5__["AddEquipmentsComponent"],
                       cssClass: 'fullModal',
@@ -3445,7 +3502,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    modal = _context9.sent;
+                    modal = _context10.sent;
                     modal.onDidDismiss().then(function (d) {
                       if (event == 1) {
                         _this10.repetatedDateCopy[i].equipments = d.data.filter(Boolean); // this.repetatedDate[i].equipments = d.data.filter(Boolean) ;
@@ -3455,47 +3512,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                       console.log(_this10.repetatedDateCopy);
                       console.log(_this10.repetatedDate);
-                    });
-                    _context9.next = 6;
-                    return modal.present();
-
-                  case 6:
-                    return _context9.abrupt("return", _context9.sent);
-
-                  case 7:
-                  case "end":
-                    return _context9.stop();
-                }
-              }
-            }, _callee9, this);
-          }));
-        }
-      }, {
-        key: "addVideo",
-        value: function addVideo(event, i) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
-            var _this11 = this;
-
-            var modal;
-            return regeneratorRuntime.wrap(function _callee10$(_context10) {
-              while (1) {
-                switch (_context10.prev = _context10.next) {
-                  case 0:
-                    _context10.next = 2;
-                    return this.modalController.create({
-                      component: _videos_thumb_list_videos_thumb_list_component__WEBPACK_IMPORTED_MODULE_6__["VideosThumbListComponent"],
-                      cssClass: 'fullModal',
-                      componentProps: {
-                        'programDetail': event
-                      }
-                    });
-
-                  case 2:
-                    modal = _context10.sent;
-                    modal.onDidDismiss().then(function (d) {
-                      if (d.data) {
-                        _this11.repetatedDateCopy[i].video = d.data; // this.repetatedDate[i].video=d.data;
-                      }
                     });
                     _context10.next = 6;
                     return modal.present();
@@ -3509,6 +3525,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             }, _callee10, this);
+          }));
+        }
+      }, {
+        key: "addVideo",
+        value: function addVideo(event, i) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+            var _this11 = this;
+
+            var modal;
+            return regeneratorRuntime.wrap(function _callee11$(_context11) {
+              while (1) {
+                switch (_context11.prev = _context11.next) {
+                  case 0:
+                    _context11.next = 2;
+                    return this.modalController.create({
+                      component: _videos_thumb_list_videos_thumb_list_component__WEBPACK_IMPORTED_MODULE_6__["VideosThumbListComponent"],
+                      cssClass: 'fullModal',
+                      componentProps: {
+                        'programDetail': event
+                      }
+                    });
+
+                  case 2:
+                    modal = _context11.sent;
+                    modal.onDidDismiss().then(function (d) {
+                      if (d.data) {
+                        _this11.repetatedDateCopy[i].video = d.data; // this.repetatedDate[i].video=d.data;
+                      }
+                    });
+                    _context11.next = 6;
+                    return modal.present();
+
+                  case 6:
+                    return _context11.abrupt("return", _context11.sent);
+
+                  case 7:
+                  case "end":
+                    return _context11.stop();
+                }
+              }
+            }, _callee11, this);
           }));
         }
       }, {
@@ -3580,7 +3637,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             //   this.request_approve_btn = true;
             //   this.commonService.dismissLoader();
             //   this.commonService.presentToast('Request Sent');
-            //   console.log(data);
+            //   console.log(data); 
             // } );
           } else {
             this.commonService.dismissLoader();
@@ -3590,13 +3647,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "showVideoDetails",
         value: function showVideoDetails(item) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
             var modal;
-            return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            return regeneratorRuntime.wrap(function _callee12$(_context12) {
               while (1) {
-                switch (_context11.prev = _context11.next) {
+                switch (_context12.prev = _context12.next) {
                   case 0:
-                    _context11.next = 2;
+                    _context12.next = 2;
                     return this.modalController.create({
                       component: _add_program_view_video_detail_view_video_detail_component__WEBPACK_IMPORTED_MODULE_7__["ViewVideoDetailComponent"],
                       cssClass: 'fullModal',
@@ -3606,19 +3663,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    modal = _context11.sent;
-                    _context11.next = 5;
+                    modal = _context12.sent;
+                    _context12.next = 5;
                     return modal.present();
 
                   case 5:
-                    return _context11.abrupt("return", _context11.sent);
+                    return _context12.abrupt("return", _context12.sent);
 
                   case 6:
                   case "end":
-                    return _context11.stop();
+                    return _context12.stop();
                 }
               }
-            }, _callee11, this);
+            }, _callee12, this);
           }));
         }
       }, {
@@ -4585,13 +4642,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "showVideoDetails",
         value: function showVideoDetails(item) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
             var modal;
-            return regeneratorRuntime.wrap(function _callee12$(_context12) {
+            return regeneratorRuntime.wrap(function _callee13$(_context13) {
               while (1) {
-                switch (_context12.prev = _context12.next) {
+                switch (_context13.prev = _context13.next) {
                   case 0:
-                    _context12.next = 2;
+                    _context13.next = 2;
                     return this.modalCtrl.create({
                       component: _add_program_view_video_detail_view_video_detail_component__WEBPACK_IMPORTED_MODULE_6__["ViewVideoDetailComponent"],
                       cssClass: 'fullModal',
@@ -4601,19 +4658,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    modal = _context12.sent;
-                    _context12.next = 5;
+                    modal = _context13.sent;
+                    _context13.next = 5;
                     return modal.present();
 
                   case 5:
-                    return _context12.abrupt("return", _context12.sent);
+                    return _context13.abrupt("return", _context13.sent);
 
                   case 6:
                   case "end":
-                    return _context12.stop();
+                    return _context13.stop();
                 }
               }
-            }, _callee12, this);
+            }, _callee13, this);
           }));
         }
       }]);
@@ -5588,6 +5645,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
     }, {
       path: 'all-images',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | profile-all-images-all-images-module */
+        "profile-all-images-all-images-module").then(__webpack_require__.bind(null,
+        /*! ./profile/all-images/all-images.module */
+        "./src/app/profile/all-images/all-images.module.ts")).then(function (m) {
+          return m.AllImagesPageModule;
+        });
+      }
+    }, {
+      path: 'all-user-images/:postType/:userId/:page',
       loadChildren: function loadChildren() {
         return __webpack_require__.e(
         /*! import() | profile-all-images-all-images-module */
@@ -7129,11 +7197,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           console.log("ionViewWillEnter signin");
           this.subscribe = this.platform.backButton.subscribeWithPriority(10, function () {
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this25, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this25, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
               var header, buttons;
-              return regeneratorRuntime.wrap(function _callee13$(_context13) {
+              return regeneratorRuntime.wrap(function _callee14$(_context14) {
                 while (1) {
-                  switch (_context13.prev = _context13.next) {
+                  switch (_context14.prev = _context14.next) {
                     case 0:
                       if (this.router.isActive('/signin', true) && this.router.url === '/signin') {
                         buttons = [{
@@ -7150,10 +7218,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                     case 1:
                     case "end":
-                      return _context13.stop();
+                      return _context14.stop();
                   }
                 }
-              }, _callee13, this);
+              }, _callee14, this);
             }));
           });
         }
@@ -7458,15 +7526,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "blockStatusOfUser",
         value: function blockStatusOfUser(id) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
             var _this29 = this;
 
             var alert;
-            return regeneratorRuntime.wrap(function _callee14$(_context14) {
+            return regeneratorRuntime.wrap(function _callee15$(_context15) {
               while (1) {
-                switch (_context14.prev = _context14.next) {
+                switch (_context15.prev = _context15.next) {
                   case 0:
-                    _context14.next = 2;
+                    _context15.next = 2;
                     return this.alertController.create({
                       // cssClass: 'my-custom-class',
                       // header: 'Confirm!',
@@ -7487,30 +7555,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    alert = _context14.sent;
-                    _context14.next = 5;
+                    alert = _context15.sent;
+                    _context15.next = 5;
                     return alert.present();
 
                   case 5:
                   case "end":
-                    return _context14.stop();
+                    return _context15.stop();
                 }
               }
-            }, _callee14, this);
+            }, _callee15, this);
           }));
         }
       }, {
         key: "presentPopover",
         value: function presentPopover(ev) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
             var _this30 = this;
 
             var popover;
-            return regeneratorRuntime.wrap(function _callee15$(_context15) {
+            return regeneratorRuntime.wrap(function _callee16$(_context16) {
               while (1) {
-                switch (_context15.prev = _context15.next) {
+                switch (_context16.prev = _context16.next) {
                   case 0:
-                    _context15.next = 2;
+                    _context16.next = 2;
                     return this.popoverController.create({
                       component: _dropdown_dropdown_component__WEBPACK_IMPORTED_MODULE_3__["DropdownComponent"],
                       event: ev,
@@ -7527,7 +7595,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    popover = _context15.sent;
+                    popover = _context16.sent;
                     popover.onDidDismiss().then(function (data) {
                       if (data.data == 'refresh') {
                         _this30.doRefresh();
@@ -7540,18 +7608,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         _this30.socket.emit('userBlockStatus', _this30.userData.id, _this30.receiverId);
                       }
                     });
-                    _context15.next = 6;
+                    _context16.next = 6;
                     return popover.present();
 
                   case 6:
-                    return _context15.abrupt("return", _context15.sent);
+                    return _context16.abrupt("return", _context16.sent);
 
                   case 7:
                   case "end":
-                    return _context15.stop();
+                    return _context16.stop();
                 }
               }
-            }, _callee15, this);
+            }, _callee16, this);
           }));
         }
       }, {
@@ -7593,13 +7661,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "showToast",
         value: function showToast(msg) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
             var toast;
-            return regeneratorRuntime.wrap(function _callee16$(_context16) {
+            return regeneratorRuntime.wrap(function _callee17$(_context17) {
               while (1) {
-                switch (_context16.prev = _context16.next) {
+                switch (_context17.prev = _context17.next) {
                   case 0:
-                    _context16.next = 2;
+                    _context17.next = 2;
                     return this.toastCtrl.create({
                       message: msg,
                       position: 'top',
@@ -7607,15 +7675,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    toast = _context16.sent;
+                    toast = _context17.sent;
                     toast.present();
 
                   case 4:
                   case "end":
-                    return _context16.stop();
+                    return _context17.stop();
                 }
               }
-            }, _callee16, this);
+            }, _callee17, this);
           }));
         }
       }, {
@@ -8787,7 +8855,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _this41 = this;
 
           this.programService.insertEquipmentPaymentDetail({
-            "program_id": this.pgamount,
+            "program_id": this.programId,
             "amount": this.pgamount
           }).subscribe(function (data) {
             console.log(data);
@@ -8811,6 +8879,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
 
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)], EquipmentPaymentComponent.prototype, "pgamount", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)], EquipmentPaymentComponent.prototype, "programId", void 0);
     EquipmentPaymentComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-equipment-payment',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
@@ -9282,21 +9351,40 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "productPayment",
         value: function productPayment() {
-          this.iap.getProducts([test]).then(function (products) {
-            console.log(products); // this.products = products
-          })["catch"](function (err) {
-            console.log(err);
+          var _this43 = this;
+
+          // this.iap
+          //   .getProducts([test])
+          //   .then((products) => {
+          //     console.log(products);
+          //     // this.products = products
+          //   })
+          //   .catch((err) => {
+          //     console.log(err);
+          //   });
+          this.programService.insertProdPaymentDetail({
+            "program_id": this.pgid,
+            "amount": this.pgamount
+          }).subscribe(function (data) {
+            console.log(_this43.pgamount);
+
+            if (data) {
+              var fileData = {
+                pgid: _this43.pgid,
+                pgname: _this43.pgname,
+                pgamount: _this43.pgamount,
+                pgimg: _this43.pgimg
+              };
+
+              _this43.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+            }
           });
         }
       }, {
         key: "payment",
         value: function payment() {
-          var _this43 = this;
+          var _this44 = this;
 
-          this.iap.getProducts([test]).then(function (products) {
-            console.log(products); // this.products = products
-            //  [{ productId: 'com.yourapp.prod1', 'title': '...', description: '...', price: '...' }, ...]
-          });
           this.commonService.dismissModal();
 
           if (this.type == 2) {
@@ -9308,13 +9396,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               if (data) {
                 var fileData = {
-                  pgid: _this43.pgid,
-                  pgname: _this43.pgname,
-                  pgamount: _this43.pgamount,
-                  pgimg: _this43.pgimg
+                  pgid: _this44.pgid,
+                  pgname: _this44.pgname,
+                  pgamount: _this44.pgamount,
+                  pgimg: _this44.pgimg
                 };
 
-                _this43.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+                _this44.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
               }
             });
           } else if (this.type == 1) {
@@ -9326,13 +9414,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               if (data) {
                 var fileData = {
-                  pgid: _this43.pgid.toString(','),
-                  pgname: _this43.pgname,
-                  pgamount: _this43.pgamount,
-                  pgimg: _this43.pgimg
+                  pgid: _this44.pgid.toString(','),
+                  pgname: _this44.pgname,
+                  pgamount: _this44.pgamount,
+                  pgimg: _this44.pgimg
                 };
 
-                _this43.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
+                _this44.commonService.presentModal(src_app_paypal_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_5__["ThankyouComponent"], 'fullModal', fileData);
               }
             });
           }
@@ -9550,7 +9638,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var SearchFoodComponent = /*#__PURE__*/function () {
       function SearchFoodComponent(commonService, nutritionService, barcodeScanner, navParams) {
-        var _this44 = this;
+        var _this45 = this;
 
         _classCallCheck(this, SearchFoodComponent);
 
@@ -9567,7 +9655,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (Array.isArray(element.data)) {
             element.data.forEach(function (el) {
               if (el.food_name !== null) {
-                _this44.selectedFoodList2.push(el.food_name);
+                _this45.selectedFoodList2.push(el.food_name);
               }
             });
           }
@@ -9584,10 +9672,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngAfterViewInit",
         value: function ngAfterViewInit() {
-          var _this45 = this;
+          var _this46 = this;
 
           setTimeout(function () {
-            _this45.search_food_name.setFocus();
+            _this46.search_food_name.setFocus();
           }, 400);
         }
       }, {
@@ -9605,22 +9693,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkFoodName",
         value: function checkFoodName(foodname) {
-          var _this46 = this;
+          var _this47 = this;
 
           if (foodname !== '') {
             this.nutritionService.ntnxfetchFood(foodname).subscribe(function (data) {
               data.common.forEach(function (el) {
-                if (_this46.selectedFoodList2.indexOf(el['food_name']) !== -1) {
+                if (_this47.selectedFoodList2.indexOf(el['food_name']) !== -1) {
                   el['selected'] = true;
                 } else {
                   el['selected'] = false;
                 }
               });
 
-              _this46.commonService.dismissLoader();
+              _this47.commonService.dismissLoader();
 
               console.log(data.common);
-              _this46.foodList = Array.of(data);
+              _this47.foodList = Array.of(data);
               console.log();
             }, function (err) {
               console.log(err);
@@ -9632,7 +9720,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getNutriDetails",
         value: function getNutriDetails(itemDetails) {
-          var _this47 = this;
+          var _this48 = this;
 
           var itemVal = itemDetails.target.value;
 
@@ -9646,9 +9734,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               // console.log(data['foods'])
               console.log(data);
 
-              _this47.selectedFoodList.push(data['foods'][0]);
+              _this48.selectedFoodList.push(data['foods'][0]);
 
-              console.log(_this47.selectedFoodList);
+              console.log(_this48.selectedFoodList);
             });
           } else {
             console.log('viraj');
@@ -9690,26 +9778,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "scanFood",
         value: function scanFood() {
-          var _this48 = this;
+          var _this49 = this;
 
           this.barcodeScanner.scan().then(function (barcodeData) {
             console.log('Barcode data', barcodeData);
 
             if (!barcodeData.cancelled) {
-              _this48.nutritionService.nutrtionBarcode(barcodeData.text).subscribe(function (data) {
+              _this49.nutritionService.nutrtionBarcode(barcodeData.text).subscribe(function (data) {
                 console.log('asadsad');
 
                 if (!data.status) {
-                  _this48.apiData = data;
+                  _this49.apiData = data;
                   console.log(data);
                 } else {
-                  _this48.apiData = null;
+                  _this49.apiData = null;
                   console.log('ssssssss', data.status);
 
-                  _this48.commonService.presentToast('Product not found in database');
+                  _this49.commonService.presentToast('Product not found in database');
                 }
 
-                _this48.commonService.dismissModal(_this48.apiData);
+                _this49.commonService.dismissModal(_this49.apiData);
               });
             }
           })["catch"](function (err) {
@@ -10462,7 +10550,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var _this49 = this;
+          var _this50 = this;
 
           // this.submitted = true;
           if (this.userIdentityVerifyForm.invalid) {
@@ -10472,25 +10560,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.commonService.presentLoader();
           this.settingsService.userIndentityVerify(this.userIdentityVerifyForm.value).subscribe(function (data) {
-            _this49.commonService.dismissLoader();
+            _this50.commonService.dismissLoader();
 
             if (data.Record.RecordStatus === 'match') {
-              _this49.settingsService.trilloRecordUpdate().subscribe(function (data) {
+              _this50.settingsService.trilloRecordUpdate().subscribe(function (data) {
                 var loginUserData = JSON.parse(localStorage.getItem('userData'));
                 loginUserData.trilloMatch = 1;
                 localStorage.setItem('userData', JSON.stringify(loginUserData));
               });
 
-              _this49.commonService.dismissModal();
+              _this50.commonService.dismissModal();
 
-              _this49.commonService.presentToast('Record Match');
+              _this50.commonService.presentToast('Record Match');
             } else if (data.Record.RecordStatus === 'undefined') {
-              _this49.commonService.presentToast(data);
+              _this50.commonService.presentToast(data);
             } else {
-              _this49.commonService.presentToast('Record Not Match');
+              _this50.commonService.presentToast('Record Not Match');
             }
           }, function (err) {
-            _this49.commonService.dismissLoader();
+            _this50.commonService.dismissLoader();
           });
         }
       }, {
@@ -10615,15 +10703,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "rename",
         value: function rename() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
-            var _this50 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
+            var _this51 = this;
 
             var alert;
-            return regeneratorRuntime.wrap(function _callee17$(_context17) {
+            return regeneratorRuntime.wrap(function _callee18$(_context18) {
               while (1) {
-                switch (_context17.prev = _context17.next) {
+                switch (_context18.prev = _context18.next) {
                   case 0:
-                    _context17.next = 2;
+                    _context18.next = 2;
                     return this.alertController.create({
                       header: "Rename Playlist",
                       inputs: [{
@@ -10640,20 +10728,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         handler: function handler(blah) {
                           console.log('Confirm Cancel: blah');
 
-                          _this50.commonService.dismissPopover("");
+                          _this51.commonService.dismissPopover("");
                         }
                       }, {
                         text: 'Okay',
                         handler: function handler(data) {
                           if (data.playlistName) {
-                            _this50.musicService.renamePlaylist({
+                            _this51.musicService.renamePlaylist({
                               'playlistName': data.playlistName,
-                              'playlistId': _this50.playlistData.id
+                              'playlistId': _this51.playlistData.id
                             }).subscribe(function (data) {
                               if (data) {
-                                _this50.commonService.presentToast("Playlist renamed.");
+                                _this51.commonService.presentToast("Playlist renamed.");
 
-                                _this50.commonService.dismissPopover(true);
+                                _this51.commonService.dismissPopover(true);
                               }
                             });
                           }
@@ -10662,29 +10750,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    alert = _context17.sent;
+                    alert = _context18.sent;
                     alert.present();
 
                   case 4:
                   case "end":
-                    return _context17.stop();
+                    return _context18.stop();
                 }
               }
-            }, _callee17, this);
+            }, _callee18, this);
           }));
         }
       }, {
         key: "remove",
         value: function remove() {
-          var _this51 = this;
+          var _this52 = this;
 
           this.musicService.removePlaylist({
             'playlistId': this.playlistData.id
           }).subscribe(function (data) {
             if (data) {
-              _this51.commonService.presentToast("Playlist removed.");
+              _this52.commonService.presentToast("Playlist removed.");
 
-              _this51.commonService.dismissPopover("");
+              _this52.commonService.dismissPopover("");
             }
           });
         }
@@ -10799,35 +10887,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PlaylistDropdownComponent, [{
         key: "dismissClick",
         value: function dismissClick() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
-            return regeneratorRuntime.wrap(function _callee18$(_context18) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
+            return regeneratorRuntime.wrap(function _callee19$(_context19) {
               while (1) {
-                switch (_context18.prev = _context18.next) {
+                switch (_context19.prev = _context19.next) {
                   case 0:
-                    _context18.next = 2;
+                    _context19.next = 2;
                     return this.popoverController.dismiss();
 
                   case 2:
                   case "end":
-                    return _context18.stop();
+                    return _context19.stop();
                 }
               }
-            }, _callee18, this);
+            }, _callee19, this);
           }));
         }
       }, {
         key: "newPlaylist",
         value: function newPlaylist() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
-            var _this52 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
+            var _this53 = this;
 
             var alert;
-            return regeneratorRuntime.wrap(function _callee19$(_context19) {
+            return regeneratorRuntime.wrap(function _callee20$(_context20) {
               while (1) {
-                switch (_context19.prev = _context19.next) {
+                switch (_context20.prev = _context20.next) {
                   case 0:
                     this.dismissClick();
-                    _context19.next = 3;
+                    _context20.next = 3;
                     return this.alertController.create({
                       header: "Create New Playlist",
                       inputs: [{
@@ -10847,12 +10935,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         text: 'Okay',
                         handler: function handler(data) {
                           if (data.playlistName) {
-                            _this52.musicService.createPlaylist({
+                            _this53.musicService.createPlaylist({
                               'pname': data.playlistName,
-                              'mid': _this52.mid
+                              'mid': _this53.mid
                             }).subscribe(function (data) {
                               if (data) {
-                                _this52.commonService.presentToast("Song added.");
+                                _this53.commonService.presentToast("Song added.");
                               }
                             });
                           }
@@ -10861,15 +10949,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 3:
-                    alert = _context19.sent;
+                    alert = _context20.sent;
                     alert.present();
 
                   case 5:
                   case "end":
-                    return _context19.stop();
+                    return _context20.stop();
                 }
               }
-            }, _callee19, this);
+            }, _callee20, this);
           }));
         }
       }, {
@@ -10880,7 +10968,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addToList",
         value: function addToList(ev) {
-          var _this53 = this;
+          var _this54 = this;
 
           this.commonService.dismissPopover('');
           console.log(ev);
@@ -10890,12 +10978,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             if (data.status) {
               if (data.status.id) {
-                _this53.commonService.presentToast('Song added to playlist.');
+                _this54.commonService.presentToast('Song added to playlist.');
               } else {
-                _this53.commonService.presentToast(data.status);
+                _this54.commonService.presentToast(data.status);
               }
             } else {
-              _this53.commonService.presentToast('someting went wrong');
+              _this54.commonService.presentToast('someting went wrong');
             }
           });
         }
@@ -11287,29 +11375,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(NotificationModalComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this54 = this;
+          var _this55 = this;
 
           this.profileData = this.navParams.get('profileData');
           this.commonService.presentLoader();
           this.peopleService.getUserNotification({
             'cid': this.profileData.userData.id
           }).subscribe(function (data) {
-            _this54.commonService.dismissLoader();
+            _this55.commonService.dismissLoader();
 
             if (data.status) {
-              _this54.toggleDiscussion = data.status.discussion;
-              _this54.toggleImage = data.status.image;
-              _this54.toggleVideo = data.status.video;
-              _this54.toggleProgram = data.status.program;
+              _this55.toggleDiscussion = data.status.discussion;
+              _this55.toggleImage = data.status.image;
+              _this55.toggleVideo = data.status.video;
+              _this55.toggleProgram = data.status.program;
             }
           }, function (err) {
-            _this54.commonService.dismissLoader();
+            _this55.commonService.dismissLoader();
           });
         }
       }, {
         key: "disableNotification",
         value: function disableNotification(colName, value) {
-          var _this55 = this;
+          var _this56 = this;
 
           this.commonService.presentLoader();
           this.peopleService.userNotification({
@@ -11319,11 +11407,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this55.commonService.dismissLoader();
+            _this56.commonService.dismissLoader();
 
-            _this55.commonService.presentToast(data.toast + " " + _this55.profileData.userData.user_name);
+            _this56.commonService.presentToast(data.toast + " " + _this56.profileData.userData.user_name);
           }, function (err) {
-            _this55.commonService.dismissLoader();
+            _this56.commonService.dismissLoader();
           });
         }
       }, {
@@ -11450,7 +11538,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "removePost",
         value: function removePost() {
-          var _this56 = this;
+          var _this57 = this;
 
           this.commonService.presentLoader();
           this.postService.removePost({
@@ -11458,7 +11546,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this56.commonService.dismissLoader();
+            _this57.commonService.dismissLoader();
 
             if (data.postStatus == true) {}
           });
@@ -11470,7 +11558,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "commentDisable",
         value: function commentDisable() {
-          var _this57 = this;
+          var _this58 = this;
 
           this.commonService.presentLoader();
           this.postService.commentDisable({
@@ -11479,7 +11567,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
 
-            _this57.commonService.dismissLoader();
+            _this58.commonService.dismissLoader();
 
             if (data.postStatus == true) {}
           });
@@ -11834,19 +11922,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this58 = this;
+          var _this59 = this;
 
           this.viewUserId = this.navParamas.get('userId');
           var dataPromise = this.storage.get('userData');
           dataPromise.then(function (data) {
-            _this58.storageData = JSON.parse(data);
-            _this58.userId = _this58.storageData.id;
+            _this59.storageData = JSON.parse(data);
+            _this59.userId = _this59.storageData.id;
           });
           this.peopleViewService.getFollowers(this.viewUserId).subscribe(function (data) {
-            _this58.followers = data.result;
-            _this58.followerFilteredUsers = _this58.followers;
+            _this59.followers = data.result;
+            _this59.followerFilteredUsers = _this59.followers;
 
-            _this58.followers.forEach(function (element, i) {
+            _this59.followers.forEach(function (element, i) {
               if (element.following_user.follower_rel != null) {
                 element.following_user.follow = true;
                 element.following_user["class"] = '';
@@ -11858,7 +11946,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             });
 
-            console.log(_this58.followers);
+            console.log(_this59.followers);
             console.log('followersload');
           });
         }
@@ -11872,19 +11960,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "followUpPeople",
         value: function followUpPeople(folloUpId, status) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
-            var _this59 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
+            var _this60 = this;
 
-            return regeneratorRuntime.wrap(function _callee20$(_context20) {
+            return regeneratorRuntime.wrap(function _callee21$(_context21) {
               while (1) {
-                switch (_context20.prev = _context20.next) {
+                switch (_context21.prev = _context21.next) {
                   case 0:
                     this.peopleViewService.followUpPeople({
                       'followUpId': folloUpId,
                       'status': status
                     }).subscribe(function (data) {
                       if (data.followStatus == 'true') {
-                        _this59.followers.forEach(function (element, i) {
+                        _this60.followers.forEach(function (element, i) {
                           if (element.following_user.id == folloUpId) {
                             element.following_user.follow = false;
                             element.following_user["class"] = 'green text-white';
@@ -11892,7 +11980,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                           }
                         });
                       } else if (data.followStatus == 'false') {
-                        _this59.followers.forEach(function (element, i) {
+                        _this60.followers.forEach(function (element, i) {
                           if (element.following_user.id == folloUpId) {
                             element.following_user.follow = true;
                             element.following_user["class"] = '';
@@ -11901,16 +11989,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         });
                       }
 
-                      console.log(_this59.followers);
+                      console.log(_this60.followers);
                       console.log(' this.followers');
                     });
 
                   case 1:
                   case "end":
-                    return _context20.stop();
+                    return _context21.stop();
                 }
               }
-            }, _callee20, this);
+            }, _callee21, this);
           }));
         } // async unfollow(ev: any) {
         //   const popover = await this.popoverController.create({
@@ -12064,31 +12152,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ionViewWillEnter",
         value: function ionViewWillEnter() {
-          var _this60 = this;
+          var _this61 = this;
 
           this.commonService.presentLoader();
           this.programService.getAdCompanyDetails({
             'adReqId': this.adReqDetails.id
           }).subscribe(function (data) {
-            _this60.commonService.dismissLoader();
+            _this61.commonService.dismissLoader();
 
-            _this60.msgCount = data.data.count;
-            console.log(_this60.msgCount);
-            _this60.adCompanyDetail = data.data.details.filter(function (el, i) {
+            _this61.msgCount = data.data.count;
+            console.log(_this61.msgCount);
+            _this61.adCompanyDetail = data.data.details.filter(function (el, i) {
               if (el.consultant_approval) {
-                _this60.disabled = true;
+                _this61.disabled = true;
               }
 
               return el;
             });
           }, function (err) {
-            _this60.commonService.dismissLoader();
+            _this61.commonService.dismissLoader();
           });
         }
       }, {
         key: "acceptRequest",
         value: function acceptRequest(event) {
-          var _this61 = this;
+          var _this62 = this;
 
           var btn = [{
             text: 'Cancel',
@@ -12102,7 +12190,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             handler: function handler() {
               console.log('Confirm Okay');
 
-              _this61.sendRequest(event);
+              _this62.sendRequest(event);
             }
           }];
           this.commonService.presentAlert('Accept Request', 'Are you sure?', btn, '');
@@ -12110,15 +12198,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "sendRequest",
         value: function sendRequest(event) {
-          var _this62 = this;
+          var _this63 = this;
 
           this.programService.acceptSponsers({
             'acceptId': event,
             'adReqId': this.adReqDetails.id
           }).subscribe(function (data) {
-            _this62.disabled = data.data;
+            _this63.disabled = data.data;
 
-            _this62.closeModal();
+            _this63.closeModal();
           });
         }
       }, {
@@ -12376,7 +12464,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(SponserCommentComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this63 = this;
+          var _this64 = this;
 
           this.commonService.presentLoader();
           this.adDetail = this.navParams.data.adDetails;
@@ -12384,11 +12472,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.programService.getSponserComment({
             'adReqId': this.adDetail.id
           }).subscribe(function (data) {
-            _this63.comment = data.data;
+            _this64.comment = data.data;
 
-            _this63.commonService.dismissLoader();
+            _this64.commonService.dismissLoader();
           }, function (err) {
-            _this63.commonService.dismissLoader();
+            _this64.commonService.dismissLoader();
           });
           console.log(this.adDetail);
         }
@@ -12407,7 +12495,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onClickSubmit",
         value: function onClickSubmit() {
-          var _this64 = this;
+          var _this65 = this;
 
           this.submitted = true;
 
@@ -12419,11 +12507,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               'requestId': this.adDetail.id,
               'comment': this.commentForm.value.comment
             }).subscribe(function (data) {
-              _this64.ngOnInit();
+              _this65.ngOnInit();
 
-              _this64.commonService.dismissLoader();
+              _this65.commonService.dismissLoader();
             }, function (err) {
-              _this64.commonService.dismissLoader();
+              _this65.commonService.dismissLoader();
             });
           }
         }
@@ -12524,19 +12612,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_program_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var ngx_ionic_image_viewer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ngx-ionic-image-viewer */
+    "./node_modules/ngx-ionic-image-viewer/fesm2015/ngx-ionic-image-viewer.js");
+    /* harmony import */
+
+
+    var _services_program_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ./../../services/program.service */
     "./src/app/services/program.service.ts");
     /* harmony import */
 
 
-    var _add_program_add_equipments_add_equipments_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _add_program_add_equipments_add_equipments_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./../../add-program/add-equipments/add-equipments.component */
     "./src/app/add-program/add-equipments/add-equipments.component.ts");
     /* harmony import */
 
 
-    var _config_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _config_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! ./../../config/config */
     "./src/app/config/config.ts");
 
@@ -12567,7 +12661,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       // },
       // ];
       function EquipmentsComponent(commonService, navParams, modalCtrl, programService) {
-        var _this65 = this;
+        var _this66 = this;
 
         _classCallCheck(this, EquipmentsComponent);
 
@@ -12576,9 +12670,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.modalCtrl = modalCtrl;
         this.programService = programService;
         this.showEquipments = 1;
-        this.equipmentPicPath = _config_config__WEBPACK_IMPORTED_MODULE_6__["Config"].equipmentPic;
+        this.equipmentPicPath = _config_config__WEBPACK_IMPORTED_MODULE_7__["Config"].equipmentPic;
+        this.url = _config_config__WEBPACK_IMPORTED_MODULE_7__["Config"].imgUrl;
+        this.slideOpts = {
+          slidesPerView: 3,
+          speed: 400
+        };
         this.programDetails = this.navParams.data.programDetail;
         console.log(this.programDetails);
+
+        if (this.programDetails.parent_program == null) {
+          this.parentProgId = this.programDetails.id;
+        } else {
+          this.parentProgId = this.programDetails.parent_program;
+        }
 
         if (this.programDetails.equipments != null) {
           this.equipment = this.programDetails.equipments.split(',');
@@ -12586,10 +12691,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         console.log(this.equipment);
         this.programService.fetchAllSelectedEquipmentList({
-          'programId': this.programDetails.id
+          'programId': this.parentProgId
         }).subscribe(function (data) {
-          _this65.equipments = data.equipmentList;
-          console.log(data);
+          _this66.equipments = data.equipmentList;
+          console.log(data.equipmentList);
+          console.log(_this66.programDetails.id);
         });
       }
 
@@ -12631,17 +12737,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "openEdit",
         value: function openEdit() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
-            var _this66 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee22() {
+            var _this67 = this;
 
             var modal;
-            return regeneratorRuntime.wrap(function _callee21$(_context21) {
+            return regeneratorRuntime.wrap(function _callee22$(_context22) {
               while (1) {
-                switch (_context21.prev = _context21.next) {
+                switch (_context22.prev = _context22.next) {
                   case 0:
-                    _context21.next = 2;
+                    _context22.next = 2;
                     return this.modalCtrl.create({
-                      component: _add_program_add_equipments_add_equipments_component__WEBPACK_IMPORTED_MODULE_5__["AddEquipmentsComponent"],
+                      component: _add_program_add_equipments_add_equipments_component__WEBPACK_IMPORTED_MODULE_6__["AddEquipmentsComponent"],
                       cssClass: 'fullModal',
                       componentProps: {
                         "programData": this.programDetails.equipments,
@@ -12650,31 +12756,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    modal = _context21.sent;
+                    modal = _context22.sent;
                     modal.onDidDismiss().then(function (d) {
                       console.log(d);
 
                       if (d.data.length > 0) {
                         // d.data.filter(Boolean);
-                        _this66.equipment = d.data.filter(Boolean);
-                        console.log(_this66.equipment);
+                        _this67.equipment = d.data.filter(Boolean);
+                        console.log(_this67.equipment);
 
-                        _this66.programService.updateEquipmentList({
+                        _this67.programService.updateEquipmentList({
                           "equipmentId": d.data.filter(Boolean),
-                          "programId": _this66.programDetails.id
+                          "programId": _this67.programDetails.id
                         }).subscribe(function (data) {
                           console.log('id update');
                         });
 
                         console.log(d.data.filter(Boolean));
 
-                        _this66.programService.fetchEquipmentList().subscribe(function (data) {
+                        _this67.programService.fetchEquipmentList().subscribe(function (data) {
                           console.log(data);
-                          _this66.equipments = data.equipmentList;
+                          _this67.equipments = data.equipmentList;
 
-                          _this66.equipments.filter(function (el) {
-                            if (_this66.equipment) {
-                              if (_this66.equipment.includes(el.id)) {
+                          _this67.equipments.filter(function (el) {
+                            if (_this67.equipment) {
+                              if (_this67.equipment.includes(el.id)) {
                                 el.selected = true;
                               }
 
@@ -12690,18 +12796,56 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         console.log('empty');
                       }
                     });
-                    _context21.next = 6;
+                    _context22.next = 6;
                     return modal.present();
 
                   case 6:
-                    return _context21.abrupt("return", _context21.sent);
+                    return _context22.abrupt("return", _context22.sent);
 
                   case 7:
                   case "end":
-                    return _context21.stop();
+                    return _context22.stop();
                 }
               }
-            }, _callee21, this);
+            }, _callee22, this);
+          }));
+        }
+      }, {
+        key: "openViewer",
+        value: function openViewer(path) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
+            var modal;
+            return regeneratorRuntime.wrap(function _callee23$(_context23) {
+              while (1) {
+                switch (_context23.prev = _context23.next) {
+                  case 0:
+                    _context23.next = 2;
+                    return this.modalCtrl.create({
+                      component: ngx_ionic_image_viewer__WEBPACK_IMPORTED_MODULE_4__["ViewerModalComponent"],
+                      componentProps: {
+                        src: path,
+                        srcHighRes: path,
+                        srcFallback: path
+                      },
+                      cssClass: 'ion-img-viewer',
+                      keyboardClose: true,
+                      showBackdrop: true
+                    });
+
+                  case 2:
+                    modal = _context23.sent;
+                    _context23.next = 5;
+                    return modal.present();
+
+                  case 5:
+                    return _context23.abrupt("return", _context23.sent);
+
+                  case 6:
+                  case "end":
+                    return _context23.stop();
+                }
+              }
+            }, _callee23, this);
           }));
         }
       }]);
@@ -12717,7 +12861,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]
       }, {
-        type: _services_program_service__WEBPACK_IMPORTED_MODULE_4__["ProgramService"]
+        type: _services_program_service__WEBPACK_IMPORTED_MODULE_5__["ProgramService"]
       }];
     };
 
@@ -12731,7 +12875,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       "./src/app/app.component.scss"))["default"], tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./equipments.component.scss */
       "./src/app/program/equipments/equipments.component.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _services_program_service__WEBPACK_IMPORTED_MODULE_4__["ProgramService"]])], EquipmentsComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _services_program_service__WEBPACK_IMPORTED_MODULE_5__["ProgramService"]])], EquipmentsComponent);
     /***/
   },
 
@@ -12818,32 +12962,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "delete",
         value: function _delete() {
-          var _this67 = this;
+          var _this68 = this;
 
           this.programService.deleteProgram({
             'programId': this.programId
           }).subscribe(function (data) {
-            _this67.popOver.dismiss();
+            _this68.popOver.dismiss();
           }, function (error) {
-            _this67.popOver.dismiss();
+            _this68.popOver.dismiss();
           });
         }
       }, {
         key: "closeModal",
         value: function closeModal() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee22() {
-            return regeneratorRuntime.wrap(function _callee22$(_context22) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee24() {
+            return regeneratorRuntime.wrap(function _callee24$(_context24) {
               while (1) {
-                switch (_context22.prev = _context22.next) {
+                switch (_context24.prev = _context24.next) {
                   case 0:
                     this.popOver.dismiss();
 
                   case 1:
                   case "end":
-                    return _context22.stop();
+                    return _context24.stop();
                 }
               }
-            }, _callee22, this);
+            }, _callee24, this);
           }));
         }
       }]);
@@ -12987,32 +13131,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "recieveUser",
         value: function recieveUser(data) {
-          var _this68 = this;
+          var _this69 = this;
 
           if (data != null) {
             var uId = data.toString().split(',');
             console.log(uId);
             uId.forEach(function (el) {
-              _this68.programService.getEachUserData({
+              _this69.programService.getEachUserData({
                 el: el
               }).subscribe(function (peoples) {
                 console.log(peoples);
 
-                _this68.acceptedData.push({
+                _this69.acceptedData.push({
                   'image': peoples[0].bios.profile_pic,
                   'name': peoples[0].user_name,
                   'id': peoples[0].id
                 });
               });
 
-              console.log(_this68.acceptedData);
+              console.log(_this69.acceptedData);
             });
           }
         }
       }, {
         key: "reload",
         value: function reload(data) {
-          var _this69 = this;
+          var _this70 = this;
 
           this.commonService.presentLoader();
           console.log(data);
@@ -13021,12 +13165,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             var uId = data.split(',');
             console.log(uId);
             uId.forEach(function (el) {
-              _this69.programService.getEachUserData({
+              _this70.programService.getEachUserData({
                 el: el
               }).subscribe(function (peoples) {
                 console.log(peoples);
 
-                _this69.userData.push({
+                _this70.userData.push({
                   'image': peoples[0].bios.profile_pic,
                   'name': peoples[0].user_name,
                   'request_recive': data,
@@ -13035,36 +13179,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 });
               });
 
-              console.log(_this69.userData);
+              console.log(_this70.userData);
             });
           }
 
           this.programService.getProgramById({
             'programId': this.programDetail.id
           }).subscribe(function (data) {
-            _this69.programDetail = data;
-            console.log(_this69.programDetail);
-            _this69.participant = _this69.navParams.data.userList.filter(function (el) {
-              console.log(_this69.programDetail.programData.request_accepted);
+            _this70.programDetail = data;
+            console.log(_this70.programDetail);
+            _this70.participant = _this70.navParams.data.userList.filter(function (el) {
+              console.log(_this70.programDetail.programData.request_accepted);
 
-              if (_this69.programDetail.programData.request_accepted != null) {
+              if (_this70.programDetail.programData.request_accepted != null) {
                 console.log('innnn'); // var 
 
-                if (_this69.programDetail.programData.request_accepted.split(',').includes(el.id.toString())) {
+                if (_this70.programDetail.programData.request_accepted.split(',').includes(el.id.toString())) {
                   console.log('ttt');
                   el.request_accepted = true;
                 }
               }
 
-              console.log(_this69.participant);
+              console.log(_this70.participant);
               return el;
             });
 
-            _this69.commonService.dismissLoader();
+            _this70.commonService.dismissLoader();
           }, function (err) {
-            _this69.commonService.dismissLoader();
+            _this70.commonService.dismissLoader();
 
-            _this69.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this70.commonService.presentToast("Couldnt load data, Something went wrong.");
           });
         }
       }, {
@@ -13075,36 +13219,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "accept",
         value: function accept(event) {
-          var _this70 = this;
+          var _this71 = this;
 
           this.programService.acceptJoinRequest({
             'programId': this.prog_id,
             'userId': event
           }).subscribe(function (data) {
             console.log(data);
-            _this70.acceptedData = [];
+            _this71.acceptedData = [];
 
-            _this70.recieveUser(data.data.request_accepted);
+            _this71.recieveUser(data.data.request_accepted);
 
-            _this70.userData = [];
+            _this71.userData = [];
 
-            _this70.reload(data.data.request_recive); // this.ngOnInit();
+            _this71.reload(data.data.request_recive); // this.ngOnInit();
 
           });
         }
       }, {
         key: "deleteRequest",
         value: function deleteRequest(event) {
-          var _this71 = this;
+          var _this72 = this;
 
           this.programService.deleteJoinRequest({
             'programId': this.prog_id,
             'userId': event
           }).subscribe(function (data) {
             console.log(data);
-            _this71.userData = [];
+            _this72.userData = [];
 
-            _this71.reload(data.data.request_recive); // this.ngOnInit();
+            _this72.reload(data.data.request_recive); // this.ngOnInit();
 
           });
         }
@@ -13221,14 +13365,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "accept",
         value: function accept() {
-          var _this72 = this;
+          var _this73 = this;
 
           this.programService.acceptProgramRequest({
             'programId': this.programid
           }).subscribe(function (data) {
-            _this72.popOver.dismiss();
+            _this73.popOver.dismiss();
           }, function (err) {
-            _this72.popOver.dismiss();
+            _this73.popOver.dismiss();
           });
         }
       }, {
@@ -13397,7 +13541,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this73 = this;
+          var _this74 = this;
 
           this.programDetail = this.navParams.data.programDetail;
           console.log(this.programDetail);
@@ -13423,10 +13567,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).subscribe(function (data) {
             console.log(data);
             console.log(data.cloneList[0].non_live_component_fee);
-            _this73.non_live_component_fee = data.cloneList[0].non_live_component_fee;
-            _this73.allProgram = data.cloneList;
+            _this74.non_live_component_fee = data.cloneList[0].non_live_component_fee;
+            _this74.allProgram = data.cloneList;
 
-            _this73.allProgram.filter(function (el) {
+            _this74.allProgram.filter(function (el) {
               el.convertedTime = new Date(el.program_date + 'Z');
               console.log(el.convertedTime);
               console.log(new Date());
@@ -13459,12 +13603,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             });
 
-            _this73.nutritionService.getNutritionById({
+            _this74.nutritionService.getNutritionById({
               'nutriId': nutriArr.toLocaleString()
             }).subscribe(function (ndata) {
-              _this73.nutritionList = ndata.nutritionList;
+              _this74.nutritionList = ndata.nutritionList;
 
-              _this73.nutritionList.forEach(function (el) {
+              _this74.nutritionList.forEach(function (el) {
                 console.log(el.image_path);
                 console.log(el.image_path.split(','));
                 var imgArr = el.image_path.split(','); //  console.log(this.nutritionList[el]);
@@ -13472,18 +13616,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 el.fImage = imgArr[0];
               });
 
-              console.log(_this73.nutritionList);
+              console.log(_this74.nutritionList);
 
-              _this73.commonService.dismissLoader();
+              _this74.commonService.dismissLoader();
             }, function (err) {
-              _this73.commonService.dismissLoader();
+              _this74.commonService.dismissLoader();
 
-              _this73.commonService.presentToast("Couldnt load data, Something went wrong.");
+              _this74.commonService.presentToast("Couldnt load data, Something went wrong.");
             });
           }, function (err) {
-            _this73.commonService.dismissLoader();
+            _this74.commonService.dismissLoader();
 
-            _this73.commonService.presentToast("Couldnt load data, Something went wrong.");
+            _this74.commonService.presentToast("Couldnt load data, Something went wrong.");
           });
         }
       }, {
@@ -13509,10 +13653,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "showVideoDetails",
         value: function showVideoDetails(item) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
-            return regeneratorRuntime.wrap(function _callee23$(_context23) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee25() {
+            return regeneratorRuntime.wrap(function _callee25$(_context25) {
               while (1) {
-                switch (_context23.prev = _context23.next) {
+                switch (_context25.prev = _context25.next) {
                   case 0:
                     //   const modal = await this.modalCtrl.create({
                     //    component: ViewVideoDetailComponent,
@@ -13526,10 +13670,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 1:
                   case "end":
-                    return _context23.stop();
+                    return _context25.stop();
                 }
               }
-            }, _callee23, this);
+            }, _callee25, this);
           }));
         }
       }, {
@@ -13543,15 +13687,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addEquipments2",
         value: function addEquipments2(event, item) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee24() {
-            var _this74 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
+            var _this75 = this;
 
             var modal;
-            return regeneratorRuntime.wrap(function _callee24$(_context24) {
+            return regeneratorRuntime.wrap(function _callee26$(_context26) {
               while (1) {
-                switch (_context24.prev = _context24.next) {
+                switch (_context26.prev = _context26.next) {
                   case 0:
-                    _context24.next = 2;
+                    _context26.next = 2;
                     return this.modalCtrl.create({
                       component: _add_program_add_equipments_add_equipments_component__WEBPACK_IMPORTED_MODULE_8__["AddEquipmentsComponent"],
                       cssClass: 'fullModal',
@@ -13562,7 +13706,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    modal = _context24.sent;
+                    modal = _context26.sent;
                     modal.onDidDismiss().then(function (d) {
                       console.log(d); // if (event == 1) {
                       //   this.addEquipments = (d.data);
@@ -13573,21 +13717,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       if (d.data) {
                         console.log('asasd');
 
-                        _this74.ngOnInit();
+                        _this75.ngOnInit();
                       }
                     });
-                    _context24.next = 6;
+                    _context26.next = 6;
                     return modal.present();
 
                   case 6:
-                    return _context24.abrupt("return", _context24.sent);
+                    return _context26.abrupt("return", _context26.sent);
 
                   case 7:
                   case "end":
-                    return _context24.stop();
+                    return _context26.stop();
                 }
               }
-            }, _callee24, this);
+            }, _callee26, this);
           }));
         }
       }]);
@@ -13723,7 +13867,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var AuthService = /*#__PURE__*/function () {
       function AuthService(http, httpErrorHandler, router, storage, platform, toastController, notify, commonService, socket) {
-        var _this75 = this;
+        var _this76 = this;
 
         _classCallCheck(this, AuthService);
 
@@ -13738,7 +13882,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.user = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"](null);
         this.authState = new rxjs__WEBPACK_IMPORTED_MODULE_8__["BehaviorSubject"](false);
         this.platform.ready().then(function () {
-          _this75.ifLoggedIn();
+          _this76.ifLoggedIn();
         });
         this.handleError = httpErrorHandler.createHandleError('TasksService');
       }
@@ -13806,11 +13950,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "autoLogin",
         value: function autoLogin() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee25() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee27() {
             var data, userData;
-            return regeneratorRuntime.wrap(function _callee25$(_context25) {
+            return regeneratorRuntime.wrap(function _callee27$(_context27) {
               while (1) {
-                switch (_context25.prev = _context25.next) {
+                switch (_context27.prev = _context27.next) {
                   case 0:
                     data = localStorage.getItem('userToken');
                     userData = localStorage.getItem('userData');
@@ -13830,10 +13974,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 4:
                   case "end":
-                    return _context25.stop();
+                    return _context27.stop();
                 }
               }
-            }, _callee25, this);
+            }, _callee27, this);
           }));
         }
       }]);
@@ -14227,11 +14371,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(CheckTutorial, [{
         key: "canLoad",
         value: function canLoad() {
-          var _this76 = this;
+          var _this77 = this;
 
           return this.storage.get('ion_did_tutorial').then(function (res) {
             if (res) {
-              _this76.router.navigate(['/signin']);
+              _this77.router.navigate(['/signin']);
 
               return false;
             } else {
@@ -14398,10 +14542,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getUnreadCountMyProfile",
         value: function getUnreadCountMyProfile() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
-            return regeneratorRuntime.wrap(function _callee26$(_context26) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee28() {
+            return regeneratorRuntime.wrap(function _callee28$(_context28) {
               while (1) {
-                switch (_context26.prev = _context26.next) {
+                switch (_context28.prev = _context28.next) {
                   case 0:
                     this.notification.getUnreadCountMyProfile().subscribe(function (data) {
                       localStorage.setItem('notification', data.status.length);
@@ -14411,24 +14555,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 1:
                   case "end":
-                    return _context26.stop();
+                    return _context28.stop();
                 }
               }
-            }, _callee26, this);
+            }, _callee28, this);
           }));
         }
       }, {
         key: "presentPromptRedirect",
         value: function presentPromptRedirect(title, msg, sendData) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee27() {
-            var _this77 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee29() {
+            var _this78 = this;
 
             var alert;
-            return regeneratorRuntime.wrap(function _callee27$(_context27) {
+            return regeneratorRuntime.wrap(function _callee29$(_context29) {
               while (1) {
-                switch (_context27.prev = _context27.next) {
+                switch (_context29.prev = _context29.next) {
                   case 0:
-                    _context27.next = 2;
+                    _context29.next = 2;
                     return this.alertController.create({
                       cssClass: this.cssClass,
                       header: title,
@@ -14447,14 +14591,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       }, {
                         text: 'request',
                         handler: function handler(data) {
-                          _this77.presentLoader();
+                          _this78.presentLoader();
 
                           if (sendData != null && sendData != '') {
                             if (data.groupName != '' && data.groupName != null) {
                               sendData.groupName = data.groupName;
 
-                              _this77.dataService.sendChatRequest(sendData).subscribe(function (data) {
-                                _this77.dismissLoader();
+                              _this78.dataService.sendChatRequest(sendData).subscribe(function (data) {
+                                _this78.dismissLoader();
 
                                 if (data.status == 'success') {
                                   var fileData = {
@@ -14464,95 +14608,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                                   }; // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
 
                                   // var returndata = this.presentModal(ChatRoomsComponent,'fullModal',fileData);
-                                  _this77.router.navigate(['/chat-room/' + data.requestID + '/' + data.room + '/' + data.type]);
+                                  _this78.router.navigate(['/chat-room/' + data.requestID + '/' + data.room + '/' + data.type]);
                                 } else {
                                   console.log('Somthing wrong');
                                   return false;
                                 }
                               });
                             } else {
-                              _this77.dismissLoader();
+                              _this78.dismissLoader();
 
                               console.log("please enter group name");
                               return false;
                             }
                           } else {
-                            _this77.dismissLoader();
+                            _this78.dismissLoader();
                           }
-                        }
-                      }]
-                    });
-
-                  case 2:
-                    alert = _context27.sent;
-                    alert.present();
-
-                  case 4:
-                  case "end":
-                    return _context27.stop();
-                }
-              }
-            }, _callee27, this);
-          }));
-        }
-      }, {
-        key: "presentAlert",
-        value: function presentAlert(title, msg, btns, myCustomClass) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee28() {
-            var alert;
-            return regeneratorRuntime.wrap(function _callee28$(_context28) {
-              while (1) {
-                switch (_context28.prev = _context28.next) {
-                  case 0:
-                    if (myCustomClass != null && myCustomClass != '') {
-                      this.cssClass = myCustomClass;
-                    } else {
-                      this.cssClass = 'custom-alert';
-                    }
-
-                    _context28.next = 3;
-                    return this.alertController.create({
-                      cssClass: this.cssClass,
-                      header: title,
-                      message: msg,
-                      buttons: btns
-                    });
-
-                  case 3:
-                    alert = _context28.sent;
-                    alert.present();
-
-                  case 5:
-                  case "end":
-                    return _context28.stop();
-                }
-              }
-            }, _callee28, this);
-          }));
-        }
-      }, {
-        key: "redirectUrlWithIdConfirm",
-        value: function redirectUrlWithIdConfirm(title, msg, redirrectUrl, id) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee29() {
-            var _this78 = this;
-
-            var alert;
-            return regeneratorRuntime.wrap(function _callee29$(_context29) {
-              while (1) {
-                switch (_context29.prev = _context29.next) {
-                  case 0:
-                    _context29.next = 2;
-                    return this.alertController.create({
-                      header: title,
-                      message: msg,
-                      backdropDismiss: false,
-                      cssClass: 'custom-alert',
-                      buttons: [{
-                        text: 'Ok',
-                        handler: function handler() {
-                          _this78.router.navigate([redirrectUrl, id]).then(function (e) {
-                            if (e) {} else {}
-                          });
                         }
                       }]
                     });
@@ -14570,26 +14640,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "presentToast",
-        value: function presentToast(headerdata) {
+        key: "presentAlert",
+        value: function presentAlert(title, msg, btns, myCustomClass) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee30() {
-            var toast;
+            var alert;
             return regeneratorRuntime.wrap(function _callee30$(_context30) {
               while (1) {
                 switch (_context30.prev = _context30.next) {
                   case 0:
-                    _context30.next = 2;
-                    return this.toastController.create({
-                      header: headerdata,
-                      duration: 2000,
-                      position: 'bottom'
+                    if (myCustomClass != null && myCustomClass != '') {
+                      this.cssClass = myCustomClass;
+                    } else {
+                      this.cssClass = 'custom-alert';
+                    }
+
+                    _context30.next = 3;
+                    return this.alertController.create({
+                      cssClass: this.cssClass,
+                      header: title,
+                      message: msg,
+                      buttons: btns
                     });
 
-                  case 2:
-                    toast = _context30.sent;
-                    toast.present();
+                  case 3:
+                    alert = _context30.sent;
+                    alert.present();
 
-                  case 4:
+                  case 5:
                   case "end":
                     return _context30.stop();
                 }
@@ -14598,32 +14675,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "presentLoader",
-        value: function presentLoader() {
+        key: "redirectUrlWithIdConfirm",
+        value: function redirectUrlWithIdConfirm(title, msg, redirrectUrl, id) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee31() {
             var _this79 = this;
 
+            var alert;
             return regeneratorRuntime.wrap(function _callee31$(_context31) {
               while (1) {
                 switch (_context31.prev = _context31.next) {
                   case 0:
-                    this.isLoading = true;
-                    _context31.next = 3;
-                    return this.loadingController.create({
-                      spinner: 'crescent',
-                      // message: 'wait...',
-                      cssClass: 'custom-loader',
-                      translucent: true
-                    }).then(function (a) {
-                      a.present().then(function () {
-                        if (!_this79.isLoading) {
-                          a.dismiss(); // a.dismiss().then(() => console.log('abort presenting loader'));
+                    _context31.next = 2;
+                    return this.alertController.create({
+                      header: title,
+                      message: msg,
+                      backdropDismiss: false,
+                      cssClass: 'custom-alert',
+                      buttons: [{
+                        text: 'Ok',
+                        handler: function handler() {
+                          _this79.router.navigate([redirrectUrl, id]).then(function (e) {
+                            if (e) {} else {}
+                          });
                         }
-                      });
+                      }]
                     });
 
-                  case 3:
-                    return _context31.abrupt("return", _context31.sent);
+                  case 2:
+                    alert = _context31.sent;
+                    alert.present();
 
                   case 4:
                   case "end":
@@ -14634,19 +14714,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "dismissLoader",
-        value: function dismissLoader() {
+        key: "presentToast",
+        value: function presentToast(headerdata) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee32() {
+            var toast;
             return regeneratorRuntime.wrap(function _callee32$(_context32) {
               while (1) {
                 switch (_context32.prev = _context32.next) {
                   case 0:
-                    this.isLoading = false;
-                    _context32.next = 3;
-                    return this.loadingController.dismiss();
+                    _context32.next = 2;
+                    return this.toastController.create({
+                      header: headerdata,
+                      duration: 2000,
+                      position: 'bottom'
+                    });
 
-                  case 3:
-                    return _context32.abrupt("return", _context32.sent);
+                  case 2:
+                    toast = _context32.sent;
+                    toast.present();
 
                   case 4:
                   case "end":
@@ -14657,13 +14742,72 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
+        key: "presentLoader",
+        value: function presentLoader() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee33() {
+            var _this80 = this;
+
+            return regeneratorRuntime.wrap(function _callee33$(_context33) {
+              while (1) {
+                switch (_context33.prev = _context33.next) {
+                  case 0:
+                    this.isLoading = true;
+                    _context33.next = 3;
+                    return this.loadingController.create({
+                      spinner: 'crescent',
+                      // message: 'wait...',
+                      cssClass: 'custom-loader',
+                      translucent: true
+                    }).then(function (a) {
+                      a.present().then(function () {
+                        if (!_this80.isLoading) {
+                          a.dismiss(); // a.dismiss().then(() => console.log('abort presenting loader'));
+                        }
+                      });
+                    });
+
+                  case 3:
+                    return _context33.abrupt("return", _context33.sent);
+
+                  case 4:
+                  case "end":
+                    return _context33.stop();
+                }
+              }
+            }, _callee33, this);
+          }));
+        }
+      }, {
+        key: "dismissLoader",
+        value: function dismissLoader() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee34() {
+            return regeneratorRuntime.wrap(function _callee34$(_context34) {
+              while (1) {
+                switch (_context34.prev = _context34.next) {
+                  case 0:
+                    this.isLoading = false;
+                    _context34.next = 3;
+                    return this.loadingController.dismiss();
+
+                  case 3:
+                    return _context34.abrupt("return", _context34.sent);
+
+                  case 4:
+                  case "end":
+                    return _context34.stop();
+                }
+              }
+            }, _callee34, this);
+          }));
+        }
+      }, {
         key: "loggingout",
         value: function loggingout() {
-          var _this80 = this;
+          var _this81 = this;
 
           this.storage.get('userData').then(function (value) {
-            return _this80.settingsService.logout().subscribe(function (data) {
-              _this80.storage.clear();
+            return _this81.settingsService.logout().subscribe(function (data) {
+              _this81.storage.clear();
 
               localStorage.removeItem('userToken');
               localStorage.removeItem('userData');
@@ -14672,15 +14816,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               localStorage.removeItem('notification');
               localStorage.clear;
 
-              _this80.dismissLoader();
+              _this81.dismissLoader();
 
-              _this80.ngOnDestroy();
+              _this81.ngOnDestroy();
 
-              _this80.router.navigateByUrl('/signin');
+              _this81.router.navigateByUrl('/signin');
 
-              _this80.navCtrl.navigateRoot;
+              _this81.navCtrl.navigateRoot;
             }, function (err) {
-              _this80.storage.clear();
+              _this81.storage.clear();
 
               localStorage.removeItem('userToken');
               localStorage.removeItem('userData');
@@ -14700,14 +14844,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "presentModal",
         value: function presentModal(path, classcss, parameters) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee33() {
-            var _this81 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee35() {
+            var _this82 = this;
 
-            return regeneratorRuntime.wrap(function _callee33$(_context33) {
+            return regeneratorRuntime.wrap(function _callee35$(_context35) {
               while (1) {
-                switch (_context33.prev = _context33.next) {
+                switch (_context35.prev = _context35.next) {
                   case 0:
-                    _context33.next = 2;
+                    _context35.next = 2;
                     return this.modalController.create({
                       component: path,
                       cssClass: classcss,
@@ -14716,35 +14860,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    this.modal = _context33.sent;
+                    this.modal = _context35.sent;
                     this.modal.onDidDismiss().then(function (d) {
-                      _this81.modal = null;
-                      _this81.modaldata = d;
+                      _this82.modal = null;
+                      _this82.modaldata = d;
                     });
-                    _context33.next = 6;
+                    _context35.next = 6;
                     return this.modal.present();
 
                   case 6:
-                    return _context33.abrupt("return", _context33.sent);
+                    return _context35.abrupt("return", _context35.sent);
 
                   case 7:
                   case "end":
-                    return _context33.stop();
+                    return _context35.stop();
                 }
               }
-            }, _callee33, this);
+            }, _callee35, this);
           }));
         }
       }, {
         key: "showPopover",
         value: function showPopover(path, classcss, parameters) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee34() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee36() {
             var popover;
-            return regeneratorRuntime.wrap(function _callee34$(_context34) {
+            return regeneratorRuntime.wrap(function _callee36$(_context36) {
               while (1) {
-                switch (_context34.prev = _context34.next) {
+                switch (_context36.prev = _context36.next) {
                   case 0:
-                    _context34.next = 2;
+                    _context36.next = 2;
                     return this.popoverController.create({
                       component: path,
                       translucent: true,
@@ -14754,19 +14898,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    popover = _context34.sent;
-                    _context34.next = 5;
+                    popover = _context36.sent;
+                    _context36.next = 5;
                     return popover.present();
 
                   case 5:
-                    return _context34.abrupt("return", _context34.sent);
+                    return _context36.abrupt("return", _context36.sent);
 
                   case 6:
                   case "end":
-                    return _context34.stop();
+                    return _context36.stop();
                 }
               }
-            }, _callee34, this);
+            }, _callee36, this);
           }));
         }
       }, {
@@ -14791,13 +14935,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var buttons = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
           var numColumns = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
           var numOptions = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 5;
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee35() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee37() {
             var picker;
-            return regeneratorRuntime.wrap(function _callee35$(_context35) {
+            return regeneratorRuntime.wrap(function _callee37$(_context37) {
               while (1) {
-                switch (_context35.prev = _context35.next) {
+                switch (_context37.prev = _context37.next) {
                   case 0:
-                    _context35.next = 2;
+                    _context37.next = 2;
                     return this.pickerController.create({
                       columns: columnOptions,
                       buttons: buttons,
@@ -14805,16 +14949,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    picker = _context35.sent;
-                    _context35.next = 5;
+                    picker = _context37.sent;
+                    _context37.next = 5;
                     return picker.present();
 
                   case 5:
                   case "end":
-                    return _context35.stop();
+                    return _context37.stop();
                 }
               }
-            }, _callee35, this);
+            }, _callee37, this);
           }));
         }
       }, {
@@ -14975,7 +15119,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var HttpErrorHandlerService = /*#__PURE__*/function () {
       function HttpErrorHandlerService(messageService) {
-        var _this82 = this;
+        var _this83 = this;
 
         _classCallCheck(this, HttpErrorHandlerService);
 
@@ -14986,7 +15130,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return function () {
             var operation = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "operation";
             var result = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-            return _this82.handleError(serviceName, operation, result);
+            return _this83.handleError(serviceName, operation, result);
           };
         };
       }
@@ -16089,6 +16233,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/advertiseRequest', formData, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('advertiseRequest', formData)));
         }
       }, {
+        key: "cancelLiveProgram",
+        value: function cancelLiveProgram(formData) {
+          return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/cancelLiveProgram', formData, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('cancelLiveProgram', formData)));
+        }
+      }, {
         key: "getAdDetail",
         value: function getAdDetail(formData) {
           return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/getAdDetail', formData, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('getAdDetail', formData)));
@@ -16189,6 +16338,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/fetchAllSelectedEquipmentList', data, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('fetchAllSelectedEquipmentList', data)));
         }
       }, {
+        key: "checkPaymentStatus",
+        value: function checkPaymentStatus(data) {
+          return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/checkPaymentStatus', data, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('checkPaymentStatus', data)));
+        }
+      }, {
         key: "updateProgramFees",
         value: function updateProgramFees(data) {
           return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/updateProgramFees', data, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('updateProgramFees', data)));
@@ -16202,6 +16356,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "insertProgPaymentDetail",
         value: function insertProgPaymentDetail(data) {
           return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/insertProgPaymentDetail', data, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('insertProgPaymentDetail', data)));
+        }
+      }, {
+        key: "insertProdPaymentDetail",
+        value: function insertProdPaymentDetail(data) {
+          return this.http.post(_config_config__WEBPACK_IMPORTED_MODULE_4__["Config"].ApiUrl + 'api/auth/insertProdPaymentDetail', data, this.getApiHeaders(null, true)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('insertProdPaymentDetail', data)));
         }
       }, {
         key: "insertIntoactivePaymentDetail",
@@ -16797,7 +16956,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this83 = this;
+          var _this84 = this;
 
           console.log('viurja');
           var data = this.navParams.get('data');
@@ -16806,7 +16965,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             'nutriId': data.nutrition_id
           }).subscribe(function (data) {
             console.log(data);
-            _this83.nutritionItem = data.nutritionList.filter(function (el) {
+            _this84.nutritionItem = data.nutritionList.filter(function (el) {
               if (el.ingredients) {
                 el.ingredientsArr = el.ingredients.split(',');
               }
@@ -16817,7 +16976,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               return el;
             });
-            console.log(_this83.nutritionItem);
+            console.log(_this84.nutritionItem);
           });
         }
       }, {

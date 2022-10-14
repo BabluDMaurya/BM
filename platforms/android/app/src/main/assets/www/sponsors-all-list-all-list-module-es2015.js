@@ -154,24 +154,29 @@ let AllListPage = class AllListPage {
         this.commonService.presentToast('Fetching Sponsors');
         //------ sponcer list ----------//  
         this.programService.getSponserList(null).subscribe(data => {
-            data.data.forEach(element => {
-                this.commonService.dismissLoader();
-                if (element.get_adv.length > 0) {
-                    element.get_adv.forEach(el => {
-                        el.expanded = false;
-                        this.programList.push(el);
-                    });
-                }
-                if (element.get_prog.length > 0) {
-                    element.get_prog.forEach(al => {
-                        al.expanded = false;
-                        this.programData.push(al);
-                    });
-                }
-            }, error => {
-                this.commonService.dismissLoader();
-                this.commonService.presentToast('Failed to fetch.' + error);
-            });
+            console.log(data.data);
+            this.programList = data.data;
+            // data.data.forEach(element => { 
+            //   this.commonService.dismissLoader();
+            //   if(element.get_adv.length > 0)
+            //   {
+            //     element.get_adv.forEach(el => {
+            //       el.expanded = false;
+            //       this.programList.push(el);
+            //     });
+            //   }
+            //   if(element.get_prog.length > 0)
+            //   {
+            //     element.get_prog.forEach(al => {
+            //       al.expanded = false;
+            //       this.programData.push(al);
+            //     });
+            //   }
+            // },
+            // error =>{
+            //   this.commonService.dismissLoader();
+            //   this.commonService.presentToast('Failed to fetch.'+error);
+            // }); 
         });
         //------chat list---------//
         // this.notification.geUnreadSponcerChat().subscribe(

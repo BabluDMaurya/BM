@@ -43,6 +43,7 @@ export class DateTimeModalComponent implements OnInit {
   approval_btn: any = false;
   hours: any;
   programData: any;
+  programId: any;
   duration: any;
   minutes: any = 0;
   repetative: any = '';
@@ -340,10 +341,11 @@ export class DateTimeModalComponent implements OnInit {
     this.abDateSelect = ''
   }
   onSubmit() {
-    // if (this.programData.programType !== '6' && !this.duration) {
-    //   this.commonService.presentToast('Please select Duration');
-    //   return;
-    // }
+    
+    if (this.programData.programType !== '6' && !this.duration) {
+      this.commonService.presentToast('Please select Duration');
+      return;
+    }
     if (this.programData.programType == '6') {      
 
       let data = [];
@@ -355,14 +357,14 @@ export class DateTimeModalComponent implements OnInit {
       this.programData.selectedVideo = data.toString();
       this.duration = null;
 
-      if (data.length < 1) {
-        this.commonService.presentToast('Please select video');
-        return;
-      }
-      if (data.length > 1) {
-        this.commonService.presentToast('Can not select multiple videos');
-        return;
-      }
+      // if (data.length < 1) {
+      //   this.commonService.presentToast('Please select video');
+      //   return;
+      // }
+      // if (data.length > 1) {
+      //   this.commonService.presentToast('Can not select multiple videos');
+      //   return;
+      // }
       console.log(this.repetatedDateCopy);
       console.log(this.repetatedDate);
       console.log(this.repetatedDate[0].getDate());
@@ -376,13 +378,13 @@ export class DateTimeModalComponent implements OnInit {
         }
       });
 
-      this.programService.advertiseRequest({'programId':this.programData.id}).subscribe(data=>{
-        this.adData = data.status;
-        this.request_approve_btn = true;
-        this.commonService.dismissLoader();
-        // this.commonService.presentToast('Request Sent');
-        console.log(data);
-      } );
+      // this.programService.advertiseRequest({'programId':this.programData.id}).subscribe(data=>{
+      //   this.adData = data.status;
+      //   this.request_approve_btn = true;
+      //   this.commonService.dismissLoader();
+      //   // this.commonService.presentToast('Request Sent');
+      //   console.log(data);
+      // } );
 
 
     }
@@ -414,7 +416,20 @@ export class DateTimeModalComponent implements OnInit {
     this.programService.insertProgram(this.programData).subscribe((data) => {
       this.commonService.dismissLoader();
       this.closeModal(data.statusDetails);
+      this.programId = data.statusDetails.id;  
+      
+      if (this.programData.programType == '6') {   
+        this.programService.advertiseRequest({'programId':this.programId}).subscribe(data=>{
+        this.adData = data.status;
+        this.request_approve_btn = true;
+        this.commonService.dismissLoader();
+        // this.commonService.presentToast('Request Sent');
+        console.log(data);
+      } );
+      }
+
     });
+
   }
 
   async addEquipments2(event, item, i) {

@@ -44,17 +44,17 @@
       </ion-item> -->
       <ion-item lines="none" class="margin-15 ion-block">
         <div class="ion-left">
-          <ion-label *ngIf="totalNutritionInSession > 0 && totalVideoInSession > 0" style="display: contents;">Price of
+          <ion-label *ngIf="totalNutritionInSession > 0 && totalVideoInSession > 0" style="display: contents; font-size: 12px;">Price of
             Nutrition and Video Instruction:</ion-label>
-          <ion-label *ngIf="totalNutritionInSession > 0 && totalVideoInSession == 0" style="display: contents;">Price of
+          <ion-label *ngIf="totalNutritionInSession > 0 && totalVideoInSession == 0" style="display: contents; font-size: 12px;">Price of
             Nutrition Instruction:</ion-label>
-          <ion-label *ngIf="totalNutritionInSession == 0 && totalVideoInSession > 0" style="display: contents;">Price of
+          <ion-label *ngIf="totalNutritionInSession == 0 && totalVideoInSession > 0" style="display: contents; font-size: 12px;">Price of
             Video Instruction:</ion-label>
 
         </div>
         <div class="ion-right" *ngIf="totalNutritionInSession > 0 || totalVideoInSession > 0">
-          <ion-label style="margin-left: 40px;">$</ion-label>
-          <ion-select placeholder="Select" formControlName="non_live_component_fee">
+          <ion-label style="margin-left: 30px;">$</ion-label>
+          <ion-select placeholder="Select" style="width: 140px; padding-left: 5px;" formControlName="non_live_component_fee">
             <ion-select-option *ngFor="let price of priceList" [value]="price.price">{{ price.price }}
             </ion-select-option>
           </ion-select>
@@ -90,7 +90,7 @@
         </ion-item>
       </ion-list>
     </form>
-    <form class="nutrition-form ion-padding-horizontal">
+    <!-- <form class="nutrition-form ion-padding-horizontal">
       <div *ngIf="programData?.programType==6">
         <h6 class="repeatedHeading mb-10">Select Video</h6>
         <ion-col size="12" class="ion-no-padding">
@@ -118,7 +118,7 @@
         </div>
       </div>
 
-    </form>
+    </form> -->
   </div>
   <div *ngIf="repetatedDateCopy.length>0" class="margin-top-md">
     <!-- <div class="ion-padding-horizontal">
@@ -228,6 +228,9 @@
     <ion-label> I have read and agree to the Terms and Conditions.</ion-label>
     <ion-icon (click)="openModal()" ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
   </div>
-  <ion-button [disabled]="isDisabled" expand="full" (click)="onSubmit()"
-    class="green ion-text-uppercase ion-no-margin full-height">Save</ion-button>
+  <div class="button-center">
+    <button [disabled]="isDisabled" expand="full" (click)="onSubmit()"
+    class="green ion-text-uppercase ion-no-margin full-height">Save</button>
+  </div>
+
 </ion-footer>

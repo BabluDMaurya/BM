@@ -22,7 +22,7 @@
       <ion-searchbar [(ngModel)]="equipmentSearchTerm"></ion-searchbar>
     </ion-toolbar> -->
     <ion-item *ngFor="let equip of equipmentFiltered" class="pX-15">
-      <div class="users-list" >
+      <div class="users-list" (click)="openViewer(equipmentPicPath+equip.equipment_pic)">
         <img src="{{equipmentPicPath}}{{equip.equipment_pic}}" />
       </div>
       <ion-label class="ion-padding-horizontal">

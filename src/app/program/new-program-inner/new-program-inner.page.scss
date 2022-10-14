@@ -75,7 +75,8 @@
 .programDesc {
     p {
         line-height: 1.5;
-        text-align: center;
+        margin-left: 15px;
+        // text-align: center;
         font-size: 14px;
     }
 }
@@ -84,7 +85,7 @@
     color: #27a69a;
     line-height: 1.5;
     text-align: center;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .fs-16 {
@@ -131,6 +132,8 @@
             color: #fff;
             margin-left: 5%;
             position: relative;
+            background-size: cover!important;
+    background-position: center !important;
 
             .ionic-icon {
                 font-size: 1.5rem !important;
@@ -219,6 +222,7 @@
 .session-timer {
     display: flex;
     align-items: center;
+    background: #000;
     // position: absolute;
     // bottom: 20px;
 }
@@ -234,6 +238,7 @@
     box-shadow: 0px 0px 5px rgba(0, 0, 0, .097);
     padding: 10px;
     height: 140px;
+    width: 100%;
 }
 
 .img-cont {
@@ -307,4 +312,23 @@ ion-button.green.hydrated {
     height: 1rem;
     margin-left: 0;
     color: #26a69a;
+}
+.program-chat {
+    justify-content: center;
+}
+.program-chat ion-item.item-label.item.md.in-list.ion-focusable.hydrated {
+    --ion-background-color: #27a69a;
+    color: #fff;
+    border-radius: 7px;
+}
+.program-chat .top-icon {
+    padding-right: 4px;
+    padding-top: 6px;
+}
+.chat_btn {
+    display: flex;
+    height: 40vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }

@@ -14,9 +14,11 @@ import { NotificationService } from '../../services/notification.service';
 })
 export class AllListPage implements OnInit {
   programList:any = [];
+  sponsorPayment:any = [];
   programData:any = [];
   showList : boolean = true;
   showChat : boolean = false;
+  showPayment : boolean = false;
   sponcers:any;
   sponcersChatEmpty:boolean = false;
   sponcersChat:boolean = false;
@@ -67,6 +69,7 @@ export class AllListPage implements OnInit {
     //   });
     this.notification.getSponcerChatDetails().subscribe(
       (data: any) => {
+        console.log(data);
         this.commonService.dismissLoader();
         if(data.slist.length > 0){
           this.sponcersChat  = true;          
@@ -78,6 +81,11 @@ export class AllListPage implements OnInit {
           this.sponcersChatEmpty  = true;
         }
       });
+
+      this.programService.getSponserPayment(null).subscribe(data=>{ 
+        console.log(data);
+        this.sponsorPayment = data.data;
+      })
   }  
   unread(event){   
     this.commonService.presentModal(SponserCommentComponent,'fullModal',{'adDetails':event});
@@ -98,6 +106,19 @@ export class AllListPage implements OnInit {
     });
   }
 
+  expandPayment(index)
+  {
+    // this.customClass = index;
+    this.sponsorPayment.forEach((el, i)=>{
+      if(index == i)
+      {
+         el.expanded =true;
+      }else{
+        el.expanded =false;
+      }
+    });
+  }
+
   showSponsersContent(event){
     this.commonService.presentModal(AdvInfoComponent,'fullModal',{'adDetails':event});
   }
@@ -105,10 +126,16 @@ export class AllListPage implements OnInit {
   tabChange(ev: any) {    
     if(ev.detail.value == 'chat'){
       this.showList = false;
+      this.showPayment = false;
       this.showChat = true;
-    }else{
+    } else if(ev.detail.value == 'payment'){
+      this.showList = false;
+      this.showChat = false;
+      this.showPayment = true;
+    } else if(ev.detail.value == 'list'){
       this.showList = true;
       this.showChat = false;
-    }    
+      this.showPayment = false;
+    }     
   }
 }

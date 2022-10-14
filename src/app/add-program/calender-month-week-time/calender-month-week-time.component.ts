@@ -84,7 +84,7 @@ export class CalenderMonthWeekTimeComponent implements OnInit {
       message: 'From: ' + start
         + '<br>To: ' + end
         + '<br>Program Type: ' + event.typeID
-        + '<br>Participant Type: ' + event.participant,
+        + '<br>Invitation Type: ' + event.participant,
       buttons: ['OK'],
       cssClass: "custom-alert"
     });
