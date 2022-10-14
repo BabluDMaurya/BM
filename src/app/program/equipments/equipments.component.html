@@ -31,10 +31,10 @@
     <ion-list-header>
       <ion-label>{{equp.program_date}}</ion-label>
     </ion-list-header>
-    <ion-slides [options]="slideOpts">
+    <ion-slides [options]="slideOpts" class="equip_items">
       <ion-slide *ngFor="let item of equp.list; index as j">
-        <div (click)="openViewer(equipmentPicPath+item.equipment_pic)">
-          <div>
+        <div>
+          <div (click)="openViewer(equipmentPicPath+item.equipment_pic)">
             <img src="{{equipmentPicPath}}{{item.equipment_pic}}" alt="equipment name" />
           </div>
           <div>

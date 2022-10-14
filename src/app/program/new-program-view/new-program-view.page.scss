@@ -170,3 +170,23 @@
         }
     }
 }
+
+.program-chat {
+    justify-content: center;
+}
+.program-chat ion-item.item-label.item.md.in-list.ion-focusable.hydrated {
+    --ion-background-color: #27a69a;
+    color: #fff;
+    border-radius: 7px;
+}
+.program-chat .top-icon {
+    padding-right: 4px;
+    padding-top: 6px;
+}
+.chat_btn {
+    display: flex;
+    height: 40vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}

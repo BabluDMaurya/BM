@@ -129,7 +129,7 @@
                   </ion-col>
                 </ion-row> 
                 <div style="display: flex; flex-direction: column; align-items: center;">
-                  <ion-button *ngIf="programDetail?.is_requested ==1 ||  programDetail?.is_requested ==2 && !request_join && !programDetail?.ended" size="small"  class="green btnVerify" (click)="joinRequest()" >Request To Join</ion-button> 
+                  <ion-button *ngIf="( programDetail?.is_requested ==1 ||  programDetail?.is_requested == 2 ) && !request_join && !programDetail?.ended" size="small"  class="green btnVerify" (click)="joinRequest()" >Request To Join</ion-button> 
                   <ion-button *ngIf="request_accs_pending && !programDetail?.ended" size="small" class="green btnVerify" (click)="acceptRequest()" >Accept Request</ion-button> 
                 </div>
                 <div class="users-list ion-text-center" >
@@ -187,7 +187,15 @@
                       <span>Good morning rock</span>
                     </div>
                   </div> -->
-                 <p>No Chat available</p>
+                  <div class="chat_btn">
+                    <ion-item *ngIf="programDetail?.chat_status == 1" (click)="showChatUsers()" detail="false">
+                      <div class="top-icon">
+                        <ion-icon ios="ios-text" md="md-text"></ion-icon>
+                      </div>
+                      <ion-label>Chat</ion-label>
+                    </ion-item>
+                  </div>
+                 <!-- <p>No Chat available</p> -->
                 </div>
               </ion-list>
               <ion-list class="ion-no-padding border-bot" *ngSwitchCase="'programtype'">

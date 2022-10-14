@@ -148,11 +148,13 @@ let AllImagesPage = class AllImagesPage {
         this.url = _config_config__WEBPACK_IMPORTED_MODULE_6__["Config"].imgUrl;
     }
     ngOnInit() {
+        this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+        console.log(this.loginUserData);
         this.actRoute.paramMap.subscribe((params) => {
             this.consultID = params.get('userId');
             this.consultName = params.get('userName');
         });
-        this.peopleView.getMyPost('1', this.consultID, 1).subscribe((data) => {
+        this.peopleView.getMyPost('1', this.loginUserData.id, 1).subscribe((data) => {
             data.posts.data.forEach(element => {
                 this.myPosts.push(element);
             });

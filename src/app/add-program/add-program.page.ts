@@ -195,33 +195,68 @@ export class AddProgramPage implements OnInit {
    * function to create add program form with validation.
    */
   openStart(i) {
-    console.log(i);
-    console.log(this.oldTimeDuration);
+    // console.log(i);
+    // console.log(this.oldTimeDuration);
     // if(this.oldTimeDuration == undefined){
     //   console.log('Undefined');
     // } else {
     //   console.log('Not undefined');
     // }
     
-    if(this.oldTimeDuration == undefined){
+    // if(this.oldTimeDuration == undefined){
       this.indexForLive = i;
-      this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
-      if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
-        this.repetatedDateCopy[this.indexForLive].is_live = false
+      if(this.myDate != '' && this.progDuration.length > 0){
+        if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
+          this.dateObj.setHours((''), parseInt(''));
+          this.progDuration = '';
+          this.repetatedDateCopy[this.indexForLive].is_live = false
+        } else {
+          console.log(this.dateObj);
+          
+
+          this.repetatedDate[this.indexForLive] = this.dateObj;
+          // this.minutes = '';
+          // this.hours = '';
+          // let d = this.myDate.split('T')[1];
+          // let h = d.split(':')[0];
+          // let m = d.split(':')[1];
+          // this.minutes = m;
+          // this.hours = h;
+          // this.dateObj.setHours((this.hours), parseInt(this.minutes));
+          // this.progDuration = this.progDuration;
+          this.repetatedDateCopy[this.indexForLive].is_live = true
+          console.log(this.repetatedDate);
+        }        
       } else {
-        this.sTime.open();
+        // this.indexForLive = i;
+        this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
+        console.log(this.dateObj);
+        if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
+          this.repetatedDateCopy[this.indexForLive].is_live = false
+        } else {
+          this.sTime.open();
+        }
       }
-    } else {
-      this.indexForLive = i;
-      this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
-      if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
-        this.repetatedDateCopy[this.indexForLive].is_live = false;
-      } else {
-        this.repetatedDateCopy[this.indexForLive].is_live = true;
-      }
-    }
+
+      
+    // } else {
+    //   this.indexForLive = i;
+    //   // this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
+    //   if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
+    //     this.repetatedDateCopy[this.indexForLive].is_live = false;
+    //   } else {
+    //     this.repetatedDateCopy[this.indexForLive].is_live = true;
+    //   }
+    // }
 
   }
+
+  editProgramTime(i) {
+    // this.sTime.setValue(null);
+    this.indexForLive = i;
+    this.sTime.open();
+  }
+
   createForm() {
     this.programForm = this.fb.group({
       programTitle: new FormControl('', Validators.compose([
@@ -801,9 +836,24 @@ export class AddProgramPage implements OnInit {
             //   // invalid login
             //   return false;
             // }
-            console.log(this.indexForLive + 'indexForLive');
-            this.oldTimeDuration = data.duration
-            console.log(this.oldTimeDuration);
+            // console.log(this.indexForLive + 'indexForLive');
+            // console.log(this.myDate);
+            // console.log(this.progDuration);
+
+            if(this.progDuration.length > 0){
+              
+              let d = this.myDate.split('T')[1];
+              let h = d.split(':')[0];
+              let m = d.split(':')[1];
+              this.minutes = m;
+              this.hours = h;
+              this.dateObj.setHours((this.hours), parseInt(this.minutes));
+              this.repetatedDateCopy[this.indexForLive].date = this.dateObj;              
+              this.repetatedDate[this.indexForLive] = this.dateObj;              
+              this.progDuration = data.duration;      
+
+              console.log(this.repetatedDate);
+            } else {
             if (data.duration <= 0) {
               this.showErrorToast('Enter Valid Duration');
               return false;
@@ -836,7 +886,6 @@ export class AddProgramPage implements OnInit {
               if (this.newEvent.events.length > 0) {
                 this.newEvent.events.forEach(el => {
                   if (el.startTime.getHours() == this.hours || el.endTime.getHours() == this.hours) {
-
                     console.log(el.startTime.getTime() + 'event time');
                     var nd = new Date(this.newEvent.selectedTime + 'Z');
                     nd.setHours((this.hours), parseInt(this.minutes) + parseInt(this.progDuration));
@@ -877,11 +926,11 @@ export class AddProgramPage implements OnInit {
                 this.repetatedDateCopy[this.indexForLive].date = time;
                 this.repetatedDate[this.indexForLive] = this.dateObj;
                 this.repetatedDate = this.repetatedDate;
-                if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
-                  this.repetatedDateCopy[this.indexForLive].is_live = false;
-                } else {
+                // if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
+                //   this.repetatedDateCopy[this.indexForLive].is_live = false;
+                // } else {
                   this.repetatedDateCopy[this.indexForLive].is_live = true;
-                }
+                // }
                 console.log(this.repetatedDateCopy);
                 console.log(time, ' time');
                 this.changeDetection.detectChanges();
@@ -889,6 +938,7 @@ export class AddProgramPage implements OnInit {
               }
             }
           }
+        }
         }
       ]
     });
@@ -1076,6 +1126,7 @@ export class AddProgramPage implements OnInit {
     return await modal.present();
   }
   async addEquipments2(event, item, i) {
+    console.log(item);
     const modal = await this.modalCtrl.create({
       component: AddEquipmentsComponent,
       cssClass: 'fullModal',
@@ -1109,7 +1160,7 @@ export class AddProgramPage implements OnInit {
   async sameTime(){
     const toast = await this.toastCtrl.create({
       message: 'Program is already assigned for this time slot',
-      duration: 3000,
+      duration: 5000,
       position: 'top'
     });
 

@@ -184,7 +184,20 @@ const routes: Routes = [
         ]
       },
     ]
-  }
+  },
+
+  // Guest User Routes
+  // {
+  //   path: 'guest-home',
+  //   children: [
+  //     {
+  //       path: '',
+  //       loadChildren: () =>
+  //         import('../home/home.module').then(m => m.HomePageModule)
+  //     }
+  //   ]
+  // },
+
 ];
 
 @NgModule({

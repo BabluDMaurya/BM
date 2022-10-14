@@ -4,6 +4,7 @@ import { NavParams,ModalController } from '@ionic/angular'
 import { NutritionService } from './../../services/nutrition.service' ;
 import { ProgramService } from './../../services/program.service';
 import { Config } from '../../config/config';
+import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 import { ProgramNutritionDetailModalComponent } from '../../add-program/program-nutrition-detail-modal/program-nutrition-detail-modal.component';
 
 @Component({
@@ -169,6 +170,22 @@ export class AddEquipmentsComponent implements OnInit {
 
    });
    return await modal.present();
+}
+
+async openViewer(path) {
+  const modal = await this.modalCtrl.create({
+    component: ViewerModalComponent,
+    componentProps: {
+      src: path, // required
+      srcHighRes: path,
+      srcFallback: path
+    },
+    cssClass: 'ion-img-viewer', // required
+    keyboardClose: true,
+    showBackdrop: true
+  });
+
+  return await modal.present();
 }
 
 }
