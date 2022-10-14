@@ -41,6 +41,7 @@ export class PaymentComponent implements OnInit {
   }
 
   productPayment() {
+
     // this.iap
     //   .getProducts([test])
     //   .then((products) => {
@@ -63,6 +64,7 @@ export class PaymentComponent implements OnInit {
         this.commonService.presentModal(ThankyouComponent, 'fullModal', fileData);
       }
     });
+
   }
 
 

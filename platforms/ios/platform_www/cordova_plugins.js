@@ -334,6 +334,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-inapppurchase.PaymentsPlugin",
+      "file": "plugins/cordova-plugin-inapppurchase/www/index-ios.js",
+      "pluginId": "cordova-plugin-inapppurchase",
+      "clobbers": [
+        "inAppPurchase"
+      ]
+    },
+    {
       "id": "cordova-plugin-ionic-keyboard.keyboard",
       "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
       "pluginId": "cordova-plugin-ionic-keyboard",
@@ -518,6 +526,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
+      "clobbers": [
+        "cordova.plugins.stripe"
+      ]
+    },
+    {
       "id": "cordova-plugin-telerik-imagepicker.ImagePicker",
       "file": "plugins/cordova-plugin-telerik-imagepicker/www/imagepicker.js",
       "pluginId": "cordova-plugin-telerik-imagepicker",
@@ -572,22 +588,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "cordova.plugins.barcodeScanner"
       ]
-    },
-    {
-      "id": "cordova-plugin-stripe.stripe",
-      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
-      "pluginId": "cordova-plugin-stripe",
-      "clobbers": [
-        "cordova.plugins.stripe"
-      ]
-    },
-    {
-      "id": "cordova-plugin-inapppurchase.PaymentsPlugin",
-      "file": "plugins/cordova-plugin-inapppurchase/www/index-ios.js",
-      "pluginId": "cordova-plugin-inapppurchase",
-      "clobbers": [
-        "inAppPurchase"
-      ]
     }
   ];
   module.exports.metadata = {
@@ -608,6 +608,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-filepath": "1.5.6",
     "cordova-plugin-geolocation": "4.0.2",
+    "cordova-plugin-inapppurchase": "1.1.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "4.1.3",
     "cordova-plugin-iosrtc": "6.0.5",
@@ -620,6 +621,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-streaming-media": "2.2.0",
+    "cordova-plugin-stripe": "1.5.3",
     "cordova-plugin-telerik-imagepicker": "2.3.3",
     "cordova-plugin-whitelist": "1.3.3",
     "es6-promise-plugin": "4.2.2",
@@ -627,8 +629,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-sqlite-storage": "4.0.0",
     "enablex-cordova-plugin": "1.8.0",
     "ionic-plugin-deeplinks": "1.0.22",
-    "phonegap-plugin-barcodescanner": "8.1.0",
-    "cordova-plugin-stripe": "1.5.3",
-    "cordova-plugin-inapppurchase": "1.1.0"
+    "phonegap-plugin-barcodescanner": "8.1.0"
   };
 });
