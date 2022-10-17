@@ -394,8 +394,8 @@
                 <ion-label class="live" (click)="openStart(i)" (ionChange)="activatePopup(i)"
                   [ngClass]="{'active': date.is_live}"></ion-label>
               </div>
-              <ion-icon *ngIf="date.is_live && programForm.value.programType != 6" ios="ios-clock" (click)="editProgramTime(i)" md="md-clock" class="ion-margin-start"
-              ></ion-icon>
+              <!-- <ion-icon *ngIf="date.is_live && programForm.value.programType != 6" ios="ios-clock" (click)="editProgramTime(i)" md="md-clock" class="ion-margin-start"
+              ></ion-icon> -->
               <ion-icon ios="ios-fitness" md="md-fitness" class="ion-margin-start"
                 (click)="addEquipments2(1,date.equipments,i)"></ion-icon>
               <ion-icon ios="ios-nutrition" md="md-nutrition" class="ion-margin-start"

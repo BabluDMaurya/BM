@@ -204,31 +204,31 @@ export class AddProgramPage implements OnInit {
     // }
     
     // if(this.oldTimeDuration == undefined){
-      this.indexForLive = i;
-      if(this.myDate != '' && this.progDuration.length > 0){
-        if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
-          this.dateObj.setHours((''), parseInt(''));
-          this.progDuration = '';
-          this.repetatedDateCopy[this.indexForLive].is_live = false
-        } else {
-          console.log(this.dateObj);
+      // this.indexForLive = i;
+      // if(this.myDate != '' && this.progDuration.length > 0){
+      //   if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
+      //     this.dateObj.setHours((''), parseInt(''));
+      //     this.progDuration = '';
+      //     this.repetatedDateCopy[this.indexForLive].is_live = false
+      //   } else {
+      //     console.log(this.dateObj);
           
 
-          this.repetatedDate[this.indexForLive] = this.dateObj;
-          // this.minutes = '';
-          // this.hours = '';
-          // let d = this.myDate.split('T')[1];
-          // let h = d.split(':')[0];
-          // let m = d.split(':')[1];
-          // this.minutes = m;
-          // this.hours = h;
-          // this.dateObj.setHours((this.hours), parseInt(this.minutes));
-          // this.progDuration = this.progDuration;
-          this.repetatedDateCopy[this.indexForLive].is_live = true
-          console.log(this.repetatedDate);
-        }        
-      } else {
-        // this.indexForLive = i;
+      //     this.repetatedDate[this.indexForLive] = this.dateObj;
+      //     // this.minutes = '';
+      //     // this.hours = '';
+      //     // let d = this.myDate.split('T')[1];
+      //     // let h = d.split(':')[0];
+      //     // let m = d.split(':')[1];
+      //     // this.minutes = m;
+      //     // this.hours = h;
+      //     // this.dateObj.setHours((this.hours), parseInt(this.minutes));
+      //     // this.progDuration = this.progDuration;
+      //     this.repetatedDateCopy[this.indexForLive].is_live = true
+      //     console.log(this.repetatedDate);
+      //   }        
+      // } else {
+        this.indexForLive = i;
         this.dateObj = this.repetatedDateCopy[this.indexForLive].date;
         console.log(this.dateObj);
         if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
@@ -236,7 +236,7 @@ export class AddProgramPage implements OnInit {
         } else {
           this.sTime.open();
         }
-      }
+      // }
 
       
     // } else {
@@ -840,20 +840,20 @@ export class AddProgramPage implements OnInit {
             // console.log(this.myDate);
             // console.log(this.progDuration);
 
-            if(this.progDuration.length > 0){
+            // if(this.progDuration.length > 0){
               
-              let d = this.myDate.split('T')[1];
-              let h = d.split(':')[0];
-              let m = d.split(':')[1];
-              this.minutes = m;
-              this.hours = h;
-              this.dateObj.setHours((this.hours), parseInt(this.minutes));
-              this.repetatedDateCopy[this.indexForLive].date = this.dateObj;              
-              this.repetatedDate[this.indexForLive] = this.dateObj;              
-              this.progDuration = data.duration;      
+            //   let d = this.myDate.split('T')[1];
+            //   let h = d.split(':')[0];
+            //   let m = d.split(':')[1];
+            //   this.minutes = m;
+            //   this.hours = h;
+            //   this.dateObj.setHours((this.hours), parseInt(this.minutes));
+            //   this.repetatedDateCopy[this.indexForLive].date = this.dateObj;              
+            //   this.repetatedDate[this.indexForLive] = this.dateObj;              
+            //   this.progDuration = data.duration;      
 
-              console.log(this.repetatedDate);
-            } else {
+            //   console.log(this.repetatedDate);
+            // } else {
             if (data.duration <= 0) {
               this.showErrorToast('Enter Valid Duration');
               return false;
@@ -926,18 +926,18 @@ export class AddProgramPage implements OnInit {
                 this.repetatedDateCopy[this.indexForLive].date = time;
                 this.repetatedDate[this.indexForLive] = this.dateObj;
                 this.repetatedDate = this.repetatedDate;
-                // if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
-                //   this.repetatedDateCopy[this.indexForLive].is_live = false;
-                // } else {
+                if (this.repetatedDateCopy[this.indexForLive].is_live == true) {
+                  this.repetatedDateCopy[this.indexForLive].is_live = false;
+                } else {
                   this.repetatedDateCopy[this.indexForLive].is_live = true;
-                // }
+                }
                 console.log(this.repetatedDateCopy);
                 console.log(time, ' time');
                 this.changeDetection.detectChanges();
                 this.timeSlot = true;
               }
             }
-          }
+          // }
         }
         }
       ]
