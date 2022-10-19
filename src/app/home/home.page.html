@@ -99,14 +99,14 @@
                 </div>
               </ion-item>
               <!-- --------------- bookmark for only  othepost on own -------->
-              <ion-item *ngIf="post?.user_id != loginUserData.id">
+              <ion-item *ngIf="loginUserData && post?.user_id != loginUserData.id">
                 <div (click)="bookmarked(post?.id , post?.bookmarked , post?.post_type)"
                   class="{{ post?.bookmarked ?'active':'inactive' }}">
                   <ion-icon class="active-icon" ios="ios-bookmark" md="md-bookmark"></ion-icon>
                 </div>
               </ion-item>
 
-              <ion-item *ngIf="post?.user_id == loginUserData.id">
+              <ion-item *ngIf="loginUserData && post?.user_id == loginUserData.id">
                 <div (click)="showOptions(post?.id ,post?.disable_comment )">
                   <ion-icon ios="ios-more" md="md-more"></ion-icon>
                 </div>

@@ -13,7 +13,7 @@ import { catchError } from "rxjs/operators";
 })
 export class SearchService {
   private handleError: HandleError
-
+  guest: any;
   public items: any = [];
 
   //
@@ -23,6 +23,11 @@ export class SearchService {
   constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandlerService,
   ) {
     this.handleError = httpErrorHandler.createHandleError('SearchService');
+  }
+
+  ngOnInit(){
+    this.guest = JSON.parse(localStorage.getItem('guest'));
+    console.log(this.guest);
   }
 
   getApiHeaders(extraHeader = {}, checkAuth = false) {
@@ -77,5 +82,14 @@ export class SearchService {
 
   getCBC(data: any): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getCBC', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getCBC', data))); 
+  }
+
+  // Guest api's
+  getHomeSpecialities(data:any):Observable<any>{
+    return this.http.post<any>(Config.ApiUrl+'api/getHomeSpecialities', data , this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getSpecialities',data)));
+  }
+
+  getGuestTopConsultant(): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/getGuestTopConsultant', null, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getGuestTopConsultant')));
   }
 }

@@ -53,13 +53,15 @@ export class HomePage implements OnInit {
     this.commonService.presentLoader();
     this.loginUserData = this.commonService.getUserData();
     this.currentPage = 0;
+    
+    if(this.loginUserData) {
+
     this.searchService.getSpecialities(null).subscribe(data => {
       this.specialities = data.list;
     });
 
-    this.homeService.getHomeContent({ 'page': (this.currentPage) }).subscribe(data => {
+    this.homeService.getHomeContent({ 'page': (this.currentPage) }).subscribe(data => {     
       let postData = this.like_bookmark(data.postData.data);
-      console.log(postData);
       this.last_page = data.postData.last_page;
       this.currentPage = data.postData.current_page;
       this.searchService.getTopConsultant().subscribe((data: any) => {
@@ -72,12 +74,44 @@ export class HomePage implements OnInit {
           this.postData.push(el)
         });
         this.remainingTopConsultent = topPeople;
+        console.log(this.postData);
       });
       if(postData.length < 1){
         this.gotData = true;
       }
       this.commonService.dismissLoader();
     });
+
+  } else {
+
+    this.searchService.getHomeSpecialities(null).subscribe(data => {
+      this.specialities = data.list;
+    });
+
+    this.homeService.getGuestHomeContent({ 'page': (this.currentPage) }).subscribe(data => {
+      let postData = data.postData.data;
+      this.last_page = data.postData.last_page;
+      this.currentPage = data.postData.current_page;
+      this.searchService.getGuestTopConsultant().subscribe((data: any) => {
+        this.postData = [];
+        let topPeople = data.topuser;        
+        postData.filter((el, i) => {
+          if (i % 5 == 0) {
+            this.postData.push(topPeople.splice(0, 2));
+          }
+          this.postData.push(el)
+        });
+        this.remainingTopConsultent = topPeople;
+        console.log(this.postData);
+      });
+      if(postData.length < 1){
+        this.gotData = true;
+      }
+      this.commonService.dismissLoader();
+    });
+  }
+
+    
   }
 
   
