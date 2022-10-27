@@ -11,7 +11,7 @@
         <a [routerLink]="['/tabs/search']" class="set-icon">
           <ion-icon ios="ios-search" md="md-search"></ion-icon>
         </a>
-        <a [routerLink]="['/notification']" id="notificationcount" class="noti-bell">
+        <a [routerLink]="['/notification']" *ngIf="loginUserData" id="notificationcount" class="noti-bell">
           <ion-icon ios="ios-heart" md="md-heart"></ion-icon>
           <ion-badge slot="end" *ngIf="notificationCount > 0">{{ notificationCount }}</ion-badge>
         </a>
