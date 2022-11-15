@@ -251,4 +251,13 @@ export class ProgramService {
     return this.http.get<any>(Config.ApiUrl + 'api/auth/getPricing', this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getPricing')));
   }
 
+  // Guest API's
+  getGuestUpcomingPrograms(formData) {
+    return this.http.post<any>(Config.ApiUrl + 'api/getGuestUpcomingPrograms', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getUpcomingPrograms', formData)));
+  }
+
+  getGuestProgramById(data: any): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/getGuestProgramById', data, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getProgramById', data)));
+  }
+
 }

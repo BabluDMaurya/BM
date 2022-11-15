@@ -95,3 +95,16 @@
 .post-content {
     padding: 15px !important;
 }
+
+.subprofile_tabs{--background: transparent;padding: 0 6px;}
+.subprofile_tabs ion-segment ion-segment-button{margin: 0 5px;border-radius: 30px;background: rgba(39, 166, 154, 0.14);position: relative;height: 32px;min-height: 32px;font-size: 0.75rem;}
+.subprofile_tabs ion-segment ion-segment-button{
+    span{font-size: 0.6875rem;font-weight: 500;}
+}
+.subprofile_tabs ion-segment ion-segment-button.segment-button-checked{background: #27a69a;}
+.subprofile_tabs ion-segment ion-segment-button ion-skeleton-text{position: absolute;height: 40px;margin: 0;}
+.no-data{height: calc(100vh - 300px);}
+ion-item-divide{border: none;}
+.categoryHeading{
+    h6{margin-top: 0;padding-left: 10px;margin-bottom: 15px;}
+}

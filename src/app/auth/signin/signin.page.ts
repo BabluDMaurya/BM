@@ -172,11 +172,10 @@ export class SigninPage implements OnInit, OnDestroy {
       });
   }
 
-  // guestLogin(){
-  //   console.log('test');
-  //   localStorage.setItem('guestUser', '1');
-  //   this.router.navigateByUrl('tabs/guest-home');
-  // }
+  guestLogin(){
+    localStorage.setItem('guestUser', '1');
+    this.router.navigateByUrl('tabs/guest-home');
+  }
 
   onBack() {
     this.router.navigate(["/signup"]);

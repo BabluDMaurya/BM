@@ -24,6 +24,7 @@ export class SearchPage implements OnInit {
   newSearchPersonList: any = null;
   list_to_show = this.selectedPersonList;
   show_list = true;
+  loginUserData: any;
   advertisment: any = [];
   people_new_list: any = [];
   sortedpeople_new_list: any;
@@ -61,7 +62,8 @@ export class SearchPage implements OnInit {
       this.data = {};
     }, 1000);
   }
-  ngOnInit() {
+  ngOnInit() {      
+      this.loginUserData = this.commonService.getUserData();
       this.searchData();
   }
 
@@ -71,44 +73,77 @@ export class SearchPage implements OnInit {
 
   searchData() {
       this.commonService.presentLoader();
-      this.searchservice.listCountry().subscribe(
-          (data: any) => {
-              console.log(data);
-              this.selectedPersonList = (data.topTenUserList);
+      
+      if(this.loginUserData){
+        this.searchservice.listCountry().subscribe(
+            (data: any) => {
+                console.log(data);
+                this.selectedPersonList = (data.topTenUserList);
 
-              this.searchPersonList = data.topTenUserList;
-              this.searchservice.searchPeople({ userListedId: data.topTenID }).subscribe(
-                  (peoples: any) => {
-                    this.commonService.dismissLoader();
+                this.searchPersonList = data.topTenUserList;
+                this.searchservice.searchPeople({ userListedId: data.topTenID }).subscribe(
+                    (peoples: any) => {
+                      console.log(peoples);
+                      this.commonService.dismissLoader();
 
-                      this.sortedPersonList = peoples.userList.sort((a, b) => a.user_name > b.user_name ? 1 : -1);
+                        this.sortedPersonList = peoples.userList.sort((a, b) => a.user_name > b.user_name ? 1 : -1);
 
-                      this.sortedPersonList.sort((a, b) => a.user_name.localeCompare(b.user_name));
-                      let i = 1;
-                      let ad = { 'advertisment': 'Advertisamentgdkfgklfd' }
-                      const grouped = this.sortedPersonList.reduce((groups, contact) => {
+                        this.sortedPersonList.sort((a, b) => a.user_name.localeCompare(b.user_name));
+                        let i = 1;
+                        let ad = { 'advertisment': 'Advertisamentgdkfgklfd' }
+                        const grouped = this.sortedPersonList.reduce((groups, contact) => {
 
-                          const letter = contact.user_name.charAt(0).toUpperCase();
+                            const letter = contact.user_name.charAt(0).toUpperCase();
 
 
-                          groups[letter] = groups[letter] || [];
+                            groups[letter] = groups[letter] || [];
 
-                          groups[letter].push(contact);
-                        //   if ((i % 5 == 0) && (i !== 1)) {
-                        //       groups[letter].push(ad);
-                        //   }
-                          i++;
-                          return groups;
-                      },err => {
-                        this.commonService.dismissLoader();
-                      });
-                      this.result = Object.keys(grouped).map(key => ({ key, contacts: grouped[key] }));
-                  });
-          },
-          err => {
-            this.commonService.dismissLoader();
-              console.log(err);
-          });
+                            groups[letter].push(contact);
+                          //   if ((i % 5 == 0) && (i !== 1)) {
+                          //       groups[letter].push(ad);
+                          //   }
+                            i++;
+                            return groups;
+                        },err => {
+                          this.commonService.dismissLoader();
+                        });
+                        this.result = Object.keys(grouped).map(key => ({ key, contacts: grouped[key] }));
+                    });
+            },
+            err => {
+              this.commonService.dismissLoader();
+                console.log(err);
+            });
+        } else {
+          this.searchservice.searchGuestPeople(null).subscribe(
+            (peoples: any) => {
+              console.log(peoples);
+              this.commonService.dismissLoader();
+
+                this.sortedPersonList = peoples.userList.sort((a, b) => a.user_name > b.user_name ? 1 : -1);
+
+                this.sortedPersonList.sort((a, b) => a.user_name.localeCompare(b.user_name));
+                let i = 1;
+                let ad = { 'advertisment': 'Advertisamentgdkfgklfd' }
+                const grouped = this.sortedPersonList.reduce((groups, contact) => {
+
+                    const letter = contact.user_name.charAt(0).toUpperCase();
+
+
+                    groups[letter] = groups[letter] || [];
+
+                    groups[letter].push(contact);
+                  //   if ((i % 5 == 0) && (i !== 1)) {
+                  //       groups[letter].push(ad);
+                  //   }
+                    i++;
+                    return groups;
+                },err => {
+                  this.commonService.dismissLoader();
+                });
+                this.result = Object.keys(grouped).map(key => ({ key, contacts: grouped[key] }));
+            });
+        }
   }
   tabChange(ev: any) {
       this.search = ev.detail.value;

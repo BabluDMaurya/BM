@@ -39,21 +39,33 @@ export class UserProfileViewPage implements OnInit {
                }
                ionViewWillEnter(){
                 this.userData =JSON.parse(localStorage.getItem('userData'));
-                this.userId = this.userData.id; 
-                if(this.consultID == this.userData.id)
-                {
-                  this.router.navigate(["/tabs/user-profile"]);
-                }
+
+                if(this.userData){
+                  this.userId = this.userData.id; 
+                  if(this.consultID == this.userData.id)
+                  {
+                    this.router.navigate(["/tabs/user-profile"]);
+                  }
+                }                
               }
   ngOnInit() {
 
     this.actRoute.paramMap.subscribe((params:ParamMap)=>{
       this.consultID=params.get('userData');
     });
-    this.peopleView.getUserData({'userId':this.consultID}).subscribe((data:any)=>{
-      console.log(data);
-      this.profileData = data
-    });
+
+    if(this.userData){
+      this.peopleView.getUserData({'userId':this.consultID}).subscribe((data:any)=>{
+        console.log(data);
+        this.profileData = data
+      });
+    } else {
+      this.peopleView.getGuestUserData({'userId':this.consultID}).subscribe((data:any)=>{
+        console.log(data);
+        this.profileData = data
+      });
+    }
+    
 
     this.peopleView.getFolloFollowingResult({'profileId': this.consultID}).subscribe(
       (data: any) => {
@@ -163,6 +175,11 @@ export class UserProfileViewPage implements OnInit {
       }
     })
   }
+
+  async redirectToLogin(){
+    this.router.navigate(["/signin"]);
+  }
+  
     //------------------ -- GO BACK  ------------
     goBack() {
       this.navCtrl.back();

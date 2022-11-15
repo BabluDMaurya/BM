@@ -65,24 +65,45 @@ export class UpcomingPage implements OnInit {
       employee.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
   }
   getMyprog() {
-    this.programService.getUpcomingPrograms(null).subscribe(data => {
-      if(data.programList.length<1)
-      {
-        this.noData=true;
-      }
-      
-      this.upcomingList = this.getCounter(data.programList);
-      this.upcomingList = data.programList.filter(el => {
-        if (el.image_path) {
-          el.img_arr = el.image_path.split(',');
+
+    if (this.userData) {
+      this.programService.getUpcomingPrograms(null).subscribe(data => {
+        if (data.programList.length < 1) {
+          this.noData = true;
         }
-        el.converted = new Date(el.program_date + 'Z');
-        el.expanded = false;
-        return el;
+
+        this.upcomingList = this.getCounter(data.programList);
+        this.upcomingList = data.programList.filter(el => {
+          if (el.image_path) {
+            el.img_arr = el.image_path.split(',');
+          }
+          el.converted = new Date(el.program_date + 'Z');
+          el.expanded = false;
+          return el;
+        });
+        this.programFiltered = this.upcomingList;
+        console.log(this.programFiltered);
       });
-      this.programFiltered = this.upcomingList;
-      console.log(this.programFiltered);
-    });    
+    } else {
+      this.programService.getGuestUpcomingPrograms(null).subscribe(data => {
+        if (data.programList.length < 1) {
+          this.noData = true;
+        }
+
+        this.upcomingList = this.getCounter(data.programList);
+        this.upcomingList = data.programList.filter(el => {
+          if (el.image_path) {
+            el.img_arr = el.image_path.split(',');
+          }
+          el.converted = new Date(el.program_date + 'Z');
+          el.expanded = false;
+          return el;
+        });
+        this.programFiltered = this.upcomingList;
+        console.log(this.programFiltered);
+      });
+    }
+       
   }  
   getConsultProg(id) {
     this.programService.getConsultPrograms({'consultId':id}).subscribe(data => {

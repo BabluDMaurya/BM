@@ -81,14 +81,18 @@ export class ConsultantProfileViewPage implements OnInit {
   ) {
 
     platform.ready().then(() => {
+      
       // THIS BELOW CODE WILL CHECK FOR DEEPLINKS FROM OTHER APPS OR BROWSER 
-      this.deeplink.routeWithNavController(this.navChild, {
+      if(this.userData){
+        this.deeplink.routeWithNavController(this.navChild, {
           '/privacy': PrivacyPage,
-      }).subscribe((match) => {
+        }).subscribe((match) => {
           console.log('Successfully routed', match);
-      }, (nomatch) => {
+        }, (nomatch) => {
           console.warn('Unmatched Route', nomatch);
-      });
+        });
+      }
+      
   });
    }
 
@@ -101,14 +105,23 @@ export class ConsultantProfileViewPage implements OnInit {
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
-    this.userId = this.userData.id;
+    
 
     this.actRoute.paramMap.subscribe((params: ParamMap) => {
       this.consultID = params.get('userData');
     });
-    this.peopleView.getUserData({ 'userId': this.consultID }).subscribe((data: any) => {
-      this.profileData = data;
-    });
+
+    if(this.userData){
+      this.userId = this.userData.id;
+      this.peopleView.getUserData({ 'userId': this.consultID }).subscribe((data: any) => {
+        this.profileData = data;
+      });
+    } else {
+      this.peopleView.getGuestUserData({ 'userId': this.consultID }).subscribe((data: any) => {
+        this.profileData = data;
+      });
+    }
+    
     this.peopleView.getBlockStatus({ 'blockUserId': this.consultID }).subscribe((data) => {
       if (data.statusDetails.block_status != null && data.statusDetails.block_status == '1') {
         this.block = true;
@@ -164,32 +177,62 @@ export class ConsultantProfileViewPage implements OnInit {
     });
   }
   videoPostData() {
-    //postType,userId, videoType,page    
-    this.peopleView.getMyPost('1,2,8', this.consultID, 1).subscribe((data: any) => {
-      console.log('data', data)
-      this.myPosts = data.posts.data;
-      this.myPosts.forEach((element, i) => {
-        this.myPosts[i].count = element.post_likes.length;
+    if(this.userData){
+      //postType,userId, videoType,page    
+      this.peopleView.getMyPost('1,2,8', this.consultID, 1).subscribe((data: any) => {
+        console.log('data', data)
+        this.myPosts = data.posts.data;
+        this.myPosts.forEach((element, i) => {
+          this.myPosts[i].count = element.post_likes.length;
 
-        if(element.post_type == 2){
+          if (element.post_type == 2) {
             var img = element.video_post[0].thumb_path.split(',');
             element.video_post[0].single_thumb_path = img[0];
-        }
-        element.post_likes.filter((f) => {
-          if (f.user_id == this.userId) {
-            this.myPosts[i].liked = true;
           }
+          element.post_likes.filter((f) => {
+            if (f.user_id == this.userId) {
+              this.myPosts[i].liked = true;
+            }
+          });
+          element.post_bookmarks.filter((f) => {
+            if (f.user_id == this.userId) {
+              this.myPosts[i].bookmarked = true;
+            }
+          });
         });
-        element.post_bookmarks.filter((f) => {
-          if (f.user_id == this.userId) {
-            this.myPosts[i].bookmarked = true;
-          }
-        });
+        this.last_page = data.posts.last_page;
+        this.currentPage = data.posts.current_page;
+        this.gotData = true;
       });
-      this.last_page = data.posts.last_page;
-      this.currentPage = data.posts.current_page;
-      this.gotData = true;
-    });
+    } else {
+      //postType,userId, videoType,page    
+      this.peopleView.guestGetMyPost('1,2,8', this.consultID, 1).subscribe((data: any) => {
+        console.log('data', data)
+        this.myPosts = data.posts.data;
+        this.myPosts.forEach((element, i) => {
+          this.myPosts[i].count = element.post_likes.length;
+
+          if (element.post_type == 2) {
+            var img = element.video_post[0].thumb_path.split(',');
+            element.video_post[0].single_thumb_path = img[0];
+          }
+          element.post_likes.filter((f) => {
+            if (f.user_id == this.userId) {
+              this.myPosts[i].liked = true;
+            }
+          });
+          element.post_bookmarks.filter((f) => {
+            if (f.user_id == this.userId) {
+              this.myPosts[i].bookmarked = true;
+            }
+          });
+        });
+        this.last_page = data.posts.last_page;
+        this.currentPage = data.posts.current_page;
+        this.gotData = true;
+      });
+    }
+    
   }
   loadVideoData(event) {
     setTimeout(() => {
@@ -441,5 +484,9 @@ export class ConsultantProfileViewPage implements OnInit {
 
     const { role, data } = await actionSheet.onDidDismiss();
     console.log('onDidDismiss resolved with role and data', role, data);
+  }
+
+  async redirectToLogin(){
+    this.router.navigate(["/signin"]);
   }
 }

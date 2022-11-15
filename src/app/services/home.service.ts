@@ -12,11 +12,17 @@ import { catchError } from 'rxjs/operators';
 export class HomeService {
   options: { headers: any; };
   headers: any;
+  guest: any;
   token: string;
   private handleError: HandleError
   constructor(private http: HttpClient,
     httpErrorHandler: HttpErrorHandlerService) {
     this.handleError = httpErrorHandler.createHandleError('NutritionService');
+  }
+
+  ngOnInit(){
+    this.guest = JSON.parse(localStorage.getItem('guest'));
+    console.log(this.guest);
   }
 
   getApiHeaders(extraHeaders = {}, checkAuth = false) {
@@ -33,5 +39,10 @@ export class HomeService {
 
   getUsersFollowingContent(formData): Observable<any> {
     return this.http.post<any>(Config.ApiUrl + 'api/auth/getUsersFollowingContent', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getUsersFollowingContent', formData)));
+  }
+
+  // Guest api's
+  getGuestHomeContent(formData): Observable<any> {
+    return this.http.post<any>(Config.ApiUrl + 'api/getGuestHomeContent', formData, this.getApiHeaders(null, true)).pipe(catchError(this.handleError('getGuestHomeContent', formData)));
   }
 }

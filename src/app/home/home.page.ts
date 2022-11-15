@@ -6,7 +6,7 @@ import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 import { CommonService } from '../services/common.service';
 import { PopoverComponent } from '../profile/popover/popover.component';
 import { SearchService } from '../services/search.service';
-import { NavigationExtras } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
  
 @Component({
   selector: 'app-home',
@@ -31,6 +31,7 @@ export class HomePage implements OnInit {
   last_page: any;
   currentPage: any = 0;
   loginUserData: any;
+  videoCount : any;
   topTenPeople: any;
   specialities: any;
   remainingTopConsultent : any;
@@ -46,20 +47,24 @@ export class HomePage implements OnInit {
     public modalController: ModalController,
     public searchService: SearchService,
     public popoverController: PopoverController,
-    //public router:Router
+    public router:Router
   ) { }
 
   ngOnInit() {
     this.commonService.presentLoader();
-    this.loginUserData = this.commonService.getUserData();
+    this.loginUserData = this.commonService.getUserData();    
+    
+    console.log(this.videoCount);
     this.currentPage = 0;
+    
+    if(this.loginUserData) {
+
     this.searchService.getSpecialities(null).subscribe(data => {
       this.specialities = data.list;
     });
 
-    this.homeService.getHomeContent({ 'page': (this.currentPage) }).subscribe(data => {
+    this.homeService.getHomeContent({ 'page': (this.currentPage) }).subscribe(data => {     
       let postData = this.like_bookmark(data.postData.data);
-      console.log(postData);
       this.last_page = data.postData.last_page;
       this.currentPage = data.postData.current_page;
       this.searchService.getTopConsultant().subscribe((data: any) => {
@@ -72,12 +77,44 @@ export class HomePage implements OnInit {
           this.postData.push(el)
         });
         this.remainingTopConsultent = topPeople;
+        console.log(this.postData);
       });
       if(postData.length < 1){
         this.gotData = true;
       }
       this.commonService.dismissLoader();
     });
+
+  } else {
+
+    this.searchService.getGuestSpecialities(null).subscribe(data => {
+      this.specialities = data.list;
+    });
+
+    this.homeService.getGuestHomeContent({ 'page': (this.currentPage) }).subscribe(data => {
+      let postData = data.postData.data;
+      this.last_page = data.postData.last_page;
+      this.currentPage = data.postData.current_page;
+      this.searchService.getGuestTopConsultant().subscribe((data: any) => {
+        this.postData = [];
+        let topPeople = data.topuser;        
+        postData.filter((el, i) => {
+          if (i % 5 == 0) {
+            this.postData.push(topPeople.splice(0, 2));
+          }
+          this.postData.push(el)
+        });
+        this.remainingTopConsultent = topPeople;
+        console.log(this.postData);
+      });
+      if(postData.length < 1){
+        this.gotData = true;
+      }
+      this.commonService.dismissLoader();
+    });
+  }
+
+    
   }
 
   
@@ -226,6 +263,23 @@ export class HomePage implements OnInit {
       });
     });
     return arr;
+  }
+
+  async checkVideoCount(postId){
+    if(localStorage.getItem('videosWatched')){
+      this.videoCount = parseInt(localStorage.getItem('videosWatched')); 
+    } else {
+      this.videoCount = 0; 
+    }
+
+    console.log(this.videoCount);
+    if(this.videoCount < 3){
+      // localStorage.setItem('videosWatched', this.videoCount+1);
+      this.router.navigate(["/videos/"+postId+'/']);
+    } else {
+      this.router.navigate(["/signin"]);
+    }
+
   }
  
 

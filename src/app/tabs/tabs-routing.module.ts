@@ -187,16 +187,50 @@ const routes: Routes = [
   },
 
   // Guest User Routes
-  // {
-  //   path: 'guest-home',
-  //   children: [
-  //     {
-  //       path: '',
-  //       loadChildren: () =>
-  //         import('../home/home.module').then(m => m.HomePageModule)
-  //     }
-  //   ]
-  // },
+  {
+    path: 'guest-home',
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('../home/home.module').then(m => m.HomePageModule)
+      }
+    ]
+  },
+  {
+    path: 'guest-search',
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('../search/search.module').then(m => m.SearchPageModule)
+      }
+    ]
+  },
+  {
+    path: 'guest-consultant-profile-view/:userData',
+    children: [
+      {
+        path: '',
+        // redirectTo: '/tabs/profile',
+        pathMatch: 'full',
+        loadChildren: () =>
+          import('../profile/consultant-profile-view/consultant-profile-view.module').then(m => m.ConsultantProfileViewPageModule)
+      }
+    ]
+  },
+  {
+    path: 'guest-user-profile-view/:userData',
+    children: [
+      {
+        path: '',
+        // redirectTo: '/tabs/profile',
+        pathMatch: 'full',
+        loadChildren: () =>
+          import('../profile/user-profile-view/user-profile-view.module').then(m => m.UserProfileViewPageModule)
+      }
+    ]
+  },
 
 ];
 

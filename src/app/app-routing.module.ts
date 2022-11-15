@@ -309,9 +309,13 @@ const routes: Routes = [
   {
     path: 'program-view/:programId',
     loadChildren: () => import('./program/new-program-view/new-program-view.module').then(m => m.NewProgramViewPageModule)
+  },
+
+  // Guest User Routes
+  {
+    path: 'guest-program-view/:programId',
+    loadChildren: () => import('./program/new-program-view/new-program-view.module').then(m => m.NewProgramViewPageModule)
   }
-
-
 
 
 ];
