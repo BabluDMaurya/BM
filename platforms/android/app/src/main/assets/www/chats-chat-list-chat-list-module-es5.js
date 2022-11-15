@@ -188,7 +188,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".followers-list {\n  height: calc(100% - 60px);\n}\n\n.nutrition-no-data {\n  height: calc(100% - 100px) !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2hhdHMvY2hhdC1saXN0L0Q6XFxuaWtoaWxcXEludG9hY3RpdmUvc3JjXFxhcHBcXGNoYXRzXFxjaGF0LWxpc3RcXGNoYXQtbGlzdC5wYWdlLnNjc3MiLCJzcmMvYXBwL2NoYXRzL2NoYXQtbGlzdC9jaGF0LWxpc3QucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBO0VBQ0kseUJBQUE7QUNBSjs7QURFQTtFQUNJLHFDQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9jaGF0cy9jaGF0LWxpc3QvY2hhdC1saXN0LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8vIGhpdGVzaCBjc3Mgc3RydFxyXG4uZm9sbG93ZXJzLWxpc3Qge1xyXG4gICAgaGVpZ2h0OiBjYWxjKDEwMCUgLSA2MHB4KTtcclxufVxyXG4ubnV0cml0aW9uLW5vLWRhdGEge1xyXG4gICAgaGVpZ2h0OiBjYWxjKDEwMCUgLSAxMDBweCkgIWltcG9ydGFudDtcclxufVxyXG4vLyAuY2hhdGxpc3RfaGVhZGVye1xyXG4vLyAgICAgcG9zaXRpb246IGZpeGVkO1xyXG4vLyAgICAgdG9wOiA1MHB4O1xyXG4vLyAgICAgbGVmdDogMDtcclxuLy8gICAgIHJpZ2h0OiAwO1xyXG4vLyAgICAgei1pbmRleDogMTtcclxuLy8gfVxyXG4vLyAuY2hhdGxpc3RfY29udGVudHtcclxuLy8gICAgIG1hcmdpbi10b3A6IDEwMHB4ICFpbXBvcnRhbnQ7XHJcbi8vIH1cclxuLy8gLmNhdGxpc3RfaXRlbXtcclxuLy8gICAgIG1hcmdpbjogNXB4IDAgIWltcG9ydGFudDtcclxuLy8gfVxyXG4vLyBoaXRlc2ggY3NzIGVuZCIsIi5mb2xsb3dlcnMtbGlzdCB7XG4gIGhlaWdodDogY2FsYygxMDAlIC0gNjBweCk7XG59XG5cbi5udXRyaXRpb24tbm8tZGF0YSB7XG4gIGhlaWdodDogY2FsYygxMDAlIC0gMTAwcHgpICFpbXBvcnRhbnQ7XG59Il19 */";
+    __webpack_exports__["default"] = ".followers-list {\n  height: calc(100% - 60px);\n}\n\n.nutrition-no-data {\n  height: calc(100% - 100px) !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2hhdHMvY2hhdC1saXN0L0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFxjaGF0c1xcY2hhdC1saXN0XFxjaGF0LWxpc3QucGFnZS5zY3NzIiwic3JjL2FwcC9jaGF0cy9jaGF0LWxpc3QvY2hhdC1saXN0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNJLHlCQUFBO0FDQUo7O0FERUE7RUFDSSxxQ0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvY2hhdHMvY2hhdC1saXN0L2NoYXQtbGlzdC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBoaXRlc2ggY3NzIHN0cnRcclxuLmZvbGxvd2Vycy1saXN0IHtcclxuICAgIGhlaWdodDogY2FsYygxMDAlIC0gNjBweCk7XHJcbn1cclxuLm51dHJpdGlvbi1uby1kYXRhIHtcclxuICAgIGhlaWdodDogY2FsYygxMDAlIC0gMTAwcHgpICFpbXBvcnRhbnQ7XHJcbn1cclxuLy8gLmNoYXRsaXN0X2hlYWRlcntcclxuLy8gICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuLy8gICAgIHRvcDogNTBweDtcclxuLy8gICAgIGxlZnQ6IDA7XHJcbi8vICAgICByaWdodDogMDtcclxuLy8gICAgIHotaW5kZXg6IDE7XHJcbi8vIH1cclxuLy8gLmNoYXRsaXN0X2NvbnRlbnR7XHJcbi8vICAgICBtYXJnaW4tdG9wOiAxMDBweCAhaW1wb3J0YW50O1xyXG4vLyB9XHJcbi8vIC5jYXRsaXN0X2l0ZW17XHJcbi8vICAgICBtYXJnaW46IDVweCAwICFpbXBvcnRhbnQ7XHJcbi8vIH1cclxuLy8gaGl0ZXNoIGNzcyBlbmQiLCIuZm9sbG93ZXJzLWxpc3Qge1xuICBoZWlnaHQ6IGNhbGMoMTAwJSAtIDYwcHgpO1xufVxuXG4ubnV0cml0aW9uLW5vLWRhdGEge1xuICBoZWlnaHQ6IGNhbGMoMTAwJSAtIDEwMHB4KSAhaW1wb3J0YW50O1xufSJdfQ== */";
     /***/
   },
 
@@ -296,7 +296,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ChatListPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
+          var _this = this;
+
+          var socket = this.socket.connect();
+          console.log('check 1', socket.connected); // socket.on('connect', function() {
+          //   console.log('check 2', socket.connected);
+          // });
+
+          socket.on('connect_error', function (err) {
+            console.log("connect failed" + err);
+          });
           this.userData = JSON.parse(localStorage.getItem('userData'));
+          var test = this.socket.emit('user-list', 46);
+          console.log(test, 'check conn');
+          this.callApiv = setInterval(function () {
+            _this.socket.emit('user-list', 46);
+          }, 5000);
+          this.myChatList();
           this.setFilteredItems();
         }
       }, {
@@ -330,29 +346,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ionViewWillEnter",
         value: function ionViewWillEnter() {
-          var _this = this;
+          var _this2 = this;
 
           this.socket.emit('user-list', this.userData.id);
           this.callApiv = setInterval(function () {
-            _this.socket.emit('user-list', _this.userData.id);
+            _this2.socket.emit('user-list', _this2.userData.id);
           }, 5000);
           this.myChatList();
         }
       }, {
         key: "myChatList",
         value: function myChatList() {
-          var _this2 = this;
+          var _this3 = this;
 
           this.socket.fromEvent('my-chat-list').subscribe(function (receiveMessageArr) {
-            _this2.requestCount = 0;
-            _this2.items = receiveMessageArr;
+            _this3.requestCount = 0;
+            _this3.items = receiveMessageArr;
             console.log("receiveMessageArr:" + JSON.stringify(receiveMessageArr));
           });
           this.socket.fromEvent('singleChatRequestCount').subscribe(function (receiveMessageArr) {
-            _this2.requestCount = _this2.requestCount + receiveMessageArr[0].single_chat_request_count; // console.log("singleCount :" + this.requestCount);
+            _this3.requestCount = _this3.requestCount + receiveMessageArr[0].single_chat_request_count;
+            console.log("singleCount :" + _this3.requestCount);
           });
           this.socket.fromEvent('groupChatRequestCount').subscribe(function (receiveMessageArr) {
-            _this2.requestCount = _this2.requestCount + receiveMessageArr[0].group_chat_request_count; // console.log("groupCount :" + this.requestCount);      
+            _this3.requestCount = _this3.requestCount + receiveMessageArr[0].group_chat_request_count;
+            console.log("groupCount :" + _this3.requestCount);
           });
         }
       }, {

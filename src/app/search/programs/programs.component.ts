@@ -27,53 +27,102 @@ export class ProgramsComponent implements OnInit {
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     console.log(this.userData);
-    this.searchService.getSpecialities({}).subscribe(data=>{
-      this.speciality = data.list;
-      this.categories = data.list[0];
-      console.log(this.categories);
-      this.searchService.getProgramByCategory({'categoryId':this.categories.id}).subscribe(data=>{
-        console.log(data);
-        let i=1;
-        this.programList=[]
-        data.programList.filter(el=>{
-          if((i % 5 == 0))
-          {
-            this.programList.push({'ad':true , 'adTitle':'Advertisement Title'});           
-          }
-          i++;
-         
-          el.bookmarks.filter((f) => {
-            if (f.user_id == this.userData.id) {
-              el.bookmarked = true;
-            } 
+
+    if (this.userData) {
+      this.searchService.getSpecialities({}).subscribe(data => {
+        this.speciality = data.list;
+        this.categories = data.list[0];
+        console.log(this.categories);
+        this.searchService.getProgramByCategory({ 'categoryId': this.categories.id }).subscribe(data => {
+          console.log(data);
+          let i = 1;
+          this.programList = []
+          data.programList.filter(el => {
+            if ((i % 5 == 0)) {
+              this.programList.push({ 'ad': true, 'adTitle': 'Advertisement Title' });
+            }
+            i++;
+
+            el.bookmarks.filter((f) => {
+              if (f.user_id == this.userData.id) {
+                el.bookmarked = true;
+              }
+            });
+
+            this.programList.push(el);
           });
 
-          this.programList.push(el);
+          console.log(this.programList);
         });
-        
-      console.log(this.programList);
       });
-    });
+    } else {
+      this.searchService.getGuestSpecialities({}).subscribe(data => {
+        this.speciality = data.list;
+        this.categories = data.list[0];
+        console.log(this.categories);
+        this.searchService.getGuestProgramByCategory({ 'categoryId': this.categories.id }).subscribe(data => {
+          console.log(data);
+          let i = 1;
+          this.programList = []
+          data.programList.filter(el => {
+            if ((i % 5 == 0)) {
+              this.programList.push({ 'ad': true, 'adTitle': 'Advertisement Title' });
+            }
+            i++;
+
+            el.bookmarks.filter((f) => {
+              if (f.user_id == this.userData.id) {
+                el.bookmarked = true;
+              }
+            });
+
+            this.programList.push(el);
+          });
+
+          console.log(this.programList);
+        });
+      });
+    }
    }
 
 
   categoryChanged(ev: any) {
+
     this.programList=null;
-     this.searchService.getProgramByCategory({'categoryId':ev.detail.value}).subscribe(data=>{
-      this.programList=[];
-        console.log(data);
-        let i=1;
-        data.programList.filter(el=>{
-          if((i % 5 == 0))
-          {
-            this.programList.push({'ad':true , 'adTitle':'Advertisement Title'});           
-          }
-          i++;
-          this.programList.push(el);
+    if (this.userData) {       
+      this.searchService.getProgramByCategory({'categoryId':ev.detail.value}).subscribe(data=>{
+        this.programList=[];
+          console.log(data);
+          let i=1;
+          data.programList.filter(el=>{
+            if((i % 5 == 0))
+            {
+              this.programList.push({'ad':true , 'adTitle':'Advertisement Title'});           
+            }
+            i++;
+            this.programList.push(el);
+          });
+          
+        console.log(this.programList);
         });
-        
-      console.log(this.programList);
-      });
+    } else {
+      this.searchService.getGuestProgramByCategory({'categoryId':ev.detail.value}).subscribe(data=>{
+        this.programList=[];
+          console.log(data);
+          let i=1;
+          data.programList.filter(el=>{
+            if((i % 5 == 0))
+            {
+              this.programList.push({'ad':true , 'adTitle':'Advertisement Title'});           
+            }
+            i++;
+            this.programList.push(el);
+          });
+          
+        console.log(this.programList);
+        });
+    }
+    
   }
   searchProgram:any;
   searchSkeleton:boolean=false;

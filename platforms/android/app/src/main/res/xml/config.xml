@@ -1,7 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.bm.ionicfcm" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="CardIO">
+        <param name="android-package" value="io.card.cordova.sdk.CardIOCordovaPlugin" />
+    </feature>
     <feature name="PhotoViewer">
         <param name="android-package" value="com.sarriaroman.PhotoViewer.PhotoViewer" />
+    </feature>
+    <feature name="VideoPlayer">
+        <param name="android-package" value="com.moust.cordova.videoplayer.VideoPlayer" />
+    </feature>
+    <feature name="PayPalMobile">
+        <param name="android-package" value="com.paypal.cordova.sdk.PayPalMobileCordovaPlugin" />
     </feature>
     <feature name="Clipboard">
         <param name="android-package" value="com.verso.cordova.clipboard.Clipboard" />
@@ -37,6 +46,9 @@
     <feature name="Geolocation">
         <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
     </feature>
+    <feature name="InAppBillingV3">
+        <param name="android-package" value="com.alexdisler.inapppurchases.InAppBillingV3" />
+    </feature>
     <feature name="LocalNotification">
         <param name="android-package" value="de.appplant.cordova.plugin.localnotification.LocalNotification" />
     </feature>
@@ -63,6 +75,9 @@
     <feature name="StreamingMedia">
         <param name="android-package" value="com.hutchind.cordova.plugins.streamingmedia.StreamingMedia" />
     </feature>
+    <feature name="CordovaStripe">
+        <param name="android-package" value="com.zyramedia.cordova.stripe.CordovaStripe" />
+    </feature>
     <feature name="ImagePicker">
         <param name="android-package" value="com.synconset.ImagePicker" />
     </feature>
@@ -86,21 +101,6 @@
     </feature>
     <feature name="BarcodeScanner">
         <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
-    </feature>
-    <feature name="CardIO">
-        <param name="android-package" value="io.card.cordova.sdk.CardIOCordovaPlugin" />
-    </feature>
-    <feature name="PayPalMobile">
-        <param name="android-package" value="com.paypal.cordova.sdk.PayPalMobileCordovaPlugin" />
-    </feature>
-    <feature name="VideoPlayer">
-        <param name="android-package" value="com.moust.cordova.videoplayer.VideoPlayer" />
-    </feature>
-    <feature name="CordovaStripe">
-        <param name="android-package" value="com.zyramedia.cordova.stripe.CordovaStripe" />
-    </feature>
-    <feature name="InAppBillingV3">
-        <param name="android-package" value="com.alexdisler.inapppurchases.InAppBillingV3" />
     </feature>
     <feature name="Badge">
         <param name="android-package" value="de.appplant.cordova.plugin.badge.Badge" />

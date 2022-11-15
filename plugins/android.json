@@ -44,6 +44,9 @@
     "cordova-plugin-filepath": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
+    "cordova-plugin-inapppurchase": {
+      "PACKAGE_NAME": "com.bm.ionicfcm"
+    },
     "cordova-plugin-iosrtc": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     },
@@ -91,15 +94,6 @@
       "DEEPLINK_4_HOST": " ",
       "DEEPLINK_5_SCHEME": " ",
       "DEEPLINK_5_HOST": " ",
-      "PACKAGE_NAME": "com.bm.ionicfcm"
-    },
-    "cordova-plugin-inapppurchase": {
-      "PACKAGE_NAME": "com.bm.ionicfcm"
-    },
-    "cordova-plugin-inapppurchase": {
-      "PACKAGE_NAME": "com.bm.ionicfcm"
-    },
-    "cordova-plugin-inapppurchase": {
       "PACKAGE_NAME": "com.bm.ionicfcm"
     }
   },

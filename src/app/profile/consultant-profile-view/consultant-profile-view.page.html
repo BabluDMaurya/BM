@@ -11,7 +11,7 @@
       </ion-label>
     </ion-item>
     <ion-item>
-      <div class="icon-right-side">
+      <div class="icon-right-side" *ngIf="userData">
         <a (click)="notificationModal()" class="noti-bell">
           <ion-icon ios="ios-heart" md="md-heart"></ion-icon>
           <span class=""></span>
@@ -107,13 +107,19 @@
       </ion-col> -->
       <ion-col style="height: auto; padding: 0;" lines="none" no-border-top class="profile_tabs three-tabs">
         <ion-list lines="none" style="padding: 5px 0; margin: 0;" class="top-list">
-          <ion-item (click)="chatPopup()" style=" padding: 10px 0;" class="box-shadow-none icon-div"> 
+          <ion-item *ngIf="userData" (click)="chatPopup()" style=" padding: 10px 0;" class="box-shadow-none icon-div"> 
             <div class="top-icon">
               <ion-icon ios="ios-chatbubbles" md="ios-chatbubbles"></ion-icon>
             </div> 
             <ion-label>Chat</ion-label>
           </ion-item>
-          <ion-item (click)="followUp(followStatus)" style=" padding: 10px 0;" class="box-shadow-none icon-div" id="followStatus">
+          <ion-item *ngIf="!userData" (click)="redirectToLogin()" style=" padding: 10px 0;" class="box-shadow-none icon-div"> 
+            <div class="top-icon">
+              <ion-icon ios="ios-chatbubbles" md="ios-chatbubbles"></ion-icon>
+            </div> 
+            <ion-label>Chat</ion-label>
+          </ion-item>
+          <ion-item *ngIf="userData" (click)="followUp(followStatus)" style=" padding: 10px 0;" class="box-shadow-none icon-div" id="followStatus">
             <div class="top-icon">
               <ion-icon *ngIf="followStatus == 'Unfollow' " ios="ios-person" md="md-person"></ion-icon>
               <ion-icon *ngIf="followStatus == 'Follow' " ios="ios-person-add" md="md-person-add"></ion-icon>
@@ -122,6 +128,14 @@
             </div>
             <!-- <ion-label>{{ follow ?'Following':'Follow' }}</ion-label> -->
             <ion-label>{{followStatus}}</ion-label>
+          </ion-item>
+          <ion-item *ngIf="!userData" (click)="redirectToLogin()" style=" padding: 10px 0;" class="box-shadow-none icon-div" id="followStatus">
+            <div class="top-icon">
+              <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+              <!-- <img [src]="followStatus == 'UNFOLLOW' ? '../../assets/images/unfollow.svg':'../../assets/images/follow.svg'" /> -->
+            </div>
+            <!-- <ion-label>{{ follow ?'Following':'Follow' }}</ion-label> -->
+            <ion-label>Follow</ion-label>
           </ion-item>
           <ion-item detail="false" style=" padding: 10px 0;" class="box-shadow-none icon-div" value="post" [routerLink]="['/upcoming']">
             <div class="top-icon">
@@ -213,7 +227,7 @@
                               </ion-thumbnail>
                               <ion-icon class="video-icon" ios="ios-videocam" md="md-videocam"></ion-icon>  
                             <div class="post-content">
-                              <ion-list class="item-post" lines="none">
+                              <ion-list *ngIf="userData" class="item-post" lines="none">
                                 <ion-item>
                                   <div [routerLink]="['/comments',post.id]" *ngIf=" post?.disable_comment == 0">                               
                                     <ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon> 
@@ -285,7 +299,7 @@
                                 <span (click)="expanded = 0" class="text-green">{{expanded==  post.id ?'View less':'View more'}}</span></p>
                             </div>
                             <!-- ------- ends here   post type = 8 -->
-                            <ion-list class="item-post" lines="none">
+                            <ion-list *ngIf="userData" class="item-post" lines="none">
                               <ion-item>
                                 <div (click)="liked(post.id,post.liked)" class="{{ post.liked ?'active':'inactive' }}">
                                   <ion-icon class="like-icon" ios="ios-heart" md="md-heart"></ion-icon> 

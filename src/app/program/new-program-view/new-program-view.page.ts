@@ -106,67 +106,73 @@ export class NewProgramViewPage implements OnInit {
       this.programId = params.get('programId');
     });
     
-    this.programService.checkPaymentStatus({ 'programId': this.programId, 'userId': this.userData.id }).subscribe((data) => {
-      console.log(data);
-      this.paymentStatus = data.payment_status
-    });
+    if(this.userData){
+      this.programService.checkPaymentStatus({ 'programId': this.programId, 'userId': this.userData.id }).subscribe((data) => {
+        console.log(data);
+        this.paymentStatus = data.payment_status
+      });
+    }    
 
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.totalIntoFee = 0;
     this.min = 0;
     this.totalMin = 0;
     this.Mins = 0;
-    this.programService.getIntoActivePendingPaymentStatus('').subscribe(data => {
-      this.intoActivePaid = data.data;
-      console.log(this.intoActivePaid);
-      this.intoActivePaid.forEach(el => {
-        this.watchTime = (el.time / 60);
 
-        if (el.type_id == 3) {
-          this.minute = ((el.time / 60) * 0.008);
-          this.mms = (el.time / 60);
-        } else if (el.type_id == 4) {
-          this.minute = ((el.time / 60) * 0.0075);
-          this.mms = (el.time / 60);
-        }
-        
-        
-        this.totalIntoFee = parseFloat(this.minute) + parseFloat(this.min);
-        this.totalMin = parseFloat(this.mms) + parseFloat(this.Mins);
-        this.min = this.totalIntoFee;
-        this.Mins = this.totalMin;
-        this.intoProg.push(el.prog_id);
-        var img = '';
-        if (el.image_path != '') {
-          var image = el.image_path.split(',');
-          img = image[0];
-        }
-        if (this.Mins > 140) {
-          console.log(this.intoProg);
-          var fileData = {
-            pgid: this.intoProg,
-            pgname: el.title,
-            pgamount: this.totalIntoFee,
-            pgimg: img,
-            routeLink: 'progView',
-            type: '1'
+    if (this.userData) {
+      this.programService.getIntoActivePendingPaymentStatus('').subscribe(data => {
+        this.intoActivePaid = data.data;
+        console.log(this.intoActivePaid);
+        this.intoActivePaid.forEach(el => {
+          this.watchTime = (el.time / 60);
 
+          if (el.type_id == 3) {
+            this.minute = ((el.time / 60) * 0.008);
+            this.mms = (el.time / 60);
+          } else if (el.type_id == 4) {
+            this.minute = ((el.time / 60) * 0.0075);
+            this.mms = (el.time / 60);
           }
-          this.commonService.presentModal(PaymentComponent, 'bottomModal', fileData);
-          exit();
-          return false;
-        }
-        // console.log(this.Mins);
+
+
+          this.totalIntoFee = parseFloat(this.minute) + parseFloat(this.min);
+          this.totalMin = parseFloat(this.mms) + parseFloat(this.Mins);
+          this.min = this.totalIntoFee;
+          this.Mins = this.totalMin;
+          this.intoProg.push(el.prog_id);
+          var img = '';
+          if (el.image_path != '') {
+            var image = el.image_path.split(',');
+            img = image[0];
+          }
+          if (this.Mins > 140) {
+            console.log(this.intoProg);
+            var fileData = {
+              pgid: this.intoProg,
+              pgname: el.title,
+              pgamount: this.totalIntoFee,
+              pgimg: img,
+              routeLink: 'progView',
+              type: '1'
+
+            }
+            this.commonService.presentModal(PaymentComponent, 'bottomModal', fileData);
+            exit();
+            return false;
+          }
+          // console.log(this.Mins);
+          // console.log(this.totalIntoFee);
+
+        });
         // console.log(this.totalIntoFee);
+        // console.log(this.Mins);
 
-      });
-      // console.log(this.totalIntoFee);
-      // console.log(this.Mins);
-
-      console.log(this.Mins);
-      console.log('getIntoActivePendingPaymentStatus');
-    })
-
+        console.log(this.Mins);
+        console.log('getIntoActivePendingPaymentStatus');
+      })
+    }
+    
+    if(this.userData){
     this.programService.getPaymentStatus().subscribe(data => {
       this.paymentPending = data;
       if (this.paymentPending.data.length > 0) {
@@ -209,6 +215,7 @@ export class NewProgramViewPage implements OnInit {
 
       }
     });
+  }
 
     this.programService.getEnxData({ 'program_id': this.programId }).subscribe(data => {
       console.log("EnxData User: " + JSON.stringify(data));
@@ -260,154 +267,309 @@ export class NewProgramViewPage implements OnInit {
     console.log("ClickEvent Join event");
   }
   ionViewWillEnter() {
-    this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
-      this.programDetail = data.programData;
-      console.log('starttttttt');
-      console.log(this.programDetail);
-      console.log(this.programDetail.is_requested);
-      console.log(this.request_join);
-      console.log(this.programDetail.ended);
-      console.log(this.prePayment);
-      console.log('enddddddddd');
-      if (data.programData.parent_program == null) {
-        console.log('nullll');
-        this.parentProgId = data.programData.id;
-      } else {
-        this.parentProgId = data.programData.parent_program;
-      }
-      this.programService.getProgramById({ "parentId": this.parentProgId }).subscribe(data => {
-        console.log('allProgData -',data);
-        this.allProgramData = data.cloneList;
-        this.non_live_component_fee = data.cloneList[0].non_live_component_fee;
-
-        console.log(data, 'programData');
-        console.log(this.parentProgId);
-      });
-      this.broadcastId = 'programId_' + data.programData.id;
-      this.programType = data.programData.type_id;
-      this.pgtitle = data.programData.title;
-      if (this.programDetail.payment_type == 'Paid') {
-        this.programFee = this.programDetail.program_fee;
-      } else if (this.programDetail.payment_type == 'Free') {
-        this.programFee = this.programDetail.payment_type;
-      }
-      if (this.programType == 'private oneway' || this.programType == 'private twoway') {
-        this.participants = 2;
-      } else if (this.programType == 'group oneway' || this.programType == 'group twoway') {
-        this.participants = 50;
-      } else {
-        this.participants = 100;
-      }
-      this.programDurations = data.programData.program_duration;
-      this.programDescription = data.programData.description;
-      if (data.programData.image_path != '') {
-        // this.progImage = data.programData.image_path;
-        this.progImage = true;
-      } else {
-        this.progImage = false;
-      }
-      if (data.programData.video_path != null) {
-        // this.progImage = data.programData.image_path;
-        this.progVideo = true;
-      } else {
-        this.progVideo = false;
-      }
-      if (data.programData.image_path) {
-        this.programDetail.img_array = data.programData.image_path.split(',');
-        this.programImage = this.programDetail.img_array[0];
-      }
-
-      //  ------------ C O U N T   D O W N   T I M E R ---------
-      let a: any = new Date(this.programDetail.program_date + 'Z');
-      this.programDateTime = a;
-      let b: any = new Date();
-      let c: any;
-      if (a > b) {
-        c = Math.abs(a - b) / 1000;
-        this.programDetail.cd = c;
-        this.dd = timer(0, 1000).pipe(take(this.programDetail.cd), map(() => {
-          if (this.programDetail.cd > 0) {
-            --this.programDetail.cd;
-          }
-
-          return ~~(this.programDetail.cd / (60 * 60 * 24));
-
-        })
-        );
-        this.ss = timer(0, 1000).pipe(take(this.programDetail.cd), map(() => {
-          if (this.programDetail.cd > 0) {
-            --this.programDetail.cd;
-          }
-          return ~~(this.programDetail.cd % 3600 % 60);
-        })
-        );
-        this.mm = timer(0, 1000).pipe(take(this.programDetail.cd),
-          map(() => {
-            if (this.programDetail.cd > 0) {
-              --this.programDetail.cd;
-            }
-            return ~~(this.programDetail.cd % 3600 / 60);
-          })
-        );
-        this.hh = timer(0, 1000).pipe(
-          take(this.programDetail.cd),
-          map(() => {
-
-            if (this.programDetail.cd <= 5) {
-              this.programDetail.ready = true;
-              this.programDetail.live = true;
-              this.displayProgData = true;
-              this.checkStreaming();
-              console.log(this.programDetail);
-              console.log(this.programDetail.live, 'liveee');
-            }
-            if (this.programDetail.cd > 0) {
-              --this.programDetail.cd;
-            } else {
-              this.programDetail.cd = 0
-              return 0;
-            }
-
-            return ~~(this.programDetail.cd / (60 * 60) % 24);
-          })
-        );
-      } else {
-        c = 0;
-        this.displayProgData = true;
-        if (new Date(this.programDetail.program_end_time + 'Z') > new Date()) {
-          this.programDetail.ready = true;
-          this.programDetail.live = true;
-
-          console.log(this.programDetail.live + 'liveeeeeee');
-          this.checkStreaming();
-
+    if(this.userData){
+      console.log('a');
+      this.programService.getProgramById({ "programId": this.programId }).subscribe(data => {
+        this.programDetail = data.programData;
+        console.log('starttttttt');
+        console.log(this.programDetail);
+        console.log(this.programDetail.is_requested);
+        console.log(this.request_join);
+        console.log(this.programDetail.ended);
+        console.log(this.prePayment);
+        console.log('enddddddddd');
+        if (data.programData.parent_program == null) {
+          console.log('nullll');
+          this.parentProgId = data.programData.id;
         } else {
-          console.log(this.programDetail.live + 'edddddd');
-          this.programDetail.ended = true;
+          this.parentProgId = data.programData.parent_program;
         }
-
-      }
-      //-------------------------------------------------
-
-      if (this.programDetail.request_accepted != null) {
-
-        if ((this.programDetail.request_accepted.split(',')).includes(this.userData.id.toString())) {
-          this.request_accs = true;
-          this.request_join = true;
+        this.programService.getProgramById({ "parentId": this.parentProgId }).subscribe(data => {
+          console.log('allProgData -',data);
+          this.allProgramData = data.cloneList;
+          this.non_live_component_fee = data.cloneList[0].non_live_component_fee;
+  
+          console.log(data, 'programData');
+          console.log(this.parentProgId);
+        });
+        this.broadcastId = 'programId_' + data.programData.id;
+        this.programType = data.programData.type_id;
+        this.pgtitle = data.programData.title;
+        if (this.programDetail.payment_type == 'Paid') {
+          this.programFee = this.programDetail.program_fee;
+        } else if (this.programDetail.payment_type == 'Free') {
+          this.programFee = this.programDetail.payment_type;
         }
-      } else if (this.programDetail.request_sent != null) {
-        if ((this.programDetail.request_sent.split(',')).includes(this.userData.id.toString())) {
-          this.request_accs_pending = true;
+        if (this.programType == 'private oneway' || this.programType == 'private twoway') {
+          this.participants = 2;
+        } else if (this.programType == 'group oneway' || this.programType == 'group twoway') {
+          this.participants = 50;
+        } else {
+          this.participants = 100;
         }
-      }
-      if (this.programDetail.request_recive != null) {
-
-        if ((this.programDetail.request_recive.split(',')).includes(this.userData.id.toString())) {
-          this.request_join = true;
-          console.log(this.request_join + 'this.request_joineeeeee');
+        this.programDurations = data.programData.program_duration;
+        this.programDescription = data.programData.description;
+        if (data.programData.image_path != '') {
+          // this.progImage = data.programData.image_path;
+          this.progImage = true;
+        } else {
+          this.progImage = false;
         }
-      }
-    });
+        if (data.programData.video_path != null) {
+          // this.progImage = data.programData.image_path;
+          this.progVideo = true;
+        } else {
+          this.progVideo = false;
+        }
+        if (data.programData.image_path) {
+          this.programDetail.img_array = data.programData.image_path.split(',');
+          this.programImage = this.programDetail.img_array[0];
+        }
+  
+        //  ------------ C O U N T   D O W N   T I M E R ---------
+        let a: any = new Date(this.programDetail.program_date + 'Z');
+        this.programDateTime = a;
+        let b: any = new Date();
+        let c: any;
+        if (a > b) {
+          c = Math.abs(a - b) / 1000;
+          this.programDetail.cd = c;
+          this.dd = timer(0, 1000).pipe(take(this.programDetail.cd), map(() => {
+            if (this.programDetail.cd > 0) {
+              --this.programDetail.cd;
+            }
+  
+            return ~~(this.programDetail.cd / (60 * 60 * 24));
+  
+          })
+          );
+          this.ss = timer(0, 1000).pipe(take(this.programDetail.cd), map(() => {
+            if (this.programDetail.cd > 0) {
+              --this.programDetail.cd;
+            }
+            return ~~(this.programDetail.cd % 3600 % 60);
+          })
+          );
+          this.mm = timer(0, 1000).pipe(take(this.programDetail.cd),
+            map(() => {
+              if (this.programDetail.cd > 0) {
+                --this.programDetail.cd;
+              }
+              return ~~(this.programDetail.cd % 3600 / 60);
+            })
+          );
+          this.hh = timer(0, 1000).pipe(
+            take(this.programDetail.cd),
+            map(() => {
+  
+              if (this.programDetail.cd <= 5) {
+                this.programDetail.ready = true;
+                this.programDetail.live = true;
+                this.displayProgData = true;
+                this.checkStreaming();
+                console.log(this.programDetail);
+                console.log(this.programDetail.live, 'liveee');
+              }
+              if (this.programDetail.cd > 0) {
+                --this.programDetail.cd;
+              } else {
+                this.programDetail.cd = 0
+                return 0;
+              }
+  
+              return ~~(this.programDetail.cd / (60 * 60) % 24);
+            })
+          );
+        } else {
+          c = 0;
+          this.displayProgData = true;
+          if (new Date(this.programDetail.program_end_time + 'Z') > new Date()) {
+            this.programDetail.ready = true;
+            this.programDetail.live = true;
+  
+            console.log(this.programDetail.live + 'liveeeeeee');
+            this.checkStreaming();
+  
+          } else {
+            console.log(this.programDetail.live + 'edddddd');
+            this.programDetail.ended = true;
+          }
+  
+        }
+        //-------------------------------------------------
+  
+        if (this.programDetail.request_accepted != null) {
+  
+          if ((this.programDetail.request_accepted.split(',')).includes(this.userData.id.toString())) {
+            this.request_accs = true;
+            this.request_join = true;
+          }
+        } else if (this.programDetail.request_sent != null) {
+          if ((this.programDetail.request_sent.split(',')).includes(this.userData.id.toString())) {
+            this.request_accs_pending = true;
+          }
+        }
+        if (this.programDetail.request_recive != null) {
+  
+          if ((this.programDetail.request_recive.split(',')).includes(this.userData.id.toString())) {
+            this.request_join = true;
+            console.log(this.request_join + 'this.request_joineeeeee');
+          }
+        }
+      });
+    } else {
+      console.log('b');
+      this.programService.getGuestProgramById({ "programId": this.programId }).subscribe(data => {
+        this.programDetail = data.programData;
+        console.log(this.programDetail);
+        console.log('starttttttt');
+        console.log(this.programDetail);
+        console.log(this.programDetail.is_requested);
+        console.log(this.request_join);
+        console.log(this.programDetail.ended);
+        console.log(this.prePayment);
+        console.log('enddddddddd');
+        if (data.programData.parent_program == null) {
+          console.log('nullll');
+          this.parentProgId = data.programData.id;
+        } else {
+          this.parentProgId = data.programData.parent_program;
+        }
+        this.programService.getGuestProgramById({ "parentId": this.parentProgId }).subscribe(data => {
+          console.log('allProgData -',data);
+          this.allProgramData = data.cloneList;
+          this.non_live_component_fee = data.cloneList[0].non_live_component_fee;
+  
+          console.log(data, 'programData');
+          console.log(this.parentProgId);
+        });
+        this.broadcastId = 'programId_' + data.programData.id;
+        this.programType = data.programData.type_id;
+        this.pgtitle = data.programData.title;
+        if (this.programDetail.payment_type == 'Paid') {
+          this.programFee = this.programDetail.program_fee;
+        } else if (this.programDetail.payment_type == 'Free') {
+          this.programFee = this.programDetail.payment_type;
+        }
+        if (this.programType == 'private oneway' || this.programType == 'private twoway') {
+          this.participants = 2;
+        } else if (this.programType == 'group oneway' || this.programType == 'group twoway') {
+          this.participants = 50;
+        } else {
+          this.participants = 100;
+        }
+        this.programDurations = data.programData.program_duration;
+        this.programDescription = data.programData.description;
+        if (data.programData.image_path != '') {
+          // this.progImage = data.programData.image_path;
+          this.progImage = true;
+        } else {
+          this.progImage = false;
+        }
+        if (data.programData.video_path != null) {
+          // this.progImage = data.programData.image_path;
+          this.progVideo = true;
+        } else {
+          this.progVideo = false;
+        }
+        if (data.programData.image_path) {
+          this.programDetail.img_array = data.programData.image_path.split(',');
+          this.programImage = this.programDetail.img_array[0];
+        }
+  
+        //  ------------ C O U N T   D O W N   T I M E R ---------
+        let a: any = new Date(this.programDetail.program_date + 'Z');
+        this.programDateTime = a;
+        let b: any = new Date();
+        let c: any;
+        if (a > b) {
+          c = Math.abs(a - b) / 1000;
+          this.programDetail.cd = c;
+          this.dd = timer(0, 1000).pipe(take(this.programDetail.cd), map(() => {
+            if (this.programDetail.cd > 0) {
+              --this.programDetail.cd;
+            }
+  
+            return ~~(this.programDetail.cd / (60 * 60 * 24));
+  
+          })
+          );
+          this.ss = timer(0, 1000).pipe(take(this.programDetail.cd), map(() => {
+            if (this.programDetail.cd > 0) {
+              --this.programDetail.cd;
+            }
+            return ~~(this.programDetail.cd % 3600 % 60);
+          })
+          );
+          this.mm = timer(0, 1000).pipe(take(this.programDetail.cd),
+            map(() => {
+              if (this.programDetail.cd > 0) {
+                --this.programDetail.cd;
+              }
+              return ~~(this.programDetail.cd % 3600 / 60);
+            })
+          );
+          this.hh = timer(0, 1000).pipe(
+            take(this.programDetail.cd),
+            map(() => {
+  
+              if (this.programDetail.cd <= 5) {
+                this.programDetail.ready = true;
+                this.programDetail.live = true;
+                this.displayProgData = true;
+                this.checkStreaming();
+                console.log(this.programDetail);
+                console.log(this.programDetail.live, 'liveee');
+              }
+              if (this.programDetail.cd > 0) {
+                --this.programDetail.cd;
+              } else {
+                this.programDetail.cd = 0
+                return 0;
+              }
+  
+              return ~~(this.programDetail.cd / (60 * 60) % 24);
+            })
+          );
+        } else {
+          c = 0;
+          this.displayProgData = true;
+          if (new Date(this.programDetail.program_end_time + 'Z') > new Date()) {
+            this.programDetail.ready = true;
+            this.programDetail.live = true;
+  
+            console.log(this.programDetail.live + 'liveeeeeee');
+            this.checkStreaming();
+  
+          } else {
+            console.log(this.programDetail.live + 'edddddd');
+            this.programDetail.ended = true;
+          }
+  
+        }
+        //-------------------------------------------------
+  
+        if (this.programDetail.request_accepted != null) {
+  
+          if ((this.programDetail.request_accepted.split(',')).includes(this.userData.id.toString())) {
+            this.request_accs = true;
+            this.request_join = true;
+          }
+        } else if (this.programDetail.request_sent != null) {
+          if ((this.programDetail.request_sent.split(',')).includes(this.userData.id.toString())) {
+            this.request_accs_pending = true;
+          }
+        }
+        if (this.programDetail.request_recive != null) {
+  
+          if ((this.programDetail.request_recive.split(',')).includes(this.userData.id.toString())) {
+            this.request_join = true;
+            console.log(this.request_join + 'this.request_joineeeeee');
+          }
+        }
+      });
+    }
+    
   }
 
 
@@ -565,6 +727,10 @@ export class NewProgramViewPage implements OnInit {
       }
     }
     
+  }
+
+  async redirectToLogin(){
+    this.router.navigate(["/signin"]);
   }
 
 

@@ -28,18 +28,26 @@
           <img src="../../assets/images/user.jpg" *ngIf="!program?.program_user?.bios?.profile_pic">
         </ion-avatar>
         <div class="header-right">
-          <ion-label
+          <ion-label *ngIf="userData"
             [routerLink]="program?.program_user?.user_type==0 ? ['/tabs/user-profile-view/',program?.program_user?.id] : ['/tabs/consultant-profile-view/',program?.program_user?.id]">
             <ion-card-title>{{program?.program_user?.user_name}}</ion-card-title>
             <ion-card-subtitle>{{program?.program_user?.location}}</ion-card-subtitle>
           </ion-label>
+          <ion-label *ngIf="!userData"
+            [routerLink]="['/tabs/guest-consultant-profile-view/',program?.program_user?.id]">
+            <ion-card-title>{{program?.program_user?.user_name}}</ion-card-title>
+            <ion-card-subtitle>{{program?.program_user?.location}}</ion-card-subtitle>
+          </ion-label>
           <div (click)="addBookmark(program?.id, program?.bookmarked , 5)" class="{{ program?.bookmarked ?'active':'inactive' }}">
-            <ion-icon class="active-icon" ios="ios-bookmark" md="md-bookmark"></ion-icon>
+            <ion-icon *ngIf="userData" class="active-icon" ios="ios-bookmark" md="md-bookmark"></ion-icon>
           </div>
         </div>
       </ion-card-header>
       <ion-card-content class="ion-no-padding item-content" *ngIf="!program?.ad">
-        <ion-thumbnail  [routerLink]="program?.program_user?.id==userData?.id ? ['/program-details/',program?.id] : ['/program-view/',program?.id]" >
+        <ion-thumbnail *ngIf="userData" [routerLink]="program?.program_user?.id==userData?.id ? ['/program-details/',program?.id] : ['/program-view/',program?.id]" >
+          <img src="../../assets/images/demo3.jpg">
+        </ion-thumbnail>
+        <ion-thumbnail *ngIf="!userData" [routerLink]="['/guest-program-view/',program?.id]" >
           <img src="../../assets/images/demo3.jpg">
         </ion-thumbnail>
         <div class="post-content">

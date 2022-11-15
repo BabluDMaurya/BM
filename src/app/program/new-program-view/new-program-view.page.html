@@ -101,7 +101,7 @@
                   </ion-col>
                 </ion-row>
                 <ion-row class="counter-box " *ngIf="programDetail?.is_live_status == 1"> 
-                  <ion-col size="3" class="ion-padding timer-block" *ngIf="!programDetail?.ended && dd > 0">
+                  <ion-col size="3" class="ion-padding timer-block" *ngIf="!programDetail?.ended">
                       <ion-text><p class="count_time">{{dd | async}}</p> Day</ion-text>
                   </ion-col>
                   <ion-col size="3" class="ion-padding timer-block" *ngIf="!programDetail?.ended">
@@ -120,7 +120,7 @@
                 </ion-row> 
                 <ion-row>
                 <ion-col style="text-align: center;" size="12" *ngIf="!programDetail?.ended"> 
-                  <ion-text >Time Left : {{140 - watchTime}} minutes</ion-text>
+                  <ion-text *ngIf="userData">Time Left : {{140 - watchTime}} minutes</ion-text>
                 </ion-col>
               </ion-row>
                 <ion-row class="counter-box " *ngIf="programDetail?.is_live_status == 0"> 
@@ -128,11 +128,11 @@
                       <ion-text>Non-Live Program</ion-text>
                   </ion-col>
                 </ion-row> 
-                <div style="display: flex; flex-direction: column; align-items: center;">
+                <div *ngIf="userData" style="display: flex; flex-direction: column; align-items: center;">
                   <ion-button *ngIf="( programDetail?.is_requested ==1 ||  programDetail?.is_requested == 2 ) && !request_join && !programDetail?.ended" size="small"  class="green btnVerify" (click)="joinRequest()" >Request To Join</ion-button> 
                   <ion-button *ngIf="request_accs_pending && !programDetail?.ended" size="small" class="green btnVerify" (click)="acceptRequest()" >Accept Request</ion-button> 
                 </div>
-                <div class="users-list ion-text-center" >
+                <div *ngIf="userData" class="users-list ion-text-center" >
                   <!-- <ion-button (click)="joinRoom()">Join Room</ion-button> -->
                   <ion-button *ngIf="request_accs && !programDetail?.live && !programDetail?.ended" size="small"  class="green btnVerify">Program will start sooon</ion-button>
                   <!-- <ion-button *ngIf="request_accs && !programDetail?.live" size="small"  class="green btnVerify" (click)="payment()">Payment</ion-button> -->
@@ -157,7 +157,7 @@
                   <div class="programs-date" *ngIf="val.is_live_status == 1 || val.nutrition_id || val.video_id">
                     <p class="fs-16 mb-10">{{val.program_date |date:'medium'}}</p>
                   </div>
-                  <div class="programs-flex">
+                  <div *ngIf="userData" class="programs-flex">
                     <div style="background-image: url('https://www.thebalancesmb.com/thmb/WexUZNoJ-q395XfYSrPxPkuC3Io=/960x540/smart/filters:no_upscale()/escavation-921233_960_720-57a2715c3df78c327648cd18.jpg');" class="program-session program-flex-child" *ngIf="val.is_live_status == 1">
                       <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
                       <p class="fs-14">Session</p>
@@ -167,6 +167,20 @@
                       <p class="fs-14">Video</p>
                     </div>
                     <div style="background-image: url('https://www.thebalancesmb.com/thmb/WexUZNoJ-q395XfYSrPxPkuC3Io=/960x540/smart/filters:no_upscale()/escavation-921233_960_720-57a2715c3df78c327648cd18.jpg');" class="program-nutrition program-flex-child" *ngIf="val.nutrition_id != '' " (click)="nutritionModal(val)">
+                      <ion-icon class="ionic-icon" ios="ios-nutrition" md="md-nutrition"></ion-icon>
+                      <p class="fs-14">Nutrition</p>
+                    </div>
+                  </div>
+                  <div *ngIf="!userData" class="programs-flex">
+                    <div style="background-image: url('https://www.thebalancesmb.com/thmb/WexUZNoJ-q395XfYSrPxPkuC3Io=/960x540/smart/filters:no_upscale()/escavation-921233_960_720-57a2715c3df78c327648cd18.jpg');" class="program-session program-flex-child" *ngIf="val.is_live_status == 1">
+                      <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+                      <p class="fs-14">Session</p>
+                    </div>
+                    <div style="background-image: url('https://www.thebalancesmb.com/thmb/WexUZNoJ-q395XfYSrPxPkuC3Io=/960x540/smart/filters:no_upscale()/escavation-921233_960_720-57a2715c3df78c327648cd18.jpg');" class="program-video program-flex-child" *ngIf="val.video_id != '' " >
+                      <ion-icon class="ionic-icon" ios="ios-videocam" md="md-videocam"></ion-icon>
+                      <p class="fs-14">Video</p>
+                    </div>
+                    <div style="background-image: url('https://www.thebalancesmb.com/thmb/WexUZNoJ-q395XfYSrPxPkuC3Io=/960x540/smart/filters:no_upscale()/escavation-921233_960_720-57a2715c3df78c327648cd18.jpg');" class="program-nutrition program-flex-child" *ngIf="val.nutrition_id != '' " >
                       <ion-icon class="ionic-icon" ios="ios-nutrition" md="md-nutrition"></ion-icon>
                       <p class="fs-14">Nutrition</p>
                     </div>
@@ -188,7 +202,13 @@
                     </div>
                   </div> -->
                   <div class="chat_btn">
-                    <ion-item *ngIf="programDetail?.chat_status == 1" (click)="showChatUsers()" detail="false">
+                    <ion-item *ngIf="programDetail?.chat_status == 1 && userData" (click)="showChatUsers()" detail="false">
+                      <div class="top-icon">
+                        <ion-icon ios="ios-text" md="md-text"></ion-icon>
+                      </div>
+                      <ion-label>Chat</ion-label>
+                    </ion-item>
+                    <ion-item *ngIf="programDetail?.chat_status == 1 && !userData" (click)="redirectToLogin()" detail="false">
                       <div class="top-icon">
                         <ion-icon ios="ios-text" md="md-text"></ion-icon>
                       </div>

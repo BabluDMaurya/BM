@@ -66,4 +66,9 @@ export class PostService {
     getAddByPGId(pgId){
     return this.http.post<any>(Config.ApiUrl+'api/auth/addByPGId', pgId ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getAddByPGId', pgId)));
     }
+
+  // Guest API's
+  getGuestPostById(formData){
+    return this.http.post<any>(Config.ApiUrl+'api/getGuestPostById', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getPostById', formData)));
+  }
 }

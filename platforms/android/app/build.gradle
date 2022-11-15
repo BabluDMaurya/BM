@@ -97,17 +97,10 @@ ext {
     cdvPluginPostBuildExtras = []
 }
 
-
-
-
-
-
-
-
-
-
 // PLUGIN GRADLE EXTENSIONS START
+apply from: "../card.io.cordova.mobilesdk/ionicfcm-build.gradle"
 apply from: "../com-sarriaroman-photoviewer/ionicfcm-photoviewer.gradle"
+apply from: "../com.paypal.cordova.mobilesdk/ionicfcm-build.gradle"
 apply from: "../cordova-android-support-gradle-release/ionicfcm-cordova-android-support-gradle-release.gradle"
 apply from: "../cordova-plugin-badge/ionicfcm-badge.gradle"
 apply from: "../cordova-plugin-fcm-with-dependecy-updated/ionicfcm-FCMPlugin.gradle"
@@ -116,8 +109,6 @@ apply from: "../cordova-plugin-telerik-imagepicker/ionicfcm-ignorelinterrors.gra
 apply from: "../cordova-plugin-telerik-imagepicker/ionicfcm-androidtarget.gradle"
 apply from: "../enablex-cordova-plugin/ionicfcm-build-extras.gradle"
 apply from: "../phonegap-plugin-barcodescanner/ionicfcm-barcodescanner.gradle"
-apply from: "../card.io.cordova.mobilesdk/ionicfcm-build.gradle"
-apply from: "../com.paypal.cordova.mobilesdk/ionicfcm-build.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
@@ -222,16 +213,7 @@ android {
     lintOptions {
       abortOnError false;
     }
-    packagingOptions {
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/license.txt'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/notice.txt'
-        exclude 'META-INF/ASL2.0'
-    }
+
     compileSdkVersion cdvCompileSdkVersion
     buildToolsVersion cdvBuildToolsVersion
 
@@ -303,11 +285,26 @@ android {
                 signingConfig signingConfigs.release
             }
         }
+        
         addSigningProps(cdvReleaseSigningPropertiesFile, signingConfigs.release)
     }
 
     if (cdvDebugSigningPropertiesFile) {
         addSigningProps(cdvDebugSigningPropertiesFile, signingConfigs.debug)
+    }
+    packagingOptions {
+
+        exclude 'project.properties'
+        exclude 'META-INF/INDEX.LIST'
+
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
     }
 }
 
@@ -327,14 +324,14 @@ dependencies {
     implementation "com.google.firebase:firebase-messaging:19.0.0"
     implementation  "com.android.support:support-annotations:27.+"
     implementation  "com.android.support:support-v4:27.+"
-    implementation "com.google.android.gms:play-services-location:16.+"
-    implementation  "com.android.support:appcompat-v7:27.+"
+    implementation "com.google.android.gms:play-services-location:21.0.1"
+    implementation "com.stripe:stripe-android:4.1.2"
+    implementation  "androidx.appcompat:appcompat:1.0.0"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "com.amazonaws:aws-java-sdk:1.10.75"
-    implementation  "com.android.support:appcompat-v7:27.+"
+    // implementation  "com.android.support:appcompat-v7:27.+"
     implementation  "com.android.support:design:27.+"
     implementation  "com.android.support:support-v4:27.+"
-    implementation "com.stripe:stripe-android:4.1.2"
     // SUB-PROJECT DEPENDENCIES END
 }
 

@@ -1,11 +1,35 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
+      "id": "card.io.cordova.mobilesdk.CardIO",
+      "file": "plugins/card.io.cordova.mobilesdk/www/cdv-plugin-card-io.js",
+      "pluginId": "card.io.cordova.mobilesdk",
+      "clobbers": [
+        "CardIO"
+      ]
+    },
+    {
       "id": "com-sarriaroman-photoviewer.PhotoViewer",
       "file": "plugins/com-sarriaroman-photoviewer/www/PhotoViewer.js",
       "pluginId": "com-sarriaroman-photoviewer",
       "clobbers": [
         "PhotoViewer"
+      ]
+    },
+    {
+      "id": "com.moust.cordova.videoplayer.VideoPlayer",
+      "file": "plugins/com.moust.cordova.videoplayer/www/videoplayer.js",
+      "pluginId": "com.moust.cordova.videoplayer",
+      "clobbers": [
+        "VideoPlayer"
+      ]
+    },
+    {
+      "id": "com.paypal.cordova.mobilesdk.PayPalMobile",
+      "file": "plugins/com.paypal.cordova.mobilesdk/www/cdv-plugin-paypal-mobile-sdk.js",
+      "pluginId": "com.paypal.cordova.mobilesdk",
+      "clobbers": [
+        "PayPalMobile"
       ]
     },
     {
@@ -300,6 +324,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "runs": true
     },
     {
+      "id": "cordova-plugin-inapppurchase.InAppBillingV3",
+      "file": "plugins/cordova-plugin-inapppurchase/www/index-android.js",
+      "pluginId": "cordova-plugin-inapppurchase",
+      "merges": [
+        "inAppPurchase"
+      ]
+    },
+    {
       "id": "cordova-plugin-ionic-keyboard.keyboard",
       "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
       "pluginId": "cordova-plugin-ionic-keyboard",
@@ -480,6 +512,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
+      "clobbers": [
+        "cordova.plugins.stripe"
+      ]
+    },
+    {
       "id": "cordova-plugin-telerik-imagepicker.ImagePicker",
       "file": "plugins/cordova-plugin-telerik-imagepicker/www/imagepicker.js",
       "pluginId": "cordova-plugin-telerik-imagepicker",
@@ -528,50 +568,13 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "cordova.plugins.barcodeScanner"
       ]
-    },
-    {
-      "id": "card.io.cordova.mobilesdk.CardIO",
-      "file": "plugins/card.io.cordova.mobilesdk/www/cdv-plugin-card-io.js",
-      "pluginId": "card.io.cordova.mobilesdk",
-      "clobbers": [
-        "CardIO"
-      ]
-    },
-    {
-      "id": "com.paypal.cordova.mobilesdk.PayPalMobile",
-      "file": "plugins/com.paypal.cordova.mobilesdk/www/cdv-plugin-paypal-mobile-sdk.js",
-      "pluginId": "com.paypal.cordova.mobilesdk",
-      "clobbers": [
-        "PayPalMobile"
-      ]
-    },
-    {
-      "id": "com.moust.cordova.videoplayer.VideoPlayer",
-      "file": "plugins/com.moust.cordova.videoplayer/www/videoplayer.js",
-      "pluginId": "com.moust.cordova.videoplayer",
-      "clobbers": [
-        "VideoPlayer"
-      ]
-    },
-    {
-      "id": "cordova-plugin-stripe.stripe",
-      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
-      "pluginId": "cordova-plugin-stripe",
-      "clobbers": [
-        "cordova.plugins.stripe"
-      ]
-    },
-    {
-      "id": "cordova-plugin-inapppurchase.InAppBillingV3",
-      "file": "plugins/cordova-plugin-inapppurchase/www/index-android.js",
-      "pluginId": "cordova-plugin-inapppurchase",
-      "merges": [
-        "inAppPurchase"
-      ]
     }
   ];
   module.exports.metadata = {
+    "card.io.cordova.mobilesdk": "2.1.0",
     "com-sarriaroman-photoviewer": "1.2.4",
+    "com.moust.cordova.videoplayer": "1.0.1",
+    "com.paypal.cordova.mobilesdk": "3.5.0",
     "cordova-android-support-gradle-release": "3.0.1",
     "cordova-clipboard": "1.3.0",
     "cordova-plugin-android-permissions": "1.0.2",
@@ -584,6 +587,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-filepath": "1.5.6",
     "cordova-plugin-geolocation": "4.0.2",
+    "cordova-plugin-inapppurchase": "1.1.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "4.1.3",
     "cordova-plugin-iosrtc": "6.0.5",
@@ -597,17 +601,13 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-streaming-media": "2.2.0",
+    "cordova-plugin-stripe": "1.5.3",
     "cordova-plugin-telerik-imagepicker": "2.3.3",
     "cordova-plugin-whitelist": "1.3.3",
     "cordova-plugin-x-socialsharing": "6.0.3",
     "cordova-sqlite-storage": "4.0.0",
     "enablex-cordova-plugin": "1.8.0",
     "ionic-plugin-deeplinks": "1.0.22",
-    "phonegap-plugin-barcodescanner": "8.1.0",
-    "card.io.cordova.mobilesdk": "2.1.0",
-    "com.paypal.cordova.mobilesdk": "3.5.0",
-    "com.moust.cordova.videoplayer": "1.0.1",
-    "cordova-plugin-stripe": "1.5.3",
-    "cordova-plugin-inapppurchase": "1.1.0"
+    "phonegap-plugin-barcodescanner": "8.1.0"
   };
 });

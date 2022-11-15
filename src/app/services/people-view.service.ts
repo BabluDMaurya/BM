@@ -97,4 +97,18 @@ export class PeopleViewService {
     getEachUserData(id) {
       return this.http.post<any>(Config.ApiUrl+'api/auth/getEachUserData', id ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getEachUserData', id)));
     }
+
+    // Guest API's
+    getGuestUserData(formData) {
+      return this.http.post<any>(Config.ApiUrl+'api/getGuestUserData', formData ,this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getUserData', formData)));
+    }
+
+    guestGetMyPost(postType,userId, page){
+      return this.http.get<any>(Config.ApiUrl+'api/guestLoadMyPost?postType='+postType+'&userId='+userId+'&page='+page, this.getApiHeaders(null,true)).pipe(catchError(this.handleError('getMyPost')));
+    }
+
+    guestUpNextPost(postType,userId, videoType, postId){
+      return this.http.get<any>(Config.ApiUrl+'api/guestUpNextPost?postType='+postType+'&userId='+userId+'&videoType='+videoType+'&postId='+postId, this.getApiHeaders(null,true)).pipe(catchError(this.handleError('upNextPost')));
+    } 
+    
 }
