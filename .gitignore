@@ -1,5 +1,8 @@
 /node_modules
-/platform
+/platforms/android/app/daemon
+/platforms/android/app/native
+/platforms/android/app/wrapper
+/platforms/android/app/caches
 /www
 
 

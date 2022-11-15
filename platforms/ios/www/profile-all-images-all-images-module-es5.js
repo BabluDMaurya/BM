@@ -180,7 +180,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".photos-gallery {\n  display: block; }\n\n.photos-gallery > span {\n  display: block;\n  width: 33.3%;\n  float: left;\n  padding: 0 2px; }\n\n.photos-gallery img {\n  height: 100px;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJvZmlsZS9hbGwtaW1hZ2VzL0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFxwcm9maWxlXFxhbGwtaW1hZ2VzXFxhbGwtaW1hZ2VzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUFnQixjQUFjLEVBQUE7O0FBQzlCO0VBQXFCLGNBQWM7RUFBQyxZQUFZO0VBQUMsV0FBVztFQUFDLGNBQWMsRUFBQTs7QUFDM0U7RUFBcUIsYUFBYTtFQUFDLFdBQVc7RUFBQyxvQkFBaUI7S0FBakIsaUJBQWlCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9wcm9maWxlL2FsbC1pbWFnZXMvYWxsLWltYWdlcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGhvdG9zLWdhbGxlcnl7ZGlzcGxheTogYmxvY2s7fVxyXG4ucGhvdG9zLWdhbGxlcnk+c3BhbntkaXNwbGF5OiBibG9jazt3aWR0aDogMzMuMyU7ZmxvYXQ6IGxlZnQ7cGFkZGluZzogMCAycHg7fVxyXG4ucGhvdG9zLWdhbGxlcnkgaW1nIHtoZWlnaHQ6IDEwMHB4O3dpZHRoOiAxMDAlO29iamVjdC1maXQ6IGNvdmVyO30iXX0= */";
+    __webpack_exports__["default"] = ".photos-gallery {\n  display: block;\n}\n\n.photos-gallery > span {\n  display: block;\n  width: 33.3%;\n  float: left;\n  padding: 0 2px;\n}\n\n.photos-gallery img {\n  height: 100px;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJvZmlsZS9hbGwtaW1hZ2VzL0M6XFx4YW1wcFxcaHRkb2NzXFxpbnRvYWN0aXZlL3NyY1xcYXBwXFxwcm9maWxlXFxhbGwtaW1hZ2VzXFxhbGwtaW1hZ2VzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcHJvZmlsZS9hbGwtaW1hZ2VzL2FsbC1pbWFnZXMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQWdCLGNBQUE7QUNFaEI7O0FEREE7RUFBcUIsY0FBQTtFQUFlLFlBQUE7RUFBYSxXQUFBO0VBQVksY0FBQTtBQ1E3RDs7QURQQTtFQUFxQixhQUFBO0VBQWMsV0FBQTtFQUFZLG9CQUFBO0tBQUEsaUJBQUE7QUNhL0MiLCJmaWxlIjoic3JjL2FwcC9wcm9maWxlL2FsbC1pbWFnZXMvYWxsLWltYWdlcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGhvdG9zLWdhbGxlcnl7ZGlzcGxheTogYmxvY2s7fVxyXG4ucGhvdG9zLWdhbGxlcnk+c3BhbntkaXNwbGF5OiBibG9jazt3aWR0aDogMzMuMyU7ZmxvYXQ6IGxlZnQ7cGFkZGluZzogMCAycHg7fVxyXG4ucGhvdG9zLWdhbGxlcnkgaW1nIHtoZWlnaHQ6IDEwMHB4O3dpZHRoOiAxMDAlO29iamVjdC1maXQ6IGNvdmVyO30iLCIucGhvdG9zLWdhbGxlcnkge1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLnBob3Rvcy1nYWxsZXJ5ID4gc3BhbiB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICB3aWR0aDogMzMuMyU7XG4gIGZsb2F0OiBsZWZ0O1xuICBwYWRkaW5nOiAwIDJweDtcbn1cblxuLnBob3Rvcy1nYWxsZXJ5IGltZyB7XG4gIGhlaWdodDogMTAwcHg7XG4gIHdpZHRoOiAxMDAlO1xuICBvYmplY3QtZml0OiBjb3Zlcjtcbn0iXX0= */";
     /***/
   },
 
@@ -272,11 +272,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function ngOnInit() {
           var _this = this;
 
+          this.loginUserData = JSON.parse(localStorage.getItem('userData'));
+          console.log(this.loginUserData);
           this.actRoute.paramMap.subscribe(function (params) {
             _this.consultID = params.get('userId');
             _this.consultName = params.get('userName');
           });
-          this.peopleView.getMyPost('1', this.consultID, 1).subscribe(function (data) {
+          this.peopleView.getMyPost('1', this.loginUserData.id, 1).subscribe(function (data) {
             data.posts.data.forEach(function (element) {
               _this.myPosts.push(element);
             });

@@ -296,7 +296,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ChatListPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
+          var _this = this;
+
+          var socket = this.socket.connect();
+          console.log('check 1', socket.connected); // socket.on('connect', function() {
+          //   console.log('check 2', socket.connected);
+          // });
+
+          socket.on('connect_error', function (err) {
+            console.log("connect failed" + err);
+          });
           this.userData = JSON.parse(localStorage.getItem('userData'));
+          var test = this.socket.emit('user-list', 46);
+          console.log(test, 'check conn');
+          this.callApiv = setInterval(function () {
+            _this.socket.emit('user-list', 46);
+          }, 5000);
+          this.myChatList();
           this.setFilteredItems();
         }
       }, {
@@ -330,29 +346,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ionViewWillEnter",
         value: function ionViewWillEnter() {
-          var _this = this;
+          var _this2 = this;
 
           this.socket.emit('user-list', this.userData.id);
           this.callApiv = setInterval(function () {
-            _this.socket.emit('user-list', _this.userData.id);
+            _this2.socket.emit('user-list', _this2.userData.id);
           }, 5000);
           this.myChatList();
         }
       }, {
         key: "myChatList",
         value: function myChatList() {
-          var _this2 = this;
+          var _this3 = this;
 
           this.socket.fromEvent('my-chat-list').subscribe(function (receiveMessageArr) {
-            _this2.requestCount = 0;
-            _this2.items = receiveMessageArr;
+            _this3.requestCount = 0;
+            _this3.items = receiveMessageArr;
             console.log("receiveMessageArr:" + JSON.stringify(receiveMessageArr));
           });
           this.socket.fromEvent('singleChatRequestCount').subscribe(function (receiveMessageArr) {
-            _this2.requestCount = _this2.requestCount + receiveMessageArr[0].single_chat_request_count; // console.log("singleCount :" + this.requestCount);
+            _this3.requestCount = _this3.requestCount + receiveMessageArr[0].single_chat_request_count;
+            console.log("singleCount :" + _this3.requestCount);
           });
           this.socket.fromEvent('groupChatRequestCount').subscribe(function (receiveMessageArr) {
-            _this2.requestCount = _this2.requestCount + receiveMessageArr[0].group_chat_request_count; // console.log("groupCount :" + this.requestCount);      
+            _this3.requestCount = _this3.requestCount + receiveMessageArr[0].group_chat_request_count;
+            console.log("groupCount :" + _this3.requestCount);
           });
         }
       }, {

@@ -162,7 +162,21 @@ let ChatListPage = class ChatListPage {
         this.profileDefaultImage = './../../../assets/images/user.jpg';
     }
     ngOnInit() {
+        var socket = this.socket.connect();
+        console.log('check 1', socket.connected);
+        // socket.on('connect', function() {
+        //   console.log('check 2', socket.connected);
+        // });
+        socket.on('connect_error', function (err) {
+            console.log("connect failed" + err);
+        });
         this.userData = JSON.parse(localStorage.getItem('userData'));
+        var test = this.socket.emit('user-list', 46);
+        console.log(test, 'check conn');
+        this.callApiv = setInterval(() => {
+            this.socket.emit('user-list', 46);
+        }, 5000);
+        this.myChatList();
         this.setFilteredItems();
     }
     showToast(msg) {
@@ -190,11 +204,11 @@ let ChatListPage = class ChatListPage {
         });
         this.socket.fromEvent('singleChatRequestCount').subscribe(receiveMessageArr => {
             this.requestCount = this.requestCount + receiveMessageArr[0].single_chat_request_count;
-            // console.log("singleCount :" + this.requestCount);
+            console.log("singleCount :" + this.requestCount);
         });
         this.socket.fromEvent('groupChatRequestCount').subscribe(receiveMessageArr => {
             this.requestCount = this.requestCount + receiveMessageArr[0].group_chat_request_count;
-            // console.log("groupCount :" + this.requestCount);      
+            console.log("groupCount :" + this.requestCount);
         });
     }
     setFilteredItems() {
